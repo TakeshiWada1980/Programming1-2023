@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+
+    <script>
+      MathJax = {
+        chtml: {
+          displayAlign: "left",
+          displayIndent: "1em",
+        },
+      };
+    </script>
+
+    
+
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>第01回 2I-プログラミング1</title>
+  </head>
+
+  <body>
+    <div class="openbtn"><span></span><span></span><span></span></div>
+    <nav id="g-nav">
+      <div id="g-nav-list">
+        <!-- ---------------------------------------- -->
+         <ul>
+<li><a href="#シラバスの確認" id="toc-シラバスの確認"><span
+class="toc-section-number">1</span> シラバスの確認</a>
+<ul>
+<li><a href="#基本情報" id="toc-基本情報"><span
+class="toc-section-number">1.1</span> 基本情報</a></li>
+<li><a href="#授業概要" id="toc-授業概要"><span
+class="toc-section-number">1.2</span> 授業概要</a></li>
+<li><a href="#科目の達成目標" id="toc-科目の達成目標"><span
+class="toc-section-number">1.3</span> 科目の達成目標</a></li>
+<li><a href="#成績評価法" id="toc-成績評価法"><span
+class="toc-section-number">1.4</span> 成績評価法</a></li>
+</ul></li>
+<li><a href="#プログラミングとは" id="toc-プログラミングとは"><span
+class="toc-section-number">2</span> プログラミングとは</a></li>
+<li><a href="#プログラミング学習をはじめる前に"
+id="toc-プログラミング学習をはじめる前に"><span
+class="toc-section-number">3</span>
+プログラミング学習をはじめる前に…</a>
+<ul>
+<li><a href="#動画の要点" id="toc-動画の要点"><span
+class="toc-section-number">3.1</span> 動画の要点</a></li>
+<li><a href="#学校の授業はゲームで言えばxxxx"
+id="toc-学校の授業はゲームで言えばxxxx"><span
+class="toc-section-number">3.2</span>
+学校の授業はゲームで言えば「XXXX」</a></li>
+<li><a href="#教員としての願い" id="toc-教員としての願い"><span
+class="toc-section-number">3.3</span> 教員としての願い</a></li>
+</ul></li>
+<li><a href="#python開発実行環境-google-colab."
+id="toc-python開発実行環境-google-colab."><span
+class="toc-section-number">4</span> Python開発・実行環境: Google
+Colab.</a>
+<ul>
+<li><a href="#ノートブックの新規作成"
+id="toc-ノートブックの新規作成"><span
+class="toc-section-number">4.1</span> ノートブックの新規作成</a></li>
+<li><a href="#コードセルの追加と編集実行"
+id="toc-コードセルの追加と編集実行"><span
+class="toc-section-number">4.2</span>
+コードセルの追加と編集・実行</a></li>
+<li><a href="#テキストセルの追加と編集"
+id="toc-テキストセルの追加と編集"><span
+class="toc-section-number">4.3</span> テキストセルの追加と編集</a></li>
+<li><a href="#ノートブックの保存と再開"
+id="toc-ノートブックの保存と再開"><span
+class="toc-section-number">4.4</span> ノートブックの保存と再開</a></li>
+</ul></li>
+<li><a href="#文字列の扱いと出力" id="toc-文字列の扱いと出力"><span
+class="toc-section-number">5</span> 文字列の扱いと出力</a></li>
+<li><a href="#宿題" id="toc-宿題"><span
+class="toc-section-number">6</span> 宿題</a></li>
+</ul> 
+        <!-- ---------------------------------------- -->
+      </div>
+    </nav>
+
+    <header class="markdown-body">
+      <p>2023-2I プログラミング1 第01回 講義資料</p>
+      <p>2023年04月13日（木）5・6時限</p>
+    </header>
+
+    <main class="markdown-body">
+      <!-- ---------------------------------------- -->
+      <h1 data-number="1" id="シラバスの確認"><span
+      class="header-section-number">1</span> シラバスの確認</h1>
+      <h2 data-number="1.1" id="基本情報"><span
+      class="header-section-number">1.1</span> 基本情報</h2>
+      <ul>
+      <li>学年・学科: 2年 総合工学システム学科 知能情報コース</li>
+      <li>単位数: <strong>2単位</strong> (通年・履修単位)</li>
+      <li>卒業要件： DP-D</li>
+      <li>担当教員： Takeshi Wada</li>
+      </ul>
+      <h2 data-number="1.2" id="授業概要"><span
+      class="header-section-number">1.2</span> 授業概要</h2>
+      <p><strong><em>プログラミング</em></strong>
+      は<strong>ICTエンジニア</strong>（特に <span
+      class="masked">ソフトウェアエンジニア</span>
+      ）にとって<strong>最重要スキルのひとつ</strong>に位置づけられます。また、プログラミングは理工学分野の学び（情報工学系科目をはじめ数学や物理などの学習）においても理解深化のための強力なツールにもなります。</p>
+      <p>本科目では、その <strong><em>導入教育</em></strong>
+      として、主に <strong>Python言語</strong>
+      を使ってプログラムに関する概念や用語、設計、実装、デバックについて
+      <span class="masked">経験的に習得すること</span>
+      を目指します。</p>
+      <p>なお、<strong>Python言語</strong>
+      の特性を知ってもらうために、その他のプログラミング言語（ <span
+      class="masked">C言語やJavaScriptなど</span>
+      ）についても簡単に体験してもらうこともあります。また、実装演習では高専1・2年の数学や物理を題材としたものも取り上げ、実装力の向上と同時に数学や物理についても理解を深めてもらいます。</p>
+      <h2 data-number="1.3" id="科目の達成目標"><span
+      class="header-section-number">1.3</span> 科目の達成目標</h2>
+      <p><strong>達成目標</strong>
+      (=2024年2月における皆さんのあるべき姿)
+      として、次の事項を設定しています。</p>
+      <ol type="1">
+      <li>Pythonの <span class="masked">開発環境および実行環境</span>
+      を構築できる。</li>
+      <li>エディタや <span class="masked">バージョン管理システム</span>
+      などの各種開発ツールを効果的に利用できる。</li>
+      <li>関数、条件分岐、繰り返し処理を使用して基本的な <span
+      class="masked">構造化プログラミング</span> ができる。</li>
+      <li>Pythonの多様なライブラリを活用して <span
+      class="masked">日常生活や学習</span>
+      に有用な小規模アプリを開発できる。</li>
+      <li>エラーや意図せぬ結果が生じたとき、その原因特定と解決に向けて適切なアプローチができる。</li>
+      </ol>
+      <h2 data-number="1.4" id="成績評価法"><span
+      class="header-section-number">1.4</span> 成績評価法</h2>
+      <p>総合成績（年度末成績）は、次のように評価します。</p>
+      <ul>
+      <li>課題の提出状況とその内容 <strong><em>80%</em></strong>
+      ならびに授業中に実施する小テスト <strong><em>20%</em></strong>
+      を総合して評価する。</li>
+      <li>100点法により評価し、60点以上を合格とする。</li>
+      </ul>
+      <p>中間試験や期末試験などの筆記形式の定期試験は<strong>実施しません</strong>。</p>
+      <h1 data-number="2" id="プログラミングとは"><span
+      class="header-section-number">2</span> プログラミングとは</h1>
+      <p>コンピュータを相手に最も「効率良く」かつ「齟齬なく」<span
+      class="masked">コミュニケーション</span>
+      をとるための手段・媒体が<strong>プログラム</strong>です。そして、そのプログラムを利用して実際に、何らかのサービスやアプリや機能を創造すること（＝設計して記述してテストすること）が
+      <strong>プログラミング</strong> という行為になります。</p>
+      <p>さらに、かみ砕いて言えば</p>
+      <ul>
+      <li>「<strong>こんなことが（気軽に効率的に）できたらいいよね</strong>
+      」と思うことをデジタル技術を使って実現するために、<strong>どんな構成や手順が必要か</strong>
+      をデジタル技術の特性や制約を踏まえながらロジカルに検討・設計し、実際に
+      <span class="masked">アプリやウェブサービス</span>
+      として実装し、リリースする能力</li>
+      </ul>
+      <p>…がプログラミング能力といえるのではないかと思います。</p>
+      <h1 data-number="3" id="プログラミング学習をはじめる前に"><span
+      class="header-section-number">3</span>
+      プログラミング学習をはじめる前に…</h1>
+      <p>これから、皆さんはプログラミングの
+      <strong>未経験者（未学習者）</strong> から <strong>初心者</strong>
+      に向かって「学び」をしていきます。それに先立ち、ぜひ視聴して欲しい動画があります。以下、「エンジニアチャンネル」というYouTubeチャンネルの動画になります。</p>
+      <ul>
+      <li><strong>プログラミングを始める前に知りたかったことトップ３</strong>
+      <ul>
+      <li>https://www.youtube.com/watch?v=8XwG81rHRhU
+      <ul>
+      <li><a
+      href="https://www.google.com/search?q=%E3%83%9F%E3%83%BC%E3%83%88%E3%82%A2%E3%83%83%E3%83%97%E3%81%A8%E3%81%AF">ミートアップとは</a></li>
+      <li><a
+      href="https://www.google.com/search?q=%E3%82%82%E3%81%8F%E3%82%82%E3%81%8F%E4%BC%9A%E3%81%A8%E3%81%AF">もくもく会とは</a></li>
+      </ul></li>
+      </ul></li>
+      <li><strong>【検証】現役プログラマーは30万円の案件を何時間で出来るのか？</strong>
+      <ul>
+      <li>https://www.youtube.com/watch?v=rt_X6n9oWa4</li>
+      </ul></li>
+      <li><strong>プログラミングを「始める前に」知りたかったよくある間違いトップ4</strong>
+      <ul>
+      <li>https://www.youtube.com/watch?v=ggV3ANAXDy8</li>
+      </ul></li>
+      </ul>
+      <h2 data-number="3.1" id="動画の要点"><span
+      class="header-section-number">3.1</span> 動画の要点</h2>
+      <ul>
+      <li>プログラミングを身に付けるために特別な才能や適性は <span
+      class="masked">必要ない</span> 。
+      <ul>
+      <li>「自分はプログラミングに向いていない」「全然できるようにならない」と思っても、それは単に
+      <span class="masked">学習時間の不足</span> が原因。</li>
+      <li>プロのエンジニアでも、過去を振り返れば、1日10時間超、本気の勉強を半年続けるなかで何度も挫折してしまいそうになっている。和田も高専時代
+      (<span class="citation"
+      data-cites="電気工学科">@電気工学科</span>)
+      で、実際にプログラミング学習に挫折している。</li>
+      </ul></li>
+      <li><strong>ジュニアレベルのプログラマ</strong>（ソフトウェアエンジニアのタマゴとして就職ができるレベル）に到達するために必要な学習時間は
+      <span class="masked">1,000～2,000</span>
+      時間と言われている。膨大な投資であるが、<span
+      class="masked">そのリターンは一生続く</span> 。
+      <ul>
+      <li>参考:
+      <strong>司法試験合格（弁護士）</strong>に必要な学習時間は <span
+      class="masked">3,000～8,000</span> 時間</li>
+      <li>参考:
+      <strong>電気主任技術者（電験3種）</strong>の取得に必要な学習時間は
+      <span class="masked">1,000～2,000</span> 時間</li>
+      <li>参考: <strong>ITパスポート試験合格</strong>に必要な学習時間は
+      <span class="masked">100～150</span> 時間</li>
+      </ul></li>
+      <li>在学中でも、プログラミングスキルを活かした <span
+      class="masked">アルバイト</span> ができる。</li>
+      <li>挫折を回避し、<strong>プログラミングを楽しく意欲をもって学ぶためには</strong>、(<strong>自分が</strong>)
+      夢中になれるプロジェクト、没頭できるプロジェクトに飛び込んでみること、環境・仕組み（仕掛け）・枠組みのなかに身を置くこと。
+      <ul>
+      <li>学習の初期 (少なくとも <span
+      class="masked">学習を初めて数か月から１年</span> )
+      は、とても過酷な期間がつづく。目的 (つくりたいアプリやサービス)
+      を設定せずに、仲間もつくらずに、プロジェクトにも参加せずに取り組むと特に挫折しやすい。</li>
+      <li>目的は、ゲーム開発でも、スマホアプリ開発でも、ウェブサービス開発でも、なんでもOK。<strong>自分が「つくりたい」と思うものを定めて</strong>、それを意識に置きながら学びを進めると学習効果がとても高い。</li>
+      </ul></li>
+      </ul>
+      <p>過酷でツラい期間を乗り切って、<strong>自己効力感を持って、仲間と共に、創造的なモノづくりができる</strong></p>
+      <h2 data-number="3.2" id="学校の授業はゲームで言えばxxxx"><span
+      class="header-section-number">3.2</span>
+      学校の授業はゲームで言えば「XXXX」</h2>
+      <p>学校の授業というものは、ゲームで言えば <span
+      class="masked">チュートリアル</span>
+      でしかありません。<strong>試行錯誤や失敗の連続でも、自分の意思で好きなように自由に取り組む実開発</strong>（ゲームで言えば<strong><em>本編</em></strong>）のほうが、はるかに夢中になれて、格段に「学び」も大きく深いです。</p>
+      <h2 data-number="3.3" id="教員としての願い"><span
+      class="header-section-number">3.3</span> 教員としての願い</h2>
+      <p>和田が理想と考える高専生は
+      <strong><em>自己効力感を持って、仲間と共に、創造的なモノづくり活動を楽しめる高専生</em></strong>
+      です。</p>
+      <p>砕けた言い方をすれば、<strong>自分なりの武器と自信を持って、仲間と一緒に何かクリエイティブな「モノづくり（アウトプット活動）」に取り組むことが「楽しい」「充実している」と思える高専生</strong>
+      です。</p>
+      <p>そのためのチュートリアル（導入やきっかけ）になるような授業を提供したいと思っています。</p>
+      <h1 data-number="4" id="python開発実行環境-google-colab."><span
+      class="header-section-number">4</span> Python開発・実行環境:
+      Google Colab.</h1>
+      <p>これからしばらくは、Pythonの開発・実行環境として
+      <strong><em>GoogleColab.</em></strong>（グーグルコラボ）という<strong>クラウドサービス</strong>を利用していきます。GoogleColab.はネットの接続が必須ですが、ウェブブラウザだけで簡単にプログラミングをはじめることができます。</p>
+      <ul>
+      <li><a
+      href="https://colab.research.google.com/?hl=ja">GoogleColaboratory</a></li>
+      </ul>
+      <p>また、以降の授業のどこかのタイミングで、ローカルPCにも
+      Python実行環境を構築し、<span class="masked">VSCode
+      (+各種拡張機能) </span> を IDE
+      として利用して開発するスタイルに移行します。さらに、皆さんが想定以上に意欲的に取り組んでくれれば、<span
+      class="masked">Docker</span>
+      を活用した開発・実行環境の構築なども体験させたい、と思っています。</p>
+      <div class="note type-tips">
+      <p><strong>Tips：GoogleColab.が有料化やサービス終了してしまったら?</strong></p>
+      <p>ローカルPCに
+      <strong>JupyterNotebook</strong>（ジュピターノートブック／ジュパイターノートブック）という環境を構築すれば、GoogleColab.
+      とほぼ同様の開発ができます。そもそも、JupyterNotebook を Google
+      が独自拡張し、ウェブサービス（クラウド型）として提供したものが
+      GoogleColab. です。</p>
+      <p>仮に、GoogleColab.
+      のサービスが終了しても、それまでに開発したプログラムは
+      ローカルPCの JupyterNotebook に引き継ぐことができます。</p>
+      <p>GoogleColab.についての詳しい情報（FAQ）は<a
+      href="https://research.google.com/colaboratory/faq.html">こちら</a></p>
+      </div>
+      <h2 data-number="4.1" id="ノートブックの新規作成"><span
+      class="header-section-number">4.1</span>
+      ノートブックの新規作成</h2>
+      <ul>
+      <li><a
+      href="https://colab.research.google.com/?hl=ja">GoogleColaboratory</a></li>
+      </ul>
+      <h2 data-number="4.2" id="コードセルの追加と編集実行"><span
+      class="header-section-number">4.2</span>
+      コードセルの追加と編集・実行</h2>
+      <ul>
+      <li>コードセルの実行は
+      <strong><em>[Ctrl]+[Enter]</em></strong></li>
+      <li>コードセル移動と削除</li>
+      </ul>
+      <h2 data-number="4.3" id="テキストセルの追加と編集"><span
+      class="header-section-number">4.3</span>
+      テキストセルの追加と編集</h2>
+      <ul>
+      <li>箇条書き</li>
+      <li>文字の強調</li>
+      </ul>
+      <h2 data-number="4.4" id="ノートブックの保存と再開"><span
+      class="header-section-number">4.4</span>
+      ノートブックの保存と再開</h2>
+      <ul>
+      <li>ノートブックのデフォルトの保存先は、Googleドライブの ‘Colab
+      Notebooks’ フォルダのなか。</li>
+      </ul>
+      <h1 data-number="5" id="文字列の扱いと出力"><span
+      class="header-section-number">5</span> 文字列の扱いと出力</h1>
+      <ul>
+      <li>標準出力 (Standard Output)</li>
+      <li><code>print</code> 関数</li>
+      <li>シングルクォーテーションとダブルクォーテーション</li>
+      </ul>
+      <h1 data-number="6" id="宿題"><span
+      class="header-section-number">6</span> 宿題</h1>
+      <p>次回の授業までに <strong>GitHubアカウント</strong>
+      を準備しておいてください（授業中にアクセスできるようにしておいてください）。このアカウント（リポジトリ）は、インターンシップ、就職、進学において、皆さんの<strong><em>ポートフォリオ</em></strong>
+      ( <span class="masked">取組み実績やスキルを示すための作品集</span>
+      ) という位置づけになります。</p>
+      <p>そのため、<strong>ユーザーネームは慎重に設定</strong>してください
+      (1年次の実験実習で作成したアカウントを継続使用しても、新規に作成しても、個人使用しているものを利用してもOKです。ユーザーネームは変更可能ですが色々と面倒があるので、この機会に適切なものにしておきましょう)。</p>
+      <p>この授業で作成したプログラミングのほか、他の授業や実験実習で作成したものも、このGitHubアカウントのなかに蓄積していってもらいます
+      (少なくとも教員とクラスメイトには閲覧されるものになります) 。</p>
+      <!-- ---------------------------------------- -->
+    </main>
+
+    <footer class="markdown-body">
+      <p><a href="https://github.com/TakeshiWada1980/">講義資料のIndexに移動</a></p>
+    </footer>
+
+    <script>
+      window.onload = function () {
+        // ナビゲーション関連
+        let openBtn = document.getElementsByClassName("openbtn")[0];
+        let navPnl = document.getElementById("g-nav");
+        openBtn.onclick = () => {
+          openBtn.classList.toggle("active");
+          navPnl.classList.toggle("panelactive");
+        };
+
+        let items = navPnl.getElementsByTagName("a");
+        Array.from(items).forEach((item) => {
+          item.onclick = () => {
+            openBtn.classList.toggle("active");
+            navPnl.classList.toggle("panelactive");
+          };
+        });
+
+        // マスク諸る
+        let maskedSpans = document.getElementsByClassName("masked");
+        Array.from(maskedSpans).forEach((span) => {
+          span.onclick = () => {
+            span.classList.toggle("open");
+          };
+        });
+
+        // 画像にリンクを付与
+        let images = document.querySelectorAll("figure img");
+        Array.from(images).forEach((img) => {
+          img.onclick = () => {
+            location.href = img.getAttribute("src");
+          };
+        });
+      };
+    </script>
+  </body>
+</html>
