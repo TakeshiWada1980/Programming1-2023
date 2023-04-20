@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+
+    <script>
+      MathJax = {
+        chtml: {
+          displayAlign: "left",
+          displayIndent: "1em",
+        },
+      };
+    </script>
+
+     <script
+src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+type="text/javascript"></script> 
+
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>第02回 2I-プログラミング1</title>
+  </head>
+
+  <body>
+    <div class="openbtn"><span></span><span></span><span></span></div>
+    <nav id="g-nav">
+      <div id="g-nav-list">
+        <!-- ---------------------------------------- -->
+         <ul>
+<li><a href="#準備" id="toc-準備"><span
+class="toc-section-number">1</span> 準備</a></li>
+<li><a href="#前回の復習" id="toc-前回の復習"><span
+class="toc-section-number">2</span> 前回の復習</a>
+<ul>
+<li><a href="#プログラミングの学び方について"
+id="toc-プログラミングの学び方について"><span
+class="toc-section-number">2.1</span>
+プログラミングの学び方について</a></li>
+<li><a href="#自学の参考資料" id="toc-自学の参考資料"><span
+class="toc-section-number">2.2</span> 自学の参考資料</a></li>
+<li><a href="#googlecolab.について" id="toc-googlecolab.について"><span
+class="toc-section-number">2.3</span> GoogleColab.について</a>
+<ul>
+<li><a href="#演習①" id="toc-演習①"><span
+class="toc-section-number">2.3.1</span> 演習①</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#どのようにプログラミングを学ぶべきか"
+id="toc-どのようにプログラミングを学ぶべきか"><span
+class="toc-section-number">3</span>
+どのように「プログラミング」を学ぶべきか</a>
+<ul>
+<li><a href="#調べる" id="toc-調べる"><span
+class="toc-section-number">3.1</span> 調べる</a></li>
+<li><a href="#試す" id="toc-試す"><span
+class="toc-section-number">3.2</span> 試す</a></li>
+<li><a href="#考える" id="toc-考える"><span
+class="toc-section-number">3.3</span> 考える</a></li>
+</ul></li>
+<li><a href="#print関数による文字列の出力"
+id="toc-print関数による文字列の出力"><span
+class="toc-section-number">4</span> print関数による文字列の出力</a>
+<ul>
+<li><a href="#基本形" id="toc-基本形"><span
+class="toc-section-number">4.1</span> 基本形</a>
+<ul>
+<li><a href="#本質的に大事なこと" id="toc-本質的に大事なこと"><span
+class="toc-section-number">4.1.1</span> 本質的に大事なこと</a></li>
+</ul></li>
+<li><a href="#文末の処理" id="toc-文末の処理"><span
+class="toc-section-number">4.2</span> 文末の処理</a></li>
+<li><a href="#変数の埋め込み" id="toc-変数の埋め込み"><span
+class="toc-section-number">4.3</span> 変数の埋め込み</a>
+<ul>
+<li><a href="#演習②" id="toc-演習②"><span
+class="toc-section-number">4.3.1</span> 演習②</a></li>
+</ul></li>
+<li><a href="#変数の埋め込みf文字列"
+id="toc-変数の埋め込みf文字列"><span
+class="toc-section-number">4.4</span> 変数の埋め込み(f文字列)</a>
+<ul>
+<li><a href="#演習③" id="toc-演習③"><span
+class="toc-section-number">4.4.1</span> 演習③</a></li>
+<li><a href="#補足" id="toc-補足"><span
+class="toc-section-number">4.4.2</span> 補足</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#乱数処理との組み合わせ"
+id="toc-乱数処理との組み合わせ"><span
+class="toc-section-number">5</span> 乱数処理との組み合わせ</a>
+<ul>
+<li><a href="#リファクタリング" id="toc-リファクタリング"><span
+class="toc-section-number">5.1</span> リファクタリング</a>
+<ul>
+<li><a href="#演習④" id="toc-演習④"><span
+class="toc-section-number">5.1.1</span> 演習④</a></li>
+</ul></li>
+<li><a href="#colabノートブックの共有と提出物"
+id="toc-colabノートブックの共有と提出物"><span
+class="toc-section-number">5.2</span>
+Colabノートブックの共有と提出物</a></li>
+</ul></li>
+<li><a href="#宿題" id="toc-宿題"><span
+class="toc-section-number">6</span> 宿題</a></li>
+</ul> 
+        <!-- ---------------------------------------- -->
+      </div>
+    </nav>
+
+    <header class="markdown-body">
+      <p>2023-2I プログラミング1 第02回 講義資料</p>
+      <p>2023年04月20日（木）5・6時限</p>
+    </header>
+
+    <main class="markdown-body">
+      <!-- ---------------------------------------- -->
+      <h1 data-number="1" id="準備"><span
+      class="header-section-number">1</span> 準備</h1>
+      <ul>
+      <li><a href="https://github.com/">GitHub</a>
+      にログインしておいてください。</li>
+      <li>Googleにログインして<a
+      href="https://colab.research.google.com/?hl=ja">GoogleCoalb.</a>にアクセスしておいてください。</li>
+      </ul>
+      <h1 data-number="2" id="前回の復習"><span
+      class="header-section-number">2</span> 前回の復習</h1>
+      <p>前回講義で学んだことの<strong>要点をおさらい</strong>しておきます（少しだけ新規の内容が含まれています）。</p>
+      <h2 data-number="2.1" id="プログラミングの学び方について"><span
+      class="header-section-number">2.1</span>
+      プログラミングの学び方について</h2>
+      <ul>
+      <li>プログラミングを身に付けるために、特別な才能や適性は <span
+      class="masked">必要ない</span> 。</li>
+      <li><strong>ジュニアレベルのプログラマ</strong>（=ソフトウェアエンジニアのタマゴとして新卒就職しても困らないレベル）に到達するために必要な学習時間は
+      <span class="masked">1,000～2,000</span> 時間 。
+      <ul>
+      <li>プログラミングの他、ネットワークやデータベース、チーム開発、Linux利用のなどの周辺分野に関する学習時間も含む。</li>
+      <li>プログラミング「<strong>超初心者</strong>( 未学習者
+      )」が「<strong>初心者</strong>」になるために必要な学習時間は <span
+      class="masked">約250</span> 時間。</li>
+      </ul></li>
+      <li><strong><em>学校における授業</em></strong>（一斉進行型の集団教育)
+      の特性・宿命として…
+      <ul>
+      <li><strong>90分授業を1週間の間隔をあけて実施</strong>。
+      <ul>
+      <li>そこでの「学び」の速度は <span
+      class="masked">亀の歩み</span>。</li>
+      <li>そこでの「学び」の量は <span
+      class="masked">スズメの涙</span>。</li>
+      </ul></li>
+      <li>1週間のブランク（プログラミングをしていないこと）により失われた「感覚」や「慣れ」「記憶」を取り戻すために、授業では
+      <strong>復習</strong>
+      を実施するが、それにより、新しい内容を学ぶために授業で使える時間は
+      <span class="masked">70分程度</span> 。
+      <ul>
+      <li><strong>3歩進んで2歩下がる</strong>の繰り返し。</li>
+      </ul></li>
+      <li><strong>自学であれば休日の約5時間（半日）で学べること</strong>でも、授業<strong>だけ</strong>に頼ると<strong>約1か月</strong>も要してしまう。
+      <ul>
+      <li><span class="math inline">\(70\ \mathrm{Min} \times 4\ 回=280\
+      \mathrm{Min}=4.6\ \mathrm{H}\)</span></li>
+      <li>受け身で集団教育で学ぶことの限界。</li>
+      </ul></li>
+      <li>90分授業を通年受講 (30回受講) しても累積の学習時間は <span
+      class="math inline">\(90\times 30= 2,700\ \mathrm{Min}=45\
+      \mathrm{H}\)</span>。
+      <ul>
+      <li>毎回の授業で約90分の復習（宿題など）が課されても<strong>90時間</strong>。超初心者から初心者になるために必要な時間
+      (250時間) の半分にも届かない。</li>
+      </ul></li>
+      </ul></li>
+      <li>授業は、あくまで<strong>プログラミング
+      を自学するための</strong> <span
+      class="masked">チュートリアル（丁寧な導入・動機付け）</span>
+      であり、<strong>自学</strong> が「プログラミングの学び」の
+      <strong><em>本編</em></strong> であると意識を変えることが重要。
+      <ul>
+      <li><strong>ゲームのチュートリアル</strong>:
+      ゲームを遊ぶための方法 (必要最小限の内容)
+      を丁寧に体験的に学ぶ。</li>
+      <li><strong><em>学校の授業や実験実習</em></strong> (
+      =<strong>プログラミング学習のチュートリアル</strong> ): <span
+      class="masked">プログラミングの学び方</span>
+      を丁寧に体験的に学ぶ。</li>
+      <li>教員は「Teacher」よりも、学びの「<strong>Navigator</strong>」「<strong>Coach</strong>」という位置づけに近い。</li>
+      <li>Coaching: 学生が自ら考える力を育てる (指南する、指導する)</li>
+      </ul></li>
+      <li><strong>楽しく意欲的にプログラミングを学ぶ（自学する）ためには</strong>、自分が夢中になれる/没頭できるプロジェクトに
+      (恐れずに)
+      飛び込んでみること、自然に学習せざるを得ない環境・枠組み・仕掛けのなかに身を置くこと
+      ( <span class="masked">仲間や師匠をつくること</span>)。
+      <ul>
+      <li>「プログラミング研究会」「総合課題実習1」「高専祭展示」「サークル
+      (クラスメイトと自由に結成) 」など。</li>
+      <li>日常生活や教科学習などのあらゆる場面で「いま取り組んでいることについて、デジタル技術を使って自動化
+      / 効率化 / 省力化 / 高付加価値化 できないか?」を考えてみる。
+      <ul>
+      <li>この数学・物理の問題をプログラムを使って解くことができないか?</li>
+      <li>もっと効果的な英単語学習ができないか?</li>
+      </ul></li>
+      </ul></li>
+      <li>ソフトウェアエンジニアのインターンシップや就職活動、<strong><em>ポートフォリオ</em></strong>
+      が必要。
+      <ul>
+      <li>ポートフォリオとは <span
+      class="masked">取組み実績やスキルを示すための作品集</span>。</li>
+      </ul></li>
+      </ul>
+      <h2 data-number="2.2" id="自学の参考資料"><span
+      class="header-section-number">2.2</span> 自学の参考資料</h2>
+      <p>プログラミングを自学するための優れた教材は、書籍をはじめウェブにあふれています。</p>
+      <p>この授業では Python を扱いますが、Python
+      に拘らずに<strong>「つくりたいもの」に必要なプログラミング言語</strong>
+      があるなら、それを並行してガンガン学んでください。<strong>2つの言語を同時に学ぶと混乱するからやめたほうが良い?</strong>
+      そんなことはありません。</p>
+      <ul>
+      <li><strong>YouTube</strong>: 中学生でもわかるPython入門
+      (シリーズ)
+      <ul>
+      <li>https://www.youtube.com/playlist?list=PLCZyyif9kAwX7rlXKrJTlPQs9Nk7TBAHO</li>
+      </ul></li>
+      <li><strong>YouTube</strong>:
+      中学・高校数学で学ぶ数学×Pythonプログラミング (シリーズ)
+      <ul>
+      <li>https://www.youtube.com/playlist?list=PLCKTaJbLVU8c3X2K1rmgGKKnSvvAmODkl</li>
+      </ul></li>
+      <li><strong>YouTube</strong>:
+      基本構造を学ぶゲームプログラミング講座【ゆっくり解説】
+      <strong><em>JavaScript</em></strong>
+      <strong><em>ゲーム開発</em></strong>
+      <ul>
+      <li>https://www.youtube.com/playlist?list=PL80OIWUJ1J0GLq9SY9ozePR9kax3Uy6Xp</li>
+      </ul></li>
+      <li><strong>YouTube</strong>: <span
+      class="masked">ドラクエ</span>の作り方
+      プログラミング講座【ゆっくり解説】
+      <strong><em>JavaScript</em></strong>
+      <strong><em>ゲーム開発</em></strong>
+      <ul>
+      <li>https://www.youtube.com/playlist?list=PL80OIWUJ1J0ETGknI9vJFfLYFEk7bvllg</li>
+      </ul></li>
+      </ul>
+      <h2 data-number="2.3" id="googlecolab.について"><span
+      class="header-section-number">2.3</span> GoogleColab.について</h2>
+      <ul>
+      <li>正式名称は
+      <strong><em>GoogleColaboratory</em></strong>（グーグルコラボラトリー）。</li>
+      <li>ウェブブラウザから利用可能な <strong>Pythonプログラム</strong>
+      の実行開発環境
+      (無料)。利用にはGoogleアカウントのログインが必要。</li>
+      <li>「<strong>ノートブック</strong>」とよばれるスペースに、プログラムを記述する
+      <span class="masked">コードセル</span>
+      と、ドキュメント（メモ）を記述する <span
+      class="masked">テキストセル</span> を追加しながら開発する。
+      <ul>
+      <li>テキストセルは <span class="masked">マークダウン</span>
+      という記述形式に対応して、<strong>文字装飾
+      (強調、箇条書き、ヘッダ設定など) </strong>も可能。</li>
+      </ul></li>
+      <li>コードセルに記述したPythonプログラムは <span
+      class="masked">Ctrl+Enter</span>
+      のショートカットキーで実行可能。</li>
+      <li>ノートブックは、<span class="masked">Googleドライブ</span> の
+      <code>Colab Notebooks</code>
+      というフォルダのなかに保存される。</li>
+      </ul>
+      <h3 data-number="2.3.1" id="演習①"><span
+      class="header-section-number">2.3.1</span> 演習①</h3>
+      <p>前回の学習内容です。どれだけ身についているでしょうか?</p>
+      <ul>
+      <li><a
+      href="https://colab.research.google.com/?hl=ja">GoogleColab.</a>
+      にアクセスして <code>0420_print関数とrandomモジュール.ipynb</code>
+      という名前でノートブックを新規作成せよ。
+      <ul>
+      <li>ブックマーク登録しておくこと。</li>
+      </ul></li>
+      <li>ノートブックに<strong>テキストセル</strong>を追加し、次のように<strong>装飾された文字列</strong>が表示されるようにせよ
+      (マークダウン形式で出力する)。</li>
+      </ul>
+      <figure>
+      <img src="figs/02/colab_text_cell.png" alt="Python" />
+      <figcaption aria-hidden="true">Python</figcaption>
+      </figure>
+      <ul>
+      <li>コードセルを追加し、<code>Hello World</code>
+      という文字列を出力するプログラムを記述せよ。また、そのプログラムを実行せよ
+      (意図した出力が得られることを確認せよ)。
+      <ul>
+      <li>コードセルの実行にはショートカットキーを利用</li>
+      </ul></li>
+      <li>作成されたノートブックがGoogleドライブのなかに保存されていることを確認せよ。</li>
+      </ul>
+      <h1 data-number="3"
+      id="どのようにプログラミングを学ぶべきか"><span
+      class="header-section-number">3</span>
+      どのように「プログラミング」を学ぶべきか</h1>
+      <p>実践的なプログラミングスキルを<strong>効果的に習得する</strong>ためには、学習者個別の興味・関心の分野に応じた目標
+      (例えば「アクションゲームをつくりたい」「CGを描きたい」「レポート作成を省力化したい」など)
+      を設定して <strong><em>調べる</em></strong>
+      <strong><em>試す</em></strong> <strong><em>考える</em></strong> を
+      <span class="masked">個々の学習者に適したスピードとバランス</span>
+      で取り組むことが必要となります。このことからも、<strong>授業
+      (一斉進行の集団教育)
+      とプログラミング学習の相性</strong>は、<strong><em>最悪</em></strong>
+      ということが分かると思います。</p>
+      <h2 data-number="3.1" id="調べる"><span
+      class="header-section-number">3.1</span> 調べる</h2>
+      <p>ここでの <strong><em>調べる</em></strong>
+      とは、ネットの入門記事や入門本を読んだり、先生から解説を聞いて学ぶことです。また「<strong>やりたいこと</strong>」や「<strong>疑問</strong>」や「<strong>問題</strong>
+      (エラーなど)」がでてきたときに、そのヒントとなる情報を<strong>ネットから自ら見つけ出すこと</strong>も「調べる」の範疇になります。</p>
+      <p>特に <strong><em>ウェブ検索</em></strong> は
+      <strong>プロのエンジニアも日常的に時間を相当費やしていること</strong>
+      です。5分、10分の検索で解決しないからといって、あきらめないでください。上級者でも情報を探し出すことに<strong>数時間を要することも珍しくありません</strong>。</p>
+      <p>最近は、優秀な <span class="masked">AIチャットボット</span>
+      も登場しているので、ウェブ検索とあわせて上手に
+      <strong><em>調べる</em></strong> をしてください。</p>
+      <h2 data-number="3.2" id="試す"><span
+      class="header-section-number">3.2</span> 試す</h2>
+      <p><strong><em>試す</em></strong>
+      とは、実際にプログラムを「記述して」「実行して」「結果を確認すること」です。</p>
+      <p>先生からの解説を聞いて <span
+      class="masked">理解したつもり</span>
+      になっていても、<strong>実際にコードを打ち込むと「？？？」となることがほとんど</strong>です。解説を読んだり聞いたりして
+      <strong><em>分かった気になっても、面倒がらずに実際に手を動かすこと</em></strong>
+      が<strong>とても重要</strong>です。</p>
+      <p>英語学習では、<strong>英作文しても「文法的に正しいのか」「読み手に意図が伝わるのか」を自分で判断・評価することは非常に難しい</strong>です。判断・評価は先生などを頼る必要がありますが、これには恥ずかしさも伴います。</p>
+      <p>それに対して<strong>プログラミング学習では、コンピュータが判断・評価してくれるので「恥ずかしさ」などの心理的抵抗感はほとんどありません</strong>。どんどん手を動かして
+      <strong><em>試す</em></strong> をしてください。</p>
+      <div class="note type-caution">
+      <p><strong>注意</strong></p>
+      <p>ChatGPTなどのAIチャットボットの回答 (特にソースコード)
+      については、必ず実行して <strong>結果の検証</strong>
+      をしてください。ChatGPTからは、<strong>動作するものの意図した出力が得られないソースコードが示されること</strong>があります。</p>
+      </div>
+      <h2 data-number="3.3" id="考える"><span
+      class="header-section-number">3.3</span> 考える</h2>
+      <p><strong><em>考える</em></strong> とは「記述したプログラムから
+      <span
+      class="masked">なぜ、そのような実行結果が得られるのか？</span>
+      を理解すること」です。ウェブで調べて試してみたら <span
+      class="masked">「なんでか分からないけど動いている」</span>
+      といった状態に、よくなります。このとき<strong>その状態で納得しない</strong>でください
+      ( その状態に気持ち悪さを感じるようになってください )。</p>
+      <p>また、<span
+      class="masked">目的の実行結果を得るためには、どのようなプログラムを書けばよいか</span>を（検索に頼らず）自分でじっくり
+      <strong><em>考える</em></strong>
+      ことも重要です。そこでは、<strong>複雑なモノゴトを整理して小さく単純な課題に分解する能力（プログラムやコンピュータで直接的に扱える粒度まで落とし込む能力）</strong>が求められます。</p>
+      <p>例えば「2Dのアクションゲームをつくりたい」と思ったとき、それを次のような<strong>シンプルな要素や課題に分解していく能力</strong>も鍛えて行く必要があります。</p>
+      <ul>
+      <li>640×480のウインドウを表示する</li>
+      <li>座標を与えてウインドウに線を描く</li>
+      <li>キーボードの入力をリアルタイムに受け取る</li>
+      <li>wav形式の音を再生する</li>
+      </ul>
+      <div class="note type-caution">
+      <p><strong>注意</strong></p>
+      <p>ChatGPTなどのAIチャットボットの回答 (特にソースコード)
+      については、必ず *<strong>内容の理解・解釈</strong>
+      に努めてください。</p>
+      </div>
+      <h1 data-number="4" id="print関数による文字列の出力"><span
+      class="header-section-number">4</span>
+      print関数による文字列の出力</h1>
+      <h2 data-number="4.1" id="基本形"><span
+      class="header-section-number">4.1</span> 基本形</h2>
+      <p><strong>文字列を出力する</strong>には、<strong><em>print関数</em></strong>に
+      <strong>シングルクォーテーション</strong> または
+      <strong>ダブルクォーテーション</strong> で囲んだ
+      <strong>文字列リテラル</strong> (<a
+      href="https://www.google.com/search?q=リテラル">リテラルとは？</a>)
+      を与えます。</p>
+      <div class="sourceCode" id="cb1"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="bu">print</span>(<span class="st">&#39;Hello Python&#39;</span>)</span></code></pre></div>
+      <h3 data-number="4.1.1" id="本質的に大事なこと"><span
+      class="header-section-number">4.1.1</span> 本質的に大事なこと</h3>
+      <p>上記のような「解説」が与えられたとき、<strong><em>エンジニアとして</em></strong>
+      次のような <strong><em>疑問</em></strong>
+      が<strong>瞬時に頭に思い浮かぶように思考回路を変えていって</strong>ください。そして、その疑問に対して実際に「<strong>調べる</strong>」「<strong>試す</strong>」「<strong>考える</strong>」ができるように<strong>習慣・行動を変えていって</strong>ください。</p>
+      <ul>
+      <li><code>print</code> を <code>Print</code> にするとエディタ
+      (コードセル上の表示) には何か変化があるの?
+      それを実行するとどうなるの?</li>
+      <li><code>print('Hello Python')</code>
+      の各所に<strong>改行</strong>や<strong>スペース</strong>を入れることはできるの?
+      どの位置に入れてもいいの? ダメな場所もあるの? どんな規則なの?</li>
+      <li>シングルとダブルの使い分けは?
+      <strong>どちらが主流</strong>なの?</li>
+      <li>シングル/ダブルクォーテーションで<strong>囲まない</strong>とエディタ
+      (コードセル上の表示) には何か変化があるの?
+      それを実行するとどうなるの?</li>
+      <li>シングル/ダブルクォーテーションの囲みのなかで<strong>日本語</strong>は使えるの?
+      じゃあ<span class="masked">絵文字 (🤣) </span> は使えるの?
+      逆に<span class="masked">使えない文字</span>はあるの?</li>
+      <li>文字列の途中で<strong>改行したい</strong>ときはどうするの?</li>
+      <li>出力される<strong>文字の色を変えたい</strong>、<strong>文字を装飾したい</strong>
+      (太字、斜体、フォント変更、サイズ変更、<span
+      class="math inline">\(\mathrm{CO}_{2}\)</span>
+      のような下付き文字にしたい) ときはどうするの?</li>
+      <li>シングルクォーテーションで始まって、ダブルクォーテーションで終わるとどうなるの?</li>
+      <li><code>print("I'm happy.")</code>
+      のようにダブルクォーテーションで囲った文字列のなかで、シングルクォーテーションを使うことはできるの?
+      できないなら「<strong>I’m
+      happy.</strong>」と出力するためにはどうすればいいの?</li>
+      <li><code>print("The cat said, "Meow."")</code>
+      のようにクォーテーションを<span class="masked">ネスト
+      (入れ子)</span> にできるの?
+      ネストしたい場合はどうすればいいの?</li>
+      <li>シングルとダブルのクォーテーションの<strong>両方を含む文章</strong>
+      (例えば<span class="masked">「The boy said, “That’s my sister’s
+      bike.”」</span>) を出力するにはどうすればいいの?</li>
+      </ul>
+      <p>また、同時に <span class="masked">クリエイタ</span>として
+      次のようなことを即座に考えるようになってください。</p>
+      <ul>
+      <li>自分が目標にしていること (例えば「パズルゲームの開発」など)
+      に、この print関数 は<span
+      class="masked">どう利用できるかな?</span></li>
+      <li>この print関数 を使って<span
+      class="masked">なにか「面白いこと」や「役立つこと」</span>ができないかな?</li>
+      <li>日常的に使っているアプリ (製品または開発プロセス) では、この
+      print関数 は使われているのかな?
+      使われているとしたら、<strong>どんなところで使われている</strong>のかな?</li>
+      </ul>
+      <h2 data-number="4.2" id="文末の処理"><span
+      class="header-section-number">4.2</span> 文末の処理</h2>
+      <div class="sourceCode" id="cb2"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="bu">print</span>(<span class="st">&#39;Hello Python.&#39;</span>)</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="bu">print</span>(<span class="st">&#39;Java? No Thanks!&#39;</span>)</span></code></pre></div>
+      <p>上記を実行すると、次のように改行され出力されます。</p>
+      <pre><code>Hello Python.
+Java? No Thanks!</code></pre>
+      <p>ここで、次のように<strong>文字列を改行させずに出力させる</strong>ためにはどうしたらよいでしょうか?（また、ピリオドのあとにスペースも入れたい…）</p>
+      <pre><code>Hello Python. Java? No Thanks!</code></pre>
+      <p>もちろん <code>print('Hello Python. Java? No Thanks!')</code>
+      のように「文字列をひとつにまとめてしまう方法」もありますが、あとで学習する<strong>繰り返し処理</strong>との組み合わせるときには、その方法は適しません。</p>
+      <p>さて、<strong><em>どのようなキーワードで検索</em></strong>
+      すれば目的とする情報にたどり着くでしょうか?
+      試行錯誤して情報を検索して、実際に試してみてください。周囲のクラスメイトとも情報交換してみてください。</p>
+      <h2 data-number="4.3" id="変数の埋め込み"><span
+      class="header-section-number">4.3</span> 変数の埋め込み</h2>
+      <p>ここでは、文字列のなかに <strong><em>変数</em></strong>
+      を埋め込んで出力する方法を学びます。</p>
+      <div class="note type-tips">
+      <p><strong>変数とは</strong></p>
+      <p><strong>変数</strong> とは、プログラムのなかでデータ
+      (=文字列や数値など)
+      を一時的に保存したり、取り扱ったりするために使われるものです。変数を使うことで、<strong>データに名前をつけ</strong>、後からそのデータを<strong>参照</strong>したり
+      (=読み出したり)、<strong>更新</strong>したり
+      (=別の値を上書きしたり) できます。</p>
+      </div>
+      <div class="sourceCode" id="cb5"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="bu">print</span>(<span class="st">&#39;生まれは堺、育ちも堺、就職先も堺です。両親も堺に住んでいます。&#39;</span>)</span></code></pre></div>
+      <p>上記の文字列には「<strong>堺</strong>」という文字列が<strong>繰り返し4回登場</strong>します。この文章のなかで「堺」を「寝屋川市」や「門真」に変更する可能性があるときは、あらかじめ、次のように
+      <strong><em>変数</em></strong>
+      を利用してプログラムを構成しておきます。</p>
+      <div class="sourceCode" id="cb6"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>city <span class="op">=</span> <span class="st">&#39;堺&#39;</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="bu">print</span>(<span class="st">&#39;生まれは&#39;</span> <span class="op">+</span> city <span class="op">+</span> <span class="st">&#39;で、育ちも&#39;</span> <span class="op">+</span> city <span class="op">+</span> <span class="st">&#39;、就職先も&#39;</span> </span>
+<span id="cb6-3"><a href="#cb6-3"></a>      <span class="op">+</span> city <span class="op">+</span> <span class="st">&#39;です。両親も&#39;</span> <span class="op">+</span> city <span class="op">+</span> <span class="st">&#39;に住んでいます。&#39;</span>)</span></code></pre></div>
+      <p><code>city</code>
+      が<strong>変数</strong>というものになります。上記の01行目は、<code>=</code>
+      の記号を使っていますが、<span
+      class="masked">数学的におけるイコールとは意味が異なり</span>、次の意味を持ちます。</p>
+      <ul>
+      <li><code>city</code> という<strong>変数</strong>
+      (容器)に「堺」という文字列を「<strong>格納する</strong>」、「<strong>代入する</strong>」。</li>
+      </ul>
+      <p>そのため <code>10=a</code> は <strong>SyntaxError</strong>
+      となり、また <code>a=b</code> と <code>b=a</code> では <span
+      class="masked">実行される処理がまったく違います</span>。なお、C言語などでは、型宣言
+      (明示) が必要になりますが、Pythonでは不要です。</p>
+      <div class="note type-senior">
+      <p><strong>中級者向け:
+      厳密には代入ではなくバインド(束縛)</strong></p>
+      <p>Pythonにおいて、<code>city='堺'</code>
+      という文は<strong>厳密にいえば</strong>「変数 <code>city</code>
+      を『堺』という文字列 (オブジェクト) に <strong><em>バインド
+      (束縛)</em></strong>する」という意味になります。詳しくは <a
+      href="https://www.oyama-ct.ac.jp/tso/workshop/python/python03.html">小山高専・技術支援室</a>
+      を参照してください。</p>
+      </div>
+      <h3 data-number="4.3.1" id="演習②"><span
+      class="header-section-number">4.3.1</span> 演習②</h3>
+      <ul>
+      <li>上記のプログラムを実行・確認せよ。</li>
+      <li>同じように<strong>変数を利用して</strong>「人民による人民のための人民の政治」という文字列を出力せよ
+      (新たにコードセルを追加して記述・実行すること)。</li>
+      <li>print関数内の <code>city</code> を <code>'ciyt'</code>
+      に変更し、エディタ上の表示がどのように変化するか確認せよ。また、実行するとどうなるか確認せよ。確認後は、変更を元に戻しておくこと。</li>
+      <li>print関数内の <code>city</code> を<strong>1箇所だけ</strong>
+      <code>ciyt</code>
+      に変更し、エディタ上の表示がどのように変化するか確認せよ。また、実行するとどうなるか確認せよ。確認後は、変更を元に戻しておくこと。</li>
+      <li>このような変数の埋め込みは「<strong>ゲームでは、どのようなところに利用されているか</strong>」をできるだけ多く考え、周囲の学生と意見交換せよ。</li>
+      <li>そのほか、<code>3.1.1</code>
+      に示したようなことを「考えて」、「調べて」、「試して」、再び「考え」よ。
+      <ul>
+      <li>例えば、<span
+      class="masked">変数の命名ルール</span>についての「疑問」などが瞬時に思い浮かぶようになって欲しいです
+      ()。</li>
+      </ul></li>
+      </ul>
+      <p>上記をすべて授業時間内に実行することは難しいので、実施できなかった分は、放課後や自宅などで次回までに取り組んでおくこと。以降の演習も同様。</p>
+      <div class="note type-senior">
+      <p><strong>中級者向け: 意外な落とし穴</strong></p>
+      <p>次の実行結果を正しく予想し、また、なぜそのような結果が得られるか説明できるでしょうか?</p>
+      <div class="sourceCode" id="cb7"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>a <span class="op">=</span> <span class="st">&#39;あいうえお&#39;</span>    <span class="co"># 変数名は半角「a」</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>ａ <span class="op">=</span> <span class="st">&#39;かきくけこ&#39;</span>   <span class="co"># 変数名は半角「ａ」</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="bu">print</span>(a)  <span class="co"># 引数には半角「a」</span></span></code></pre></div>
+      </div>
+      <h2 data-number="4.4" id="変数の埋め込みf文字列"><span
+      class="header-section-number">4.4</span>
+      変数の埋め込み(f文字列)</h2>
+      <p>Python のバージョン 3.6 以上では
+      <strong><em>f文字列</em></strong>
+      (<strong>フォーマット済み文字列リテラル</strong>)
+      という機能を利用できます。</p>
+      <div class="note type-tips">
+      <p><strong>フォーマットとは</strong></p>
+      <p>プログラムの文字列処理における<strong>フォーマット</strong>とは、文字列のなかに<strong>変数を埋め込んだり</strong>、特定の形式に従って<strong>整形したり</strong>することを指します。</p>
+      <p>ここでの「<strong>整形</strong>」とは
+      (太字や斜体などの処理ではなく)、数値の「20」を「20.00」のように指定の小数点位までの表示したり、「13」を「1101」のように２進数表記にしたりすることを意味します。</p>
+      </div>
+      <p><strong><em>f文字列</em></strong>
+      の機能で文字列を埋め込むには、文字列の先頭に <code>f</code>
+      を付け、文字列内部に中括弧 (波括弧、にょろ括弧)
+      で囲った内部に変数を記述します。</p>
+      <div class="sourceCode" id="cb8"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>city <span class="op">=</span> <span class="st">&#39;堺&#39;</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="bu">print</span>(<span class="ss">f&#39;生まれは</span><span class="sc">{</span>city<span class="sc">}</span><span class="ss">、育ちも</span><span class="sc">{</span>city<span class="sc">}</span><span class="ss">、就職先も</span><span class="sc">{</span>city<span class="sc">}</span><span class="ss">です。両親も</span><span class="sc">{</span>city<span class="sc">}</span><span class="ss">に住んでいます。&#39;</span>)</span></code></pre></div>
+      <h3 data-number="4.4.1" id="演習③"><span
+      class="header-section-number">4.4.1</span> 演習③</h3>
+      <ul>
+      <li>上記のプログラムを実行・確認せよ。</li>
+      <li>出力される文字列の「<strong>堺</strong>」を「<strong>枚方</strong>」に変更したい。実行せよ。</li>
+      <li>文字列の先頭の <code>f</code> を <span
+      class="masked">大文字</span> にするとどうなるか確認せよ。</li>
+      <li>文字列の先頭の <code>f</code> を <span
+      class="masked">削除</span> するとどうなるか確認せよ。</li>
+      <li>f文字列のなかで、出力文字として <code>{}</code>
+      を使用したい。例えば <code>{必読} 山田さま限定の割引情報</code>
+      という<strong>波括弧を含んだ文字列</strong>を出力したい。</li>
+      </ul>
+      <h3 data-number="4.4.2" id="補足"><span
+      class="header-section-number">4.4.2</span> 補足</h3>
+      <div class="note type-tips">
+      <p><strong>Pythonのバージョンを調べるには</strong></p>
+      <p>Pythonのバージョンは、<strong><em>コマンドプロンプト</em></strong>
+      から、次のコマンドを入力して確認できます。ハイフンの次につける文字を、一般に「<strong>オプション</strong>」と呼びます。大文字・小文字が区別されるので注意してください。</p>
+      <pre><code>python -V</code></pre>
+      <p><strong>GoogleColab.環境</strong> (Jupyter環境)
+      では、次のようにコードセルのなかで先頭に <code>!</code>
+      を付けてコマンドを実行します。<code>!</code> を付けないと
+      Pythonのコードとして認識されてしまいます( <code>!</code>
+      を付けることで仮想マシンのターミナルに直接コマンドを与えることができます
+      )。</p>
+      <pre><code>!python -V</code></pre>
+      <p>GoogleColab.のPythonバージョンを把握しておきましょう。なお、Pythonのリリース情報は、<a
+      href="https://www.python.org/downloads/">公式ページ</a>から確認できます。</p>
+      </div>
+      <div class="note type-senior">
+      <p><strong>中級者向け: 仮想マシンのスペック確認</strong></p>
+      <pre><code>!cat /etc/os-release
+!cat /proc/cpuinfo
+!cat /proc/meminfo
+!nvidia-smi</code></pre>
+      <p>上記のコマンドで GoogleColab.
+      が実行されている仮想PCのスペックを取得することができます。<code>!nvidia-smi</code>
+      は、GPUの割り当てをしている場合のみ有効です。</p>
+      </div>
+      <h1 data-number="5" id="乱数処理との組み合わせ"><span
+      class="header-section-number">5</span> 乱数処理との組み合わせ</h1>
+      <p><strong>文字列処理(出力)</strong>に
+      <strong><em>乱数処理</em></strong>
+      を組み合わせると、それだけで面白いプログラムを作成することができる。</p>
+      <div class="sourceCode" id="cb12"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="im">import</span> random</span>
+<span id="cb12-3"><a href="#cb12-3"></a></span>
+<span id="cb12-4"><a href="#cb12-4"></a>x1 <span class="op">=</span> random.choice([<span class="st">&#39;美人&#39;</span>,<span class="st">&#39;アキバ系&#39;</span>,<span class="st">&#39;婚活&#39;</span>,<span class="st">&#39;引きこもり&#39;</span>,<span class="st">&#39;還暦&#39;</span>,<span class="st">&#39;リア充&#39;</span>])</span>
+<span id="cb12-5"><a href="#cb12-5"></a>x2 <span class="op">=</span> random.choice([<span class="st">&#39;高専生&#39;</span>,<span class="st">&#39;YouTuber&#39;</span>,<span class="st">&#39;家政婦&#39;</span>,<span class="st">&#39;女将&#39;</span>,<span class="st">&#39;教師&#39;</span>,<span class="st">&#39;教祖&#39;</span>])</span>
+<span id="cb12-6"><a href="#cb12-6"></a>y1 <span class="op">=</span> random.choice([<span class="st">&#39;美人&#39;</span>,<span class="st">&#39;アキバ系&#39;</span>,<span class="st">&#39;婚活&#39;</span>,<span class="st">&#39;引きこもり&#39;</span>,<span class="st">&#39;還暦&#39;</span>,<span class="st">&#39;リア充&#39;</span>])</span>
+<span id="cb12-7"><a href="#cb12-7"></a>y2 <span class="op">=</span> random.choice([<span class="st">&#39;高専生&#39;</span>,<span class="st">&#39;YouTuber&#39;</span>,<span class="st">&#39;家政婦&#39;</span>,<span class="st">&#39;女将&#39;</span>,<span class="st">&#39;教師&#39;</span>,<span class="st">&#39;教祖&#39;</span>])</span>
+<span id="cb12-8"><a href="#cb12-8"></a></span>
+<span id="cb12-9"><a href="#cb12-9"></a><span class="bu">print</span>(<span class="ss">f&#39;来週の火曜サスペンス劇場は&#39;</span>, end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb12-10"><a href="#cb12-10"></a><span class="bu">print</span>(<span class="ss">f&#39;「</span><span class="sc">{</span>x1<span class="sc">}{</span>x2<span class="sc">}</span><span class="ss">は見たッ! </span><span class="sc">{</span>y1<span class="sc">}{</span>y2<span class="sc">}</span><span class="ss">殺人事件ッ!!」です。ご期待ください。&#39;</span>)</span></code></pre></div>
+      <p>まずは、プログラムをコードセルに貼り付けて実行してみましょう (
+      <strong><em>試す</em></strong> )。また、実行するたびに <span
+      class="masked">実行結果が変わること</span> を確認しましょう。</p>
+      <p>次に「なぜ、このプログラムから、そのような実行結果が得られるのか」について
+      <strong><em>考えて</em></strong>
+      みましょう。また、ある程度の関係性がみえてきたら、その解釈が適切なのか、実際に検証してみましょう
+      ( <strong><em>試す</em></strong> )。</p>
+      <p>例えば、<span
+      class="masked">「陽キャ」「陰キャ」という修飾語を加えたい場合</span>は、どのように書きかえればよいか、などを書き換えて、実行してみましょう。</p>
+      <p>また「必要と思われる処理」を<strong>あえてコメントアウトして</strong><span
+      class="masked">どのような結果になるか</span>を確認してみましょう。また、<strong><em>「必要ないのと思う処理」</em></strong>があるなら、実際にコメントアウトしてみましょう
+      (実際、必要ない処理なのかもしれまん)。</p>
+      <ul>
+      <li>コメントアウトとアンコメントは <code>Ctrl+/</code>
+      のショートカットキーで実行します。多用するので必ず覚えてください。</li>
+      </ul>
+      <p>また、そのうえで分からないことについてウェブで
+      <strong><em>調べたり</em></strong>
+      、先生やクラスメイトに尋ねてみましょう。<strong>何が分からないかを自分が認識できていないときに質問しても、学習効果は薄いです</strong>
+      (質問相手の時間を無駄に奪うだけですので、注意してください。)。</p>
+      <h2 data-number="5.1" id="リファクタリング"><span
+      class="header-section-number">5.1</span> リファクタリング</h2>
+      <p><strong><em>リファクタリング</em></strong>
+      とは、<strong>プログラムの外面的な振る舞いを変更せずに、内部のコード構造を改良・最適化する行為</strong>です。上記プログラムは、少なくとも次のようにリファクタリングできます。</p>
+      <p>リファクタリングは、可読性、保守性、拡張性など様々な観点で行われるため、一概に、このようにすべきという答えはありません。</p>
+      <div class="sourceCode" id="cb13"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="im">import</span> random</span>
+<span id="cb13-3"><a href="#cb13-3"></a></span>
+<span id="cb13-4"><a href="#cb13-4"></a>word1 <span class="op">=</span> [<span class="st">&#39;美人&#39;</span>,<span class="st">&#39;アキバ系&#39;</span>,<span class="st">&#39;婚活&#39;</span>,<span class="st">&#39;引きこもり&#39;</span>,<span class="st">&#39;還暦&#39;</span>,<span class="st">&#39;リア充&#39;</span>]</span>
+<span id="cb13-5"><a href="#cb13-5"></a>word2 <span class="op">=</span> [<span class="st">&#39;高専生&#39;</span>,<span class="st">&#39;YouTuber&#39;</span>,<span class="st">&#39;家政婦&#39;</span>,<span class="st">&#39;女将&#39;</span>,<span class="st">&#39;教師&#39;</span>,<span class="st">&#39;教祖&#39;</span>]</span>
+<span id="cb13-6"><a href="#cb13-6"></a></span>
+<span id="cb13-7"><a href="#cb13-7"></a>x1 <span class="op">=</span> random.choice(word1)</span>
+<span id="cb13-8"><a href="#cb13-8"></a>x2 <span class="op">=</span> random.choice(word2)</span>
+<span id="cb13-9"><a href="#cb13-9"></a>y1 <span class="op">=</span> random.choice(word1)</span>
+<span id="cb13-10"><a href="#cb13-10"></a>y2 <span class="op">=</span> random.choice(word2)</span>
+<span id="cb13-11"><a href="#cb13-11"></a><span class="bu">print</span>(<span class="ss">f&#39;次回の火曜サスペンス劇場は&#39;</span>, end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb13-12"><a href="#cb13-12"></a><span class="bu">print</span>(<span class="ss">f&#39;「</span><span class="sc">{</span>x1<span class="sc">}{</span>x2<span class="sc">}</span><span class="ss">は見た! </span><span class="sc">{</span>y1<span class="sc">}{</span>y2<span class="sc">}</span><span class="ss">殺人事件ッ!!」です。ご期待ください。&#39;</span>)</span></code></pre></div>
+      <p>さらに、次のようにリファクタリングできます。</p>
+      <div class="sourceCode" id="cb14"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="im">import</span> random <span class="im">as</span> r</span>
+<span id="cb14-3"><a href="#cb14-3"></a></span>
+<span id="cb14-4"><a href="#cb14-4"></a>word1 <span class="op">=</span> [<span class="st">&#39;美人&#39;</span>,<span class="st">&#39;アキバ系&#39;</span>,<span class="st">&#39;婚活&#39;</span>,<span class="st">&#39;引きこもり&#39;</span>,<span class="st">&#39;還暦&#39;</span>,<span class="st">&#39;リア充&#39;</span>]</span>
+<span id="cb14-5"><a href="#cb14-5"></a>word2 <span class="op">=</span> [<span class="st">&#39;高専生&#39;</span>,<span class="st">&#39;YouTuber&#39;</span>,<span class="st">&#39;家政婦&#39;</span>,<span class="st">&#39;女将&#39;</span>,<span class="st">&#39;教師&#39;</span>,<span class="st">&#39;教祖&#39;</span>]</span>
+<span id="cb14-6"><a href="#cb14-6"></a></span>
+<span id="cb14-7"><a href="#cb14-7"></a><span class="bu">print</span>(<span class="ss">f&#39;次回の火曜サスペンス劇場は&#39;</span>, end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb14-8"><a href="#cb14-8"></a><span class="bu">print</span>(<span class="ss">f&#39;「</span><span class="sc">{</span>r<span class="sc">.</span>choice(word1)<span class="sc">}{</span>r<span class="sc">.</span>choice(word2)<span class="sc">}</span><span class="ss">は見た!&#39;</span>, end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb14-9"><a href="#cb14-9"></a><span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>r<span class="sc">.</span>choice(word1)<span class="sc">}{</span>r<span class="sc">.</span>choice(word2)<span class="sc">}</span><span class="ss">殺人事件ッ!!」です。ご期待ください。&#39;</span>)</span></code></pre></div>
+      <h3 data-number="5.1.1" id="演習④"><span
+      class="header-section-number">5.1.1</span> 演習④</h3>
+      <ul>
+      <li>上記のプログラム参考に、なにか魅力あるプログラムを作成せよ。</li>
+      </ul>
+      <h2 data-number="5.2" id="colabノートブックの共有と提出物"><span
+      class="header-section-number">5.2</span>
+      Colabノートブックの共有と提出物</h2>
+      <ul>
+      <li>口頭説明</li>
+      </ul>
+      <h1 data-number="6" id="宿題"><span
+      class="header-section-number">6</span> 宿題</h1>
+      <ul>
+      <li>演習①から演習④に取り組んでください。</li>
+      <li>次の動画を視聴してください　(約12分の動画)。
+      <ul>
+      <li><strong>プログラミングを「始める前に」知りたかったよくある間違いトップ4</strong>
+      <ul>
+      <li>https://www.youtube.com/watch?v=ggV3ANAXDy8</li>
+      </ul></li>
+      </ul></li>
+      </ul>
+      <!-- ---------------------------------------- -->
+    </main>
+
+    <footer class="markdown-body">
+      <p><a href="https://github.com/TakeshiWada1980/">講義資料のIndexに移動</a></p>
+    </footer>
+
+    <script>
+      window.onload = function () {
+        // ナビゲーション関連
+        let openBtn = document.getElementsByClassName("openbtn")[0];
+        let navPnl = document.getElementById("g-nav");
+        openBtn.onclick = () => {
+          openBtn.classList.toggle("active");
+          navPnl.classList.toggle("panelactive");
+        };
+
+        let items = navPnl.getElementsByTagName("a");
+        Array.from(items).forEach((item) => {
+          item.onclick = () => {
+            openBtn.classList.toggle("active");
+            navPnl.classList.toggle("panelactive");
+          };
+        });
+
+        // マスク処理
+        let maskedSpans = document.getElementsByClassName("masked");
+        Array.from(maskedSpans).forEach((span) => {
+          span.onclick = () => {
+            span.classList.toggle("open");
+          };
+        });
+
+        // 画像にリンクを付与
+        let images = document.querySelectorAll("figure img");
+        Array.from(images).forEach((img) => {
+          img.onclick = () => {
+            location.href = img.getAttribute("src");
+          };
+        });
+      };
+    </script>
+  </body>
+</html>
