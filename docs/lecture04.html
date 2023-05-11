@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+
+    <script>
+      MathJax = {
+        chtml: {
+          displayAlign: "left",
+          displayIndent: "1em",
+        },
+      };
+    </script>
+
+     <script
+src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+type="text/javascript"></script> 
+
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>第04回 2I-プログラミング1</title>
+  </head>
+
+  <body>
+    <div class="openbtn"><span></span><span></span><span></span></div>
+    <nav id="g-nav">
+      <div id="g-nav-list">
+        <!-- ---------------------------------------- -->
+         <ul>
+<li><a href="#準備" id="toc-準備"><span
+class="toc-section-number">1</span> 準備</a></li>
+<li><a href="#前回までの復習" id="toc-前回までの復習"><span
+class="toc-section-number">2</span> 前回までの復習</a>
+<ul>
+<li><a href="#演習①" id="toc-演習①"><span
+class="toc-section-number">2.1</span> 演習①</a></li>
+</ul></li>
+<li><a href="#標準入力" id="toc-標準入力"><span
+class="toc-section-number">3</span> 標準入力</a></li>
+<li><a href="#文字列を整数値に変換-int関数"
+id="toc-文字列を整数値に変換-int関数"><span
+class="toc-section-number">4</span> 文字列を整数値に変換
+int関数</a></li>
+<li><a href="#文字列を実数値に変換-float関数"
+id="toc-文字列を実数値に変換-float関数"><span
+class="toc-section-number">5</span> 文字列を実数値に変換 float関数</a>
+<ul>
+<li><a href="#練習" id="toc-練習"><span
+class="toc-section-number">5.1</span> 練習</a></li>
+</ul></li>
+<li><a href="#コメント" id="toc-コメント"><span
+class="toc-section-number">6</span> コメント</a>
+<ul>
+<li><a href="#計算式をテストするとき"
+id="toc-計算式をテストするとき"><span
+class="toc-section-number">6.1</span> 計算式をテストするとき</a></li>
+<li><a href="#リリースするとき計算式をテストするとき"
+id="toc-リリースするとき計算式をテストするとき"><span
+class="toc-section-number">6.2</span>
+リリースするとき計算式をテストするとき</a></li>
+</ul></li>
+<li><a href="#colab.のフォーム機能" id="toc-colab.のフォーム機能"><span
+class="toc-section-number">7</span> Colab.のフォーム機能</a>
+<ul>
+<li><a href="#フォームの利用例" id="toc-フォームの利用例"><span
+class="toc-section-number">7.1</span> フォームの利用例</a></li>
+</ul></li>
+<li><a href="#繰返し構文" id="toc-繰返し構文"><span
+class="toc-section-number">8</span> 繰返し構文</a>
+<ul>
+<li><a href="#演習②" id="toc-演習②"><span
+class="toc-section-number">8.1</span> 演習②</a></li>
+</ul></li>
+<li><a href="#タートルグラフィックス"
+id="toc-タートルグラフィックス"><span
+class="toc-section-number">9</span> タートルグラフィックス</a>
+<ul>
+<li><a href="#準備-1" id="toc-準備-1"><span
+class="toc-section-number">9.1</span> 準備</a></li>
+<li><a href="#基本形" id="toc-基本形"><span
+class="toc-section-number">9.2</span> 基本形</a>
+<ul>
+<li><a href="#補足" id="toc-補足"><span
+class="toc-section-number">9.2.1</span> 補足</a></li>
+</ul></li>
+<li><a href="#絶対位置座標を与えてカメを移動させる"
+id="toc-絶対位置座標を与えてカメを移動させる"><span
+class="toc-section-number">9.3</span>
+絶対位置座標を与えてカメを移動させる</a></li>
+<li><a href="#ペンの上下形状色を操作する背景色を設定する"
+id="toc-ペンの上下形状色を操作する背景色を設定する"><span
+class="toc-section-number">9.4</span>
+ペンの上下/形状/色を操作する、背景色を設定する</a></li>
+<li><a href="#絶対座標で移動相対位置指示で移動"
+id="toc-絶対座標で移動相対位置指示で移動"><span
+class="toc-section-number">9.5</span>
+絶対座標で移動・相対位置指示で移動</a>
+<ul>
+<li><a href="#発展1-五芒星" id="toc-発展1-五芒星"><span
+class="toc-section-number">9.5.1</span> 発展1 (五芒星)</a></li>
+<li><a href="#発展2-三角形" id="toc-発展2-三角形"><span
+class="toc-section-number">9.5.2</span> 発展2 (三角形)</a></li>
+<li><a href="#練習-1" id="toc-練習-1"><span
+class="toc-section-number">9.5.3</span> 練習</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#課題-宿題" id="toc-課題-宿題"><span
+class="toc-section-number">10</span> 課題 (宿題)</a>
+<ul>
+<li><a href="#演習③-1" id="toc-演習③-1"><span
+class="toc-section-number">10.1</span> 演習③-1</a></li>
+<li><a href="#演習③-2" id="toc-演習③-2"><span
+class="toc-section-number">10.2</span> 演習③-2</a></li>
+<li><a href="#演習③-3" id="toc-演習③-3"><span
+class="toc-section-number">10.3</span> 演習③-3</a></li>
+</ul></li>
+<li><a href="#おまけ" id="toc-おまけ"><span
+class="toc-section-number">11</span> おまけ</a></li>
+</ul> 
+        <!-- ---------------------------------------- -->
+      </div>
+    </nav>
+
+    <header class="markdown-body">
+      <p>2023-2I プログラミング1 第04回 講義資料</p>
+      <p>2023年05月11日（木）5・6時限</p>
+    </header>
+
+    <main class="markdown-body">
+      <!-- ---------------------------------------- -->
+      <h1 data-number="1" id="準備"><span
+      class="header-section-number">1</span> 準備</h1>
+      <ul>
+      <li>Googleにログインして<a
+      href="https://colab.research.google.com/?hl=ja">GoogleColab.</a>にアクセスしておいてください。</li>
+      <li><a href="https://github.com/">GitHub</a>
+      にログインしておいてください。
+      <ul>
+      <li>GitHubアカウント名の確認
+      (就職活動などに使えるアカウントであることを再確認) 。</li>
+      <li>次回の5月18日に実施する「<a
+      href="https://techful-programming.com/">TechFUL</a>」の利用登録の際に必要。</li>
+      </ul></li>
+      </ul>
+      <h1 data-number="2" id="前回までの復習"><span
+      class="header-section-number">2</span> 前回までの復習</h1>
+      <p>プログラミングスキルを効果的に習得するためには、<strong>調べる</strong>、<span
+      class="masked">試す</span>、<span class="masked">考える</span>
+      をバランスよく実践していくことが大事である。</p>
+      <p>以下は、前回までの学習内容に基づく演習です。どれだけ定着しているでしょうか?
+      もし、定着していないとすれば自分にあった「学びのスタイル」を試行錯誤で探ってください。</p>
+      <h2 data-number="2.1" id="演習①"><span
+      class="header-section-number">2.1</span> 演習①</h2>
+      <ul>
+      <li><a
+      href="https://colab.research.google.com/?hl=ja">GoogleColab.</a>
+      にアクセスして <code>0511_標準入力と繰り返し構文_XXXX.ipynb</code>
+      の名前でノートブックを新規作成してください。XXXXには<strong>「高専太郎」のように氏名を記載</strong>してください。</li>
+      <li>ノートブックの<strong>共有を有効化</strong>して「大阪府立大学工業高等専門学校」を「閲覧者」に設定してください。今回もノートブックのリンクを提出してもらいます。
+      <ul>
+      <li>今回からは <strong>成績評価の対象</strong> とします。</li>
+      </ul></li>
+      <li>テキストセルを追加して、レベル1のヘッダーに設定した「<strong>演習①</strong>」を記述してください。</li>
+      <li>コードセルを追加して、次の処理を行うプログラムを記述して実行してください。
+      <ul>
+      <li><p>変数 <code>a</code> に整数値 <code>25</code>
+      を格納せよ。同様に、変数 <code>b</code> に実数値 <code>15.9</code>
+      を、 <code>c</code> に <code>22.9</code> を格納せよ。</p></li>
+      <li><p><span class="math inline">\(30a+79\)</span>
+      を計算し、その結果を <code>(1) 0011_0011_1101</code>
+      のように、アンダーバーで4桁区切りした12桁の「<strong>2進数</strong>」で出力せよ。</p></li>
+      <li><p>次の値を計算し、結果を <code>(2) 3.11</code>
+      のように、小数第２位までの値として出力せよ。 <span
+      class="math display">\[\frac{c-3}{\sqrt{a+b}}\]</span></p></li>
+      <li><p>次の値を計算して、<code>(3) 99.594</code>
+      のように、小数第3位までの値として出力せよ。</p>
+      <p><span class="math display">\[ 6a^5\{(-3b-2)(2c-80)\}\times
+      10^{-9} \]</span></p></li>
+      </ul></li>
+      </ul>
+      <h1 data-number="3" id="標準入力"><span
+      class="header-section-number">3</span> 標準入力</h1>
+      <p><strong><em>標準入力</em></strong>（<strong>Standard
+      Input</strong>）とは、コンピュータ上でプログラムが実行される際、<strong>ユーザーからの入力を受け取るための窓口</strong>で、そこには主にキーボードやファイルを通して文字列情報を与えます
+      (流し込みます) 。</p>
+      <p>例えば、<strong>GUI</strong> (Graphical User Interface)
+      を持たないコンソールプログラムにおいて<span
+      class="masked">ユーザーに名前や年齢を入力</span>
+      してもらうような処理は標準入力を使って実現します。</p>
+      <p>Pythonでは、<code>input</code>
+      という関数を使って標準入力を受け取り、それを
+      <strong><em>文字列として変数に格納</em></strong>
+      します。例えば、標準入力から <code>2023</code>
+      のような<strong>数値を入力しても</strong>、変数に格納される値は
+      <span class="masked">文字列</span>
+      となるので注意してください。</p>
+      <p>次のプログラムを実行して動作を確認してください。</p>
+      <div class="sourceCode" id="cb1"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="bu">print</span>(<span class="st">&#39;名前を入力してください &gt;&gt; &#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb1-3"><a href="#cb1-3"></a>name <span class="op">=</span> <span class="bu">input</span>()</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="bu">print</span>(<span class="st">&#39;年齢を入力してください &gt;&gt; &#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb1-5"><a href="#cb1-5"></a>age <span class="op">=</span> <span class="bu">input</span>()</span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">さんは</span><span class="sc">{</span>age<span class="sc">}</span><span class="ss">歳なんですねwww&#39;</span>)</span></code></pre></div>
+      <p>変数 <code>age</code>
+      に格納された値が文字列であることを確認するために、次のプログラムを実行して動作を確認してください。</p>
+      <div class="sourceCode" id="cb2"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="bu">print</span>(<span class="st">&#39;名前を入力してください &gt;&gt; &#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb2-3"><a href="#cb2-3"></a>name <span class="op">=</span> <span class="bu">input</span>()</span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="bu">print</span>(<span class="st">&#39;年齢を入力してください &gt;&gt; &#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb2-5"><a href="#cb2-5"></a>age <span class="op">=</span> <span class="bu">input</span>()</span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">さんの年齢を2倍すると</span><span class="sc">{</span>age<span class="op">*</span><span class="dv">2</span><span class="sc">}</span><span class="ss">歳っすねwww&#39;</span>) <span class="co"># ここを変更</span></span></code></pre></div>
+      <ul>
+      <li>上記の02行目と03行目はについて
+      <code>name = input('名前を入力してください &gt;&gt; ')</code>
+      のように1行にまとめて記述可能か検証せよ。</li>
+      </ul>
+      <h1 data-number="4" id="文字列を整数値に変換-int関数"><span
+      class="header-section-number">4</span> 文字列を整数値に変換
+      int関数</h1>
+      <p><strong>文字列を整数値に変換する</strong>ためには
+      <code>int()</code>
+      関数を使用します。次のプログラム実行して、文字列が整数値に変換できていることを確認せよ。</p>
+      <div class="sourceCode" id="cb3"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="bu">print</span>(<span class="st">&#39;あなたの年齢を入力してください &gt;&gt; &#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb3-3"><a href="#cb3-3"></a>age <span class="op">=</span> <span class="bu">input</span>()</span>
+<span id="cb3-4"><a href="#cb3-4"></a>age <span class="op">=</span> <span class="bu">int</span>(age) <span class="co"># ここで文字列から整数値に変換</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="bu">print</span>(<span class="ss">f&#39;年齢を2倍すると</span><span class="sc">{</span>age<span class="op">*</span><span class="dv">2</span><span class="sc">}</span><span class="ss">歳っすねwww&#39;</span>)</span></code></pre></div>
+      <ul>
+      <li>上記の03行目と04行目について <code>age =int(input())</code>
+      のように<strong>1行にまとめて記述可能か</strong>検証せよ。</li>
+      <li><strong>全角文字</strong>の値、例えば「１６」を標準入力から与えると、どのように処理されるか検証せよ。</li>
+      <li>小数を含む値、例えば「17.5」を標準入力から与えると、どのように処理されるか検証せよ。</li>
+      <li>整数値に相当する小数を含む値、例えば「18.0」を入力すると、どのように処理されるか検証せよ。
+      <ul>
+      <li>これらのことが、指示されなくとも好奇心から自然に思いつくようになっていってください。<strong>これができるようになると、長期的にみて高度なプログラミングスキルが習得できます</strong>。</li>
+      </ul></li>
+      </ul>
+      <h1 data-number="5" id="文字列を実数値に変換-float関数"><span
+      class="header-section-number">5</span> 文字列を実数値に変換
+      float関数</h1>
+      <p>文字列を実数値
+      (小数を含む数値、厳密には<strong>浮動小数点数</strong>)
+      に変換するためには <code>float()</code> 関数を使用します。</p>
+      <div class="sourceCode" id="cb4"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="bu">print</span>(<span class="st">&#39;&#39;&#39;時刻0において速度 v (m/s) の物体が、</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="st">一定の加速度 a (m/s^2) を保ちながら</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="st">t秒間の間に進む 距離x(m) を求めます。</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="st">&#39;&#39;&#39;</span>)</span>
+<span id="cb4-6"><a href="#cb4-6"></a>v <span class="op">=</span> <span class="bu">input</span>(<span class="st">&#39;速度 v (m/s) を入力してください &gt;&gt; &#39;</span>)</span>
+<span id="cb4-7"><a href="#cb4-7"></a>v <span class="op">=</span> <span class="bu">float</span>(v)</span>
+<span id="cb4-8"><a href="#cb4-8"></a>a <span class="op">=</span> <span class="bu">input</span>(<span class="st">&#39;加速度 a (m/s^2) を入力してください &gt;&gt; &#39;</span>)</span>
+<span id="cb4-9"><a href="#cb4-9"></a>a <span class="op">=</span> <span class="bu">float</span>(a)</span>
+<span id="cb4-10"><a href="#cb4-10"></a>t <span class="op">=</span> <span class="bu">input</span>(<span class="st">&#39;走行時間 t (m/s^2) を入力してください &gt;&gt; &#39;</span>)</span>
+<span id="cb4-11"><a href="#cb4-11"></a>t <span class="op">=</span> <span class="bu">float</span>(t)</span>
+<span id="cb4-12"><a href="#cb4-12"></a>x <span class="op">=</span> v<span class="op">*</span>t <span class="op">+</span> <span class="fl">0.5</span><span class="op">*</span>a<span class="op">*</span>t<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb4-13"><a href="#cb4-13"></a><span class="bu">print</span>(<span class="ss">f&#39;走行した距離は </span><span class="sc">{</span>x<span class="sc">}</span><span class="ss"> (m) です。&#39;</span>)</span></code></pre></div>
+      <ul>
+      <li>走行した距離が小数第2位まで表示されるように修正せよ。</li>
+      <li>整数値、例えば「10」を標準入力から与えると、どのように処理されるか検証せよ。</li>
+      <li>数値部を全角文字にした値、例えば「１０.5」を与えると、どのように処理されるか検証せよ。</li>
+      <li>小数点を全角文字にした値、例えば「1．5」を与えると、どのように処理されるか検証せよ。</li>
+      <li><code>age =int(input())</code>
+      のように、各値の取得に関する文を1行にまとめよ。</li>
+      <li>計算式 <code>x = v*t + 0.5*a*t**2</code> を
+      <code>x = v*t + t**2*0.5*a</code> に変更すると
+      (第2項の順序を変更すると) 、どのようになるか検証せよ。</li>
+      </ul>
+      <h2 data-number="5.1" id="練習"><span
+      class="header-section-number">5.1</span> 練習</h2>
+      <p>標準入力から半径 <code>r</code> と高さ <code>h</code>
+      を与えて「<strong>円柱</strong>」の体積 <code>V</code> と表面積
+      <code>S</code> を計算するプログラムを作成せよ。</p>
+      <p>なお、<span class="math inline">\(\pi\)</span> (定数)
+      は、mathライブラリから、次のように値を得ることができる。</p>
+      <div class="sourceCode" id="cb5"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="im">import</span> math</span>
+<span id="cb5-3"><a href="#cb5-3"></a>p <span class="op">=</span> math.pi</span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="bu">print</span>(<span class="ss">f&#39;pi=</span><span class="sc">{</span>p<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+      <h1 data-number="6" id="コメント"><span
+      class="header-section-number">6</span> コメント</h1>
+      <p>プログラムにおける <strong><em>コメント</em></strong>
+      とは、コードのなかに説明や注意事項、開発者の意図などを表すために記すテキストです。コメントはプログラムの実行に影響を与えず、<strong>他の開発者や未来の自分がコードを理解する助け</strong>として使用されます。</p>
+      <p>Python では <code>#</code> がコメントを表す記号になります。</p>
+      <p>Google Colab. や VSCode などの開発環境では <code>Ctrl+/</code>
+      のショートカットキーより、アクティブ行の「<strong>コメントアウト</strong>
+      (コメント化) 」「<strong>アンコメント</strong> (コメント解除)
+      」を切り替え可能です。</p>
+      <p>上記では、標準入力を取り上げましたが、ノートブック開発環境においては
+      <span
+      class="masked">基本的に標準入力は使用しません</span>。特に<strong><em>デバッグ</em></strong>
+      (<strong>プログラムが意図した動作をするようにエラーを取り除いたり、検証したりする行為</strong>)
+      の際には、<span
+      class="masked">実行毎に標準入力から値を与えることは煩雑なので</span>、以下のようにコメントを利用して「標準入力」と「文字列リテラルによる入力」を切り替えます。</p>
+      <h2 data-number="6.1" id="計算式をテストするとき"><span
+      class="header-section-number">6.1</span>
+      計算式をテストするとき</h2>
+      <p>標準入力部をコメントアウト</p>
+      <div class="sourceCode" id="cb6"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="bu">print</span>(<span class="st">&#39;&#39;&#39;時刻0において速度 v (m/s) の物体が、</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="st">一定の加速度 a (m/s^2) を保ちながら</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="st">t秒間の間に進む 距離x(m) を求めます。</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="st">&#39;&#39;&#39;</span>)</span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="co"># v = float(input(&#39;速度 v (m/s) を入力してください &gt;&gt; &#39;))</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="co"># a = float(input(&#39;加速度 a (m/s^2) を入力してください &gt;&gt; &#39;))</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="co"># t = float(input(&#39;走行時間 t (m/s^2) を入力してください &gt;&gt; &#39;))</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a>v <span class="op">=</span> <span class="fl">1.5</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a>a <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a>t <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb6-12"><a href="#cb6-12"></a>x <span class="op">=</span> v<span class="op">*</span>t <span class="op">+</span> <span class="fl">0.5</span><span class="op">*</span>a<span class="op">*</span>t<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb6-13"><a href="#cb6-13"></a><span class="bu">print</span>(<span class="ss">f&#39;走行した距離は </span><span class="sc">{</span>x<span class="sc">}</span><span class="ss"> (m) です。&#39;</span>)</span></code></pre></div>
+      <h2 data-number="6.2"
+      id="リリースするとき計算式をテストするとき"><span
+      class="header-section-number">6.2</span>
+      リリースするとき計算式をテストするとき</h2>
+      <p>数値リテラルの入力をコメントアウト</p>
+      <div class="sourceCode" id="cb7"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="bu">print</span>(<span class="st">&#39;&#39;&#39;時刻0において速度 v (m/s) の物体が、</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="st">一定の加速度 a (m/s^2) を保ちながら</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="st">t秒間の間に進む 距離x(m) を求めます。</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="st">&#39;&#39;&#39;</span>)</span>
+<span id="cb7-6"><a href="#cb7-6"></a>v <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">&#39;速度 v (m/s) を入力してください &gt;&gt; &#39;</span>))</span>
+<span id="cb7-7"><a href="#cb7-7"></a>a <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">&#39;加速度 a (m/s^2) を入力してください &gt;&gt; &#39;</span>))</span>
+<span id="cb7-8"><a href="#cb7-8"></a>t <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">&#39;走行時間 t (m/s^2) を入力してください &gt;&gt; &#39;</span>))</span>
+<span id="cb7-9"><a href="#cb7-9"></a><span class="co"># v = 1.5</span></span>
+<span id="cb7-10"><a href="#cb7-10"></a><span class="co"># a = 2</span></span>
+<span id="cb7-11"><a href="#cb7-11"></a><span class="co"># t = 4</span></span>
+<span id="cb7-12"><a href="#cb7-12"></a>x <span class="op">=</span> v<span class="op">*</span>t <span class="op">+</span> <span class="fl">0.5</span><span class="op">*</span>a<span class="op">*</span>t<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb7-13"><a href="#cb7-13"></a><span class="bu">print</span>(<span class="ss">f&#39;走行した距離は </span><span class="sc">{</span>x<span class="sc">}</span><span class="ss"> (m) です。&#39;</span>)</span></code></pre></div>
+      <p>Google Colab.では複数行を選択した状態で <code>Ctrl+/</code>
+      を実行すると、複数行をまとめてコメントアウト/アンコメントできます。</p>
+      <h1 data-number="7" id="colab.のフォーム機能"><span
+      class="header-section-number">7</span> Colab.のフォーム機能</h1>
+      <p>Google Colab. の環境では <strong>フォーム</strong>
+      という機能を使って入力を与えることもできます。</p>
+      <p>次のコードを実行して、動作を確認してみてください。</p>
+      <div class="sourceCode" id="cb8"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb8-2"><a href="#cb8-2"></a>name <span class="op">=</span> <span class="st">&#39;山田&#39;</span>     <span class="co">#@param {type:&quot;string&quot;}</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a>height <span class="op">=</span> <span class="fl">172.5</span>    <span class="co">#@param {type:&quot;number&quot;}</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a>age <span class="op">=</span> <span class="dv">10</span>          <span class="co">#@param {type:&quot;slider&quot;, min:10, max:80, step:1}</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">さんの身長は</span><span class="sc">{</span>height<span class="sc">}</span><span class="ss">で、年齢は</span><span class="sc">{</span>age<span class="sc">}</span><span class="ss">歳で、1年後は</span><span class="sc">{</span>age<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">歳になっています&#39;</span>)</span></code></pre></div>
+      <p>この <strong>フォーム</strong> の機能は、Google Colab.
+      (Jupyter) 環境でのみ使用ができます
+      (Python固有の機能ではありません)。詳細については <a
+      href="https://colab.research.google.com/notebooks/forms.ipynb">公式ページ</a>
+      を参考にしてください。</p>
+      <h2 data-number="7.1" id="フォームの利用例"><span
+      class="header-section-number">7.1</span> フォームの利用例</h2>
+      <p>次のコードを実行して、動作を確認してみてください</p>
+      <div class="sourceCode" id="cb9"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="co">#@markdown # 物理学習支援ツール</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="co">#@markdown 時刻 $0$ において速度 $v$ ($\mathrm{m/s}$) の物体が、</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="co">#@markdown 一定の加速度 $a$ ($\mathrm{m/s^{2}}$) を保ちながら</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="co">#@markdown $t$秒間の間に進む 距離$x$($\mathrm{m}$) を求めます。</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a></span>
+<span id="cb9-7"><a href="#cb9-7"></a><span class="co">#@markdown 速度 $v$ ($\mathrm{m/s}$) を入力してください </span></span>
+<span id="cb9-8"><a href="#cb9-8"></a>v <span class="op">=</span> <span class="fl">1.5</span>    <span class="co">#@param {type:&quot;number&quot;}</span></span>
+<span id="cb9-9"><a href="#cb9-9"></a><span class="co">#@markdown 加速度 $a$ ($\mathrm{m/s^{2}}$) を入力してください </span></span>
+<span id="cb9-10"><a href="#cb9-10"></a>a <span class="op">=</span> <span class="dv">2</span>    <span class="co">#@param {type:&quot;number&quot;}</span></span>
+<span id="cb9-11"><a href="#cb9-11"></a><span class="co">#@markdown 走行時間 $t$ ($\mathrm{s}$) を入力してください </span></span>
+<span id="cb9-12"><a href="#cb9-12"></a>t <span class="op">=</span> <span class="dv">4</span>    <span class="co">#@param {type:&quot;number&quot;}</span></span>
+<span id="cb9-13"><a href="#cb9-13"></a></span>
+<span id="cb9-14"><a href="#cb9-14"></a>x <span class="op">=</span> v<span class="op">*</span>t <span class="op">+</span> <span class="fl">0.5</span><span class="op">*</span>a<span class="op">*</span>t<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb9-15"><a href="#cb9-15"></a><span class="bu">print</span>(<span class="ss">f&#39;t=0 から t=</span><span class="sc">{</span>t<span class="sc">}</span><span class="ss"> に走行した距離は </span><span class="sc">{</span>x<span class="sc">:.2f}</span><span class="ss"> (m) です。&#39;</span>)</span></code></pre></div>
+      <h1 data-number="8" id="繰返し構文"><span
+      class="header-section-number">8</span> 繰返し構文</h1>
+      <p>Python では次のような構文で n
+      回の<strong><em>繰り返し処理</em></strong>ができます。</p>
+      <div class="sourceCode" id="cb10"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb10-2"><a href="#cb10-2"></a>n <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb10-4"><a href="#cb10-4"></a>  <span class="bu">print</span>(<span class="st">&#39;Hello &#39;</span>, end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb10-5"><a href="#cb10-5"></a>  <span class="bu">print</span>(<span class="st">&#39;World.&#39;</span>)</span></code></pre></div>
+      <p>上記を実行すれば、<code>Hello World.</code>
+      という文字が5回出力されます。</p>
+      <p>Pythonでは、繰返し範囲を <strong><em>インデント
+      (字下げ)</em></strong>
+      により指示します。例えば、次にように05行目のインデントを解除して、どのように動作が変化するか、また、なぜそのようになるか、を確認してみてください。</p>
+      <div class="sourceCode" id="cb11"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb11-2"><a href="#cb11-2"></a>n <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb11-4"><a href="#cb11-4"></a>  <span class="bu">print</span>(<span class="st">&#39;Hello &#39;</span>, end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb11-5"><a href="#cb11-5"></a><span class="bu">print</span>(<span class="st">&#39;World.&#39;</span>)</span></code></pre></div>
+      <p>ここでは、変数 <code>n</code> を使用していますが、次のように
+      <code>range</code> の引数に直接数値を入れることもできます。</p>
+      <div class="sourceCode" id="cb12"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">7</span>):</span>
+<span id="cb12-3"><a href="#cb12-3"></a>  <span class="bu">print</span>(<span class="st">&#39;Hello World.&#39;</span>)</span></code></pre></div>
+      <ul>
+      <li>現時点で、変数 <code>i</code>
+      は無視して問題ありません。ウェブで調べればすぐに解説は見つかりますが。。。</li>
+      <li>一般にインデントにはスペース4個を使用します。この授業では可読性の観点からスペース2個を使用します。</li>
+      <li>全角文字スペースでは機能しません。実際に全角スペースを使ってインデントを与え、どのようなエラーが生じるかを確認してください。</li>
+      </ul>
+      <h2 data-number="8.1" id="演習②"><span
+      class="header-section-number">8.1</span> 演習②</h2>
+      <p>繰り返し構文を利用して、次のような出力を得るプログラムを記述してください。</p>
+      <pre><code>AAA
+AAA
+AAA
+BBBB
+BBBB
+BBBB
+BBBB
+BBBB</code></pre>
+      <p><code>AAA</code>
+      が3行、<code>BBBB</code>が5行、出力されています。</p>
+      <ul>
+      <li>ヒント:<span
+      class="masked">繰返し構文を、独立して2回使用すればよい。</span></li>
+      </ul>
+      <h1 data-number="9" id="タートルグラフィックス"><span
+      class="header-section-number">9</span> タートルグラフィックス</h1>
+      <p>繰り返し構文に到達したので、その応用としてタートルグラフィックスで遊んでみます。</p>
+      <p>タートルグラフィックス (Turtle Graphics)
+      は、プログラミング言語で簡単な図形やアニメーションを描画するためのグラフィカルな方法です。Turtle
+      は、そのまま「亀」の意味になります。</p>
+      <ul>
+      <li><a href="https://github.com/tolgaatam/ColabTurtle">Turtle for
+      Google Colab notebooks の リファレンス</a></li>
+      </ul>
+      <div class="note type-tips">
+      <p><strong>タートルグラフィックス</strong></p>
+      <p>タートルグラフィックスの核となる概念は「<strong>タートル</strong>」と呼ばれるカーソルです。タートルは、プログラムによって指示されたとおりに画面上を移動し、その<strong>軌跡に沿って線や図形を描画</strong>します。タートルには「
+      前進」「後退」「左回転」「右回転」などの基本的な操作が用意されており、これらの操作を組み合わせてさまざまな図形を描くことができます。</p>
+      <p>タートルグラフィックスは、特に子どもたちや初心者向けのプログラミング教育において、視覚的で直感的な理解を促すためによく使用されます。また、<strong>繰り返しや条件分岐などのプログラミングの基本的な概念を学ぶのにも役立ちます</strong>。</p>
+      </div>
+      <h2 data-number="9.1" id="準備-1"><span
+      class="header-section-number">9.1</span> 準備</h2>
+      <p>独立したコードセルを作成して、以下を実行してください
+      。以降、ノートブックを再開するたびに実行してください。</p>
+      <pre><code>!pip install ColabTurtle</code></pre>
+      <p>上記はPythonのプログラムではなく、Colab.を実行している
+      <strong>仮想マシン (Linux) に対する直接的な命令
+      (コマンド)</strong> になります。このコマンドは、Pythonの
+      <strong><em>パッケージ管理システムであるpip</em></strong>
+      を使って、ColabTurtleというライブラリをインストールするために実行しています。</p>
+      <p>この「ColabTurtle」は、Google Colab 上でも動作するように Turtle
+      Graphics
+      を実装したライブラリで、簡単な図形やアニメーションを描画するために使われます。</p>
+      <h2 data-number="9.2" id="基本形"><span
+      class="header-section-number">9.2</span> 基本形</h2>
+      <div class="sourceCode" id="cb15"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="im">import</span> ColabTurtle.Turtle <span class="im">as</span> t</span>
+<span id="cb15-3"><a href="#cb15-3"></a>t.initializeTurtle(initial_speed<span class="op">=</span><span class="dv">5</span>,initial_window_size<span class="op">=</span>(<span class="dv">400</span>,<span class="dv">400</span>))</span></code></pre></div>
+      <p>02行目では <code>ColabTurtle.Turtle</code> という
+      モジュール(ライブラリ) を <strong>インポート</strong>
+      して、<code>t</code>
+      という略称で扱うことを指示しています。ここでインポートとは「輸入」の意味ですが、ここでは「<strong>自分のプログラムのなかにXXXというライブラリを取り込む</strong>」のようなイメージでとらえてください。</p>
+      <p>03行目では、<code>t</code> (＝ColabTurtle.Turtleを略名) の
+      <strong><em>初期化</em></strong>(初期設定)
+      をしています。Initialize という語 (初期化という意味)
+      はプログラミングでは頻出するので覚えておいてください。</p>
+      <ul>
+      <li><code>initializeTurtle</code> メソッド (関数) の第2引数の値
+      <code>(400,400)</code>
+      の値を変更して、実行結果が<strong>どのように変わるか</strong>を確認してください。
+      <ul>
+      <li>このような指示が与えられたとき、例えば「<span
+      class="masked">マイナスの値を与えるとどうなるのか
+      (エラーが発生することは予想できるが、どのようなエラー文がでるのか)
+      </span>」「<span
+      class="masked">整数値ではなく実施値を与えるとどうなるのか</span>」「<span
+      class="masked"><code>initializeTurtle(initial_speed=5)</code>のように省略するとどうなるか</span>」といったことを考えて
+      (＝奇心を持って、興味を持って、疑問を持って)、実際に手を動かして実行して確認できる人が、<strong>最終的には高度なプログラミングスキルを習得できます</strong>。</li>
+      <li>コピペして実行するという作業 (これだけなら小学生でもできる!)
+      だけでは成長は期待できません。</li>
+      </ul></li>
+      </ul>
+      <h3 data-number="9.2.1" id="補足"><span
+      class="header-section-number">9.2.1</span> 補足</h3>
+      <p>上記のプログラムは 02行目で <code>as t</code>
+      を使わずに以下のように書くこともできます。可読性が下がり、タイプミスしやすくなるというデメリットがあります。</p>
+      <div class="sourceCode" id="cb16"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="im">import</span> ColabTurtle.Turtle</span>
+<span id="cb16-3"><a href="#cb16-3"></a>ColabTurtle.Turtle.initializeTurtle(initial_speed<span class="op">=</span><span class="dv">5</span>,initial_window_size<span class="op">=</span>(<span class="dv">400</span>,<span class="dv">400</span>))</span></code></pre></div>
+      <p>例えば、02行目で <code>import ColabTurtle.Turtle as tur</code>
+      としたら、03行目はどのように記述するべきでしょうか。考えて実際に手を動かして実行してみてください。</p>
+      <h2 data-number="9.3"
+      id="絶対位置座標を与えてカメを移動させる"><span
+      class="header-section-number">9.3</span>
+      絶対位置座標を与えてカメを移動させる</h2>
+      <p>次のプログラムを実行して結果を確認してください。</p>
+      <div class="sourceCode" id="cb17"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb17-2"><a href="#cb17-2"></a><span class="im">import</span> ColabTurtle.Turtle <span class="im">as</span> t</span>
+<span id="cb17-3"><a href="#cb17-3"></a>t.initializeTurtle(initial_speed<span class="op">=</span><span class="dv">5</span>,initial_window_size<span class="op">=</span>(<span class="dv">400</span>,<span class="dv">400</span>))</span>
+<span id="cb17-4"><a href="#cb17-4"></a>t.goto(<span class="dv">50</span>,<span class="dv">30</span>)</span></code></pre></div>
+      <p>さらに、次のプログラムを実行して結果を確認してください。</p>
+      <div class="sourceCode" id="cb18"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb18-2"><a href="#cb18-2"></a><span class="im">import</span> ColabTurtle.Turtle <span class="im">as</span> t</span>
+<span id="cb18-3"><a href="#cb18-3"></a>t.initializeTurtle(initial_speed<span class="op">=</span><span class="dv">5</span>,initial_window_size<span class="op">=</span>(<span class="dv">400</span>,<span class="dv">400</span>))</span>
+<span id="cb18-4"><a href="#cb18-4"></a>t.goto(<span class="dv">50</span>,<span class="dv">30</span>)</span>
+<span id="cb18-5"><a href="#cb18-5"></a>t.goto(<span class="dv">50</span>,<span class="dv">100</span>) <span class="co"># 追加</span></span></code></pre></div>
+      <p>「コード」と「実行結果」を突き合わせながら、次のようなことを<strong>推測して、さらに確証を得てください</strong>。プログラミングでは、このように「<strong>サンプルコード</strong>」と「<strong>その実行結果</strong>」から
+      <span
+      class="masked">機能や仕組み、内部動作を推測する・検証する</span>
+      能力が強く要求されます。この過程では <code>goto</code> メソッド
+      (関数)
+      のパラメータを変更したり文を追加したりして、実際に試すこともしてください。また、リファレンスも参照してください。</p>
+      <ul>
+      <li><code>goto</code>
+      メソッドは何をする機能なのか。第1引数に与えた値 <code>50</code>
+      はどんな意味を持つのか。第2引数に与えた値はどんな意味を持つか。</li>
+      <li>座標系は、どのように与えられるのか。原点はどこに位置するのか。X軸の正方向はどの向きか、Y軸の正方向はどの向きか。</li>
+      </ul>
+      <p>上記のことが、指示されなくても反射的に、自然にできるようになってください。さらに「<span class="masked">引数に描画領域の範囲外の値を与えるとどうなるのか<span>」「<span
+      class="masked"><code>goto</code>
+      メソッドの引数に実数値を与えるとどうなるのか</span>」のような好奇心を持てるようになってください。</p>
+      <h2 data-number="9.4"
+      id="ペンの上下形状色を操作する背景色を設定する"><span
+      class="header-section-number">9.4</span>
+      ペンの上下/形状/色を操作する、背景色を設定する</h2>
+      <p>次のプログラムを実行して結果を確認してください。また、<code>shape</code>
+      メソッド、<code>bgcolo</code> メソッド、<code>color</code>
+      メソッド、<code>up</code> メソッド、<code>dowb</code>
+      メソッドなどの各メソッドがどのような機能を持つのか、引数としてどのような値を持つのかについて、<strong><em>考える</em></strong>
+      や <strong><em>試す</em></strong>
+      を通して推測し、また、<strong><em>調べる</em></strong> や
+      <strong><em>試す</em></strong> を通して確証を得てください。</p>
+      <div class="sourceCode" id="cb19"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb19-2"><a href="#cb19-2"></a><span class="im">import</span> ColabTurtle.Turtle <span class="im">as</span> t</span>
+<span id="cb19-3"><a href="#cb19-3"></a>t.initializeTurtle(initial_speed<span class="op">=</span><span class="dv">5</span>,initial_window_size<span class="op">=</span>(<span class="dv">400</span>,<span class="dv">400</span>))</span>
+<span id="cb19-4"><a href="#cb19-4"></a></span>
+<span id="cb19-5"><a href="#cb19-5"></a><span class="co"># ペンの形状をカメ（&#39;turtle&#39;）から円（&#39;circle&#39;）に変更 </span></span>
+<span id="cb19-6"><a href="#cb19-6"></a>t.shape(shape<span class="op">=</span><span class="st">&#39;circle&#39;</span>)</span>
+<span id="cb19-7"><a href="#cb19-7"></a></span>
+<span id="cb19-8"><a href="#cb19-8"></a><span class="co"># 背景色をセット（RGB指定 0～255）</span></span>
+<span id="cb19-9"><a href="#cb19-9"></a>t.bgcolor(<span class="dv">240</span>,<span class="dv">240</span>,<span class="dv">240</span>)</span>
+<span id="cb19-10"><a href="#cb19-10"></a></span>
+<span id="cb19-11"><a href="#cb19-11"></a><span class="co"># ペンの色をセット（RGB指定 0～255）</span></span>
+<span id="cb19-12"><a href="#cb19-12"></a>t.color(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">255</span>)</span>
+<span id="cb19-13"><a href="#cb19-13"></a>  </span>
+<span id="cb19-14"><a href="#cb19-14"></a>t.up() <span class="co"># ペンを持ち上げる</span></span>
+<span id="cb19-15"><a href="#cb19-15"></a>t.goto(<span class="dv">50</span>,<span class="dv">30</span>)</span>
+<span id="cb19-16"><a href="#cb19-16"></a></span>
+<span id="cb19-17"><a href="#cb19-17"></a>t.down() <span class="co"># ペンを下す</span></span>
+<span id="cb19-18"><a href="#cb19-18"></a>t.goto(<span class="dv">50</span><span class="op">+</span><span class="dv">300</span>,<span class="dv">30</span>)</span>
+<span id="cb19-19"><a href="#cb19-19"></a></span>
+<span id="cb19-20"><a href="#cb19-20"></a>t.hideturtle() <span class="co"># ペン先を非表示</span></span></code></pre></div>
+      <h2 data-number="9.5" id="絶対座標で移動相対位置指示で移動"><span
+      class="header-section-number">9.5</span>
+      絶対座標で移動・相対位置指示で移動</h2>
+      <p>次の <code>p1.py</code>
+      は絶対座標でカーソルを移動させて正方形を描いています。また
+      <code>p2.py</code>
+      は相対位置指示で移動で正方形を描いています。実際に動作させて確認してから、コードを解読してください。</p>
+      <div class="sourceCode" id="cb20" data-caption="p1.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="im">import</span> ColabTurtle.Turtle <span class="im">as</span> t</span>
+<span id="cb20-3"><a href="#cb20-3"></a>t.initializeTurtle(initial_speed<span class="op">=</span><span class="dv">5</span>,initial_window_size<span class="op">=</span>(<span class="dv">400</span>,<span class="dv">400</span>))</span>
+<span id="cb20-4"><a href="#cb20-4"></a>t.shape(shape<span class="op">=</span><span class="st">&#39;circle&#39;</span>)</span>
+<span id="cb20-5"><a href="#cb20-5"></a>t.bgcolor(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>)</span>
+<span id="cb20-6"><a href="#cb20-6"></a>t.color(<span class="dv">0</span>,<span class="dv">255</span>,<span class="dv">0</span>)</span>
+<span id="cb20-7"><a href="#cb20-7"></a>  </span>
+<span id="cb20-8"><a href="#cb20-8"></a>t.up()<span class="op">;</span> t.goto(<span class="dv">50</span>,<span class="dv">50</span>)<span class="op">;</span>t.down() <span class="co"># 50,50に移動</span></span>
+<span id="cb20-9"><a href="#cb20-9"></a></span>
+<span id="cb20-10"><a href="#cb20-10"></a>t.goto(<span class="dv">350</span>,<span class="dv">50</span>)</span>
+<span id="cb20-11"><a href="#cb20-11"></a>t.goto(<span class="dv">350</span>,<span class="dv">350</span>)</span>
+<span id="cb20-12"><a href="#cb20-12"></a>t.goto(<span class="dv">50</span>,<span class="dv">350</span>)</span>
+<span id="cb20-13"><a href="#cb20-13"></a>t.goto(<span class="dv">50</span>,<span class="dv">50</span>)</span></code></pre></div>
+      <div class="sourceCode" id="cb21" data-caption="p2.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="im">import</span> ColabTurtle.Turtle <span class="im">as</span> t</span>
+<span id="cb21-3"><a href="#cb21-3"></a>t.initializeTurtle(initial_speed<span class="op">=</span><span class="dv">5</span>,initial_window_size<span class="op">=</span>(<span class="dv">400</span>,<span class="dv">400</span>))</span>
+<span id="cb21-4"><a href="#cb21-4"></a></span>
+<span id="cb21-5"><a href="#cb21-5"></a>t.shape(shape<span class="op">=</span><span class="st">&#39;circle&#39;</span>)</span>
+<span id="cb21-6"><a href="#cb21-6"></a>t.bgcolor(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>)</span>
+<span id="cb21-7"><a href="#cb21-7"></a>t.color(<span class="dv">0</span>,<span class="dv">255</span>,<span class="dv">0</span>)</span>
+<span id="cb21-8"><a href="#cb21-8"></a></span>
+<span id="cb21-9"><a href="#cb21-9"></a>t.up()<span class="op">;</span> t.goto(<span class="dv">50</span>,<span class="dv">50</span>)<span class="op">;</span> t.down() <span class="co"># 50,50に移動</span></span>
+<span id="cb21-10"><a href="#cb21-10"></a></span>
+<span id="cb21-11"><a href="#cb21-11"></a>t.right(<span class="dv">90</span>)</span>
+<span id="cb21-12"><a href="#cb21-12"></a>t.forward(<span class="dv">300</span>)</span>
+<span id="cb21-13"><a href="#cb21-13"></a>t.right(<span class="dv">90</span>)<span class="op">;</span> t.forward(<span class="dv">300</span>)</span>
+<span id="cb21-14"><a href="#cb21-14"></a>t.right(<span class="dv">90</span>)<span class="op">;</span> t.forward(<span class="dv">300</span>)</span>
+<span id="cb21-15"><a href="#cb21-15"></a>t.right(<span class="dv">90</span>)<span class="op">;</span> t.forward(<span class="dv">300</span>)</span></code></pre></div>
+      <p>新しく登場した <code>right</code>
+      メソッドについても、好奇心を持って「<span
+      class="masked">実数値は与えられるのか</span>」「<span
+      class="masked">負の値は与えられるのか</span>」「<span
+      class="masked">360を超える値は与えられるのか</span>」「<span
+      class="masked">もしかして <code>left</code>
+      メソッドも存在するのか</span>」といったことが自然に思い浮かぶように思考回路を変容させて、さらに実際に確認してみる習慣を身に付けてください
+      (指示されなくても…)。</p>
+      <div class="note type-tips">
+      <p><strong>1行に複数の文を記述する方法</strong></p>
+      <p>Pythonでは原則として１行に1文を記述しますが、<strong>セミコロン</strong>
+      <code>;</code>
+      を使って１行のなかに複数の文を記述することができます。</p>
+      <p>例えば、次の2つのプログラムは同じ意味を持ちます。</p>
+      <div class="sourceCode" id="cb22"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>t.up()<span class="op">;</span>t.goto(<span class="dv">50</span>,<span class="dv">50</span>)<span class="op">;</span>t.down()</span></code></pre></div>
+      <div class="sourceCode" id="cb23"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>t.up()</span>
+<span id="cb23-2"><a href="#cb23-2"></a>t.goto(<span class="dv">50</span>,<span class="dv">50</span>)</span>
+<span id="cb23-3"><a href="#cb23-3"></a>t.down()</span></code></pre></div>
+      </div>
+      <h3 data-number="9.5.1" id="発展1-五芒星"><span
+      class="header-section-number">9.5.1</span> 発展1 (五芒星)</h3>
+      <div class="sourceCode" id="cb24" data-caption="p3.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb24-2"><a href="#cb24-2"></a><span class="im">import</span> ColabTurtle.Turtle <span class="im">as</span> t</span>
+<span id="cb24-3"><a href="#cb24-3"></a>t.initializeTurtle(initial_speed<span class="op">=</span><span class="dv">5</span>,initial_window_size<span class="op">=</span>(<span class="dv">400</span>,<span class="dv">400</span>))</span>
+<span id="cb24-4"><a href="#cb24-4"></a></span>
+<span id="cb24-5"><a href="#cb24-5"></a>t.shape(shape<span class="op">=</span><span class="st">&#39;circle&#39;</span>)<span class="op">;</span>t.bgcolor(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>)<span class="op">;</span>t.color(<span class="dv">0</span>,<span class="dv">255</span>,<span class="dv">0</span>)</span>
+<span id="cb24-6"><a href="#cb24-6"></a>t.up()<span class="op">;</span> t.goto(<span class="dv">400</span><span class="op">/</span><span class="dv">2</span>,<span class="dv">400</span><span class="op">/</span><span class="dv">2</span>)<span class="op">;</span>t.down()</span>
+<span id="cb24-7"><a href="#cb24-7"></a></span>
+<span id="cb24-8"><a href="#cb24-8"></a>d <span class="op">=</span> <span class="dv">300</span></span>
+<span id="cb24-9"><a href="#cb24-9"></a>t.up()</span>
+<span id="cb24-10"><a href="#cb24-10"></a>t.forward(d<span class="op">/</span><span class="dv">2</span>)<span class="op">;</span>t.right(<span class="dv">36</span><span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb24-11"><a href="#cb24-11"></a>t.down()</span>
+<span id="cb24-12"><a href="#cb24-12"></a>t.right(<span class="dv">180</span><span class="op">-</span><span class="dv">36</span>)<span class="op">;</span>t.forward(d)</span>
+<span id="cb24-13"><a href="#cb24-13"></a>t.right(<span class="dv">180</span><span class="op">-</span><span class="dv">36</span>)<span class="op">;</span>t.forward(d)</span>
+<span id="cb24-14"><a href="#cb24-14"></a>t.right(<span class="dv">180</span><span class="op">-</span><span class="dv">36</span>)<span class="op">;</span>t.forward(d)</span>
+<span id="cb24-15"><a href="#cb24-15"></a>t.right(<span class="dv">180</span><span class="op">-</span><span class="dv">36</span>)<span class="op">;</span>t.forward(d)</span>
+<span id="cb24-16"><a href="#cb24-16"></a>t.right(<span class="dv">180</span><span class="op">-</span><span class="dv">36</span>)<span class="op">;</span>t.forward(d)</span></code></pre></div>
+      <h3 data-number="9.5.2" id="発展2-三角形"><span
+      class="header-section-number">9.5.2</span> 発展2 (三角形)</h3>
+      <div class="sourceCode" id="cb25" data-caption="p4.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb25-2"><a href="#cb25-2"></a><span class="im">import</span> ColabTurtle.Turtle <span class="im">as</span> t</span>
+<span id="cb25-3"><a href="#cb25-3"></a>t.initializeTurtle(initial_speed<span class="op">=</span><span class="dv">5</span>,initial_window_size<span class="op">=</span>(<span class="dv">400</span>,<span class="dv">400</span>))</span>
+<span id="cb25-4"><a href="#cb25-4"></a></span>
+<span id="cb25-5"><a href="#cb25-5"></a>t.shape(shape<span class="op">=</span><span class="st">&#39;circle&#39;</span>)<span class="op">;</span>t.bgcolor(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>)<span class="op">;</span>t.color(<span class="dv">0</span>,<span class="dv">255</span>,<span class="dv">0</span>)</span>
+<span id="cb25-6"><a href="#cb25-6"></a>t.up()<span class="op">;</span>t.goto(<span class="dv">400</span><span class="op">/</span><span class="dv">2</span>,<span class="dv">400</span><span class="op">/</span><span class="dv">2</span>)<span class="op">;</span>t.down()</span>
+<span id="cb25-7"><a href="#cb25-7"></a></span>
+<span id="cb25-8"><a href="#cb25-8"></a>a <span class="op">=</span> <span class="dv">60</span></span>
+<span id="cb25-9"><a href="#cb25-9"></a>d <span class="op">=</span> <span class="dv">300</span></span>
+<span id="cb25-10"><a href="#cb25-10"></a>t.up()</span>
+<span id="cb25-11"><a href="#cb25-11"></a>t.forward(d<span class="op">/</span><span class="dv">2</span>)<span class="op">;</span>t.right(a<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb25-12"><a href="#cb25-12"></a>t.down()</span>
+<span id="cb25-13"><a href="#cb25-13"></a>t.right(<span class="dv">180</span><span class="op">-</span>a)<span class="op">;</span>t.forward(d)</span>
+<span id="cb25-14"><a href="#cb25-14"></a>t.right(<span class="dv">180</span><span class="op">-</span>a)<span class="op">;</span>t.forward(d)</span>
+<span id="cb25-15"><a href="#cb25-15"></a>t.right(<span class="dv">180</span><span class="op">-</span>a)<span class="op">;</span>t.forward(d)</span></code></pre></div>
+      <ul>
+      <li>変数、繰り返し構文を利用すれば
+      N角形に拡張できることに気づきますか、また、実際に実装できますか。</li>
+      </ul>
+      <h3 data-number="9.5.3" id="練習-1"><span
+      class="header-section-number">9.5.3</span> 練習</h3>
+      <ul>
+      <li><code>p2.py</code>
+      を変数や繰返し構文を使って書き直してください。</li>
+      <li><code>p3.py</code>
+      を変数や繰返し構文を使って書き直してください。</li>
+      <li><code>p4.py</code>
+      を変数や繰返し構文を使って書き直してください。</li>
+      </ul>
+      <h1 data-number="10" id="課題-宿題"><span
+      class="header-section-number">10</span> 課題 (宿題)</h1>
+      <p>次の「<strong>演習③</strong>」について、今回の後期で作成したノートブックのなかで取組み、そのリンクを
+      Google Classroom 経由で提出してください。</p>
+      <ul>
+      <li>標準 (＝指示した最低限のことができている)
+      を7.5点として、10点満点で評価します。
+      <ul>
+      <li>0点～7.5点の範囲は絶対評価で点数をつけます。</li>
+      <li>7.5点～10点の範囲は相対評価で点数をつけます。</li>
+      </ul></li>
+      <li>テキストセルを使って<strong>演習番号
+      (例えば「演習③-1」「演習③-2」など)
+      を明記</strong>してください。</li>
+      <li>提出物 (納品物) として <strong>品質 (クオリティ)</strong>
+      を強く意識して作成してください。これらの提出物は、今後、就職やインターンシップ等の応募・選考に使用する
+      <strong>ポートフォリオ (自身のスキルを示す作品集)</strong>
+      の素材となります。
+      <ul>
+      <li>在学中の学習成果物として採用担当者に見せられないようなもの
+      (やっつけ仕事の適当なプログラム) を作成しないでください。</li>
+      <li>将来、ソフトウェアエンジニアとして仕事することを目指している学生が、本格的にプログラミング学習を初めて1カ月が経過、その学習成果として提出するもの（能力やセンスを応募先に評価してもらうもの）として意識して取り組んでください。</li>
+      </ul></li>
+      <li>課題毎にコードセル先頭に <code>%reset -f</code>
+      を含めてください。</li>
+      </ul>
+      <h2 data-number="10.1" id="演習③-1"><span
+      class="header-section-number">10.1</span> 演習③-1</h2>
+      <p>高専入学後、現在までに学習した「物理」や「数学」、その他の「専門科目」に関する何らかの演習問題を取り上げ、それをテキストセルに記述してください。また、それを解くための
+      Python プログラムを作成し、その実行結果が正しいことをテスト
+      (確認・検証)
+      してください。どのような方法でテストしたのか、その方法と結果もテキストセルに記載してください。</p>
+      <p>ここでは、次のような関数、構文、機能を複数組み合わせたプログラムを期待しています。授業で扱っていないPythonのライブラリや構文を使っても問題ありません
+      (ただし、機能や意味を十分に理解したうえで使ってください)。</p>
+      <ul>
+      <li>繰り返し構文 ( for )</li>
+      <li>Google Colab の <strong>フォーム機能</strong> または
+      標準入力</li>
+      <li>f文字列、書式指定子</li>
+      <li>算術計算
+      <ul>
+      <li>必要に応じて math ライブラリを使用してください。math
+      ライブラリの使用方法は、検索すれば簡単に見つけることができます。</li>
+      </ul></li>
+      </ul>
+      <p>なお、問題を解くためのプログラムではなく、その学習を支援ような観点のプログラムでも問題ありません。</p>
+      <h2 data-number="10.2" id="演習③-2"><span
+      class="header-section-number">10.2</span> 演習③-2</h2>
+      <p>タートルグラフィックスを使って、以下の条件でラインアートを作成してください。</p>
+      <ul>
+      <li>描画領域のサイズ：(400,400) または (800,400)</li>
+      <li>記述したプログラムについて説明を求められたときに答えられること
+      <ul>
+      <li>NG例「生成系AIが出力したコードを貼り付けたら、意味は分からないけどきれいな図形が描けた」</li>
+      <li>NG例「ネットで拾ったコードを貼り付けて数値を変えてみた
+      (プログラムの内容は理解していないけど 」</li>
+      </ul></li>
+      </ul>
+      <h2 data-number="10.3" id="演習③-3"><span
+      class="header-section-number">10.3</span> 演習③-3</h2>
+      <p>テキストセルに「この課題の取組み時間:XXX分」を記述してください。</p>
+      <h1 data-number="11" id="おまけ"><span
+      class="header-section-number">11</span> おまけ</h1>
+      <p>今後、関数(再帰処理)、条件分岐の構文、randomライブラリ、mathライブラリなどを学習すれば、次のようなプログラムを書けるようになっていきます。</p>
+      <div class="sourceCode" id="cb26"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb26-2"><a href="#cb26-2"></a><span class="im">import</span> ColabTurtle.Turtle <span class="im">as</span> t</span>
+<span id="cb26-3"><a href="#cb26-3"></a><span class="im">import</span> math</span>
+<span id="cb26-4"><a href="#cb26-4"></a><span class="im">import</span> random</span>
+<span id="cb26-5"><a href="#cb26-5"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb26-6"><a href="#cb26-6"></a></span>
+<span id="cb26-7"><a href="#cb26-7"></a>cm <span class="op">=</span> plt.get_cmap(<span class="st">&#39;Wistia&#39;</span>,<span class="dv">17</span>)</span>
+<span id="cb26-8"><a href="#cb26-8"></a></span>
+<span id="cb26-9"><a href="#cb26-9"></a>t.initializeTurtle(initial_speed<span class="op">=</span><span class="dv">13</span>,initial_window_size<span class="op">=</span>(<span class="dv">400</span>,<span class="dv">300</span>))</span>
+<span id="cb26-10"><a href="#cb26-10"></a>t.shape(shape<span class="op">=</span><span class="st">&#39;circle&#39;</span>)</span>
+<span id="cb26-11"><a href="#cb26-11"></a>t.bgcolor(<span class="st">&#39;black&#39;</span>)</span>
+<span id="cb26-12"><a href="#cb26-12"></a>t.color(<span class="op">*</span><span class="bu">map</span>(<span class="kw">lambda</span> p:<span class="bu">int</span>(p<span class="op">*</span><span class="dv">255</span>),cm(<span class="dv">1</span>)[:<span class="dv">3</span>]))</span>
+<span id="cb26-13"><a href="#cb26-13"></a></span>
+<span id="cb26-14"><a href="#cb26-14"></a>t.up()<span class="op">;</span> t.goto(t.window_width()<span class="op">//</span><span class="dv">2</span>,t.window_height()<span class="op">-</span><span class="dv">30</span>)<span class="op">;</span>t.down()</span>
+<span id="cb26-15"><a href="#cb26-15"></a></span>
+<span id="cb26-16"><a href="#cb26-16"></a>color_offset <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb26-17"><a href="#cb26-17"></a>init_length <span class="op">=</span> <span class="dv">40</span></span>
+<span id="cb26-18"><a href="#cb26-18"></a>init_width  <span class="op">=</span> <span class="dv">15</span></span>
+<span id="cb26-19"><a href="#cb26-19"></a>min_length <span class="op">=</span> <span class="dv">12</span></span>
+<span id="cb26-20"><a href="#cb26-20"></a>max_level <span class="op">=</span> <span class="dv">12</span></span>
+<span id="cb26-21"><a href="#cb26-21"></a></span>
+<span id="cb26-22"><a href="#cb26-22"></a><span class="kw">def</span> draw_branch(p, w, v):</span>
+<span id="cb26-23"><a href="#cb26-23"></a>  p2 <span class="op">=</span> <span class="bu">max</span>(<span class="dv">1</span>,<span class="bu">int</span>(p <span class="op">+</span> (p <span class="op">*</span> random.randint(<span class="op">-</span><span class="dv">15</span>,<span class="dv">15</span>)<span class="op">*</span><span class="fl">0.01</span>)))</span>
+<span id="cb26-24"><a href="#cb26-24"></a>  t.down()<span class="op">;</span>t.width(w)<span class="op">;</span>t.color(<span class="op">*</span><span class="bu">map</span>(<span class="kw">lambda</span> p:<span class="bu">int</span>(p<span class="op">*</span><span class="dv">255</span>),cm(color_offset<span class="op">+</span>v)[:<span class="dv">3</span>]))</span>
+<span id="cb26-25"><a href="#cb26-25"></a>  t.forward(p2)<span class="op">;</span></span>
+<span id="cb26-26"><a href="#cb26-26"></a>  generate_branch(math.ceil(p2<span class="op">*</span><span class="fl">0.82</span>),math.ceil(w<span class="op">*</span><span class="fl">0.75</span>),v<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb26-27"><a href="#cb26-27"></a>  t.up()<span class="op">;</span>t.back(p2)</span>
+<span id="cb26-28"><a href="#cb26-28"></a></span>
+<span id="cb26-29"><a href="#cb26-29"></a><span class="kw">def</span> generate_branch(p, w, v):</span>
+<span id="cb26-30"><a href="#cb26-30"></a>  <span class="cf">if</span> p <span class="op">&lt;</span> min_length <span class="kw">or</span> v <span class="op">&gt;</span> max_level:</span>
+<span id="cb26-31"><a href="#cb26-31"></a>    <span class="cf">return</span></span>
+<span id="cb26-32"><a href="#cb26-32"></a>  <span class="cf">else</span>:</span>
+<span id="cb26-33"><a href="#cb26-33"></a>    a1,a2 <span class="op">=</span> <span class="dv">20</span><span class="op">+</span>random.randint(<span class="op">-</span><span class="dv">2</span>,<span class="dv">2</span>), <span class="dv">20</span><span class="op">+</span>random.randint(<span class="op">-</span><span class="dv">2</span>,<span class="dv">2</span>)</span>
+<span id="cb26-34"><a href="#cb26-34"></a>    t.left(a1)</span>
+<span id="cb26-35"><a href="#cb26-35"></a>    draw_branch(p,w,v)</span>
+<span id="cb26-36"><a href="#cb26-36"></a>    t.right(a1<span class="op">+</span>a2)    </span>
+<span id="cb26-37"><a href="#cb26-37"></a>    draw_branch(p,w,v)</span>
+<span id="cb26-38"><a href="#cb26-38"></a>    t.left(a2)</span>
+<span id="cb26-39"><a href="#cb26-39"></a></span>
+<span id="cb26-40"><a href="#cb26-40"></a>t.face(<span class="op">-</span><span class="dv">90</span>)</span>
+<span id="cb26-41"><a href="#cb26-41"></a>t.color(<span class="op">*</span><span class="bu">map</span>(<span class="kw">lambda</span> p:<span class="bu">int</span>(p<span class="op">*</span><span class="dv">255</span>),cm(color_offset)[:<span class="dv">3</span>]))</span>
+<span id="cb26-42"><a href="#cb26-42"></a>t.width(init_width<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb26-43"><a href="#cb26-43"></a>t.forward(init_length)</span>
+<span id="cb26-44"><a href="#cb26-44"></a>generate_branch(init_length,init_width,<span class="dv">0</span>)</span>
+<span id="cb26-45"><a href="#cb26-45"></a>t.color(<span class="op">*</span><span class="bu">map</span>(<span class="kw">lambda</span> p:<span class="bu">int</span>(p<span class="op">*</span><span class="dv">255</span>),cm(color_offset)[:<span class="dv">3</span>]))</span>
+<span id="cb26-46"><a href="#cb26-46"></a>t.back(init_length)</span></code></pre></div>
+      <!-- ---------------------------------------- -->
+    </main>
+
+    <footer class="markdown-body">
+      <p><a href="https://takeshiwada1980.github.io/Programming1-2023/">講義資料のIndexに移動</a></p>
+    </footer>
+
+    <script>
+      window.onload = function () {
+        // ナビゲーション関連
+        let openBtn = document.getElementsByClassName("openbtn")[0];
+        let navPnl = document.getElementById("g-nav");
+        openBtn.onclick = () => {
+          openBtn.classList.toggle("active");
+          navPnl.classList.toggle("panelactive");
+        };
+
+        let items = navPnl.getElementsByTagName("a");
+        Array.from(items).forEach((item) => {
+          item.onclick = () => {
+            openBtn.classList.toggle("active");
+            navPnl.classList.toggle("panelactive");
+          };
+        });
+
+        // マスク処理
+        let maskedSpans = document.getElementsByClassName("masked");
+        Array.from(maskedSpans).forEach((span) => {
+          span.onclick = () => {
+            span.classList.toggle("open");
+          };
+        });
+
+        // 画像にリンクを付与
+        let images = document.querySelectorAll("figure img");
+        Array.from(images).forEach((img) => {
+          img.onclick = () => {
+            location.href = img.getAttribute("src");
+          };
+        });
+      };
+    </script>
+  </body>
+</html>
