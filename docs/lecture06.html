@@ -117,8 +117,12 @@ class="toc-section-number">4.9.1</span> 演習⑤</a></li>
 <li><a href="#条件式の正体" id="toc-条件式の正体"><span
 class="toc-section-number">4.10</span> 条件式の正体</a></li>
 </ul></li>
+<li><a href="#標準入力からの書式付き入力の対応"
+id="toc-標準入力からの書式付き入力の対応"><span
+class="toc-section-number">5</span>
+標準入力からの書式付き入力の対応</a></li>
 <li><a href="#課題-宿題" id="toc-課題-宿題"><span
-class="toc-section-number">5</span> 課題 (宿題)</a></li>
+class="toc-section-number">6</span> 課題 (宿題)</a></li>
 </ul> 
         <!-- ---------------------------------------- -->
       </div>
@@ -730,8 +734,20 @@ FFFF</code></pre>
 <span id="cb35-7"><a href="#cb35-7"></a>  <span class="bu">print</span>(<span class="st">&#39;存在します。&#39;</span>)</span>
 <span id="cb35-8"><a href="#cb35-8"></a><span class="cf">else</span> :</span>
 <span id="cb35-9"><a href="#cb35-9"></a>  <span class="bu">print</span>(<span class="st">&#39;存在しません。&#39;</span>)</span></code></pre></div>
-      <h1 data-number="5" id="課題-宿題"><span
-      class="header-section-number">5</span> 課題 (宿題)</h1>
+      <h1 data-number="5" id="標準入力からの書式付き入力の対応"><span
+      class="header-section-number">5</span>
+      標準入力からの書式付き入力の対応</h1>
+      <p>詳しいことは後日解説しますが、標準入力からスペース区切りの文字を受け取って、内部で数値として扱いたい場合は、次のコードで処理することができます。</p>
+      <div class="sourceCode" id="cb36"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb36-2"><a href="#cb36-2"></a>s <span class="op">=</span> <span class="bu">input</span>() <span class="co"># スペース区切りで数値入力「12.5 -37.5 0.71」</span></span>
+<span id="cb36-3"><a href="#cb36-3"></a>a, b, c <span class="op">=</span> <span class="bu">map</span>(<span class="bu">float</span>, s.split())</span>
+<span id="cb36-4"><a href="#cb36-4"></a></span>
+<span id="cb36-5"><a href="#cb36-5"></a><span class="bu">print</span>(a)</span>
+<span id="cb36-6"><a href="#cb36-6"></a><span class="bu">print</span>(b)</span>
+<span id="cb36-7"><a href="#cb36-7"></a><span class="bu">print</span>(c)</span></code></pre></div>
+      <h1 data-number="6" id="課題-宿題"><span
+      class="header-section-number">6</span> 課題 (宿題)</h1>
       <p>GoogleClassroomに提示したリンクからTechFULのセッション「<strong>PG1-課題03</strong>」に参加し、問題に取り組んでください。</p>
       <ul>
       <li>前期中間試験に<strong>相当する課題</strong>です。標準的な試験勉強時間(6時間程度)
