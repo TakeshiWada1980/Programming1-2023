@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+
+    <script>
+      MathJax = {
+        chtml: {
+          displayAlign: "left",
+          displayIndent: "1em",
+        },
+      };
+    </script>
+
+     <script
+src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+type="text/javascript"></script> 
+
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>第07回 2I-プログラミング1</title>
+  </head>
+
+  <body>
+    <div class="openbtn"><span></span><span></span><span></span></div>
+    <nav id="g-nav">
+      <div id="g-nav-list">
+        <!-- ---------------------------------------- -->
+         <ul>
+<li><a href="#準備" id="toc-準備"><span
+class="toc-section-number">1</span> 準備</a></li>
+<li><a href="#pg1-課題02の解答例①" id="toc-pg1-課題02の解答例①"><span
+class="toc-section-number">2</span> PG1-課題02の解答例①</a>
+<ul>
+<li><a href="#自キャラを基準とした敵キャラの距離と方向の計算"
+id="toc-自キャラを基準とした敵キャラの距離と方向の計算"><span
+class="toc-section-number">2.1</span>
+自キャラを基準とした敵キャラの距離と方向の計算</a></li>
+</ul></li>
+<li><a href="#利用頻度が高いmathモジュールの関数"
+id="toc-利用頻度が高いmathモジュールの関数"><span
+class="toc-section-number">3</span>
+利用頻度が高いmathモジュールの関数</a>
+<ul>
+<li><a href="#演習①" id="toc-演習①"><span
+class="toc-section-number">3.1</span> 演習①</a></li>
+</ul></li>
+<li><a href="#利用頻度が高い-数学系の-組み込み関数"
+id="toc-利用頻度が高い-数学系の-組み込み関数"><span
+class="toc-section-number">4</span> 利用頻度が高い (数学系の)
+組み込み関数</a>
+<ul>
+<li><a href="#とても重要なこと" id="toc-とても重要なこと"><span
+class="toc-section-number">4.1</span> とても重要なこと</a></li>
+</ul></li>
+<li><a href="#pg1-課題02の解答例②" id="toc-pg1-課題02の解答例②"><span
+class="toc-section-number">5</span> PG1-課題02の解答例②</a>
+<ul>
+<li><a href="#直線移動する自キャラのn秒後位置の計算"
+id="toc-直線移動する自キャラのn秒後位置の計算"><span
+class="toc-section-number">5.1</span>
+直線移動する自キャラのn秒後位置の計算</a></li>
+<li><a href="#三角関数を利用して単位ベクトルを計算する方法"
+id="toc-三角関数を利用して単位ベクトルを計算する方法"><span
+class="toc-section-number">5.2</span>
+三角関数を利用して単位ベクトルを計算する方法</a></li>
+</ul></li>
+<li><a href="#複数の文を1行に記述" id="toc-複数の文を1行に記述"><span
+class="toc-section-number">6</span> 複数の文を1行に記述</a></li>
+<li><a href="#アンパック-多重代入展開"
+id="toc-アンパック-多重代入展開"><span
+class="toc-section-number">7</span> アンパック (多重代入・展開)</a></li>
+<li><a href="#繰り返し構文におけるループ変数の参照"
+id="toc-繰り返し構文におけるループ変数の参照"><span
+class="toc-section-number">8</span>
+繰り返し構文におけるループ変数の参照</a>
+<ul>
+<li><a href="#ループ変数の参照" id="toc-ループ変数の参照"><span
+class="toc-section-number">8.1</span> ループ変数の参照</a>
+<ul>
+<li><a href="#演習②" id="toc-演習②"><span
+class="toc-section-number">8.1.1</span> 演習②</a></li>
+<li><a href="#演習③" id="toc-演習③"><span
+class="toc-section-number">8.1.2</span> 演習③</a></li>
+</ul></li>
+<li><a href="#等差数列の生成" id="toc-等差数列の生成"><span
+class="toc-section-number">8.2</span> 等差数列の生成</a>
+<ul>
+<li><a href="#フォーム機能を使用して整形"
+id="toc-フォーム機能を使用して整形"><span
+class="toc-section-number">8.2.1</span>
+フォーム機能を使用して整形</a></li>
+</ul></li>
+<li><a href="#等比数列の生成" id="toc-等比数列の生成"><span
+class="toc-section-number">8.3</span> 等比数列の生成</a>
+<ul>
+<li><a href="#演習④" id="toc-演習④"><span
+class="toc-section-number">8.3.1</span> 演習④</a></li>
+</ul></li>
+<li><a href="#累積値の計算" id="toc-累積値の計算"><span
+class="toc-section-number">8.4</span> 累積値の計算</a>
+<ul>
+<li><a href="#演習⑤" id="toc-演習⑤"><span
+class="toc-section-number">8.4.1</span> 演習⑤</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#数学に基づく計算-v.s.-pgによるゴリ押し計算"
+id="toc-数学に基づく計算-v.s.-pgによるゴリ押し計算"><span
+class="toc-section-number">9</span> 数学に基づく計算 v.s.
+PGによるゴリ押し計算</a>
+<ul>
+<li><a href="#計算の正確度を比較" id="toc-計算の正確度を比較"><span
+class="toc-section-number">9.1</span> 計算の正確度を比較</a></li>
+<li><a href="#計算時間を比較" id="toc-計算時間を比較"><span
+class="toc-section-number">9.2</span> 計算時間を比較</a></li>
+</ul></li>
+<li><a href="#繰返し構文のネスト" id="toc-繰返し構文のネスト"><span
+class="toc-section-number">10</span> 繰返し構文のネスト</a>
+<ul>
+<li><a href="#応用例1" id="toc-応用例1"><span
+class="toc-section-number">10.1</span> 応用例1</a></li>
+<li><a href="#演習⑥" id="toc-演習⑥"><span
+class="toc-section-number">10.2</span> 演習⑥</a></li>
+<li><a href="#応用例2" id="toc-応用例2"><span
+class="toc-section-number">10.3</span> 応用例2</a></li>
+<li><a href="#演習⑦" id="toc-演習⑦"><span
+class="toc-section-number">10.4</span> 演習⑦</a></li>
+</ul></li>
+<li><a href="#pg1-課題03のヒント" id="toc-pg1-課題03のヒント"><span
+class="toc-section-number">11</span> PG1-課題03のヒント</a>
+<ul>
+<li><a href="#その点はxy平面の第何象限に存在するのか"
+id="toc-その点はxy平面の第何象限に存在するのか"><span
+class="toc-section-number">11.1</span>
+その点はXY平面の第何象限に存在するのか</a></li>
+<li><a href="#バツ印の描画のための座標計算"
+id="toc-バツ印の描画のための座標計算"><span
+class="toc-section-number">11.2</span>
+バツ印の描画のための座標計算</a></li>
+</ul></li>
+</ul> 
+        <!-- ---------------------------------------- -->
+      </div>
+    </nav>
+
+    <header class="markdown-body">
+      <p>2023-2I プログラミング1 第07回 講義資料</p>
+      <p>2023年06月5日（月）5・6時限</p>
+    </header>
+
+    <main class="markdown-body">
+      <!-- ---------------------------------------- -->
+      <h1 data-number="1" id="準備"><span
+      class="header-section-number">1</span> 準備</h1>
+      <ul>
+      <li><a href="https://techful-programming.com/">TechFUL</a>
+      にログインしておいてください。</li>
+      <li><a
+      href="https://colab.research.google.com/?hl=ja">GoogleColab.</a>
+      にログインしておいてください。
+      <ul>
+      <li>「<strong>0605_繰返し構文.ipynb</strong>」という名前でノートブックを作成しておいてください
+      (今回、ノートブックの提出は<strong>ありません</strong>)。</li>
+      </ul></li>
+      </ul>
+      <h1 data-number="2" id="pg1-課題02の解答例①"><span
+      class="header-section-number">2</span> PG1-課題02の解答例①</h1>
+      <p>Google Colab. ノートブックにあわせて最小限の修正を加えています
+      (<code>%reset -f</code>の追加など)。</p>
+      <h2 data-number="2.1"
+      id="自キャラを基準とした敵キャラの距離と方向の計算"><span
+      class="header-section-number">2.1</span>
+      自キャラを基準とした敵キャラの距離と方向の計算</h2>
+      <div class="sourceCode" id="cb1"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> math</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="co"># x1 = float(input()); y1 = float(input())</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="co"># x2 = float(input()); y2 = float(input())</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>x1, y1 <span class="op">=</span> <span class="fl">2.3</span>,   <span class="dv">2</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>x2, y2 <span class="op">=</span> <span class="op">-</span><span class="dv">1</span> , <span class="fl">4.5</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a>d <span class="op">=</span> ((x1<span class="op">-</span>x2)<span class="op">**</span><span class="dv">2</span><span class="op">+</span>(y1<span class="op">-</span>y2)<span class="op">**</span><span class="dv">2</span>)<span class="op">**</span><span class="fl">0.5</span> <span class="co"># 距離計算（三平方の定理）</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a>r <span class="op">=</span> math.degrees( math.atan2((x2<span class="op">-</span>x1),(y2<span class="op">-</span>y1)) ) <span class="co"># 角度計算</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>d<span class="sc">:.2f}</span><span class="ss">&#39;</span>)</span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>r<span class="sc">:.1f}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+      <p><strong>べき乗の計算</strong>には <code>**</code>
+      演算子を使用します。また <span
+      class="math inline">\(\sqrt{x}\)</span>
+      は、1年次の「<strong>基礎数学</strong>」で学んだように「 <span
+      class="math inline">\(\sqrt{x}=x^{\frac{1}{2}}=x^{0.5}\)</span>
+      」であるため <code>x**0.5</code> (または<code>x**(1/2)</code>)
+      で計算できます。</p>
+      <p>なお <code>**</code>
+      演算子の使用を<strong>推奨</strong>しますが、別の方法として
+      <code>import math</code> をしたうえで <code>math.sqrt(x)</code>
+      で<strong>平方根</strong>を計算したり、<code>math.pow(x,5)</code>
+      のように<strong>べき乗</strong>を計算したりできます。</p>
+      <div class="note type-tips">
+      <p><strong>**演算子の優先順位</strong></p>
+      <p><code>**</code>
+      演算子の<strong>優先順位</strong>にしてください。<strong>確信を持てない場合は、その都度確認するか、括弧をつけて使用してください</strong>。</p>
+      <div class="sourceCode" id="cb2"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>a1 <span class="op">=</span> <span class="dv">2</span><span class="op">**</span><span class="dv">2</span><span class="op">*</span><span class="dv">3</span>   <span class="co"># -&gt; (2**2)*3 -&gt; 12</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>a2 <span class="op">=</span> <span class="dv">2</span><span class="op">**</span>(<span class="dv">2</span><span class="op">*</span><span class="dv">3</span>) <span class="co"># -&gt; 64</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>b1 <span class="op">=</span> <span class="dv">2</span><span class="op">**</span><span class="dv">1</span><span class="op">/</span><span class="dv">2</span>   <span class="co"># -&gt; (2**1)/2 -&gt; 1</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>b2 <span class="op">=</span> <span class="dv">2</span><span class="op">**</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>) <span class="co"># -&gt; 1.41..</span></span></code></pre></div>
+      <p><strong>確認</strong>:
+      各変数に格納される値はどのようになるか。予想して確認せよ
+      (一般に、このようなケースでは括弧を明示するべきである)。</p>
+      <div class="sourceCode" id="cb3"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>c1 <span class="op">=</span> <span class="dv">5</span><span class="op">*</span><span class="dv">2</span><span class="op">**</span><span class="dv">2</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>c2 <span class="op">=</span> <span class="dv">4</span><span class="op">/</span><span class="dv">2</span><span class="op">**</span><span class="dv">2</span></span></code></pre></div>
+      </div>
+      <div class="note type-senior">
+      <p><strong>中級者向け:自力で平方根を求める</strong></p>
+      <p><code>**</code> 演算子や、mathモジュール (ライブラリ)
+      を使わなくとも平方根を計算できます。以下に「<strong>ニュートン法</strong>」という手法により、繰返し計算から平方根を求める方法を示します。もちろん<strong><em>非推奨</em></strong>です。</p>
+      <div class="sourceCode" id="cb4"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="im">import</span> math</span>
+<span id="cb4-3"><a href="#cb4-3"></a>n <span class="op">=</span> <span class="dv">10</span> <span class="co"># 10の平方根を求める</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="co"># 繰返し処理で平方根を計算する</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a>sqrt_n <span class="op">=</span> n <span class="op">/</span> <span class="dv">2</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">4</span>): <span class="co"># 繰返し計算</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a>  q <span class="op">=</span> (sqrt_n <span class="op">+</span> n <span class="op">/</span> sqrt_n) <span class="op">/</span> <span class="fl">2.0</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a>  sqrt_n <span class="op">=</span> q</span>
+<span id="cb4-10"><a href="#cb4-10"></a></span>
+<span id="cb4-11"><a href="#cb4-11"></a><span class="bu">print</span>(<span class="ss">f&#39;sqrt(</span><span class="sc">{</span>n<span class="sc">}</span><span class="ss">)= </span><span class="sc">{</span>sqrt_n<span class="sc">:.20f}</span><span class="ss"> ライブラリを未使用&#39;</span>)</span>
+<span id="cb4-12"><a href="#cb4-12"></a><span class="bu">print</span>(<span class="ss">f&#39;sqrt(</span><span class="sc">{</span>n<span class="sc">}</span><span class="ss">)= </span><span class="sc">{</span>math<span class="sc">.</span>sqrt(n)<span class="sc">:.20f}</span><span class="ss"> ライブラリを使用&#39;</span>)</span>
+<span id="cb4-13"><a href="#cb4-13"></a><span class="bu">print</span>(<span class="ss">f&#39;sqrt(</span><span class="sc">{</span>n<span class="sc">}</span><span class="ss">)= </span><span class="sc">{</span>n<span class="op">**</span><span class="fl">0.5</span><span class="sc">:.20f}</span><span class="ss"> **演算子を使用&#39;</span>)</span></code></pre></div>
+      <p>プログラムの実行結果は次のようになります。</p>
+      <pre><code>sqrt(10)= 3.16227766044413627355 ライブラリを未使用
+sqrt(10)= 3.16227766016837952279 ライブラリを使用
+sqrt(10)= 3.16227766016837952279 **演算子を使用</code></pre>
+      <p><code>**</code>
+      演算子やmathライブラリを使った場合と結果を比較してください。</p>
+      </div>
+      <h1 data-number="3" id="利用頻度が高いmathモジュールの関数"><span
+      class="header-section-number">3</span>
+      利用頻度が高いmathモジュールの関数</h1>
+      <p><strong><em>mathモジュール</em></strong> (ライブラリ)
+      のなかでも、次の関数は<strong>利用頻度が高い</strong>ので覚えておいてください。</p>
+      <ul>
+      <li><strong>円周率</strong> <span
+      class="math inline">\(\pi\)</span> (定数値)
+      <ul>
+      <li><code>math.pi # -&gt; 3.141592</code></li>
+      </ul></li>
+      <li>弧度法を<strong>度数法に変換</strong> (rad <span
+      class="math inline">\(\to\)</span> deg)
+      <ul>
+      <li><code>math.degrees(0.5*math.pi) # -&gt; 90.0</code></li>
+      </ul></li>
+      <li>度数法を<strong>弧度法に変換</strong> (deg <span
+      class="math inline">\(\to\)</span> rad)
+      <ul>
+      <li><code>math.radians(-180) # -&gt; -3.1415...</code></li>
+      </ul></li>
+      <li>指定桁で<strong>四捨五入</strong>
+      <ul>
+      <li><code>math.radians(-180) # -&gt; -3.1415...</code></li>
+      </ul></li>
+      <li><strong>組み合わせの総数</strong> <span
+      class="math inline">\(_{n}\mathrm{C}_{r}\)</span>
+      <ul>
+      <li><span class="math inline">\(_{7}\mathrm{C}_{2}\)</span> …
+      <code>math.comb(7,2) # -&gt; 21</code></li>
+      <li><span class="math inline">\(_{8}\mathrm{C}_{5}\)</span> …
+      <code>math.comb(8,5) # -&gt; 56</code></li>
+      </ul></li>
+      </ul>
+      <p>このほかにも、mathモジュールには様々な関数が存在します。それらの一覧や詳細は
+      <a
+      href="https://docs.python.org/ja/3/library/math.html">リファレンス</a>
+      で確認してください。</p>
+      <div class="note type-tips">
+      <p><strong>組合せ</strong></p>
+      <p>1年次の「<strong>基礎数学B</strong>」で学習済みの (はず)
+      ですが「 <span class="math inline">\(n\)</span> 個の異なるものから
+      <span class="math inline">\(r\)</span>
+      個を選ぶ組み合わせの総数」を <span
+      class="math inline">\(_{n}\mathrm{C}_{r}\)</span>
+      のように表記します。</p>
+      <p><span class="math display">\[ {}_{n}\mathrm{C}_{r} =
+      \frac{n!}{r!(n-r)!}  \]</span></p>
+      <p>なお、上記の式はTeXでは
+      <code>$$ {}_{n}\mathrm{C}_{r} = \frac{n!}{r!(n-r)!}  $$</code>
+      のように表記します。</p>
+      </div>
+      <h2 data-number="3.1" id="演習①"><span
+      class="header-section-number">3.1</span> 演習①</h2>
+      <p>確率 <span class="math inline">\(p\)</span> の事象が、<span
+      class="math inline">\(n\)</span> 回の試行で <span
+      class="math inline">\(k\)</span> 回発生する確率 <span
+      class="math inline">\(P\)</span> について、次式 (二項分布)
+      で計算できることが数学的に知られている
+      (詳しくは4年次の「<strong>確率統計</strong>」の授業で学びます)
+      。</p>
+      <p><span class="math display">\[  P={}_{n} \mathrm{C}_{r} \cdot
+      p^{k}\cdot(1-p)^{n-k}\]</span></p>
+      <p>例えば「<strong>あたり</strong>」の割合が <span
+      class="math inline">\(15\%\)</span> のクジを <span
+      class="math inline">\(5\)</span> 回引いたときに、<span
+      class="math inline">\(1\)</span>
+      回だけ「<strong>あたり</strong>」がでる確率 <span
+      class="math inline">\(P_{1}\)</span> は次のようになる。</p>
+      <p><span class="math display">\[  P_{1}={}_{5} \mathrm{C}_{1}
+      \cdot 0.15^{1}\cdot(1-0.15)^{5-1} \fallingdotseq
+      0.444\]</span></p>
+      <p>同様に、<span class="math inline">\(2\)</span>
+      回だけ「<strong>あたり</strong>」がでる確率 <span
+      class="math inline">\(P_{2}\)</span> は次のようになる。</p>
+      <p><span class="math display">\[ P_{2}={}_{5} \mathrm{C}_{2} \cdot
+      0.15^{2}\cdot(1-0.15)^{5-2} \fallingdotseq 0.392\]</span></p>
+      <p>また、<span class="math inline">\(1\)</span> 回 あるいは <span
+      class="math inline">\(2\)</span>
+      回の「<strong>あたり</strong>」がでる確率は、<span
+      class="math inline">\(P_{1}+P_{2}\)</span> で計算できる。</p>
+      <p><br></p>
+      <p><strong>以上を踏まえて、以下の問いに答えよ</strong>。その際、必ずPythonプログラムを利用して計算すること<strong>暗算や算盤
+      (そろばん) の使用は禁止とする</strong>。</p>
+      <p>あるスマホゲームのガチャにおいて「<strong>メタスラの剣</strong>」というアイテムの提供割合（排出率）は
+      <span class="math inline">\(0.5\%\)</span> となっている。<span
+      class="math inline">\(1\)</span> 回のガチャには <span
+      class="math inline">\(300\)</span> ジェムが必要である。また <span
+      class="math inline">\(10,000\)</span> 円で <span
+      class="math inline">\(11,720\)</span> ジェムが購入できる。</p>
+      <ul>
+      <li>ガチャを <span class="math inline">\(100\)</span>
+      回やって「メタスラの剣」が <strong>1本も入手できない確率</strong>
+      (<span class="math inline">\(\%\)</span>) を計算せよ。
+      <ul>
+      <li>答え <span class="masked"><span
+      class="math inline">\(60.58\%\)</span></span></li>
+      </ul></li>
+      <li>ガチャを <span class="math inline">\(100\)</span>
+      回やって「メタスラの剣」が <strong>1本以上入手できる確率</strong>
+      (<span class="math inline">\(\%\)</span>) を計算せよ。
+      <ul>
+      <li>答え <span class="masked"><span
+      class="math inline">\(39.42\%\)</span></span></li>
+      </ul></li>
+      <li><span class="math inline">\(100\)</span>
+      人が挑戦したとき、「メタスラの剣」が入手できない人は
+      (確率計算上では) 何人でてくるか計算せよ。
+      <ul>
+      <li>答え <span class="masked">約 <span
+      class="math inline">\(61\)</span> 人</span></li>
+      </ul></li>
+      <li><span class="math inline">\(100\)</span>
+      回のガチャに挑戦するときに必要な金額 (日本円) はいくらか計算せよ。
+      <ul>
+      <li>答え <span class="masked">約 <span
+      class="math inline">\(25,597\)</span> 円</span></li>
+      </ul></li>
+      </ul>
+      <p>なお、取り組みにあたっては <strong>次の点に注意</strong>
+      すること。</p>
+      <ul>
+      <li>計算式に対して直接的に数値 (数値リテラル)
+      を組み込まないこと。<strong>計算式は変数を使って構成し、数値は変数に対して与えること</strong>。</li>
+      <li>f文字列の書式指定子に <code>%</code>
+      が存在することは既に学習済み。例えば
+      <code>print(f'p={0.1519:.1%}')</code> は <code>p=15.2%</code>
+      を出力する。</li>
+      </ul>
+      <h1 data-number="4"
+      id="利用頻度が高い-数学系の-組み込み関数"><span
+      class="header-section-number">4</span> 利用頻度が高い (数学系の)
+      組み込み関数</h1>
+      <p><strong><em>組み込み関数</em></strong>とは、<code>import</code>
+      の宣言をせずに利用できる関数で「<strong>標準関数</strong>」や「<strong>ビルトイン関数</strong>」とも呼ばれます。既に何度も利用している
+      <code>print</code> や <code>input</code>
+      は組み込み関数になります。</p>
+      <p>ここでは、利用頻度が高い <strong>数学系</strong>
+      の組み込み関数について記載します。</p>
+      <ul>
+      <li><strong>絶対値</strong>の計算
+      <ul>
+      <li><code>abs(-37564) # -&gt; 37564</code></li>
+      <li><code>abs(-10.9) # -&gt; 10.9</code></li>
+      </ul></li>
+      <li>大きい値の取得
+      <ul>
+      <li><code>max(55,100) # -&gt; 100</code></li>
+      <li><code>max(-55.5,-40.2,-75,-25) # -&gt; -25</code></li>
+      </ul></li>
+      <li><strong>四捨五入</strong>の計算
+      <ul>
+      <li><code>round(15.863) # -&gt; 16</code></li>
+      <li><code>round(15.863,1) # -&gt; 15.9</code><br />
+      </li>
+      </ul></li>
+      <li><strong>べき乗</strong>の計算
+      <ul>
+      <li><code>pow(4,3) -&gt; 64</code></li>
+      <li><code>pow(38,-1,97)</code> モジュラ逆数の計算 (
+      RSA暗号に関する計算などで使用 )
+      <ul>
+      <li><span
+      class="math inline">\((x\times38)\  \mathrm{mod}\  97=1\)</span>
+      となる <span class="math inline">\(x\)</span> を求める計算 (<span
+      class="math inline">\(\mathrm{mod}\)</span> は Pythonの
+      <code>%</code> 演算子に相当計算)</li>
+      </ul></li>
+      </ul></li>
+      </ul>
+      <p>このほかにも、様々な組み込み関数が存在します。それらの詳細は <a
+      href="https://docs.python.org/ja/3/library/functions.html">リファレンス</a>
+      で確認してください。</p>
+      <h2 data-number="4.1" id="とても重要なこと"><span
+      class="header-section-number">4.1</span> とても重要なこと</h2>
+      <p>「教わったこと」を<strong>教わった範囲で無条件に受け入れて終わるのではなく</strong>
+      <span
+      class="masked">好奇心や興味関心を持って、発展的に「試す」「調べる」「考える」に取り組めるように</span>
+      なってください。
+      例えば、次のような「<strong>疑問</strong>」や「<strong>興味</strong>」が湧いて、それに対して「<strong>試す</strong>」「<strong>調べる</strong>」「<strong>考える</strong>」ができるようになってください。そういった習慣や思考回路になった人が、最終的に
+      (4年生になる頃に)
+      高いプログラミングを身に付けることができます。</p>
+      <ul>
+      <li><code>round</code> の第2引数に <span
+      class="masked">マイナスの値 (例えば <code>round(15.863,-1)</code>
+      ) を設定するとどうなるのか</span>。</li>
+      <li><code>max</code> という組み込み関数が存在するのなら <span
+      class="masked">同様に <code>min</code>
+      という関数も存在するのではないか。とりえず
+      <code>min(55,100)</code> を試してみよう。</span></li>
+      <li>例示では <code>max</code> の引数に数値を与えていたけど <span
+      class="masked">文字列を与えるとどうなるのか。実行時エラー?。それとも、文字数が多いほうを返す?。それとも・・・</span>。</li>
+      </ul>
+      <h1 data-number="5" id="pg1-課題02の解答例②"><span
+      class="header-section-number">5</span> PG1-課題02の解答例②</h1>
+      <p>Google Colab.
+      ノートブックで動作するように最小限の修正を加えています。</p>
+      <h2 data-number="5.1"
+      id="直線移動する自キャラのn秒後位置の計算"><span
+      class="header-section-number">5.1</span>
+      直線移動する自キャラのn秒後位置の計算</h2>
+      <div class="sourceCode" id="cb6"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb6-2"><a href="#cb6-2"></a>x1 <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>())<span class="op">;</span> y1 <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>())</span>
+<span id="cb6-3"><a href="#cb6-3"></a>x2 <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>())<span class="op">;</span> y2 <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>())</span>
+<span id="cb6-4"><a href="#cb6-4"></a>t <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>())</span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="co"># x1, y1 = 6.25, 10.75</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="co"># x2, y2 = 42.19, -30</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="co"># t = 15</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a>vx <span class="op">=</span> x2<span class="op">-</span>x1<span class="op">;</span> vy <span class="op">=</span> y2<span class="op">-</span>y1 <span class="co"># 自キャラ→目的地のベクトルのX成分とY成分</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a>dis <span class="op">=</span> (vx<span class="op">**</span><span class="dv">2</span><span class="op">+</span>vy<span class="op">**</span><span class="dv">2</span>)<span class="op">**</span><span class="fl">0.5</span>  <span class="co"># 2点間の距離（ベクトルの大きさ）</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a>ux <span class="op">=</span> vx<span class="op">/</span>dis<span class="op">;</span> uy <span class="op">=</span> vy<span class="op">/</span>dis  <span class="co"># 単位ベクトル</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a></span>
+<span id="cb6-12"><a href="#cb6-12"></a><span class="co"># t秒後の位置は、現在位置 + t秒間に進む距離</span></span>
+<span id="cb6-13"><a href="#cb6-13"></a>ptx <span class="op">=</span> x1 <span class="op">+</span> ux<span class="op">*</span>t</span>
+<span id="cb6-14"><a href="#cb6-14"></a>pty <span class="op">=</span> y1 <span class="op">+</span> uy<span class="op">*</span>t</span>
+<span id="cb6-15"><a href="#cb6-15"></a><span class="bu">print</span>(<span class="ss">f&#39;(</span><span class="sc">{</span>x1<span class="op">+</span>ux<span class="op">*</span>t<span class="sc">:.2f}</span><span class="ss">,</span><span class="sc">{</span>y1<span class="op">+</span>uy<span class="op">*</span>t<span class="sc">:.2f}</span><span class="ss">)&#39;</span>)</span></code></pre></div>
+      <p>「<strong>ベクトル・行列</strong>」の授業で習っているように、単位ベクトルとは「<strong>大きさが1のベクトル</strong>」です。10行目のように、ベクトルを「ベクトルの<strong>大きさ</strong>」で割ることで、「単位ベクトル」を求めることができます。</p>
+      <p>問題設定では「移動速度は <span
+      class="math inline">\(1\)</span>単位距離/秒
+      とする」としているので、<span class="math inline">\(1\)</span>
+      秒後には現在地点に「単位ベクトル」を加えた地点に移動します。そして、13行目・14行目のように、<span
+      class="math inline">\(t\)</span> 秒後には<span
+      class="masked">現在地点に「単位ベクトルを <span
+      class="math inline">\(t\)</span> 倍したベクトル」加えた</span>
+      地点に移動します。</p>
+      <h2 data-number="5.2"
+      id="三角関数を利用して単位ベクトルを計算する方法"><span
+      class="header-section-number">5.2</span>
+      三角関数を利用して単位ベクトルを計算する方法</h2>
+      <p><code>math.atan2()</code> と
+      <code>math.sin()</code>、<code>math.cos()</code>
+      を使って「単位ベクトル」を求めることもできます。</p>
+      <div class="sourceCode" id="cb7"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="im">import</span> math</span>
+<span id="cb7-3"><a href="#cb7-3"></a>x1, y1 <span class="op">=</span> <span class="fl">6.25</span>, <span class="fl">10.75</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a>x2, y2 <span class="op">=</span> <span class="fl">42.19</span>, <span class="op">-</span><span class="dv">30</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a>vx <span class="op">=</span> x2<span class="op">-</span>x1<span class="op">;</span> vy <span class="op">=</span> y2<span class="op">-</span>y1</span>
+<span id="cb7-6"><a href="#cb7-6"></a>theta <span class="op">=</span> math.atan2(vy,vx)</span>
+<span id="cb7-7"><a href="#cb7-7"></a>ux <span class="op">=</span> math.cos(theta)</span>
+<span id="cb7-8"><a href="#cb7-8"></a>uy <span class="op">=</span> math.sin(theta)</span>
+<span id="cb7-9"><a href="#cb7-9"></a><span class="bu">print</span>(<span class="ss">f&#39;単位ベクトル (</span><span class="sc">{</span>ux<span class="sc">:.2f}</span><span class="ss">,</span><span class="sc">{</span>uy<span class="sc">:.2f}</span><span class="ss">)&#39;</span>)</span></code></pre></div>
+      <p>実際に実行して <span
+      class="masked">ベクトルを大きさで除して求めた場合と結果が一致する&lt;こと</span>
+      を確認してください。</p>
+      <h1 data-number="6" id="複数の文を1行に記述"><span
+      class="header-section-number">6</span> 複数の文を1行に記述</h1>
+      <p>通常、Pythonでは <strong>1行に1文を記述</strong>
+      しますが、C/C++言語やJavaScriptのように、<strong><em>セミコロン</em></strong>
+      (<code>;</code>) で区切れば <strong>1行に複数の文を記述</strong>
+      できます。XとYのようにペアになっているようなものは <span
+      class="masked">1行にまとめて書いたほうが分かりやすい場合</span>
+      もあります。必要に応じて使用してください。</p>
+      <p>例えば、次の2つのプログラムは
+      <strong>実質的に同じプログラム</strong> になります。</p>
+      <div class="sourceCode" id="cb8"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>x <span class="op">=</span> <span class="bu">input</span>()</span>
+<span id="cb8-2"><a href="#cb8-2"></a>y <span class="op">=</span> <span class="bu">input</span>()</span>
+<span id="cb8-3"><a href="#cb8-3"></a>z <span class="op">=</span> <span class="bu">input</span>()</span></code></pre></div>
+      <div class="sourceCode" id="cb9"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>x <span class="op">=</span> <span class="bu">input</span>()<span class="op">;</span> y <span class="op">=</span> <span class="bu">input</span>()<span class="op">;</span> z <span class="op">=</span> <span class="bu">input</span>()</span></code></pre></div>
+      <h1 data-number="7" id="アンパック-多重代入展開"><span
+      class="header-section-number">7</span> アンパック
+      (多重代入・展開)</h1>
+      <p>上に示したものと <strong><em>似て非なるもの</em></strong>
+      に「<strong>アンパック</strong> (多重代入や展開とも呼ばれます)
+      」があります。</p>
+      <p>これには、セミコロンではなく、<strong>カンマ</strong>
+      <code>,</code> を使用します。アンパックは、この先の授業で登場する
+      <strong><em>リスト</em></strong> や
+      <strong><em>タプル</em></strong>
+      に<strong>深く関連した機能</strong>となります。詳細については、以降の授業で解説します。</p>
+      <p>例えば、次の2つのプログラムは、実質的に同じプログラムになります。</p>
+      <div class="sourceCode" id="cb10"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>x <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>y <span class="op">=</span> <span class="dv">20</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a>z <span class="op">=</span> <span class="dv">30</span></span></code></pre></div>
+      <div class="sourceCode" id="cb11"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>x, y, z <span class="op">=</span> <span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span></span></code></pre></div>
+      <p>セミコロンを使って1行に複数の文を記述することは可読性を損なわない限りは<strong>どんな場面でも使用できます</strong>。一方で、<span
+      class="masked">アンパックは 変数に値を代入 (バインド)
+      するケースでしか利用できません
+      (使用するべきではありません)</span>。</p>
+      <h1 data-number="8"
+      id="繰り返し構文におけるループ変数の参照"><span
+      class="header-section-number">8</span>
+      繰り返し構文におけるループ変数の参照</h1>
+      <p>次のような <strong><em>C/C++言語プログラム</em></strong>
+      をコンパイルして実行すると…</p>
+      <div class="sourceCode" id="cb12"><pre
+      class="sourceCode numberSource c numberLines"><code class="sourceCode c"><span id="cb12-1"><a href="#cb12-1"></a><span class="co">// これはC/C++言語のプログラムです。</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="pp">#include</span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a>main<span class="op">(){</span></span>
+<span id="cb12-4"><a href="#cb12-4"></a>  <span class="cf">for</span><span class="op">(</span><span class="dt">int</span> i<span class="op">=</span><span class="dv">0</span><span class="op">;</span> i<span class="op">&lt;</span><span class="dv">5</span><span class="op">;</span> i<span class="op">++){</span></span>
+<span id="cb12-5"><a href="#cb12-5"></a>    printf<span class="op">(</span><span class="st">&quot;i=</span><span class="sc">%d\n</span><span class="st">&quot;</span><span class="op">,</span>i<span class="op">);</span></span>
+<span id="cb12-6"><a href="#cb12-6"></a>  <span class="op">}</span></span>
+<span id="cb12-7"><a href="#cb12-7"></a><span class="op">}</span></span></code></pre></div>
+      <p>次のような出力を得ることができます。</p>
+      <pre><code>i=0
+i=1
+i=2
+i=3
+i=4</code></pre>
+      <p>Pythonでは、<strong>次のようなプログラムで同様の出力</strong>を得ることができます。Colab.ノートブックに貼り付けて、実際に同じ出力が得られることを確認してください。</p>
+      <div class="sourceCode" id="cb14"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
+<span id="cb14-2"><a href="#cb14-2"></a>  <span class="bu">print</span>(<span class="ss">f&#39;i=</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+      <p>ここで、変数 <code>i</code>
+      を「<strong>ループ変数</strong>」や「<strong>ループカウンタ</strong>」と言います。<code>range(5)</code>
+      のとき、<code>i</code> はループ毎に
+      <code>0</code>、<code>1</code>、<code>2</code>、<code>3</code>、<code>4</code>
+      に変化します。<strong>ゼロオリジン</strong>
+      (ゼロから開始、zero-based) であるため <span
+      class="masked">最終値が <code>5</code> ではなく <code>4</code>
+      になる点</span> に注意してください。</p>
+      </div>
+      <h2 data-number="8.1" id="ループ変数の参照"><span
+      class="header-section-number">8.1</span> ループ変数の参照</h2>
+      <p>ループ変数は、繰返し構文の内部で<span class="masked">参照して
+      (=読み取りして) 計算式に利用</span>したり、<span
+      class="masked">関数の引数に与えたり</span>
+      することができます。</p>
+      <div class="sourceCode" id="cb15"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="im">import</span> math</span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
+<span id="cb15-4"><a href="#cb15-4"></a>  a <span class="op">=</span> i <span class="op">+</span> <span class="dv">5</span>         <span class="co"># ループ変数 i を計算式に利用</span></span>
+<span id="cb15-5"><a href="#cb15-5"></a>  b <span class="op">=</span> math.sqrt(i)  <span class="co"># ループ変数 i を関数の引数に利用</span></span>
+<span id="cb15-6"><a href="#cb15-6"></a>  <span class="bu">print</span>(<span class="ss">f&#39;i=</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">, i+5=</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">, sqrt</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">=</span><span class="sc">{</span>b<span class="sc">:.2f}</span><span class="ss">&#39;</span>) <span class="co"># i+5 を出力</span></span>
+<span id="cb15-7"><a href="#cb15-7"></a><span class="bu">print</span>(<span class="st">&#39;---&#39;</span>)    <span class="co"># for終了</span></span>
+<span id="cb15-8"><a href="#cb15-8"></a><span class="bu">print</span>(<span class="ss">f&#39;i=</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># for終了後も参照可能(最終値が格納されている)</span></span></code></pre></div>
+      <h3 data-number="8.1.1" id="演習②"><span
+      class="header-section-number">8.1.1</span> 演習②</h3>
+      <p>次のような出力を得たい。</p>
+      <pre><code>X座標 : -4
+X座標 : -3
+X座標 : -2
+X座標 : -1
+X座標 :  0
+X座標 :  1
+X座標 :  2
+X座標 :  3
+X座標 :  4</code></pre>
+      <p>次のプログラムの <strong>2行目</strong> と
+      <strong>4行目</strong> を書き換えよ (まずは <span
+      class="masked">書き換えない状態で実行して動作確認して</span>、そのあとに書き換えに取り組むこと)。</p>
+      <div class="sourceCode" id="cb17"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb17-2"><a href="#cb17-2"></a>n <span class="op">=</span> <span class="dv">5</span>   <span class="co"># ここを書き換え</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb17-4"><a href="#cb17-4"></a>  x <span class="op">=</span> i <span class="co"># ここを書き換え</span></span>
+<span id="cb17-5"><a href="#cb17-5"></a>  <span class="bu">print</span>(<span class="ss">f&#39;X座標 : </span><span class="sc">{</span>x<span class="sc">:&gt;2}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+      <ul>
+      <li><strong>補足</strong>: <code>range</code>
+      の引数に手を加えて対応する方法もありますが、ここでは、その方法を使わずに目的の出力を得る方法を考えてみましょう。</li>
+      <li><strong>補足</strong>: f文字列の<strong>書式指定子</strong>
+      <code>{x:&gt;2}</code> は「<strong>出力幅2 (不足文は空白埋め)
+      </strong>」を意味します。</li>
+      </ul>
+      <h3 data-number="8.1.2" id="演習③"><span
+      class="header-section-number">8.1.2</span> 演習③</h3>
+      <p>非負の整数値を格納する変数 <code>n</code> の値が <span
+      class="math inline">\(N\)</span> のとき、<span
+      class="math inline">\(-N\)</span>、<span
+      class="math inline">\(-N+1\)</span>、<span
+      class="math inline">\(\cdots\)</span>、<span
+      class="math inline">\(0\)</span>、<span
+      class="math inline">\(\cdots\)</span>、<span
+      class="math inline">\(N-1\)</span>、<span
+      class="math inline">\(N\)</span>
+      のような数列を得るようなプログラムを作成せよ。</p>
+      <p>例えば、<code>n</code> が <span
+      class="math inline">\(3\)</span>
+      のときは次のような文字列を出力したい
+      (1文字のスペース区切り、<strong>正の値にはプラスの符号</strong>がついている点には注意せよ)。</p>
+      <pre><code>-3 -2 -1 0 +1 +2 +3</code></pre>
+      <p>例えば、<code>n</code> が <span
+      class="math inline">\(5\)</span>
+      のときは次のような文字列を出力したい。</p>
+      <pre><code>-5 -4 -3 -2 -1 0 +1 +2 +3 +4 +5</code></pre>
+      <p>次のプログラムに追記する形式で作成すること。</p>
+      <div class="sourceCode" id="cb20"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="co">#@markdown 0より大きい整数値を与えてください </span></span>
+<span id="cb20-3"><a href="#cb20-3"></a>n <span class="op">=</span> <span class="dv">3</span>    <span class="co">#@param {type:&quot;slider&quot;, min:1, max:20, step:1}</span></span>
+<span id="cb20-4"><a href="#cb20-4"></a><span class="co"># ここから先のコードを記述</span></span></code></pre></div>
+      <ul>
+      <li><strong>ヒント</strong>: if文を利用せよ
+      (無論、それ以外の方法もある) 。</li>
+      <li><strong>中級者向けの指示</strong>: <span
+      class="masked">最終値のあとにスペースが付加されないように</span>
+      せよ。</li>
+      <li><strong>補足</strong>: 02行目と03行目は
+      <strong><em>フォーム機能</em></strong> を利用している (<a
+      href="lecture03.html">第03回講義</a>で学習済み) 。
+      <ul>
+      <li>この <strong>フォーム</strong> の機能は、Google Colab.
+      (Jupyter) 環境で<strong>のみ</strong>使用ができます
+      (Python固有の機能ではありません)。詳細については <a
+      href="https://colab.research.google.com/notebooks/forms.ipynb">公式ページ</a>
+      を参考にしてください。</li>
+      </ul></li>
+      </ul>
+      <h2 data-number="8.2" id="等差数列の生成"><span
+      class="header-section-number">8.2</span> 等差数列の生成</h2>
+      <p>初項 <span class="math inline">\(a\)</span>、公差 <span
+      class="math inline">\(d\)</span> の<strong>等差数列</strong>の第
+      <span class="math inline">\(1\)</span> 項から第 <span
+      class="math inline">\(n\)</span>
+      項は、次のプログラムで生成できます。</p>
+      <div class="sourceCode" id="cb21"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb21-2"><a href="#cb21-2"></a>a <span class="op">=</span> <span class="dv">3</span>  <span class="co"># 初項</span></span>
+<span id="cb21-3"><a href="#cb21-3"></a>d <span class="op">=</span> <span class="dv">4</span>  <span class="co"># 公差</span></span>
+<span id="cb21-4"><a href="#cb21-4"></a>n <span class="op">=</span> <span class="dv">8</span>  <span class="co"># 第n項まで出力</span></span>
+<span id="cb21-5"><a href="#cb21-5"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb21-6"><a href="#cb21-6"></a>  <span class="bu">print</span>( a<span class="op">+</span>d<span class="op">*</span>i ,end<span class="op">=</span><span class="st">&#39; &#39;</span>)</span></code></pre></div>
+      <p>ループ変数 <code>i</code> はゼロオリジン (最初の値が <span
+      class="math inline">\(0\)</span> である)
+      ため、<strong>数学の教科書に記載されているような式
+      (1オリジン、one-based)
+      を参照する際には読み替えが必要</strong>です。</p>
+      <p><span class="math display">\[ a_{n} = a_{1} + (n-1)d
+      \]</span></p>
+      <h3 data-number="8.2.1" id="フォーム機能を使用して整形"><span
+      class="header-section-number">8.2.1</span>
+      フォーム機能を使用して整形</h3>
+      <p>上記プログラムを <strong>Colab.のフォーム機能</strong>
+      を使って整形・装飾したプログラム例を示します。Colab.ノートブックに貼り付けて実行してみてください。</p>
+      <div class="sourceCode" id="cb22"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb22-2"><a href="#cb22-2"></a><span class="co">#@markdown # **等差数列の出力** </span></span>
+<span id="cb22-3"><a href="#cb22-3"></a><span class="co">#@markdown **初項** $a$ を入力してください。 </span></span>
+<span id="cb22-4"><a href="#cb22-4"></a>a <span class="op">=</span> <span class="dv">3</span>  <span class="co"># @param {type:&quot;number&quot;}</span></span>
+<span id="cb22-5"><a href="#cb22-5"></a><span class="co">#@markdown **公差** $d$ を入力してください。 </span></span>
+<span id="cb22-6"><a href="#cb22-6"></a>d <span class="op">=</span> <span class="dv">4</span>  <span class="co"># @param {type:&quot;number&quot;}</span></span>
+<span id="cb22-7"><a href="#cb22-7"></a><span class="co">#@markdown 第何項の数列を出力するか設定してください。 </span></span>
+<span id="cb22-8"><a href="#cb22-8"></a>n <span class="op">=</span> <span class="dv">8</span> <span class="co">#@param {type:&quot;slider&quot;, min:1, max:20, step:1}</span></span>
+<span id="cb22-9"><a href="#cb22-9"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb22-10"><a href="#cb22-10"></a>  <span class="bu">print</span>( a<span class="op">+</span>d<span class="op">*</span>i ,end<span class="op">=</span><span class="st">&#39; &#39;</span>)</span></code></pre></div>
+      <h2 data-number="8.3" id="等比数列の生成"><span
+      class="header-section-number">8.3</span> 等比数列の生成</h2>
+      <p>初項 <span class="math inline">\(a\)</span>、公比 <span
+      class="math inline">\(d\)</span> の<strong>等比数列</strong>の第
+      <span class="math inline">\(1\)</span> 項から第 <span
+      class="math inline">\(n\)</span>
+      項は、次のプログラムで生成できます。</p>
+      <div class="sourceCode" id="cb23"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb23-2"><a href="#cb23-2"></a>a <span class="op">=</span> <span class="dv">3</span>  <span class="co"># 初項</span></span>
+<span id="cb23-3"><a href="#cb23-3"></a>r <span class="op">=</span> <span class="dv">2</span>  <span class="co"># 公比</span></span>
+<span id="cb23-4"><a href="#cb23-4"></a>n <span class="op">=</span> <span class="dv">8</span>  <span class="co"># 第n項まで出力</span></span>
+<span id="cb23-5"><a href="#cb23-5"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb23-6"><a href="#cb23-6"></a>  <span class="bu">print</span>( a<span class="op">*</span>r<span class="op">**</span>i,end<span class="op">=</span><span class="st">&#39; &#39;</span>)</span></code></pre></div>
+      <p>等差数列と同様に、数学の教科書に記載されている式を利用する場合は「<strong>0オリジン</strong>」と「<strong>1オリジン</strong>」の違いに注意してください。</p>
+      <p><span class="math display">\[ a_{n} = a + r^{(n-1)}
+      \]</span></p>
+      <h3 data-number="8.3.1" id="演習④"><span
+      class="header-section-number">8.3.1</span> 演習④</h3>
+      <p>上記の<strong>等比数列生成プログラム</strong>を
+      <strong>Colab.のフォーム機能</strong>
+      を使って整形・装飾したプログラムに変更せよ。また、その動作確認をせよ。</p>
+      <h2 data-number="8.4" id="累積値の計算"><span
+      class="header-section-number">8.4</span> 累積値の計算</h2>
+      <p>for文は <strong>累積値</strong>
+      を計算する場合にも利用されます。</p>
+      <p>例えば、次式のように定義される <span
+      class="math inline">\(S\)</span> は、</p>
+      <p><span class="math display">\[ S = 1^2 + 2^2 +3^2 +4^2 + 5^2
+      \]</span></p>
+      <p>以下のようなプログラムで計算ができます。</p>
+      <div class="sourceCode" id="cb24"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb24-2"><a href="#cb24-2"></a>S <span class="op">=</span> <span class="dv">0</span>  <span class="co"># 初期値0</span></span>
+<span id="cb24-3"><a href="#cb24-3"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
+<span id="cb24-4"><a href="#cb24-4"></a>  S <span class="op">=</span> S <span class="op">+</span> i<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb24-5"><a href="#cb24-5"></a><span class="bu">print</span>(<span class="ss">f&#39;S=</span><span class="sc">{</span>S<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+      <p>上記の04行目の <code>S = S + i**2</code> は <span
+      class="masked"><code>S += i**2</code>
+      のように省略表記できます</span>。</p>
+      <p>なお <code>S =+ i**2</code>
+      では意図した動作をしないので注意してください。<code>+=</code>
+      のような演算子を「<strong>累算代入演算子</strong>」といいます。</p>
+      <h3 data-number="8.4.1" id="演習⑤"><span
+      class="header-section-number">8.4.1</span> 演習⑤</h3>
+      <p>あるスマホゲームのガチャにおいて「<strong>URアイテム</strong>」の提供割合（排出率）は
+      <span class="math inline">\(0.25\%\)</span> となっている。</p>
+      <p><span class="math inline">\(300\)</span>
+      回のガチャをしたとき、「<strong>URアイテム</strong>」の入手個数が
+      <span class="math inline">\(0\)</span> 個の確率(<span
+      class="math inline">\(\%\)</span>)、入手個数が <span
+      class="math inline">\(1\)</span>
+      個<strong>以上</strong>の確率(<span
+      class="math inline">\(\%\)</span>)、<span
+      class="math inline">\(2\)</span>
+      個<strong>以上</strong>の確率(<span
+      class="math inline">\(\%\)</span>)、<span
+      class="math inline">\(3\)</span>
+      個<strong>以上</strong>の確率(<span
+      class="math inline">\(\%\)</span>)、<span
+      class="math inline">\(4\)</span>
+      個<strong>以上</strong>の確率(<span
+      class="math inline">\(\%\)</span>) を求めよ。</p>
+      <ul>
+      <li><strong>ヒント</strong>
+      <ul>
+      <li><span class="math inline">\(1\)</span>
+      個<strong>以上</strong>の確率 <span
+      class="math inline">\(=\)</span> 全確率 (<span
+      class="math inline">\(1.0\)</span>) <span
+      class="math inline">\(-\)</span> <span
+      class="math inline">\(0\)</span> 個入手の確率</li>
+      <li><span class="math inline">\(2\)</span>
+      個<strong>以上</strong>の確率 <span
+      class="math inline">\(=\)</span> 全確率 (<span
+      class="math inline">\(1.0\)</span>) <span
+      class="math inline">\(-\)</span> ( <span
+      class="math inline">\(0\)</span> 個入手の確率+ <span
+      class="math inline">\(1\)</span> 個入手の確率 )</li>
+      <li><span class="math inline">\(3\)</span>
+      個<strong>以上</strong>の確率 <span
+      class="math inline">\(=\)</span> 全確率 (<span
+      class="math inline">\(1.0\)</span>) <span
+      class="math inline">\(-\)</span> ( <span
+      class="math inline">\(0\)</span> 個入手の確率+ <span
+      class="math inline">\(1\)</span> 個入手の確率 + <span
+      class="math inline">\(2\)</span> 個入手の確率 )</li>
+      </ul></li>
+      <li><strong>答え</strong>
+      <ul>
+      <li>入手個数が <span class="math inline">\(0\)</span> 個の確率
+      <span class="masked"><span
+      class="math inline">\(47.19\%\)</span></span></li>
+      <li>入手個数が <span class="math inline">\(1\)</span> 個以上の確率
+      <span class="masked"><span
+      class="math inline">\(52.81\%\)</span></span></li>
+      <li>入手個数が <span class="math inline">\(2\)</span> 個以上の確率
+      <span class="masked"><span
+      class="math inline">\(17.32\%\)</span></span></li>
+      <li>入手個数が <span class="math inline">\(3\)</span> 個以上の確率
+      <span class="masked"><span
+      class="math inline">\(4.03\%\)</span></span></li>
+      <li>入手個数が <span class="math inline">\(4\)</span> 個以上の確率
+      <span class="masked"><span
+      class="math inline">\(0.72\%\)</span></span></li>
+      </ul></li>
+      </ul>
+      <h1 data-number="9"
+      id="数学に基づく計算-v.s.-pgによるゴリ押し計算"><span
+      class="header-section-number">9</span> 数学に基づく計算 v.s.
+      PGによるゴリ押し計算</h1>
+      <p>「<strong>微分積分1</strong>」の授業では、等比数列の第 <span
+      class="math inline">\(1\)</span> 項から第 <span
+      class="math inline">\(n\)</span> 項までの和 <span
+      class="math inline">\(S_{n}\)</span>
+      が、次式で計算できることを学びました
+      (数学的な証明についても示されたはずです) 。</p>
+      <p><span class="math display">\[ S_{n} = \frac{a(1-r^{n})}{1-r}=
+      \frac{a(r^{n}-1)}{r-1}\]</span></p>
+      <p>一方で、プログラムで繰返し構文を使った<strong>シンプルなゴリ押し計算</strong>でも
+      <span class="math inline">\(S\)</span>
+      を求めることができます。</p>
+      <p>両者について<span
+      class="masked">比較・考察</span>してみたいと思います。例として、初項
+      <span class="math inline">\(a=16\)</span>、公比 <span
+      class="math inline">\(r=-1/2\)</span> の初項 (第 <span
+      class="math inline">\(1\)</span> 項) から第 <span
+      class="math inline">\(50\)</span> 項までの和 <span
+      class="math inline">\(S_{50}\)</span> を求めてみます。</p>
+      <h2 data-number="9.1" id="計算の正確度を比較"><span
+      class="header-section-number">9.1</span> 計算の正確度を比較</h2>
+      <p>Colab.
+      のノートブックを使って実際に、2つのプログラムを実行して、その結果を確認してみてください。</p>
+      <div class="sourceCode" id="cb25"
+      data-caption="method-1a.py (数学公式)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb25-2"><a href="#cb25-2"></a>a <span class="op">=</span> <span class="dv">16</span></span>
+<span id="cb25-3"><a href="#cb25-3"></a>r <span class="op">=</span> <span class="op">-</span><span class="dv">1</span><span class="op">/</span><span class="dv">3</span></span>
+<span id="cb25-4"><a href="#cb25-4"></a>n <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb25-5"><a href="#cb25-5"></a>S <span class="op">=</span> a<span class="op">*</span>(r<span class="op">**</span>n<span class="op">-</span><span class="dv">1</span>)<span class="op">/</span>(r<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb25-6"><a href="#cb25-6"></a><span class="bu">print</span>(<span class="ss">f&#39;S = </span><span class="sc">{</span>S<span class="sc">:.20f}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+      <div class="sourceCode" id="cb26"
+      data-caption="method-2a.py (繰返し計算)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb26-2"><a href="#cb26-2"></a>a <span class="op">=</span> <span class="dv">16</span></span>
+<span id="cb26-3"><a href="#cb26-3"></a>r <span class="op">=</span> <span class="op">-</span><span class="dv">1</span><span class="op">/</span><span class="dv">3</span></span>
+<span id="cb26-4"><a href="#cb26-4"></a>n <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb26-5"><a href="#cb26-5"></a>S <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb26-6"><a href="#cb26-6"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb26-7"><a href="#cb26-7"></a>  S <span class="op">+=</span> a<span class="op">*</span>r<span class="op">**</span>i</span>
+<span id="cb26-8"><a href="#cb26-8"></a><span class="bu">print</span>(<span class="ss">f&#39;S = </span><span class="sc">{</span>S<span class="sc">:.20f}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+      <p>非常に小さな値ですが計算結果が違っていることが分かると思います。証明は省略しますが、数学公式を使って計算した結果のほうが正しい
+      (正確な) 答えになります。</p>
+      <p>プログラムでゴリ押し計算した値にズレが生じるのは「<strong>情報2</strong>」の授業で習ったように
+      <strong><em>丸め誤差</em></strong> と
+      <strong><em>桁落ち誤差</em></strong> の影響によるものです
+      (情報2の講義ノートの p.58-59
+      を参照)。公式を使った場合でも、それら誤差は避けられませんが、繰返し構文よって<strong>累積しない</strong>ため影響が小さく抑えられています。</p>
+      <h2 data-number="9.2" id="計算時間を比較"><span
+      class="header-section-number">9.2</span> 計算時間を比較</h2>
+      <p>GoogelColab.では <code>%%timeit</code>
+      というマジックコマンドを使って<strong>コードセル単位の実行時間を計測</strong>することができます。</p>
+      <p><code>%%timeit</code>
+      では、何回もコードセルを実行し、その実行時間の<strong>平均</strong>と<strong>標準偏差</strong>
+      (=「情報1」で学習したように「ばらつき」の指標 )
+      を出力します。そのため、<code>%%timeit</code> を使用する場合には
+      <code>print</code>
+      などの出力はコメントしておきます。また、<code>%reset -f</code>
+      もコメントアウトしておきます。</p>
+      <p>次のコードを Colab. に貼り付けて実行してみてください。</p>
+      <div class="sourceCode" id="cb27" data-caption="method-1b.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="op">%%</span>timeit</span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="co"># %reset -f</span></span>
+<span id="cb27-3"><a href="#cb27-3"></a>a <span class="op">=</span> <span class="dv">16</span></span>
+<span id="cb27-4"><a href="#cb27-4"></a>r <span class="op">=</span> <span class="op">-</span><span class="dv">1</span><span class="op">/</span><span class="dv">3</span></span>
+<span id="cb27-5"><a href="#cb27-5"></a>n <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb27-6"><a href="#cb27-6"></a>S <span class="op">=</span> a<span class="op">*</span>(r<span class="op">**</span>n<span class="op">-</span><span class="dv">1</span>)<span class="op">/</span>(r<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb27-7"><a href="#cb27-7"></a><span class="co"># print(f&#39;S = {S:.20f}&#39;)</span></span></code></pre></div>
+      <div class="sourceCode" id="cb28" data-caption="method-2b.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a><span class="op">%%</span>timeit</span>
+<span id="cb28-2"><a href="#cb28-2"></a><span class="co"># %reset -f</span></span>
+<span id="cb28-3"><a href="#cb28-3"></a>a <span class="op">=</span> <span class="dv">16</span></span>
+<span id="cb28-4"><a href="#cb28-4"></a>r <span class="op">=</span> <span class="op">-</span><span class="dv">1</span><span class="op">/</span><span class="dv">3</span></span>
+<span id="cb28-5"><a href="#cb28-5"></a>n <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb28-6"><a href="#cb28-6"></a>S <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb28-7"><a href="#cb28-7"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb28-8"><a href="#cb28-8"></a>  S <span class="op">+=</span> a<span class="op">*</span>r<span class="op">**</span>i</span>
+<span id="cb28-9"><a href="#cb28-9"></a><span class="co"># print(f&#39;S = {S:.20f}&#39;)</span></span></code></pre></div>
+      <p>実行結果の一例を示します。これらの実行結果は、各自に割り当てられた<strong>仮想マシンのスペックに依存する</strong>ので注意してください。</p>
+      <p>「method-1b.py」の実行結果</p>
+      <pre><code>208 ns ± 9.64 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)</code></pre>
+      <p>「method-2b.py」の実行結果</p>
+      <pre><code>9.63 µs ± 3.1 µs per loop (mean ± std. dev. of 7 runs, 100000 loops each)</code></pre>
+      <p>これは <span class="math inline">\(1,000,000\)</span>
+      回のループを <span class="math inline">\(7\)</span>
+      回実行したとき、その <span class="math inline">\(7\)</span>
+      回の実行についての <strong>平均実行時間</strong> が <span
+      class="math inline">\(208(\mathrm{ns})\)</span>
+      で、その<strong>標準偏差</strong> が <span
+      class="math inline">\(9.64(\mathrm{ns})\)</span>
+      であった、という意味になります。</p>
+      <h1 data-number="10" id="繰返し構文のネスト"><span
+      class="header-section-number">10</span> 繰返し構文のネスト</h1>
+      <p>条件分岐構文 (<code>if-elif-else</code>) と同様に、繰返し構文
+      (<code>for</code>) についても<strong>ネスト (入れ子)
+      が構成できます</strong>。このようなネストした繰返し構文を「<strong>多重ループ</strong>
+      (2重ループ)」や「<strong>多重繰り返し文</strong>
+      (2重繰返し文)」のようにいいます。</p>
+      <p>例えば「掛け算の九九の表」は、次のように2重ループで出力できます。</p>
+      <div class="sourceCode" id="cb31"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb31-2"><a href="#cb31-2"></a><span class="bu">print</span>(<span class="st">&#39;-&#39;</span><span class="op">*</span><span class="dv">27</span>)</span>
+<span id="cb31-3"><a href="#cb31-3"></a><span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">9</span>):</span>
+<span id="cb31-4"><a href="#cb31-4"></a>  <span class="cf">for</span> y <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">9</span>):</span>
+<span id="cb31-5"><a href="#cb31-5"></a>    p <span class="op">=</span> (x<span class="op">+</span><span class="dv">1</span>) <span class="op">*</span> (y<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb31-6"><a href="#cb31-6"></a>    <span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>p<span class="sc">:&gt;2d}</span><span class="ss">&#39;</span>,end<span class="op">=</span><span class="st">&#39; &#39;</span>)</span>
+<span id="cb31-7"><a href="#cb31-7"></a>  <span class="bu">print</span>(<span class="st">&#39;&#39;</span>) <span class="co"># 1段ごとに改行</span></span>
+<span id="cb31-8"><a href="#cb31-8"></a><span class="bu">print</span>(<span class="st">&#39;-&#39;</span><span class="op">*</span><span class="dv">27</span>)</span></code></pre></div>
+      <p>実行すると次のような出力が得られます。</p>
+      <pre><code>---------------------------
+ 1  2  3  4  5  6  7  8  9 
+ 2  4  6  8 10 12 14 16 18 
+ 3  6  9 12 15 18 21 24 27 
+ 4  8 12 16 20 24 28 32 36 
+ 5 10 15 20 25 30 35 40 45 
+ 6 12 18 24 30 36 42 48 54 
+ 7 14 21 28 35 42 49 56 63 
+ 8 16 24 32 40 48 56 64 72 
+ 9 18 27 36 45 54 63 72 81 
+---------------------------</code></pre>
+      <h2 data-number="10.1" id="応用例1"><span
+      class="header-section-number">10.1</span> 応用例1</h2>
+      <p>第04回講義で利用した <strong>タートルグラフィックス (Turtle
+      Graphics)</strong>
+      を再び使用します。<strong>独立したコードセル</strong>を作成して、以下を実行してください。これは、接続している仮想マシン
+      (Linux) に「ColabTurtle」というPythonモジュール (ライブラリ)
+      をインストールするコマンドになります。</p>
+      <pre><code>!pip install ColabTurtle</code></pre>
+      <p>Colab.の場合、インストールしたライブラリは、ウェブブラウザと仮想マシンと接続が切れると、仮想マシンと共に破棄されます
+      (再度、Colab.ノートブックを開いたときは、再度、上記コマンドを実行する必要があります)
+      。</p>
+      <div class="note type-tips">
+      <p><strong>pip install とは</strong> (ChatGPT先生に聞いてみた)</p>
+      <p><code>pip install</code>
+      はPythonのプログラミングツールのコマンドです。これを使うと、特定の機能を持つコードの集まり（ライブラリと呼ばれる）をダウンロードしてPythonプログラムのなかで利用できるようにすることができます。例えば
+      <code>pip install pandas</code> とすると、データ分析に使われる
+      pandas というライブラリをインストールできます。つまり
+      <code>pip install</code>
+      は、Pythonで新しい機能を手軽に追加するための道具として使用されます。</p>
+      </div>
+      <p>多重ループを利用して、次のような<strong>ドットマトリクス</strong>を描画してみます。</p>
+      <figure>
+      <img src="figs/07/matrix1.svg" alt="matrix" />
+      <figcaption aria-hidden="true">matrix</figcaption>
+      </figure>
+      <p>次のプログラムをColab.ノートブックに貼り付けて、実行してください。</p>
+      <div class="sourceCode" id="cb34"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb34-2"><a href="#cb34-2"></a><span class="im">import</span> ColabTurtle.Turtle <span class="im">as</span> t</span>
+<span id="cb34-3"><a href="#cb34-3"></a></span>
+<span id="cb34-4"><a href="#cb34-4"></a><span class="co"># 初期設定</span></span>
+<span id="cb34-5"><a href="#cb34-5"></a>w, h <span class="op">=</span> <span class="dv">400</span>,<span class="dv">200</span></span>
+<span id="cb34-6"><a href="#cb34-6"></a>t.initializeTurtle(initial_speed<span class="op">=</span><span class="dv">13</span>,initial_window_size<span class="op">=</span>(w,h))</span>
+<span id="cb34-7"><a href="#cb34-7"></a>t.shape(<span class="st">&#39;circle&#39;</span>)<span class="op">;</span>t.hideturtle()<span class="op">;</span>t.bgcolor(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>)</span>
+<span id="cb34-8"><a href="#cb34-8"></a>t.width(<span class="dv">12</span>) <span class="co"># 軌跡幅(ペンの太さ)</span></span>
+<span id="cb34-9"><a href="#cb34-9"></a></span>
+<span id="cb34-10"><a href="#cb34-10"></a><span class="co"># 2重繰り返し(2重ループ)</span></span>
+<span id="cb34-11"><a href="#cb34-11"></a><span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">19</span>):</span>
+<span id="cb34-12"><a href="#cb34-12"></a>  <span class="cf">for</span> y <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">9</span>):</span>
+<span id="cb34-13"><a href="#cb34-13"></a>    <span class="co"># 色設定 RGB</span></span>
+<span id="cb34-14"><a href="#cb34-14"></a>    t.color(<span class="dv">255</span><span class="op">-</span>x<span class="op">*</span><span class="dv">10</span>, <span class="dv">255</span><span class="op">-</span>y<span class="op">*</span><span class="dv">25</span>, <span class="dv">100</span>)</span>
+<span id="cb34-15"><a href="#cb34-15"></a>    <span class="co"># 点描画（現在位置から現在位置に移動軌跡を描く）</span></span>
+<span id="cb34-16"><a href="#cb34-16"></a>    t.up()<span class="op">;</span>   t.goto(x<span class="op">*</span><span class="dv">20</span><span class="op">+</span><span class="dv">20</span>,y<span class="op">*</span><span class="dv">20</span><span class="op">+</span><span class="dv">20</span>)</span>
+<span id="cb34-17"><a href="#cb34-17"></a>    t.down()<span class="op">;</span> t.goto(x<span class="op">*</span><span class="dv">20</span><span class="op">+</span><span class="dv">20</span>,y<span class="op">*</span><span class="dv">20</span><span class="op">+</span><span class="dv">20</span>)</span></code></pre></div>
+      <p>ColabTurtleの詳細は、<a
+      href="https://github.com/tolgaatam/ColabTurtle">こちら</a>
+      を参照してください。</p>
+      <h2 data-number="10.2" id="演習⑥"><span
+      class="header-section-number">10.2</span> 演習⑥</h2>
+      <p>次のようなドットマトリクスを描画せよ。</p>
+      <figure>
+      <img src="figs/07/matrix2.svg" alt="matrix" />
+      <figcaption aria-hidden="true">matrix</figcaption>
+      </figure>
+      <h2 data-number="10.3" id="応用例2"><span
+      class="header-section-number">10.3</span> 応用例2</h2>
+      <p>多重ループを使うことで、次ようなサイバーなロゴを描くこともできます。</p>
+      <figure>
+      <img src="figs/07/error.svg" alt="ERROR-LOGO" />
+      <figcaption aria-hidden="true">ERROR-LOGO</figcaption>
+      </figure>
+      <p>上記を描くためのプログラムは以下のようになります。</p>
+      <p><strong>同心多角形</strong>の描画の観点では<strong>34行目がポイント</strong>となります
+      (1年の「基礎数学」で学んだ三角関数の実用例です。例えば、34行目を
+      <code>t.goto(cx-r/2,cy+r/2)</code> に書き換えると
+      (実際に試してみて!)
+      美しい同心多角形にならないことが分かると思います) 。</p>
+      <div class="sourceCode" id="cb35"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb35-2"><a href="#cb35-2"></a><span class="im">import</span> math</span>
+<span id="cb35-3"><a href="#cb35-3"></a><span class="im">import</span> ColabTurtle.Turtle <span class="im">as</span> t</span>
+<span id="cb35-4"><a href="#cb35-4"></a></span>
+<span id="cb35-5"><a href="#cb35-5"></a>n<span class="op">=</span><span class="dv">6</span>  <span class="co"># N角形</span></span>
+<span id="cb35-6"><a href="#cb35-6"></a>r<span class="op">=</span><span class="dv">50</span> <span class="co"># 一片の長さ</span></span>
+<span id="cb35-7"><a href="#cb35-7"></a>cx,cy <span class="op">=</span> <span class="dv">250</span>,<span class="dv">200</span> <span class="co"># 中心座標</span></span>
+<span id="cb35-8"><a href="#cb35-8"></a></span>
+<span id="cb35-9"><a href="#cb35-9"></a><span class="co"># 初期設定</span></span>
+<span id="cb35-10"><a href="#cb35-10"></a>t.initializeTurtle(initial_speed<span class="op">=</span><span class="dv">13</span>,initial_window_size<span class="op">=</span>(cx<span class="op">*</span><span class="dv">2</span>,cy<span class="op">*</span><span class="dv">2</span>))</span>
+<span id="cb35-11"><a href="#cb35-11"></a>t.shape(<span class="st">&#39;circle&#39;</span>)<span class="op">;</span>t.hideturtle()<span class="op">;</span>t.bgcolor(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>)</span>
+<span id="cb35-12"><a href="#cb35-12"></a></span>
+<span id="cb35-13"><a href="#cb35-13"></a><span class="co"># N角形の外角を計算しておく</span></span>
+<span id="cb35-14"><a href="#cb35-14"></a>deg <span class="op">=</span> <span class="dv">180</span><span class="op">-</span><span class="dv">360</span><span class="op">/</span>n</span>
+<span id="cb35-15"><a href="#cb35-15"></a>rad <span class="op">=</span> math.radians(deg)</span>
+<span id="cb35-16"><a href="#cb35-16"></a></span>
+<span id="cb35-17"><a href="#cb35-17"></a><span class="co"># 色の初期値</span></span>
+<span id="cb35-18"><a href="#cb35-18"></a>red <span class="op">=</span> <span class="dv">255</span></span>
+<span id="cb35-19"><a href="#cb35-19"></a>pen <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb35-20"><a href="#cb35-20"></a></span>
+<span id="cb35-21"><a href="#cb35-21"></a><span class="co"># 文字</span></span>
+<span id="cb35-22"><a href="#cb35-22"></a>t.color(red,<span class="dv">0</span>,<span class="dv">0</span>)</span>
+<span id="cb35-23"><a href="#cb35-23"></a>t.up()</span>
+<span id="cb35-24"><a href="#cb35-24"></a>t.goto(cx, cy<span class="op">+</span><span class="dv">6</span>)</span>
+<span id="cb35-25"><a href="#cb35-25"></a>t.write(<span class="st">&#39;ERROR&#39;</span>,align<span class="op">=</span><span class="st">&#39;center&#39;</span>,font<span class="op">=</span>(<span class="dv">20</span>,<span class="st">&#39;Arial&#39;</span>,<span class="st">&#39;bold&#39;</span>))</span>
+<span id="cb35-26"><a href="#cb35-26"></a></span>
+<span id="cb35-27"><a href="#cb35-27"></a><span class="co"># 2重ループ</span></span>
+<span id="cb35-28"><a href="#cb35-28"></a><span class="cf">for</span> p <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb35-29"><a href="#cb35-29"></a>  t.up()</span>
+<span id="cb35-30"><a href="#cb35-30"></a>  t.width(pen)</span>
+<span id="cb35-31"><a href="#cb35-31"></a>  t.color(red,<span class="dv">0</span>,<span class="dv">0</span>)</span>
+<span id="cb35-32"><a href="#cb35-32"></a>  t.goto(cx, cy)</span>
+<span id="cb35-33"><a href="#cb35-33"></a>  t.setheading(<span class="dv">0</span>) <span class="co"># 向きを0°(3時方向)に設定</span></span>
+<span id="cb35-34"><a href="#cb35-34"></a>  t.goto(cx<span class="op">-</span>r<span class="op">/</span><span class="dv">2</span>,cy<span class="op">+</span>math.tan(rad<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span>r<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb35-35"><a href="#cb35-35"></a>  t.down()<span class="op">;</span></span>
+<span id="cb35-36"><a href="#cb35-36"></a></span>
+<span id="cb35-37"><a href="#cb35-37"></a>  <span class="co"># N角形を描画</span></span>
+<span id="cb35-38"><a href="#cb35-38"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb35-39"><a href="#cb35-39"></a>    t.forward(r)</span>
+<span id="cb35-40"><a href="#cb35-40"></a>    t.left(<span class="dv">180</span><span class="op">-</span>deg)<span class="op">;</span></span>
+<span id="cb35-41"><a href="#cb35-41"></a></span>
+<span id="cb35-42"><a href="#cb35-42"></a>  <span class="co"># 辺の長さと色を更新</span></span>
+<span id="cb35-43"><a href="#cb35-43"></a>  r<span class="op">+=</span><span class="dv">18</span></span>
+<span id="cb35-44"><a href="#cb35-44"></a>  red<span class="op">-=</span><span class="dv">25</span></span></code></pre></div>
+      <h2 data-number="10.4" id="演習⑦"><span
+      class="header-section-number">10.4</span> 演習⑦</h2>
+      <p>上記のプログラムに手を加えて美しく魅力的な画像を生成せよ。</p>
+      <ul>
+      <li>角数を変更する、辺の長さを変更する。</li>
+      <li>色を変更する</li>
+      <li>文字を変更する</li>
+      <li>ペン幅 (太さ) を変更する</li>
+      <li>同心多角形をパターン配置する。</li>
+      </ul>
+      <h1 data-number="11" id="pg1-課題03のヒント"><span
+      class="header-section-number">11</span> PG1-課題03のヒント</h1>
+      <p>いずれの問題も、まずは
+      <strong>紙上に図を描いて考えること</strong>
+      が何よりも大事です。この作業もしないまま「できない」「分からない」と投げ出したり、悲観したりするとのは、非常に愚かです。</p>
+      <p>また、出題ページの末尾に記載される
+      <strong>補足とヒント</strong> にも、必ず目を通してください。</p>
+      <h2 data-number="11.1"
+      id="その点はxy平面の第何象限に存在するのか"><span
+      class="header-section-number">11.1</span>
+      その点はXY平面の第何象限に存在するのか</h2>
+      <p>負数に対して <code>%</code>
+      演算子を使用する場合に注意してください。</p>
+      <div class="sourceCode" id="cb36"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb36-2"><a href="#cb36-2"></a><span class="bu">print</span>(  <span class="dv">10</span><span class="op">%</span><span class="dv">3</span>    ) <span class="co"># -&gt;  1</span></span>
+<span id="cb36-3"><a href="#cb36-3"></a><span class="bu">print</span>(  <span class="dv">10</span><span class="op">%</span>(<span class="op">-</span><span class="dv">3</span>) ) <span class="co"># -&gt; -2</span></span>
+<span id="cb36-4"><a href="#cb36-4"></a><span class="bu">print</span>( <span class="op">-</span><span class="dv">10</span><span class="op">%</span><span class="dv">3</span>    ) <span class="co"># -&gt;  1</span></span>
+<span id="cb36-5"><a href="#cb36-5"></a><span class="bu">print</span>( <span class="op">-</span><span class="dv">10</span><span class="op">%</span>(<span class="op">-</span><span class="dv">3</span>) ) <span class="co"># -&gt; -2</span></span></code></pre></div>
+      <h2 data-number="11.2" id="バツ印の描画のための座標計算"><span
+      class="header-section-number">11.2</span>
+      バツ印の描画のための座標計算</h2>
+      <p>バツ印は、1本目の直接の<strong>中点</strong>で、2本目の直線と交差します。よって
+      <strong>中点を通って1本目の直線と垂直な線</strong>
+      を描くことでバツ印が描けます。</p>
+      <p>あるベクトルと<strong>直交するベクトルの求め方</strong>は、数学の教科書やウェブを参照すればすぐに見つけることができます。</p>
+      <ul>
+      <li>https://www.try-it.jp/chapters-5458/sections-5459/lessons-5520/</li>
+      </ul>
+      <p>もしくは、次のような幾何学的な性質に着目して解くこともできます。<span
+      class="masked">緑の実線と破線の長さが同じであること、オレンジの実線と破線の長さが同じであることを利用します</span>。</p>
+      <figure>
+      <img src="figs/07/hint1.png" alt="hint1" />
+      <figcaption aria-hidden="true">hint1</figcaption>
+      </figure>
+      <!-- ---------------------------------------- -->
+    </main>
+
+    <footer class="markdown-body">
+      <p><a href="https://takeshiwada1980.github.io/Programming1-2023/">講義資料のIndexに移動</a></p>
+    </footer>
+
+    <script>
+      window.onload = function () {
+        // ナビゲーション関連
+        let openBtn = document.getElementsByClassName("openbtn")[0];
+        let navPnl = document.getElementById("g-nav");
+        openBtn.onclick = () => {
+          openBtn.classList.toggle("active");
+          navPnl.classList.toggle("panelactive");
+        };
+
+        let items = navPnl.getElementsByTagName("a");
+        Array.from(items).forEach((item) => {
+          item.onclick = () => {
+            openBtn.classList.toggle("active");
+            navPnl.classList.toggle("panelactive");
+          };
+        });
+
+        // マスク処理
+        let maskedSpans = document.getElementsByClassName("masked");
+        Array.from(maskedSpans).forEach((span) => {
+          span.onclick = () => {
+            span.classList.toggle("open");
+          };
+        });
+
+        // 画像にリンクを付与
+        let images = document.querySelectorAll("figure img");
+        Array.from(images).forEach((img) => {
+          img.onclick = () => {
+            location.href = img.getAttribute("src");
+          };
+        });
+      };
+    </script>
+  </body>
+</html>
