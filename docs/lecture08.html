@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+
+    <script>
+      MathJax = {
+        chtml: {
+          displayAlign: "left",
+          displayIndent: "1em",
+        },
+      };
+    </script>
+
+     <script
+src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+type="text/javascript"></script> 
+
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>第08回 2I-プログラミング1</title>
+  </head>
+
+  <body>
+    <div class="openbtn"><span></span><span></span><span></span></div>
+    <nav id="g-nav">
+      <div id="g-nav-list">
+        <!-- ---------------------------------------- -->
+         <ul>
+<li><a href="#準備" id="toc-準備"><span
+class="toc-section-number">1</span> 準備</a></li>
+<li><a href="#演習⑥" id="toc-演習⑥"><span
+class="toc-section-number">2</span> 演習⑥</a>
+<ul>
+<li><a href="#bing-image-creator" id="toc-bing-image-creator"><span
+class="toc-section-number">2.1</span> Bing Image Creator</a></li>
+</ul></li>
+<li><a href="#効率的な開発" id="toc-効率的な開発"><span
+class="toc-section-number">3</span> 効率的な開発</a>
+<ul>
+<li><a href="#適切なエディタと実行環境の選択"
+id="toc-適切なエディタと実行環境の選択"><span
+class="toc-section-number">3.1</span>
+適切なエディタと実行環境の選択</a></li>
+<li><a href="#開発時には標準入力関数-input-を使用しない"
+id="toc-開発時には標準入力関数-input-を使用しない"><span
+class="toc-section-number">3.2</span> 開発時には標準入力関数 input
+を使用しない</a></li>
+</ul></li>
+<li><a href="#確認print関数の引数" id="toc-確認print関数の引数"><span
+class="toc-section-number">4</span> 確認：print関数の引数</a></li>
+<li><a href="#pythonにおけるリストとは"
+id="toc-pythonにおけるリストとは"><span
+class="toc-section-number">5</span>
+Pythonにおける「リスト」とは</a></li>
+<li><a href="#リスト初期化と要素の参照"
+id="toc-リスト初期化と要素の参照"><span
+class="toc-section-number">6</span> リスト初期化と要素の参照</a>
+<ul>
+<li><a href="#演習①" id="toc-演習①"><span
+class="toc-section-number">6.1</span> 演習①</a></li>
+<li><a href="#文字列を使ったリストの初期化"
+id="toc-文字列を使ったリストの初期化"><span
+class="toc-section-number">6.2</span>
+文字列を使ったリストの初期化</a></li>
+<li><a href="#演習②" id="toc-演習②"><span
+class="toc-section-number">6.3</span> 演習②</a></li>
+</ul></li>
+<li><a href="#リストのインデックス範囲"
+id="toc-リストのインデックス範囲"><span
+class="toc-section-number">7</span> リストのインデックス範囲</a></li>
+<li><a href="#リストの要素数" id="toc-リストの要素数"><span
+class="toc-section-number">8</span> リストの要素数</a>
+<ul>
+<li><a href="#リストの初期化2" id="toc-リストの初期化2"><span
+class="toc-section-number">8.1</span> リストの初期化2</a></li>
+<li><a href="#演習③" id="toc-演習③"><span
+class="toc-section-number">8.2</span> 演習③</a></li>
+</ul></li>
+<li><a href="#リストと組み合わせ可能な組み込み関数"
+id="toc-リストと組み合わせ可能な組み込み関数"><span
+class="toc-section-number">9</span>
+リストと組み合わせ可能な組み込み関数</a></li>
+<li><a href="#リストとprint関数" id="toc-リストとprint関数"><span
+class="toc-section-number">10</span> リストとprint関数</a></li>
+<li><a href="#リストにおける要素の書き換えと追加"
+id="toc-リストにおける要素の書き換えと追加"><span
+class="toc-section-number">11</span>
+リストにおける要素の書き換えと追加</a>
+<ul>
+<li><a href="#要素を持たない空のリスト"
+id="toc-要素を持たない空のリスト"><span
+class="toc-section-number">11.1</span> 要素を持たない空のリスト</a></li>
+<li><a href="#演習④" id="toc-演習④"><span
+class="toc-section-number">11.2</span> 演習④</a></li>
+</ul></li>
+<li><a href="#要素の検索" id="toc-要素の検索"><span
+class="toc-section-number">12</span> 要素の検索</a>
+<ul>
+<li><a href="#要素が含まれないことを判定するには"
+id="toc-要素が含まれないことを判定するには"><span
+class="toc-section-number">12.1</span>
+要素が含まれないことを判定するには</a></li>
+<li><a href="#当該要素のインデックスの検索"
+id="toc-当該要素のインデックスの検索"><span
+class="toc-section-number">12.2</span>
+当該要素のインデックスの検索</a></li>
+<li><a href="#演習⑤" id="toc-演習⑤"><span
+class="toc-section-number">12.3</span> 演習⑤</a></li>
+</ul></li>
+<li><a href="#pythonicなリストとfor文の組み合わせ"
+id="toc-pythonicなリストとfor文の組み合わせ"><span
+class="toc-section-number">13</span>
+Pythonicなリストとfor文の組み合わせ</a></li>
+<li><a href="#ランダム処理とリストの組み合わせ"
+id="toc-ランダム処理とリストの組み合わせ"><span
+class="toc-section-number">14</span>
+ランダム処理とリストの組み合わせ</a></li>
+<li><a href="#課題-宿題" id="toc-課題-宿題"><span
+class="toc-section-number">15</span> 課題 (宿題)</a></li>
+</ul> 
+        <!-- ---------------------------------------- -->
+      </div>
+    </nav>
+
+    <header class="markdown-body">
+      <p>2023-2I プログラミング1 第08回 講義資料</p>
+      <p>2023年06月15日（木）5・6時限</p>
+    </header>
+
+    <main class="markdown-body">
+      <!-- ---------------------------------------- -->
+      <h1 data-number="1" id="準備"><span
+      class="header-section-number">1</span> 準備</h1>
+      <ul>
+      <li><a href="https://techful-programming.com/">TechFUL</a>
+      にログインしておいてください。</li>
+      <li><a
+      href="https://colab.research.google.com/?hl=ja">GoogleColab.</a>
+      にログインしておいてください。
+      <ul>
+      <li>「0615_リスト(配列)_XXXX.ipynb」という名前でノートブックを作成しておいてください。今回はノートブックの提出が<strong>あります</strong>。末尾の
+      <code>XXXX</code> には
+      <strong>「高専太郎」のように氏名を記載</strong>
+      してください。</li>
+      </ul></li>
+      </ul>
+      <h1 data-number="2" id="演習⑥"><span
+      class="header-section-number">2</span> 演習⑥</h1>
+      <p>これは、今回の講義内容を把握したうえで
+      <strong>最後に取り組んでもらう演習</strong>
+      です。以下、この演習に取り組むために必要な要素
+      (<strong>リスト関連の処理</strong>)
+      を扱っていきます。それらを効果的に学ぶためにも、はじめに演習⑥の内容を把握しておいてください。</p>
+      <hr />
+      <p>FC版DQ3 (<a
+      href="https://ja.wikipedia.org/wiki/%E3%83%89%E3%83%A9%E3%82%B4%E3%83%B3%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88III_%E3%81%9D%E3%81%97%E3%81%A6%E4%BC%9D%E8%AA%AC%E3%81%B8%E2%80%A6">ファミコン版のドラゴンクエスト3</a>)
+      の武器を扱った「<strong>100連ガチャ</strong>」のシミュレータを作成したい。ガチャにより排出される武器は
+      <code>item_names_str</code>
+      でカンマ区切りで与えられる<strong>全33種</strong>の武器である。また、その排出比は
+      <code>item_p_str</code>
+      でカンマ区切りで与えた数値となっている。</p>
+      <p>ここでの排出比とは・・・例えば「ひのきのぼう」「こんぼう」「どうのつるぎ」の全３種を仮定し、その排出比が「<span
+      class="math inline">\(10\)</span>」「<span
+      class="math inline">\(5\)</span>」「<span
+      class="math inline">\(2\)</span>」であれば、「ひのきのぼう」があたる確率は
+      <span
+      class="math inline">\(10/(10+5+2)\)</span>、「こんぼう」があたる確率は
+      <span
+      class="math inline">\(5/(10+5+2)\)</span>、「どうのつるぎ」があたる確率は
+      <span class="math inline">\(2/(10+5+2)\)</span>
+      のように考えること。</p>
+      <div class="sourceCode" id="cb1"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb1-2"><a href="#cb1-2"></a>item_names_str <span class="op">=</span> <span class="st">&#39;ひのきのぼう,こんぼう,どうのつるぎ,せいなるナイフ,くさりがま,とげのむち,まどうしのつえ,てつのやり,どくばり,てつのつめ,はがねのつるぎ,てつのオノ,あまぐものつえ,いかづちのつえ,さざなみのつえ,さばきのつえ,おおばさみ,ゆうわくのけん,りりょくのつえ,おおかなづち,はやぶさのけん,ゾンビキラー,ドラゴンキラー,くさなぎのけん,ガイアのつるぎ,ふぶきのつるぎ,いなづまのけん,まじんのオノ,らいじんのけん,もろはのつるぎ,はかいのつるぎ,おうごんのつめ,おうじゃのけん&#39;</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a>item_p_str <span class="op">=</span> <span class="st">&#39;50,50,50,40,40,35,30,30,25,20,20,20,10,10,10,10,10,10,10,10,5,5,5,4,3,3,2,2,2,2,2,2,1&#39;</span></span></code></pre></div>
+      <p>上記の設定に基づき<strong>100連ガチャ</strong>のシミュレーションを実行し、次のような出力を得たい。</p>
+      <pre><code>100連ガチャの結果、以下のアイテムを獲得しました。
+ひのきのぼう ... 8個
+こんぼう ... 8個
+どうのつるぎ ... 9個
+せいなるナイフ ... 8個
+くさりがま ... 11個
+とげのむち ... 7個
+まどうしのつえ ... 5個
+てつのやり ... 7個
+どくばり ... 6個
+てつのつめ ... 5個
+はがねのつるぎ ... 4個
+てつのオノ ... 3個
+あまぐものつえ ... 2個
+いかづちのつえ ... 1個
+さざなみのつえ ... 6個
+さばきのつえ ... 2個
+ゆうわくのけん ... 3個
+りりょくのつえ ... 2個
+おおかなづち ... 1個
+ゾンビキラー ... 1個
+まじんのオノ ... 1個</code></pre>
+      <p>この要求を満たすことができるPythonプログラムを考え、実装せよ。</p>
+      <h2 data-number="2.1" id="bing-image-creator"><span
+      class="header-section-number">2.1</span> Bing Image Creator</h2>
+      <p>次の画像は <strong>Bing Image Creator</strong>
+      で生成したものです。マイクロソフトアカウントがあれば無料で利用ができます。皆さんも活用してみてください。</p>
+      <figure>
+      <img src="figs/08/img01.jpg" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <figure>
+      <img src="figs/08/img02.jpg" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <h1 data-number="3" id="効率的な開発"><span
+      class="header-section-number">3</span> 効率的な開発</h1>
+      <h2 data-number="3.1" id="適切なエディタと実行環境の選択"><span
+      class="header-section-number">3.1</span>
+      適切なエディタと実行環境の選択</h2>
+      <p>GoogleColab.に比較して、TechFULのエディタは極めて貧弱です
+      (Colab.が強力すぎるとも言えますが)。</p>
+      <p>例えば、<strong>文法ミスのチェック</strong> や
+      <strong>入力補完</strong>
+      など、<strong>初心者ほど必要になってくる機能について Colab.
+      のほうが充実しています</strong>。そのため、原則として Colab.
+      で基本的なコーティングとデバッグを進め、その後、TechFUL
+      にコピペして検証する (テストケースをパスするか確認する)
+      という取組みスタイルをとってください。</p>
+      <p>今後、TechFUL
+      のエディタ上でコーティングやデバッグを進めている学生からの質問・相談には対応しません。</p>
+      <h2 data-number="3.2"
+      id="開発時には標準入力関数-input-を使用しない"><span
+      class="header-section-number">3.2</span> 開発時には標準入力関数
+      input を使用しない</h2>
+      <p>TechFUL では、そのシステムの機能上、標準入力関数
+      <code>input()</code>
+      を使用することになりますが、<strong>入力に関するコーティングやデバッグ、テストをするとき以外は、開発効率が著しく悪化するので使用しないでください</strong>。</p>
+      <p>例えば、TechFULで次のような標準入力を受け取る問題があるとします。</p>
+      <pre><code>15.5
+20.2</code></pre>
+      <p>これを受け取ってプログラム内で処理するためには、<code>input()</code>
+      を使って次のようにコードを書きますが</p>
+      <div class="sourceCode" id="cb4"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb4-2"><a href="#cb4-2"></a>x1 <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>())</span>
+<span id="cb4-3"><a href="#cb4-3"></a>y1 <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>())</span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="co"># 以下、x1 と y1 を使った処理</span></span></code></pre></div>
+      <p>上記のようなコードのまま開発を進めると、プログラムの実行毎に
+      <code>15.5</code> と <code>20.2</code>
+      を打ち込む必要があり、<strong>極めて効率が悪い</strong>です。そのため、開発段階では以下のようにしておきます。</p>
+      <div class="sourceCode" id="cb5"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="co"># str1 = input()</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="co"># str2 = input()</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a>str1 <span class="op">=</span> <span class="fl">10.5</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a>str2 <span class="op">=</span> <span class="fl">20.2</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a>x1 <span class="op">=</span> <span class="bu">float</span>(str1)</span>
+<span id="cb5-7"><a href="#cb5-7"></a>y1 <span class="op">=</span> <span class="bu">float</span>(str2)</span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="co"># 以下、x1 と y1 を使った処理</span></span></code></pre></div>
+      <p>このようにすることで、実行毎に数値を入力する手間が無くなります。</p>
+      <p>また、TechFUL で検証するときは
+      (テストケースをパスするか確認するときは)、次のように<strong>コメント化する位置を差し替えます</strong>。なお、Colab.
+      でコメントアウト・アンコメントは <span
+      class="masked"><code>Ctrl</code>+<code>/</code></span>
+      のショートカットキーを利用します。</p>
+      <div class="sourceCode" id="cb6"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb6-2"><a href="#cb6-2"></a>str1 <span class="op">=</span> <span class="bu">input</span>()</span>
+<span id="cb6-3"><a href="#cb6-3"></a>str2 <span class="op">=</span> <span class="bu">input</span>()</span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="co"># str1 = 10.5</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="co"># str2 = 20.2</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a>x1 <span class="op">=</span> <span class="bu">float</span>(str1)</span>
+<span id="cb6-7"><a href="#cb6-7"></a>y1 <span class="op">=</span> <span class="bu">float</span>(str2)</span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="co"># 以下、x1 と y1 を使った処理</span></span></code></pre></div>
+      <h1 data-number="4" id="確認print関数の引数"><span
+      class="header-section-number">4</span> 確認：print関数の引数</h1>
+      <p>以前に紹介済みですが、今回の演習で利用する可能性があるため、<code>print</code>
+      関数に <strong>複数の引数</strong>
+      を与えた場合の動作と、<code>sep</code>
+      引数を与えた場合の動作について改めて確認しておきます。いまさらですが「<strong>引数</strong>」の読み方は
+      <span class="masked">「ひきすう」</span> です
+      (「いんすう」ではないので注意してください ) 。</p>
+      <p><code>print</code> 関数には <strong>2個以上の引数</strong>
+      を与えることが可能で、その場合、次のように<strong>半角スペース1文字で区切られた出力</strong>を得ることができます。</p>
+      <div class="sourceCode" id="cb7"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb7-2"><a href="#cb7-2"></a>a<span class="op">=</span><span class="st">&#39;AAA&#39;</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a>b<span class="op">=</span><span class="st">&#39;BBB&#39;</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a>c<span class="op">=</span><span class="st">&#39;CCC&#39;</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="bu">print</span>(a,b,c,<span class="st">&#39;DDD&#39;</span>) <span class="co"># ★ カンマ区切りで4個を与えている</span></span></code></pre></div>
+      <p>上記プログラムの実行結果は次のようになります。</p>
+      <pre><code>AAA BBB CCC DDD</code></pre>
+      <p><strong>半角スペース1文字で区切られた出力</strong>となっていることを確認してください。</p>
+      <p>また、最後の引数に <code>sep=</code> を与えると<span
+      class="masked">( 半角スペースではなく)
+      任意の区切り文字を使用すること</span>ができました。<code>sep</code>
+      は「<strong>Separator (セパレータ)</strong>」の略になります。</p>
+      <p>次のプログラムを実行して結果を確認してください。</p>
+      <div class="sourceCode" id="cb9"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb9-2"><a href="#cb9-2"></a>a<span class="op">=</span><span class="st">&#39;AAA&#39;</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a>b<span class="op">=</span><span class="st">&#39;BBB&#39;</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a>c<span class="op">=</span><span class="st">&#39;CCC&#39;</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="bu">print</span>(a,b,c,<span class="st">&#39;DDD&#39;</span>,sep<span class="op">=</span><span class="st">&#39;:&#39;</span>) <span class="co"># sep=を追加</span></span></code></pre></div>
+      <p>なお、<code>print(a, b, c, sep='-', end='' )</code> における
+      <code>sep=</code> や <code>end=</code> のような引数を
+      <strong><em>キーワード引数</em></strong> や
+      <strong>名前付き引数</strong>
+      といいます。これらの引数は、通常の引数 (これらを <span
+      class="masked">位置引数</span> といいます)
+      の<strong>あと</strong>に与える必要があります。</p>
+      <p><strong>キーワード引数</strong> を <strong>位置引数</strong>
+      よりも前に記述するとどうなるか実際に確認してください。</p>
+      <div class="sourceCode" id="cb10"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb10-2"><a href="#cb10-2"></a>a<span class="op">=</span><span class="st">&#39;AAA&#39;</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a>b<span class="op">=</span><span class="st">&#39;BBB&#39;</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a>c<span class="op">=</span><span class="st">&#39;CCC&#39;</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="bu">print</span>(a,sep<span class="op">=</span><span class="st">&#39;---&#39;</span>,b c) <span class="co"># キーワード引数が途中に存在</span></span></code></pre></div>
+      <h1 data-number="5" id="pythonにおけるリストとは"><span
+      class="header-section-number">5</span>
+      Pythonにおける「リスト」とは</h1>
+      <p>C言語における<strong>配列</strong> (Array: アレイ)
+      に相当する機能を、 Python では <strong><em>リスト</em></strong>
+      (<strong>List</strong>: <strong>リスト</strong>）と言います。</p>
+      <p>例えば、次の <code>array.c</code>
+      のようなC言語プログラムと、同じ出力を得る Pythonプログラムは
+      <code>list.py</code> のように書くことができます。2つの言語における
+      <strong>記号の違いなど</strong> に注意して比較してください。</p>
+      <div class="sourceCode" id="cb11" data-caption="array.c"><pre
+      class="sourceCode numberSource c numberLines"><code class="sourceCode c"><span id="cb11-1"><a href="#cb11-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="pp">#define N </span><span class="dv">4</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="pp">#define M </span><span class="dv">20</span><span class="pp"> </span><span class="co">// 1アイテム(英数字であれば)最大20文字まで</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">void</span><span class="op">){</span></span>
+<span id="cb11-5"><a href="#cb11-5"></a>  <span class="dt">char</span> items<span class="op">[</span>N<span class="op">][</span>M<span class="op">]={</span><span class="st">&quot;どうのつるぎ&quot;</span><span class="op">,</span><span class="st">&quot;やくそう&quot;</span><span class="op">,</span><span class="st">&quot;どくけしそう&quot;</span><span class="op">,</span><span class="st">&quot;ぬののふく&quot;</span><span class="op">};</span></span>
+<span id="cb11-6"><a href="#cb11-6"></a>  <span class="cf">for</span><span class="op">(</span><span class="dt">int</span> i<span class="op">=</span><span class="dv">0</span><span class="op">;</span>i<span class="op">&lt;</span>N<span class="op">;</span>i<span class="op">++){</span></span>
+<span id="cb11-7"><a href="#cb11-7"></a>    printf<span class="op">(</span><span class="st">&quot;</span><span class="sc">%s\n</span><span class="st">&quot;</span><span class="op">,</span>items<span class="op">[</span>i<span class="op">]);</span></span>
+<span id="cb11-8"><a href="#cb11-8"></a>  <span class="op">}</span></span>
+<span id="cb11-9"><a href="#cb11-9"></a><span class="op">}</span></span></code></pre></div>
+      <div class="sourceCode" id="cb12" data-caption="list.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb12-2"><a href="#cb12-2"></a>items <span class="op">=</span> [<span class="st">&#39;どうのつるぎ&#39;</span>,<span class="st">&#39;やくそう&#39;</span>,<span class="st">&#39;どくけしそう&#39;</span>,<span class="st">&#39;ぬののふく&#39;</span>]</span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(items)):</span>
+<span id="cb12-4"><a href="#cb12-4"></a>  <span class="bu">print</span>(items[i])</span></code></pre></div>
+      <p>いずれのプログラムも実行結果は次のようになります。</p>
+      <pre><code>どうのつるぎ
+やくそう
+どくけしそう
+ぬののふく</code></pre>
+      <p>「Pythonのリスト」は「C言語の配列」よりも<strong>非常に柔軟で強力な機能</strong>を提供してくれます（C++言語におけるVectorに近い機能を提供してくれます）。その結果、<span
+      class="masked">C言語の配列では「できないこと」「極めて面倒なこと」を、Pythonのリストでは比較的簡単に行なうこと
+      (短いコードで記述すること) ができます</span>。</p>
+      <p>ここからリストの使い方や、リストが持つ機能について詳しく学んでいきます。</p>
+      <h1 data-number="6" id="リスト初期化と要素の参照"><span
+      class="header-section-number">6</span>
+      リスト初期化と要素の参照</h1>
+      <p>リストでは、<code>list.py</code>
+      の例のように文字列のほか、<strong>数値</strong> や
+      <strong>各種オブジェクト</strong> を格納することができます
+      (「オブジェクト」については、この先で学んでいくので現時点では気にしないでください)。</p>
+      <p>リストの<strong>初期化</strong> (リテラルを使った初期値の設定)
+      は次のように記述します。リストを構成する「<strong>要素</strong>」の<strong>参照</strong>
+      (＝読み取り) は C言語と同じように <code>[]</code> の
+      <strong>角括弧</strong> / <strong>大括弧</strong>
+      を使用します。</p>
+      <div class="sourceCode" id="cb14"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb14-2"><a href="#cb14-2"></a>a <span class="op">=</span> [<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">40</span>] <span class="co"># 初期化(数値)</span></span>
+<span id="cb14-3"><a href="#cb14-3"></a>b <span class="op">=</span> a[<span class="dv">0</span>] <span class="op">*</span> a[<span class="dv">1</span>]   <span class="co"># a[0]で0番目の要素(=10)、a[1]で1番目の要素(=20)を参照</span></span>
+<span id="cb14-4"><a href="#cb14-4"></a><span class="bu">print</span>(<span class="ss">f&#39;b = </span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># b = 200</span></span></code></pre></div>
+      <div class="sourceCode" id="cb15" data-caption="dq3-items.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb15-2"><a href="#cb15-2"></a>item_names <span class="op">=</span> [<span class="st">&#39;どうのつるぎ&#39;</span>,<span class="st">&#39;やくそう&#39;</span>,<span class="st">&#39;どくけしそう&#39;</span>,<span class="st">&#39;ぬののふく&#39;</span>] <span class="co"># 初期化(文字列)</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a>item_prices <span class="op">=</span> [<span class="dv">100</span>,<span class="dv">8</span>,<span class="dv">10</span>,<span class="dv">10</span>] <span class="co"># 初期化(数値)</span></span>
+<span id="cb15-4"><a href="#cb15-4"></a>i<span class="op">=</span><span class="dv">1</span></span>
+<span id="cb15-5"><a href="#cb15-5"></a><span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>item_names[i]<span class="sc">}</span><span class="ss">は</span><span class="sc">{</span>item_prices[i]<span class="sc">}</span><span class="ss">Gで売られている。&#39;</span>)</span></code></pre></div>
+      <p>角括弧のなかに与える数値を
+      <strong><em>インデックス</em></strong> や
+      <strong><em>添え字</em></strong> と言います。<strong>インデックス
+      (添え字)</strong>は <strong>ゼロオリジン</strong> になります(
+      リストの先頭は <code>0</code> となる点に注意してください )。</p>
+      <div class="note type-caution">
+      <p><strong>注意:
+      変数に「list」という名前を付けないこと</strong></p>
+      <p>Pythonにおいて <code>list</code> は、<code>if</code> や
+      <code>for</code> と同様に
+      <strong>変数名などに使用してはいけない予約語</strong>
+      になっています。<code>list</code>
+      という変数を作成しても、即座にエラーになるわけではありませんが、以降のプログラムのどこかで問題を引き起こす可能性があります。</p>
+      </div>
+      <h2 data-number="6.1" id="演習①"><span
+      class="header-section-number">6.1</span> 演習①</h2>
+      <p>上記の <code>dq3-items.py</code>
+      プログラムの<strong>第04行目以降を修正して</strong>、実行結果として次のような文字列が得られるようにせよ。なお、売価は価格の3/4で設定されているものとする
+      (小数以下は切り捨て) 。</p>
+      <pre><code>「どうのつるぎ」は、100G で購入し、75G で売却できる。
+「やくそう」は、8G で購入し、6G で売却できる。
+「どくけしそう」は、10G で購入し、7G で売却できる。
+「ぬののふく」は、10G で購入し、7G で売却できる。</code></pre>
+      <p><strong>ヒント</strong></p>
+      <ul>
+      <li><code>for</code>文を利用してください。</li>
+      <li>「<strong>小数以下は切り捨て</strong>」とは「7.2」を「7」、「7.9」も「7」にするような処理を指します。</li>
+      <li>f文字列の書式指定子は、小数の「切り捨て」には<strong>対応していません</strong>。数値の切り捨て処理の方法は「<a
+      href="https://www.google.com/search?q=Python+数値+切り捨て">Python
+      数値 切り捨て</a>」などで検索してください。</li>
+      </ul>
+      <h2 data-number="6.2" id="文字列を使ったリストの初期化"><span
+      class="header-section-number">6.2</span>
+      文字列を使ったリストの初期化</h2>
+      <p>実用的なプログラムでは、リストを構成する要素が <span
+      class="masked">1つの文字列として与えられること
+      (あるいはテキストファイルから入力されること)
+      </span>があります。</p>
+      <p>例えば、次のように「<strong>カンマ区切りの文字列</strong>」でリストとして扱いたい情情が与えられることがあります。</p>
+      <div class="sourceCode" id="cb17"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb17-2"><a href="#cb17-2"></a>item_names_str<span class="op">=</span><span class="st">&#39;どうのつるぎ,やくそう,どくけしそう,ぬののふく&#39;</span> <span class="co"># カンマ区切り文字列</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a><span class="bu">print</span>(item_names_str)</span></code></pre></div>
+      <p>このようなとき、手作業で
+      <code>['どうのつるぎ','やくそう','どくけしそう','ぬののふく']</code>
+      のように書き換えるべきではありません。</p>
+      <p>次のように、文字列の <code>split</code> メソッドを利用して
+      <span class="masked">任意文字で文字列を分解してリスト化</span>
+      することができます。</p>
+      <div class="sourceCode" id="cb18"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb18-2"><a href="#cb18-2"></a>item_names_str<span class="op">=</span><span class="st">&#39;どうのつるぎ,やくそう,どくけしそう,ぬののふく&#39;</span> <span class="co"># 文字列</span></span>
+<span id="cb18-3"><a href="#cb18-3"></a></span>
+<span id="cb18-4"><a href="#cb18-4"></a><span class="co"># item_names_str -&gt; item_names</span></span>
+<span id="cb18-5"><a href="#cb18-5"></a>item_names <span class="op">=</span> item_names_str.split(<span class="st">&#39;,&#39;</span>) <span class="co"># ★文字列をカンマで分解してリスト化</span></span>
+<span id="cb18-6"><a href="#cb18-6"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(item_names)):</span>
+<span id="cb18-7"><a href="#cb18-7"></a>  <span class="bu">print</span>(item_names[i])</span></code></pre></div>
+      <p>また、分解した文字列をさらに <span
+      class="masked">数値に変換したい</span> という場合もあります。</p>
+      <p>このような場合は、次のように組み込み関数の <code>map</code> と
+      <code>float</code> を利用します。</p>
+      <div class="sourceCode" id="cb19"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb19-2"><a href="#cb19-2"></a>item_p_str<span class="op">=</span><span class="st">&#39;0.65 0.30 0.05&#39;</span> <span class="co"># スペース(SP)区切りの文字列</span></span>
+<span id="cb19-3"><a href="#cb19-3"></a>item_p1 <span class="op">=</span> item_p_str.split(<span class="st">&#39; &#39;</span>) <span class="co"># 文字列をSPで分解してリスト化</span></span>
+<span id="cb19-4"><a href="#cb19-4"></a></span>
+<span id="cb19-5"><a href="#cb19-5"></a><span class="co"># 現状で item_p1 の要素は【文字列】 ※計算処理に利用できない</span></span>
+<span id="cb19-6"><a href="#cb19-6"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(item_p1)):</span>
+<span id="cb19-7"><a href="#cb19-7"></a>  <span class="bu">print</span>(item_p1[i]<span class="op">*</span><span class="dv">100</span>)</span>
+<span id="cb19-8"><a href="#cb19-8"></a></span>
+<span id="cb19-9"><a href="#cb19-9"></a><span class="bu">print</span>(<span class="st">&#39;---&#39;</span>)</span>
+<span id="cb19-10"><a href="#cb19-10"></a></span>
+<span id="cb19-11"><a href="#cb19-11"></a><span class="co"># item_p1 の要素を【数値】に変換</span></span>
+<span id="cb19-12"><a href="#cb19-12"></a>item_p2 <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="bu">float</span>,item_p1)) <span class="co"># ★ここがポイント!</span></span>
+<span id="cb19-13"><a href="#cb19-13"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(item_p2)):</span>
+<span id="cb19-14"><a href="#cb19-14"></a>  <span class="bu">print</span>(item_p2[i]<span class="op">*</span><span class="dv">100</span>)</span></code></pre></div>
+      <p>このプログラムで使われている <code>map</code>
+      については、以降の授業で
+      詳しく解説します。現状では第12行目のように処理を書くことで「<strong>リストの要素を文字列から数値
+      (実数値 float) に変換できる</strong>」と知っておいてください。</p>
+      <p>なお、要素を<strong>文字列から整数値 (int)
+      </strong>に変換したい場合は、<code>map</code> の第1引数に
+      <code>int</code> を与えてください。</p>
+      <h2 data-number="6.3" id="演習②"><span
+      class="header-section-number">6.3</span> 演習②</h2>
+      <p>次のようにカンマ区切りで「アイテム名称」と、そのアイテムに関する「数値
+      (パラメータ)」が与えられている。<code>item_names_str</code> から
+      <code>item_names</code> というリスト
+      (要素は<strong>文字列</strong>)
+      を作成せよ。また、<code>item_p_str</code> から <code>item_p</code>
+      というリスト (要素は<strong>数値</strong>) を作成せよ。</p>
+      <div class="sourceCode" id="cb20"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb20-2"><a href="#cb20-2"></a>item_names_str <span class="op">=</span> <span class="st">&#39;ひのきのぼう,こんぼう,どうのつるぎ,せいなるナイフ,くさりがま,とげのむち,まどうしのつえ,てつのやり,どくばり,てつのつめ,はがねのつるぎ,てつのオノ,あまぐものつえ,いかづちのつえ,さざなみのつえ,さばきのつえ,おおばさみ,ゆうわくのけん,りりょくのつえ,おおかなづち,はやぶさのけん,ゾンビキラー,ドラゴンキラー,くさなぎのけん,ガイアのつるぎ,ふぶきのつるぎ,いなづまのけん,まじんのオノ,らいじんのけん,もろはのつるぎ,はかいのつるぎ,おうごんのつめ,おうじゃのけん&#39;</span></span>
+<span id="cb20-3"><a href="#cb20-3"></a>item_p_str <span class="op">=</span> <span class="st">&#39;50,50,50,40,40,35,30,30,25,20,20,20,10,10,10,10,10,10,10,10,5,5,5,4,3,3,2,2,2,2,2,1,1&#39;</span></span>
+<span id="cb20-4"><a href="#cb20-4"></a></span>
+<span id="cb20-5"><a href="#cb20-5"></a>item_names <span class="op">=</span> <span class="dv">0</span> <span class="co"># 書き換える</span></span>
+<span id="cb20-6"><a href="#cb20-6"></a>item_p     <span class="op">=</span> <span class="dv">0</span> <span class="co"># 書き換える（複数行でも可）</span></span>
+<span id="cb20-7"><a href="#cb20-7"></a></span>
+<span id="cb20-8"><a href="#cb20-8"></a><span class="bu">print</span>(item_names)</span>
+<span id="cb20-9"><a href="#cb20-9"></a><span class="bu">print</span>(item_p)</span></code></pre></div>
+      <p>正しく処理ができれば、実行結果として次のような値を得るはずです。</p>
+      <pre><code>[&#39;ひのきのぼう&#39;, &#39;こんぼう&#39;, &#39;どうのつるぎ&#39;, …略…, &#39;おうじゃのけん&#39;]
+[50, 50, 50, …略…, 1]</code></pre>
+      <p>なお、<code>item_p</code> の出力が</p>
+      <pre><code>[&#39;50&#39;, &#39;50&#39;, &#39;50&#39;, …略…, &#39;1&#39;] # リストの要素が【文字列】
+[50., 50.0, 50.0, …略…, 1.0]  # リストの要素が【実数値】</code></pre>
+      <p>のようになっている場合、要素を正しく「整数値」に変換できていません。</p>
+      <h1 data-number="7" id="リストのインデックス範囲"><span
+      class="header-section-number">7</span>
+      リストのインデックス範囲</h1>
+      <p>リストは <strong><em>ゼロオリジン</em></strong>
+      であり、角括弧内には
+      <strong>整数値でインデックスを与える必要</strong> があります。</p>
+      <div class="sourceCode" id="cb23"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb23-2"><a href="#cb23-2"></a>item_names <span class="op">=</span> [<span class="st">&#39;どうのつるぎ&#39;</span>,<span class="st">&#39;やくそう&#39;</span>,<span class="st">&#39;どくけしそう&#39;</span>,<span class="st">&#39;ぬののふく&#39;</span>]</span>
+<span id="cb23-3"><a href="#cb23-3"></a><span class="bu">print</span>(item_names[<span class="dv">0</span>])</span></code></pre></div>
+      <p>上記のプログラムの第03行目を書き換えて、</p>
+      <ul>
+      <li>リストに対して「<strong>範囲外のインデックス</strong>」を与えた場合、どのようになるか確認せよ
+      (エラーとなる場合は、何というエラーになるか? まで確認すること)
+      。例えば、要素数を超えた <code>item_names[9]</code>
+      を指定した場合など。</li>
+      <li>リストに対して「<strong>小数値のインデックス</strong>」を与えた場合、どのようになるか確認せよ。
+      <ul>
+      <li><code>item_names[0.5]</code></li>
+      <li><code>item_names[1.00]</code></li>
+      </ul></li>
+      <li>リストに対して「<strong>負数のインデックス</strong>」を与えた場合、どのようになるか確認せよ。
+      <ul>
+      <li><code>item_names[-1]</code></li>
+      <li><code>item_names[-2]</code></li>
+      </ul></li>
+      </ul>
+      <h1 data-number="8" id="リストの要素数"><span
+      class="header-section-number">8</span> リストの要素数</h1>
+      <p>リストが内部に「いくつの要素を持っているか」は、次のように
+      <strong>組み込み関数</strong>の <code>len</code>
+      を使って取得することができます。<code>len</code> は <span
+      class="masked">Length (長さ・レングス)
+      </span>の意味を意味します。</p>
+      <p>次のプログラムを実行して結果を確認してください。</p>
+      <div class="sourceCode" id="cb24"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb24-2"><a href="#cb24-2"></a>item_names <span class="op">=</span> [<span class="st">&#39;どうのつるぎ&#39;</span>,<span class="st">&#39;やくそう&#39;</span>,<span class="st">&#39;どくけしそう&#39;</span>,<span class="st">&#39;ぬののふく&#39;</span>]</span>
+<span id="cb24-3"><a href="#cb24-3"></a><span class="bu">print</span>(<span class="ss">f&#39;現在、</span><span class="sc">{</span><span class="bu">len</span>(item_names)<span class="sc">}</span><span class="ss">個のアイテムを所持しています。&#39;</span>)</span></code></pre></div>
+      <p>これを利用すれば、<code>for</code>
+      は次のように<strong>スマートに記述</strong>することができます。</p>
+      <div class="sourceCode" id="cb25"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb25-2"><a href="#cb25-2"></a>item_names <span class="op">=</span> [<span class="st">&#39;どうのつるぎ&#39;</span>,<span class="st">&#39;やくそう&#39;</span>,<span class="st">&#39;どくけしそう&#39;</span>,<span class="st">&#39;ぬののふく&#39;</span>]</span>
+<span id="cb25-3"><a href="#cb25-3"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(item_names)): <span class="co"># ★rangeの引数に注目</span></span>
+<span id="cb25-4"><a href="#cb25-4"></a>  <span class="bu">print</span>(item_names[i])</span></code></pre></div>
+      <p><code>len(item_names)</code>
+      は整数値を返すので、<code>range</code>
+      以外にも、次のように計算式などに利用することができます。実際に実行して結果を確認してみてください。</p>
+      <div class="sourceCode" id="cb26"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb26-2"><a href="#cb26-2"></a>max_item_num <span class="op">=</span> <span class="dv">99</span></span>
+<span id="cb26-3"><a href="#cb26-3"></a>items <span class="op">=</span> [<span class="st">&#39;どうのつるぎ&#39;</span>,<span class="st">&#39;やくそう&#39;</span>,<span class="st">&#39;どくけしそう&#39;</span>,<span class="st">&#39;ぬののふく&#39;</span>]</span>
+<span id="cb26-4"><a href="#cb26-4"></a>x <span class="op">=</span> max_item_num <span class="op">-</span> <span class="bu">len</span>(items) <span class="co"># ★lenを計算式に組み込む</span></span>
+<span id="cb26-5"><a href="#cb26-5"></a><span class="bu">print</span>(<span class="ss">f&#39;あと </span><span class="sc">{</span>x<span class="sc">}</span><span class="ss">個 のアイテムを持つことができます。&#39;</span>)</span></code></pre></div>
+      <h2 data-number="8.1" id="リストの初期化2"><span
+      class="header-section-number">8.1</span> リストの初期化2</h2>
+      <p><code>[0,0,0,0,0]</code> や <code>['乙','乙','乙']</code>
+      のように<strong>全て同じ値を持ったリスト</strong>は、次のように初期化できます。</p>
+      <div class="sourceCode" id="cb27"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb27-2"><a href="#cb27-2"></a>a1 <span class="op">=</span> [<span class="dv">0</span>] <span class="op">*</span> <span class="dv">5</span></span>
+<span id="cb27-3"><a href="#cb27-3"></a>a2 <span class="op">=</span> [<span class="st">&#39;乙&#39;</span>] <span class="op">*</span> <span class="dv">3</span></span>
+<span id="cb27-4"><a href="#cb27-4"></a></span>
+<span id="cb27-5"><a href="#cb27-5"></a><span class="bu">print</span>(a1) <span class="co"># -&gt; [0, 0, 0, 0, 0]</span></span>
+<span id="cb27-6"><a href="#cb27-6"></a><span class="bu">print</span>(a2) <span class="co"># -&gt; [&#39;乙&#39;, &#39;乙&#39;, &#39;乙&#39;]</span></span></code></pre></div>
+      <h2 data-number="8.2" id="演習③"><span
+      class="header-section-number">8.2</span> 演習③</h2>
+      <p><code>item_names</code> と同じ長さで、その要素がすべて
+      <code>0</code>(整数値) となるリスト <code>item_counts</code>
+      を作成せよ。</p>
+      <div class="sourceCode" id="cb28"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb28-2"><a href="#cb28-2"></a>item_names_str <span class="op">=</span> <span class="st">&#39;ひのきのぼう,こんぼう,どうのつるぎ,せいなるナイフ,くさりがま,とげのむち,まどうしのつえ,てつのやり,どくばり,てつのつめ,はがねのつるぎ,てつのオノ,あまぐものつえ,いかづちのつえ,さざなみのつえ,さばきのつえ,おおばさみ,ゆうわくのけん,りりょくのつえ,おおかなづち,はやぶさのけん,ゾンビキラー,ドラゴンキラー,くさなぎのけん,ガイアのつるぎ,ふぶきのつるぎ,いなづまのけん,まじんのオノ,らいじんのけん,もろはのつるぎ,はかいのつるぎ,おうごんのつめ,おうじゃのけん&#39;</span></span>
+<span id="cb28-3"><a href="#cb28-3"></a>item_names <span class="op">=</span> item_names_str.split(<span class="st">&#39;,&#39;</span>)</span>
+<span id="cb28-4"><a href="#cb28-4"></a>item_counts <span class="op">=</span> <span class="dv">0</span> <span class="co"># ここを書き換える。33という数値の直接記述は禁止。lenを利用すること。</span></span>
+<span id="cb28-5"><a href="#cb28-5"></a></span>
+<span id="cb28-6"><a href="#cb28-6"></a><span class="bu">print</span>(<span class="ss">f&#39;item_namesの長さ = </span><span class="sc">{</span><span class="bu">len</span>(item_names)<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+<span id="cb28-7"><a href="#cb28-7"></a><span class="bu">print</span>(<span class="ss">f&#39;item_countsの長さ= </span><span class="sc">{</span><span class="bu">len</span>(item_counts)<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+<span id="cb28-8"><a href="#cb28-8"></a><span class="bu">print</span>(item_counts)</span></code></pre></div>
+      <h1 data-number="9"
+      id="リストと組み合わせ可能な組み込み関数"><span
+      class="header-section-number">9</span>
+      リストと組み合わせ可能な組み込み関数</h1>
+      <p><code>len</code> のほかにも、様々な <a
+      href="https://docs.python.org/ja/3/library/functions.html">組み込み関数</a>
+      とリストを組み合わせることができます。</p>
+      <div class="sourceCode" id="cb29"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb29-2"><a href="#cb29-2"></a>a <span class="op">=</span> [<span class="dv">60</span>,<span class="dv">20</span>,<span class="dv">40</span>,<span class="op">-</span><span class="dv">30</span>,<span class="dv">90</span>]</span>
+<span id="cb29-3"><a href="#cb29-3"></a><span class="bu">print</span>(<span class="ss">f&#39;sum(a)= </span><span class="sc">{</span><span class="bu">sum</span>(a)<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+<span id="cb29-4"><a href="#cb29-4"></a><span class="bu">print</span>(<span class="ss">f&#39;max(a)= </span><span class="sc">{</span><span class="bu">max</span>(a)<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+<span id="cb29-5"><a href="#cb29-5"></a><span class="bu">print</span>(<span class="ss">f&#39;min(a)= </span><span class="sc">{</span><span class="bu">min</span>(a)<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+      <p>上記のプログラムについて、リストの要素が<strong>文字列</strong>であった場合にどのようになるか確認せよ。例えば
+      <code>a=['どうのつるぎ','やくそう','どくけしそう','ぬののふく']</code>
+      である場合など。</p>
+      <p><code>sum</code>、<code>max</code>、<code>min</code> 以外の <a
+      href="https://docs.python.org/ja/3/library/functions.html">組み込み関数</a>
+      もリストを引数にとることができます。</p>
+      <h1 data-number="10" id="リストとprint関数"><span
+      class="header-section-number">10</span> リストとprint関数</h1>
+      <p><code>print</code>関数の引数に、直接、リストを与えることができます。次のプログラムを実行して、どのような結果が得られるかを確認してください。</p>
+      <div class="sourceCode" id="cb30"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb30-2"><a href="#cb30-2"></a>items <span class="op">=</span> [<span class="st">&#39;どうのつるぎ&#39;</span>,<span class="st">&#39;やくそう&#39;</span>,<span class="st">&#39;どくけしそう&#39;</span>,<span class="st">&#39;ぬののふく&#39;</span>]</span>
+<span id="cb30-3"><a href="#cb30-3"></a><span class="bu">print</span>(items) <span class="co"># リストをそのまま引数にする。</span></span></code></pre></div>
+      <div class="note type-senior">
+      <p><strong>中級者向け: リストのアンパック</strong></p>
+      <p>リストを関数の引数として与える場合、先頭に<strong>アスタリスク</strong>をつけて
+      <strong>アンパック (展開)</strong>
+      という処理を施すことができます。これにより、次のようなことができます。</p>
+      <div class="sourceCode" id="cb31"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb31-2"><a href="#cb31-2"></a>items <span class="op">=</span> [<span class="st">&#39;どうのつるぎ&#39;</span>,<span class="st">&#39;やくそう&#39;</span>,<span class="st">&#39;どくけしそう&#39;</span>,<span class="st">&#39;ぬののふく&#39;</span>]</span>
+<span id="cb31-3"><a href="#cb31-3"></a><span class="bu">print</span>(<span class="op">*</span>items, sep<span class="op">=</span><span class="st">&#39;</span><span class="ch">\n</span><span class="st">&#39;</span>) <span class="co"># itemsの頭に「*」を付けた。また sep 引数を設定</span></span></code></pre></div>
+      <p>このとき、第03行目のは次のような文と同じ意味を持ちます。</p>
+      <div class="sourceCode" id="cb32"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a><span class="bu">print</span>(<span class="st">&#39;どうのつるぎ&#39;</span>,<span class="st">&#39;やくそう&#39;</span>,<span class="st">&#39;どくけしそう&#39;</span>,<span class="st">&#39;ぬののふく&#39;</span>, sep<span class="op">=</span><span class="st">&#39;</span><span class="ch">\n</span><span class="st">&#39;</span>)</span></code></pre></div>
+      <p>つまり、リストをアンパックすると「<strong>リスト内の要素を個別の引数として関数に与えること</strong>」が可能になります。</p>
+      </div>
+      <h1 data-number="11" id="リストにおける要素の書き換えと追加"><span
+      class="header-section-number">11</span>
+      リストにおける要素の書き換えと追加</h1>
+      <p>リストに含まれる要素は、次のようにインデックスで指定して書き換えることができます。実際に実行して確認してみてください。</p>
+      <div class="sourceCode" id="cb33"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb33-2"><a href="#cb33-2"></a>items <span class="op">=</span> [<span class="st">&#39;どうのつるぎ&#39;</span>,<span class="st">&#39;やくそう&#39;</span>,<span class="st">&#39;どくけしそう&#39;</span>,<span class="st">&#39;ぬののふく&#39;</span>]</span>
+<span id="cb33-3"><a href="#cb33-3"></a>items[<span class="dv">0</span>] <span class="op">=</span> <span class="st">&#39;はがねのつるぎ&#39;</span> </span>
+<span id="cb33-4"><a href="#cb33-4"></a>items[<span class="dv">2</span>] <span class="op">=</span> <span class="st">&#39;まんげつそう&#39;</span> <span class="co"># マヒの回復</span></span>
+<span id="cb33-5"><a href="#cb33-5"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(items)):</span>
+<span id="cb33-6"><a href="#cb33-6"></a>  <span class="bu">print</span>(items[i])</span></code></pre></div>
+      <p>また、(要素の変更だけではなく)
+      <strong>要素の追加</strong>も可能で、それにはリストの
+      <code>append</code> メソッドを使用します。</p>
+      <div class="sourceCode" id="cb34"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb34-2"><a href="#cb34-2"></a>items <span class="op">=</span> [<span class="st">&#39;どうのつるぎ&#39;</span>,<span class="st">&#39;やくそう&#39;</span>,<span class="st">&#39;どくけしそう&#39;</span>,<span class="st">&#39;ぬののふく&#39;</span>]</span>
+<span id="cb34-3"><a href="#cb34-3"></a>items.append(<span class="st">&#39;かわのたて&#39;</span>) <span class="co"># 末尾に追加</span></span>
+<span id="cb34-4"><a href="#cb34-4"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(items)):</span>
+<span id="cb34-5"><a href="#cb34-5"></a>  <span class="bu">print</span>(items[i])</span>
+<span id="cb34-6"><a href="#cb34-6"></a><span class="bu">print</span>(<span class="ss">f&#39;※ 現在、所持しているアイテムは以上の </span><span class="sc">{</span><span class="bu">len</span>(items)<span class="sc">}</span><span class="ss">個 です。&#39;</span>)</span></code></pre></div>
+      <p>このように <span
+      class="masked">リストの要素数が変化する状況では
+      <code>len(items)</code> </span>
+      は非常に便利です。リストの要素数は、変数を使って保持するのではなく、常に
+      <code>len</code> を使って参照するようにしてください。</p>
+      <p>また、リストの<strong>末尾以外に要素を追加したい場合</strong>は、リストの
+      <code>intsert</code> メソッドを使用します。</p>
+      <div class="sourceCode" id="cb35"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb35-2"><a href="#cb35-2"></a>items <span class="op">=</span> [<span class="st">&#39;どうのつるぎ&#39;</span>,<span class="st">&#39;やくそう&#39;</span>,<span class="st">&#39;どくけしそう&#39;</span>,<span class="st">&#39;ぬののふく&#39;</span>]</span>
+<span id="cb35-3"><a href="#cb35-3"></a>items.insert(<span class="dv">0</span>,<span class="st">&#39;かわのたて&#39;</span>) <span class="co"># items[0]に「かわのたて」を挿入</span></span>
+<span id="cb35-4"><a href="#cb35-4"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(items)):</span>
+<span id="cb35-5"><a href="#cb35-5"></a>  <span class="bu">print</span>(items[i])</span></code></pre></div>
+      <p>無論、要素を削除するメソッドも存在します
+      (検索すればすぐに見つけることができます)。</p>
+      <div class="note type-tips">
+      <p><strong>メソッドとは何か</strong></p>
+      <p>オブジェクトが所有する関数を <strong>メソッド</strong>
+      といいます。「オブジェクトとはなにか」は、まだ扱っていませんが、リストはオブジェクトです。そして、メソッドとは
+      <strong>オブジェクトが持っている関数</strong>
+      を指します。オブジェクトが持っているメソッドは
+      <code>.</code>(ドット) を使ってアクセスすることができます。</p>
+      <p>GoogleColabでは、プログラムを記述する際、メソッドの
+      <strong>入力補完</strong> が受けられます。例えば、Google
+      Colab.に次のプログラムを貼り付け、それに続けて03行目に
+      <code>items.</code>
+      まで入力してみてください。2秒ほどするとメソッドの一覧が表示されると思います。</p>
+      <div class="sourceCode" id="cb36"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb36-2"><a href="#cb36-2"></a>items <span class="op">=</span> [<span class="st">&#39;どうのつるぎ&#39;</span>,<span class="st">&#39;やくそう&#39;</span>,<span class="st">&#39;どくけしそう&#39;</span>,<span class="st">&#39;ぬののふく&#39;</span>]</span></code></pre></div>
+      <p>表示された候補は、上下キーで選択して、Tabキーで決定します。</p>
+      </div>
+      <h2 data-number="11.1" id="要素を持たない空のリスト"><span
+      class="header-section-number">11.1</span>
+      要素を持たない空のリスト</h2>
+      <p>プログラムの実行中に <code>append</code> や <code>insert</code>
+      を使って、逐次、要素を追加していく場合、<strong>最初は要素を持たないリストで初期化したい場合</strong>
+      があります。これは、次のように記述できます。</p>
+      <div class="sourceCode" id="cb37"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb37-2"><a href="#cb37-2"></a>items <span class="op">=</span> [] <span class="co"># 要素を持たない空のリスト</span></span>
+<span id="cb37-3"><a href="#cb37-3"></a>items.append(<span class="st">&#39;どうのつるぎ&#39;</span>)</span>
+<span id="cb37-4"><a href="#cb37-4"></a>items.append(<span class="st">&#39;たびびとのふく&#39;</span>)</span>
+<span id="cb37-5"><a href="#cb37-5"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(items)):</span>
+<span id="cb37-6"><a href="#cb37-6"></a>  <span class="bu">print</span>(items[i])```</span></code></pre></div>
+      <p>また、第02行目は <code>items = list()</code>
+      のように記述することもできます。</p>
+      <h2 data-number="11.2" id="演習④"><span
+      class="header-section-number">11.2</span> 演習④</h2>
+      <p>次のプログラムの04行目以降を書き換えて、期待する出力が得られるようにせよ。</p>
+      <div class="sourceCode" id="cb38"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb38-2"><a href="#cb38-2"></a>items <span class="op">=</span> [<span class="st">&#39;どうのつるぎ&#39;</span>,<span class="st">&#39;やくそう&#39;</span>,<span class="st">&#39;どくけしそう&#39;</span>,<span class="st">&#39;ぬののふく&#39;</span>]</span>
+<span id="cb38-3"><a href="#cb38-3"></a><span class="co"># ここから下を書き換える (リストに要素を追加する処理を追加する)</span></span>
+<span id="cb38-4"><a href="#cb38-4"></a></span>
+<span id="cb38-5"><a href="#cb38-5"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(items)):</span>
+<span id="cb38-6"><a href="#cb38-6"></a>  <span class="bu">print</span>(items[i])</span></code></pre></div>
+      <p>期待する出力 (アイテムの並び順も同じにすること)</p>
+      <pre><code>ひかりのたて
+おうじゃのつるぎ
+どうのつるぎ
+やくそう
+てっかめん
+どくけしそう
+ぬののふく</code></pre>
+      <p>なお、ここでは、04行目に
+      <code>items=['ひかりのたて','おうじゃのつるぎ','どうのつるぎ','やくそう','てっかめん','どくけしそう','ぬののふく']</code>
+      のような記述をすることは意図していない。<code>append</code> や
+      <code>insert</code> を利用して演習に取り組むこと。</p>
+      <h1 data-number="12" id="要素の検索"><span
+      class="header-section-number">12</span> 要素の検索</h1>
+      <p>リストのなかに <strong>指定の要素が存在するか</strong>
+      を調べたい場合には <code>in</code> を使った if文を構成します。</p>
+      <div class="sourceCode" id="cb40"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb40-2"><a href="#cb40-2"></a>items <span class="op">=</span> [<span class="st">&#39;どうのつるぎ&#39;</span>,<span class="st">&#39;やくそう&#39;</span>,<span class="st">&#39;どくけしそう&#39;</span>,<span class="st">&#39;ぬののふく&#39;</span>]</span>
+<span id="cb40-3"><a href="#cb40-3"></a>target <span class="op">=</span> <span class="st">&#39;やくそう&#39;</span></span>
+<span id="cb40-4"><a href="#cb40-4"></a><span class="cf">if</span> target <span class="kw">in</span> items : <span class="co"># in を使った条件分岐</span></span>
+<span id="cb40-5"><a href="#cb40-5"></a>  <span class="bu">print</span>(<span class="ss">f&#39;勇者ヨシヒコは </span><span class="sc">{</span>target<span class="sc">}</span><span class="ss"> を使用した&#39;</span>)</span>
+<span id="cb40-6"><a href="#cb40-6"></a><span class="cf">else</span> :</span>
+<span id="cb40-7"><a href="#cb40-7"></a>  <span class="bu">print</span>(<span class="ss">f&#39;勇者ヨシヒコは </span><span class="sc">{</span>target<span class="sc">}</span><span class="ss"> を持っていない&#39;</span>)</span></code></pre></div>
+      <p>上記の第03行目を <code>target = 'キメラのつばさ'</code>
+      に変更して動作を確認してください。</p>
+      <h2 data-number="12.1"
+      id="要素が含まれないことを判定するには"><span
+      class="header-section-number">12.1</span>
+      要素が含まれないことを判定するには</h2>
+      <p><code>items</code> というリストのなかに <code>target</code>
+      という要素が存在するとき <code>target in items</code>
+      は「真」となります。では、<strong>存在しないとき</strong>
+      に「真」となる条件式はどのように書けるのか、自分自身で調べてみてください
+      (ChatGPTなどを利用する方法もあります)。</p>
+      <h2 data-number="12.2" id="当該要素のインデックスの検索"><span
+      class="header-section-number">12.2</span>
+      当該要素のインデックスの検索</h2>
+      <p>指定の要素が「<strong>リストの何番目に存在するか</strong>」を調べたい場合は、リストの
+      <code>index</code> メソッドを使用します。なお、変数名の
+      <code>idx</code> は、indexの略表記です。</p>
+      <p>次のプログラムを実行して、その結果を確認してください
+      (単に実行するだけではなく <code>target</code>
+      を書き換えて、それに応じて動作がどのように変化するか、予測して、確認してください。)
+      。</p>
+      <div class="sourceCode" id="cb41"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb41-2"><a href="#cb41-2"></a>items <span class="op">=</span> [<span class="st">&#39;どうのつるぎ&#39;</span>,<span class="st">&#39;やくそう&#39;</span>,<span class="st">&#39;どくけしそう&#39;</span>,<span class="st">&#39;ぬののふく&#39;</span>]</span>
+<span id="cb41-3"><a href="#cb41-3"></a>target <span class="op">=</span> <span class="st">&#39;やくそう&#39;</span></span>
+<span id="cb41-4"><a href="#cb41-4"></a><span class="cf">if</span> target <span class="kw">in</span> items :</span>
+<span id="cb41-5"><a href="#cb41-5"></a>  idx <span class="op">=</span> items.index(target) <span class="co"># ★ 要素を検索して、発見したインデックスを返す</span></span>
+<span id="cb41-6"><a href="#cb41-6"></a>  <span class="bu">print</span>(<span class="ss">f&#39;勇者ヨシヒコの </span><span class="sc">{</span>idx<span class="sc">}</span><span class="ss">番目 のポケットに </span><span class="sc">{</span>target<span class="sc">}</span><span class="ss"> が入っている&#39;</span>)</span>
+<span id="cb41-7"><a href="#cb41-7"></a><span class="cf">else</span> :</span>
+<span id="cb41-8"><a href="#cb41-8"></a>  <span class="bu">print</span>(<span class="ss">f&#39;勇者ヨシヒコは </span><span class="sc">{</span>target<span class="sc">}</span><span class="ss"> を持っていない&#39;</span>)</span></code></pre></div>
+      <p>以下のプログラムを利用し、次のパターンにおいて変数
+      <code>idx</code> にどのような値が格納されるか
+      (あるいは実行時エラーが生じるのか) を確認せよ。</p>
+      <ul>
+      <li><code>items</code> に存在しないものを <code>target</code>
+      に指定した場合</li>
+      <li><code>items</code> のなかに <code>target</code>
+      と同じ要素が2個以上存在する場合</li>
+      </ul>
+      <div class="sourceCode" id="cb42"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb42-2"><a href="#cb42-2"></a>items <span class="op">=</span> [<span class="st">&#39;どうのつるぎ&#39;</span>,<span class="st">&#39;やくそう&#39;</span>,<span class="st">&#39;どくけしそう&#39;</span>,<span class="st">&#39;ぬののふく&#39;</span>]</span>
+<span id="cb42-3"><a href="#cb42-3"></a>target <span class="op">=</span> <span class="st">&#39;やくそう&#39;</span></span>
+<span id="cb42-4"><a href="#cb42-4"></a>idx <span class="op">=</span> items.index(target)</span>
+<span id="cb42-5"><a href="#cb42-5"></a><span class="bu">print</span>(<span class="ss">f&#39;idx=</span><span class="sc">{</span>idx<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+      <h2 data-number="12.3" id="演習⑤"><span
+      class="header-section-number">12.3</span> 演習⑤</h2>
+      <p>いま、所持しているアイテムの名前を <code>item_names</code>
+      というリストで管理し、また、その所持数を <code>item_counts</code>
+      というリストで管理している。</p>
+      <p>つまり、下記プログラムの第02行目と第03行目によって「やくそう」を4個、「どくけしそう」を2個、「まんげつそう」を0個、「せかいじゅのは」を1個所持している状態を管理・表現している。</p>
+      <p>宝箱を開けたときの入手アイテム <code>target</code>
+      により、それらが適切に更新されるようにプログラムを書き換えよ。</p>
+      <ul>
+      <li>はじめに、<code>target</code>
+      が「やくそう」「どくけしそう」「まんげつそう」「せかいじゅのは」のいずれかであるパターンに対応させること。</li>
+      <li>つづいて、<code>target</code> に「きえさりそう」などの
+      <strong>未所持アイテムが与えられるパターン</strong>
+      にも対応させること。</li>
+      <li>おまけ：DQ3では「せかいじゅのは」は最大で1個までしか所持できない制約がある。これを反映させること。</li>
+      </ul>
+      <div class="sourceCode" id="cb43"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb43-2"><a href="#cb43-2"></a>item_names  <span class="op">=</span> [<span class="st">&#39;やくそう&#39;</span>,<span class="st">&#39;どくけしそう&#39;</span>,<span class="st">&#39;まんげつそう&#39;</span>,<span class="st">&#39;せかいじゅのは&#39;</span>]</span>
+<span id="cb43-3"><a href="#cb43-3"></a>item_counts <span class="op">=</span> [<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">1</span>] <span class="co"># アイテムの所持数</span></span>
+<span id="cb43-4"><a href="#cb43-4"></a></span>
+<span id="cb43-5"><a href="#cb43-5"></a>target <span class="op">=</span> <span class="st">&#39;やくそう&#39;</span></span>
+<span id="cb43-6"><a href="#cb43-6"></a><span class="bu">print</span>(<span class="st">&#39;勇者ヨシヒコは宝箱を開けた、&#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb43-7"><a href="#cb43-7"></a><span class="bu">print</span>(<span class="ss">f&#39;なんと「</span><span class="sc">{</span>target<span class="sc">}</span><span class="ss">」を手に入れた。&#39;</span>)</span>
+<span id="cb43-8"><a href="#cb43-8"></a></span>
+<span id="cb43-9"><a href="#cb43-9"></a><span class="co"># ここに target に応じて item_counts などを更新する処理を記載</span></span>
+<span id="cb43-10"><a href="#cb43-10"></a></span>
+<span id="cb43-11"><a href="#cb43-11"></a><span class="bu">print</span>(<span class="st">&#39;</span><span class="ch">\n</span><span class="st">---所持品の確認---&#39;</span>)</span>
+<span id="cb43-12"><a href="#cb43-12"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(item_names)):</span>
+<span id="cb43-13"><a href="#cb43-13"></a>  <span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>item_names[i]<span class="sc">}</span><span class="ss">...</span><span class="sc">{</span>item_counts[i]<span class="sc">}</span><span class="ss">個&#39;</span>)</span></code></pre></div>
+      <h1 data-number="13"
+      id="pythonicなリストとfor文の組み合わせ"><span
+      class="header-section-number">13</span>
+      Pythonicなリストとfor文の組み合わせ</h1>
+      <p>ここまでは、C言語のスタイルに寄せてリストとfor文を組み合わせる方法を紹介してきました。一方で、Pythonicに
+      (Pythonらしいスタイルで)
+      リストの要素を列挙する場合、次のようにコードを記述します。</p>
+      <div class="sourceCode" id="cb44" data-caption="py-style1.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb44-2"><a href="#cb44-2"></a>items <span class="op">=</span> [<span class="st">&#39;どうのつるぎ&#39;</span>,<span class="st">&#39;やくそう&#39;</span>,<span class="st">&#39;どくけしそう&#39;</span>,<span class="st">&#39;ぬののふく&#39;</span>]</span>
+<span id="cb44-3"><a href="#cb44-3"></a><span class="cf">for</span> t <span class="kw">in</span> items: <span class="co"># ★この行に注目</span></span>
+<span id="cb44-4"><a href="#cb44-4"></a>  <span class="bu">print</span>(t)</span></code></pre></div>
+      <div class="sourceCode" id="cb45" data-caption="c-style1.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb45-2"><a href="#cb45-2"></a>items <span class="op">=</span> [<span class="st">&#39;どうのつるぎ&#39;</span>,<span class="st">&#39;やくそう&#39;</span>,<span class="st">&#39;どくけしそう&#39;</span>,<span class="st">&#39;ぬののふく&#39;</span>]</span>
+<span id="cb45-3"><a href="#cb45-3"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(items)): <span class="co"># ★この行に注目</span></span>
+<span id="cb45-4"><a href="#cb45-4"></a>  <span class="bu">print</span>(items[i])</span></code></pre></div>
+      <p>いずれも実行結果は次のようになります。<code>py-style1.py</code>
+      では、itemsの要素数だけループが繰り返され
+      (つまり、このケースでは要素数が4個なので、4回のループとなり)、変数
+      <code>ｔ</code> には1回目のループでは <code>'どうのつるぎ'</code>
+      が格納され、2回目のループでは <code>'やくそう'</code>
+      が格納され・・・という動作になります。</p>
+      <pre><code>どうのつるぎ
+やくそう
+どくけしそう
+ぬののふく</code></pre>
+      <p>また、forブロックのなかで
+      <strong>インデックス番号を参照したい場合</strong> は、次のように
+      <code>enumerate</code> を使って記述します。</p>
+      <div class="sourceCode" id="cb47" data-caption="py-style2.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb47-2"><a href="#cb47-2"></a>items <span class="op">=</span> [<span class="st">&#39;どうのつるぎ&#39;</span>,<span class="st">&#39;やくそう&#39;</span>,<span class="st">&#39;どくけしそう&#39;</span>,<span class="st">&#39;ぬののふく&#39;</span>]</span>
+<span id="cb47-3"><a href="#cb47-3"></a><span class="cf">for</span> i,t <span class="kw">in</span> <span class="bu">enumerate</span>(items): <span class="co"># ★この行に注目</span></span>
+<span id="cb47-4"><a href="#cb47-4"></a>  <span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">. </span><span class="sc">{</span>t<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+      <div class="sourceCode" id="cb48" data-caption="c-style2.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb48-2"><a href="#cb48-2"></a>items <span class="op">=</span> [<span class="st">&#39;どうのつるぎ&#39;</span>,<span class="st">&#39;やくそう&#39;</span>,<span class="st">&#39;どくけしそう&#39;</span>,<span class="st">&#39;ぬののふく&#39;</span>]</span>
+<span id="cb48-3"><a href="#cb48-3"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(items)):</span>
+<span id="cb48-4"><a href="#cb48-4"></a>  <span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">. </span><span class="sc">{</span>items[i]<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+      <p>いずれも実行結果は次のようになります。</p>
+      <pre><code>1. どうのつるぎ
+2. やくそう
+3. どくけしそう
+4. ぬののふく</code></pre>
+      <p><code>py-style2.py</code> では、変数 <code>i</code>
+      にはゼロオリジンの<strong>インデックス番号</strong>、変数
+      <code>c</code> には<strong>要素</strong>が格納されます。</p>
+      <h1 data-number="14" id="ランダム処理とリストの組み合わせ"><span
+      class="header-section-number">14</span>
+      ランダム処理とリストの組み合わせ</h1>
+      <p>第02回の講義で既に登場していますが、randomモジュールの
+      <code>choice</code>
+      関数とリストを組み合わせることで「<strong>リストのなかからランダムに要素を取得する処理</strong>」を簡単に書くことができます。</p>
+      <div class="sourceCode" id="cb50"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb50-2"><a href="#cb50-2"></a><span class="im">import</span> random <span class="im">as</span> r</span>
+<span id="cb50-3"><a href="#cb50-3"></a>items <span class="op">=</span> [<span class="st">&#39;どうのつるぎ&#39;</span>,<span class="st">&#39;やくそう&#39;</span>,<span class="st">&#39;どくけしそう&#39;</span>,<span class="st">&#39;ぬののふく&#39;</span>]</span>
+<span id="cb50-4"><a href="#cb50-4"></a>c <span class="op">=</span> r.choice(items)</span>
+<span id="cb50-5"><a href="#cb50-5"></a><span class="bu">print</span>(<span class="ss">f&#39;勇者ヨシヒコはパルプンテを唱えた。なんと「</span><span class="sc">{</span>c<span class="sc">}</span><span class="ss">」が粉々に砕け散った。&#39;</span>)</span></code></pre></div>
+      <p>また <code>choice</code> 関数ではなく、<code>choices</code>
+      関数を使用すると均等確率による要素のランダム取得ではなく、<strong>重み付きの確率による要素のランダム取得</strong>ができます。次のプログラムを実行して確認してみてください。</p>
+      <div class="sourceCode" id="cb51"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb51-2"><a href="#cb51-2"></a><span class="im">import</span> random <span class="im">as</span> r</span>
+<span id="cb51-3"><a href="#cb51-3"></a>rank <span class="op">=</span> [<span class="st">&#39;LR&#39;</span>,<span class="st">&#39;UR&#39;</span>,<span class="st">&#39;SSR&#39;</span>,<span class="st">&#39;SR&#39;</span>,<span class="st">&#39;R&#39;</span>]</span>
+<span id="cb51-4"><a href="#cb51-4"></a>p <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">50</span>]</span>
+<span id="cb51-5"><a href="#cb51-5"></a>c <span class="op">=</span> r.choices(rank,weights<span class="op">=</span>p)</span>
+<span id="cb51-6"><a href="#cb51-6"></a><span class="bu">print</span>(c)    <span class="co"># choicesの戻値はリストになるので</span></span>
+<span id="cb51-7"><a href="#cb51-7"></a><span class="bu">print</span>(c[<span class="dv">0</span>]) <span class="co"># [0]で先頭要素を取得する</span></span></code></pre></div>
+      <p><code>choices</code> 関数に <code>k=</code>
+      のキーワード引数を設定すると、一度に <span
+      class="math inline">\(k\)</span>
+      個の要素を取得することができます。</p>
+      <div class="sourceCode" id="cb52"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb52-2"><a href="#cb52-2"></a><span class="im">import</span> random <span class="im">as</span> r</span>
+<span id="cb52-3"><a href="#cb52-3"></a>rank <span class="op">=</span> [<span class="st">&#39;LR&#39;</span>,<span class="st">&#39;UR&#39;</span>,<span class="st">&#39;SSR&#39;</span>,<span class="st">&#39;SR&#39;</span>,<span class="st">&#39;R&#39;</span>]</span>
+<span id="cb52-4"><a href="#cb52-4"></a>p <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">50</span>]</span>
+<span id="cb52-5"><a href="#cb52-5"></a>c <span class="op">=</span> r.choices(rank,weights<span class="op">=</span>p,k<span class="op">=</span><span class="dv">10</span>) <span class="co"># ★k=10を設定</span></span>
+<span id="cb52-6"><a href="#cb52-6"></a><span class="bu">print</span>(c)</span></code></pre></div>
+      <p>上記のプログラムを実行すると変数 <code>c</code>
+      には、次のように <span class="math inline">\(10\)</span>
+      個の要素を持った<strong>リスト</strong>が格納されます。</p>
+      <pre><code>[&#39;R&#39;, &#39;SSR&#39;, &#39;R&#39;, &#39;R&#39;, &#39;R&#39;, &#39;SR&#39;, &#39;LR&#39;, &#39;R&#39;, &#39;SR&#39;, &#39;SR&#39;]</code></pre>
+      <h1 data-number="15" id="課題-宿題"><span
+      class="header-section-number">15</span> 課題 (宿題)</h1>
+      <p>「<strong>演習①</strong>」から「<strong>演習⑥</strong>」について、今回の講義で作成したノートブックのなかで取組み、そのリンクを
+      Google Classroom に記載したフォーム経由で提出してください。</p>
+      <ul>
+      <li>標準 (＝指示した最低限のことができている)
+      を7.5点として、10点満点で評価します。
+      <ul>
+      <li>0点～7.5点の範囲は絶対評価で点数をつけます。</li>
+      <li>7.5点～10点の範囲は相対評価で点数をつけます。</li>
+      </ul></li>
+      <li>テキストセルを使って<strong>演習番号
+      (例えば「演習⑤」「演習⑥」など) を明記</strong>してください。</li>
+      <li>提出物 (納品物) として「<strong>品質
+      (クオリティ)</strong>」を強く意識して作成してください。これらの提出物は、今後、就職やインターンシップ等の応募/選考に皆さん自身が活用する
+      <strong>ポートフォリオ (自身のスキルを示す作品集)</strong>
+      の素材ともなります。
+      <ul>
+      <li>高専在学中の学習成果物として採用担当者に見せられないようなプログラム
+      (やっつけ仕事の適当なプログラム) を作成しないでください。</li>
+      </ul></li>
+      <li>演習毎にコードセル先頭に <code>%reset -f</code>
+      を含めてください。</li>
+      </ul>
+      <!-- ---------------------------------------- -->
+    </main>
+
+    <footer class="markdown-body">
+      <p><a href="https://takeshiwada1980.github.io/Programming1-2023/">講義資料のIndexに移動</a></p>
+    </footer>
+
+    <script>
+      window.onload = function () {
+        // ナビゲーション関連
+        let openBtn = document.getElementsByClassName("openbtn")[0];
+        let navPnl = document.getElementById("g-nav");
+        openBtn.onclick = () => {
+          openBtn.classList.toggle("active");
+          navPnl.classList.toggle("panelactive");
+        };
+
+        let items = navPnl.getElementsByTagName("a");
+        Array.from(items).forEach((item) => {
+          item.onclick = () => {
+            openBtn.classList.toggle("active");
+            navPnl.classList.toggle("panelactive");
+          };
+        });
+
+        // マスク処理
+        let maskedSpans = document.getElementsByClassName("masked");
+        Array.from(maskedSpans).forEach((span) => {
+          span.onclick = () => {
+            span.classList.toggle("open");
+          };
+        });
+
+        // 画像にリンクを付与
+        let images = document.querySelectorAll("figure img");
+        Array.from(images).forEach((img) => {
+          img.onclick = () => {
+            location.href = img.getAttribute("src");
+          };
+        });
+      };
+    </script>
+  </body>
+</html>
