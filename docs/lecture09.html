@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+
+    <script>
+      MathJax = {
+        chtml: {
+          displayAlign: "left",
+          displayIndent: "1em",
+        },
+      };
+    </script>
+
+    
+
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>第09回 2I-プログラミング1</title>
+  </head>
+
+  <body>
+    <div class="openbtn"><span></span><span></span><span></span></div>
+    <nav id="g-nav">
+      <div id="g-nav-list">
+        <!-- ---------------------------------------- -->
+         <ul>
+<li><a href="#準備" id="toc-準備"><span
+class="toc-section-number">1</span> 準備</a></li>
+<li><a href="#pythonの実行開発環境の構築-ローカル環境"
+id="toc-pythonの実行開発環境の構築-ローカル環境"><span
+class="toc-section-number">2</span> Pythonの実行・開発環境の構築
+(ローカル環境)</a>
+<ul>
+<li><a href="#事前確認" id="toc-事前確認"><span
+class="toc-section-number">2.1</span> 事前確認</a></li>
+<li><a href="#コーディングに適したフォントのインストール"
+id="toc-コーディングに適したフォントのインストール"><span
+class="toc-section-number">2.2</span>
+コーディングに適したフォントのインストール</a></li>
+<li><a href="#python-のインストール"
+id="toc-python-のインストール"><span
+class="toc-section-number">2.3</span> Python のインストール</a>
+<ul>
+<li><a href="#リリース情報の確認とインストーラの入手"
+id="toc-リリース情報の確認とインストーラの入手"><span
+class="toc-section-number">2.3.1</span>
+リリース情報の確認とインストーラの入手</a></li>
+<li><a href="#md5-sum-の確認" id="toc-md5-sum-の確認"><span
+class="toc-section-number">2.3.2</span> MD5 Sum の確認</a></li>
+<li><a href="#インストール" id="toc-インストール"><span
+class="toc-section-number">2.3.3</span> インストール</a></li>
+<li><a href="#正常にインストールされたかの確認1"
+id="toc-正常にインストールされたかの確認1"><span
+class="toc-section-number">2.3.4</span>
+正常にインストールされたかの確認1</a></li>
+<li><a href="#正常にインストールされたかの確認2"
+id="toc-正常にインストールされたかの確認2"><span
+class="toc-section-number">2.3.5</span>
+正常にインストールされたかの確認2</a></li>
+<li><a href="#path設定" id="toc-path設定"><span
+class="toc-section-number">2.3.6</span> Path設定</a></li>
+<li><a href="#pipの基本" id="toc-pipの基本"><span
+class="toc-section-number">2.3.7</span> pipの基本</a></li>
+<li><a href="#powershellの設定変更" id="toc-powershellの設定変更"><span
+class="toc-section-number">2.3.8</span> PowerShellの設定変更</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#vscodeのセットアップ" id="toc-vscodeのセットアップ"><span
+class="toc-section-number">3</span> VSCodeのセットアップ</a>
+<ul>
+<li><a href="#インストーラの実行" id="toc-インストーラの実行"><span
+class="toc-section-number">3.1</span> インストーラの実行</a></li>
+<li><a href="#pc再起動" id="toc-pc再起動"><span
+class="toc-section-number">3.2</span> PC再起動</a></li>
+<li><a href="#vs-codeに拡張機能を追加"
+id="toc-vs-codeに拡張機能を追加"><span
+class="toc-section-number">3.3</span> VS Codeに拡張機能を追加</a></li>
+<li><a href="#フォントの設定" id="toc-フォントの設定"><span
+class="toc-section-number">3.4</span> フォントの設定</a></li>
+<li><a href="#vs-codeを使った開発の流れ"
+id="toc-vs-codeを使った開発の流れ"><span
+class="toc-section-number">3.5</span> VS Codeを使った開発の流れ</a>
+<ul>
+<li><a href="#親フォルダの作成" id="toc-親フォルダの作成"><span
+class="toc-section-number">3.5.1</span> 親フォルダの作成</a></li>
+<li><a href="#プロジェクトフォルダの作成"
+id="toc-プロジェクトフォルダの作成"><span
+class="toc-section-number">3.5.2</span>
+プロジェクトフォルダの作成</a></li>
+<li><a href="#仮想環境の作成と有効化"
+id="toc-仮想環境の作成と有効化"><span
+class="toc-section-number">3.5.3</span> 仮想環境の作成と有効化</a></li>
+<li><a href="#pythonファイルの作成" id="toc-pythonファイルの作成"><span
+class="toc-section-number">3.5.4</span> Pythonファイルの作成</a></li>
+<li><a href="#pythonファイルの実行" id="toc-pythonファイルの実行"><span
+class="toc-section-number">3.5.5</span> Pythonファイルの実行</a></li>
+<li><a href="#終了と再開と破棄" id="toc-終了と再開と破棄"><span
+class="toc-section-number">3.5.6</span> 終了と再開と破棄</a></li>
+</ul></li>
+<li><a href="#jupyterの実行" id="toc-jupyterの実行"><span
+class="toc-section-number">3.6</span> Jupyterの実行</a></li>
+<li><a href="#おまけ-pygame" id="toc-おまけ-pygame"><span
+class="toc-section-number">3.7</span> おまけ: Pygame</a></li>
+</ul></li>
+<li><a href="#演習" id="toc-演習"><span
+class="toc-section-number">4</span> 演習</a></li>
+</ul> 
+        <!-- ---------------------------------------- -->
+      </div>
+    </nav>
+
+    <header class="markdown-body">
+      <p>2023-2I プログラミング1 第09回 講義資料</p>
+      <p>2023年06月22日（木）5・6時限</p>
+    </header>
+
+    <main class="markdown-body">
+      <!-- ---------------------------------------- -->
+      <h1 data-number="1" id="準備"><span
+      class="header-section-number">1</span> 準備</h1>
+      <ul>
+      <li>指定のファイルを予めダウンロードしておいてください。ダウンロードしたファイルはデスクトップに移動しておいてください
+      (以降、デスクトップに各ファイルが置かれていることを想定して解説します)。
+      <ul>
+      <li>Python 3.11.4 Windows installer (64-bit)
+      <code>python-3.11.4-amd64.exe</code></li>
+      <li>Visual Studio Code installer
+      <code>VSCodeUserSetup-x64-1.79.2.exe</code></li>
+      <li>Source Han Code JP | 源ノ角ゴシック Code
+      <code>SourceHanCodeJP.ttc</code></li>
+      </ul></li>
+      </ul>
+      <h1 data-number="2"
+      id="pythonの実行開発環境の構築-ローカル環境"><span
+      class="header-section-number">2</span>
+      Pythonの実行・開発環境の構築 (ローカル環境)</h1>
+      <p>今回の講義では、各自のノートPC (ローカル環境) に
+      <strong>Pythonの実行環境</strong> ならびに
+      <strong>Pythonの開発環境</strong>
+      を構築していきます。ここまでの授業では、実行開発環境として Google
+      Colab. (クラウド環境・リモート環境)
+      を利用してきましたが、今後は<strong>必要に応じて</strong>ローカル環境に構築した実行開発環境も利用していきます。</p>
+      <p>ここで構築する環境は、<strong>公式配布版 Pythonインストーラ版
+      の Python 3.11</strong> と、<strong>Visual Studio Code (VS
+      Code)</strong> を組み合わせたものになります。</p>
+      <p><strong>Anaconda</strong>
+      というプラットフォームを使って開発環境を整備する方法もありますが、ここでは採用しません。推奨もしません。Anacondaのほうが<span
+      class="masked">インストールは簡単ですが、本格的な学習や開発には、ここで紹介する環境のほうが適しています</span>。</p>
+      <h2 data-number="2.1" id="事前確認"><span
+      class="header-section-number">2.1</span> 事前確認</h2>
+      <p>以降の作業を行なう前に、必ず以下の項目を確認してください。問題がある場合は、それを解決してから作業を進めてください。</p>
+      <ul>
+      <li><strong>拡張子が表示</strong>
+      される設定になっていること。情報2の第06回講義ノートの p.93
+      参照。</li>
+      <li><strong>隠しファイル (フォルダ) が表示</strong>
+      される設定になっていること。情報2の第06回講義ノートの p.93
+      参照。</li>
+      <li>ユーザーフォルダの名前に
+      <strong>日本語や特殊文字が含まれていない</strong> こと。</li>
+      </ul>
+      <p>Windowsのスタートボタンを右クリックして「<strong>ターミナル</strong>
+      (コマンドプロンプト)」を起動し、ユーザーフォルダ
+      (ホームディレクトリ) の名前を確認してください。</p>
+      <pre><code>C:\Users\wada&gt;</code></pre>
+      <p>上記の <code>wada</code> の部分が
+      <strong>ユーザーフォルダ</strong> (ホームディレクトリ)
+      の名前になります。ここに日本語や特殊文字を含んでいる場合は、Python開発用に、別途、Windowsのアカウントを追加し、それを使用してください。アカウントの追加方法は
+      <a
+      href="https://www.google.com/search?q=windows+11+アカウント+追加">windows
+      11 アカウント 追加</a> などで検索してください。</p>
+      <h2 data-number="2.2"
+      id="コーディングに適したフォントのインストール"><span
+      class="header-section-number">2.2</span>
+      コーディングに適したフォントのインストール</h2>
+      <p>プログラム開発環境においては、以下のような文字について<strong>判別しやすく</strong>、<strong>等幅</strong>のフォントが望まれます。「等幅フォント」の概要は情報1の第03回講義ノートの
+      p.49 を参照してください。</p>
+      <ul>
+      <li>「ゼロ：<code>0</code>」と「オー：<code>O</code>」</li>
+      <li>「イチ:<code>1</code>」と「エル：<code>l</code>」</li>
+      <li>「シングルクォーテーション:<code>'</code>」と「バッククォーテーション：<code>`</code>」</li>
+      </ul>
+      <p>これらの条件を満たしたフォント
+      (<strong>コーディング用フォント</strong>、<strong>プログラミング用フォント</strong>)
+      としては、次のようなものがあります。</p>
+      <ul>
+      <li><strong>Source Han Code JP</strong> (源ノ角ゴシック Code JP)
+      <ul>
+      <li>https://github.com/adobe-fonts/source-han-code-jp</li>
+      <li>https://github.com/adobe-fonts/source-han-code-jp/releases</li>
+      </ul></li>
+      <li><strong>白源</strong> HackGen
+      <ul>
+      <li>https://github.com/yuru7/HackGen</li>
+      <li>https://github.com/yuru7/HackGen/releases</li>
+      </ul></li>
+      <li><strong>Cica</strong>
+      <ul>
+      <li>https://github.com/miiton/Cica</li>
+      <li>https://github.com/miiton/Cica/releases</li>
+      </ul></li>
+      <li><strong>Myrica</strong>
+      <ul>
+      <li>https://github.com/tomokuni/Myrica</li>
+      <li>https://github.com/tomokuni/Myrica/releases</li>
+      </ul></li>
+      </ul>
+      <p>ここでは「<strong>Source Han Code JP
+      (日本語メニューネーム：源ノ角ゴシック Code JP)
+      </strong>」をインストールします。なお「源ノ角」は「げんのかく」とよみます。</p>
+      <p>既に <code>SourceHanCodeJP.ttc</code>
+      はダウンロードしてデスクトップに配置していると思うので、ファイルアイコンを右クリックしてコンテキストメニューから「<strong>インストール</strong>」を選択してください。拡張子が
+      <code>.ttc</code>
+      のフォントファイルは、複数のバージョンを収録しているフォントファイル
+      (True Type Font Pack) です。<code>SourceHanCodeJP.ttc</code>
+      をインストールすると次のようなフォントが追加されます。</p>
+      <ul>
+      <li>源ノ角ゴシック Code JP EL</li>
+      <li>源ノ角ゴシック Code JP L</li>
+      <li>源ノ角ゴシック Code JP N</li>
+      <li>源ノ角ゴシック Code JP R</li>
+      <li>源ノ角ゴシック Code JP M</li>
+      <li>源ノ角ゴシック Code JP H</li>
+      </ul>
+      <p><code>EL</code> や <code>L</code>、<code>N</code>
+      は<strong>文字の太さの違い</strong>になります。</p>
+      <p>Wordなどを起動して、フォントとして「源ノ角ゴシック Code
+      JP」が正常にインストールされたことを確認してください。</p>
+      <figure>
+      <img src="figs/09/font1.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <h2 data-number="2.3" id="python-のインストール"><span
+      class="header-section-number">2.3</span> Python
+      のインストール</h2>
+      <p>Python本体をインストールします。</p>
+      <h3 data-number="2.3.1"
+      id="リリース情報の確認とインストーラの入手"><span
+      class="header-section-number">2.3.1</span>
+      リリース情報の確認とインストーラの入手</h3>
+      <p><a href="https://www.python.org/">Python公式ページ</a>
+      にアクセスしてリリース情報を確認します。</p>
+      <p>Pythonは頻繁にアップデートが行なわれており、基本的には<strong><em>安定版</em></strong>
+      (<strong>Stable Releases</strong>)
+      の<strong>最新バージョンを使用すること</strong>が望ましいです。</p>
+      <p>公式ページにアクセスして、メニューの「<strong>Downloads</strong>」から「<strong>Windows</strong>」を選択して
+      <a
+      href="https://www.python.org/downloads/windows/">Windows向けのPythonのリリース状況</a>
+      を確認します。「リリース」とは <span
+      class="masked">ソフトウェアやその新バージョンを一般公開すること、ユーザーが入手可能・利用可能な状態にすること</span>
+      を意味します。</p>
+      <p>2023年６月22日段階では、<strong>安定版</strong> (Stable
+      Releases) として「Python 3.10.12」「Python 3.11.4」「Python
+      3.7.11」「Python
+      3.8.17」が公開されていることが分かると思います。また、<strong>Pre-releases</strong>
+      として「Python
+      3.12.0b3」なども公開されていることが分かります。</p>
+      <p>先述のように、基本的には<strong><em>安定版</em></strong>
+      (<strong>Stable Releases</strong>)
+      の最新バージョンを使用することが望ましいため、今回は
+      <code>Python 3.11.4</code> の
+      <code>Windows installer (64-bit)</code> 版をダウンロードします
+      (Download Windows installer (64-bit)
+      のリンクをクリックします)。</p>
+      <p>既にダウンロードしていると思うので、手元には「<code>python-3.11.4-amd64.exe</code>」があるはずです。なお、32bit版のWindowsや、ARM版のWindowsを使用している場合は「Download
+      Windows installer (32-bit)」や「Download Windows installer
+      (ARM64)」などを選択します。これらアーキテクチャの違いについては、情報2の第02回講義ノートのpp.28
+      を参照してください。</p>
+      <p>なお「Windows embeddable
+      package」とは、主に「<strong>Python実行環境が構築されていないPCを使用している人に</strong>自分が作成したPythonプログラムを配布して利用してもらうとき」に同梱するための軽量のPython環境です。機会があれば、今後の授業で紹介していきます。</p>
+      <div class="note type-tips">
+      <p><strong>Stable Releases について</strong></p>
+      <p>Stable Releases
+      とは「<strong>安定版</strong>」という意味です。ソフトウェアのインストールにおいては、特段の理由がなければ、この
+      Stable Releases (安定版) や LTS (長期サポート版)
+      を選択するようにしください。その他、次のようなバージョンがあります。</p>
+      <ul>
+      <li><strong>Long-Term Support Release (LTS) </strong>:
+      特定のバージョンについて、長期間にわたりセキュリティ更新やバグ修正を提供するバージョンです。</li>
+      <li><strong>Stable Releases</strong>:
+      全ての機能が実装され、テストが完了し、広範囲の使用に耐えうると判断された最終的な製品です。</li>
+      <li><strong>Maintenance
+      Release（メンテナンスリリース）</strong>：安定版リリース後に発見されたバグの修正や、小規模な改善を施したバージョンです。</li>
+      <li><strong>Beta
+      Release（ベータ版）</strong>：開発が進んだ段階で、全ての機能が実装されているが、まだバグが存在する可能性があるものです。一般のユーザーに公開され、広範なテストとフィードバックが求められます。</li>
+      <li><strong>Alpha
+      Release（アルファ版）</strong>：開発の初期段階で、全ての機能が完全には実装されていないものです。一部のテスターや開発者だけが使用し、バグの検出や新機能のフィードバックを提供します。</li>
+      </ul>
+      <p><strong>Pre-release</strong> は、上記の <strong>Beta
+      Release</strong> や<strong>Alpha Release</strong>
+      などを含んだ呼称です。</p>
+      </div>
+      <h3 data-number="2.3.2" id="md5-sum-の確認"><span
+      class="header-section-number">2.3.2</span> MD5 Sum の確認</h3>
+      <p>ダウンロードした「ファイルが破損していないか」、あるいは、ダウンロード途中で<strong>中間者攻撃を受けて</strong>「ファイルがすり替えられていないか」、「<strong>ウイルスを埋め込まれていないか</strong>」を確認する方法を紹介します。</p>
+      <p>ここでは、<code>python-3.11.4-amd64.exe</code>
+      がデスクトップに置かれているものとします。</p>
+      <p>まず、ターミナルを起動し、<code>cd</code>
+      コマンドでデスクトップに移動します。その後、<code>certutil -hashfile python-3.11.4-amd64.exe MD5</code>
+      と打ち込んで<strong>MD5によるハッシュ値</strong>を計算をします。ハッシュ値については、情報2の第09回講義ノートの
+      p.146 を参照してください。</p>
+      <pre><code>C:\Users\wada&gt;cd Desktop
+
+C:\Users\wada\Desktop&gt;certutil -hashfile python-3.11.4-amd64.exe MD5
+MD5 ハッシュ (対象 python-3.11.4-amd64.exe):
+e4413bb7448cd13b437dffffba294ca0
+CertUtil: -hashfile コマンドは正常に完了しました。</code></pre>
+      <p>このときのハッシュ値、具体的には
+      <code>e4413bb7448cd13b437dffffba294ca0</code>
+      と、ダウンロードページに掲載されている <strong>MD5 Sum</strong>
+      の値を比較します。</p>
+      <figure>
+      <img src="figs/09/check_md5_sum.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p><strong>両者が一致</strong>していれば、ファイル破損や改竄がないことが確認できます。ハッシュ値が違っている場合は、何らかの問題を含むので再度ダウンロードしてください。</p>
+      <h3 data-number="2.3.3" id="インストール"><span
+      class="header-section-number">2.3.3</span> インストール</h3>
+      <p><code>python-3.11.4-amd64.exe</code>
+      をダブルクリックして実行します。</p>
+      <p>インストーラが立ち上がるので「Use admin privileges when
+      installing py.exe 」と「Add python.exe to
+      PATH」の<strong>両方のチェックボックスにチェックを入れて</strong>「Install
+      Now」を選択します。</p>
+      <p>既にPythonがインストールされている環境では「Use admin
+      privileges when installing py.exe
+      」のチェックボックスがグレーアウトしていることもあります
+      (その場合は、チェック不要です)。</p>
+      <figure>
+      <img src="figs/09/py_inst_01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>チェックボックスの意味は次の通りです。</p>
+      <ul>
+      <li><strong>Use admin privileges when installing py.exe</strong>：
+      管理者権限を使用して Python Launcher (py.exe)
+      をインストールする場合にはチェックを入れます。管理者権限でインストールしたほうが制限なくPython
+      Launcher が利用できるのでチェックを入れておいてください。</li>
+      <li><strong>Add python.exe to PATH</strong>: インストールされた
+      <code>python.exe</code>
+      に対してパスを通します。詳細は後述します。チェックを入れておいてください。</li>
+      </ul>
+      <h3 data-number="2.3.4"
+      id="正常にインストールされたかの確認1"><span
+      class="header-section-number">2.3.4</span>
+      正常にインストールされたかの確認1</h3>
+      <p>ターミナルを起動して、Pythonのバージョン確認コマンドを打ち込み、問題なくインストールされたかを確認します。以下のように　<code>python -V</code>
+      または <code>python --version</code>
+      によってバージョン確認にができます。</p>
+      <pre><code>C:\Users\wada&gt;python -V
+Python 3.11.3</code></pre>
+      <p>ハイフンに続けて入力するものを<strong>コマンドオプション</strong>といいます。オプションは、<span
+      class="masked">大文字と小文字を区別する</span>
+      ので注意してください。</p>
+      <p>なお、次のように誤ってPythonを <strong>対話モード</strong>
+      (インタラクティブシェル)
+      で起動してしまった場合は、<code>&gt;&gt;&gt;</code> に続けて
+      <code>quit()</code>
+      を入力してください。対話モードのPythonが終了してターミナルに戻ります。</p>
+      <pre><code>C:\Users\wada&gt;python
+Python 3.11.4 (tags/v3.11.4:d2340ef, Jun  7 2023, 05:45:37) [MSC v.1934 64 bit (AMD64)] on win32
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt;</code></pre>
+      <p>また、正常にインストールできていない場合、または、インストールはできたもののPythonに対するパスが通っていない場合は以下のようになります。</p>
+      <pre><code>C:\Users\wada&gt;python -V
+&#39;python&#39; は、内部コマンドまたは外部コマンド、
+操作可能なプログラムまたはバッチ ファイルとして認識されていません。</code></pre>
+      <h3 data-number="2.3.5"
+      id="正常にインストールされたかの確認2"><span
+      class="header-section-number">2.3.5</span>
+      正常にインストールされたかの確認2</h3>
+      <p>通常、利用することはありませんが、最も基本的 (原始的) な
+      <strong>Pythonプログラムの実行方法</strong>
+      を確認しておきます。</p>
+      <p>Windows標準の「メモ帳」で次のようなプログラムを記述し
+      <code>test.py</code> という名前でデスクトップに保存してください
+      (時間短縮でコピペして)。Colab.環境 (Jupyter環境) ではないので
+      <code>%reset -f</code> などのマジックコマンドは使用できません
+      (記述すると <strong>SyntaxError</strong> になります)。</p>
+      <div class="sourceCode" id="cb6"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="bu">print</span>(<span class="st">&#39;A*Bの計算をします。&#39;</span>)</span>
+<span id="cb6-2"><a href="#cb6-2"></a>a <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">&#39;Aの値を入力してください: &#39;</span>))</span>
+<span id="cb6-3"><a href="#cb6-3"></a>b <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">&#39;Bの値を入力してください: &#39;</span>))</span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">+</span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">=</span><span class="sc">{</span>a<span class="op">+</span>b<span class="sc">}</span><span class="ss"> です。&#39;</span>)</span></code></pre></div>
+      <p>ファイル保存の際は、文字コード (エンコード) は
+      <code>utf-8</code>
+      にしてください。また、ファイルの種類も「すべてのファイル」にしてください。</p>
+      <figure>
+      <img src="figs/09/check_md5_sum.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>ターミナル (コマンドプロンプト) を起動して、<code>cd</code>
+      コマンドでデスクトップに移動し、<code>python test.py</code>
+      でプログラムが実行できます。</p>
+      <pre><code>C:\Users\wada&gt;cd Desktop
+
+C:\Users\wada\Desktop&gt;python test.py
+A*Bの計算をします。
+Aの値を入力してください: 10
+Bの値を入力してください: 20
+10.0+20.0=30.0 です。</code></pre>
+      <ul>
+      <li>ターミナル (PowerShell)
+      でも、同様に実行できることを確認せよ。</li>
+      <li><code>%reset -f</code>
+      を記述して実行するとどのようになるか確認せよ。</li>
+      </ul>
+      <h3 data-number="2.3.6" id="path設定"><span
+      class="header-section-number">2.3.6</span> Path設定</h3>
+      <p>Pythonをデフォルト設定でインストールすると
+      <code>C:\Users\wada\AppData\Local\Programs\Python\Python311\</code>
+      にインストールされます。実際にエクスプローラで、そのフォルダにアクセスしてみてください
+      (<code>wada</code>の部分は各自のユーザーフォルダの名前に書き換えてください)
+      。</p>
+      <p>そのフォルダのなかにある <code>python.exe</code> が Python
+      の本体・実行ファイルになります。</p>
+      <p>この実行ファイルをコマンドラインから起動するためには、本来であれば、次のようにその「絶対パス」あるいは「相対パス」で、その実行ファイルを指定する必要があります。</p>
+      <pre><code>C:\Users\wada&gt;C:\Users\wada\AppData\Local\Programs\Python\Python311\python.exe -V
+Python 3.11.4</code></pre>
+      <p>もしくは</p>
+      <pre><code>C:\Users\wada&gt;.\AppData\Local\Programs\Python\Python311\python.exe -V
+Python 3.11.4</code></pre>
+      <p>しかし、このようにパスをつけて <code>python.exe</code>
+      を実行することは非常に煩雑です。そこで、<code>C:\Users\wada\AppData\Local\Programs\Python\Python311\</code>
+      の部分を省略できるようにする仕組みが <code>パスを通す</code>
+      という操作になります。</p>
+      <p>「パスを通す」とは、環境変数 <code>PATH</code> に
+      <code>C:\Users\wada\AppData\Local\Programs\Python\Python311\</code>
+      を記載しておくことを指します。この設定をすることで
+      <code>python.exe</code> または <code>python</code>
+      と打ち込むだけで、実行することができるようになります。</p>
+      <p>具体的には、<code>sysdm.cpl</code>
+      でシステムのプロパティのダイアログを起動し、<strong>詳細設定</strong>
+      のタブから「環境変数」のボタンを押下し「Path」の項目を編集します
+      (Pythonのインストールパスを追加します)。この操作はPythonのインストール時に「<strong>Add
+      Python 3.11 to
+      PATH</strong>」のオプションを選択すれば自動的に行われます。</p>
+      <p>なお、設定されたパスは次のように確認できます。</p>
+      <pre><code>C:\Users\wada&gt;set path</code></pre>
+      <h3 data-number="2.3.7" id="pipの基本"><span
+      class="header-section-number">2.3.7</span> pipの基本</h3>
+      <p>詳しくは以降の授業で解説しますが、pip は Python ライブラリ
+      (モジュールやパッケージとも表現します)
+      を<strong>管理するツール</strong>です。<code>pip</code>
+      コマンドを使用すると、インターネットから各種ライブラリをローカル環境にダウンロードおよびインストールし、その後、プログラムのなかで使用することができるようになります。</p>
+      <p>pip を使用する場合、まずは、次のコマンドで <code>pip</code>
+      そのものを最新版にアップグレードします
+      (pipもPythonプログラムです)。このコマンドは定期的に使用するので覚えておくようにしてください
+      (すぐに探せる場所にメモしておいてください)。</p>
+      <pre><code>C:\Users\wada&gt;python -m pip install --upgrade pip
+Requirement already satisfied: pip in c:\users\wada\appdata\local\programs\python\python311\lib\site-packages (23.1.2)</code></pre>
+      <p>現在の環境にインストールされているPythonライブラリは
+      <code>pip list</code>
+      というコマンドを実行することで確認ができます。</p>
+      <pre><code>C:\Users\wada\Desktop&gt;pip list
+Package    Version
+---------- -------
+pip        23.1.2
+setuptools 65.5.0</code></pre>
+      <p>上記のように、初期状態では最低限のモジュールしかインストールされていません。以降、各種モジュールをインストールする方法を紹介しますが、それらは環境をクリーンに保ちトラブルを避けるために、仮想環境を作成したうえで、そこにインストールしていきます。仮想環境ではない環境をグローバル環境とよばれますが、このグローバル環境には原則として新たなライブラリをインストールしないようにしてください。</p>
+      <h3 data-number="2.3.8" id="powershellの設定変更"><span
+      class="header-section-number">2.3.8</span>
+      PowerShellの設定変更</h3>
+      <p>コマンドプロンプトのようなシェルで「PowerShell」があります
+      (現段階で役割や機能の違いを把握する必要ははありません)。このPowerShellからも、Pythonスクリプトが実行できるように設定を変更しておきます
+      (このあとに実行する
+      VSCodeではPowerShellからPythonスクリプトを実行することもなるため)。</p>
+      <p>ターミナルを起動してPowerShellに切り替えて次のようにコマンドを入力してください。</p>
+      <pre><code>PS C:\Users\wada&gt; Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force</code></pre>
+      <p>上記コマンドは、現在のユーザーに対してスクリプトの実行ポリシーを「リモート署名（RemoteSigned）」に設定します。これにより、自身で作成したスクリプトや信頼された発行元からのスクリプトは実行可能になります。</p>
+      <p>設定が正しく適用されたかを確認するには、以下のコマンドを入力します。</p>
+      <pre><code>PS C:\Users\wada&gt; Get-ExecutionPolicy
+RemoteSigned</code></pre>
+      <p>出力された結果が RemoteSigned
+      であれば、設定の変更が正しく反映されています。これにより、VSCodeなどの統合開発環境を使用して、PowerShellからPythonスクリプトを実行することが可能になります。</p>
+      <h1 data-number="3" id="vscodeのセットアップ"><span
+      class="header-section-number">3</span> VSCodeのセットアップ</h1>
+      <p>Visual Studio Code (VS Code)
+      は各種プログラミング言語に対応した統合開発環境 (IDE: Integrated
+      Development Environment) です。</p>
+      <h2 data-number="3.1" id="インストーラの実行"><span
+      class="header-section-number">3.1</span> インストーラの実行</h2>
+      <p>Visual Studio Code installer
+      <code>VSCodeUserSetup-x64-1.79.2.exe</code>
+      を実行してください。インストール途中で尋ねられる「追加タスクの選択」では、少なくとも次の項目にはチェックをいれてください
+      (それ以外は好みに合わせてチェックをいれてください)。これらの設定ができていることを前提に授業を進めます。</p>
+      <ul>
+      <li>エクスプローラのファイルコンテキストメニューに [Codeで開く]
+      アクションを追加する。</li>
+      <li>エクスプローラのディレクトリコンテキストメニューに
+      [Codeで開く] アクションを追加する。</li>
+      <li>PATHへの追加 (再起動後に使用可能)</li>
+      </ul>
+      <h2 data-number="3.2" id="pc再起動"><span
+      class="header-section-number">3.2</span> PC再起動</h2>
+      <p>インストール完了後に、一旦、<strong>PCを再起動</strong>してください。</p>
+      <h2 data-number="3.3" id="vs-codeに拡張機能を追加"><span
+      class="header-section-number">3.3</span> VS
+      Codeに拡張機能を追加</h2>
+      <p>VS Code は<strong>目的にあわせて様々な拡張機能 (プラグイン)
+      をインストールして使用</strong>します。拡張機能をインストールしていない状態では、VS
+      Codeを便利に使用することはできません。</p>
+      <p>VS Code
+      を起動してください。画面左側にならぶ<strong>拡張機能のアイコン</strong>をクリックして、Python開発用に次の拡張機能をインストールしてください。</p>
+      <ul>
+      <li>ms-python.python</li>
+      <li>ms-python.vscode-pylance</li>
+      <li>ms-ceintl.vscode-language-pack-ja</li>
+      <li>ms-toolsai.jupyter</li>
+      <li>mosapride.zenkaku</li>
+      <li>oderwat.indent-rainbow</li>
+      </ul>
+      <p>その他、必要に応じて拡張機能をインストールしてください。</p>
+      <h2 data-number="3.4" id="フォントの設定"><span
+      class="header-section-number">3.4</span> フォントの設定</h2>
+      <p>コーディング用フォント「<strong>Source Han Code JP
+      (日本語メニューネーム：源ノ角ゴシック Code JP) </strong>」をVS
+      Codeのデフォルトフォントに設定します。</p>
+      <p>画面左側にならぶ<strong>設定のアイコン</strong>をクリックして、設定を呼び出して
+      <code>editor.fontFamily</code>
+      の項目を次のように書き換えて保存してください。</p>
+      <pre><code>&#39;Source Han Code JP&#39;,Consolas, &#39;Courier New&#39;, monospace</code></pre>
+      <h2 data-number="3.5" id="vs-codeを使った開発の流れ"><span
+      class="header-section-number">3.5</span> VS
+      Codeを使った開発の流れ</h2>
+      <p>VS Codeを使って、<strong>Pythonの仮想環境 (Virtual Environment)
+      を構築</strong>、Pythonプログラムのコーディング、Pythonプログラムの実行をするまでの一連の流れについて学びます。</p>
+      <h3 data-number="3.5.1" id="親フォルダの作成"><span
+      class="header-section-number">3.5.1</span> 親フォルダの作成</h3>
+      <p>各種プロジェクトを管理する親フォルダを適当な場所に作成します
+      (例えば、ドキュメントフォルダのなかなど)。ここでは、この授業で作成するプロジェクトフォルダを格納する
+      <code>2023-Programming1</code> を作成します。</p>
+      <h3 data-number="3.5.2" id="プロジェクトフォルダの作成"><span
+      class="header-section-number">3.5.2</span>
+      プロジェクトフォルダの作成</h3>
+      <p>作成した <code>2023-Programming1</code>
+      のなかにプロジェクトのフォルダを作成します。<code>0622-VSCode</code>
+      を作成してください。</p>
+      <p>そのフォルダを選択して <strong>Shift
+      を押下しながら右クリック</strong>
+      して「<strong>Codeで開く</strong>」を選択してください
+      (あるいは、右クリックして「その他のオプションを表示」を選択して「<strong>Codeで開く</strong>」を選択します)。これにより、VS
+      Code で対象のプロジェクトをオープンすることができます。</p>
+      <p>このように VS Code
+      では、<strong>フォルダ単位でプロジェクトを管理</strong>します。</p>
+      <h3 data-number="3.5.3" id="仮想環境の作成と有効化"><span
+      class="header-section-number">3.5.3</span>
+      仮想環境の作成と有効化</h3>
+      <p>VSCode上で <code>Ctrl</code>+<code>Shift</code>+<code>@</code>
+      を押下してターミナルを表示します。ターミナルがデフォルトで
+      PowerShell に設定されていることを確認してください。</p>
+      <p>次の <code>venv</code> コマンドでPythonの仮想環境
+      (<strong>V</strong>irtual <strong>Env</strong>ironment)
+      を作成します。仮想環境内であれば、適当にPythonライブラリをインストールしても、あとで困るような事態は発生しません。</p>
+      <pre><code>PS C:\Users\wada\Documents\PythonProject\Test&gt; python -m venv .venv    </code></pre>
+      <p>上記を実行すると <code>.venv</code>
+      という仮想環境に関するものが格納される隠しフォルダが作成されます
+      (ドットからはじまるファイルは隠しファイル、ドットからはじまるフォルダは隠しフォルダという扱いになります)。</p>
+      <p>次のコマンドで仮想環境を<strong><em>有効化</em></strong>します。</p>
+      <pre><code>PS C:\Users\wada\Documents\PythonProject\Test&gt; .venv/Scripts/Activate.ps1</code></pre>
+      <p>ターミナルのプロンプトの先頭表示が <code>(.venv)</code>
+      に変わっていることを確認します。仮想環境が有効化されているときは、このような表示になるので覚えておいてください。</p>
+      <pre><code>(.venv) PS C:\Users\wada\Documents\PythonProject\Test&gt; </code></pre>
+      <h3 data-number="3.5.4" id="pythonファイルの作成"><span
+      class="header-section-number">3.5.4</span>
+      Pythonファイルの作成</h3>
+      <p>Pythonファイルを作成します。<code>test-01.py</code>
+      を作成して、次のプログラムを記述して保存します。</p>
+      <div class="sourceCode" id="cb19"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="bu">print</span>(<span class="st">&#39;A*Bの計算をします。&#39;</span>)</span>
+<span id="cb19-2"><a href="#cb19-2"></a>a <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">&#39;Aの値を入力してください: &#39;</span>))</span>
+<span id="cb19-3"><a href="#cb19-3"></a>b <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">&#39;Bの値を入力してください: &#39;</span>))</span>
+<span id="cb19-4"><a href="#cb19-4"></a><span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">+</span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">=</span><span class="sc">{</span>a<span class="op">+</span>b<span class="sc">}</span><span class="ss"> です。&#39;</span>)</span></code></pre></div>
+      <h3 data-number="3.5.5" id="pythonファイルの実行"><span
+      class="header-section-number">3.5.5</span>
+      Pythonファイルの実行</h3>
+      <p><code>test-01.py</code> がアクティブな状態で <code>F5</code>
+      を押下して「デバッグ構成を選択する」から「Pythonファイル
+      現在のアクティブな Python ファイルをデバッグする」を選択します。
+      画面下部のターミナルでプログラムが実行されます。</p>
+      <p>左パネルに「launch.jsonファイルを作成します」というリンクがでているので押下します。さらに「Pythonファイル
+      現在のアクティブな Python
+      ファイルをデバッグする」を選択します。実行とデバッグの設定ファイルが作成され、以降は
+      <code>F5</code> で実行できることを確認します。</p>
+      <h3 data-number="3.5.6" id="終了と再開と破棄"><span
+      class="header-section-number">3.5.6</span> 終了と再開と破棄</h3>
+      <p>口頭説明。</p>
+      <h2 data-number="3.6" id="jupyterの実行"><span
+      class="header-section-number">3.6</span> Jupyterの実行</h2>
+      <p>仮想環境が有効化されていることを確認して次のコマンドを実行します。</p>
+      <pre><code>pip install jupyter</code></pre>
+      <p>これにより、jupyter
+      に関連するライブラリが仮想環境にインストールされました。インストールされたライブラリ
+      を次のように確認します。</p>
+      <pre><code>pip list</code></pre>
+      <p>様々なライブラリがインストールされたことが確認できます。一方で、別途、VSCode外でターミナルを開いて同様にライブラリのインストール状況を調べる影響を受けていないことが確認できます。</p>
+      <p>Jupyter 用に <code>test-02.ipynb</code> を新規作成します。</p>
+      <p>画面右上の「カーネルの選択」から「Python環境…」を選択し、さらに次のように仮想環境を選択します。</p>
+      <figure>
+      <img src="figs/09/jupyter.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>以降は、GoogleColab.
+      と同じようにプログラムを実行することができます。</p>
+      <h2 data-number="3.7" id="おまけ-pygame"><span
+      class="header-section-number">3.7</span> おまけ: Pygame</h2>
+      <pre><code>pip install pygame</code></pre>
+      <div class="sourceCode" id="cb23"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="im">import</span> pygame.examples.aliens</span>
+<span id="cb23-2"><a href="#cb23-2"></a>pygame.examples.aliens.main()</span></code></pre></div>
+      <div class="sourceCode" id="cb24"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="im">import</span> pygame.examples.glcube</span>
+<span id="cb24-2"><a href="#cb24-2"></a>pygame.examples.glcube.main()</span></code></pre></div>
+      <p>http://westplain.sakura.ne.jp/translate/pygame/Examples.cgi</p>
+      <h1 data-number="4" id="演習"><span
+      class="header-section-number">4</span> 演習</h1>
+      <ul>
+      <li>VS Code を使ったプロジェクトの新規作成と破棄の練習</li>
+      <li>VS Code の拡張機能</li>
+      <li>VS Code の設定</li>
+      </ul>
+      <p>詳細は口頭説明。</p>
+      <!-- ---------------------------------------- -->
+    </main>
+
+    <footer class="markdown-body">
+      <p><a href="https://takeshiwada1980.github.io/Programming1-2023/">講義資料のIndexに移動</a></p>
+    </footer>
+
+    <script>
+      window.onload = function () {
+        // ナビゲーション関連
+        let openBtn = document.getElementsByClassName("openbtn")[0];
+        let navPnl = document.getElementById("g-nav");
+        openBtn.onclick = () => {
+          openBtn.classList.toggle("active");
+          navPnl.classList.toggle("panelactive");
+        };
+
+        let items = navPnl.getElementsByTagName("a");
+        Array.from(items).forEach((item) => {
+          item.onclick = () => {
+            openBtn.classList.toggle("active");
+            navPnl.classList.toggle("panelactive");
+          };
+        });
+
+        // マスク処理
+        let maskedSpans = document.getElementsByClassName("masked");
+        Array.from(maskedSpans).forEach((span) => {
+          span.onclick = () => {
+            span.classList.toggle("open");
+          };
+        });
+
+        // 画像にリンクを付与
+        let images = document.querySelectorAll("figure img");
+        Array.from(images).forEach((img) => {
+          img.onclick = () => {
+            location.href = img.getAttribute("src");
+          };
+        });
+      };
+    </script>
+  </body>
+</html>
