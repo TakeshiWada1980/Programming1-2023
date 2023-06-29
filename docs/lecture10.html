@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+
+    <script>
+      MathJax = {
+        chtml: {
+          displayAlign: "left",
+          displayIndent: "1em",
+        },
+      };
+    </script>
+
+     <script
+src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+type="text/javascript"></script> 
+
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>第10回 2I-プログラミング1</title>
+  </head>
+
+  <body>
+    <div class="openbtn"><span></span><span></span><span></span></div>
+    <nav id="g-nav">
+      <div id="g-nav-list">
+        <!-- ---------------------------------------- -->
+         <ul>
+<li><a href="#準備" id="toc-準備"><span
+class="toc-section-number">1</span> 準備</a></li>
+<li><a href="#前回の復習-pythonの実行開発環境の構築"
+id="toc-前回の復習-pythonの実行開発環境の構築"><span
+class="toc-section-number">2</span> 前回の復習:
+Pythonの実行開発環境の構築</a>
+<ul>
+<li><a
+href="#google-colab.-にプリインストールされているパッケージの確認"
+id="toc-google-colab.-にプリインストールされているパッケージの確認"><span
+class="toc-section-number">2.1</span> Google Colab.
+にプリインストールされているパッケージの確認</a></li>
+</ul></li>
+<li><a href="#pipコマンドを使ったライブラリの追加"
+id="toc-pipコマンドを使ったライブラリの追加"><span
+class="toc-section-number">3</span>
+pipコマンドを使ったライブラリの追加</a>
+<ul>
+<li><a href="#準備-1" id="toc-準備-1"><span
+class="toc-section-number">3.1</span> 準備</a></li>
+<li><a href="#現在の開発環境にインストールされているライブラリの確認"
+id="toc-現在の開発環境にインストールされているライブラリの確認"><span
+class="toc-section-number">3.2</span>
+現在の開発環境にインストールされているライブラリの確認</a></li>
+<li><a href="#pip本体の更新" id="toc-pip本体の更新"><span
+class="toc-section-number">3.3</span> pip本体の更新</a></li>
+<li><a href="#pythonライブラリのインストール"
+id="toc-pythonライブラリのインストール"><span
+class="toc-section-number">3.4</span>
+Pythonライブラリのインストール</a></li>
+<li><a href="#動作確認" id="toc-動作確認"><span
+class="toc-section-number">3.5</span> 動作確認</a></li>
+</ul></li>
+<li><a href="#繰返し構文-少しだけ発展的な利用"
+id="toc-繰返し構文-少しだけ発展的な利用"><span
+class="toc-section-number">4</span> 繰返し構文
+(少しだけ発展的な利用)</a>
+<ul>
+<li><a href="#繰返し構文の基本" id="toc-繰返し構文の基本"><span
+class="toc-section-number">4.1</span> 繰返し構文の基本</a></li>
+<li><a href="#演習①" id="toc-演習①"><span
+class="toc-section-number">4.2</span> 演習①</a></li>
+<li><a href="#rangeに対して2つの引数を与える"
+id="toc-rangeに対して2つの引数を与える"><span
+class="toc-section-number">4.3</span>
+rangeに対して「2つの引数」を与える</a></li>
+</ul></li>
+<li><a href="#繰返し構文-ループ変数に小数値を使用したい場合"
+id="toc-繰返し構文-ループ変数に小数値を使用したい場合"><span
+class="toc-section-number">5</span> 繰返し構文
+(ループ変数に小数値を使用したい場合)</a>
+<ul>
+<li><a href="#演習②-1" id="toc-演習②-1"><span
+class="toc-section-number">5.1</span> 演習②-1</a></li>
+<li><a href="#演習②-2" id="toc-演習②-2"><span
+class="toc-section-number">5.2</span> 演習②-2</a></li>
+</ul></li>
+<li><a href="#繰り返し構文2-whileの利用"
+id="toc-繰り返し構文2-whileの利用"><span
+class="toc-section-number">6</span> 繰り返し構文2 (whileの利用)</a>
+<ul>
+<li><a href="#演習③" id="toc-演習③"><span
+class="toc-section-number">6.0.1</span> 演習③</a></li>
+<li><a href="#無限ループ" id="toc-無限ループ"><span
+class="toc-section-number">6.1</span> 無限ループ</a>
+<ul>
+<li><a href="#補足-random.choices" id="toc-補足-random.choices"><span
+class="toc-section-number">6.1.1</span> 補足: random.choices</a></li>
+</ul></li>
+<li><a href="#演習③-1" id="toc-演習③-1"><span
+class="toc-section-number">6.2</span> 演習③</a></li>
+</ul></li>
+<li><a href="#リスト操作の負荷量の比較"
+id="toc-リスト操作の負荷量の比較"><span
+class="toc-section-number">7</span> リスト操作の負荷量の比較</a></li>
+<li><a href="#リスト要素の削除" id="toc-リスト要素の削除"><span
+class="toc-section-number">8</span> リスト要素の削除</a>
+<ul>
+<li><a href="#remove-による要素の削除"
+id="toc-remove-による要素の削除"><span
+class="toc-section-number">8.1</span> remove による要素の削除</a></li>
+<li><a href="#演習④" id="toc-演習④"><span
+class="toc-section-number">8.2</span> 演習④</a></li>
+</ul></li>
+<li><a href="#宿題" id="toc-宿題"><span
+class="toc-section-number">9</span> 宿題</a></li>
+<li><a href="#課題04の解答例" id="toc-課題04の解答例"><span
+class="toc-section-number">10</span> 課題04の解答例</a>
+<ul>
+<li><a href="#問題" id="toc-問題"><span
+class="toc-section-number">10.1</span> 問題</a></li>
+<li><a href="#解答例①" id="toc-解答例①"><span
+class="toc-section-number">10.2</span> 解答例①</a></li>
+<li><a href="#解答例②" id="toc-解答例②"><span
+class="toc-section-number">10.3</span> 解答例②</a></li>
+</ul></li>
+</ul> 
+        <!-- ---------------------------------------- -->
+      </div>
+    </nav>
+
+    <header class="markdown-body">
+      <p>2023-2I プログラミング1 第10回 講義資料</p>
+      <p>2023年06月29日（木）5・6時限</p>
+    </header>
+
+    <main class="markdown-body">
+      <!-- ---------------------------------------- -->
+      <h1 data-number="1" id="準備"><span
+      class="header-section-number">1</span> 準備</h1>
+      <ul>
+      <li><a
+      href="https://colab.research.google.com/?hl=ja">GoogleColab.</a>
+      にログインしておいてください。
+      <ul>
+      <li>「<strong>0629_繰返し構文とリスト.ipynb</strong>」という名前でノートブックを作成しておいてください。</li>
+      <li>今回はノートブックの提出は<strong>ありません</strong>。</li>
+      </ul></li>
+      </ul>
+      <h1 data-number="2"
+      id="前回の復習-pythonの実行開発環境の構築"><span
+      class="header-section-number">2</span> 前回の復習:
+      Pythonの実行開発環境の構築</h1>
+      <p>操作上の不明箇所があれば、まずは前回の <a
+      href="lecture09.html">第09回講義ノート</a>
+      を参照してください。</p>
+      <ol type="1">
+      <li>ローカル環境に <code>0629-PG1</code> という
+      <strong>フォルダを新規作成</strong> してください
+      (フォルダ名は任意に設定可) 。</li>
+      <li>作成したフォルダを VS Code で開いてください
+      (コンテキストメニューから「Codeで開く」を選択)。</li>
+      <li>VS Code 内で <code>Ctrl</code> + <code>Shift</code> +
+      <code>@</code> でターミナル (<strong>PowerShell</strong>:pwsh)
+      を起動してください。</li>
+      <li>Pythonの仮想環境を作成し、その仮想環境を
+      <strong>有効化</strong> してください。
+      <ul>
+      <li><code>python -m venv .venv</code></li>
+      <li><code>.venv/Scripts/Activate.ps1</code></li>
+      </ul></li>
+      <li><code>pip list</code>
+      で仮想環境にインストールされているPythonライブラリ (Package)
+      を確認してください。次のように最低限のライブラリ (Package)
+      だけがインストールされているはずです。</li>
+      </ol>
+      <pre><code>Package    Version
+---------- -------
+pip        23.1.2
+setuptools 65.5.0</code></pre>
+      <ol start="6" type="1">
+      <li>次のようなPythonプログラム (<code>test01.py</code>) を VS Code
+      上で作成して、正常に実行できることを確認してください。</li>
+      </ol>
+      <div class="sourceCode" id="cb2" data-caption="test01.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>items <span class="op">=</span> [<span class="st">&#39;どうのつるぎ&#39;</span>,<span class="st">&#39;やくそう&#39;</span>,<span class="st">&#39;どくけしそう&#39;</span>,<span class="st">&#39;ぬののふく&#39;</span>]</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="cf">for</span> item <span class="kw">in</span> items:</span>
+<span id="cb2-3"><a href="#cb2-3"></a>  <span class="bu">print</span>(item)</span></code></pre></div>
+      <ol start="7" type="1">
+      <li><strong>ノートブック開発環境 Jupyter</strong> を VS Code
+      でも使えるようにするために <code>pip install jupyter</code> で
+      <strong>jupyter</strong> ライブラリを Python仮想環境
+      にインストールしてください。インストール後は <code>pip list</code>
+      でライブラリが追加されていることを確認してください。</li>
+      <li>VSCode上で <code>test02.ipynb</code> (拡張子に注意)
+      を作成し、<strong>コードセルを追加</strong>し、次のプログラムを記述してください。</li>
+      </ol>
+      <pre><code>%reset -f
+print(&#39;ドラゴンクエストIII そして伝説へ…&#39;)</code></pre>
+      <ol start="8" type="1">
+      <li>ノートブック編集画面の右上の「<strong>カーネルの選択</strong>」から適切なもの
+      (Python仮想環境) を選択して、その後、コードセルを実行
+      (<code>Ctrl</code>+<code>Enter</code>を押下)
+      して、適切な出力が得られることを確認してください。</li>
+      </ol>
+      <figure>
+      <img src="figs/10/jupyter1.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <h2 data-number="2.1"
+      id="google-colab.-にプリインストールされているパッケージの確認"><span
+      class="header-section-number">2.1</span> Google Colab.
+      にプリインストールされているパッケージの確認</h2>
+      <p>Coogle Colab. では <strong>主要なPythonライブラリ (Package )
+      が予めインストール</strong> されています。Coogle Colab.
+      にインストール済みのライブラリを確認するために、Colab.でコードセルを追加して、次のようなコマンドを打ち込んで実行してください。</p>
+      <pre><code>!pip list</code></pre>
+      <p>Colab. においては <code>!</code> からはじまる文は <span
+      class="masked">Pythonプログラムではなく OS (Linux)
+      に対するコマンド</span> として扱われます。</p>
+      <h1 data-number="3" id="pipコマンドを使ったライブラリの追加"><span
+      class="header-section-number">3</span>
+      pipコマンドを使ったライブラリの追加</h1>
+      <p>pipコマンドを使った <strong>Pythonライブラリの追加</strong>
+      について学んでいきます。pipは「ピップ」と読みます。</p>
+      <div class="note type-tips">
+      <p><strong>pipとはなにか</strong></p>
+      <p><strong>pip</strong> (ピップ)
+      とは、Pythonの「パッケージ管理システム」のひとつで、Pythonで書かれたパッケージ
+      のインストール／管理を行なうためシステムです。パッケージ
+      (ライブラリ・モジュール)
+      とは、<strong>他の人が書いて再利用可能にしたPythonのコードのこと</strong>を指します。これらのパッケージを使用すると、自分ですべてのコードを書く代わりに、他の人が既に書いたコードを利用することができ、作業を効率化できます。</p>
+      <p>本授業では利用しませんが、Python開発環境の Anaconda
+      (アナコンダ) では <strong>conda</strong>
+      というパッケージ管理システムが採用されています。なお、pip と conda
+      を併用すると様々な問題が生じるので注意してください。</p>
+      </div>
+      <h2 data-number="3.1" id="準備-1"><span
+      class="header-section-number">3.1</span> 準備</h2>
+      <p>ローカルPC上に構築したノートブック環境 (Jupyter環境)
+      において、コードセルを追加して、次のプログラムをコピペして実行
+      (<code>Ctrl</code>+<code>Enter</code>を押下)
+      してください。以下のコードは <span class="masked">matplotlib
+      というライブラリを利用してグラフを描画</span>
+      するプログラムになります。</p>
+      <div class="sourceCode" id="cb5"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb5-3"><a href="#cb5-3"></a></span>
+<span id="cb5-4"><a href="#cb5-4"></a>x <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">40</span>]</span>
+<span id="cb5-5"><a href="#cb5-5"></a>y <span class="op">=</span> [<span class="dv">20</span>,<span class="dv">40</span>,<span class="dv">30</span>,<span class="dv">50</span>,<span class="dv">40</span>]</span>
+<span id="cb5-6"><a href="#cb5-6"></a></span>
+<span id="cb5-7"><a href="#cb5-7"></a>fig,ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb5-8"><a href="#cb5-8"></a>ax.plot(x,y,marker<span class="op">=</span><span class="st">&#39;o&#39;</span>)</span>
+<span id="cb5-9"><a href="#cb5-9"></a>plt.show()</span></code></pre></div>
+      <p>実行すると
+      <code>ModuleNotFoundError: No module named 'matplotlib'</code>
+      という<strong>実行時エラーが発生</strong>します。このエラーメッセージは、上記の第02行目の
+      <code>import</code> に関連して発生しているもので <span
+      class="masked"> ModuleNotFoundError: ‘matplotlib’ という名前の
+      モジュール (＝ライブラリ、パッケージ) が見つかりません</span>
+      という意味です。</p>
+      <p>現在のPython環境 (＝先ほど作成・有効化した仮想環境内)
+      に、matplotlib
+      のライブラリが存在しないために生じているエラーになります。</p>
+      <h2 data-number="3.2"
+      id="現在の開発環境にインストールされているライブラリの確認"><span
+      class="header-section-number">3.2</span>
+      現在の開発環境にインストールされているライブラリの確認</h2>
+      <p>念のために「本当に <code>matplotlib</code> が現在のPython環境
+      (＝<code>venv</code>で構築した仮想環境)
+      にインストールされていないのか?」を確認してみましょう。</p>
+      <p>VS Code のターミナルから、次のコマンドを入力して
+      <strong>インストールされているライブラリを一覧表示</strong>
+      してください。</p>
+      <pre><code>pip list</code></pre>
+      <p>結果が大量出力されます。このなかから <code>matplotlib</code>
+      の有無を探すのは大変なので、出力結果から <code>mat</code>
+      という文字を含む行だけを抽出して表示します。</p>
+      <p>次のコマンドを入力してください。</p>
+      <pre><code>pip list | Select-String -Pattern &quot;mat&quot;</code></pre>
+      <p>ここで <code>|</code> は「情報1」で学習したように <span
+      class="masked">パイプ</span>
+      と呼ばれる記号です。コマンドライン上で、パイプを
+      <code>command1 | command2</code>
+      のように使用したときは、<code>command1</code> の出力を
+      <code>command2</code>
+      の入力に「<strong>パイプする</strong>」という意味になります。</p>
+      <p>「<strong>パイプする</strong>」とは、コマンドの実行結果
+      (文字列の出力) をコンソールに表示するのではなく
+      <strong>別のコマンド対して入力として引き渡す</strong>
+      ということを意味します。</p>
+      <p>ここでは <code>pip list</code> というコマンドの実行結果
+      (文字列の出力) を、<code>Select-String -Pattern "mat"</code>
+      というコマンドに対する入力として与えるという意味になります。</p>
+      <p>このコマンドの結果は、次のようになります。</p>
+      <pre><code>(.venv) PS C:\Users\wada\...\0629&gt; pip list | Select-String -Pattern &quot;mat&quot;
+
+matplotlib-inline        0.1.6
+nbformat                 5.9.0</code></pre>
+      <p>この結果から確かに <code>matplotlib</code>
+      はインストールされていないことが確認できます。</p>
+      <h2 data-number="3.3" id="pip本体の更新"><span
+      class="header-section-number">3.3</span> pip本体の更新</h2>
+      <p>pipコマンドを使って「Pythonライブラリ」をインストールする際には、まずはじめに
+      <strong>pip 本体が最新版であることを確認</strong>
+      する必要があります。以下のコマンドにより、pipのバージョンをチェックし、もし古いバージョンであれば最新版に更新すること
+      (アップグレードすること) ができます。</p>
+      <pre><code>python -m pip install --upgrade pip</code></pre>
+      <p>もし、現状でpipが最新版であれば、以下のようなメッセージが表示されます
+      ( Requirement already satisfied : 要求は満たされている )。</p>
+      <pre><code>Requirement already satisfied: pip in c:\users\wada\...\0629\.venv\lib\site-packages (23.1.2)</code></pre>
+      <p>また、最新版でなかった場合は、、以下のようなメッセージが表示され、pipが最新版に更新されます。特に最終行が「Successfully」となっていることを確認してください。問題があるとエラー関係の表示に出力されます。</p>
+      <pre><code>Requirement already satisfied: pip in c:\users\wada\...\0629\.venv\lib\site-packages (22.1)
+Collecting pip
+  Downloading pip-23.1.2-py3-none-any.whl (2.1 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 26.3 MB/s eta 0:00:00
+Installing collected packages: pip
+  Attempting uninstall: pip
+    Found existing installation: pip 22.1
+    Uninstalling pip-22.1:
+      Successfully uninstalled pip-22.1
+Successfully installed pip-23.1.2</code></pre>
+      <p>このようなアップグレード操作をしておかないと <span
+      class="masked">以降の操作を行なった場合にエラーが発生する可能性があります</span>。この点に注意してください。</p>
+      <h2 data-number="3.4" id="pythonライブラリのインストール"><span
+      class="header-section-number">3.4</span>
+      Pythonライブラリのインストール</h2>
+      <p>以下のコマンドで <code>matplot</code>
+      をインストールすることができます。<code>pip install</code>を実行するとインターネット上の
+      <a
+      href="https://pypi.org/">PyPI</a>（パイピーアイ、<strong>Py</strong>thon
+      <strong>P</strong>ackage <strong>I</strong>ndex）という
+      <strong>Pythonのパッケージのリポジトリ</strong>
+      から目的のライブラリを検索し、それをローカル環境にダウンロードしてインストールします。</p>
+      <p>pipによるライブラリのインストールは、スマートフォンにおいて
+      <span class="masked">Playストア や AppStore
+      などのリポジトリからアプリをインストール</span>
+      するイメージです。</p>
+      <pre><code>pip install matplotlib</code></pre>
+      <p>上記のコマンドを実行すると <code>matplotlib</code>
+      以外にも、<strong>依存関係のあるライブラリ</strong>
+      (matplotlibの動作に必要な別ライブラリ)
+      もあわせてインストールされます。</p>
+      <p>完了後、再度
+      <code>pip list | Select-String -Pattern "mat"</code>
+      を実行し、実際にインストールができたか確認してみてください。</p>
+      <h2 data-number="3.5" id="動作確認"><span
+      class="header-section-number">3.5</span> 動作確認</h2>
+      <p>VS
+      Codeで作成しているノートブックに戻って、再度、セルを実行してください。今度は
+      <code>ModuleNotFoundError</code>
+      が発生せず、プログラムが実行され、次のようにグラフが出力されるはずです。</p>
+      <figure>
+      <img src="figs/10/matplotlib1.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <div class="note type-tips">
+      <p><strong>ModuleNotFoundError</strong></p>
+      <p>今後、<code>ModuleNotFoundError</code>
+      が発生した場合は、ここで説明した手順で必要なライブラリをインストールしてください。</p>
+      </div>
+      <h1 data-number="4" id="繰返し構文-少しだけ発展的な利用"><span
+      class="header-section-number">4</span> 繰返し構文
+      (少しだけ発展的な利用)</h1>
+      <h2 data-number="4.1" id="繰返し構文の基本"><span
+      class="header-section-number">4.1</span> 繰返し構文の基本</h2>
+      <p>ここまで、<strong>繰返し構文</strong>としては、次のように
+      <code>range</code> に <strong><em>1個の引数</em></strong>
+      (以下の例では <code>5</code>)
+      を与えるものを取り扱ってきました。</p>
+      <div class="sourceCode" id="cb13"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
+<span id="cb13-3"><a href="#cb13-3"></a>  <span class="bu">print</span>(i)</span></code></pre></div>
+      <p>このプログラムを実行すると、まずは
+      <strong>ループ変数</strong>である <code>i</code> に <code>0</code>
+      が格納された状態で<strong>ブロック</strong>
+      (＝インデントされた範囲) が実行され、つづいて <code>i</code> に
+      <code>1</code>
+      が格納された状態でブロックが実行され・・・という処理が5回、つまり
+      変数<code>i</code> が <span class="masked">4</span>
+      となるまで処理が繰返されました。</p>
+      <pre><code>0
+1
+2
+3
+4</code></pre>
+      <h2 data-number="4.2" id="演習①"><span
+      class="header-section-number">4.2</span> 演習①</h2>
+      <p>次のプログラムの第03行目を書き換えて、下記に示す「期待する結果」が得られるようにせよ。</p>
+      <ul>
+      <li>Colab.環境 (ローカル環境PCのJupyter環境を含む)
+      以外で実行する場合は <code>%reset -f</code> を削除すること
+      (ノーマルなPython環境では <code>%reset -f</code>
+      はエラーになります) 。</li>
+      </ul>
+      <div class="sourceCode" id="cb15"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
+<span id="cb15-3"><a href="#cb15-3"></a>  <span class="bu">print</span>(i) <span class="co"># ここを書き換える</span></span></code></pre></div>
+      <p><strong>期待する結果</strong></p>
+      <pre><code>5
+6
+7
+8
+9</code></pre>
+      <h2 data-number="4.3" id="rangeに対して2つの引数を与える"><span
+      class="header-section-number">4.3</span>
+      rangeに対して「2つの引数」を与える</h2>
+      <p>演習①のような方法で <code>5</code> から <code>9</code>
+      を得ることはできます。</p>
+      <p>この方法とは別に <code>range</code>
+      に「<strong>開始値</strong>」と「<strong>終了値+1</strong>」の
+      <strong><em>2つの引数</em></strong>
+      を与えることでも同様の処理が可能となります。</p>
+      <div class="sourceCode" id="cb17"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb17-2"><a href="#cb17-2"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>,<span class="dv">9</span><span class="op">+</span><span class="dv">1</span>):</span>
+<span id="cb17-3"><a href="#cb17-3"></a>  <span class="bu">print</span>(i)</span></code></pre></div>
+      <p><code>range</code> に2個の引数を与えた場合、ループ変数
+      (上記の例では <code>i</code>) には「第1引数の値」から「第2引数の値
+      <strong>未満</strong>
+      の値」が順次格納され、ループ処理されます。</p>
+      <ul>
+      <li><code>range(10,5)</code> のように
+      <strong>第1引数</strong><span
+      class="math inline">\(&gt;\)</span><strong>第2引数</strong>
+      とした場合、どのようになるか。結果について推測したうえで、実際にコードを実行して確認せよ。</li>
+      <li><code>range(-5,5)</code>
+      のように引数に<strong>負数を与えた場合</strong>、どのようになるか。結果について推測したうえで、実際にコードを実行して確認せよ。</li>
+      <li><code>range(0.5,9.5)</code>
+      のように引数に<strong>小数値を与えた場合</strong>、どのようになるか。結果について推測したうえで、実際にコードを実行して確認せよ。</li>
+      <li><code>range(5,20,2)</code> また <code>range(5,20,4)</code>
+      としてコードを実行し、<strong>第3引数の値がどのような意味を持つか</strong>を考察し、その考察が正しいものかコードを実行して検証せよ。また、<code>range</code>
+      の第3引数の意味についてウェブで調査せよ。</li>
+      <li><code>range(5,20,-1)</code> また <code>range(5,20,-2)</code>
+      として実行し、<strong>第3引数の値がどのような意味を持つか</strong>を考察し、その考察が正しいものかコードを実行して検証せよ。また、<code>range</code>
+      の第3引数の意味についてウェブで調査せよ。</li>
+      </ul>
+      <h1 data-number="5"
+      id="繰返し構文-ループ変数に小数値を使用したい場合"><span
+      class="header-section-number">5</span> 繰返し構文
+      (ループ変数に小数値を使用したい場合)</h1>
+      <p>上記では <code>range</code>
+      の引数により、ループ変数の「<strong>範囲</strong> (開始値・終了値)
+      」や「<strong>刻み幅</strong>」を（ある程度までは）操作できること学びました。しかし、<code>range</code>
+      では整数値しか扱うことができず、小数値をループ変数したい場合
+      (特に<strong>物理シミュレーション</strong>などの要求)
+      は、次のようにブロック内で別の変数を用意する必要があります。</p>
+      <p>次のプログラムを実際に実行して結果を確認してください。</p>
+      <div class="sourceCode" id="cb18"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb18-2"><a href="#cb18-2"></a><span class="co"># ループブロックで 0.00 から 1.00 まで</span></span>
+<span id="cb18-3"><a href="#cb18-3"></a><span class="co"># 0.01 刻みの値を使用したい</span></span>
+<span id="cb18-4"><a href="#cb18-4"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span><span class="op">+</span><span class="dv">1</span>):</span>
+<span id="cb18-5"><a href="#cb18-5"></a>  t <span class="op">=</span> <span class="fl">0.01</span> <span class="op">*</span> i</span>
+<span id="cb18-6"><a href="#cb18-6"></a>  <span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>t<span class="sc">:.2f}</span><span class="ss">&#39;</span>,end<span class="op">=</span><span class="st">&#39; &#39;</span>)</span>
+<span id="cb18-7"><a href="#cb18-7"></a>  <span class="cf">if</span> i<span class="op">%</span><span class="dv">10</span> <span class="op">==</span> <span class="dv">0</span>: <span class="co"># 0.1単位で改行</span></span>
+<span id="cb18-8"><a href="#cb18-8"></a>    <span class="bu">print</span>(<span class="st">&#39;&#39;</span>)</span></code></pre></div>
+      <p>上記では、割り算の「<strong>余り</strong>」を求める
+      <code>%</code>
+      演算子を使用して、一定値に達したときに改行するようにしています。</p>
+      <p>プログラミングにおいては、可能な範囲で減らせる変数は減らせることが望ましく
+      (使用する変数は必要最低限にすることが望ましく)
+      、上記のような要求は <code>numpy</code>
+      というライブラリを使うことで解決することができます。</p>
+      <p><code>numpy</code>
+      は<strong>数値計算支援用のライブラリ</strong>で「ナムパイ」ではなく「<strong>ナンパイ</strong>」と読みます。工学分野では極めて使用頻度が高いライブラリとなります。具体的には
+      <code>range()</code> の代わりに <code>np.arange()</code>
+      を使うことで、直接的に小数のループ変数を使用することができます。</p>
+      <div class="sourceCode" id="cb19"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb19-2"><a href="#cb19-2"></a><span class="im">import</span> numpy <span class="im">as</span> np   <span class="co"># numpy を np という省略名で使用</span></span>
+<span id="cb19-3"><a href="#cb19-3"></a><span class="cf">for</span> t <span class="kw">in</span> np.arange(<span class="dv">0</span>,<span class="fl">1.01</span>,<span class="fl">0.01</span>):</span>
+<span id="cb19-4"><a href="#cb19-4"></a>  <span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>t<span class="sc">:.2f}</span><span class="ss">&#39;</span>,end<span class="op">=</span><span class="st">&#39; &#39;</span>)</span>
+<span id="cb19-5"><a href="#cb19-5"></a>  <span class="cf">if</span> t <span class="op">%</span> <span class="fl">0.1</span> <span class="op">==</span> <span class="dv">0</span> :</span>
+<span id="cb19-6"><a href="#cb19-6"></a>    <span class="bu">print</span>()</span></code></pre></div>
+      <p>実際に実行して結果を確認してください。</p>
+      <h2 data-number="5.1" id="演習②-1"><span
+      class="header-section-number">5.1</span> 演習②-1</h2>
+      <p>上記プログラムを実行すると、次のように期待するような位置で改行がされていない。なぜ、このようなことが発生するのか、分析・考察せよ。また、どのように書き換えれば、期待するような結果が得られるか考えてコードを修正せよ。</p>
+      <pre><code>0.00 
+0.01 0.02 0.03 0.04 0.05 0.06 0.07 0.08 0.09 0.10 
+0.11 0.12 0.13 0.14 0.15 0.16 0.17 0.18 0.19 0.20 
+0.21 0.22 0.23 0.24 0.25 0.26 0.27 0.28 0.29 0.30 0.31 0.32 0.33 0.34 0.35 0.36 0.37 0.38 0.39 0.40 
+0.41 0.42 0.43 0.44 0.45 0.46 0.47 0.48 0.49 0.50 0.51 0.52 0.53 0.54 0.55 0.56 0.57 0.58 0.59 0.60 0.61 0.62 0.63 0.64 0.65 0.66 0.67 0.68 0.69 0.70 0.71 0.72 0.73 0.74 0.75 0.76 0.77 0.78 0.79 0.80 
+0.81 0.82 0.83 0.84 0.85 0.86 0.87 0.88 0.89 0.90 0.91 0.92 0.93 0.94 0.95 0.96 0.97 0.98 0.99 1.00 </code></pre>
+      <ul>
+      <li><p>ヒント (現象の原因) :<span class="masked"><code>t</code>
+      の値とあわせて <code>t % 0.1</code>
+      の値を出力して、考察の材料としてみること。小数値の2進数表現の問題は何か。2進数では情報2の第03回講義ノート
+      p.58
+      参照。ある程度、考察してみても理解できなければ、とりあえず、原因追及は諦めて解決する方法を考えてみること。</span></p></li>
+      <li><p>ヒント (現象の解決法):<span
+      class="masked">様々な方法があるが、例えば
+      <code>t % 0.1 == 0</code>
+      の部分書き換えで対応することができる。</span></p></li>
+      <li><p>答え (現象の解決法):<span class="masked">例えば
+      <code>if t*100 % 10 &lt; 0.1 :</code>
+      のように書き換えれば期待する出力が得られる。</span></p></li>
+      </ul>
+      <h2 data-number="5.2" id="演習②-2"><span
+      class="header-section-number">5.2</span> 演習②-2</h2>
+      <p>上記のプログラムの第02行目を <code>import numpy as np</code>
+      から <code>import numpy</code> に変更した場合 (＝<code>np</code>
+      という省略形を使わない場合)、以降のプログラムをどのように書き換えるべきか。実際にコードを記述して確認せよ。</p>
+      <h1 data-number="6" id="繰り返し構文2-whileの利用"><span
+      class="header-section-number">6</span> 繰り返し構文2
+      (whileの利用)</h1>
+      <p>ここまでは、繰返し構文として <code>for</code>
+      を学習してきました。<code>for</code>
+      を使った繰返し構文は、<strong>繰返しの回数が予め決まっている場合</strong>
+      に使いやすいものとなっています。</p>
+      <p>一方で、繰返し回数が決まってなく、<strong>特定の条件が満たされるまで繰返し処理したい場合</strong>には
+      <code>while</code> による繰返し構文が適しています。</p>
+      <p><code>while</code>
+      の一例を示します。次のプログラムをコピペして実行し、その後、その実行結果とプログラムを照らし合わせて内容を理解してください
+      (重要なポイントになります、読み飛ばさず、確実に理解してください)
+      。理解できないところは「<a
+      href="https://www.google.com/search?q=Python+while+初心者向け">Python
+      while 初心者向け</a>」などでウェブ検索して解決してください。</p>
+      <div class="sourceCode" id="cb21"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="im">import</span> time <span class="co"># 第12行目で time.sleep(3) を使用する準備</span></span>
+<span id="cb21-3"><a href="#cb21-3"></a><span class="im">import</span> random <span class="im">as</span> r</span>
+<span id="cb21-4"><a href="#cb21-4"></a><span class="bu">print</span>(<span class="st">&#39;九九の練習プログラムです&#39;</span>)</span>
+<span id="cb21-5"><a href="#cb21-5"></a><span class="bu">input</span>(<span class="st">&#39;はじめるためには [Enter] を押下してください。&#39;</span>)</span>
+<span id="cb21-6"><a href="#cb21-6"></a>x <span class="op">=</span> <span class="dv">1</span> <span class="co"># 処理継続フラグを立てる</span></span>
+<span id="cb21-7"><a href="#cb21-7"></a></span>
+<span id="cb21-8"><a href="#cb21-8"></a><span class="cf">while</span> x <span class="op">==</span> <span class="dv">1</span> : <span class="co"># 処理継続フラグ変数 x が 1 である間ずっと (while)</span></span>
+<span id="cb21-9"><a href="#cb21-9"></a>  a <span class="op">=</span> r.randint(<span class="dv">1</span>,<span class="dv">9</span>) <span class="co"># 1～9の範囲のランダムな整数値</span></span>
+<span id="cb21-10"><a href="#cb21-10"></a>  b <span class="op">=</span> r.randint(<span class="dv">1</span>,<span class="dv">9</span>)</span>
+<span id="cb21-11"><a href="#cb21-11"></a>  <span class="bu">print</span>(<span class="ss">f&#39;問題：</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss"> x </span><span class="sc">{</span>b<span class="sc">}</span><span class="ss"> = ? (3秒後に答えが表示されます)&#39;</span>)</span>
+<span id="cb21-12"><a href="#cb21-12"></a>  time.sleep(<span class="dv">3</span>)  <span class="co"># 3秒間プログラムを停止</span></span>
+<span id="cb21-13"><a href="#cb21-13"></a>  <span class="bu">print</span>(<span class="ss">f&#39;答えは「</span><span class="sc">{</span>a<span class="op">*</span>b<span class="sc">}</span><span class="ss">」でした。&#39;</span>)</span>
+<span id="cb21-14"><a href="#cb21-14"></a>  u <span class="op">=</span> <span class="bu">input</span>(<span class="st">&#39;つづける場合は [Enter]、終了する場合は 何か文字を入力して [Enter] &gt; &#39;</span>)</span>
+<span id="cb21-15"><a href="#cb21-15"></a>  <span class="cf">if</span> u <span class="op">!=</span> <span class="st">&#39;&#39;</span> :</span>
+<span id="cb21-16"><a href="#cb21-16"></a>    x <span class="op">=</span> <span class="dv">0</span> <span class="co"># 処理継続フラグを折る</span></span>
+<span id="cb21-17"><a href="#cb21-17"></a><span class="bu">print</span>(<span class="st">&#39;お疲れ様でした。&#39;</span>)</span></code></pre></div>
+      <p><code>while</code>
+      では、条件式が成立する間、ブロック内の処理が継続されます。条件式は
+      <code>if</code> と同じように <code>while x &lt; 10 :</code> や
+      <code>while -10 &lt;= x &lt;= 10 :</code>、<code>while x != y :</code>
+      のように記述することができます。</p>
+      <p><code>while</code>
+      構文では、<span class="masked">初回も条件式が成立するかチェックされます</sapn>。そのため、条件の与え方によっては、1回もループ処理されない可能性があります。</p>
+      <h3 data-number="6.0.1" id="演習③"><span
+      class="header-section-number">6.0.1</span> 演習③</h3>
+      <p><code>while</code>
+      による繰返し構文を利用して、次のような値を出力するプログラムを作成せよ。</p>
+      <pre><code>5 6 7 8 9 10 11 12 13 14 15 </code></pre>
+      <p><strong>ヒント</strong>: 次のプログラムを参考にせよ。</p>
+      <div class="sourceCode" id="cb23"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb23-2"><a href="#cb23-2"></a>i <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb23-3"><a href="#cb23-3"></a><span class="cf">while</span> i <span class="op">&lt;</span> <span class="dv">10</span> :</span>
+<span id="cb23-4"><a href="#cb23-4"></a>  <span class="bu">print</span>(i)</span>
+<span id="cb23-5"><a href="#cb23-5"></a>  i<span class="op">+=</span><span class="dv">1</span> <span class="co"># 「i=i+1」と同じ意味</span></span></code></pre></div>
+      <h2 data-number="6.1" id="無限ループ"><span
+      class="header-section-number">6.1</span> 無限ループ</h2>
+      <p><code>while 1 :</code> または <code>while True :</code>
+      のようにすると無限ループとなります。<strong>無限ループから抜けだす</strong>ためには
+      <code>break</code> 文を使用します。</p>
+      <p>次のプログラムをコピペして実行し、その後、その実行結果とプログラムを照らし合わせて内容を理解してください。</p>
+      <div class="sourceCode" id="cb24"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb24-2"><a href="#cb24-2"></a><span class="im">import</span> random <span class="im">as</span> r</span>
+<span id="cb24-3"><a href="#cb24-3"></a><span class="im">import</span> time</span>
+<span id="cb24-4"><a href="#cb24-4"></a>wallet <span class="op">=</span> <span class="dv">20_000</span> <span class="co"># 所持金</span></span>
+<span id="cb24-5"><a href="#cb24-5"></a>bet <span class="op">=</span> <span class="dv">300</span>       <span class="co"># ガチャ1回の費用</span></span>
+<span id="cb24-6"><a href="#cb24-6"></a>n <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb24-7"><a href="#cb24-7"></a><span class="co"># SSRゲット or 破産するまでの無限ループッ</span></span>
+<span id="cb24-8"><a href="#cb24-8"></a><span class="cf">while</span> <span class="va">True</span> :</span>
+<span id="cb24-9"><a href="#cb24-9"></a>  <span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>n<span class="sc">}</span><span class="ss">回目の</span><span class="sc">{</span>bet<span class="sc">}</span><span class="ss">円ガチャに挑戦&#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb24-10"><a href="#cb24-10"></a>  wallet <span class="op">-=</span> bet  <span class="co">#「wallet=wallet-bet」と同じ</span></span>
+<span id="cb24-11"><a href="#cb24-11"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
+<span id="cb24-12"><a href="#cb24-12"></a>    time.sleep(<span class="fl">0.5</span>)</span>
+<span id="cb24-13"><a href="#cb24-13"></a>    <span class="bu">print</span>(<span class="st">&#39;.&#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb24-14"><a href="#cb24-14"></a>  x <span class="op">=</span> r.choices([<span class="st">&#39;R&#39;</span>,<span class="st">&#39;SR&#39;</span>,<span class="st">&#39;SSR&#39;</span>],weights<span class="op">=</span>(<span class="dv">75</span>,<span class="dv">20</span>,<span class="dv">5</span>))[<span class="dv">0</span>]</span>
+<span id="cb24-15"><a href="#cb24-15"></a>  <span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>x<span class="sc">}</span><span class="ss">を入手! 残金は</span><span class="sc">{</span>wallet<span class="sc">:,}</span><span class="ss">円</span><span class="sc">{</span><span class="st">&quot;っ&quot;</span><span class="op">*</span>r<span class="sc">.</span>randint(<span class="dv">1</span>,<span class="dv">5</span>)<span class="sc">}</span><span class="ss">!&#39;</span>)</span>
+<span id="cb24-16"><a href="#cb24-16"></a>  <span class="cf">if</span> wallet <span class="op">&lt;</span> bet <span class="kw">or</span> x <span class="op">==</span> <span class="st">&#39;SSR&#39;</span> :</span>
+<span id="cb24-17"><a href="#cb24-17"></a>    <span class="cf">break</span></span>
+<span id="cb24-18"><a href="#cb24-18"></a>  n <span class="op">+=</span> <span class="dv">1</span>   <span class="co"># 「n=n+1」と同じ </span></span></code></pre></div>
+      <h3 data-number="6.1.1" id="補足-random.choices"><span
+      class="header-section-number">6.1.1</span> 補足:
+      random.choices</h3>
+      <p>random.choices
+      は、次のように結果を必ず<strong>リスト</strong>として返してきます。リストではなく、リストの中身が必要な場合は
+      <code>[]</code> で要素を取得してください。</p>
+      <div class="sourceCode" id="cb25"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb25-2"><a href="#cb25-2"></a><span class="im">import</span> random <span class="im">as</span> r</span>
+<span id="cb25-3"><a href="#cb25-3"></a></span>
+<span id="cb25-4"><a href="#cb25-4"></a><span class="co"># キーワード引数 k=4</span></span>
+<span id="cb25-5"><a href="#cb25-5"></a>x <span class="op">=</span>  r.choices([<span class="st">&#39;R&#39;</span>,<span class="st">&#39;SR&#39;</span>,<span class="st">&#39;SSR&#39;</span>],weights<span class="op">=</span>(<span class="dv">75</span>,<span class="dv">20</span>,<span class="dv">5</span>),k<span class="op">=</span><span class="dv">4</span>)</span>
+<span id="cb25-6"><a href="#cb25-6"></a><span class="bu">print</span>(x) <span class="co"># =&gt; [&#39;R&#39;, &#39;SR&#39;, &#39;R&#39;, &#39;R&#39;]</span></span>
+<span id="cb25-7"><a href="#cb25-7"></a></span>
+<span id="cb25-8"><a href="#cb25-8"></a><span class="co"># キーワード引数 k=2</span></span>
+<span id="cb25-9"><a href="#cb25-9"></a>x <span class="op">=</span>  r.choices([<span class="st">&#39;R&#39;</span>,<span class="st">&#39;SR&#39;</span>,<span class="st">&#39;SSR&#39;</span>],weights<span class="op">=</span>(<span class="dv">75</span>,<span class="dv">20</span>,<span class="dv">5</span>),k<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb25-10"><a href="#cb25-10"></a><span class="bu">print</span>(x) <span class="co"># =&gt; [&#39;R&#39;, &#39;R&#39;]</span></span>
+<span id="cb25-11"><a href="#cb25-11"></a></span>
+<span id="cb25-12"><a href="#cb25-12"></a><span class="co"># キーワード引数 k=1</span></span>
+<span id="cb25-13"><a href="#cb25-13"></a>x <span class="op">=</span>  r.choices([<span class="st">&#39;R&#39;</span>,<span class="st">&#39;SR&#39;</span>,<span class="st">&#39;SSR&#39;</span>],weights<span class="op">=</span>(<span class="dv">75</span>,<span class="dv">20</span>,<span class="dv">5</span>),k<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb25-14"><a href="#cb25-14"></a><span class="bu">print</span>(x) <span class="co"># =&gt; [&#39;R&#39;]</span></span>
+<span id="cb25-15"><a href="#cb25-15"></a></span>
+<span id="cb25-16"><a href="#cb25-16"></a><span class="co"># キーワード引数 kを省略（k=1）と同じ</span></span>
+<span id="cb25-17"><a href="#cb25-17"></a>x <span class="op">=</span>  r.choices([<span class="st">&#39;R&#39;</span>,<span class="st">&#39;SR&#39;</span>,<span class="st">&#39;SSR&#39;</span>],weights<span class="op">=</span>(<span class="dv">75</span>,<span class="dv">20</span>,<span class="dv">5</span>))</span>
+<span id="cb25-18"><a href="#cb25-18"></a><span class="bu">print</span>(x) <span class="co"># =&gt; [&#39;R&#39;]</span></span>
+<span id="cb25-19"><a href="#cb25-19"></a></span>
+<span id="cb25-20"><a href="#cb25-20"></a><span class="co"># キーワード引数 kを省略（k=1）と同じ</span></span>
+<span id="cb25-21"><a href="#cb25-21"></a>x <span class="op">=</span>  r.choices([<span class="st">&#39;R&#39;</span>,<span class="st">&#39;SR&#39;</span>,<span class="st">&#39;SSR&#39;</span>],weights<span class="op">=</span>(<span class="dv">75</span>,<span class="dv">20</span>,<span class="dv">5</span>))</span>
+<span id="cb25-22"><a href="#cb25-22"></a>x <span class="op">=</span> x[<span class="dv">0</span>] <span class="co"># xはリストなので x[0] でゼロ番目の要素を取得</span></span>
+<span id="cb25-23"><a href="#cb25-23"></a><span class="bu">print</span>(x) <span class="co"># R</span></span>
+<span id="cb25-24"><a href="#cb25-24"></a></span>
+<span id="cb25-25"><a href="#cb25-25"></a><span class="co"># 省略形</span></span>
+<span id="cb25-26"><a href="#cb25-26"></a>x <span class="op">=</span>  r.choices([<span class="st">&#39;R&#39;</span>,<span class="st">&#39;SR&#39;</span>,<span class="st">&#39;SSR&#39;</span>],weights<span class="op">=</span>(<span class="dv">75</span>,<span class="dv">20</span>,<span class="dv">5</span>))[<span class="dv">0</span>]</span>
+<span id="cb25-27"><a href="#cb25-27"></a><span class="bu">print</span>(x) <span class="co"># R</span></span></code></pre></div>
+      <h2 data-number="6.2" id="演習③-1"><span
+      class="header-section-number">6.2</span> 演習③</h2>
+      <p>自キャラと敵キャラによる1対1の自動バトル
+      (交互に攻撃して決着がつくまで戦う系)
+      を実況するようなプログラムを作成せよ。なお、詳細に作りこむととキリがないので、授業中は15分程度で次のセクションに移ること。</p>
+      <ul>
+      <li>ここでは <code>while</code> <code>break</code>
+      を使用することを期待しています。</li>
+      </ul>
+      <p><strong>作成例</strong></p>
+      <pre><code>勇者ヨシヒコの前にスライムがあらわれた。
+勇者ヨシヒコのHP「50」、スライムのHP「8」。
+
+勇者ヨシヒコの攻撃、スライムに3のダメージ!! スライムのHP 8 -&gt; 5
+スライムの攻撃、勇者ヨシヒコに2のダメージ!! 勇者ヨシヒコのHP 50 -&gt; 48
+勇者ヨシヒコの攻撃、スライムに3のダメージ!! スライムのHP 5 -&gt; 3
+スライムの攻撃、勇者ヨシヒコに・・・</code></pre>
+      <h1 data-number="7" id="リスト操作の負荷量の比較"><span
+      class="header-section-number">7</span>
+      リスト操作の負荷量の比較</h1>
+      <p>前々回の講義ではリストを<strong>初期化する方法</strong> (例えば
+      <code>[0]*10</code> など)
+      や、リストに<strong>要素を追加する方法</strong> (例えば
+      <code>append</code> や <code>insert</code> メソッドなど)
+      を学習しました。</p>
+      <p>基本的に、リストに順次要素を追加する方法は、いわゆる「<strong>重たい処理</strong>」となります。あらかじめリストの長さが決まっているケースでは、その長さのリストを作成しておき、そこに値を書き込んでいくほうが高速かつ効率的な処理となります。</p>
+      <p>例として、長さが「1000」で、その要素として先頭から
+      0、1、2、…、999
+      という数値が格納されるリストを生成すること考えます。この処理を次の3つの方法で実行して、それに要する時間を
+      <code>%%timeit</code> で計測してみます。</p>
+      <p><code>%%timeit</code> は既に過去の紹介していますが、<span
+      class="masked">セル単位の実行時間を計測するマジックコマンド
+      (Colab.環境専用) です</span>。なお、<code>%%timeit</code>
+      のセルのなかでは <code>%reset -f</code> や <code>print</code>
+      は使わないようにしてください。</p>
+      <p>次の3つの処理の処理時間を比較します。Colab.環境で上記の各プログラムを実行して、その実行時間を比較してみてください。</p>
+      <ol type="1">
+      <li>初期値が 0 で、要素数 1000 のリストを作成する
+      (<code>arr=[0]*1000</code>) 。その後、<code>for</code>
+      構文で、先頭から順番に要素の値を書き換えていく。</li>
+      <li>要素数が 0 の空のリストを作成する
+      (<code>arr=[]</code>)。その後、<code>for</code>
+      構文のなかで、リストの<strong>末尾</strong>に順次要素を追加していく。</li>
+      <li>要素数が 0 の空のリストを作成する
+      (<code>arr=[]</code>)。その後、<code>for</code>
+      構文のなかで、リストの<strong>先頭</strong>に順次要素を追加していく。</li>
+      </ol>
+      <div class="sourceCode" id="cb27" data-caption="p1.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="op">%%</span>timeit</span>
+<span id="cb27-2"><a href="#cb27-2"></a>arr <span class="op">=</span> [<span class="dv">0</span>]<span class="op">*</span><span class="dv">1000</span></span>
+<span id="cb27-3"><a href="#cb27-3"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>):</span>
+<span id="cb27-4"><a href="#cb27-4"></a>  arr[i]<span class="op">=</span>i</span></code></pre></div>
+      <div class="sourceCode" id="cb28" data-caption="p2.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a><span class="op">%%</span>timeit</span>
+<span id="cb28-2"><a href="#cb28-2"></a>arr <span class="op">=</span> []</span>
+<span id="cb28-3"><a href="#cb28-3"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>):</span>
+<span id="cb28-4"><a href="#cb28-4"></a>  arr.append(i)</span></code></pre></div>
+      <div class="sourceCode" id="cb29" data-caption="p3.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a><span class="op">%%</span>timeit</span>
+<span id="cb29-2"><a href="#cb29-2"></a>arr <span class="op">=</span> []</span>
+<span id="cb29-3"><a href="#cb29-3"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>):</span>
+<span id="cb29-4"><a href="#cb29-4"></a>  arr.insert(<span class="dv">0</span>,<span class="dv">999</span><span class="op">-</span>i)</span></code></pre></div>
+      <p>特に <code>insert</code> を使ってリストの途中 (末尾以外)
+      に要素を追加する処理は、処理時間が長くなることが確認できると思います。</p>
+      <h1 data-number="8" id="リスト要素の削除"><span
+      class="header-section-number">8</span> リスト要素の削除</h1>
+      <p>リストは <code>append</code> や <code>intsert</code>
+      などのメソッドにより「<strong>要素の追加</strong>」が可能でした。これに対して
+      <code>pop</code> や <code>remove</code>
+      などのメソッドにより「<strong>要素の削除</strong>」が可能です。</p>
+      <p>リストの要素削除について動作を確認するために、次のようなリストを考えます。実行して結果を確認してください。</p>
+      <div class="sourceCode" id="cb30"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb30-2"><a href="#cb30-2"></a>arr <span class="op">=</span> <span class="bu">list</span>(<span class="st">&#39;ABCDBBEF&#39;</span>) <span class="co"># 文字列からリストを作成可能</span></span>
+<span id="cb30-3"><a href="#cb30-3"></a><span class="bu">print</span>(arr)      <span class="co"># =&gt; [&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;, &#39;B&#39;, &#39;B&#39;, &#39;E&#39;, &#39;F&#39;]</span></span>
+<span id="cb30-4"><a href="#cb30-4"></a><span class="bu">print</span>(<span class="bu">len</span>(arr)) <span class="co"># =&gt; 8</span></span></code></pre></div>
+      <p>上記のリスト <code>arr</code>
+      に対して要素削除の操作を行ないます。</p>
+      <p><code>pop</code>
+      は「指定したインデックスの要素」を取り除き、その部分を「前詰め」します。例えば、<code>arr</code>
+      から <code>'C'</code>
+      を取り除きたいときは、次のプログラムのように、そのインデックスである
+      <code>2</code> を <code>pop</code>
+      の引数に指定します。<code>pop</code> メソッドには
+      <strong>戻り値</strong>
+      があり、取り除いた値を受けとることもできます。</p>
+      <p>実際に次のプログラムを実行して、結果を確認してみてください。</p>
+      <div class="sourceCode" id="cb31"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb31-2"><a href="#cb31-2"></a>arr <span class="op">=</span> <span class="bu">list</span>(<span class="st">&#39;ABCDBBEF&#39;</span>)</span>
+<span id="cb31-3"><a href="#cb31-3"></a>p <span class="op">=</span> arr.pop(<span class="dv">2</span>)</span>
+<span id="cb31-4"><a href="#cb31-4"></a><span class="bu">print</span>(arr)      <span class="co"># =&gt; [&#39;A&#39;, &#39;B&#39;, &#39;D&#39;, &#39;B&#39;, &#39;B&#39;, &#39;E&#39;, &#39;F&#39;]</span></span>
+<span id="cb31-5"><a href="#cb31-5"></a><span class="bu">print</span>(<span class="bu">len</span>(arr)) <span class="co"># =&gt; 7</span></span>
+<span id="cb31-6"><a href="#cb31-6"></a><span class="bu">print</span>(<span class="ss">f&#39;p=</span><span class="sc">{</span>p<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># =&gt; p=C</span></span></code></pre></div>
+      <p>上記の例では、第03行目で変数 <code>p</code> で
+      <code>arr.pop(2)</code>
+      の結果を受け取っていますが、これは、次のように受け取らないことも可能です。</p>
+      <div class="sourceCode" id="cb32"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb32-2"><a href="#cb32-2"></a>arr <span class="op">=</span> <span class="bu">list</span>(<span class="st">&#39;ABCDBBEF&#39;</span>)</span>
+<span id="cb32-3"><a href="#cb32-3"></a>arr.pop(<span class="dv">2</span>) <span class="co"># 戻り値を受け取らない</span></span>
+<span id="cb32-4"><a href="#cb32-4"></a><span class="bu">print</span>(arr)</span></code></pre></div>
+      <p>上記のプログラムでは、取り除きたい要素 <code>'C'</code>
+      のインデックスを <code>2</code>
+      のように数値で直接的に指定しました。しかし、実施にはそのようなケースは少なく、前々回で学習した
+      <code>index</code> メソッドと組み合わせて利用します(
+      <code>index</code>
+      は指定の要素が「リストの何番目に存在するかを調べるメソッドでした)。</p>
+      <p>つまり、次のように利用します。</p>
+      <div class="sourceCode" id="cb33"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb33-2"><a href="#cb33-2"></a>arr <span class="op">=</span> <span class="bu">list</span>(<span class="st">&#39;ABCDBBEF&#39;</span>)</span>
+<span id="cb33-3"><a href="#cb33-3"></a>idx <span class="op">=</span> arr.index(<span class="st">&#39;C&#39;</span>) <span class="co"># Cのインデックスを得る</span></span>
+<span id="cb33-4"><a href="#cb33-4"></a>arr.pop(idx)</span>
+<span id="cb33-5"><a href="#cb33-5"></a><span class="bu">print</span>(arr)</span></code></pre></div>
+      <p>これは、さらに次のように変数 <code>idx</code>
+      を省いて記述することができます。可読性が損なわれない範囲で、不要な変数は省くことが望ましいです。</p>
+      <div class="sourceCode" id="cb34"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb34-2"><a href="#cb34-2"></a>arr <span class="op">=</span> <span class="bu">list</span>(<span class="st">&#39;ABCDBBEF&#39;</span>)</span>
+<span id="cb34-3"><a href="#cb34-3"></a>arr.pop(arr.index(<span class="st">&#39;C&#39;</span>)) <span class="co"># ここに注目</span></span>
+<span id="cb34-4"><a href="#cb34-4"></a><span class="bu">print</span>(arr)</span></code></pre></div>
+      <ul>
+      <li><code>pop</code>
+      の引数に負数を与えたとき、どのようになるか。結果について推測したうえで、実際にコードを実行して確認せよ。</li>
+      </ul>
+      <h2 data-number="8.1" id="remove-による要素の削除"><span
+      class="header-section-number">8.1</span> remove
+      による要素の削除</h2>
+      <p><code>remove</code>
+      では、インデックスではく、削除したい要素そのものを指定してリストから取り除くことができます。先ほどと同様に
+      <code>'C'</code> を削除したい場合は次のようにします。</p>
+      <div class="sourceCode" id="cb35"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb35-2"><a href="#cb35-2"></a>arr <span class="op">=</span> <span class="bu">list</span>(<span class="st">&#39;ABCDBBEF&#39;</span>)</span>
+<span id="cb35-3"><a href="#cb35-3"></a>arr.remove(<span class="st">&#39;C&#39;</span>) <span class="co"># 削除したいものを直接指定</span></span>
+<span id="cb35-4"><a href="#cb35-4"></a><span class="bu">print</span>(arr)</span></code></pre></div>
+      <ul>
+      <li>リストに存在していない要素 (たとえば <code>Z</code> など) を
+      <code>remove</code>
+      の引数に与えたとき、どのようになるか。結果を推測したうえで、実際に結果を確認せよ。</li>
+      <li><code>remove</code>
+      の戻り値はどのようになるか。結果について推測したうえで、実際にコードを実行して確認せよ。</li>
+      </ul>
+      <p><code>remove</code>
+      では、リスト内で見つかった<strong>最初の要素のみ</strong>(1個のみ)
+      を削除します。全てを削除したい場合は <code>while</code>
+      などと組み合わせて使用する必要があります。</p>
+      <p>次のプログラム実行し、その結果を確認してください。</p>
+      <div class="sourceCode" id="cb36"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb36-2"><a href="#cb36-2"></a>arr <span class="op">=</span> <span class="bu">list</span>(<span class="st">&#39;ABCDBBEF&#39;</span>)</span>
+<span id="cb36-3"><a href="#cb36-3"></a>arr.remove(<span class="st">&#39;B&#39;</span>) <span class="co"># 最初に発見したBのみを削除</span></span>
+<span id="cb36-4"><a href="#cb36-4"></a><span class="bu">print</span>(arr)</span></code></pre></div>
+      <h2 data-number="8.2" id="演習④"><span
+      class="header-section-number">8.2</span> 演習④</h2>
+      <p>次のプログラムが意図する動作をするようにコードを追加せよ。</p>
+      <ul>
+      <li>ここでは <code>while</code>
+      を使用することを期待しています。</li>
+      <li>ここではリストの <code>remove</code>
+      メソッドを使用することを期待しています。</li>
+      <li>リストのなかに特定の要素が存在するかの条件式は <code>in</code>
+      で与えることができました。<a
+      href="lecture08.html#%E8%A6%81%E7%B4%A0%E3%81%AE%E6%A4%9C%E7%B4%A2">第08回</a>
+      <ul>
+      <li><code>if</code>
+      に設定することができる条件式は、<code>while</code>
+      に対する条件式として使うことができます。</li>
+      </ul></li>
+      </ul>
+      <div class="sourceCode" id="cb37"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb37-2"><a href="#cb37-2"></a><span class="im">import</span> random <span class="im">as</span> r</span>
+<span id="cb37-3"><a href="#cb37-3"></a></span>
+<span id="cb37-4"><a href="#cb37-4"></a>target <span class="op">=</span> <span class="st">&#39;やくそう&#39;</span></span>
+<span id="cb37-5"><a href="#cb37-5"></a>items <span class="op">=</span> [<span class="st">&#39;どうのつるぎ&#39;</span>,<span class="st">&#39;やくそう&#39;</span>,<span class="st">&#39;どくけしそう&#39;</span>,<span class="st">&#39;ぬののふく&#39;</span>, <span class="st">&#39;やくそう&#39;</span>, <span class="st">&#39;やくそう&#39;</span>, <span class="st">&#39;かわのたて&#39;</span>]</span>
+<span id="cb37-6"><a href="#cb37-6"></a></span>
+<span id="cb37-7"><a href="#cb37-7"></a><span class="bu">print</span>(<span class="st">&#39;勇者ヨシヒコの所持品 : &#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb37-8"><a href="#cb37-8"></a><span class="bu">print</span>(<span class="op">*</span>items, sep<span class="op">=</span><span class="st">&#39; &#39;</span>)</span>
+<span id="cb37-9"><a href="#cb37-9"></a><span class="bu">print</span>()</span>
+<span id="cb37-10"><a href="#cb37-10"></a></span>
+<span id="cb37-11"><a href="#cb37-11"></a><span class="bu">print</span>(<span class="ss">f&#39;勇者ヨシヒコはパルプンテを唱えた。なんと全ての「</span><span class="sc">{</span>target<span class="sc">}</span><span class="ss">」が粉々に砕け散った。&#39;</span>)</span>
+<span id="cb37-12"><a href="#cb37-12"></a><span class="bu">print</span>()</span>
+<span id="cb37-13"><a href="#cb37-13"></a></span>
+<span id="cb37-14"><a href="#cb37-14"></a><span class="co"># ここに items からすべての target を取り除く処理を記述する</span></span>
+<span id="cb37-15"><a href="#cb37-15"></a></span>
+<span id="cb37-16"><a href="#cb37-16"></a><span class="bu">print</span>(<span class="st">&#39;勇者ヨシヒコの所持品 : &#39;</span></span></code></pre></div>
+      <div class="note type-tips">
+      <p><strong>リストのアンパック</strong></p>
+      <p>リストを関数の引数として与える場合、先頭に<strong>アスタリスク</strong>をつけて
+      <strong>アンパック (展開)</strong>
+      という処理を施すことができます。これにより、次のようなことができます。</p>
+      <div class="sourceCode" id="cb38"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb38-2"><a href="#cb38-2"></a>items <span class="op">=</span> [<span class="st">&#39;どうのつるぎ&#39;</span>,<span class="st">&#39;やくそう&#39;</span>,<span class="st">&#39;どくけしそう&#39;</span>,<span class="st">&#39;ぬののふく&#39;</span>]</span>
+<span id="cb38-3"><a href="#cb38-3"></a><span class="bu">print</span>(<span class="op">*</span>items, sep<span class="op">=</span><span class="st">&#39;</span><span class="ch">\n</span><span class="st">&#39;</span>) <span class="co"># itemsの頭に「*」を付けた。また sep 引数を設定</span></span></code></pre></div>
+      <p>このとき、第03行目のは次のような文と同じ意味を持ちます。</p>
+      <div class="sourceCode" id="cb39"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a><span class="bu">print</span>(<span class="st">&#39;どうのつるぎ&#39;</span>,<span class="st">&#39;やくそう&#39;</span>,<span class="st">&#39;どくけしそう&#39;</span>,<span class="st">&#39;ぬののふく&#39;</span>, sep<span class="op">=</span><span class="st">&#39;</span><span class="ch">\n</span><span class="st">&#39;</span>)</span></code></pre></div>
+      <p>つまり、リストをアンパックすると「<strong>リスト内の要素を個別の引数として関数に与えること</strong>」が可能になります。</p>
+      </div>
+      <h1 data-number="9" id="宿題"><span
+      class="header-section-number">9</span> 宿題</h1>
+      <p>次回は、次のような「斜方投射」の簡易シミュレーションを扱います。斜方投射
+      (基礎物理学)
+      について復習し、また、下記のプログラムについて読解を試みてください
+      (分からなくても60分は費やしてください) 。</p>
+      <figure>
+      <img src="figs/10/sim1.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <ul>
+      <li><p>ある時刻において位置 <span class="math inline">\(x
+      (\mathrm{m})\)</span>、速度 <span
+      class="math inline">\(v(\mathrm{m/s})\)</span>
+      の物体がある。この物体について、微小時間 <span
+      class="math inline">\(dt\)</span> 秒後の位置を求めよ。答え：<span
+      class="masked"><span class="math inline">\(x+v\cdot
+      dt\)</span></span></p></li>
+      <li><p>ある時刻において速度 <span
+      class="math inline">\(v(\mathrm{m/s})\)</span>、加速度 <span
+      class="math inline">\(-g(\mathrm{m/s^2})\)</span>
+      の物体がある。この物体について、微小時間 <span
+      class="math inline">\(dt\)</span> 秒後の速度を求めよ。答え：<span
+      class="masked"><span class="math inline">\(v-g\cdot
+      dt\)</span></span></p></li>
+      </ul>
+      <div class="sourceCode" id="cb40"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb40-2"><a href="#cb40-2"></a><span class="im">import</span> math</span>
+<span id="cb40-3"><a href="#cb40-3"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb40-4"><a href="#cb40-4"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb40-5"><a href="#cb40-5"></a></span>
+<span id="cb40-6"><a href="#cb40-6"></a><span class="co"># パラメータ設定</span></span>
+<span id="cb40-7"><a href="#cb40-7"></a>v0 <span class="op">=</span> <span class="fl">20.0</span>    <span class="co"># 初速度(m/s)</span></span>
+<span id="cb40-8"><a href="#cb40-8"></a>theta <span class="op">=</span> <span class="dv">60</span>   <span class="co"># 水平方向から上方にθ(deg)</span></span>
+<span id="cb40-9"><a href="#cb40-9"></a>g <span class="op">=</span> <span class="fl">9.8</span>      <span class="co"># 重力加速度m/s^2</span></span>
+<span id="cb40-10"><a href="#cb40-10"></a></span>
+<span id="cb40-11"><a href="#cb40-11"></a><span class="co"># シミュレーション</span></span>
+<span id="cb40-12"><a href="#cb40-12"></a>dt <span class="op">=</span> <span class="fl">0.1</span>  <span class="co"># 位置計算の時間間隔</span></span>
+<span id="cb40-13"><a href="#cb40-13"></a><span class="bu">iter</span> <span class="op">=</span> <span class="dv">80</span> <span class="co"># シミュレーション繰返し回数</span></span>
+<span id="cb40-14"><a href="#cb40-14"></a></span>
+<span id="cb40-15"><a href="#cb40-15"></a>theta <span class="op">=</span> math.radians(theta) <span class="co"># deg -&gt; rad</span></span>
+<span id="cb40-16"><a href="#cb40-16"></a></span>
+<span id="cb40-17"><a href="#cb40-17"></a>arr_x<span class="op">=</span>[<span class="dv">0</span>]<span class="op">*</span><span class="bu">iter</span> <span class="co"># X位置を格納するリストの初期化</span></span>
+<span id="cb40-18"><a href="#cb40-18"></a>arr_y<span class="op">=</span>[<span class="dv">0</span>]<span class="op">*</span><span class="bu">iter</span> <span class="co"># Y位置　〃</span></span>
+<span id="cb40-19"><a href="#cb40-19"></a></span>
+<span id="cb40-20"><a href="#cb40-20"></a>arr_x[<span class="dv">0</span>] <span class="op">=</span> x <span class="op">=</span> <span class="dv">0</span>  <span class="co"># Xの初期位置</span></span>
+<span id="cb40-21"><a href="#cb40-21"></a>arr_y[<span class="dv">0</span>] <span class="op">=</span> y <span class="op">=</span> <span class="dv">0</span>  <span class="co"># Yの 〃</span></span>
+<span id="cb40-22"><a href="#cb40-22"></a>vx <span class="op">=</span> v0 <span class="op">*</span> math.cos(theta) <span class="co"># X成分の初期速度 </span></span>
+<span id="cb40-23"><a href="#cb40-23"></a>vy <span class="op">=</span> v0 <span class="op">*</span> math.sin(theta) <span class="co"># Y成分 〃</span></span>
+<span id="cb40-24"><a href="#cb40-24"></a></span>
+<span id="cb40-25"><a href="#cb40-25"></a><span class="co"># シミュレーション</span></span>
+<span id="cb40-26"><a href="#cb40-26"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,<span class="bu">iter</span>):</span>
+<span id="cb40-27"><a href="#cb40-27"></a>  vy <span class="op">=</span> vy <span class="op">-</span> g <span class="op">*</span> dt <span class="co"># Y方向の速度更新</span></span>
+<span id="cb40-28"><a href="#cb40-28"></a>  x <span class="op">=</span> x <span class="op">+</span> vx <span class="op">*</span> dt  <span class="co"># X位置の計算</span></span>
+<span id="cb40-29"><a href="#cb40-29"></a>  y <span class="op">=</span> y <span class="op">+</span> vy <span class="op">*</span> dt  <span class="co"># Y位置 〃</span></span>
+<span id="cb40-30"><a href="#cb40-30"></a></span>
+<span id="cb40-31"><a href="#cb40-31"></a>  <span class="co"># 地面衝突の反発 (バウンド) の処理</span></span>
+<span id="cb40-32"><a href="#cb40-32"></a>  <span class="cf">if</span> y <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb40-33"><a href="#cb40-33"></a>    y <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb40-34"><a href="#cb40-34"></a>    vy <span class="op">=</span> <span class="op">-</span>vy <span class="op">*</span> <span class="fl">0.8</span>  <span class="co"># 反発係数</span></span>
+<span id="cb40-35"><a href="#cb40-35"></a></span>
+<span id="cb40-36"><a href="#cb40-36"></a>  arr_x[i] <span class="op">=</span> x</span>
+<span id="cb40-37"><a href="#cb40-37"></a>  arr_y[i] <span class="op">=</span> y</span>
+<span id="cb40-38"><a href="#cb40-38"></a></span>
+<span id="cb40-39"><a href="#cb40-39"></a><span class="co"># 可視化（現状でここから先は理解不要）</span></span>
+<span id="cb40-40"><a href="#cb40-40"></a>fig,ax <span class="op">=</span> plt.subplots(dpi<span class="op">=</span><span class="dv">120</span>)</span>
+<span id="cb40-41"><a href="#cb40-41"></a>ax.scatter(arr_x,arr_y,marker<span class="op">=</span><span class="st">&#39;o&#39;</span>,s<span class="op">=</span><span class="dv">20</span>,alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb40-42"><a href="#cb40-42"></a>ax.axhline(<span class="dv">0</span>,c<span class="op">=</span><span class="st">&#39;black&#39;</span>,lw<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb40-43"><a href="#cb40-43"></a>ax.set_aspect(<span class="st">&#39;equal&#39;</span>, adjustable<span class="op">=</span><span class="st">&#39;box&#39;</span>)</span>
+<span id="cb40-44"><a href="#cb40-44"></a>ax.set_ylim(<span class="op">-</span><span class="dv">1</span>,<span class="dv">20</span>)</span>
+<span id="cb40-45"><a href="#cb40-45"></a>plt.show()</span></code></pre></div>
+      <h1 data-number="10" id="課題04の解答例"><span
+      class="header-section-number">10</span> 課題04の解答例</h1>
+      <h2 data-number="10.1" id="問題"><span
+      class="header-section-number">10.1</span> 問題</h2>
+      <p>FC版DQ3 (<a
+      href="https://ja.wikipedia.org/wiki/%E3%83%89%E3%83%A9%E3%82%B4%E3%83%B3%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88III_%E3%81%9D%E3%81%97%E3%81%A6%E4%BC%9D%E8%AA%AC%E3%81%B8%E2%80%A6">ファミコン版のドラゴンクエスト3</a>)
+      の武器を扱った「<strong>100連ガチャ</strong>」のシミュレータを作成したい。ガチャにより排出される武器は
+      <code>item_names_str</code>
+      でカンマ区切りで与えられる<strong>全33種</strong>の武器である。また、その排出比は
+      <code>item_p_str</code>
+      でカンマ区切りで与えた数値となっている。</p>
+      <p>ここでの排出比とは・・・例えば「ひのきのぼう」「こんぼう」「どうのつるぎ」の全３種を仮定し、その排出比が「<span
+      class="math inline">\(10\)</span>」「<span
+      class="math inline">\(5\)</span>」「<span
+      class="math inline">\(2\)</span>」であれば、「ひのきのぼう」があたる確率は
+      <span
+      class="math inline">\(10/(10+5+2)\)</span>、「こんぼう」があたる確率は
+      <span
+      class="math inline">\(5/(10+5+2)\)</span>、「どうのつるぎ」があたる確率は
+      <span class="math inline">\(2/(10+5+2)\)</span>
+      のように考えること。</p>
+      <div class="sourceCode" id="cb41"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb41-2"><a href="#cb41-2"></a>item_names_str <span class="op">=</span> <span class="st">&#39;ひのきのぼう,こんぼう,どうのつるぎ,せいなるナイフ,くさりがま,とげのむち,まどうしのつえ,てつのやり,どくばり,てつのつめ,はがねのつるぎ,てつのオノ,あまぐものつえ,いかづちのつえ,さざなみのつえ,さばきのつえ,おおばさみ,ゆうわくのけん,りりょくのつえ,おおかなづち,はやぶさのけん,ゾンビキラー,ドラゴンキラー,くさなぎのけん,ガイアのつるぎ,ふぶきのつるぎ,いなづまのけん,まじんのオノ,らいじんのけん,もろはのつるぎ,はかいのつるぎ,おうごんのつめ,おうじゃのけん&#39;</span></span>
+<span id="cb41-3"><a href="#cb41-3"></a>item_p_str <span class="op">=</span> <span class="st">&#39;50,50,50,40,40,35,30,30,25,20,20,20,10,10,10,10,10,10,10,10,5,5,5,4,3,3,2,2,2,2,2,2,1&#39;</span></span></code></pre></div>
+      <p>上記の設定に基づき<strong>100連ガチャ</strong>のシミュレーションを実行し、次のような出力を得たい。</p>
+      <pre><code>100連ガチャの結果、以下のアイテムを獲得しました。
+ひのきのぼう ... 8個
+こんぼう ... 8個
+どうのつるぎ ... 9個
+せいなるナイフ ... 8個
+くさりがま ... 11個
+とげのむち ... 7個
+まどうしのつえ ... 5個
+てつのやり ... 7個
+どくばり ... 6個
+てつのつめ ... 5個
+はがねのつるぎ ... 4個
+てつのオノ ... 3個
+あまぐものつえ ... 2個
+いかづちのつえ ... 1個
+さざなみのつえ ... 6個
+さばきのつえ ... 2個
+ゆうわくのけん ... 3個
+りりょくのつえ ... 2個
+おおかなづち ... 1個
+ゾンビキラー ... 1個
+まじんのオノ ... 1個</code></pre>
+      <p>この要求を満たすことができるPythonプログラムを考え、実装せよ。</p>
+      <h2 data-number="10.2" id="解答例①"><span
+      class="header-section-number">10.2</span> 解答例①</h2>
+      <div class="sourceCode" id="cb43"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb43-2"><a href="#cb43-2"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb43-3"><a href="#cb43-3"></a><span class="im">import</span> random <span class="im">as</span> r</span>
+<span id="cb43-4"><a href="#cb43-4"></a></span>
+<span id="cb43-5"><a href="#cb43-5"></a>item_names_str <span class="op">=</span> <span class="st">&#39;ひのきのぼう,こんぼう,どうのつるぎ,せいなるナイフ,くさりがま,とげのむち,まどうしのつえ,てつのやり,どくばり,てつのつめ,はがねのつるぎ,てつのオノ,あまぐものつえ,いかづちのつえ,さざなみのつえ,さばきのつえ,おおばさみ,ゆうわくのけん,りりょくのつえ,おおかなづち,はやぶさのけん,ゾンビキラー,ドラゴンキラー,くさなぎのけん,ガイアのつるぎ,ふぶきのつるぎ,いなづまのけん,まじんのオノ,らいじんのけん,もろはのつるぎ,はかいのつるぎ,おうごんのつめ,おうじゃのけん&#39;</span></span>
+<span id="cb43-6"><a href="#cb43-6"></a>item_p_str <span class="op">=</span> <span class="st">&#39;50,50,50,40,40,35,30,30,25,20,20,20,10,10,10,10,10,10,10,10,5,5,5,4,3,3,2,2,2,2,2,1,1&#39;</span></span>
+<span id="cb43-7"><a href="#cb43-7"></a></span>
+<span id="cb43-8"><a href="#cb43-8"></a>item_names <span class="op">=</span> <span class="bu">list</span>(item_names_str.split(<span class="st">&#39;,&#39;</span>))   <span class="co"># 文字列→リスト</span></span>
+<span id="cb43-9"><a href="#cb43-9"></a>item_p <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="bu">int</span>, item_p_str.split(<span class="st">&#39;,&#39;</span>))) <span class="co"># 文字列→リスト</span></span>
+<span id="cb43-10"><a href="#cb43-10"></a></span>
+<span id="cb43-11"><a href="#cb43-11"></a><span class="cf">assert</span> <span class="bu">len</span>(item_names) <span class="op">==</span> <span class="bu">len</span>(item_p) <span class="co"># 2つのリストの長さが同じであることを確認</span></span>
+<span id="cb43-12"><a href="#cb43-12"></a></span>
+<span id="cb43-13"><a href="#cb43-13"></a>item_counts <span class="op">=</span> [<span class="dv">0</span>]<span class="op">*</span><span class="bu">len</span>(item_names) <span class="co"># 結果を格納する0で初期化したリスト</span></span>
+<span id="cb43-14"><a href="#cb43-14"></a>n <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb43-15"><a href="#cb43-15"></a><span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>):</span>
+<span id="cb43-16"><a href="#cb43-16"></a>  item <span class="op">=</span> r.choices(item_names,weights<span class="op">=</span>item_p,k<span class="op">=</span><span class="dv">1</span>)[<span class="dv">0</span>]</span>
+<span id="cb43-17"><a href="#cb43-17"></a>  index <span class="op">=</span> item_names.index(item)</span>
+<span id="cb43-18"><a href="#cb43-18"></a>  item_counts[index]<span class="op">+=</span><span class="dv">1</span></span>
+<span id="cb43-19"><a href="#cb43-19"></a></span>
+<span id="cb43-20"><a href="#cb43-20"></a><span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>n<span class="sc">}</span><span class="ss">連ガチャの結果、以下のアイテムを獲得しました。&#39;</span>)</span>
+<span id="cb43-21"><a href="#cb43-21"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(item_names)):</span>
+<span id="cb43-22"><a href="#cb43-22"></a>  <span class="cf">if</span> item_counts[i] <span class="op">!=</span> <span class="dv">0</span>: <span class="co"># 1個以上獲得していれば</span></span>
+<span id="cb43-23"><a href="#cb43-23"></a>    <span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>item_names[i]<span class="sc">}</span><span class="ss"> ... </span><span class="sc">{</span>item_counts[i]<span class="sc">}</span><span class="ss">個&#39;</span>)</span></code></pre></div>
+      <h2 data-number="10.3" id="解答例②"><span
+      class="header-section-number">10.3</span> 解答例②</h2>
+      <div class="sourceCode" id="cb44"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb44-2"><a href="#cb44-2"></a><span class="im">import</span> random <span class="im">as</span> r</span>
+<span id="cb44-3"><a href="#cb44-3"></a></span>
+<span id="cb44-4"><a href="#cb44-4"></a>item_names_str <span class="op">=</span> <span class="st">&#39;ひのきのぼう,こんぼう,どうのつるぎ,せいなるナイフ,くさりがま,とげのむち,まどうしのつえ,てつのやり,どくばり,てつのつめ,はがねのつるぎ,てつのオノ,あまぐものつえ,いかづちのつえ,さざなみのつえ,さばきのつえ,おおばさみ,ゆうわくのけん,りりょくのつえ,おおかなづち,はやぶさのけん,ゾンビキラー,ドラゴンキラー,くさなぎのけん,ガイアのつるぎ,ふぶきのつるぎ,いなづまのけん,まじんのオノ,らいじんのけん,もろはのつるぎ,はかいのつるぎ,おうごんのつめ,おうじゃのけん&#39;</span></span>
+<span id="cb44-5"><a href="#cb44-5"></a>item_p_str <span class="op">=</span> <span class="st">&#39;50,50,50,40,40,35,30,30,25,20,20,20,10,10,10,10,10,10,10,10,5,5,5,4,3,3,2,2,2,2,2,1,1&#39;</span></span>
+<span id="cb44-6"><a href="#cb44-6"></a></span>
+<span id="cb44-7"><a href="#cb44-7"></a>item_names <span class="op">=</span> <span class="bu">list</span>(item_names_str.split(<span class="st">&#39;,&#39;</span>))   <span class="co"># 文字列→リスト</span></span>
+<span id="cb44-8"><a href="#cb44-8"></a>item_p <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="bu">int</span>, item_p_str.split(<span class="st">&#39;,&#39;</span>))) <span class="co"># 文字列→リスト</span></span>
+<span id="cb44-9"><a href="#cb44-9"></a></span>
+<span id="cb44-10"><a href="#cb44-10"></a><span class="cf">assert</span> <span class="bu">len</span>(item_names) <span class="op">==</span> <span class="bu">len</span>(item_p) <span class="co"># 2つのリストの長さが同じであることを確認</span></span>
+<span id="cb44-11"><a href="#cb44-11"></a></span>
+<span id="cb44-12"><a href="#cb44-12"></a>items <span class="op">=</span> r.choices(item_names,weights<span class="op">=</span>item_p,k<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb44-13"><a href="#cb44-13"></a><span class="cf">for</span> item <span class="kw">in</span> <span class="bu">set</span>(items):</span>
+<span id="cb44-14"><a href="#cb44-14"></a>  <span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>item<span class="sc">}</span><span class="ss"> ... </span><span class="sc">{</span>items<span class="sc">.</span>count(item)<span class="sc">}</span><span class="ss">個&#39;</span>)</span></code></pre></div>
+      <!-- ---------------------------------------- -->
+    </main>
+
+    <footer class="markdown-body">
+      <p><a href="https://takeshiwada1980.github.io/Programming1-2023/">講義資料のIndexに移動</a></p>
+    </footer>
+
+    <script>
+      window.onload = function () {
+        // ナビゲーション関連
+        let openBtn = document.getElementsByClassName("openbtn")[0];
+        let navPnl = document.getElementById("g-nav");
+        openBtn.onclick = () => {
+          openBtn.classList.toggle("active");
+          navPnl.classList.toggle("panelactive");
+        };
+
+        let items = navPnl.getElementsByTagName("a");
+        Array.from(items).forEach((item) => {
+          item.onclick = () => {
+            openBtn.classList.toggle("active");
+            navPnl.classList.toggle("panelactive");
+          };
+        });
+
+        // マスク処理
+        let maskedSpans = document.getElementsByClassName("masked");
+        Array.from(maskedSpans).forEach((span) => {
+          span.onclick = () => {
+            span.classList.toggle("open");
+          };
+        });
+
+        // 画像にリンクを付与
+        let images = document.querySelectorAll("figure img");
+        Array.from(images).forEach((img) => {
+          img.onclick = () => {
+            location.href = img.getAttribute("src");
+          };
+        });
+      };
+    </script>
+  </body>
+</html>
