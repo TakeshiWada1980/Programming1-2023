@@ -196,7 +196,8 @@ class="toc-section-number">9</span> 課題05 (予告)</a></li>
       という名前で「Pythonファイル」を新規作成し、以下のプログラムを貼り付けて期待する結果が得られるように
       <code>np.arange</code> の第2引数を調整せよ
       (サンプル提示のプログラムでは <code>5.00</code>
-      が表示されない)。なお、<code>np.arange</code> については <a
+      が表示されない)。</p>
+      <p>なお、<code>np.arange</code> については <a
       href="lecture10.html">第10回講義</a> で解説ずみである。</p>
       <div class="sourceCode" id="cb1"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np   <span class="co"># numpy を np という省略名で使用</span></span>
@@ -210,19 +211,18 @@ class="toc-section-number">9</span> 課題05 (予告)</a></li>
       に変更して、その実行結果を確認せよ。</p>
       <p>また、ファイル名を <code>np.py</code>
       に変更して、その実行結果を確認せよ。</p>
-      <p>必要に応じて「なぜこのようなことが発生するのか」をウェブ検索あるいはChatGPTを使って解決せよ
+      <p>必要に応じて「なぜこのようなことが発生するのか」を<strong>ウェブ検索</strong>あるいは<strong>ChatGPT</strong>を使って解決せよ
       (<strong>適切な検索キーワードやプロンプトを構築する練習です</strong>)。</p>
       <h1 data-number="4" id="型-type"><span
       class="header-section-number">4</span> 型 (Type)</h1>
-      <p>ここまで<strong>あえて</strong>言及を避けてきましたが、Python
-      においても、C/C++言語 (Arduino言語) と同様に <strong><em>型 (Type)
-      </em></strong> (<strong>データ型</strong>)
-      が存在して機能しています。</p>
+      <p>ここまでは、<strong>あえて</strong>言及を避けてきましたが、Python
+      においても、C/C++言語 (Arduino言語)、Java と同様に <strong><em>型
+      (Type) </em></strong> が存在して機能しています。</p>
       <p>ただし、Python
       では、C/C++言語のようにプログラマによる<strong>明示的な型付けはせずに</strong>、Python実行環境が
       <strong>動的に型付け</strong> をします。つまり <code>a=10</code>
       という文を書けば <code>a</code>
-      は自動的に「<strong>文字列型</strong>
+      は自動的に「<strong>整数型</strong>
       (<code>int</code>)」となり、一方で <code>a='ABC'</code>
       という文を書けば <code>a</code>
       は自動的に「<strong>文字列型</strong>
@@ -249,12 +249,14 @@ class="toc-section-number">9</span> 課題05 (予告)</a></li>
       class="header-section-number">4.1</span>
       どうやって型を確認するのか?</h2>
       <p><code>type()</code>
-      という組み込み関数を使用してデータ型を確認できます。</p>
+      という組み込み関数を使用して<strong>データ型を確認できます</strong>。</p>
       <p>また、<code>isinstance()</code>
-      で、特定の型であるかどうかを判定することができます。同じように
+      という組み込み関数を利用して「型であるかどうか」を判定できます。同じように
       <code>is</code> 演算子と <code>type()</code>
-      の組み合わせでも特定の型であるかどうかを判定することができます。<code>isinstance()</code>
-      と <code>is</code> は、if文の条件としてよく使用されます。</p>
+      の組み合わせでも「特定の型であるかどうか」を判定できます。<code>isinstance()</code>
+      と <code>is</code> は
+      <strong>if文の条件としてよく使用されます</strong>。</p>
+      <p>次のプログラムを実行して、その結果を確認してください。また、その結果とプログラムを突き合わせて内容を理解してください。</p>
       <div class="sourceCode" id="cb3"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
 <span id="cb3-2"><a href="#cb3-2"></a>a <span class="op">=</span> <span class="dv">10</span></span>
@@ -306,11 +308,13 @@ class="toc-section-number">9</span> 課題05 (予告)</a></li>
       <code>a</code> が <strong>文字列型(str)</strong> であれば
       <code>a.upper()</code>
       のようなメソッドを呼び出せますが、それ以外の
-      <strong>整数型</strong>(int) や
-      <strong>浮動小数点数型</strong>(float) では <span class="masked">
-      (自分で確認しましょう🫠) </span> が発生します。</p>
+      <strong>整数型</strong> (int) や <strong>浮動小数点数型</strong>
+      (float) では <span class="masked"> (自分で確認しましょう🫠)
+      </span> が発生します。</p>
       <p>以下のコードを実行して結果を確認してください。その後、<code>a=10</code>
-      に書き換えて、その実行結果を確認してください。</p>
+      に書き換えて (つまり、変数 <code>a</code>
+      を文字列型から整数型に変えて)
+      、その実行結果を確認してください。</p>
       <div class="sourceCode" id="cb4"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
 <span id="cb4-2"><a href="#cb4-2"></a>a<span class="op">=</span><span class="st">&#39;windows&#39;</span></span>
@@ -320,13 +324,13 @@ class="toc-section-number">9</span> 課題05 (予告)</a></li>
       <div class="sourceCode" id="cb5"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
 <span id="cb5-2"><a href="#cb5-2"></a>a<span class="op">=</span><span class="st">&#39;windows&#39;</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="cf">if</span> <span class="bu">type</span>(a) <span class="kw">is</span> <span class="bu">str</span> :</span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="cf">if</span> <span class="bu">type</span>(a) <span class="kw">is</span> <span class="bu">str</span> :   <span class="co"># 変数aの型が文字列ならば</span></span>
 <span id="cb5-4"><a href="#cb5-4"></a>  <span class="bu">print</span>( a.upper() )</span>
 <span id="cb5-5"><a href="#cb5-5"></a><span class="cf">else</span> :</span>
 <span id="cb5-6"><a href="#cb5-6"></a>  <span class="bu">print</span>(<span class="st">&#39;変数aは文字列型ではないので upper メソッドを持っていません。&#39;</span>)</span></code></pre></div>
       <h3 data-number="4.2.1" id="演習②-2"><span
       class="header-section-number">4.2.1</span> 演習②-2</h3>
-      <p>次のプログラムを追記し、変数 <code>a</code>
+      <p>以下のプログラムに追記して、変数 <code>a</code>
       が文字列型であれば文字列を3回出力する処理 (例えば
       <code>Wow!</code> が格納されていれば <code>Wow!Wow!Wow!</code>
       を出力)、整数型または浮動小数点数型であれば5倍した値を出力する処理、リスト型であればそのまま出力、それ以外の型
@@ -334,20 +338,21 @@ class="toc-section-number">9</span> 課題05 (予告)</a></li>
       を出力する処理にせよ。</p>
       <ul>
       <li><code>elif</code> を使用することを期待しています。</li>
-      <li><code>if</code> の条件文では、AND条件は
-      <code>and</code>、OR条件は <code>or</code>
-      を使うことができました。
+      <li><code>if</code> の条件文には、AND条件 <code>and</code>、OR条件
+      <code>or</code> を使うことができました。
       <ul>
       <li>例えば <code>if a%3==0 and a%5==0</code> は <code>a</code>
-      が3の倍数かつ5の倍数のとき成立します。</li>
+      が「3の倍数」かつ「5の倍数」のとき真になります。</li>
       </ul></li>
       </ul>
       <div class="sourceCode" id="cb6"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
-<span id="cb6-2"><a href="#cb6-2"></a>a<span class="op">=</span><span class="st">&#39;Wow!&#39;</span>  <span class="co"># この変数aには様々な値が入ることを想定しています。</span></span></code></pre></div>
+<span id="cb6-2"><a href="#cb6-2"></a>a<span class="op">=</span><span class="st">&#39;Wow!&#39;</span>  <span class="co"># この変数aには様々な値が入ることを想定しています。</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="co"># 型に応じて処理を変えるプログラムを追記</span></span></code></pre></div>
       <h1 data-number="5" id="関数-fuction-初級"><span
       class="header-section-number">5</span> 関数 (Fuction) 初級</h1>
-      <p>プログラムにおいて「ある処理を行なう一連の命令を<strong>まとめたもの</strong>」を
+      <p>プログラムにおいて「ある処理を行なうための一連の命令を<strong>まとめたもの</strong>」を
       <strong><em>関数 (Function)</em></strong>
       と呼びます。関数を利用することで、そのプログラムは<strong>読みやすくなり</strong>、また、<strong>修正や変更も容易になります</strong>。</p>
       <p>これまでに <code>print()</code> や <code>input()</code>
@@ -356,7 +361,7 @@ class="toc-section-number">9</span> 課題05 (予告)</a></li>
       というものになります。また、<code>math.sin()</code> や
       <code>math.radians()</code>
       は、特定のライブラリをインポートすることで使用可能になる関数です。</p>
-      <p>さらに、自分で<strong>関数を定義して、それを呼び出して使用することもできます</strong>。</p>
+      <p>さらに、Pythonをはじめとして各種プログラムでは、プログラマ自身で<strong>関数を定義して、それを呼び出して使用することができます</strong>。</p>
       <p>例えば「税抜き価格を引数として与えると、税込み価格 (端数切捨て)
       を計算して返す関数」は、次のように記述することができます。実際に実行して、その結果を確認してください。ここでは食料品を対象に税率8%を考えます。</p>
       <div class="sourceCode" id="cb7"><pre
@@ -750,6 +755,7 @@ SELECT * FROM 社員表;</code></pre>
       <code>pip</code> を使ってライブラリを追加することも可能です。</li>
       <li>本校の学生と教員、2I保護者に公開します(～9月末まで)。公開可能な内容としてください。公序良俗や著作権等に反しなければ、テーマについて制限しません。</li>
       <li><strong>最低8時間以上</strong>を費やして取り組んでください。</li>
+      <li>テキストセルにプログラムの解説を記述してもらいます。</li>
       <li>現在までに、この授業で学習したことを最大限に取り込んだ内容を期待しています
       (この授業で習っていないものを組み込むことも歓迎・推奨です) 。</li>
       </ul>
