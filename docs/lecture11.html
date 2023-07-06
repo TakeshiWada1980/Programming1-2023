@@ -648,10 +648,12 @@ SELECT * FROM 社員表;</code></pre>
       で計算して、それをリスト <code>arr_x</code> と <code>arr_y</code>
       に格納し、最後にそれを可視化 (グラフ化) しています。</p>
       <p>シミュレーションの時間範囲は、第11行目と第12行のコード
-      <code>iter=80</code> と <code>dt=0.1</code> から、時刻 <span
+      <code>iter=80</code> と <code>dt=0.1</code>
+      から計算できるように、時刻 <span
       class="math inline">\(0(\mathrm{s})\)</span> から時刻 <span
       class="masked"><span
-      class="math inline">\(8(\mathrm{s})\)</span></span>
+      class="math inline">\(8.0(\mathrm{s})\)</span>（厳密に言えば<span
+      class="math inline">\(7.9(\mathrm{s})\)</span>）</span>
       となります。</p>
       <p>実際にコードを実行して、その結果を確認してください。</p>
       <div class="sourceCode" id="cb15"><pre
@@ -721,12 +723,12 @@ SELECT * FROM 社員表;</code></pre>
       <span class="math inline">\(0.05(\mathrm{s})\)</span>
       とした場合についても実行せよ。<strong>検証後はプログラムを元に元に戻しておくこと</strong>。</li>
       <li><span class="math inline">\(x=50\)</span>
-      の位置に壁が存在するとして、X方向にも衝突 (反発)
-      が生じるようにせよ。</li>
+      の位置に壁が存在するとして<strong>X方向にも衝突 (反発)
+      </strong>が生じるようにせよ。</li>
       </ul>
       <h2 data-number="9.3" id="アニメーション"><span
       class="header-section-number">9.3</span> アニメーション</h2>
-      <p>第43行目以降がアニメーション対応にするための変更箇所になります。</p>
+      <p>第43行目以降がアニメーション対応にするための変更箇所になります。GIFアニメ画像としても出力可能です、興味がある学生は声をかけてください。</p>
       <div class="sourceCode" id="cb16"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
 <span id="cb16-2"><a href="#cb16-2"></a><span class="im">import</span> math</span>
