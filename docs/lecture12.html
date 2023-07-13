@@ -102,8 +102,11 @@ class="toc-section-number">8</span>
 文字列に対する１文字参照やスライス処理</a></li>
 <li><a href="#googlecolab.の出力セルのクリア"
 id="toc-googlecolab.の出力セルのクリア"><span
-class="toc-section-number">9</span>
-GoogleColab.の出力セルのクリア</a></li>
+class="toc-section-number">9</span> GoogleColab.の出力セルのクリア</a>
+<ul>
+<li><a href="#応用例" id="toc-応用例"><span
+class="toc-section-number">9.1</span> 応用例</a></li>
+</ul></li>
 <li><a href="#条件式の工夫" id="toc-条件式の工夫"><span
 class="toc-section-number">10</span> 条件式の工夫</a></li>
 <li><a href="#プログラマの心得前向きな怠惰の思想"
@@ -113,15 +116,13 @@ class="toc-section-number">11</span>
 <ul>
 <li><a href="#具体的な事例" id="toc-具体的な事例"><span
 class="toc-section-number">11.1</span> 具体的な事例</a></li>
-<li><a href="#演習③-1" id="toc-演習③-1"><span
-class="toc-section-number">11.2</span> 演習③</a></li>
+<li><a href="#演習④" id="toc-演習④"><span
+class="toc-section-number">11.2</span> 演習④</a></li>
 </ul></li>
 <li><a href="#ライブラリのインポートに関する補足"
 id="toc-ライブラリのインポートに関する補足"><span
 class="toc-section-number">12</span>
 ライブラリのインポートに関する補足</a></li>
-<li><a href="#応用例" id="toc-応用例"><span
-class="toc-section-number">13</span> 応用例</a></li>
 </ul> 
         <!-- ---------------------------------------- -->
       </div>
@@ -648,6 +649,64 @@ experience :    0</code></pre>
 <span id="cb22-11"><a href="#cb22-11"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
 <span id="cb22-12"><a href="#cb22-12"></a>  time.sleep(<span class="fl">0.5</span>)</span>
 <span id="cb22-13"><a href="#cb22-13"></a>  <span class="bu">print</span>(<span class="st">&#39;⚡&#39;</span>)</span></code></pre></div>
+      <h2 data-number="9.1" id="応用例"><span
+      class="header-section-number">9.1</span> 応用例</h2>
+      <p>自由課題のヒントにしてください。</p>
+      <div class="sourceCode" id="cb23"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb23-2"><a href="#cb23-2"></a><span class="im">import</span> time</span>
+<span id="cb23-3"><a href="#cb23-3"></a><span class="im">import</span> random <span class="im">as</span> r</span>
+<span id="cb23-4"><a href="#cb23-4"></a><span class="im">import</span> IPython.display</span>
+<span id="cb23-5"><a href="#cb23-5"></a></span>
+<span id="cb23-6"><a href="#cb23-6"></a>n<span class="op">=</span><span class="dv">9</span>           <span class="co"># 9回（イニング）までのゲーム委</span></span>
+<span id="cb23-7"><a href="#cb23-7"></a>G <span class="op">=</span> [<span class="op">-</span><span class="dv">1</span>]<span class="op">*</span>n    <span class="co"># スコアの初期化</span></span>
+<span id="cb23-8"><a href="#cb23-8"></a>H <span class="op">=</span> [<span class="op">-</span><span class="dv">1</span>]<span class="op">*</span>n</span>
+<span id="cb23-9"><a href="#cb23-9"></a>wait_time <span class="op">=</span> <span class="dv">2</span> <span class="co"># [Sec]</span></span>
+<span id="cb23-10"><a href="#cb23-10"></a></span>
+<span id="cb23-11"><a href="#cb23-11"></a><span class="co"># チームのスコア #########################</span></span>
+<span id="cb23-12"><a href="#cb23-12"></a><span class="kw">def</span> print_team_score(name,score):</span>
+<span id="cb23-13"><a href="#cb23-13"></a>  <span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">|&#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb23-14"><a href="#cb23-14"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb23-15"><a href="#cb23-15"></a>    <span class="cf">if</span> score[i] <span class="op">!=</span> <span class="op">-</span><span class="dv">1</span>:</span>
+<span id="cb23-16"><a href="#cb23-16"></a>      <span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>score[i]<span class="sc">:&gt;2}</span><span class="ss">|&#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb23-17"><a href="#cb23-17"></a>    <span class="cf">else</span> :</span>
+<span id="cb23-18"><a href="#cb23-18"></a>      <span class="bu">print</span>(<span class="st">&#39;  |&#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb23-19"><a href="#cb23-19"></a>  <span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span><span class="bu">sum</span>(score[:t])<span class="sc">:&gt;2}</span><span class="ss">|&#39;</span>)</span>
+<span id="cb23-20"><a href="#cb23-20"></a></span>
+<span id="cb23-21"><a href="#cb23-21"></a><span class="co"># スコアボード全体の出力 #################</span></span>
+<span id="cb23-22"><a href="#cb23-22"></a><span class="kw">def</span> print_score_board():</span>
+<span id="cb23-23"><a href="#cb23-23"></a></span>
+<span id="cb23-24"><a href="#cb23-24"></a>  IPython.display.clear_output() <span class="co"># 出力をクリア</span></span>
+<span id="cb23-25"><a href="#cb23-25"></a></span>
+<span id="cb23-26"><a href="#cb23-26"></a>  <span class="bu">print</span>(<span class="st">&#39;-+&#39;</span><span class="op">+</span><span class="st">&#39;--+&#39;</span><span class="op">*</span>(n<span class="op">+</span><span class="dv">1</span>))</span>
+<span id="cb23-27"><a href="#cb23-27"></a>  <span class="bu">print</span>(<span class="st">&#39; |&#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb23-28"><a href="#cb23-28"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,n<span class="op">+</span><span class="dv">1</span>):</span>
+<span id="cb23-29"><a href="#cb23-29"></a>    <span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>i<span class="sc">:&gt;2}</span><span class="ss">|&#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb23-30"><a href="#cb23-30"></a>  <span class="bu">print</span>(<span class="st">&#39;計|&#39;</span>)</span>
+<span id="cb23-31"><a href="#cb23-31"></a>  <span class="bu">print</span>(<span class="st">&#39;-+&#39;</span><span class="op">+</span><span class="st">&#39;--+&#39;</span><span class="op">*</span>(n<span class="op">+</span><span class="dv">1</span>))</span>
+<span id="cb23-32"><a href="#cb23-32"></a></span>
+<span id="cb23-33"><a href="#cb23-33"></a>  print_team_score(<span class="st">&#39;G&#39;</span>,G)</span>
+<span id="cb23-34"><a href="#cb23-34"></a>  print_team_score(<span class="st">&#39;H&#39;</span>,H)</span>
+<span id="cb23-35"><a href="#cb23-35"></a></span>
+<span id="cb23-36"><a href="#cb23-36"></a>  <span class="bu">print</span>(<span class="st">&#39;-+&#39;</span><span class="op">+</span><span class="st">&#39;--+&#39;</span><span class="op">*</span>(n<span class="op">+</span><span class="dv">1</span>))</span>
+<span id="cb23-37"><a href="#cb23-37"></a></span>
+<span id="cb23-38"><a href="#cb23-38"></a><span class="co"># メイン処理 #############################</span></span>
+<span id="cb23-39"><a href="#cb23-39"></a><span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb23-40"><a href="#cb23-40"></a></span>
+<span id="cb23-41"><a href="#cb23-41"></a>  <span class="co"># 先攻「G」の攻撃回</span></span>
+<span id="cb23-42"><a href="#cb23-42"></a>  G[t] <span class="op">=</span> r.choices([<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],[<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">1</span>])[<span class="dv">0</span>]</span>
+<span id="cb23-43"><a href="#cb23-43"></a>  print_score_board()</span>
+<span id="cb23-44"><a href="#cb23-44"></a>  time.sleep(wait_time)</span>
+<span id="cb23-45"><a href="#cb23-45"></a></span>
+<span id="cb23-46"><a href="#cb23-46"></a>  <span class="co"># 後攻「H」の攻撃回</span></span>
+<span id="cb23-47"><a href="#cb23-47"></a>  H[t] <span class="op">=</span> r.choices([<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],[<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>])[<span class="dv">0</span>]</span>
+<span id="cb23-48"><a href="#cb23-48"></a>  print_score_board()</span>
+<span id="cb23-49"><a href="#cb23-49"></a>  time.sleep(wait_time)</span>
+<span id="cb23-50"><a href="#cb23-50"></a></span>
+<span id="cb23-51"><a href="#cb23-51"></a><span class="cf">if</span> <span class="bu">sum</span>(H) <span class="op">&gt;</span> <span class="bu">sum</span>(G):</span>
+<span id="cb23-52"><a href="#cb23-52"></a>  <span class="bu">print</span>(<span class="st">&#39;😄😄😄😄😄&#39;</span>)</span>
+<span id="cb23-53"><a href="#cb23-53"></a><span class="cf">else</span> :</span>
+<span id="cb23-54"><a href="#cb23-54"></a>  <span class="bu">print</span>(<span class="st">&#39;😱😱😱😱😱&#39;</span>)</span></code></pre></div>
       <h1 data-number="10" id="条件式の工夫"><span
       class="header-section-number">10</span> 条件式の工夫</h1>
       <p>ユーザーから入力された文字列が <code>犬</code> または
@@ -656,22 +715,22 @@ experience :    0</code></pre>
       <p>この処理 (条件分岐)
       を素直に記述すると次のようになります。<code>or</code> で
       <strong>OR条件</strong> を表現しています。</p>
-      <div class="sourceCode" id="cb23"><pre
-      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
-<span id="cb23-2"><a href="#cb23-2"></a>animal <span class="op">=</span> <span class="bu">input</span>(<span class="st">&#39;動物名を入力してください : &#39;</span>)</span>
-<span id="cb23-3"><a href="#cb23-3"></a><span class="cf">if</span> animal <span class="op">==</span> <span class="st">&#39;犬&#39;</span> <span class="kw">or</span> animal <span class="op">==</span> <span class="st">&#39;いぬ&#39;</span> <span class="kw">or</span> animal <span class="op">==</span> <span class="st">&#39;イヌ&#39;</span> :</span>
-<span id="cb23-4"><a href="#cb23-4"></a>  <span class="bu">print</span>(<span class="st">&#39;ワン!&#39;</span>)</span>
-<span id="cb23-5"><a href="#cb23-5"></a><span class="cf">else</span> :</span>
-<span id="cb23-6"><a href="#cb23-6"></a>  <span class="bu">print</span>(<span class="st">&#39;・・・&#39;</span>)</span></code></pre></div>
-      <p>これに対して、(初心者において)
-      <strong>よくある間違い</strong>として、次の第03行目のように条件式を記述してしまうことがあります。</p>
       <div class="sourceCode" id="cb24"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
 <span id="cb24-2"><a href="#cb24-2"></a>animal <span class="op">=</span> <span class="bu">input</span>(<span class="st">&#39;動物名を入力してください : &#39;</span>)</span>
-<span id="cb24-3"><a href="#cb24-3"></a><span class="cf">if</span> animal <span class="op">==</span> <span class="st">&#39;犬&#39;</span> <span class="kw">or</span> <span class="st">&#39;いぬ&#39;</span> <span class="kw">or</span> <span class="st">&#39;イヌ&#39;</span> : <span class="co"># 不適切な条件式</span></span>
+<span id="cb24-3"><a href="#cb24-3"></a><span class="cf">if</span> animal <span class="op">==</span> <span class="st">&#39;犬&#39;</span> <span class="kw">or</span> animal <span class="op">==</span> <span class="st">&#39;いぬ&#39;</span> <span class="kw">or</span> animal <span class="op">==</span> <span class="st">&#39;イヌ&#39;</span> :</span>
 <span id="cb24-4"><a href="#cb24-4"></a>  <span class="bu">print</span>(<span class="st">&#39;ワン!&#39;</span>)</span>
 <span id="cb24-5"><a href="#cb24-5"></a><span class="cf">else</span> :</span>
 <span id="cb24-6"><a href="#cb24-6"></a>  <span class="bu">print</span>(<span class="st">&#39;・・・&#39;</span>)</span></code></pre></div>
+      <p>これに対して、(初心者において)
+      <strong>よくある間違い</strong>として、次の第03行目のように条件式を記述してしまうことがあります。</p>
+      <div class="sourceCode" id="cb25"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb25-2"><a href="#cb25-2"></a>animal <span class="op">=</span> <span class="bu">input</span>(<span class="st">&#39;動物名を入力してください : &#39;</span>)</span>
+<span id="cb25-3"><a href="#cb25-3"></a><span class="cf">if</span> animal <span class="op">==</span> <span class="st">&#39;犬&#39;</span> <span class="kw">or</span> <span class="st">&#39;いぬ&#39;</span> <span class="kw">or</span> <span class="st">&#39;イヌ&#39;</span> : <span class="co"># 不適切な条件式</span></span>
+<span id="cb25-4"><a href="#cb25-4"></a>  <span class="bu">print</span>(<span class="st">&#39;ワン!&#39;</span>)</span>
+<span id="cb25-5"><a href="#cb25-5"></a><span class="cf">else</span> :</span>
+<span id="cb25-6"><a href="#cb25-6"></a>  <span class="bu">print</span>(<span class="st">&#39;・・・&#39;</span>)</span></code></pre></div>
       <p>上記の条件式 <code>animal == '犬' or 'いぬ' or 'イヌ'</code>
       では「ネコ」を入力した場合でも「<strong>ワン !
       </strong>」が出力されてしまいます。実際に実行して結果を確認してみてください。この理由は、if文の
@@ -679,49 +738,49 @@ experience :    0</code></pre>
       には、単なる「数値」や「文字列」も記述可能で、その場合、特定の値以外では条件が「<strong>真</strong>」として判定されるためです。</p>
       <p>実際に確認してみます。以下のプログラムを実行して、その結果を確認してみてください。以下に示す例では、すべての条件が「<strong>真</strong>」として判定され、処理
       (<code>print()</code>) が実行されています。</p>
-      <div class="sourceCode" id="cb25"><pre
-      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
-<span id="cb25-2"><a href="#cb25-2"></a><span class="cf">if</span> <span class="st">&#39;いぬ&#39;</span> :</span>
-<span id="cb25-3"><a href="#cb25-3"></a>  <span class="bu">print</span>(<span class="st">&#39;1&#39;</span>)</span>
-<span id="cb25-4"><a href="#cb25-4"></a></span>
-<span id="cb25-5"><a href="#cb25-5"></a><span class="cf">if</span> <span class="dv">109</span> :</span>
-<span id="cb25-6"><a href="#cb25-6"></a>  <span class="bu">print</span>(<span class="st">&#39;2&#39;</span>)</span>
-<span id="cb25-7"><a href="#cb25-7"></a></span>
-<span id="cb25-8"><a href="#cb25-8"></a><span class="cf">if</span> <span class="op">-</span><span class="dv">20</span> :</span>
-<span id="cb25-9"><a href="#cb25-9"></a>  <span class="bu">print</span>(<span class="st">&#39;3&#39;</span>)</span>
-<span id="cb25-10"><a href="#cb25-10"></a></span>
-<span id="cb25-11"><a href="#cb25-11"></a><span class="cf">if</span> <span class="fl">3.14</span> :</span>
-<span id="cb25-12"><a href="#cb25-12"></a>  <span class="bu">print</span>(<span class="st">&#39;4&#39;</span>)</span>
-<span id="cb25-13"><a href="#cb25-13"></a></span>
-<span id="cb25-14"><a href="#cb25-14"></a><span class="cf">if</span> [<span class="st">&#39;A&#39;</span>,<span class="st">&#39;B&#39;</span>,<span class="st">&#39;C&#39;</span>] :</span>
-<span id="cb25-15"><a href="#cb25-15"></a>  <span class="bu">print</span>(<span class="st">&#39;5&#39;</span>)</span>
-<span id="cb25-16"><a href="#cb25-16"></a></span>
-<span id="cb25-17"><a href="#cb25-17"></a><span class="cf">if</span> [<span class="dv">0</span>] :</span>
-<span id="cb25-18"><a href="#cb25-18"></a>  <span class="bu">print</span>(<span class="st">&#39;6&#39;</span>)</span>
-<span id="cb25-19"><a href="#cb25-19"></a></span>
-<span id="cb25-20"><a href="#cb25-20"></a><span class="co"># 次の XXX の部分を自分で思いつく値に変更して実行してみてください。</span></span>
-<span id="cb25-21"><a href="#cb25-21"></a><span class="co"># if XXXX :</span></span>
-<span id="cb25-22"><a href="#cb25-22"></a><span class="co">#   print(&#39;7&#39;)</span></span></code></pre></div>
-      <p>一方で、条件が「<strong>偽</strong>」として判定されるのは、次のように限られた値だけになります。実際に、その実行結果を確認してみてください。</p>
       <div class="sourceCode" id="cb26"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
-<span id="cb26-2"><a href="#cb26-2"></a><span class="cf">if</span> <span class="dv">0</span> :</span>
+<span id="cb26-2"><a href="#cb26-2"></a><span class="cf">if</span> <span class="st">&#39;いぬ&#39;</span> :</span>
 <span id="cb26-3"><a href="#cb26-3"></a>  <span class="bu">print</span>(<span class="st">&#39;1&#39;</span>)</span>
 <span id="cb26-4"><a href="#cb26-4"></a></span>
-<span id="cb26-5"><a href="#cb26-5"></a><span class="cf">if</span> <span class="fl">0.0</span> :</span>
+<span id="cb26-5"><a href="#cb26-5"></a><span class="cf">if</span> <span class="dv">109</span> :</span>
 <span id="cb26-6"><a href="#cb26-6"></a>  <span class="bu">print</span>(<span class="st">&#39;2&#39;</span>)</span>
 <span id="cb26-7"><a href="#cb26-7"></a></span>
-<span id="cb26-8"><a href="#cb26-8"></a><span class="cf">if</span> [] :</span>
+<span id="cb26-8"><a href="#cb26-8"></a><span class="cf">if</span> <span class="op">-</span><span class="dv">20</span> :</span>
 <span id="cb26-9"><a href="#cb26-9"></a>  <span class="bu">print</span>(<span class="st">&#39;3&#39;</span>)</span>
 <span id="cb26-10"><a href="#cb26-10"></a></span>
-<span id="cb26-11"><a href="#cb26-11"></a><span class="cf">if</span> <span class="va">None</span>:</span>
+<span id="cb26-11"><a href="#cb26-11"></a><span class="cf">if</span> <span class="fl">3.14</span> :</span>
 <span id="cb26-12"><a href="#cb26-12"></a>  <span class="bu">print</span>(<span class="st">&#39;4&#39;</span>)</span>
 <span id="cb26-13"><a href="#cb26-13"></a></span>
-<span id="cb26-14"><a href="#cb26-14"></a><span class="cf">if</span> <span class="va">False</span> :</span>
+<span id="cb26-14"><a href="#cb26-14"></a><span class="cf">if</span> [<span class="st">&#39;A&#39;</span>,<span class="st">&#39;B&#39;</span>,<span class="st">&#39;C&#39;</span>] :</span>
 <span id="cb26-15"><a href="#cb26-15"></a>  <span class="bu">print</span>(<span class="st">&#39;5&#39;</span>)</span>
 <span id="cb26-16"><a href="#cb26-16"></a></span>
-<span id="cb26-17"><a href="#cb26-17"></a><span class="cf">if</span> <span class="st">&#39;&#39;</span> :</span>
-<span id="cb26-18"><a href="#cb26-18"></a>  <span class="bu">print</span>(<span class="st">&#39;6&#39;</span>)</span></code></pre></div>
+<span id="cb26-17"><a href="#cb26-17"></a><span class="cf">if</span> [<span class="dv">0</span>] :</span>
+<span id="cb26-18"><a href="#cb26-18"></a>  <span class="bu">print</span>(<span class="st">&#39;6&#39;</span>)</span>
+<span id="cb26-19"><a href="#cb26-19"></a></span>
+<span id="cb26-20"><a href="#cb26-20"></a><span class="co"># 次の XXX の部分を自分で思いつく値に変更して実行してみてください。</span></span>
+<span id="cb26-21"><a href="#cb26-21"></a><span class="co"># if XXXX :</span></span>
+<span id="cb26-22"><a href="#cb26-22"></a><span class="co">#   print(&#39;7&#39;)</span></span></code></pre></div>
+      <p>一方で、条件が「<strong>偽</strong>」として判定されるのは、次のように限られた値だけになります。実際に、その実行結果を確認してみてください。</p>
+      <div class="sourceCode" id="cb27"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="cf">if</span> <span class="dv">0</span> :</span>
+<span id="cb27-3"><a href="#cb27-3"></a>  <span class="bu">print</span>(<span class="st">&#39;1&#39;</span>)</span>
+<span id="cb27-4"><a href="#cb27-4"></a></span>
+<span id="cb27-5"><a href="#cb27-5"></a><span class="cf">if</span> <span class="fl">0.0</span> :</span>
+<span id="cb27-6"><a href="#cb27-6"></a>  <span class="bu">print</span>(<span class="st">&#39;2&#39;</span>)</span>
+<span id="cb27-7"><a href="#cb27-7"></a></span>
+<span id="cb27-8"><a href="#cb27-8"></a><span class="cf">if</span> [] :</span>
+<span id="cb27-9"><a href="#cb27-9"></a>  <span class="bu">print</span>(<span class="st">&#39;3&#39;</span>)</span>
+<span id="cb27-10"><a href="#cb27-10"></a></span>
+<span id="cb27-11"><a href="#cb27-11"></a><span class="cf">if</span> <span class="va">None</span>:</span>
+<span id="cb27-12"><a href="#cb27-12"></a>  <span class="bu">print</span>(<span class="st">&#39;4&#39;</span>)</span>
+<span id="cb27-13"><a href="#cb27-13"></a></span>
+<span id="cb27-14"><a href="#cb27-14"></a><span class="cf">if</span> <span class="va">False</span> :</span>
+<span id="cb27-15"><a href="#cb27-15"></a>  <span class="bu">print</span>(<span class="st">&#39;5&#39;</span>)</span>
+<span id="cb27-16"><a href="#cb27-16"></a></span>
+<span id="cb27-17"><a href="#cb27-17"></a><span class="cf">if</span> <span class="st">&#39;&#39;</span> :</span>
+<span id="cb27-18"><a href="#cb27-18"></a>  <span class="bu">print</span>(<span class="st">&#39;6&#39;</span>)</span></code></pre></div>
       <p>以上踏まえ、条件式に
       <code>animal == '犬' or 'いぬ' or 'イヌ'</code>
       を使用すると、<code>animal</code>
@@ -732,13 +791,13 @@ experience :    0</code></pre>
       <code>animal == '犬' or animal == 'いぬ' or animal == 'イヌ'</code>
       と記述するか、<a href="lecture08.html">第08回</a>
       で教えたように次のようにする必要があります。</p>
-      <div class="sourceCode" id="cb27"><pre
-      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
-<span id="cb27-2"><a href="#cb27-2"></a>animal <span class="op">=</span> <span class="bu">input</span>(<span class="st">&#39;動物名を入力してください : &#39;</span>)</span>
-<span id="cb27-3"><a href="#cb27-3"></a><span class="cf">if</span> animal <span class="kw">in</span> [<span class="st">&#39;犬&#39;</span>,<span class="st">&#39;いぬ&#39;</span>,<span class="st">&#39;イヌ&#39;</span>] : <span class="co"># リスト [&#39;犬&#39;,&#39;いぬ&#39;,&#39;イヌ&#39;] に anmial は含まれるか?</span></span>
-<span id="cb27-4"><a href="#cb27-4"></a>  <span class="bu">print</span>(<span class="st">&#39;ワン!&#39;</span>)</span>
-<span id="cb27-5"><a href="#cb27-5"></a><span class="cf">else</span> :</span>
-<span id="cb27-6"><a href="#cb27-6"></a>  <span class="bu">print</span>(<span class="st">&#39;・・・&#39;</span>)</span></code></pre></div>
+      <div class="sourceCode" id="cb28"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb28-2"><a href="#cb28-2"></a>animal <span class="op">=</span> <span class="bu">input</span>(<span class="st">&#39;動物名を入力してください : &#39;</span>)</span>
+<span id="cb28-3"><a href="#cb28-3"></a><span class="cf">if</span> animal <span class="kw">in</span> [<span class="st">&#39;犬&#39;</span>,<span class="st">&#39;いぬ&#39;</span>,<span class="st">&#39;イヌ&#39;</span>] : <span class="co"># リスト [&#39;犬&#39;,&#39;いぬ&#39;,&#39;イヌ&#39;] に anmial は含まれるか?</span></span>
+<span id="cb28-4"><a href="#cb28-4"></a>  <span class="bu">print</span>(<span class="st">&#39;ワン!&#39;</span>)</span>
+<span id="cb28-5"><a href="#cb28-5"></a><span class="cf">else</span> :</span>
+<span id="cb28-6"><a href="#cb28-6"></a>  <span class="bu">print</span>(<span class="st">&#39;・・・&#39;</span>)</span></code></pre></div>
       <h1 data-number="11" id="プログラマの心得前向きな怠惰の思想"><span
       class="header-section-number">11</span>
       プログラマの心得「前向きな怠惰の思想」</h1>
@@ -749,15 +808,15 @@ experience :    0</code></pre>
       class="header-section-number">11.1</span> 具体的な事例</h2>
       <p>一般に、自由課題では「<strong>トランプ</strong>」を使ったゲームをテーマにプログラミングに取り組む学生が多いです。</p>
       <p>例えば、<strong>52枚のカードの初期化</strong>について、最も愚直な方法は次のようなものです。</p>
-      <div class="sourceCode" id="cb28"
+      <div class="sourceCode" id="cb29"
       data-caption="card_init_01.py"><pre
-      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
-<span id="cb28-2"><a href="#cb28-2"></a><span class="co"># プログラマ的な発想・姿勢に基づかない初期化</span></span>
-<span id="cb28-3"><a href="#cb28-3"></a>cards <span class="op">=</span> [<span class="st">&#39;♠A&#39;</span>, <span class="st">&#39;♠2&#39;</span>, <span class="st">&#39;♠3&#39;</span>, <span class="st">&#39;♠4&#39;</span>, <span class="st">&#39;♠5&#39;</span>, <span class="st">&#39;♠6&#39;</span>, <span class="st">&#39;♠7&#39;</span>, <span class="st">&#39;♠8&#39;</span>, <span class="st">&#39;♠9&#39;</span>, <span class="st">&#39;♠J&#39;</span>, <span class="st">&#39;♠Q&#39;</span>, <span class="st">&#39;♠K&#39;</span>,</span>
-<span id="cb28-4"><a href="#cb28-4"></a>         <span class="st">&#39;♦A&#39;</span>, <span class="st">&#39;♦2&#39;</span>, <span class="st">&#39;♦3&#39;</span>, <span class="st">&#39;♦4&#39;</span>, <span class="st">&#39;♦5&#39;</span>, <span class="st">&#39;♦6&#39;</span>, <span class="st">&#39;♦7&#39;</span>, <span class="st">&#39;♦8&#39;</span>, <span class="st">&#39;♦9&#39;</span>, <span class="st">&#39;♦J&#39;</span>, <span class="st">&#39;♦Q&#39;</span>, <span class="st">&#39;♦K&#39;</span>,</span>
-<span id="cb28-5"><a href="#cb28-5"></a>         <span class="st">&#39;♥A&#39;</span>, <span class="st">&#39;♥2&#39;</span>, <span class="st">&#39;♥3&#39;</span>, <span class="st">&#39;♥4&#39;</span>, <span class="st">&#39;♥5&#39;</span>, <span class="st">&#39;♥6&#39;</span>, <span class="st">&#39;♥7&#39;</span>, <span class="st">&#39;♥8&#39;</span>, <span class="st">&#39;♥9&#39;</span>, <span class="st">&#39;♥J&#39;</span>, <span class="st">&#39;♥Q&#39;</span>, <span class="st">&#39;♥K&#39;</span>,</span>
-<span id="cb28-6"><a href="#cb28-6"></a>         <span class="st">&#39;♣A&#39;</span>, <span class="st">&#39;♣2&#39;</span>, <span class="st">&#39;♣3&#39;</span>, <span class="st">&#39;♣4&#39;</span>, <span class="st">&#39;♣5&#39;</span>, <span class="st">&#39;♣6&#39;</span>, <span class="st">&#39;♣7&#39;</span>, <span class="st">&#39;♣8&#39;</span>, <span class="st">&#39;♣9&#39;</span>, <span class="st">&#39;♣J&#39;</span>, <span class="st">&#39;♣Q&#39;</span>, <span class="st">&#39;♣K&#39;</span>]</span>
-<span id="cb28-7"><a href="#cb28-7"></a><span class="bu">print</span>(cards)</span></code></pre></div>
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb29-2"><a href="#cb29-2"></a><span class="co"># プログラマ的な発想・姿勢に基づかない初期化</span></span>
+<span id="cb29-3"><a href="#cb29-3"></a>cards <span class="op">=</span> [<span class="st">&#39;♠A&#39;</span>, <span class="st">&#39;♠2&#39;</span>, <span class="st">&#39;♠3&#39;</span>, <span class="st">&#39;♠4&#39;</span>, <span class="st">&#39;♠5&#39;</span>, <span class="st">&#39;♠6&#39;</span>, <span class="st">&#39;♠7&#39;</span>, <span class="st">&#39;♠8&#39;</span>, <span class="st">&#39;♠9&#39;</span>, <span class="st">&#39;♠J&#39;</span>, <span class="st">&#39;♠Q&#39;</span>, <span class="st">&#39;♠K&#39;</span>,</span>
+<span id="cb29-4"><a href="#cb29-4"></a>         <span class="st">&#39;♦A&#39;</span>, <span class="st">&#39;♦2&#39;</span>, <span class="st">&#39;♦3&#39;</span>, <span class="st">&#39;♦4&#39;</span>, <span class="st">&#39;♦5&#39;</span>, <span class="st">&#39;♦6&#39;</span>, <span class="st">&#39;♦7&#39;</span>, <span class="st">&#39;♦8&#39;</span>, <span class="st">&#39;♦9&#39;</span>, <span class="st">&#39;♦J&#39;</span>, <span class="st">&#39;♦Q&#39;</span>, <span class="st">&#39;♦K&#39;</span>,</span>
+<span id="cb29-5"><a href="#cb29-5"></a>         <span class="st">&#39;♥A&#39;</span>, <span class="st">&#39;♥2&#39;</span>, <span class="st">&#39;♥3&#39;</span>, <span class="st">&#39;♥4&#39;</span>, <span class="st">&#39;♥5&#39;</span>, <span class="st">&#39;♥6&#39;</span>, <span class="st">&#39;♥7&#39;</span>, <span class="st">&#39;♥8&#39;</span>, <span class="st">&#39;♥9&#39;</span>, <span class="st">&#39;♥J&#39;</span>, <span class="st">&#39;♥Q&#39;</span>, <span class="st">&#39;♥K&#39;</span>,</span>
+<span id="cb29-6"><a href="#cb29-6"></a>         <span class="st">&#39;♣A&#39;</span>, <span class="st">&#39;♣2&#39;</span>, <span class="st">&#39;♣3&#39;</span>, <span class="st">&#39;♣4&#39;</span>, <span class="st">&#39;♣5&#39;</span>, <span class="st">&#39;♣6&#39;</span>, <span class="st">&#39;♣7&#39;</span>, <span class="st">&#39;♣8&#39;</span>, <span class="st">&#39;♣9&#39;</span>, <span class="st">&#39;♣J&#39;</span>, <span class="st">&#39;♣Q&#39;</span>, <span class="st">&#39;♣K&#39;</span>]</span>
+<span id="cb29-7"><a href="#cb29-7"></a><span class="bu">print</span>(cards)</span></code></pre></div>
       <p>上記のコードを記述に要する時間は、せいぜい3分程度ですが、この3分の面倒を避けるために<span
       class="masked">プログラムを、考えたり、調べたり、試行錯誤したりすることに1時間、2時間を費やすことができるか</span>
       が、プログラミング思考になれているか、否かの指標になります。</p>
@@ -766,45 +825,45 @@ experience :    0</code></pre>
       は、次のように書けることに気付き、その内容の理解に至ると思います。これにより、このカードの初期化に相当するタスクからは
       <strong>永遠に解放される</strong>
       という恩恵を得ることができます。</p>
-      <div class="sourceCode" id="cb29"><pre
-      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
-<span id="cb29-2"><a href="#cb29-2"></a><span class="co"># プログラマ的な発想・姿勢に基づく初期化</span></span>
-<span id="cb29-3"><a href="#cb29-3"></a>suit <span class="op">=</span> [<span class="st">&#39;♠&#39;</span>,<span class="st">&#39;♥&#39;</span>,<span class="st">&#39;♦&#39;</span>,<span class="st">&#39;♣&#39;</span>]</span>
-<span id="cb29-4"><a href="#cb29-4"></a>rank <span class="op">=</span> [<span class="st">&#39;A&#39;</span>,<span class="st">&#39;2&#39;</span>,<span class="st">&#39;3&#39;</span>,<span class="st">&#39;4&#39;</span>,<span class="st">&#39;5&#39;</span>,<span class="st">&#39;6&#39;</span>,<span class="st">&#39;7&#39;</span>,<span class="st">&#39;8&#39;</span>,<span class="st">&#39;9&#39;</span>,<span class="st">&#39;J&#39;</span>,<span class="st">&#39;Q&#39;</span>,<span class="st">&#39;K&#39;</span>]</span>
-<span id="cb29-5"><a href="#cb29-5"></a>cards <span class="op">=</span> [<span class="va">None</span>]<span class="op">*</span>(<span class="bu">len</span>(suit)<span class="op">*</span><span class="bu">len</span>(rank))</span>
-<span id="cb29-6"><a href="#cb29-6"></a>t <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb29-7"><a href="#cb29-7"></a><span class="cf">for</span> s <span class="kw">in</span> suit:</span>
-<span id="cb29-8"><a href="#cb29-8"></a>  <span class="cf">for</span> n <span class="kw">in</span> rank :</span>
-<span id="cb29-9"><a href="#cb29-9"></a>    cards[t]<span class="op">=</span><span class="ss">f&#39;</span><span class="sc">{</span>s<span class="sc">}{</span>n<span class="sc">}</span><span class="ss">&#39;</span></span>
-<span id="cb29-10"><a href="#cb29-10"></a>    t<span class="op">+=</span><span class="dv">1</span></span>
-<span id="cb29-11"><a href="#cb29-11"></a><span class="bu">print</span>(<span class="ss">f&#39;cards=</span><span class="sc">{</span>cards<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
-      <p>さらに、時間を費やせば、次のようなプログラムにできるというところに到達すると思います。</p>
       <div class="sourceCode" id="cb30"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
-<span id="cb30-2"><a href="#cb30-2"></a>suit <span class="op">=</span> <span class="bu">list</span>(<span class="st">&#39;♠♥♦♣&#39;</span>)</span>
-<span id="cb30-3"><a href="#cb30-3"></a>rank <span class="op">=</span> <span class="bu">list</span>(<span class="st">&#39;A23456789JQK&#39;</span>)</span>
-<span id="cb30-4"><a href="#cb30-4"></a>cards <span class="op">=</span> [<span class="va">None</span>]<span class="op">*</span>(<span class="bu">len</span>(suit)<span class="op">*</span><span class="bu">len</span>(rank))</span>
-<span id="cb30-5"><a href="#cb30-5"></a>t <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb30-6"><a href="#cb30-6"></a><span class="cf">for</span> s <span class="kw">in</span> suit:</span>
-<span id="cb30-7"><a href="#cb30-7"></a>  <span class="cf">for</span> n <span class="kw">in</span> rank :</span>
-<span id="cb30-8"><a href="#cb30-8"></a>    cards[t]<span class="op">=</span><span class="ss">f&#39;</span><span class="sc">{</span>s<span class="sc">}{</span>n<span class="sc">}</span><span class="ss">&#39;</span></span>
-<span id="cb30-9"><a href="#cb30-9"></a>    t<span class="op">+=</span><span class="dv">1</span></span>
-<span id="cb30-10"><a href="#cb30-10"></a><span class="bu">print</span>(<span class="ss">f&#39;cards=</span><span class="sc">{</span>cards<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+<span id="cb30-2"><a href="#cb30-2"></a><span class="co"># プログラマ的な発想・姿勢に基づく初期化</span></span>
+<span id="cb30-3"><a href="#cb30-3"></a>suit <span class="op">=</span> [<span class="st">&#39;♠&#39;</span>,<span class="st">&#39;♥&#39;</span>,<span class="st">&#39;♦&#39;</span>,<span class="st">&#39;♣&#39;</span>]</span>
+<span id="cb30-4"><a href="#cb30-4"></a>rank <span class="op">=</span> [<span class="st">&#39;A&#39;</span>,<span class="st">&#39;2&#39;</span>,<span class="st">&#39;3&#39;</span>,<span class="st">&#39;4&#39;</span>,<span class="st">&#39;5&#39;</span>,<span class="st">&#39;6&#39;</span>,<span class="st">&#39;7&#39;</span>,<span class="st">&#39;8&#39;</span>,<span class="st">&#39;9&#39;</span>,<span class="st">&#39;J&#39;</span>,<span class="st">&#39;Q&#39;</span>,<span class="st">&#39;K&#39;</span>]</span>
+<span id="cb30-5"><a href="#cb30-5"></a>cards <span class="op">=</span> [<span class="va">None</span>]<span class="op">*</span>(<span class="bu">len</span>(suit)<span class="op">*</span><span class="bu">len</span>(rank))</span>
+<span id="cb30-6"><a href="#cb30-6"></a>t <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb30-7"><a href="#cb30-7"></a><span class="cf">for</span> s <span class="kw">in</span> suit:</span>
+<span id="cb30-8"><a href="#cb30-8"></a>  <span class="cf">for</span> n <span class="kw">in</span> rank :</span>
+<span id="cb30-9"><a href="#cb30-9"></a>    cards[t]<span class="op">=</span><span class="ss">f&#39;</span><span class="sc">{</span>s<span class="sc">}{</span>n<span class="sc">}</span><span class="ss">&#39;</span></span>
+<span id="cb30-10"><a href="#cb30-10"></a>    t<span class="op">+=</span><span class="dv">1</span></span>
+<span id="cb30-11"><a href="#cb30-11"></a><span class="bu">print</span>(<span class="ss">f&#39;cards=</span><span class="sc">{</span>cards<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+      <p>さらに、時間を費やせば、次のようなプログラムにできるというところに到達すると思います。</p>
+      <div class="sourceCode" id="cb31"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb31-2"><a href="#cb31-2"></a>suit <span class="op">=</span> <span class="bu">list</span>(<span class="st">&#39;♠♥♦♣&#39;</span>)</span>
+<span id="cb31-3"><a href="#cb31-3"></a>rank <span class="op">=</span> <span class="bu">list</span>(<span class="st">&#39;A23456789JQK&#39;</span>)</span>
+<span id="cb31-4"><a href="#cb31-4"></a>cards <span class="op">=</span> [<span class="va">None</span>]<span class="op">*</span>(<span class="bu">len</span>(suit)<span class="op">*</span><span class="bu">len</span>(rank))</span>
+<span id="cb31-5"><a href="#cb31-5"></a>t <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb31-6"><a href="#cb31-6"></a><span class="cf">for</span> s <span class="kw">in</span> suit:</span>
+<span id="cb31-7"><a href="#cb31-7"></a>  <span class="cf">for</span> n <span class="kw">in</span> rank :</span>
+<span id="cb31-8"><a href="#cb31-8"></a>    cards[t]<span class="op">=</span><span class="ss">f&#39;</span><span class="sc">{</span>s<span class="sc">}{</span>n<span class="sc">}</span><span class="ss">&#39;</span></span>
+<span id="cb31-9"><a href="#cb31-9"></a>    t<span class="op">+=</span><span class="dv">1</span></span>
+<span id="cb31-10"><a href="#cb31-10"></a><span class="bu">print</span>(<span class="ss">f&#39;cards=</span><span class="sc">{</span>cards<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
       <p>さらに、時間を費やせば、次のようなプログラムにできるというところに到達すると思います
       (<strong>ラムダ式</strong>や<strong>map</strong>などを含んだ下記のコードを理解するためには、数時間～十数時間を必要とします、現時点では以下の詳細について必ずしも理解する必要はありません)
       。</p>
       <p><code>itertools.product()</code> 関数は「情報2」の第12回講義
       (p.198)
       で学んだ集合演算の「<strong>直積</strong>」に相当する処理です。</p>
-      <div class="sourceCode" id="cb31"><pre
-      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
-<span id="cb31-2"><a href="#cb31-2"></a><span class="im">import</span> itertools</span>
-<span id="cb31-3"><a href="#cb31-3"></a>suit <span class="op">=</span> <span class="bu">list</span>(<span class="st">&#39;♠♥♦♣&#39;</span>)</span>
-<span id="cb31-4"><a href="#cb31-4"></a>rank <span class="op">=</span> <span class="bu">list</span>(<span class="st">&#39;A23456789JQK&#39;</span>)</span>
-<span id="cb31-5"><a href="#cb31-5"></a>cards <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>( <span class="kw">lambda</span> x: x[<span class="dv">0</span>]<span class="op">+</span>x[<span class="dv">1</span>],itertools.product(suit,rank)))</span>
-<span id="cb31-6"><a href="#cb31-6"></a><span class="bu">print</span>(<span class="ss">f&#39;cards=</span><span class="sc">{</span>cards<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
-      <h2 data-number="11.2" id="演習③-1"><span
-      class="header-section-number">11.2</span> 演習③</h2>
+      <div class="sourceCode" id="cb32"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb32-2"><a href="#cb32-2"></a><span class="im">import</span> itertools</span>
+<span id="cb32-3"><a href="#cb32-3"></a>suit <span class="op">=</span> <span class="bu">list</span>(<span class="st">&#39;♠♥♦♣&#39;</span>)</span>
+<span id="cb32-4"><a href="#cb32-4"></a>rank <span class="op">=</span> <span class="bu">list</span>(<span class="st">&#39;A23456789JQK&#39;</span>)</span>
+<span id="cb32-5"><a href="#cb32-5"></a>cards <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>( <span class="kw">lambda</span> x: x[<span class="dv">0</span>]<span class="op">+</span>x[<span class="dv">1</span>],itertools.product(suit,rank)))</span>
+<span id="cb32-6"><a href="#cb32-6"></a><span class="bu">print</span>(<span class="ss">f&#39;cards=</span><span class="sc">{</span>cards<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+      <h2 data-number="11.2" id="演習④"><span
+      class="header-section-number">11.2</span> 演習④</h2>
       <p>次に示すプログラムの Step1
       のトランプの初期化を「全52枚」に書き換え、さらに
       <code>judge()</code>
@@ -812,58 +871,58 @@ experience :    0</code></pre>
       (ただし、例外的にキングよりもエースが強いものとする)。</p>
       <p>また、ランクが同じ場合は、スペード、ハート、ダイヤ、クローバの順で強いものとする
       (スートではスペードが最強) 。</p>
-      <div class="sourceCode" id="cb32"><pre
-      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
-<span id="cb32-2"><a href="#cb32-2"></a><span class="im">import</span> random <span class="im">as</span> r</span>
-<span id="cb32-3"><a href="#cb32-3"></a></span>
-<span id="cb32-4"><a href="#cb32-4"></a><span class="co"># 引数で受け取った札束の状態を確認する関数</span></span>
-<span id="cb32-5"><a href="#cb32-5"></a><span class="kw">def</span> print_cards (x) :</span>
-<span id="cb32-6"><a href="#cb32-6"></a>  <span class="cf">assert</span> <span class="bu">type</span>(x) <span class="kw">is</span> <span class="bu">list</span></span>
-<span id="cb32-7"><a href="#cb32-7"></a>  <span class="bu">print</span>(<span class="ss">f&#39;山札は |&#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
-<span id="cb32-8"><a href="#cb32-8"></a>  <span class="bu">print</span>(<span class="op">*</span>x,sep<span class="op">=</span><span class="st">&#39;|&#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>) <span class="co"># アンパック</span></span>
-<span id="cb32-9"><a href="#cb32-9"></a>  <span class="bu">print</span>(<span class="ss">f&#39;| の </span><span class="sc">{</span><span class="bu">len</span>(x)<span class="sc">}</span><span class="ss">枚 です。&#39;</span>)</span>
-<span id="cb32-10"><a href="#cb32-10"></a></span>
-<span id="cb32-11"><a href="#cb32-11"></a><span class="co"># c1 が強い場合は「True」, c2が強い場合は「False」を返す関数</span></span>
-<span id="cb32-12"><a href="#cb32-12"></a><span class="kw">def</span> judge(c1,c2):</span>
-<span id="cb32-13"><a href="#cb32-13"></a>  <span class="cf">assert</span> <span class="bu">type</span>(c1) <span class="kw">is</span> <span class="bu">str</span></span>
-<span id="cb32-14"><a href="#cb32-14"></a>  <span class="cf">assert</span> <span class="bu">type</span>(c2) <span class="kw">is</span> <span class="bu">str</span></span>
-<span id="cb32-15"><a href="#cb32-15"></a>  <span class="cf">assert</span> c1 <span class="op">!=</span> c2</span>
-<span id="cb32-16"><a href="#cb32-16"></a></span>
-<span id="cb32-17"><a href="#cb32-17"></a>  <span class="cf">return</span> <span class="va">True</span></span>
-<span id="cb32-18"><a href="#cb32-18"></a></span>
-<span id="cb32-19"><a href="#cb32-19"></a><span class="co">## Step1 ####</span></span>
-<span id="cb32-20"><a href="#cb32-20"></a><span class="bu">print</span>(<span class="ss">f&#39;トランプの初期化&#39;</span>)</span>
-<span id="cb32-21"><a href="#cb32-21"></a>cards <span class="op">=</span> [<span class="st">&#39;♠A&#39;</span>, <span class="st">&#39;♠2&#39;</span>, <span class="st">&#39;♥3&#39;</span>, <span class="st">&#39;♥4&#39;</span>,<span class="st">&#39;♣Q&#39;</span>, <span class="st">&#39;♣K&#39;</span>]</span>
-<span id="cb32-22"><a href="#cb32-22"></a>print_cards(cards)</span>
-<span id="cb32-23"><a href="#cb32-23"></a></span>
-<span id="cb32-24"><a href="#cb32-24"></a><span class="co">## Step2 ####</span></span>
-<span id="cb32-25"><a href="#cb32-25"></a><span class="bu">print</span>()</span>
-<span id="cb32-26"><a href="#cb32-26"></a>r.shuffle(cards)</span>
-<span id="cb32-27"><a href="#cb32-27"></a><span class="bu">print</span>(<span class="ss">f&#39;山札をシャッフルしました。&#39;</span>)</span>
-<span id="cb32-28"><a href="#cb32-28"></a>print_cards(cards)</span>
-<span id="cb32-29"><a href="#cb32-29"></a></span>
-<span id="cb32-30"><a href="#cb32-30"></a><span class="co">## Step3 ####</span></span>
-<span id="cb32-31"><a href="#cb32-31"></a><span class="bu">print</span>()</span>
-<span id="cb32-32"><a href="#cb32-32"></a>p1 <span class="op">=</span> cards.pop()</span>
-<span id="cb32-33"><a href="#cb32-33"></a><span class="bu">print</span>(<span class="ss">f&#39;P1が山札から 1枚ひいたカードは |</span><span class="sc">{</span>p1<span class="sc">}</span><span class="ss">| でした。 &#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
-<span id="cb32-34"><a href="#cb32-34"></a><span class="bu">print</span>(<span class="ss">f&#39;このカードのスートは「</span><span class="sc">{</span>p1[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">」、ランクは「</span><span class="sc">{</span>p1[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">」です。&#39;</span>)</span>
-<span id="cb32-35"><a href="#cb32-35"></a>print_cards(cards)</span>
-<span id="cb32-36"><a href="#cb32-36"></a></span>
-<span id="cb32-37"><a href="#cb32-37"></a><span class="co">## Step4 ####</span></span>
-<span id="cb32-38"><a href="#cb32-38"></a><span class="bu">print</span>()</span>
-<span id="cb32-39"><a href="#cb32-39"></a>p2 <span class="op">=</span> cards.pop()</span>
-<span id="cb32-40"><a href="#cb32-40"></a><span class="bu">print</span>(<span class="ss">f&#39;P2が山札から 1枚ひいたカードは |</span><span class="sc">{</span>p2<span class="sc">}</span><span class="ss">| でした。 &#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
-<span id="cb32-41"><a href="#cb32-41"></a><span class="bu">print</span>(<span class="ss">f&#39;このカードのスートは「</span><span class="sc">{</span>p2[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">」、ランクは「</span><span class="sc">{</span>p2[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">」です。&#39;</span>)</span>
-<span id="cb32-42"><a href="#cb32-42"></a>print_cards(cards)</span>
-<span id="cb32-43"><a href="#cb32-43"></a></span>
-<span id="cb32-44"><a href="#cb32-44"></a><span class="co">## Step5 ####</span></span>
-<span id="cb32-45"><a href="#cb32-45"></a><span class="bu">print</span>()</span>
-<span id="cb32-46"><a href="#cb32-46"></a><span class="bu">print</span>(<span class="st">&#39;この勝負、P1の「&#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
-<span id="cb32-47"><a href="#cb32-47"></a><span class="cf">if</span> judge(p1,p2) : <span class="co"># 自作関数 judge の呼び出し</span></span>
-<span id="cb32-48"><a href="#cb32-48"></a>  <span class="bu">print</span>(<span class="st">&#39;勝ち&#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
-<span id="cb32-49"><a href="#cb32-49"></a><span class="cf">else</span> :</span>
-<span id="cb32-50"><a href="#cb32-50"></a>  <span class="bu">print</span>(<span class="st">&#39;負け&#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
-<span id="cb32-51"><a href="#cb32-51"></a><span class="bu">print</span>(<span class="st">&#39;」です。&#39;</span>)</span></code></pre></div>
+      <div class="sourceCode" id="cb33"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb33-2"><a href="#cb33-2"></a><span class="im">import</span> random <span class="im">as</span> r</span>
+<span id="cb33-3"><a href="#cb33-3"></a></span>
+<span id="cb33-4"><a href="#cb33-4"></a><span class="co"># 引数で受け取った札束の状態を確認する関数</span></span>
+<span id="cb33-5"><a href="#cb33-5"></a><span class="kw">def</span> print_cards (x) :</span>
+<span id="cb33-6"><a href="#cb33-6"></a>  <span class="cf">assert</span> <span class="bu">type</span>(x) <span class="kw">is</span> <span class="bu">list</span></span>
+<span id="cb33-7"><a href="#cb33-7"></a>  <span class="bu">print</span>(<span class="ss">f&#39;山札は |&#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb33-8"><a href="#cb33-8"></a>  <span class="bu">print</span>(<span class="op">*</span>x,sep<span class="op">=</span><span class="st">&#39;|&#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>) <span class="co"># アンパック</span></span>
+<span id="cb33-9"><a href="#cb33-9"></a>  <span class="bu">print</span>(<span class="ss">f&#39;| の </span><span class="sc">{</span><span class="bu">len</span>(x)<span class="sc">}</span><span class="ss">枚 です。&#39;</span>)</span>
+<span id="cb33-10"><a href="#cb33-10"></a></span>
+<span id="cb33-11"><a href="#cb33-11"></a><span class="co"># c1 が強い場合は「True」, c2が強い場合は「False」を返す関数</span></span>
+<span id="cb33-12"><a href="#cb33-12"></a><span class="kw">def</span> judge(c1,c2):</span>
+<span id="cb33-13"><a href="#cb33-13"></a>  <span class="cf">assert</span> <span class="bu">type</span>(c1) <span class="kw">is</span> <span class="bu">str</span></span>
+<span id="cb33-14"><a href="#cb33-14"></a>  <span class="cf">assert</span> <span class="bu">type</span>(c2) <span class="kw">is</span> <span class="bu">str</span></span>
+<span id="cb33-15"><a href="#cb33-15"></a>  <span class="cf">assert</span> c1 <span class="op">!=</span> c2</span>
+<span id="cb33-16"><a href="#cb33-16"></a></span>
+<span id="cb33-17"><a href="#cb33-17"></a>  <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb33-18"><a href="#cb33-18"></a></span>
+<span id="cb33-19"><a href="#cb33-19"></a><span class="co">## Step1 ####</span></span>
+<span id="cb33-20"><a href="#cb33-20"></a><span class="bu">print</span>(<span class="ss">f&#39;トランプの初期化&#39;</span>)</span>
+<span id="cb33-21"><a href="#cb33-21"></a>cards <span class="op">=</span> [<span class="st">&#39;♠A&#39;</span>, <span class="st">&#39;♠2&#39;</span>, <span class="st">&#39;♥3&#39;</span>, <span class="st">&#39;♥4&#39;</span>,<span class="st">&#39;♣Q&#39;</span>, <span class="st">&#39;♣K&#39;</span>]</span>
+<span id="cb33-22"><a href="#cb33-22"></a>print_cards(cards)</span>
+<span id="cb33-23"><a href="#cb33-23"></a></span>
+<span id="cb33-24"><a href="#cb33-24"></a><span class="co">## Step2 ####</span></span>
+<span id="cb33-25"><a href="#cb33-25"></a><span class="bu">print</span>()</span>
+<span id="cb33-26"><a href="#cb33-26"></a>r.shuffle(cards)</span>
+<span id="cb33-27"><a href="#cb33-27"></a><span class="bu">print</span>(<span class="ss">f&#39;山札をシャッフルしました。&#39;</span>)</span>
+<span id="cb33-28"><a href="#cb33-28"></a>print_cards(cards)</span>
+<span id="cb33-29"><a href="#cb33-29"></a></span>
+<span id="cb33-30"><a href="#cb33-30"></a><span class="co">## Step3 ####</span></span>
+<span id="cb33-31"><a href="#cb33-31"></a><span class="bu">print</span>()</span>
+<span id="cb33-32"><a href="#cb33-32"></a>p1 <span class="op">=</span> cards.pop()</span>
+<span id="cb33-33"><a href="#cb33-33"></a><span class="bu">print</span>(<span class="ss">f&#39;P1が山札から 1枚ひいたカードは |</span><span class="sc">{</span>p1<span class="sc">}</span><span class="ss">| でした。 &#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb33-34"><a href="#cb33-34"></a><span class="bu">print</span>(<span class="ss">f&#39;このカードのスートは「</span><span class="sc">{</span>p1[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">」、ランクは「</span><span class="sc">{</span>p1[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">」です。&#39;</span>)</span>
+<span id="cb33-35"><a href="#cb33-35"></a>print_cards(cards)</span>
+<span id="cb33-36"><a href="#cb33-36"></a></span>
+<span id="cb33-37"><a href="#cb33-37"></a><span class="co">## Step4 ####</span></span>
+<span id="cb33-38"><a href="#cb33-38"></a><span class="bu">print</span>()</span>
+<span id="cb33-39"><a href="#cb33-39"></a>p2 <span class="op">=</span> cards.pop()</span>
+<span id="cb33-40"><a href="#cb33-40"></a><span class="bu">print</span>(<span class="ss">f&#39;P2が山札から 1枚ひいたカードは |</span><span class="sc">{</span>p2<span class="sc">}</span><span class="ss">| でした。 &#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb33-41"><a href="#cb33-41"></a><span class="bu">print</span>(<span class="ss">f&#39;このカードのスートは「</span><span class="sc">{</span>p2[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">」、ランクは「</span><span class="sc">{</span>p2[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">」です。&#39;</span>)</span>
+<span id="cb33-42"><a href="#cb33-42"></a>print_cards(cards)</span>
+<span id="cb33-43"><a href="#cb33-43"></a></span>
+<span id="cb33-44"><a href="#cb33-44"></a><span class="co">## Step5 ####</span></span>
+<span id="cb33-45"><a href="#cb33-45"></a><span class="bu">print</span>()</span>
+<span id="cb33-46"><a href="#cb33-46"></a><span class="bu">print</span>(<span class="st">&#39;この勝負、P1の「&#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb33-47"><a href="#cb33-47"></a><span class="cf">if</span> judge(p1,p2) : <span class="co"># 自作関数 judge の呼び出し</span></span>
+<span id="cb33-48"><a href="#cb33-48"></a>  <span class="bu">print</span>(<span class="st">&#39;勝ち&#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb33-49"><a href="#cb33-49"></a><span class="cf">else</span> :</span>
+<span id="cb33-50"><a href="#cb33-50"></a>  <span class="bu">print</span>(<span class="st">&#39;負け&#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb33-51"><a href="#cb33-51"></a><span class="bu">print</span>(<span class="st">&#39;」です。&#39;</span>)</span></code></pre></div>
       <p><strong>(中級者向け)</strong> 上記プログラムの Step3 と Step4
       は、ほぼ同じ処理といえる。この処理を関数を使ってまとめよ。</p>
       <p>ヒント：<code>draw_card</code>
@@ -878,18 +937,18 @@ experience :    0</code></pre>
       <p><code>from</code>
       を使用する場合と、使用しない場合では、以下のように、ライブラリに含まれる
       <strong>関数の呼び出し</strong> が、若干変わってきます。</p>
-      <div class="sourceCode" id="cb33" data-caption="import01.py"><pre
-      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
-<span id="cb33-2"><a href="#cb33-2"></a><span class="co"># form を使用したimport文</span></span>
-<span id="cb33-3"><a href="#cb33-3"></a><span class="im">from</span> math <span class="im">import</span> sin,cos</span>
-<span id="cb33-4"><a href="#cb33-4"></a>x <span class="op">=</span> sin(<span class="fl">0.25</span>)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> cos(<span class="fl">0.25</span>)<span class="op">**</span><span class="dv">2</span> <span class="co"># math.は不要</span></span>
-<span id="cb33-5"><a href="#cb33-5"></a><span class="bu">print</span>(x)</span></code></pre></div>
-      <div class="sourceCode" id="cb34" data-caption="import02.py"><pre
+      <div class="sourceCode" id="cb34" data-caption="import01.py"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
-<span id="cb34-2"><a href="#cb34-2"></a><span class="co"># form を使用しないimport文</span></span>
-<span id="cb34-3"><a href="#cb34-3"></a><span class="im">import</span> math</span>
-<span id="cb34-4"><a href="#cb34-4"></a>x <span class="op">=</span> math.sin(<span class="fl">0.25</span>)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> math.cos(<span class="fl">0.25</span>)<span class="op">**</span><span class="dv">2</span> <span class="co"># math.が必要</span></span>
+<span id="cb34-2"><a href="#cb34-2"></a><span class="co"># form を使用したimport文</span></span>
+<span id="cb34-3"><a href="#cb34-3"></a><span class="im">from</span> math <span class="im">import</span> sin,cos</span>
+<span id="cb34-4"><a href="#cb34-4"></a>x <span class="op">=</span> sin(<span class="fl">0.25</span>)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> cos(<span class="fl">0.25</span>)<span class="op">**</span><span class="dv">2</span> <span class="co"># math.は不要</span></span>
 <span id="cb34-5"><a href="#cb34-5"></a><span class="bu">print</span>(x)</span></code></pre></div>
+      <div class="sourceCode" id="cb35" data-caption="import02.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb35-2"><a href="#cb35-2"></a><span class="co"># form を使用しないimport文</span></span>
+<span id="cb35-3"><a href="#cb35-3"></a><span class="im">import</span> math</span>
+<span id="cb35-4"><a href="#cb35-4"></a>x <span class="op">=</span> math.sin(<span class="fl">0.25</span>)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> math.cos(<span class="fl">0.25</span>)<span class="op">**</span><span class="dv">2</span> <span class="co"># math.が必要</span></span>
+<span id="cb35-5"><a href="#cb35-5"></a><span class="bu">print</span>(x)</span></code></pre></div>
       <ul>
       <li><p><code>import01.py</code> で <code>math.sin(0.25)</code>
       とすると、どのようになるか。結果について推測したうえで、実際にコードを実行して確認せよ。</p></li>
@@ -897,63 +956,6 @@ experience :    0</code></pre>
       class="math inline">\(\sin^{2}(\theta)+\cos^{2}(\theta)+\tan^{2}(\theta)\)</span>
       を計算したい。どのようにコードを書き換えればよいか。実際にコードを書き換え、その結果について確認せよ。</p></li>
       </ul>
-      <h1 data-number="13" id="応用例"><span
-      class="header-section-number">13</span> 応用例</h1>
-      <div class="sourceCode" id="cb35"><pre
-      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
-<span id="cb35-2"><a href="#cb35-2"></a><span class="im">import</span> time</span>
-<span id="cb35-3"><a href="#cb35-3"></a><span class="im">import</span> random <span class="im">as</span> r</span>
-<span id="cb35-4"><a href="#cb35-4"></a><span class="im">import</span> IPython.display</span>
-<span id="cb35-5"><a href="#cb35-5"></a></span>
-<span id="cb35-6"><a href="#cb35-6"></a>n<span class="op">=</span><span class="dv">9</span>           <span class="co"># 9回（イニング）までのゲーム委</span></span>
-<span id="cb35-7"><a href="#cb35-7"></a>G <span class="op">=</span> [<span class="op">-</span><span class="dv">1</span>]<span class="op">*</span>n    <span class="co"># スコアの初期化</span></span>
-<span id="cb35-8"><a href="#cb35-8"></a>H <span class="op">=</span> [<span class="op">-</span><span class="dv">1</span>]<span class="op">*</span>n</span>
-<span id="cb35-9"><a href="#cb35-9"></a>wait_time <span class="op">=</span> <span class="dv">2</span> <span class="co"># [Sec]</span></span>
-<span id="cb35-10"><a href="#cb35-10"></a></span>
-<span id="cb35-11"><a href="#cb35-11"></a><span class="co"># チームのスコア #########################</span></span>
-<span id="cb35-12"><a href="#cb35-12"></a><span class="kw">def</span> print_team_score(name,score):</span>
-<span id="cb35-13"><a href="#cb35-13"></a>  <span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">|&#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
-<span id="cb35-14"><a href="#cb35-14"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
-<span id="cb35-15"><a href="#cb35-15"></a>    <span class="cf">if</span> score[i] <span class="op">!=</span> <span class="op">-</span><span class="dv">1</span>:</span>
-<span id="cb35-16"><a href="#cb35-16"></a>      <span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>score[i]<span class="sc">:&gt;2}</span><span class="ss">|&#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
-<span id="cb35-17"><a href="#cb35-17"></a>    <span class="cf">else</span> :</span>
-<span id="cb35-18"><a href="#cb35-18"></a>      <span class="bu">print</span>(<span class="st">&#39;  |&#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
-<span id="cb35-19"><a href="#cb35-19"></a>  <span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span><span class="bu">sum</span>(score[:t])<span class="sc">:&gt;2}</span><span class="ss">|&#39;</span>)</span>
-<span id="cb35-20"><a href="#cb35-20"></a></span>
-<span id="cb35-21"><a href="#cb35-21"></a><span class="co"># スコアボード全体の出力 #################</span></span>
-<span id="cb35-22"><a href="#cb35-22"></a><span class="kw">def</span> print_score_board():</span>
-<span id="cb35-23"><a href="#cb35-23"></a></span>
-<span id="cb35-24"><a href="#cb35-24"></a>  IPython.display.clear_output() <span class="co"># 出力をクリア</span></span>
-<span id="cb35-25"><a href="#cb35-25"></a></span>
-<span id="cb35-26"><a href="#cb35-26"></a>  <span class="bu">print</span>(<span class="st">&#39;-+&#39;</span><span class="op">+</span><span class="st">&#39;--+&#39;</span><span class="op">*</span>(n<span class="op">+</span><span class="dv">1</span>))</span>
-<span id="cb35-27"><a href="#cb35-27"></a>  <span class="bu">print</span>(<span class="st">&#39; |&#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
-<span id="cb35-28"><a href="#cb35-28"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,n<span class="op">+</span><span class="dv">1</span>):</span>
-<span id="cb35-29"><a href="#cb35-29"></a>    <span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>i<span class="sc">:&gt;2}</span><span class="ss">|&#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
-<span id="cb35-30"><a href="#cb35-30"></a>  <span class="bu">print</span>(<span class="st">&#39;計|&#39;</span>)</span>
-<span id="cb35-31"><a href="#cb35-31"></a>  <span class="bu">print</span>(<span class="st">&#39;-+&#39;</span><span class="op">+</span><span class="st">&#39;--+&#39;</span><span class="op">*</span>(n<span class="op">+</span><span class="dv">1</span>))</span>
-<span id="cb35-32"><a href="#cb35-32"></a></span>
-<span id="cb35-33"><a href="#cb35-33"></a>  print_team_score(<span class="st">&#39;G&#39;</span>,G)</span>
-<span id="cb35-34"><a href="#cb35-34"></a>  print_team_score(<span class="st">&#39;H&#39;</span>,H)</span>
-<span id="cb35-35"><a href="#cb35-35"></a></span>
-<span id="cb35-36"><a href="#cb35-36"></a>  <span class="bu">print</span>(<span class="st">&#39;-+&#39;</span><span class="op">+</span><span class="st">&#39;--+&#39;</span><span class="op">*</span>(n<span class="op">+</span><span class="dv">1</span>))</span>
-<span id="cb35-37"><a href="#cb35-37"></a></span>
-<span id="cb35-38"><a href="#cb35-38"></a><span class="co"># メイン処理 #############################</span></span>
-<span id="cb35-39"><a href="#cb35-39"></a><span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(n):</span>
-<span id="cb35-40"><a href="#cb35-40"></a></span>
-<span id="cb35-41"><a href="#cb35-41"></a>  <span class="co"># 先攻「G」の攻撃回</span></span>
-<span id="cb35-42"><a href="#cb35-42"></a>  G[t] <span class="op">=</span> r.choices([<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],[<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">1</span>])[<span class="dv">0</span>]</span>
-<span id="cb35-43"><a href="#cb35-43"></a>  print_score_board()</span>
-<span id="cb35-44"><a href="#cb35-44"></a>  time.sleep(wait_time)</span>
-<span id="cb35-45"><a href="#cb35-45"></a></span>
-<span id="cb35-46"><a href="#cb35-46"></a>  <span class="co"># 後攻「H」の攻撃回</span></span>
-<span id="cb35-47"><a href="#cb35-47"></a>  H[t] <span class="op">=</span> r.choices([<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],[<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>])[<span class="dv">0</span>]</span>
-<span id="cb35-48"><a href="#cb35-48"></a>  print_score_board()</span>
-<span id="cb35-49"><a href="#cb35-49"></a>  time.sleep(wait_time)</span>
-<span id="cb35-50"><a href="#cb35-50"></a></span>
-<span id="cb35-51"><a href="#cb35-51"></a><span class="cf">if</span> <span class="bu">sum</span>(H) <span class="op">&gt;</span> <span class="bu">sum</span>(G):</span>
-<span id="cb35-52"><a href="#cb35-52"></a>  <span class="bu">print</span>(<span class="st">&#39;😄😄😄😄😄&#39;</span>)</span>
-<span id="cb35-53"><a href="#cb35-53"></a><span class="cf">else</span> :</span>
-<span id="cb35-54"><a href="#cb35-54"></a>  <span class="bu">print</span>(<span class="st">&#39;😱😱😱😱😱&#39;</span>)</span></code></pre></div>
       <!-- ---------------------------------------- -->
     </main>
 
