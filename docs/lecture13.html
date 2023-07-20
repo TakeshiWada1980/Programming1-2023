@@ -560,8 +560,8 @@ mat[2][3]=120</code></pre>
 <span id="cb24-3"><a href="#cb24-3"></a>b <span class="op">=</span> a</span>
 <span id="cb24-4"><a href="#cb24-4"></a>a <span class="op">=</span> [<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">30</span>] <span class="co"># a[2]が10</span></span>
 <span id="cb24-5"><a href="#cb24-5"></a><span class="cf">assert</span> a <span class="op">!=</span> b</span>
-<span id="cb24-6"><a href="#cb24-6"></a><span class="bu">print</span>(<span class="ss">f&#39;a=</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">&#39;</span>) </span>
-<span id="cb24-7"><a href="#cb24-7"></a><span class="bu">print</span>(<span class="ss">f&#39;b=</span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">&#39;</span>) </span></code></pre></div>
+<span id="cb24-6"><a href="#cb24-6"></a><span class="bu">print</span>(<span class="ss">f&#39;a=</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># =&gt; [10,10,30] </span></span>
+<span id="cb24-7"><a href="#cb24-7"></a><span class="bu">print</span>(<span class="ss">f&#39;b=</span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># =&gt; [10,20,30]</span></span></code></pre></div>
       <p>しかし、上記 <code>step3-2a.py</code>
       の<strong>第04行目</strong>を <code>a = [10,10,30]</code> から
       <code>a.pop()</code> や <code>a[1]=10</code>
