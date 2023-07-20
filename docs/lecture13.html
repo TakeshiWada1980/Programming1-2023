@@ -606,22 +606,22 @@ mat[2][3]=120</code></pre>
       <ol type="1">
       <li>Pythonにおいて「データを抽象的に表したもの」を
       <strong><em>オブジェクト</em></strong>
-      と言い、具体的には「整数」「実数」「文字列」「リスト」「辞書」…のように、<strong>変数に代入可能なものはすべて「オブジェクト」に位置づけられます</strong>。例えば
+      とよび、具体的には「整数」「実数」「文字列」「リスト」「辞書」…のように、<strong>変数に代入可能な全てのものは「オブジェクト」に位置づけられます</strong>。例えば
       <code>10</code> も <code>'ABC'</code> も <code>[10,20,30]</code>
       も <code>True</code>
-      も全て変数に代入可能なデータなのでオブジェクトとなります。</li>
-      <li>プログラム実行中に新しくオブジェクトがつくられると、そのオブジェクトには
+      も全て変数に代入可能なデータであり、したがってオブジェクトとなります。</li>
+      <li>プログラム実行中に新たにオブジェクトが作成されると、そのオブジェクトには
       <strong><em>オブジェクトID</em></strong> という<strong>識別子
       (番号)
       が自動的に割り振られます</strong>。この「オブジェクトID」は、他のオブジェクトIDとは重複しない固有の整数値
       (int型)
-      であり、「オブジェクト」と<strong>1対1の関係で対応</strong>します。</li>
+      であり、それは「オブジェクト」と<strong>1対1の関係</strong>になります。</li>
       <li>プログラム内部では「オブジェクトID」から「オブジェクトの本体
       (つまりデータ)」にアクセスすることができます。</li>
-      <li>プログラミング初学者に対しては <code>a=10</code> について「
+      <li>プログラミング初学者に対して、<code>a=10</code> について「
       <code>a</code> <strong>という箱に</strong> <code>10</code>
       <strong>という値を入れる</strong>」と解釈するように説明することが多いですが、<strong>実は正しくありません</strong>
-      (事実、この解釈では <code>step3-2b.py</code>
+      (実際、この解釈では <code>step3-2b.py</code>
       のような実行結果になることを説明できません)。</li>
       <li><code>a=10</code> については「<code>10</code>
       <strong>というオブジェクトを生成し、その「オブジェクトID」を変数</strong>
@@ -630,13 +630,14 @@ mat[2][3]=120</code></pre>
       <li>同様に <code>print(a)</code> は「変数 <code>a</code>
       に格納されている値を表示する」ではなく「変数 <code>a</code>
       に格納されている「オブジェクトID」からアクセスできる「オブジェクト」の値を表示する」というのが、より厳密な説明になります。</li>
-      <li>このように、変数に、オブジェクトそのものではなく、そのオブジェクトを一意に特定できるオブジェクトIDを格納することを
+      <li>このように、変数に対して (オブジェクトそのものではなく）
+      オブジェクトを一意に特定できるオブジェクトIDを格納することを
       <strong><em>バインド</em></strong>
       と表現します。バインドとは「<strong>束縛する、結びつける、紐づける</strong>」という意味で、ここでは「変数」と「オブジェクト」を<strong>紐づけする</strong>という意味で使われます。</li>
       <li>以上より <code>a=10</code> は「変数 <code>a</code> に
       <code>10</code> を格納する」ではなく「変数 <code>a</code>
       と、<code>10</code> というオブジェクトを (オブジェクトIDを通して)
-      バインドする (紐づけする)」と解釈します。</li>
+      バインドする (紐づけする)」と解釈するのが適切です。</li>
       </ol>
       <p>バインドについては、実は <a
       href="lecture02.html#変数の埋め込み">第02回講義</a>
@@ -667,17 +668,17 @@ mat[2][3]=120</code></pre>
       <code>b</code> に<strong>コピー (複製)
       されたのは「オブジェクト」ではなく「オブジェクトID」である</strong>ことに注意する。この結果、変数
       <code>a</code> と 変数 <code>b</code>
-      に格納されている「オブジェクトID」は同じものとなる。</p>
+      に格納されている「オブジェクトID」は同じものとなった。</p>
       <p><strong>第04行目</strong> : <code>40</code>
       というオブジェクトを生成し、その「オブジェクトID」を「変数
       <code>a</code>
       に格納されているオブジェクトIDに紐づくリスト型のオブジェクト」の１番目の要素に上書きする。</p>
       <p><strong>第05行目</strong> : 変数 <code>a</code>
-      に格納されている「オブジェクトID」に紐づいたリスト型のオブジェクトの値を表示する。</p>
+      に格納されている「オブジェクトID」に紐づいたリスト型オブジェクトの値を表示する。</p>
       <p><strong>第06行目</strong> : 変数 <code>b</code>
       に格納されているオブジェクトID (＝変数 <code>a</code>
-      に格納されているオブジェクトIDと同じ)
-      に紐づいたリスト型のオブジェクトの値を表示する。</p>
+      に格納されている「オブジェクトID」と同じ)
+      に紐づいたリスト型オブジェクトの値を表示する。</p>
       <p>以上の解釈・説明によって、<strong>第06行目</strong>の出力が
       <code>b=[10, 40, 30]</code> となることが自然に説明できました。</p>
       <h3 data-number="5.4.2" id="具体的なプログラムで解説②"><span
@@ -697,18 +698,18 @@ mat[2][3]=120</code></pre>
       <p><strong>第03行目</strong> : 新たに <code>[10,20,30]</code>
       というオブジェクトを生成し、そのオブジェクトIDを変数
       <code>b</code>
-      に格納する。第02行目で生成されたオブジェクトと、この第03行目で生成されたオブジェクトは
+      に格納する。<strong>第02行目</strong>で生成されたオブジェクトと、この<strong>第03行目</strong>で生成されたオブジェクトは
       (値は同じであるが)
       別物なので、当然、そのオブジェクトIDは違う。</p>
       <p><strong>第04行目</strong> : <code>40</code>
-      というオブジェクトを生成し、その「オブジェクトID」を「変数
+      というオブジェクトを生成しその「オブジェクトID」を、「変数
       <code>a</code>
-      に格納されているオブジェクトIDに紐づくリスト型のオブジェクト」の１番目の要素に上書きする。</p>
+      に格納されているオブジェクトIDに紐づくリスト型オブジェクト」の１番目の要素に格納する。</p>
       <p><strong>第05行目</strong> : 変数 <code>a</code>
       に格納されている「オブジェクトID」に紐づいたリスト型のオブジェクトの値を表示する。</p>
       <p><strong>第06行目</strong> : 変数 <code>b</code>
       に格納されているオブジェクトID (＝変数 <code>a</code>
-      に格納されているオブジェクトIDとは<strong>違う</strong>)
+      に格納されている「オブジェクトID」とは<strong>違う</strong>)
       に紐づいたリスト型のオブジェクトの値を表示する。</p>
       <p>以上の解釈・説明によって、<strong>第06行目</strong>の出力が
       <code>b=[10, 20, 30]</code> となることが自然に説明できました。</p>
@@ -728,16 +729,17 @@ mat[2][3]=120</code></pre>
       <code>a</code> に格納する。</p>
       <p><strong>第03行目</strong> : 変数 <code>a</code>
       に格納されている「オブジェクトID」を変数 <code>b</code>
-      にコピー(複製する)する。</p>
-      <p><strong>第03行目</strong> : 変数 <code>a</code>
+      にコピー(複製)する。</p>
+      <p><strong>第04行目</strong> : 変数 <code>a</code>
       に格納されている「オブジェクトID」に紐づくオブジェクト (つまり
       <code>10</code> ) と、<code>1</code> を加算することで、新たなに
-      <code>11</code> というオブジェクト、その「オブジェクトID」を変数
+      <code>11</code>
+      という新たなオブジェクトを生成し、その「オブジェクトID」を変数
       <code>a</code> に格納する。</p>
       <p><strong>第05行目</strong> : 変数 <code>a</code>
-      に格納されているオブジェクトIDに紐づいたオブジェクトの値を表示する。</p>
+      に格納されている「オブジェクトID」に紐づいたオブジェクトの値を表示する。</p>
       <p><strong>第06行目</strong> : 変数 <code>b</code>
-      に格納されているオブジェクトIDに紐づいたオブジェクトの値を表示する。</p>
+      に格納されている「オブジェクトID」に紐づいたオブジェクトの値を表示する。</p>
       <h2 data-number="5.5" id="動作の解明のためのツール-id"><span
       class="header-section-number">5.5</span> 動作の解明のためのツール
       id()</h2>
@@ -781,33 +783,33 @@ mat[2][3]=120</code></pre>
       id="理屈は分かったものの不便ではないか"><span
       class="header-section-number">5.6</span>
       理屈は分かったものの不便ではないか</h2>
-      <p>プログラムのなかで、あるリストの値を複製して、それを少しだけ変更して使いたい場合があります。しかし、単純に
+      <p>プログラムのなかで、あるリストを複製して、それを少しだけ変更して使いたい場合があります
+      (当然ながら、複製元には影響を与えずに) 。そのようなとき単純に
       <code>b=a</code>
-      のようにすると、そのような目的には使えません。一方で、<code>b=[10,20,30]</code>
-      のように初期化することも面倒で効率が悪いです。</p>
-      <p>このように目的のためには、次のようなプログラムを書きます。</p>
+      のようにリストをコピーするのではダメであることを学びました。</p>
+      <p>そのような目的のためには、次のようなプログラムを書く必要があります。</p>
       <div class="sourceCode" id="cb33" data-caption="copy1.py"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
 <span id="cb33-2"><a href="#cb33-2"></a>a <span class="op">=</span> [<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">30</span>]</span>
 <span id="cb33-3"><a href="#cb33-3"></a></span>
-<span id="cb33-4"><a href="#cb33-4"></a>b <span class="op">=</span> [<span class="dv">0</span>]<span class="op">*</span><span class="bu">len</span>(a) <span class="co"># aと同じ要素数で初期化</span></span>
+<span id="cb33-4"><a href="#cb33-4"></a>b <span class="op">=</span> [<span class="dv">0</span>]<span class="op">*</span><span class="bu">len</span>(a) <span class="co"># aと同じ要素数でbを初期化</span></span>
 <span id="cb33-5"><a href="#cb33-5"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(a)): <span class="co"># 要素を1個1個コピー</span></span>
 <span id="cb33-6"><a href="#cb33-6"></a>  b[i]<span class="op">=</span>a[i]</span>
 <span id="cb33-7"><a href="#cb33-7"></a></span>
-<span id="cb33-8"><a href="#cb33-8"></a><span class="cf">assert</span> a<span class="op">==</span>b          <span class="co"># オブジェクトの内容は同じだが</span></span>
+<span id="cb33-8"><a href="#cb33-8"></a><span class="cf">assert</span> a<span class="op">==</span>b          <span class="co"># オブジェクトの値は同じだが</span></span>
 <span id="cb33-9"><a href="#cb33-9"></a><span class="cf">assert</span> <span class="bu">id</span>(a)<span class="op">!=</span><span class="bu">id</span>(b)  <span class="co"># オブジェクトとしては別物</span></span>
 <span id="cb33-10"><a href="#cb33-10"></a></span>
 <span id="cb33-11"><a href="#cb33-11"></a>b[<span class="dv">1</span>]<span class="op">=</span><span class="dv">10</span>  <span class="co"># 複製したものを部分変更</span></span>
 <span id="cb33-12"><a href="#cb33-12"></a></span>
 <span id="cb33-13"><a href="#cb33-13"></a><span class="bu">print</span>(<span class="ss">f&#39;a=</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># =&gt; a=[10, 20, 30]</span></span>
-<span id="cb33-14"><a href="#cb33-14"></a><span class="bu">print</span>(<span class="ss">f&#39;b=</span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># =&gt; b=[10, 10, 30]</span></span></code></pre></div>
+<span id="cb33-14"><a href="#cb33-14"></a><span class="bu">print</span>(<span class="ss">f&#39;b=</span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># =&gt; b=[10, 10, 30] # 複製先だけが変更されている</span></span></code></pre></div>
       <p>ただし、上記の <code>copy1.py</code>
-      のようなプログラムは２次元リスト、3次元リスト、あるいは、辞書を要素とする場合には、その階層分だけ複製の繰返しを記述する必要がでてきます。</p>
-      <p>例えば、<code>copy1-a.py</code>
-      は意図するコピーができていません。</p>
+      のようなプログラムは２次元リスト、3次元リスト、あるいは、辞書を要素とする場合には、その階層分だけ複製処理を繰返す必要があります。</p>
+      <p>例えば、次の <code>copy1-a.py</code>
+      では意図するコピーができていません。</p>
       <div class="sourceCode" id="cb34" data-caption="copy1-a.py"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
-<span id="cb34-2"><a href="#cb34-2"></a>a <span class="op">=</span> [[<span class="dv">10</span>,<span class="dv">20</span>],[<span class="dv">30</span>,<span class="dv">40</span>]]</span>
+<span id="cb34-2"><a href="#cb34-2"></a>a <span class="op">=</span> [[<span class="dv">10</span>,<span class="dv">20</span>],[<span class="dv">30</span>,<span class="dv">40</span>]] <span class="co"># 2次元リスト</span></span>
 <span id="cb34-3"><a href="#cb34-3"></a></span>
 <span id="cb34-4"><a href="#cb34-4"></a><span class="co"># 詰めの甘いコピー</span></span>
 <span id="cb34-5"><a href="#cb34-5"></a>b <span class="op">=</span> [<span class="dv">0</span>]<span class="op">*</span><span class="bu">len</span>(a)</span>
@@ -816,40 +818,39 @@ mat[2][3]=120</code></pre>
 <span id="cb34-8"><a href="#cb34-8"></a></span>
 <span id="cb34-9"><a href="#cb34-9"></a>b[<span class="dv">1</span>][<span class="dv">0</span>]<span class="op">=</span><span class="dv">10</span>  <span class="co"># 複製したものを部分変更</span></span>
 <span id="cb34-10"><a href="#cb34-10"></a></span>
-<span id="cb34-11"><a href="#cb34-11"></a><span class="bu">print</span>(<span class="ss">f&#39;a=</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># =&gt; a=[[10, 20], [10, 40]] # ここも影響を受けた</span></span>
+<span id="cb34-11"><a href="#cb34-11"></a><span class="bu">print</span>(<span class="ss">f&#39;a=</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># =&gt; a=[[10, 20], [10, 40]] # 複製元も影響を受けた</span></span>
 <span id="cb34-12"><a href="#cb34-12"></a><span class="bu">print</span>(<span class="ss">f&#39;b=</span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># =&gt; b=[[10, 20], [10, 40]]</span></span></code></pre></div>
-      <p>上記は、次の <code>copy1-b.py</code>
-      ようにする必要があります。</p>
+      <p>この問題は、次の <code>copy1-b.py</code>
+      ように解決する必要があります。</p>
       <div class="sourceCode" id="cb35" data-caption="copy1-b.py"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
 <span id="cb35-2"><a href="#cb35-2"></a>a <span class="op">=</span> [[<span class="dv">10</span>,<span class="dv">20</span>],[<span class="dv">30</span>,<span class="dv">40</span>]]</span>
 <span id="cb35-3"><a href="#cb35-3"></a></span>
-<span id="cb35-4"><a href="#cb35-4"></a>b <span class="op">=</span> [<span class="dv">0</span>]<span class="op">*</span><span class="bu">len</span>(a)</span>
-<span id="cb35-5"><a href="#cb35-5"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(a)):</span>
-<span id="cb35-6"><a href="#cb35-6"></a>  b[i] <span class="op">=</span> [<span class="dv">0</span>]<span class="op">*</span><span class="bu">len</span>(a[i])</span>
-<span id="cb35-7"><a href="#cb35-7"></a>  <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(a[i])):</span>
-<span id="cb35-8"><a href="#cb35-8"></a>    b[i][j]<span class="op">=</span>a[i][j]</span>
-<span id="cb35-9"><a href="#cb35-9"></a></span>
-<span id="cb35-10"><a href="#cb35-10"></a>b[<span class="dv">1</span>][<span class="dv">0</span>]<span class="op">=</span><span class="dv">10</span>  <span class="co"># 複製したものを部分変更</span></span>
-<span id="cb35-11"><a href="#cb35-11"></a></span>
-<span id="cb35-12"><a href="#cb35-12"></a><span class="bu">print</span>(<span class="ss">f&#39;a=</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># =&gt; a=[[10, 20], [30, 40]] </span></span>
-<span id="cb35-13"><a href="#cb35-13"></a><span class="bu">print</span>(<span class="ss">f&#39;b=</span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># =&gt; b=[[10, 20], [10, 40]]</span></span></code></pre></div>
-      <p>階層が増えると明らかに面倒です。このようなときは
-      <code>copy</code>
-      モジュールを使用します。こちらは、２次元リスト、3次元リスト、あるいは、辞書を要素とする場合でも問題なく対応してくれます。</p>
+<span id="cb35-4"><a href="#cb35-4"></a><span class="co"># 深く奥までコピーする</span></span>
+<span id="cb35-5"><a href="#cb35-5"></a>b <span class="op">=</span> [<span class="dv">0</span>]<span class="op">*</span><span class="bu">len</span>(a)</span>
+<span id="cb35-6"><a href="#cb35-6"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(a)):</span>
+<span id="cb35-7"><a href="#cb35-7"></a>  b[i] <span class="op">=</span> [<span class="dv">0</span>]<span class="op">*</span><span class="bu">len</span>(a[i])</span>
+<span id="cb35-8"><a href="#cb35-8"></a>  <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(a[i])):</span>
+<span id="cb35-9"><a href="#cb35-9"></a>    b[i][j]<span class="op">=</span>a[i][j]</span>
+<span id="cb35-10"><a href="#cb35-10"></a></span>
+<span id="cb35-11"><a href="#cb35-11"></a>b[<span class="dv">1</span>][<span class="dv">0</span>]<span class="op">=</span><span class="dv">10</span>  <span class="co"># 複製したものを部分変更</span></span>
+<span id="cb35-12"><a href="#cb35-12"></a></span>
+<span id="cb35-13"><a href="#cb35-13"></a><span class="bu">print</span>(<span class="ss">f&#39;a=</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># =&gt; a=[[10, 20], [30, 40]] </span></span>
+<span id="cb35-14"><a href="#cb35-14"></a><span class="bu">print</span>(<span class="ss">f&#39;b=</span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># =&gt; b=[[10, 20], [10, 40]] # 複製先だけが変更されている</span></span></code></pre></div>
+      <p>しかし、これは階層が増えてくると明らかに面倒です
+      (バグの温床にもなります)。このようなときは <code>copy</code>
+      モジュールを使用し、<code>copy2.py</code>
+      のように記述します。こちらは、２次元リスト、3次元リスト、あるいは、辞書を要素とする場合でも問題なく対応してくれます。</p>
       <div class="sourceCode" id="cb36" data-caption="copy2.py"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
 <span id="cb36-2"><a href="#cb36-2"></a><span class="im">import</span> copy <span class="co"># 要import</span></span>
 <span id="cb36-3"><a href="#cb36-3"></a>a <span class="op">=</span> [[<span class="dv">10</span>,<span class="dv">20</span>],[<span class="dv">30</span>,<span class="dv">40</span>]]</span>
-<span id="cb36-4"><a href="#cb36-4"></a>b <span class="op">=</span> copy.deepcopy(a) <span class="co"># 深いコピー</span></span>
+<span id="cb36-4"><a href="#cb36-4"></a>b <span class="op">=</span> copy.deepcopy(a) <span class="co"># この1行で深いコピー</span></span>
 <span id="cb36-5"><a href="#cb36-5"></a></span>
-<span id="cb36-6"><a href="#cb36-6"></a><span class="cf">assert</span> a<span class="op">==</span>b          <span class="co"># 内容は同じだが</span></span>
-<span id="cb36-7"><a href="#cb36-7"></a><span class="cf">assert</span> <span class="bu">id</span>(a)<span class="op">!=</span><span class="bu">id</span>(b)  <span class="co"># オブジェクトとしては別物</span></span>
-<span id="cb36-8"><a href="#cb36-8"></a></span>
-<span id="cb36-9"><a href="#cb36-9"></a>b[<span class="dv">1</span>][<span class="dv">0</span>]<span class="op">=</span><span class="dv">10</span>  <span class="co"># 複製したものを部分変更</span></span>
-<span id="cb36-10"><a href="#cb36-10"></a></span>
-<span id="cb36-11"><a href="#cb36-11"></a><span class="bu">print</span>(<span class="ss">f&#39;a=</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">&#39;</span>)</span>
-<span id="cb36-12"><a href="#cb36-12"></a><span class="bu">print</span>(<span class="ss">f&#39;b=</span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+<span id="cb36-6"><a href="#cb36-6"></a>b[<span class="dv">1</span>][<span class="dv">0</span>]<span class="op">=</span><span class="dv">10</span>  <span class="co"># 複製したものを部分変更</span></span>
+<span id="cb36-7"><a href="#cb36-7"></a></span>
+<span id="cb36-8"><a href="#cb36-8"></a><span class="bu">print</span>(<span class="ss">f&#39;a=</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># =&gt; a=[[10, 20], [30, 40]]</span></span>
+<span id="cb36-9"><a href="#cb36-9"></a><span class="bu">print</span>(<span class="ss">f&#39;b=</span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># =&gt; b=[[10, 20], [10, 40]]</span></span></code></pre></div>
       <p>ここで <code>b=a</code> のようなオブジェクトIDだけのコピーを
       <strong><em>浅いコピー</em></strong> (Shallow
       Copy)、それに対してオブジェクトそのものの複製をつくることを
