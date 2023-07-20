@@ -538,16 +538,16 @@ mat[2][3]=120</code></pre>
 <span id="cb22-3"><a href="#cb22-3"></a>b <span class="op">=</span> a</span>
 <span id="cb22-4"><a href="#cb22-4"></a>a <span class="op">=</span> a<span class="op">+</span><span class="dv">1</span></span>
 <span id="cb22-5"><a href="#cb22-5"></a><span class="cf">assert</span> a <span class="op">!=</span> b</span>
-<span id="cb22-6"><a href="#cb22-6"></a><span class="bu">print</span>(<span class="ss">f&#39;a=</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">&#39;</span>)</span>
-<span id="cb22-7"><a href="#cb22-7"></a><span class="bu">print</span>(<span class="ss">f&#39;b=</span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+<span id="cb22-6"><a href="#cb22-6"></a><span class="bu">print</span>(<span class="ss">f&#39;a=</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># =&gt; a=11</span></span>
+<span id="cb22-7"><a href="#cb22-7"></a><span class="bu">print</span>(<span class="ss">f&#39;b=</span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># =&gt; b=10</span></span></code></pre></div>
       <div class="sourceCode" id="cb23" data-caption="step3-1b.py"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
 <span id="cb23-2"><a href="#cb23-2"></a>a <span class="op">=</span> <span class="st">&#39;ABC&#39;</span> <span class="co"># aに代入するのは文字列型</span></span>
 <span id="cb23-3"><a href="#cb23-3"></a>b <span class="op">=</span> a</span>
 <span id="cb23-4"><a href="#cb23-4"></a>a <span class="op">=</span> a<span class="op">+</span><span class="st">&#39;DEF&#39;</span></span>
 <span id="cb23-5"><a href="#cb23-5"></a><span class="cf">assert</span> a <span class="op">!=</span> b</span>
-<span id="cb23-6"><a href="#cb23-6"></a><span class="bu">print</span>(<span class="ss">f&#39;a=</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># =&gt; a=11</span></span>
-<span id="cb23-7"><a href="#cb23-7"></a><span class="bu">print</span>(<span class="ss">f&#39;b=</span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># =&gt; b=10</span></span></code></pre></div>
+<span id="cb23-6"><a href="#cb23-6"></a><span class="bu">print</span>(<span class="ss">f&#39;a=</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># =&gt; a=ABCDEF</span></span>
+<span id="cb23-7"><a href="#cb23-7"></a><span class="bu">print</span>(<span class="ss">f&#39;b=</span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># =&gt; b=ABC</span></span></code></pre></div>
       <p>また、変数 <code>a</code>
       に代入しているものがリストであっても、次の
       <code>step3-2a.py</code> のように<strong>第04行目</strong>で
@@ -560,8 +560,8 @@ mat[2][3]=120</code></pre>
 <span id="cb24-3"><a href="#cb24-3"></a>b <span class="op">=</span> a</span>
 <span id="cb24-4"><a href="#cb24-4"></a>a <span class="op">=</span> [<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">30</span>] <span class="co"># a[2]が10</span></span>
 <span id="cb24-5"><a href="#cb24-5"></a><span class="cf">assert</span> a <span class="op">!=</span> b</span>
-<span id="cb24-6"><a href="#cb24-6"></a><span class="bu">print</span>(<span class="ss">f&#39;a=</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># =&gt; a=ABCDEF</span></span>
-<span id="cb24-7"><a href="#cb24-7"></a><span class="bu">print</span>(<span class="ss">f&#39;b=</span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># =&gt; b=ABC</span></span></code></pre></div>
+<span id="cb24-6"><a href="#cb24-6"></a><span class="bu">print</span>(<span class="ss">f&#39;a=</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">&#39;</span>) </span>
+<span id="cb24-7"><a href="#cb24-7"></a><span class="bu">print</span>(<span class="ss">f&#39;b=</span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">&#39;</span>) </span></code></pre></div>
       <p>しかし、上記 <code>step3-2a.py</code>
       の<strong>第04行目</strong>を <code>a = [10,10,30]</code> から
       <code>a.pop()</code> や <code>a[1]=10</code>
