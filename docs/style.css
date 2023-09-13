@@ -259,10 +259,11 @@ div.sourceCode[data-caption]::before {
   padding: 0.15em 0.4em;
   font-size: 100%;
   word-break: normal;
-  white-space: pre;
   color: var(--code-pg-foreground);
   background-color: var(--code-pg-background);
   border-radius: 5px;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
 }
 
 .markdown-body pre code {
@@ -548,6 +549,19 @@ code span.cf {
 }
 
 /* ------- ナビゲーションボタン ------- */
+
+.openbtn-div {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: var(--main-foreground);
+  line-height: 1.5;
+  word-wrap: break-word;
+  box-sizing: border-box;
+  min-width: 200px;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0px 45px;
+}
 
 .openbtn {
   position: fixed;
