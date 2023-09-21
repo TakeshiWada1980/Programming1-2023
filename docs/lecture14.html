@@ -152,23 +152,29 @@ id="toc-ファイルを変更してコミットプッシュ"><span
 class="toc-section-number">3.5</span>
 ファイルを変更してコミット・プッシュ</a></li>
 </ul></li>
+<li><a href="#リモートリポジトリでのファイル変更と同期"
+id="toc-リモートリポジトリでのファイル変更と同期"><span
+class="toc-section-number">4</span>
+リモートリポジトリでのファイル変更と同期</a></li>
 <li><a href="#リポジトリの削除" id="toc-リポジトリの削除"><span
-class="toc-section-number">4</span> リポジトリの削除</a>
+class="toc-section-number">5</span> リポジトリの削除</a>
 <ul>
 <li><a href="#リモートリポジトリの削除"
 id="toc-リモートリポジトリの削除"><span
-class="toc-section-number">4.1</span> リモートリポジトリの削除</a></li>
+class="toc-section-number">5.1</span> リモートリポジトリの削除</a></li>
 <li><a href="#ローカルリポジトリの削除"
 id="toc-ローカルリポジトリの削除"><span
-class="toc-section-number">4.2</span> ローカルリポジトリの削除</a></li>
+class="toc-section-number">5.2</span> ローカルリポジトリの削除</a></li>
 </ul></li>
-<li><a href="#練習宿題" id="toc-練習宿題"><span
-class="toc-section-number">5</span> 練習・宿題</a>
+<li><a href="#宿題" id="toc-宿題"><span
+class="toc-section-number">6</span> 宿題</a>
 <ul>
-<li><a href="#作業①" id="toc-作業①"><span
-class="toc-section-number">5.1</span> 作業①</a></li>
-<li><a href="#作業②" id="toc-作業②"><span
-class="toc-section-number">5.2</span> 作業②</a></li>
+<li><a href="#宿題①" id="toc-宿題①"><span
+class="toc-section-number">6.1</span> 宿題①</a></li>
+<li><a href="#宿題②" id="toc-宿題②"><span
+class="toc-section-number">6.2</span> 宿題②</a></li>
+<li><a href="#宿題③" id="toc-宿題③"><span
+class="toc-section-number">6.3</span> 宿題③</a></li>
 </ul></li>
 </ul> 
         <!-- ---------------------------------------- -->
@@ -186,26 +192,29 @@ class="toc-section-number">5.2</span> 作業②</a></li>
       class="header-section-number">1</span> 概要・連絡</h1>
       <h2 data-number="1.1" id="概要"><span
       class="header-section-number">1.1</span> 概要</h2>
-      <p>今回の講義では　<strong>git</strong> (ギット)
+      <p>今回の講義では <strong>git</strong> (ギット)
       のインストール、VSCodeを使った <strong>GitHub</strong>
-      リポジトリの作成、変更内容のコミット操作について取り上げます。</p>
+      リポジトリの作成、変更内容のコミット操作、ソースコードの公開について取り上げます
+      (チーム開発に関連すような機能や任意の過去バージョンに戻す機能は、次回以降に段階的に学んでいきます)。</p>
       <p><strong><em>git</em></strong>
-      とはローカルPCにインストールして使用する
+      とはローカルPCにインストールして利用する
       <strong>バージョン管理システム</strong> (アプリ)
-      で、ソースコードコードの変更履歴を管理することができるものです。また、<strong><em>GitHub</em></strong>は、１年の総合工学実験実習の「知能情報コースの実験テーマ」でも体験してもらった<strong>ウェブサービス</strong>で
-      (gitと連携して)
-      チーム開発の支援やコード公開などの機能を提供してくれるものです。</p>
+      で、<strong>ソースコードの変更履歴を管理することができるもの</strong>です。また、<strong><em>GitHub</em></strong>は、1年の総合工学実験実習の「<a
+      href="(https://classroom.google.com/c/NjAyNDMyMzIwNzg2/m/NTI4OTQxNzEyNzU0/details)">知能情報コースの実験テーマ</a>」でも体験してもらった「<strong>ウェブサービス</strong>」です。GitHub
+      は (gitと連携して)
+      チーム開発の支援や、ソースコードの公開などの機能を提供してくれます。</p>
       <p>git/GitHub
-      は、就職・大学進学・就職してからは無論、高専在学中にも「各種セミナー」や「ハッカソン」「インターンシップ」「ポートフォリオづくり」などで利用します。ある程度の仕組みを分かって
-      git/GitHub を使えるようになっておかないと、大変困ること
-      (メンバーに迷惑をかけること)
-      になるので、しっかり学ぶようにしてください。</p>
-      <p>なお、Git/GitHub
-      には「<strong>リポジトリ</strong>」「<strong>コミット</strong>」「<strong>ステージング</strong>」など、初学者には非常に難解な<strong>専門用語</strong>が多数登場します。これらは、git/GitHub
-      を実際に使っていくなかで、段階的にイメージや理解を深めて行ってください。学び始めてからしばらくは、調べて意味が分からなくても呼称・名前として、そのまま受け入れることが求められます。</p>
+      は、就職・大学進学・就職してからは無論、高専在学中にも「各種セミナー」や「ハッカソン」「インターンシップ」「<strong>ポートフォリオづくり</strong>」「<strong>就職のエントリ</strong>」などで利用します。ある程度の仕組みを分かって
+      git/GitHub を使えるようになっておかないと、非常に困ること
+      (場合によっては開発チームのメンバーに迷惑をかけること)
+      になるので、しっかりと学ぶようにしてください。</p>
+      <p>なお、git/GitHub
+      では「<strong>リポジトリ</strong>」「<strong>コミット</strong>」「<strong>ステージング</strong>」など、初学者には難解な<strong>専門用語</strong>が多数登場します。これらは、git/GitHub
+      を実際に使っていくなかで、段階的に理解を深めていってください。学び始めてからしばらくの間は、調べて意味が分からなくても呼称・名前として、そのまま受け入れてください
+      (調べることは大切!)。</p>
       <div class="note type-tips">
       <p><strong>git/GitHub 関連の専門用語について</strong></p>
-      <p>野球には「イニング」「タイムリーエラー」「セーフティバント」「チェンジアップ」など言葉を聞いただけでは内容がまったく想像できない専門用語が多数存在します。野球未経験者は、これら専門用語について、丁寧に説明や解説を受けても、野球を実際にプレイしてみなければそのイメージや理解を深めることはできません。</p>
+      <p>野球にも「イニング」「タイムリーエラー」「セーフティバント」「チェンジアップ」など言葉を聞いただけでは内容が理解も想像もできない専門用語が多数存在します。野球を経験したことがない人は、これら専門用語について丁寧に説明や解説を受けても、イメージをつかみ、理解することはできません。用語の意味が分からなくても、<strong>実際に野球をプレーするなかで専門用語のイメージをつかみ、理解できるようになっていきます</strong>。</p>
       <p>これは git/GitHub
       の専門用語についても同様です。学習初期では、専門用語の全てを理解しようとするよりも、それを一つの概念や行動として受け入れて、実際の経験や利用のなかで
       (ある程度の時間をかけながら)
@@ -218,8 +227,8 @@ class="toc-section-number">5.2</span> 作業②</a></li>
       <h2 data-number="1.2" id="課題6に関する連絡"><span
       class="header-section-number">1.2</span>
       「課題6」に関する連絡</h2>
-      <p><strong><em>課題6</em></strong> は、9月24日(土) 23:59
-      までに内容を整理し、仕上げておいてください。この期日以降は、各学生のアクセス設定を「<strong>閲覧のみ</strong>」にするので注意してください
+      <p><strong><em>課題6</em></strong> は、<strong>9月24日(土) 23:59
+      まで</strong>に内容を整理し、仕上げておいてください。この期日以降は、各学生のアクセス設定を「<strong>閲覧のみ</strong>」にするので注意してください
       (学生の皆さんは内容を修正・変更できなくなります)。</p>
       <ul>
       <li><a
@@ -924,19 +933,75 @@ git config --global core.quotepath false</code></pre>
       <img src="figs/14/vscode-17.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
       </figure>
+      <h1 data-number="4"
+      id="リモートリポジトリでのファイル変更と同期"><span
+      class="header-section-number">4</span>
+      リモートリポジトリでのファイル変更と同期</h1>
+      <p>GitHub (リモートリポジトリ) で <code>README.md</code>
+      に変更をくわえてコミットして、それをローカル側で同期させてみます。</p>
+      <p>次のように GitHub で <code>README.md</code>
+      を編集モードに切り替えます。</p>
+      <figure>
+      <img src="figs/14/github-01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>次のように４行目に「GitHub（リモートリポジトリ）で README.md
+      を直接編集してコミット」と追記して、右上の「<strong>Commit
+      changes</strong>」を押下します。</p>
+      <figure>
+      <img src="figs/14/github-02.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>ダイアログが表示されるので、次のようにコミットメッセージを記入して「<strong>Commit
+      changes</strong>」を押下し、変更をコミットします。</p>
+      <figure>
+      <img src="figs/14/github-03.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p><strong>ブラウザをリロード</strong>すると、GitHub
+      上で変更が反映されていることが確認できます。</p>
+      <figure>
+      <img src="figs/14/github-04.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>VSCode に戻ります。この時点では、リモートリポジトリで行なった
+      <code>README.md</code>
+      の変更は<strong>まだ反映されていません</strong>。この状態を「リモートリポジトリとローカルリポジトリが同期されていない」と表現します。同期させるためには
+      <strong>プル</strong>
+      という操作が必要で、これは画面下のアイコンをクリックすることで行ないます。</p>
+      <p>git/GitHub
+      では、Googleドキュメントのようにリアルタイムの自動同期はされない点に注意してください
+      (プログラム開発では、手動での同期のほうが都合がよいです)。</p>
+      <figure>
+      <img src="figs/14/github-05.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <div class="note type-tips">
+      <p><strong>プルとは</strong></p>
+      <p><strong>プル</strong>とは、リモートリポジトリの内容をローカルリポジトリにダウンロードすることを意味します。</p>
+      </div>
+      <p>同期が成功すると、以下のようにローカルリポジトリ側にも変更が反映されます。</p>
+      <figure>
+      <img src="figs/14/github-06.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>ここでは、ローカルリポジトリとリモートリポジトリの両方から
+      <code>README.md</code>
+      に対して編集を加えて同期を行ないましたが、同じように、A君とB組んで同じファイルに対して編集を加えて同期を行なうことができます
+      (具体的な方法については次回以降に学びます)。</p>
       <p>以上が確認できたら、VSCodeを閉じてください。</p>
-      <h1 data-number="4" id="リポジトリの削除"><span
-      class="header-section-number">4</span> リポジトリの削除</h1>
-      <p>ここまでに作成したリポジトリは、練習用のものなので削除します。</p>
-      <h2 data-number="4.1" id="リモートリポジトリの削除"><span
-      class="header-section-number">4.1</span>
+      <h1 data-number="5" id="リポジトリの削除"><span
+      class="header-section-number">5</span> リポジトリの削除</h1>
+      <p>ここまでに作成したリモートリポジトリとローカルリポジトリは、練習用のものなので削除します。</p>
+      <h2 data-number="5.1" id="リモートリポジトリの削除"><span
+      class="header-section-number">5.1</span>
       リモートリポジトリの削除</h2>
       <p>リモートリポジトリ (GitHubに発行したリポジトリ)
       を削除をしてください。削除の方法については「<a
       href="https://www.google.com/search?q=GitHub+リポジトリ+削除">GitHub
       リポジトリ 削除</a>」で検索して実行してください。</p>
-      <h2 data-number="4.2" id="ローカルリポジトリの削除"><span
-      class="header-section-number">4.2</span>
+      <h2 data-number="5.2" id="ローカルリポジトリの削除"><span
+      class="header-section-number">5.2</span>
       ローカルリポジトリの削除</h2>
       <p>PCのローカルストレージに作成したプロジェクトフォルダ
       (=ローカルリポジトリ) を削除してください
@@ -950,27 +1015,37 @@ git config --global core.quotepath false</code></pre>
       <img src="figs/14/vscode-18.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
       </figure>
-      <h1 data-number="5" id="練習宿題"><span
-      class="header-section-number">5</span> 練習・宿題</h1>
-      <h2 data-number="5.1" id="作業①"><span
-      class="header-section-number">5.1</span> 作業①</h2>
-      <p>再度、プロジェクトフォルダの作成し、そのプロジェクトのリモートリポジトリを
+      <h1 data-number="6" id="宿題"><span
+      class="header-section-number">6</span> 宿題</h1>
+      <p>git/GitHub
+      を使えるようになるには、プログラミング以上に「経験」や「慣れ」が求められます。授業で1度体験しただけでは、(実際のところ)
+      最低限のスキルも身に付かないです。</p>
+      <h2 data-number="6.1" id="宿題①"><span
+      class="header-section-number">6.1</span> 宿題①</h2>
+      <p>再度、プロジェクトフォルダの新規作成し、そのプロジェクトのリモートリポジトリを
       GitHub
       に発行、フォルダ内のファイルを変更、変更のコミット・プッシュ、リポジトリの削除という一連の操作を、再度、行なってください
       (2回目以降は、GitHubの認証などの一部操作は不要になります。実際に操作してそれを確認してください)。</p>
-      <p>この<strong>一連の作業を3回程度繰返すと、講義資料を見なくても操作ができるようになります</strong>(1回では身に付かないので、繰返し練習してください)
-      。</p>
-      <p>次回の授業では、ここまでの git/GitHub
-      操作が問題なくスムーズにできることを前提として進めます。</p>
-      <h2 data-number="5.2" id="作業②"><span
-      class="header-section-number">5.2</span> 作業②</h2>
+      <p>この<strong>一連の作業を3回程度繰返すと、講義資料を見なくても操作ができるようになります</strong>
+      (1回では身に付かないので、繰返し練習してください) 。</p>
+      <p>次回の授業では、<strong>ここまでの git/GitHub
+      操作が問題なくスムーズにできることを前提</strong>として進めます。問題・不具合がある場合は、<strong><em>次回授業の前日までに解決</em></strong>しておいてください
+      (必要に応じて担当教員にアポをとって問題解決してください)。</p>
+      <h2 data-number="6.2" id="宿題②"><span
+      class="header-section-number">6.2</span> 宿題②</h2>
       <p>1年の総合工学実験実習で取り組んだ内容 (<a
       href="https://classroom.google.com/c/NjAyNDMyMzIwNzg2/m/NTI4OTQxNzEyNzU0/details">PG1_補足資料_ホームページをつくろう</a>)
-      に再度、取り組み、GitHub Pages
-      での公開方法について復習しておいてください。</p>
+      に再度、取り組み、リポジトリの内容をウェブページとして公開する方法について復習しておいてください。</p>
+      <p>特に、GitHub Pages
+      として公開する手順については十分に理解しておいてください
+      (単に資料を読むだけではなく、<strong>実際にPCを操作して機能することを確認</strong>してください)。</p>
       <p>次回の講義では、GitHub からのクローン、VSCode
       上でのウェブページの作成し、GitHubにプッシュ、GitHub Pages
       での公開について学びます。</p>
+      <h2 data-number="6.3" id="宿題③"><span
+      class="header-section-number">6.3</span> 宿題③</h2>
+      <p>git/GitHub
+      に関するウェブ記事やYouTube動画を閲覧して予習・復習をしてください。ひとつだけではなく、様々な資料をみることで、理解が深まります。</p>
       <!-- ---------------------------------------- -->
     </main>
 
