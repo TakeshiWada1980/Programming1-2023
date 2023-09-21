@@ -465,7 +465,9 @@ Download and install Git for Windows v2.42.0.windows.2 [N/y]?</code></pre>
       <p><strong><em>要変更</em></strong> コンフリクト (編集内容の衝突)
       が発生した場合などに自動起動するデフォルトのテキストエディタを設定します。「<strong>Use
       Visual Studio Code as Git’s default
-      editor</strong>」を選択してください。なお、事前に VSCode
+      editor</strong>」を選択してください (「Visual Studio
+      Code」と「Visual Studio Code
+      Insiders」の選び間違いに注意してください)。なお、事前に VSCode
       がインストールされていないと選択することができません。</p>
       <p>拘りがある場合は「Vim」などの別のエディタを設定しても問題ありません。</p>
       <h3 data-number="2.4.6" id="初期ブランチ名称の設定"><span
@@ -725,7 +727,7 @@ init.defaultbranch=main</code></pre>
       <p>もしも <code>core.autocrlf=true</code> や
       <code>core.autocrlf=false</code>
       となっている場合は、以下のようにコマンドを実行して<strong>設定を変更</strong>してください。この設定変更は「ターミナル
-      (管理者)」でないと <code>Permission denied</code>
+      <strong>(管理者)</strong>」でないと <code>Permission denied</code>
       で失敗するので注意してください。</p>
       <pre><code>git config --system core.autocrlf input</code></pre>
       <p>その他の項目 (インストール途中で設定した項目)
