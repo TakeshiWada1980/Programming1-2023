@@ -193,9 +193,10 @@ class="toc-section-number">6.3</span> 宿題③</a></li>
       <h2 data-number="1.1" id="概要"><span
       class="header-section-number">1.1</span> 概要</h2>
       <p>今回の講義では <strong>git</strong> (ギット)
-      のインストール、VSCodeを使った <strong>GitHub</strong>
-      リポジトリの作成、変更内容のコミット操作、ソースコードの公開について取り上げます
-      (チーム開発に関連する機能や任意の過去バージョンに戻すような機能は、次回以降に段階的に学んでいきます)。</p>
+      のインストール、VSCodeを使った <strong>GitHub</strong> リポジトリ
+      (=リモートリポジトリ)
+      の作成、変更内容のコミット操作・プッシュ操作、GitHubによるソースコードの公開について取り上げます
+      (チーム開発を支援する機能や任意の過去バージョンに戻す機能などは、次回以降に段階的に学んでいきます)。</p>
       <p><strong><em>git</em></strong>
       とはローカルPCにインストールして利用する
       <strong>バージョン管理システム</strong>
@@ -203,25 +204,27 @@ class="toc-section-number">6.3</span> 宿題③</a></li>
       (ソフト)</strong> です。また、<strong><em>GitHub</em></strong>
       は、1年の総合工学実験実習の<a
       href="https://classroom.google.com/c/NjAyNDMyMzIwNzg2/m/NTI4OTQxNzEyNzU0/details">知能情報コースの実験実習テーマ</a>
-      でも体験利用してもらった「<strong>ウェブサービス</strong>」です。GitHub
-      は (gitと連携して)
-      チーム開発の支援や、ソースコードの公開などの機能を提供してくれます。</p>
+      でも体験利用した「<strong>ウェブサービス</strong>」です。<strong>GitHub</strong>
+      は (git と連携して)
+      主にチーム開発の支援や、ソースコードの公開などの機能を提供してくれます。</p>
       <p>git/GitHub
       は、就職・進学してからは無論、高専在学中にも「各種セミナー」や「ハッカソン」「インターンシップ」「<strong>ポートフォリオづくり</strong>」「<strong>就職のエントリ</strong>」などの場面で利用します。ある程度の仕組みを分かって
       git/GitHub を使えるようになっておかないと、非常に困ること
       (場合によっては開発チームのメンバーに迷惑をかけること)
       になるので、しっかりと学ぶようにしてください。</p>
       <p>なお、git/GitHub
-      では「<strong>リポジトリ</strong>」「<strong>コミット</strong>」「<strong>ステージング</strong>」など、専門用語が多数登場し、また仕組みも初学者には難解なものです。これらは、git/GitHub
-      を実際に利活用していくなかで、段階的に理解を深めていってください。特に、学び始めてからしばらくの間は、<strong>専門用語について調べて意味が分からなくても「呼称」「名前」として、そのまま受け入れてください</strong>
-      (調べることは大切!)。</p>
+      では「<strong>リポジトリ</strong>」「<strong>コミット</strong>」「<strong>ステージング</strong>」などの専門用語が頻出することにくわえ、仕組みも初学者にとっては難解なものになります。これらは、git/GitHub
+      を実際に利活用していくなかで段階的に理解を深めていってください。特に、学び始めてからしばらくの間は、<strong>専門用語について調べて意味が完全理解できなくとも「呼称」「名前」として、そのまま受け入れるように努めてください</strong>
+      (調べること自体はは大切です!)。</p>
       <div class="note type-tips">
       <p><strong>git/GitHub 関連の専門用語について</strong></p>
-      <p>野球にも「イニング」「タイムリーエラー」「セーフティバント」「チェンジアップ」など単語を聞いただけでは内容が理解も想像もできない専門用語が多数存在します。野球を経験したことがない人は、これら専門用語について丁寧に説明や解説を受けても、イメージをつかかんだり、理解したりすることはできません。しかし、用語の意味が分からなくても、<strong>実際に野球をプレーするなかで用語のイメージをつかみ、理解できるようになっていきます</strong>。</p>
+      <p>野球にも「イニング」「タイムリーエラー」「セーフティバント」「チェンジアップ」など単語を聞いただけでは内容が理解も想像もできない専門用語が多数存在します。野球を経験したことがない人は、これら専門用語について丁寧に説明を受けても、イメージを掴んだり、理解したりすることはなかなかできません。しかし、用語の意味が分からなくても
+      (拙いながらも)
+      <strong>実際に野球をプレーすること</strong>は可能で、それを通じて専門用語のイメージをつかみ、理解を深めることができます。</p>
       <p>これは git/GitHub
-      の専門用語についても同様です。学習初期では、専門用語の意味を理解しようとするよりも、それを一つの概念や行動として受け入れて、実際の経験や利用のなかで
+      においても同様です。学習初期では、専門用語の意味を理解しようとするよりも、<strong>まずは、それをひとつの概念や操作・処理として受け入れて、実際の経験や利用のなかで
       (ある程度の時間をかけながら)
-      イメージや理解を深めていくことが求められます。</p>
+      イメージや理解を深めていくこと</strong>が求められます。</p>
       </div>
       <div class="note type-tips">
       <p><strong>バージョン管理とは何か、何がうれしいのか</strong></p>
@@ -243,22 +246,23 @@ class="toc-section-number">6.3</span> 宿題③</a></li>
       <h1 data-number="2" id="gitのダウンロードとインストール設定"><span
       class="header-section-number">2</span>
       gitのダウンロードとインストール・設定</h1>
-      <p>PC に Visual Studio Code (VSCode)
-      がインストールされている前提の git
-      のインストール作業になります。VSCodeのインストールについては<a
-      href="lecture09.html">第09回講義</a>を参照してください。</p>
-      <p>以下、git のインストール方法について解説しますが、既に
-      <strong>PC に git
-      がインストールされている場合、再インストールは不要です</strong>
+      <p>以降、PC に Visual Studio Code (VSCode)
+      がインストールされている前提での <strong>git
+      のインストール作業</strong>になります。VSCode
+      のインストール・初期設定については <a
+      href="lecture09.html">第09回講義</a> を参照してください。</p>
+      <p>既に <strong>PC に git
+      がインストールされている場合は「再インストール」は不要です</strong>
       (そのまま利用してください)
-      。ただし、テキストの解説には必ず目を通して、設定などは必要に応じて変更・修正してください。</p>
+      。ただし、テキストの解説には必ず目を通して、<strong>設定などは必要に応じて変更・修正</strong>してください。</p>
       <h2 data-number="2.1"
       id="gitがインストール済みであるかの確認方法"><span
       class="header-section-number">2.1</span>
       gitがインストール済みであるかの確認方法</h2>
       <p>git が PC にインストールされているかどうかは
       <strong>コマンドプロンプト</strong> から <code>git -v</code>
-      のコマンドを実行して確認できます。以下の例のように<strong>バージョン情報の応答</strong>があれば、git
+      のコマンドを実行して確認できます。以下の例のように
+      <strong>バージョン情報の応答</strong> があれば、git
       がインストールされています。一方で、<code>'git -v' は、内部コマンドまたは外部コマンド、操作可能なプログラムまたはバッチ ファイルとして認識されていません。</code>
       という応答があれば git はインストールされていません。</p>
       <pre><code>C:\Users\xxxx&gt;git -v
@@ -274,22 +278,23 @@ Git for Windows 2.39.0.windows.2 (64-bit)
 Update 2.42.0.windows.2 is available
 Download and install Git for Windows v2.42.0.windows.2 [N/y]?</code></pre>
       <p>上記に対して <code>y</code>
-      を入力すると最新版へのアップデートが開始されます。基本的には最新版を利用するようにしてください。</p>
+      を入力すると最新版へのアップデートが開始されます。<strong>基本的には最新版を利用</strong>するようにしてください。</p>
       </div>
       <h2 data-number="2.2" id="github-の設定を確認"><span
       class="header-section-number">2.2</span> GitHub の設定を確認</h2>
       <p><strong><a href="https://github.co.jp/">GitHub</a></strong>
       にログインしておきます。</p>
-      <p>GitHubにログインしている状態で、プロフィール設定のページ(<a
+      <p>GitHubにログインしている状態で、プロフィール設定のページ (<a
       href="https://github.com/settings/profile">https://github.com/settings/profile</a>)
-      にアクセスして、Public
-      profileの「<strong>Name</strong>」を確認しておきます。</p>
+      にアクセスして、Public profile
+      の「<strong>Name</strong>」の設定を確認しておきます。</p>
       <p>これは <a
       href="#github-と連携させるための設定の追加">gitインストール後の設定</a>
       で必要となる情報なのでテキストエディタなどにコピペしておいてください。なお、この
-      Name は、<strong>ユーザーネーム・表示名 (≠アカウント名)
-      であり、アカウント名ではないので注意</strong>してください。</p>
-      <p>また、Nameに<strong>日本語や絵文字を使用している場合</strong>は、あとの作業におけるエラーの原因となるので修正しておいてください。</p>
+      Name は <strong>ユーザーネーム・表示名 (≠アカウント名)
+      であり、アカウント名ではないことに注意</strong> してください。</p>
+      <p>また、Nameに <strong>日本語や絵文字を使用している場合</strong>
+      は、あとの作業におけるエラーの原因となるので修正・変更しておいてください。</p>
       <figure>
       <img src="figs/14/git-name.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
@@ -297,18 +302,18 @@ Download and install Git for Windows v2.42.0.windows.2 [N/y]?</code></pre>
       <p>つづいて、メール設定のページ(<a
       href="https://github.com/settings/emails">https://github.com/settings/emails</a>)
       にアクセスして「<strong>Keep my email addresses
-      private</strong>」「<strong>Block command line pushes that expose
-      my email</strong>」の項目 (ページの下部)
-      にチェックを入れておきます。また、GitHub
-      から付与される<strong>コミット用のメールアドレス</strong>
+      private</strong>」と「<strong>Block command line pushes that
+      expose my email</strong>」の項目 (ページの下部)
+      にチェックを入れておきます。また、GitHub から付与される
+      <strong>コミット用のメールアドレス</strong>
       (<code>...@users.noreply.github.com</code>)
-      を確認し、テキストエディタなどにコピペしておいてください。。</p>
+      を確認し、テキストエディタなどにコピペしておいてください。</p>
       <figure>
       <img src="figs/14/git-mail.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
       </figure>
-      <p>上記の設定の意味は、以下のとおりです
-      (十分に理解できなくてもいいので、読み飛ばさずに読みましょう)。</p>
+      <p>上記の<strong>設定の意味</strong>は、以下のとおりです
+      (十分に理解できなくてもいいので、読み飛ばさずに目を通してください)。</p>
       <ul>
       <li>We’ll remove your public profile email and use
       <code>12345678+GitHubAccountName@users.noreply.github.com</code>
@@ -349,16 +354,16 @@ Download and install Git for Windows v2.42.0.windows.2 [N/y]?</code></pre>
       <p>ここでは <code>Git-2.41.0.3-64-bit.exe</code>
       を対象にインストール手順を説明します。<strong>Gitのバージョンが異なる場合は、適宜、内容を読み替えて作業を進めてください</strong>。</p>
       <p>ダウンロードした <code>Git-2.41.0.3-64-bit.exe</code>
-      をダブルクリックしてインストーラを起動します。</p>
+      をダブルクリックして<strong>インストーラを起動</strong>します。</p>
       <h3 data-number="2.4.1" id="git-のライセンスの確認"><span
       class="header-section-number">2.4.1</span> git
       のライセンスの確認</h3>
       <ul>
       <li>Please read the following important information before
       continuing.
-      <strong>先に進む前に、以下の大切な情報を必ず確認してください。</strong></li>
+      <strong>先に進む前に以下の大切な情報を必ず確認してください。</strong></li>
       <li>When you are ready to continue with Setup, click Next.
-      <strong>セットアップを続行する準備ができたら、「次へ」をクリックします。</strong></li>
+      <strong>セットアップを続行する準備ができたら「次へ」をクリックします。</strong></li>
       </ul>
       <figure>
       <img src="figs/14/git-inst-01.png" alt="img" />
@@ -369,11 +374,11 @@ Download and install Git for Windows v2.42.0.windows.2 [N/y]?</code></pre>
       は「<strong>グヌー</strong>」や「<strong>グヌニュー</strong>」と発音します
       (牛的な動物の <a
       href="https://www.google.com/search?q=%E3%83%8C%E3%83%BC&amp;tbm=isch">Gnu</a>
-      は「ヌー」と発音しますが、ここでは「グ」をつけます)。</p>
+      は「ヌー」と発音しますが、ここでは「グ」をつけて発音します)。</p>
       <p>なお、GPLは <strong><em>コピーレフト型ライセンス</em></strong>
-      であり、OSS (オープンソースソフトウェア)
-      のなかでも利用に際して<strong>注意すべきライセンス</strong>
-      (知らずに使うと恐ろしいこと)
+      であり、<strong>OSS (オープンソースソフトウェア)</strong>
+      のなかでも<strong>利用に際して注意すべきライセンス</strong>
+      (知らずにライブラリなどに組み込むと恐ろしいこと)
       になります。特に、ソフトウェアやウェブサービスでビジネスを考えている場合には注意してください。</p>
       <ul>
       <li>とほほのライセンス入門
@@ -407,7 +412,7 @@ Download and install Git for Windows v2.42.0.windows.2 [N/y]?</code></pre>
       <img src="figs/14/git-inst-02.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
       </figure>
-      <p>Gitをインストールするフォルダを設定します。必要があれば変更して、次に進みます。</p>
+      <p>Gitをインストールするフォルダを設定します。必要があれば変更して次に進みます。</p>
       <h3 data-number="2.4.3"
       id="インストールするコンポーネントの選択"><span
       class="header-section-number">2.4.3</span>
@@ -419,7 +424,7 @@ Download and install Git for Windows v2.42.0.windows.2 [N/y]?</code></pre>
       <li>Select the components you want to install; clear the
       components you do not want to install. Click Next when you are
       ready to continue.
-      <strong>インストールしたいコンポーネントを選択します。インストールしたくないコンポーネントを選択解除します。続行する準備ができたら、「次へ」をクリックします。</strong></li>
+      <strong>インストールしたいコンポーネントを選択し、インストールしたくないコンポーネントを選択解除します。続行する準備ができたら「次へ」をクリックします。</strong></li>
       </ul>
       <figure>
       <img src="figs/14/git-inst-03.png" alt="img" />
@@ -429,7 +434,7 @@ Download and install Git for Windows v2.42.0.windows.2 [N/y]?</code></pre>
       スクリーンショットを参考に<strong>チェックする箇所を変更</strong>してください。</p>
       <p>特に「<strong>(NEW!) Add a Git Bash Profile to Windows
       Terminal</strong>」は忘れずにチェックを入れてください。このオプションを設定すると、以下のように「<strong>ターミナル</strong>」に「<strong>Git
-      Bash</strong>」を統合することができます (便利です)。</p>
+      Bash</strong>」を統合することができ、便利です。</p>
       <figure>
       <img src="figs/14/bash-terminal.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
@@ -447,7 +452,7 @@ Download and install Git for Windows v2.42.0.windows.2 [N/y]?</code></pre>
       <img src="figs/14/git-inst-04.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
       </figure>
-      <p>スタートメニューから「すべてのアプリ」に進んだときのフォルダ名称を設定します。必要に応じて変更し、次に進みます。</p>
+      <p>スタートメニューから「すべてのアプリ」に進んだときのフォルダ名称を設定します。必要に応じて変更し次に進みます。</p>
       <h3 data-number="2.4.5"
       id="git-で使用する既定のテキストエディタの設定"><span
       class="header-section-number">2.4.5</span> git
@@ -465,20 +470,27 @@ Download and install Git for Windows v2.42.0.windows.2 [N/y]?</code></pre>
       <p><strong><em>要変更</em></strong> コンフリクト (編集内容の衝突)
       が発生した場合などに自動起動するデフォルトのテキストエディタを設定します。「<strong>Use
       Visual Studio Code as Git’s default
-      editor</strong>」を選択してください (「Visual Studio
+      editor</strong>」を選択してください。<strong>特に「Visual Studio
       Code」と「Visual Studio Code
-      Insiders」の選び間違いに注意してください)。なお、事前に VSCode
-      がインストールされていないと選択することができません。</p>
+      Insiders」の選び間違いに注意してください</strong>。なお、これらは事前に
+      VSCode がインストールされていないと選択できません。</p>
       <p>拘りがある場合は「Vim」などの別のエディタを設定しても問題ありません。</p>
+      <div class="note type-tips">
+      <p><strong>ここで設定したデフォルトテキストエディタはどこで使用されるのか</strong></p>
+      <p>デフォルトエディタは、コマンドラインからコミットメッセージを付けずに
+      <code>git commit</code>
+      を実行したり、コンフリクトが生じた場合に、その解消のために git
+      によって自動起動されます。</p>
+      </div>
       <h3 data-number="2.4.6" id="初期ブランチ名称の設定"><span
       class="header-section-number">2.4.6</span>
       初期ブランチ名称の設定</h3>
       <ul>
       <li>Adjusting the name of the initial branch in new repositories
-      <strong>新規リポジトリにおける初期ブランチ名の変更</strong></li>
+      <strong>新規リポジトリにおける「初期ブランチ名」の変更</strong></li>
       <li>What would you like Git to name the initial branch after “git
       init”? <strong>「git
-      init」の実行後、初期ブランチに何という名前を付けますか?</strong></li>
+      init」の実行後、「初期ブランチ」に何という名前を付けますか?</strong></li>
       </ul>
       <figure>
       <img src="figs/14/git-inst-06.png" alt="img" />
@@ -486,7 +498,10 @@ Download and install Git for Windows v2.42.0.windows.2 [N/y]?</code></pre>
       </figure>
       <p><strong><em>要変更</em></strong> 「<strong>Override the default
       branch name for new repositories</strong>
-      (リポジトリのデフォルトのブランチ名をオーバーライドする)」を選択してください。従来「master」という名称が使用されてきましたが、人権運動・人権問題の関係から最近では「main」という名称の使用が推奨されています。</p>
+      (リポジトリのデフォルトのブランチ名をオーバーライドする)」を選択してください。従来
+      <code>master</code>
+      という名称が使用されてきましたが、人権運動・人権問題の関係から最近では
+      <code>main</code> という名称の使用が推奨されています。</p>
       <ul>
       <li>このほか、コンピュータ分野では Blaklist / Whitelist を
       Denylist / Allowlist に置き換えるような変化が起きています。</li>
@@ -504,7 +519,7 @@ Download and install Git for Windows v2.42.0.windows.2 [N/y]?</code></pre>
       </figure>
       <p>デフォルトの「Git from the command line and also from 3rd-party
       software
-      (<strong>コマンドラインおよびサードパーティソフトウェアからGitを使用する</strong>)」を選択します。</p>
+      (=<strong>コマンドラインおよびサードパーティソフトウェアからGitを使用する</strong>)」を選択します。</p>
       <ul>
       <li>(Recommended) This option adds only some minimal Git wrappers
       to your PATH to avoid cluttering your environment with optional
@@ -526,8 +541,8 @@ Download and install Git for Windows v2.42.0.windows.2 [N/y]?</code></pre>
       デフォルト使用するSSHクライアントの選択</h3>
       <ul>
       <li>Which Secure Shell client program would you like Git to use?
-      <strong>Git で使用したい Secure Shell クライアント
-      プログラムはどちらですか</strong></li>
+      <strong>git で使用する Secure Shell
+      クライアントプログラムはどちらにしますか</strong></li>
       </ul>
       <figure>
       <img src="figs/14/git-inst-08.png" alt="img" />
@@ -545,7 +560,7 @@ Download and install Git for Windows v2.42.0.windows.2 [N/y]?</code></pre>
       <ul>
       <li>Which SSL/TLS library would you like Git to use for HTTPS
       connections? <strong>Git において HTTPS 接続に使用する SSL/TLS
-      ライブラリはどちらですか?</strong></li>
+      ライブラリはどちらにしますか?</strong></li>
       </ul>
       <figure>
       <img src="figs/14/git-inst-09.png" alt="img" />
@@ -559,8 +574,8 @@ Download and install Git for Windows v2.42.0.windows.2 [N/y]?</code></pre>
       class="header-section-number">2.4.10</span>
       改行コードに関する設定</h3>
       <ul>
-      <li>How should Git treat line endings in text files? <strong>Git
-      ではテキスト ファイルの行末をどのように処理しますか?</strong></li>
+      <li>How should Git treat line endings in text files? <strong>git
+      においてテキストファイルの行末をどのように処理しますか?</strong></li>
       </ul>
       <figure>
       <img src="figs/14/git-inst-10.png" alt="img" />
@@ -569,11 +584,11 @@ Download and install Git for Windows v2.42.0.windows.2 [N/y]?</code></pre>
       <p><strong><em>要変更</em></strong> 「<strong>Checkout as-is,
       commit Unix-style line endings</strong>
       (そのままチェックアウトし、Unix
-      スタイルの行末をコミットします)」を選択してください。将来的に、<strong>Docker
-      で Linux
-      コンテナを立ち上げ、そこにリモート接続して開発・実行することを見越して、この設定を使用</strong>します
-      (VSCodeを使っている範囲では改行コードがLFでも表示は乱れません)
-      。</p>
+      スタイルの行末をコミットします)」を選択してください。将来的に
+      <strong>Docker で Linux
+      コンテナを立ち上げ、そこにリモート接続して開発・実行することを見越して、この設定を使用します</strong>
+      (VSCodeを使用すれば、改行コードが <code>LF</code>
+      でも画面表示は乱れないので、この設定で問題ありません) 。</p>
       <ul>
       <li>Git will not perform any conversion when checking out text
       files. When committing text files, CRLF will be converted to LF.
@@ -581,10 +596,9 @@ Download and install Git for Windows v2.42.0.windows.2 [N/y]?</code></pre>
       Unix (“core.autocrif” is set to “input”).
       <ul>
       <li><strong>Git はテキスト
-      ファイルをチェックアウトするときに変換を実行しません。テキスト
-      ファイルをコミットすると、CRLF は LF
-      に変換されます。クロスプラットフォーム プロジェクトの場合、これは
-      Unix での推奨設定です
+      ファイルをチェックアウトするときに変換を実行しません。テキストファイルをコミットすると、CRLF
+      は LF に変換されます。クロスプラットフォーム
+      プロジェクトの場合、これは Unix での推奨設定です
       (「core.autocrif」は「input」に設定されます)。</strong></li>
       </ul></li>
       </ul>
@@ -593,8 +607,8 @@ Download and install Git for Windows v2.42.0.windows.2 [N/y]?</code></pre>
       ターミナルエミュレータの構成</h3>
       <ul>
       <li>Which terminal emulator do you want to use with your Git Bash?
-      <strong>Git Bash で使用するターミナル
-      エミュレータはどれですか?</strong></li>
+      <strong>Git Bash
+      で使用するターミナルエミュレータはどちらにしますか?</strong></li>
       </ul>
       <figure>
       <img src="figs/14/git-inst-11.png" alt="img" />
@@ -627,7 +641,8 @@ Download and install Git for Windows v2.42.0.windows.2 [N/y]?</code></pre>
       <img src="figs/14/git-inst-12.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
       </figure>
-      <p>「Default (fast-forward or merge)」を選択してください。</p>
+      <p>「<strong>Default (fast-forward or
+      merge)</strong>」を選択してください。</p>
       <ul>
       <li>This is the standard behavior of git pull: fast-forward the
       current branch to the fetched branch when possible, otherwise
@@ -687,26 +702,26 @@ Download and install Git for Windows v2.42.0.windows.2 [N/y]?</code></pre>
       <h2 data-number="2.5" id="インストール後の-git-の設定"><span
       class="header-section-number">2.5</span> インストール後の git
       の設定</h2>
-      <p>GitHub と連携させて利活用するための設定をします。。</p>
+      <p>GitHub と連携させて利活用するための
+      <strong><em>重要設定</em></strong> をします。</p>
       <p>現在の git
-      の「グローバル設定」と「システム設定」を確認します。スタートボタンを右クリックして「<strong>ターミナル
+      の「グローバル設定」と「システム設定」について確認します。スタートボタンを右クリックして「<strong>ターミナル
       (管理者)</strong>」を起動し、ターミナルのタブを「<strong>コマンドプロンプト</strong>」に切り替えます。</p>
       <h3 data-number="2.5.1" id="git-設定の確認"><span
       class="header-section-number">2.5.1</span> git 設定の確認</h3>
       <p>git の「<strong>グローバル設定</strong>」を確認するために
       <code>git config --global -l</code>
-      を実行します。新規インストール直後であれば、次のような応答
-      (適用されている設定の一覧) が返ってくると思います。なお、既に git
+      を実行します。新規インストール直後であれば、次のような応答が返ってくると思います。なお、既に
+      git
       をインストールして利用している場合は、その他の設定も表示されると思います。</p>
       <pre><code>C:\Users\xxxx&gt;git config --global -l
 core.editor=&quot;C:\Users\xxxx\AppData\Local\Programs\Microsoft VS Code\bin\code&quot; --wait</code></pre>
       <p>インストール中に選択したようにデフォルトエディタ設定
       (<code>core.editor</code>) として VSCode
-      が設定されていることが確認できました。</p>
+      が設定されていることを確認してください。</p>
       <p>次に git の「<strong>システム設定</strong>」を確認するために
       <code>git config --system -l</code>
-      を実行します。インストール直後であれば、次のような応答
-      (適用されている設定の一覧) が返ってくると思います。</p>
+      を実行します。インストール直後であれば、次のような応答が返ってくると思います。</p>
       <pre><code>C:\Users\xxxx&gt;git config --system -l
 diff.astextplain.textconv=astextplain
 filter.lfs.clean=git-lfs clean -- %f
@@ -726,28 +741,27 @@ init.defaultbranch=main</code></pre>
       <code>core.autocrlf=input</code> です。</p>
       <p>もしも <code>core.autocrlf=true</code> や
       <code>core.autocrlf=false</code>
-      となっている場合は、以下のようにコマンドを実行して<strong>設定を変更</strong>してください。この設定変更は「ターミナル
-      <strong>(管理者)</strong>」でないと <code>Permission denied</code>
+      となっている場合は、以下のようにコマンドを実行して<strong>設定を変更</strong>してください。この設定変更コマンドは「ターミナル
+      <strong>(管理者)</strong>」で実行しないと
+      <code>Permission denied</code>
       で失敗するので注意してください。</p>
       <pre><code>git config --system core.autocrlf input</code></pre>
       <p>その他の項目 (インストール途中で設定した項目)
-      は、上記ようなコマンドで変更することができます。例えば、初期ブランチの名前を
+      についても、上記ようなコマンドで変更することができます。例えば、初期ブランチの名前を
       <code>master</code>
       にしたい場合は、以下のコマンドを実行します。</p>
       <pre><code>git config --system init.defaultbranch master</code></pre>
-      <p>なお、「<strong>グローバル設定</strong>」と「<strong>システム設定</strong>」に異なる設定があった場合は、「<strong>グローバル設定</strong>」が優先されます。さらに、必要に応じて「<strong>ローカル設定</strong>」も追加できます
-      (詳しくは「<a
+      <p>なお、「<strong>グローバル設定</strong>」と「<strong>システム設定</strong>」に異なる設定があった場合は「<strong>グローバル設定</strong>」のほうが優先されます。さらに、必要に応じて「<strong>ローカル設定</strong>」も追加できます。詳しくは「<a
       href="https://www.google.com/search?q=git+ローカル設定+グローバル設定+システム設定">git
       ローカル設定 グローバル設定
-      システム設定</a>」で検索してください)。</p>
+      システム設定</a>」などでウェブ検索してください。</p>
       <h3 data-number="2.5.2"
       id="github-と連携させるための設定の追加"><span
       class="header-section-number">2.5.2</span> GitHub
       と連携させるための設定の追加</h3>
-      <p><strong><em>重要設定</em></strong> gitHub
-      と連携させるために、次のコマンドを実行して<strong>グローバル設定</strong>に項目を追加
-      します。</p>
-      <p><code>K.Taro</code> の部分は<a
+      <p><strong><em>重要設定</em></strong> git と GitHub
+      と連携させるために、次のコマンドを実行して<strong>グローバル設定</strong>に項目を追加します。</p>
+      <p>ここで <code>K.Taro</code> の部分は<a
       href="#github-の設定を確認">先に確認</a>しておいた<strong>ユーザーネーム・表示名</strong>
       (≠アカウント名) に書き換えてください。</p>
       <p>また、<code>12345678+GitHubAccountName@users.noreply.github.com</code>
@@ -757,13 +771,14 @@ init.defaultbranch=main</code></pre>
 git config --global user.email &quot;12345678+GitHubAccountName@users.noreply.github.com&quot;
 git config --global core.quotepath false</code></pre>
       <p>再び、<code>git config --global -l</code>
-      を実行して、上記の3つの設定がグローバル設定に追加されていることを確認してください。</p>
-      <p>以上で、git に関する最低限の設定は終了です。</p>
+      を実行して、<strong>上記の3つの設定がグローバル設定に追加されていること</strong>を確認してください。</p>
+      <p>以上で、git
+      に関する<strong>最低限の設定</strong>は終了です。</p>
       <div class="note type-tips">
-      <p><strong>core.quotepath</strong></p>
-      <p><code>core.quotepath=false</code>
-      にすることで、<code>git status</code>
-      で変更ファイル一覧を表示したときに日本語のファイル名が文字化けしないようになります。</p>
+      <p><strong>core.quotepathについて</strong></p>
+      <p><code>core.quotepath=false</code> にすることで
+      <code>git status</code>
+      コマンドで「変更ファイル一覧」を表示させたときに日本語のファイル名が文字化けしないようになります。</p>
       </div>
       <h1 data-number="3"
       id="リモートリポジトリの発行変更内容のコミット"><span
@@ -772,32 +787,36 @@ git config --global core.quotepath false</code></pre>
       <p>ここからは、VSCode
       を使って<strong>プロジェクトフォルダの作成し、そのプロジェクトのリモートリポジトリを
       GitHub
-      に発行、フォルダ内のファイルを変更して、それをコミット・プッシュするという処理</strong>を体験します。</p>
+      に発行、フォルダ内のファイルを変更して、それをコミット・プッシュするという操作・処理</strong>を体験します。このプロセスによって、ローカルに作成したプロジェクトフォルダのソースコードが
+      GitHub を通じてウェブに公開されるようになります。</p>
       <div class="note type-tips">
-      <p><strong>リポジトリとは</strong></p>
+      <p><strong>「リポジトリ」とは</strong></p>
       <p><strong>リポジトリ</strong> (直訳すると<strong>収納庫</strong>)
-      とは、プロジェクトに含まれるファイルや、その変更履歴を保存する場所を意味します。PCのローカルストレージにあるリポジトリを「<strong>ローカルリポジトリ</strong>」、ネットワーク上にあるリポジトリを「<strong>リモートリポジトリ</strong>」と言います。</p>
+      とは、プロジェクトを構成するファイルやフォルダ、その変更履歴を保管しておく場所を意味します。PCのローカルストレージに作成・配置するリポジトリを「<strong>ローカルリポジトリ</strong>」、GitHubなどのネットワークに作成・配置するリポジトリを「<strong>リモートリポジトリ</strong>」と言います。</p>
+      <p>なお、<strong>リモートリポジトリ</strong>は<strong>中央リポジトリ</strong>とよばれることもあります。</p>
       </div>
       <div class="note type-tips">
-      <p><strong>コミットとは</strong></p>
-      <p><strong>コミット</strong>とは、プロジェクトに含まれるファイルの変更
-      (新規作成や削除を含む)
-      を<strong>記録する行為</strong>、あるいは、<strong>記録そのもの</strong>を意味します。</p>
+      <p><strong>「コミット」とは</strong></p>
+      <p><strong>コミット</strong>とは、プロジェクトに含まれるファイルやフォルダの変更
+      (新規作成や削除を含む) を<strong>記録する行為</strong>、あるいは
+      <strong>記録そのもの</strong> を意味します。</p>
       </div>
       <div class="note type-tips">
-      <p><strong>プッシュとは</strong></p>
+      <p><strong>「プッシュ」とは</strong></p>
       <p><strong>プッシュ</strong>とは、ローカルリポジトリの変更内容をリモートリポジトリにアップロードすることを意味します。</p>
       </div>
       <h2 data-number="3.1" id="プロジェクトフォルダの作成"><span
       class="header-section-number">3.1</span>
       プロジェクトフォルダの作成</h2>
-      <p>PC のドキュメントのフォルダのなかに <code>GitHub-Test</code>
-      という名前のフォルダ (プロジェクトフォルダ) を作成し、VSCode
-      で開きます。フォルダは、必ずこの名称にしてください
-      (異なる名称にすると、以下で読み替えが必要です)。</p>
-      <p>フォルダを VSCode で開く方法は <a
+      <p>PC のドキュメントのフォルダ (
+      <code>C:\Users\xxxx\Documents</code> ) のなかに
+      <code>GitHub-Test</code> という名前のフォルダ
+      (プロジェクトフォルダ) を作成し VSCode
+      でオープンします。フォルダは、必ずこの名称にしてください
+      (異なる名称にすると、以下で読み替え作業が必要です)。</p>
+      <p>フォルダを VSCode でオープンする方法は <a
       href="lecture09.html#プロジェクトフォルダの作成">第09回講義のプロジェクトフォルダの作成</a>
-      を参照してください。</p>
+      参照してください。</p>
       <h2 data-number="3.2" id="ファイルの追加"><span
       class="header-section-number">3.2</span> ファイルの追加</h2>
       <p>VSCode上から <code>README.md</code>
@@ -805,7 +824,7 @@ git config --global core.quotepath false</code></pre>
       (Markdown記法) は Google Colab. (Jupyter)
       のテキストセルのフォーマットとして既に学習済みです、忘れてしまった場合は<a
       href="https://www.google.com/search?q=マークダウン+入門">ウェブ検索</a>
-      してください。</p>
+      して再学習ください。</p>
       <pre><code># GitHub利用の練習
 - VSCode から GitHub にリポジトリを発行</code></pre>
       <figure>
@@ -815,7 +834,7 @@ git config --global core.quotepath false</code></pre>
       <h2 data-number="3.3" id="リモートリポジトリの発行"><span
       class="header-section-number">3.3</span>
       リモートリポジトリの発行</h2>
-      <p>VSCodeのウィンドウ左にならぶアイコンから「<strong>ソース管理</strong>」を選択し、パネルから
+      <p>VSCodeのウィンドウの左側にならぶアイコンから「<strong>ソース管理</strong>」を選択し、パネルから
       <strong><em>GitHubに公開</em></strong> のボタンを押下します。</p>
       <figure>
       <img src="figs/14/vscode-02.png" alt="img" />
@@ -826,8 +845,8 @@ git config --global core.quotepath false</code></pre>
       <img src="figs/14/vscode-03.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
       </figure>
-      <p>ブラウザが自動起動し、GitHub のログインが要求されるので、GitHub
-      の Username と Password を入力して「<strong>Sign
+      <p>ウェブブラウザが自動起動し GitHub へのログインが要求されるので
+      GitHub の Username と Password を入力して「<strong>Sign
       in</strong>」のボタンを押下します。</p>
       <figure>
       <img src="figs/14/vscode-04.png" alt="img" />
@@ -839,16 +858,18 @@ git config --global core.quotepath false</code></pre>
       <img src="figs/14/vscode-05.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
       </figure>
-      <p>VSCodeに次のようなダイアログが表示されるので「<strong>開く</strong>」のボタンを押下します。</p>
+      <p>VSCode
+      に次のようなダイアログが表示されるので「<strong>開く</strong>」のボタンを押下します。</p>
       <figure>
       <img src="figs/14/vscode-06.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
       </figure>
-      <p>VSCodeのウィンドウの上部に以下のようなドロップボックスが表示されるので「Publish
+      <p>VSCode
+      のウィンドウの上部に以下のようなドロップボックスが表示されるので「Publish
       to GitHub <strong>public</strong> repository
       ….」を選択します。これは、このプロジェクトフォルダを
       <code>GitHub-Test</code> という名前のリポジトリとして GitHub
-      に発行 (Publish) するという意味になります。</p>
+      に発行 (Publish) する、という意味になります。</p>
       <figure>
       <img src="figs/14/vscode-07.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
@@ -879,14 +900,16 @@ git config --global core.quotepath false</code></pre>
       id="github-に正常発行されていることを確認"><span
       class="header-section-number">3.4</span> GitHub
       に正常発行されていることを確認</h2>
-      <p>プロジェクトフォルダの内容 (=README.md) が、各自のGitHub の
-      <code>GitHub-Test</code>
+      <p>プロジェクトフォルダの内容 (=<code>README.md</code>) が、各自の
+      GitHub アカウントの <code>GitHub-Test</code>
       というリポジトリに正常に発行されたことを確認します。</p>
-      <p>ウェブブラウザから「<strong>https://github.com/XXXX/GitHub-Test</strong>」、つまり、GitHub
+      <p>ウェブブラウザから
+      <code>https://github.com/XXXX/GitHub-Test**</code> つまり GitHub
       の <code>GitHub-Test</code> リポジトリにアクセスして、次のように
-      <code>README.md</code>
-      が表示されることを確認してください。URLのXXXXには、各自のアカウント名
-      (≠表示名) が入ります。</p>
+      <code>README.md</code> が表示されることを確認してください (GitHub
+      でマークダウンファイルはレンダリングされて画面表示されます)。URLの
+      <code>XXXX</code> には各自のアカウント名 (≠表示名)
+      が入ります。</p>
       <figure>
       <img src="figs/14/vscode-11.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
@@ -897,36 +920,57 @@ git config --global core.quotepath false</code></pre>
       ファイルを変更してコミット・プッシュ</h2>
       <p>プロジェクトフォルダに含まれる <code>README.md</code>
       に変更をくわえて、その変更を <strong><em>コミット</em></strong>
-      (=変更を記録) して、さらに、それを<strong><em>プル</em></strong>
-      (=リモートリポジトリにアップロード) します。</p>
-      <p>以下のように <code>README.md</code>
-      に追記して、<strong>保存</strong>してください
-      (保存処理を忘れないように)。</p>
+      (=変更を記録) して、さらに、それを <strong><em>プル</em></strong>
+      (=ローカルリポジトリの内容をリモートリポジトリにアップロード)
+      していきます。</p>
+      <p>以下のように <code>README.md</code> にテキストを追記して
+      <strong>保存</strong> してください
+      (必ず保存処理をしてください)。</p>
       <figure>
       <img src="figs/14/vscode-12.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
       </figure>
       <p>ソース管理のパネルで <code>README.md</code>
-      横の「+」をクリックします。これは<strong>ステージング</strong>といって、そのファイルをコミットの対象に含めるという意味になります。<code>README.md</code>
-      が「ステージされている変更」に移動しました。</p>
+      横の「+」をクリックします。この操作は
+      <strong>ステージング</strong> といって、そのファイルを「コミット
+      (変更履歴の記録) の対象」に含めるという意味があります。VScode
+      のソース管理パネル内で <code>README.md</code>
+      が「変更」グループから、「ステージされている変更」のグループに移動しました
+      (画面を確認してください) 。</p>
       <div class="note type-tips">
-      <p><strong>ステージングとは</strong></p>
-      <p><strong>ステージング</strong>とは、変更したファイルをコミットの準備として選択
-      (ステージ) することを意味します。git
-      では、ファイルの変更を直接コミットするのではなく、まずその変更をステージングエリアに追加し、その後でコミットを行う流れをとります。</p>
+      <p><strong>「ステージング」とは</strong></p>
+      <p><strong>ステージング</strong>とは、変更したファイルを
+      <strong>コミットの準備として選択 (ステージ) すること</strong>
+      を意味します。git
+      では、ファイルの変更を直接コミットするのではなく、まずその変更をステージングエリアに追加し、その後でコミットするという流れをとります。</p>
       </div>
       <figure>
       <img src="figs/14/vscode-13.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
       </figure>
       <p>コミットメッセージ (必須・空欄にできません)
-      を入力します。コミットメッセージには、変更内容を端的に表すような文章を書きます。ここでは
-      <code>update README.md</code> とします。</p>
+      を入力します。コミットメッセージには、<strong>変更内容を端的に表すような文章</strong>を書きます。ここでは
+      <code>update README.md</code> とします
+      (コミットメッセージには日本語を使用することもできます)。</p>
       <figure>
       <img src="figs/14/vscode-14.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
       </figure>
-      <p>コミットボタンの右側をクリックして「<strong>コミットして同期</strong>」を選択します。</p>
+      <p>コミットボタンの右側をクリックして「<strong>コミットして同期</strong>」を選択します。コミットして<strong>同期</strong>
+      とは、コミット、プッシュ、プル (フェッチとマージ)
+      という一連の操作・処理を実行することを意味します。</p>
+      <ul>
+      <li><strong>コミット</strong>:
+      ファイルの変更内容をローカルリポジトリに変更履歴として記録すること。</li>
+      <li><strong>プッシュ</strong>:
+      ローカルリポジトリにある変更履歴を、リモートリポジトリにアップロードすること。</li>
+      <li><strong>プル</strong>:
+      リモートリポジトリの内容をローカルリポジトリにダウンロードして
+      (この操作を <strong>フェッチ</strong> といいます)
+      、リモートリポジトリとローカルリポジトリの内容に差分があれば結合・統合すること
+      (この操作を <strong>マージ</strong>
+      といいまます)。フェッチとマージの処理をあわせてプルと表現します。</li>
+      </ul>
       <figure>
       <img src="figs/14/vscode-15.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
@@ -937,7 +981,8 @@ git config --global core.quotepath false</code></pre>
       <img src="figs/14/vscode-16.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
       </figure>
-      <p>ウェブブラウザから、再度「<strong>https://github.com/XXXX/GitHub-Test</strong>」にアクセスして
+      <p>ウェブブラウザから、再度
+      <code>https://github.com/XXXX/GitHub-Test</code> にアクセスして
       <code>README.md</code> が更新されていることを確認します。</p>
       <figure>
       <img src="figs/14/vscode-17.png" alt="img" />
@@ -947,7 +992,7 @@ git config --global core.quotepath false</code></pre>
       id="リモートリポジトリでのファイル変更と同期"><span
       class="header-section-number">4</span>
       リモートリポジトリでのファイル変更と同期</h1>
-      <p>GitHub (リモートリポジトリ) で <code>README.md</code>
+      <p>今度は、GitHub (リモートリポジトリ) 側で <code>README.md</code>
       に変更をくわえてコミットして、それをローカル側で同期させてみます。</p>
       <p>次のように GitHub で <code>README.md</code>
       を編集モードに切り替えます。</p>
@@ -955,9 +1000,10 @@ git config --global core.quotepath false</code></pre>
       <img src="figs/14/github-01.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
       </figure>
-      <p>次のように４行目に「GitHub（リモートリポジトリ）で README.md
-      を直接編集してコミット」と追記して、右上の「<strong>Commit
-      changes</strong>」を押下します。</p>
+      <p>次のように４行目に「GitHub（リモートリポジトリ）で
+      <code>README.md</code>
+      を直接編集してコミット」とテキストを追記して、右上の「<strong>Commit
+      changes</strong>」のボタンを押下します。</p>
       <figure>
       <img src="figs/14/github-02.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
@@ -980,15 +1026,18 @@ git config --global core.quotepath false</code></pre>
       <strong>プル</strong>
       という操作が必要で、これは画面下のアイコンをクリックすることで行ないます。</p>
       <p>git/GitHub
-      では、Googleドキュメントのようにリアルタイムの自動同期はされない点に注意してください
-      (プログラム開発では、手動での同期のほうが都合がよいです)。</p>
+      では、<strong>Googleドキュメントのようにリアルタイムの自動同期はされないこと</strong>
+      に注意してください
+      (プログラム開発では手動による同期のほうが何かと都合がよいのです)。</p>
       <figure>
       <img src="figs/14/github-05.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
       </figure>
       <div class="note type-tips">
-      <p><strong>プルとは</strong></p>
-      <p><strong>プル</strong>とは、リモートリポジトリの内容をローカルリポジトリにダウンロードすることを意味します。</p>
+      <p><strong>「プル」とは</strong></p>
+      <p><strong>プル</strong>とは、リモートリポジトリの内容をローカルリポジトリにダウンロードして、リモートリポジトリの内容
+      (コミット) と、ローカルリポジトリの内容 (コミット)
+      を統合することを意味します。</p>
       </div>
       <p>同期が成功すると、以下のようにローカルリポジトリ側にも変更が反映されます。</p>
       <figure>
@@ -997,9 +1046,10 @@ git config --global core.quotepath false</code></pre>
       </figure>
       <p>ここでは、ローカルリポジトリとリモートリポジトリの両方から
       <code>README.md</code>
-      に対して編集を加えて同期を行ないましたが、同じように、A君とB組んで同じファイルに対して編集を加えて同期を行なうことができます
-      (具体的な方法については次回以降に学びます)。</p>
-      <p>以上が確認できたら、VSCodeを閉じてください。</p>
+      に対して編集を加えて、変更の統合を行ないました。同様に、チーム開発でアリスとボブが
+      <strong>別々に同じファイルに対して編集を加えた際にも、GitHubを通じて変更の統合を行なうことができます</strong>
+      (このようなチーム開発支援に関する機能は次回以降に学びます)。</p>
+      <p>以上が確認できたら VSCode を閉じてください。</p>
       <h1 data-number="5" id="リポジトリの削除"><span
       class="header-section-number">5</span> リポジトリの削除</h1>
       <p>ここまでに作成したリモートリポジトリとローカルリポジトリは、練習用のものなので削除します。</p>
