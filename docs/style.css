@@ -343,7 +343,7 @@ div.sourceCode[data-caption]::before {
 
 .markdown-body ul li {
   position: relative;
-  padding: 0 0 0 1.4em;
+  padding: 0.35em 0 0 1.4em;
   margin: 0;
   text-indent: 0.5em;
 }
@@ -400,6 +400,10 @@ div.sourceCode[data-caption]::before {
   background: #ffafb3;
 }
 
+.type-tips ul li::before {
+  color: #ff3d57;
+}
+
 /* ------- ノート Type-senior（上級者）------- */
 
 .markdown-body div.type-senior {
@@ -420,6 +424,10 @@ div.sourceCode[data-caption]::before {
   background: #e9b9ff; /* 2 */
 }
 
+.type-tips ul li::before {
+  color: #855aa8;
+}
+
 /* ------- ノート Type-tips------- */
 
 .markdown-body div.type-tips {
@@ -438,6 +446,10 @@ div.sourceCode[data-caption]::before {
 
 .type-tips code {
   background: #f4d002; /* 2 */
+}
+
+.type-tips ul li::before {
+  color: #887100;
 }
 
 /* ------- プログラムコードの装飾 ------- */

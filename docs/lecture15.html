@@ -1,0 +1,1424 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+
+    <script>
+      MathJax = {
+        chtml: {
+          displayAlign: "left",
+          displayIndent: "1em",
+        },
+      };
+    </script>
+
+    
+
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>第15回 2I-プログラミング1</title>
+  </head>
+
+  <body>
+    <div class="openbtn"><span></span><span></span><span></span></div>
+    <nav id="g-nav">
+      <div id="g-nav-list">
+        <!-- ---------------------------------------- -->
+         <ul>
+<li><a href="#概要連絡" id="toc-概要連絡"><span
+class="toc-section-number">1</span> 概要・連絡</a></li>
+<li><a href="#定着確認" id="toc-定着確認"><span
+class="toc-section-number">2</span> 定着確認</a></li>
+<li><a href="#コマンドラインによる-gitgithub-の操作"
+id="toc-コマンドラインによる-gitgithub-の操作"><span
+class="toc-section-number">3</span> コマンドラインによる git/GitHub
+の操作</a>
+<ul>
+<li><a href="#プロジェクトフォルダの作成"
+id="toc-プロジェクトフォルダの作成"><span
+class="toc-section-number">3.1</span>
+プロジェクトフォルダの作成</a></li>
+<li><a href="#gitの初期化" id="toc-gitの初期化"><span
+class="toc-section-number">3.2</span> gitの初期化</a></li>
+<li><a href="#ファイルの作成とコミット"
+id="toc-ファイルの作成とコミット"><span
+class="toc-section-number">3.3</span> ファイルの作成とコミット</a></li>
+<li><a href="#リモートリポジトリにプッシュ"
+id="toc-リモートリポジトリにプッシュ"><span
+class="toc-section-number">3.4</span>
+リモートリポジトリにプッシュ</a></li>
+<li><a href="#リポジトリの削除" id="toc-リポジトリの削除"><span
+class="toc-section-number">3.5</span> リポジトリの削除</a></li>
+</ul></li>
+<li><a href="#htmlcssの基礎" id="toc-htmlcssの基礎"><span
+class="toc-section-number">4</span> HTML/CSSの基礎</a>
+<ul>
+<li><a href="#準備" id="toc-準備"><span
+class="toc-section-number">4.1</span> 準備</a></li>
+<li><a href="#html" id="toc-html"><span
+class="toc-section-number">4.2</span> HTML</a>
+<ul>
+<li><a href="#htmlのタグの意味" id="toc-htmlのタグの意味"><span
+class="toc-section-number">4.2.1</span> HTMLのタグの意味</a></li>
+<li><a href="#演習①" id="toc-演習①"><span
+class="toc-section-number">4.2.2</span> 演習①</a></li>
+</ul></li>
+<li><a href="#css" id="toc-css"><span
+class="toc-section-number">4.3</span> CSS</a>
+<ul>
+<li><a href="#演習②" id="toc-演習②"><span
+class="toc-section-number">4.3.1</span> 演習②</a></li>
+</ul></li>
+<li><a href="#guthubリポジトリのクローン"
+id="toc-guthubリポジトリのクローン"><span
+class="toc-section-number">4.4</span> GutHubリポジトリのクローン</a>
+<ul>
+<li><a href="#urlの確認" id="toc-urlの確認"><span
+class="toc-section-number">4.4.1</span> URLの確認</a></li>
+<li><a href="#git-clone-コマンドの実行"
+id="toc-git-clone-コマンドの実行"><span
+class="toc-section-number">4.4.2</span> git clone
+コマンドの実行</a></li>
+<li><a href="#不要なファイルの削除" id="toc-不要なファイルの削除"><span
+class="toc-section-number">4.4.3</span> 不要なファイルの削除</a></li>
+<li><a href="#git初期化-開発-github発行"
+id="toc-git初期化-開発-github発行"><span
+class="toc-section-number">4.4.4</span> git初期化 / 開発 /
+GitHub発行</a></li>
+<li><a href="#リモートリポジトリurlの提出"
+id="toc-リモートリポジトリurlの提出"><span
+class="toc-section-number">4.4.5</span>
+リモートリポジトリURLの提出</a></li>
+<li><a href="#演習③" id="toc-演習③"><span
+class="toc-section-number">4.4.6</span> 演習③</a></li>
+</ul></li>
+<li><a href="#コンフリクトの発生と解消"
+id="toc-コンフリクトの発生と解消"><span
+class="toc-section-number">4.5</span> コンフリクトの発生と解消</a>
+<ul>
+<li><a href="#コンフリクトの概要" id="toc-コンフリクトの概要"><span
+class="toc-section-number">4.5.1</span> コンフリクトの概要</a></li>
+<li><a href="#コンフリクトを発生させる"
+id="toc-コンフリクトを発生させる"><span
+class="toc-section-number">4.5.2</span>
+コンフリクトを発生させる</a></li>
+<li><a href="#コンフリクトを解消する"
+id="toc-コンフリクトを解消する"><span
+class="toc-section-number">4.5.3</span> コンフリクトを解消する</a></li>
+</ul></li>
+<li><a href="#コンフリクトを効率よく解消"
+id="toc-コンフリクトを効率よく解消"><span
+class="toc-section-number">4.6</span>
+コンフリクトを効率よく解消</a></li>
+<li><a href="#できるだけコンフリクトを発生させないためには"
+id="toc-できるだけコンフリクトを発生させないためには"><span
+class="toc-section-number">4.7</span>
+できるだけコンフリクトを発生させないためには</a></li>
+</ul></li>
+<li><a href="#宿題" id="toc-宿題"><span
+class="toc-section-number">5</span> 宿題</a></li>
+</ul> 
+        <!-- ---------------------------------------- -->
+      </div>
+    </nav>
+
+    <header class="markdown-body">
+      <p>2023-2I プログラミング1 第15回 講義資料</p>
+      <p>2023年10月02日（月）1・2時限</p>
+    </header>
+
+    <main class="markdown-body">
+      <!-- ---------------------------------------- -->
+      <h1 data-number="1" id="概要連絡"><span
+      class="header-section-number">1</span> 概要・連絡</h1>
+      <p>前回の<a href="lecture15.html">講義</a>では
+      <strong><em>git/GitHub</em></strong>
+      に関連して次のよう内容を取り上げました。<strong>今回の講義内容は、以下の操作が定着していること
+      (問題なくできること) を前提</strong>とします。</p>
+      <ol type="1">
+      <li>PCのローカルストレージに「プロジェクトフォルダ」を新規作成して
+      VSCode でオープンすること。</li>
+      <li>VSCode を使ってプロジェクトフォルダに任意のファイル (例えば
+      <code>README.md</code> など) を追加作成し、それを
+      <strong>リモートリポジトリ (GitHub) に公開</strong> すること。
+      <ul>
+      <li><strong><em>重要補足</em></strong> ここでは VSCode
+      によりバックグラウンドで <code>git init</code>
+      コマンドに相当する「<strong>gitの初期化</strong>」も同時に行われています。具体的には、プロジェクトフォルダのなかに
+      <code>.git</code> というフォルダ (隠しフォルダ属性)
+      が作成され、プロジェクトフォルダが
+      <strong>ローカルリポジトリ</strong>
+      としてgitの管理下におかれるようになります。gitの管理下にあるフォルダでは、ファイルやフォルダの追加・削除・変更などが
+      git により追跡されるようになります。</li>
+      </ul></li>
+      <li>ローカルリポジトリにあるファイルの内容を編集して、それを
+      <strong>コミット</strong> してリモートリポジトリに
+      <strong>プッシュ</strong> すること。
+      <ul>
+      <li>ここではバックグラウンドで <code>git commit</code> コマンドや
+      <code>git push</code>
+      コマンドに相当する処理が行なわれています。</li>
+      </ul></li>
+      <li>リモートリポジトリの内容をウェブブラウザから確認すること。</li>
+      <li>リモートリポジトリにあるファイルをウェブブラウザから直接編集して
+      <strong>コミット</strong> すること。</li>
+      <li>リモートリポジトリ側で変更・コミットされた内容を、ローカルリポジトリ側に取り込むこと
+      (同期させること)。
+      <ul>
+      <li>ここではバックグラウンドで <code>git pull</code>
+      コマンドに相当する処理が行なわれています。<code>git pull</code>
+      コマンドは <code>git fetch</code> コマンドと
+      <code>git merge</code>
+      コマンドを組み合わせた操作と考えてください。</li>
+      </ul></li>
+      </ol>
+      <div class="note type-tips">
+      <p><strong>README.mdとは</strong></p>
+      <p><code>README.md</code> は GitHub において
+      <strong>プロジェクトで開発しているアプリの使い方や、プロジェクトの説明を記述するファイル</strong>です。この名前が付いたファイルは、ウェブブラウザから
+      GitHub
+      のリモートリポジトリにアクセスしたときにトップページとして自動表示されるようになります。</p>
+      <p>例えば、ディープラーニングに対応した機械学習のソフトウェアライブラリである
+      <strong>TensorFlow</strong> は OSS (Open Source Software) として
+      GitHub で開発されていますが、そのリポジトリ
+      ([https://github.com/tensorflow/tensorflow]) にアクセスすると
+      (画面を少し下部にスクロールしたところに) <code>README.md</code>
+      として TensorFlow の概要が示されています。</p>
+      <p>TensorFlow
+      は「テンサーフロー」または「テンソルフロー」と読みます。</p>
+      </div>
+      <h1 data-number="2" id="定着確認"><span
+      class="header-section-number">2</span> 定着確認</h1>
+      <p>後期授業ではシラバス記載のように「<strong>小テスト</strong>」を実施して成績評価に組み込みます。以下、<strong>小テストの練習問題</strong>です
+      (このままの形式で出題されるわけではありません)。</p>
+      <ul>
+      <li>git は主にソースコードのバージョンを管理するための <span
+      class="masked">ソフトウェア (アプリ)</span> である。一方で、GitHub
+      は、git で管理しているソースコードをプロジェクトチーム (複数人)
+      で簡単に共有するための<span class="masked">ウェブサービス</span>
+      である。</li>
+      <li>gitにおいて変更履歴を保管しておく場所のことを <span
+      class="masked">リポジトリ</span> という。</li>
+      <li>gitにおいてファイルの変更履歴を記録する操作を <span
+      class="masked">コミット</span>
+      という。また、この際に添えるメッセージのことを <span
+      class="masked">コミットメッセージ</span>
+      といい、これには日本語を使うことが <span
+      class="masked">できる</span> 。</li>
+      <li>ローカルリポジトリの内容をリモートリポジトリにアップロードする操作を
+      <span class="masked">プッシュ</span> という。</li>
+      <li>リモートリポジトリの内容をローカルリポジトリにダウンロードして統合する操作を
+      <span class="masked">プル</span> という。</li>
+      </ul>
+      <h1 data-number="3"
+      id="コマンドラインによる-gitgithub-の操作"><span
+      class="header-section-number">3</span> コマンドラインによる
+      git/GitHub の操作</h1>
+      <p>前回の講義では VSCode の GUI (=Graphical User Interface)
+      を通じて git
+      を操作する方法を学びました。実務においてもコミットやプッシュなどの操作は
+      VSCode から行なうことが多いですが、<strong>VSCode の GUI
+      が対応していない込み入った git 操作については、コマンドラインから
+      git コマンドを入力して実行すること求められます</strong>。</p>
+      <p>ここでは、前回の講義で VSCode 経由で実行した一連の git 操作が
+      <strong>コマンドラインからでも同様に実行できることを体験・確認しておきます</strong>。</p>
+      <p>Windows
+      のスタートボタンを右クリックして「ターミナル」を起動し、ターミナルタブを
+      <strong><em>Git Bash</em></strong>
+      に切り替えておいてください。<strong>Git Bash</strong>
+      に切り替えることで、文字に適切な色がついて <code>ls</code> などの
+      <span class="masked">Linux系のコマンド</span>
+      も使えるようになります。</p>
+      <figure>
+      <img src="figs/14/bash-terminal.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>以下、<code>C:\Users\xxxx\Documents</code>
+      の直下に「プロジェクトフォルダ」を作成していきます。<code>xxxx</code>
+      の部分は各自で読み替えてください。なお <code>xxxx</code>
+      の部分に<strong>日本語が含まれていると正常に動作しない可能性があります</strong>。</p>
+      <p>なお、以降で <strong>Linux系のコマンド</strong>
+      を使用しますが、これは前期の「工学基礎実習」のネットワーク系テーマのなでかで既に学んでいる内容です
+      (<span class="masked">PC と Raspberry Pi
+      と接続してコマンドライン操作を通じてネットワーク設定</span>をしているはずです)。</p>
+      <h2 data-number="3.1" id="プロジェクトフォルダの作成"><span
+      class="header-section-number">3.1</span>
+      プロジェクトフォルダの作成</h2>
+      <p>カレントフォルダを <code>C:\Users\xxxx\Documents</code>
+      に切り替えるために <code>cd</code>
+      コマンドでフォルダ移動します。<code>cd</code> は「<strong>Change
+      Directory</strong>」の略称です。</p>
+      <p>以下のコマンドを入力してください (<code>$</code> は<span
+      class="masked">プロンプトの入力促進記号</span>なので実際には入力しません
+      (以下同様))。なお、<strong>Git bash
+      環境</strong>では、パスの区切り文字にスラッシュ <code>/</code>
+      が利用できるので、ここではスラッシュで入力しています。</p>
+      <p>パスの表記法 (絶対パス/相対パス)
+      については「情報2」の第06回講義ノート の p.100
+      を参照してください。</p>
+      <pre><code>$ cd c:Users/xxxx/Documents</code></pre>
+      <p>カレントフォルダ (=現在位置) を確認するために <code>pwd</code>
+      コマンドを入力します。<code>pwd</code> は「<strong>Print Working
+      Directory</strong>」の略称です。<strong>Git bash 環境</strong>
+      (疑似Linux環境) では <span
+      class="masked">ドライブがディレクトリとして扱われる</span>
+      ので、絶対パスの先頭が <code>c:</code> ではなく <code>/c/</code>
+      のように表記されます。</p>
+      <pre><code>$ pwd
+/c/Users/xxxx/Documents</code></pre>
+      <p>この位置に <code>GitHub-Test-2</code>
+      というフォルダを作成するために <code>mkdir</code>
+      コマンドを入力します。<code>mkdir</code> は「<strong>Make
+      Directory</strong>」の略称です。また、<code>cd</code>
+      コマンドで作成したフォルダ内に移動します。</p>
+      <pre><code>$ mkdir GitHub-Test-2
+$ cd GitHub-Test-2/</code></pre>
+      <p>正しくフォルダ移動できたことを <code>pwd</code>
+      で確認します。</p>
+      <pre><code>$ pwd
+/c/Users/xxxx/Documents/GitHub-Test-2</code></pre>
+      <p>カレントフォルダの中身を確認するために <code>ls</code>
+      コマンドを入力します。詳細表示したいので <code>-al</code>
+      オプションをつけます。なお、<code>ls</code>
+      は「<strong>List</strong>」の略称です。</p>
+      <pre><code>$ ls -al
+total 4
+drwxr-xr-x 1 xxxx 197121 0  9月 22 12:57 ./
+drwxr-xr-x 1 xxxx 197121 0  9月 22 12:57 ../</code></pre>
+      <p>これにより、現在、このフォルダの内容は「空」であることが確認できました。情報2の第06回講義で学習したように
+      <code>./</code> は「カレントフォルダ」を意味し、<code>../</code>
+      は「親フォルダ」を意味します。これらの特殊フォルダ表記は、空のフォルダの内容を表示したときにも出力されます。</p>
+      <p>念のために <code>-l</code>
+      オプションだけを付けて実行してみます。</p>
+      <pre><code>$ ls -l
+total 0</code></pre>
+      <p>これより <code>GitHub-Test-2</code>
+      フォルダの中身が空であることが確認できました。</p>
+      <p>また、<code>explorer .</code> をコマンド入力すると、Windows
+      のエクスプローラで <span
+      class="masked">カレントフォルダのエクスプローラウィンドウを開くこと</span>
+      ができます。<strong>ドットの入力を忘れないようにしてください</strong>。</p>
+      <pre><code>$ explorer .</code></pre>
+      <p>ここからも、フォルダの中身が空であることが確認できました。</p>
+      <div class="note type-tips">
+      <p><strong>コマンドオプション</strong></p>
+      <p>Linuxコマンドのあとに <code>-</code> や <code>--</code>
+      をつけて入力する文字を<strong>(コマンド)
+      オプション</strong>といいます。例えば、<code>ls</code>
+      のコマンドのオプションについて調べたいときは「<a
+      href="https://www.google.com/search?q=lsコマンド+オプション">lsコマンド
+      オプション</a>」のように検索します。</p>
+      <p><code>ls</code> の <code>a</code> オプション、<code>l</code>
+      オプションの意味については、各自で調べてみてください。情報系技術者であれば、常識として知っておいてほしい内容です。</p>
+      </div>
+      <h2 data-number="3.2" id="gitの初期化"><span
+      class="header-section-number">3.2</span> gitの初期化</h2>
+      <p>このプロジェクトフォルダを「ローカルリポジトリ」として git
+      の管理下に置くために <code>git init</code>
+      をコマンド入力します。</p>
+      <pre><code>$ git init
+Initialized empty Git repository in C:/Users/xxxx/Documents/GitHub-Test-2/.git/</code></pre>
+      <p>これにより <code>.git</code>
+      という「隠しフォルダ」が作成されます。<code>ls -al</code>
+      で確認します。Linux系では、<strong>名前がドット</strong>
+      <code>.</code>
+      <strong>から始まるファイルやフォルダ</strong>は、通常「隠しファイル」や「<span
+      class="masked">設定ファイル</span>」、「隠しフォルダ」とされます。<code>ls</code>
+      コマンドで隠しフォルダやファイルを表示するためには <code>a</code>
+      オプションが必要になります。</p>
+      <pre><code>$ ls -al
+otal 8
+drwxr-xr-x 1 xxxx 197121 0  9月 22 14:03 ./
+drwxr-xr-x 1 xxxx 197121 0  9月 22 12:57 ../
+drwxr-xr-x 1 xxxx 197121 0  9月 22 14:03 .git/</code></pre>
+      <p>通常の利用範囲で、ユーザーが この <code>.git</code>
+      のフォルダの内容に対して<strong>直接的な操作をすることはありません</strong>
+      (誤って内容を変更したり、削除したりすると git
+      による管理が壊れるので注意してください)。</p>
+      <p>これで、このプロジェクトフォルダは
+      gitの管理下におかれます。<code>git status</code> コマンドで git
+      の状態を確認してみます。</p>
+      <pre><code>$ git status
+On branch main
+
+No commits yet
+
+nothing to commit (create/copy files and use &quot;git add&quot; to track)</code></pre>
+      <p>上記の各メッセージは次のような意味になります。</p>
+      <ul>
+      <li><code>On branch main</code>
+      <ul>
+      <li>現在の<strong>ブランチ</strong>は <code>main</code>
+      です。</li>
+      <li><strong>ブランチ</strong>(枝)
+      の概念については、追々、学んでいきます。とりあえず、現時点では「<code>main</code>
+      という名前の変更履歴の世界線にいる」という程度の理解でいてください。気になる人は
+      <a
+      href="https://www.google.com/search?q=git+ブランチとは">ウェブで検索</a>
+      してみてください。</li>
+      </ul></li>
+      <li><code>No commits yet</code>
+      <ul>
+      <li>まだコミット (=変更履歴の記録) は存在しません。</li>
+      </ul></li>
+      <li><code>nothing to commit (create/copy files and use "git add" to track)</code>
+      <ul>
+      <li>ファイルを作成またはコピーし、<code>git add</code>
+      コマンドにより、そのファイルを <strong>トラッキング (=追跡)
+      の対象</strong>
+      にしてください。<strong>トラッキング対象にする</strong>とは <span
+      class="masked">Gitによって変更履歴を管理する対象にする</span>
+      という意味になります。</li>
+      </ul></li>
+      </ul>
+      <h2 data-number="3.3" id="ファイルの作成とコミット"><span
+      class="header-section-number">3.3</span>
+      ファイルの作成とコミット</h2>
+      <p>メモ帳などの適当なテキストエディタでプロジェクトフォルダ内に
+      <code>README.md</code>
+      というファイルを作成して、次のような内容を記述して保存してください。</p>
+      <div class="sourceCode" id="cb11" data-caption="README.md"><pre
+      class="sourceCode numberSource markdown numberLines"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu"># コマンドラインから git 操作</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="ss">- </span>gitの初期化 <span class="in">`git init`</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="ss">- </span>gitの状態確認 <span class="in">`git status`</span></span></code></pre></div>
+      <p>ファイルを保存するとき、文字コードは <strong>UTF-8
+      (BOMなし)</strong>
+      となるように注意してください。また、ファイル名が
+      <code>README.md.txt</code>
+      のような2重拡張子にならないように注意してください。</p>
+      <figure>
+      <img src="figs/15/notepad-save.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>なお、コマンドラインから次のように打ち込むと
+      <strong>メモ帳のアプリが起動し</strong> <code>README.md</code>
+      <strong>の新規作成ができます</strong>。ただし、このように起動すると
+      <span
+      class="masked">メモ帳のウィンドウを閉じるまでコマンドラインは操作できない</span>
+      ので注意してください。</p>
+      <pre><code>$ notepad README.md</code></pre>
+      <p>ファイルが保存できたら <code>ls -al</code>
+      コマンドでプロジェクトフォルダの内容を確認します。フォルダ内に
+      <code>README.md</code> が追加されたことを確認してください。</p>
+      <pre><code>$ ls -al
+total 9
+drwxr-xr-x 1 xxxx 197121   0  9月 22 14:26 ./
+drwxr-xr-x 1 xxxx 197121   0  9月 22 12:57 ../
+drwxr-xr-x 1 xxxx 197121   0  9月 22 14:12 .git/
+-rw-r--r-- 1 xxxx 197121 105  9月 22 14:28 README.md</code></pre>
+      <p>この状態で、再度 <code>git status</code>
+      を実行して状態を確認します。</p>
+      <pre><code>$ git status
+On branch main
+
+No commits yet
+
+Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+        README.md
+
+nothing added to commit but untracked files present (use &quot;git add&quot; to track)</code></pre>
+      <p>ここで注目すべきは <code>Untracked files:</code>
+      以降のメッセージです。<code>README.md</code> が
+      <code>Untracked</code>
+      (非追跡対象)の状態、つまり、コミットの対象になっていない
+      (ステージングされていない状態である)
+      ことが書かれています。また、このファイルをコミット対象とするためには
+      <code>git add README.md</code>
+      のコマンドを使って登録するように指示されています。</p>
+      <p><code>README.md</code> をコミット対象に加えるため
+      <code>git add</code> コマンドで <a
+      href="lecture14.html#ファイルを変更してコミットプッシュ">ステージング</a>
+      (=ステージングエリアに対象ファイルを追加する処理) をします。</p>
+      <pre><code>$ git add README.md
+warning: in the working copy of &#39;README.md&#39;, CRLF will be replaced by LF the next time Git touches it</code></pre>
+      <p>「<strong>warning</strong>: in the working copy of ‘README.md’,
+      CRLF will be replaced by LF the next time Git touches it」は <span
+      class="masked"><code>README.md</code> というファイルの行末が
+      <code>CRLF</code> であるが、コミットなどの git 操作により、これが
+      <code>LF</code> に置き換えられる</span>
+      ということをの警告しています。これは <a
+      href="lecture14.html#改行コードに関する設定">意図的に設定していること</a>
+      なので問題ありません。</p>
+      <p>再度、<code>git status</code> で状態を確認します。</p>
+      <pre><code>$ git status
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)
+        new file:   README.md</code></pre>
+      <div class="note type-tips">
+      <p><strong>git add コマンド</strong></p>
+      <p><code>git add README.md</code> コマンドは、VSCode での git
+      操作で言えば、次のように「+」アイコンをクリックすることで・・・</p>
+      <figure>
+      <img src="figs/15/git-command-01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>次のように <code>README.md</code>
+      を<strong>ステージングする操作</strong>
+      (=次のコミット対象として選択する操作)
+      に相当します。このようにステージングすることを「<strong>ステージングエリアに追加する/移動する</strong>」のように表現することもあるので覚えておいてください。</p>
+      <figure>
+      <img src="figs/15/git-command-02.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      </div>
+      <p>つづいて <code>git commit</code>
+      コマンドを使って「<strong>プロジェクトフォルダに</strong>
+      <code>README.md</code>
+      <strong>を追加した</strong>」という変更操作を
+      <strong><em>コミット</em></strong> していきます。<code>-m</code>
+      のオプションにつづけて (ダブルクォーテーションで括った)
+      <strong>コミットメッセージ</strong> を指定します。</p>
+      <p><strong>慣例的</strong>に最初のコミットには
+      <code>first commit</code> や
+      <code>initial commit</code>、<code>init commit</code>
+      というコミットメッセージを付けます。</p>
+      <pre><code>$ git commit -m &quot;first commit&quot;
+[main (root-commit) 0cd9a26] first commit
+ 1 file changed, 3 insertions(+)
+ create mode 100644 README.md</code></pre>
+      <p>再度、<code>git status</code> で状態を確認します。</p>
+      <pre><code>$ git status
+On branch main
+nothing to commit, working tree clean</code></pre>
+      <p>これは、現在のリポジトリ (ワーキングツリー)
+      において、<strong>コミット対象とするような変更操作はない</strong>という状態
+      (前回のコミット以降、特に変更が加えられていない状態)
+      であることを示しています。</p>
+      <div class="note type-tips">
+      <p><strong>コミットメッセージを付けないでコミット操作をすると・・・</strong></p>
+      <p>コマンドラインで <code>-m</code> オプションを付けずに
+      <code>git commit</code> を実行したり、次のように VSCode 上で
+      <strong>コミットメッセージ欄を空欄にしてコミットのボタンを押下すると</strong>・・・</p>
+      <figure>
+      <img src="figs/15/git-command-03.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>git のインストール時に設定したデフォルトテキストエディタ
+      (前回授業のインストール設定どおりであれば VSCode )
+      が自動起動して「<strong>COMMIT_EDITMSG</strong>」というファイルにコミットメッセージを入力するように促されます。</p>
+      <p>ここで「<strong>COMMIT_EDITMSG</strong>」のタブをそっと閉じれば
+      <strong><em>コミットはキャンセルされます</em></strong> 。</p>
+      <figure>
+      <img src="figs/15/git-command-04.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>また、以下のようにコミットメッセージの「タイトル」と「詳細内容」を記述して<strong>保存してからタブを閉じれば</strong>
+      そのコミットメッセージで
+      <strong><em>コミットが実行されます</em></strong>。</p>
+      <figure>
+      <img src="figs/15/git-command-05.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p><code>COMMIT_EDITMSG</code> は、次のように構成します。</p>
+      <div class="sourceCode" id="cb19"
+      data-caption="COMMIT_EDITMSG"><pre
+      class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>1行目：変更内容をあらわすタイトル・要約・概要</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>2行目 ：空行</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>3行目以降：変更した内容や理由などの詳細</span></code></pre></div>
+      <p>詳しくは「<a
+      href="https://www.google.com/search?q=git+コミットメッセージ+書き方">git
+      コミットメッセージ 書き方</a>」などで検索してください。</p>
+      </div>
+      <p>以上で、<strong>ローカルリポジトリ</strong>(≠リモートリポジトリ)
+      に変更履歴が記録されたという状況になります。なお、<code>git log</code>
+      コマンドでコミットの履歴を確認できます。</p>
+      <h2 data-number="3.4" id="リモートリポジトリにプッシュ"><span
+      class="header-section-number">3.4</span>
+      リモートリポジトリにプッシュ</h2>
+      <p>つついて GitHub 上に <strong>リモートリポジトリ</strong>
+      を作成して、そこにローカルリポジトリの内容を
+      <strong><em>プッシュ</em></strong> していきます。</p>
+      <p>準備として <a href="https://github.co.jp/">GitHub</a>
+      にログインして <code>GitHub-Test-2</code>
+      という空のリポジトリを作成します。基本的にはプロジェクトフォルダ
+      (ローカルリポジトリ)
+      と同じ名前にしておくことがお勧めですが、違う名前を設定することもできます。</p>
+      <p>GitHub で <strong>空のリポジトリ</strong>
+      を作成する方法についてはウェブの情報を参照してください。作成時には<span
+      class="masked">「Add a README
+      file」のオプションにチェックを入れない</span>
+      ように注意してください。また「<strong>Public</strong>」なリポジトリとしてください。作成したリモートリポジトリの
+      URL <code>https://github.com/zzzz/GitHub-Test-2.git</code>
+      をメモしておいてください、以降の作業で必要となります。</p>
+      <div class="note type-senior">
+      <p><strong>コマンドラインからGutHubにリポジトリを新規作成するには</strong></p>
+      <p>前回講義の VSCode を使う方法では、VSCode から GitHub
+      に新規のリポジトリを作成することができました。この操作をコマンドラインから行なうためには、別途
+      <a href="https://www.google.com/search?q=GitHub+CLI">GitHub
+      CLI</a> というソフトをPCにインストールする必要があります。CLI:
+      Command Line Interface。</p>
+      <p>この授業で扱う範囲では GitHub CLI
+      を使用する必要性がないので、ここではウェブブラウザ上からリポジトリを新規作成してもらっています。</p>
+      </div>
+      <p>Git bash の操作に戻ります。<code>pwd</code>
+      でカレントフォルダが
+      <code>/c/Users/xxxx/Documents/GitHub-Test-2</code>
+      であることを確認してください。</p>
+      <p><code>git remote add</code>
+      コマンドを使って「ローカルリポジトリ」と先ほど作成した「リモートリポジトリ」を紐づけます。以下のコマンドにより、以降
+      <code>https://github.com/zzzz/GitHub-Test-2.git</code> を
+      <code>origin</code>
+      というショートカットネームで扱えるようになります。git では
+      <strong>慣例的にメインとなるリモートリポジトリには</strong>
+      <code>origin</code>(オリジン)
+      <strong>という名前をつけます</strong>。</p>
+      <pre><code>$ git remote add origin https://github.com/zzzz/GitHub-Test-2.git</code></pre>
+      <p>実行してエラーが返ってこなければ成功です。設定した<strong>リモートリポジトリURL</strong>は
+      <code>git remote -v</code> コマンドで確認できます。</p>
+      <pre><code>$ git remote -v
+origin  https://github.com/zzzz/GitHub-Test-2.git (fetch)
+origin  https://github.com/zzzz/GitHub-Test-2.git (push)</code></pre>
+      <p>間違って設定した場合は、<code>git remote remove origin</code>
+      コマンドで情報を削除して、再度、<code>git remote add</code>
+      コマンドを実行してください。</p>
+      <p>準備ができたので <code>git push</code>
+      で、ローカルリポジトリの内容を、リモートリポジトリに
+      <strong><em>プッシュ</em></strong> していきます。次のように
+      <code>git push -u origin main</code> とコマンドを入力します。</p>
+      <pre><code>$ git push -u origin main
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 347 bytes | 347.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/zzzz/GitHub-Test-2.git
+ * [new branch]      main -&gt; main
+branch &#39;main&#39; set up to track &#39;origin/main&#39;.</code></pre>
+      <p>上記のコマンドは「現在のブランチを <code>origin</code> の
+      <code>main</code> ブランチにプッシュせよ」という意味になります。
+      ここで、現在のブランチとは (さきほど) <code>git status</code>
+      で確認したようにローカルリポジトリの <code>main</code> です。また
+      <code>origin</code> とは
+      <code>https://github.com/zzzz/GitHub-Test-2.git</code>
+      に名付けたショートカットネームでした。つまり、<strong>ローカルリポジトリの</strong>
+      <code>main</code> <strong>ブランチの情報 (変更履歴)
+      を、リモートリポジトリの</strong> <code>main</code>
+      <strong>ブランチにアップロードせよ</strong>、という意味になります。</p>
+      <p>もし、認証要求があれば、指示に従って GitHub の Username と
+      Password を入力してください (前回の授業で VSCode
+      からのプッシュ操作を通じて認証を済ませており、その情報を git
+      が持っているので認証要求はされないと思います)。</p>
+      <p>念のため、ウェブブラウザで GitHub の
+      <code>GitHub-Test-2.git</code> のトップページにアクセスして
+      (必要に応じてウェブブラウザをリロードして)、ローカルリポジトリの内容
+      (<code>README.md</code>)
+      がリモートリポジトリに反映されていることを確認してください。</p>
+      <figure>
+      <img src="figs/15/git-command-06.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>以上のように、本来 git
+      の操作はコマンドラインから実行します。ただし、この方法は煩雑であるため
+      VSCode や Sourcetree、<a href="https://desktop.github.com/">GitHub
+      Desktop</a>
+      などのGUIアプリが使用されなす。なお、中級者以上はコマンドラインからの操作を好む傾向にあります。</p>
+      <h2 data-number="3.5" id="リポジトリの削除"><span
+      class="header-section-number">3.5</span> リポジトリの削除</h2>
+      <p>ここで作成した「ローカルリポジトリ」と「リモートリポジトリ」を削除しておいてください。</p>
+      <h1 data-number="4" id="htmlcssの基礎"><span
+      class="header-section-number">4</span> HTML/CSSの基礎</h1>
+      <p>GitHub
+      を利用したチーム開発のチュートリアルとして「<strong>ウェブページの作成</strong>」を取り上げる関係で、簡単に
+      <strong>HTML/CSS</strong> について学んでおきます。HTML/CSS
+      はインターンシップや就職・進学にむけて <strong>ポートフォリオ
+      (ウェブページ)</strong> を作成するときにも利用します。</p>
+      <div class="note type-senior">
+      <p><strong>ポートフォリオとは</strong></p>
+      <p>IT系エンジニアを目指す学生にとっての「ポートフォリオ」とは、自分のスキルや経験、成果物をまとめて示すものです。履歴書や職務経歴書が経歴を示すのに対し、ポートフォリオは「自分が何ができるのか」を具体的に示す資料となります。具体的な内容としては「自己紹介・経歴」「スキルセット
+      (使用経験のあるプログラミング言語や開発環境、フレームワーク、クラウドサービス、ツールなど)」「成果物・制作物」「資格
+      (情報技術/その他)」「コンテスト・ハッカソン・イベント・セミナー・会社見学・インターンシップなどの参加歴」「その他
+      (GutHub / AtCoder / Techful / SNS などのリンク)
+      」など記載します。内容の特性上、一般にはウェブページの形式で作成・公開されることが多いです。</p>
+      <ol type="1">
+      <li>https://yamasy.info/ (明石高専OG)</li>
+      <li>https://kisaragi2342.com/portfolio/ (高専生)</li>
+      <li>https://nnsnodnb.github.io/ (高専生)</li>
+      <li>https://sample-portfolio-psi.vercel.app/</li>
+      </ol>
+      </div>
+      <p>普段、私たちが目にしているウェブページは
+      <strong><em>HTML</em></strong> (<strong>HyperText Markup
+      Language</strong>) と <strong><em>CSS</em></strong>
+      (<strong>Cascading Style Sheets</strong>)
+      という言語を組み合わせつくられています。いずれも、Pythonプログラムと同じように実体は
+      <span class="masked">テキストファイル</span> であり、それを Chrome
+      や Edge などのウェブブラウザが解釈して
+      <strong>ウェブページとしてレンダリング</strong>して表示しています。</p>
+      <p>なお、ウェブブラウザが、ウェブサーバから HTML や CSS
+      を取得するときに使用する<strong>プロトコル</strong>
+      (通信の規約・規則) を <span class="masked">HTTP (Hypertext
+      Transfer Protocl)</span> といいます。</p>
+      <div class="note type-tips">
+      <p><strong>ウェブデザイナー</strong></p>
+      <p><a
+      href="https://careergarden.jp/webdesigner/">ウェブデザイナー</a>はウェブサイトやウェブサービス、ウェブアプリケーションなどの「外観」「視覚要素」「使いやすさ」などを主に設計する仕事です。この仕事ではデザインの知識に加えて、それを実際に形にするために
+      <strong>HTML/CSS
+      の理解と知識、実践スキルが求められます</strong>。その他にも
+      JavaScript や Adobe Photoshop、Illustrator
+      などのデザインソフトのスキルも要求されます。また、仕事では経験や実績も重視さるため、将来ウェブデザイナーを目指す場合、早期に
+      HTML と CSS
+      を学び、ポートフォリオを充実させていくことが大切です。</p>
+      <p>また、企業に所属せずにフリーランス・個人として活躍する人も多いのが、ウェブデザイナーの特徴のひとつです。</p>
+      </div>
+      <h2 data-number="4.1" id="準備"><span
+      class="header-section-number">4.1</span> 準備</h2>
+      <p>HTMLとCSSも概要を理解するために「カレーのレシピを掲載する簡素なウェブページ」を作成してみます。適当な場所に
+      <code>Curry-Recipe</code>
+      という名前のプロジェクトフォルダを作成し、それを VSCode
+      で開いてください。</p>
+      <div class="note type-tips">
+      <p><strong>HTMLとCSSの役割りの違い</strong></p>
+      <p><strong>HTML（HyperText Markup Language）</strong>
+      はウェブページの構造や内容 (コンテンツ)
+      を記述するために使用されます。一方で <strong>CSS（Cascading Style
+      Sheets）</strong>
+      はウェブページのレイアウトや体裁、装飾を制御するために使用されます。端的に言えば
+      HTML は <span class="masked">何を表示するか</span> を、CSSは <span
+      class="masked">どのように表示するか</span> を担当します。</p>
+      <p>具体的には、HTMLでは「これはタイトルです」「これはリンクです」「これはXXXの子要素です」のように<strong>テキストコンテンツに意味</strong>を与えます。一方で、CSSでは「このテキストは赤色です」「この要素は画面の右上に配置します」といった<strong>純粋な視覚的な情報</strong>を与えます。</p>
+      <p>なお、CSSを使用せずにHTMLだけでもウェブページを作成することもできます。しかし、その場合、デザインやレイアウトのカスタマイズが限られることになります。</p>
+      </div>
+      <h2 data-number="4.2" id="html"><span
+      class="header-section-number">4.2</span> HTML</h2>
+      <p>HTML (HyperText <strong>Markup</strong> Language)
+      は、元となる文章 (プレーンテキスト) に対して
+      <code>&lt;strong&gt;</code> と <code>&lt;/strong&gt;</code>
+      のような <strong>タグ</strong>
+      と呼ばれるものを使って<strong>マークアップ</strong>することで
+      (=意味付けすることで) 、<span
+      class="masked">「見出し」「段落」「リスト
+      (箇条書き)」「リンク」「表」「画像の埋め込み」</span>といったページ構造や意味を定義するマークアップ言語です。</p>
+      <p>実際に HTMLファイル (<code>index.html</code>)
+      を作成して「ウェブブラウザから閲覧できること」を確認してみます。</p>
+      <p>適当な場所に <code>Curry-Recipe</code>
+      というプロジェクトフォルダを作成して VSCode でオープンし、そこで
+      <code>index.html</code>
+      というファイルを新規作成して、以下の内容を貼り付けて保存してください。</p>
+      <div class="sourceCode" id="cb23" data-caption="index.html"><pre
+      class="sourceCode numberSource html numberLines"><code class="sourceCode html"><span id="cb23-1"><a href="#cb23-1"></a><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a><span class="kw">&lt;html</span> <span class="er">lang</span><span class="ot">=</span><span class="st">&quot;ja&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb23-3"><a href="#cb23-3"></a>  <span class="kw">&lt;head&gt;</span></span>
+<span id="cb23-4"><a href="#cb23-4"></a>    <span class="kw">&lt;meta</span> <span class="er">charset</span><span class="ot">=</span><span class="st">&quot;utf-8&quot;</span> <span class="kw">/&gt;</span></span>
+<span id="cb23-5"><a href="#cb23-5"></a>    <span class="kw">&lt;title&gt;</span>XXX&#39;s Curry Recipe<span class="kw">&lt;/title&gt;</span></span>
+<span id="cb23-6"><a href="#cb23-6"></a>    <span class="kw">&lt;meta</span></span>
+<span id="cb23-7"><a href="#cb23-7"></a><span class="ot">      name=</span><span class="st">&quot;viewport&quot;</span></span>
+<span id="cb23-8"><a href="#cb23-8"></a><span class="ot">      content=</span><span class="st">&quot;width=device-width, initial-scale=1.0, user-scalable=yes&quot;</span></span>
+<span id="cb23-9"><a href="#cb23-9"></a>    <span class="kw">/&gt;</span></span>
+<span id="cb23-10"><a href="#cb23-10"></a>  <span class="kw">&lt;/head&gt;</span></span>
+<span id="cb23-11"><a href="#cb23-11"></a></span>
+<span id="cb23-12"><a href="#cb23-12"></a>  <span class="kw">&lt;body&gt;</span> <span class="co">&lt;!-- ここから本文開始 --&gt;</span></span>
+<span id="cb23-13"><a href="#cb23-13"></a></span>
+<span id="cb23-14"><a href="#cb23-14"></a>    <span class="kw">&lt;h1&gt;</span>XXX&#39;s Curry Recipe<span class="kw">&lt;/h1&gt;</span></span>
+<span id="cb23-15"><a href="#cb23-15"></a>    <span class="kw">&lt;p&gt;</span></span>
+<span id="cb23-16"><a href="#cb23-16"></a>      我が家に伝わる一子相伝・門外不出の<span class="kw">&lt;strong&gt;</span>秘伝のカレーレシピ<span class="kw">&lt;/strong&gt;</span>を今だけ特別に大公開！<span class="kw">&lt;br</span> <span class="kw">/&gt;</span></span>
+<span id="cb23-17"><a href="#cb23-17"></a>      このカレーがなぜ代々受け継がれてきたのか、その魅力をあなたも実感してください。秘伝のスパイスと調理法、家族を幸せにする魔法の一皿を体験してください！</span>
+<span id="cb23-18"><a href="#cb23-18"></a>    <span class="kw">&lt;/p&gt;</span></span>
+<span id="cb23-19"><a href="#cb23-19"></a></span>
+<span id="cb23-20"><a href="#cb23-20"></a>    <span class="kw">&lt;img</span> <span class="er">src</span><span class="ot">=</span><span class="st">&quot;curryrice.jpg&quot;</span> <span class="er">alt</span><span class="ot">=</span><span class="st">&quot;カレーライスの画像&quot;</span> <span class="er">width</span><span class="ot">=</span><span class="st">&quot;100%&quot;</span> <span class="kw">/&gt;</span></span>
+<span id="cb23-21"><a href="#cb23-21"></a></span>
+<span id="cb23-22"><a href="#cb23-22"></a>    <span class="kw">&lt;h2&gt;</span>材料<span class="kw">&lt;/h2&gt;</span></span>
+<span id="cb23-23"><a href="#cb23-23"></a>    <span class="kw">&lt;p&gt;</span></span>
+<span id="cb23-24"><a href="#cb23-24"></a>      <span class="kw">&lt;strong&gt;</span>8皿分の分量<span class="kw">&lt;/strong&gt;</span>です。予算や気分にあわせて具材を追加したり、量を調整してください。</span>
+<span id="cb23-25"><a href="#cb23-25"></a>    <span class="kw">&lt;/p&gt;</span></span>
+<span id="cb23-26"><a href="#cb23-26"></a></span>
+<span id="cb23-27"><a href="#cb23-27"></a>    <span class="kw">&lt;ul&gt;</span></span>
+<span id="cb23-28"><a href="#cb23-28"></a>      <span class="kw">&lt;li&gt;</span>市販のカレールー（中辛）... 1/2箱<span class="kw">&lt;/li&gt;</span></span>
+<span id="cb23-29"><a href="#cb23-29"></a>      <span class="kw">&lt;li&gt;</span>鶏肉 ... 400g<span class="kw">&lt;/li&gt;</span></span>
+<span id="cb23-30"><a href="#cb23-30"></a>      <span class="kw">&lt;li&gt;</span>玉ねぎ ... 3個（中サイズ）<span class="kw">&lt;/li&gt;</span></span>
+<span id="cb23-31"><a href="#cb23-31"></a>      <span class="kw">&lt;li&gt;</span>にんにく ... 1片<span class="kw">&lt;/li&gt;</span></span>
+<span id="cb23-32"><a href="#cb23-32"></a>      <span class="kw">&lt;li&gt;</span>水 ... 700ml<span class="kw">&lt;/li&gt;</span></span>
+<span id="cb23-33"><a href="#cb23-33"></a>      <span class="kw">&lt;li&gt;</span>サラダ油 ... 大さじ1<span class="kw">&lt;/li&gt;</span></span>
+<span id="cb23-34"><a href="#cb23-34"></a>      <span class="kw">&lt;li&gt;</span></span>
+<span id="cb23-35"><a href="#cb23-35"></a>        <span class="kw">&lt;a</span> <span class="er">href</span><span class="ot">=</span><span class="st">&quot;https://ja.wikipedia.org/wiki/ガラムマサラ&quot;</span><span class="kw">&gt;</span>ガラムマサラ<span class="kw">&lt;/a&gt;</span></span>
+<span id="cb23-36"><a href="#cb23-36"></a>        ... 適量</span>
+<span id="cb23-37"><a href="#cb23-37"></a>      <span class="kw">&lt;/li&gt;</span></span>
+<span id="cb23-38"><a href="#cb23-38"></a>    <span class="kw">&lt;/ul&gt;</span></span>
+<span id="cb23-39"><a href="#cb23-39"></a></span>
+<span id="cb23-40"><a href="#cb23-40"></a>    <span class="kw">&lt;h2&gt;</span>作り方<span class="kw">&lt;/h2&gt;</span></span>
+<span id="cb23-41"><a href="#cb23-41"></a>    <span class="kw">&lt;p&gt;</span>近日大公開！<span class="kw">&lt;/p&gt;</span></span>
+<span id="cb23-42"><a href="#cb23-42"></a>    </span>
+<span id="cb23-43"><a href="#cb23-43"></a>  <span class="kw">&lt;/body&gt;</span> <span class="co">&lt;!-- ここまで本文終了 --&gt;</span></span>
+<span id="cb23-44"><a href="#cb23-44"></a><span class="kw">&lt;/html&gt;</span></span></code></pre></div>
+      <p>ファイルを保存のときは VSCode
+      のウィンドウ右下から文字コードが「<strong>UTF-8</strong>」になっていることを確認してください。</p>
+      <figure>
+      <img src="figs/15/char-set.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>また、<code>&lt;img src="curryrice.jpg" alt="カレーライスの画像" width="100%" /&gt;</code>
+      のタグで画像を表示するために、次の画像をダウンロードしてプロジェクトフォルダの
+      <code>index.html</code> と同じ階層に <code>curryrice.jpg</code>
+      という名前で保存してください
+      (この画像は生成系AIから生成したものであり、著作権などの問題はありません)
+      。</p>
+      <figure>
+      <img src="figs/15/curryrice.jpg" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>以上が完了したら、エクスプローラでドキュメントフォルダを開き
+      <code>index.html</code>
+      をダブルクリックします。標準的な環境であれば、ウェブブラウザが起動して、レンダリングされた
+      HTML
+      を確認することができます。現時点では、<strong>CSSを適用していないため、簡素で地味なユーザーフレンドリーとは言えないページ</strong>となっていることが分かると思います。</p>
+      <div class="note type-senior">
+      <p><strong>VSCode拡張機能: Live Server</strong></p>
+      <p>VSCodeに <strong>Live Server</strong>
+      という拡張機能をインストールすると VSCode で編集した
+      HTML/CSS/JavaScript
+      の<strong>変更内容をリアルタイムにウェブブラウザに反映させることができます</strong>
+      (ブラウザ側で手動でリロードする必要がなくなります)。VSCode
+      の拡張機能の検索欄に <code>ritwickdey.liveserver</code>
+      を入力すれば「Live Server」という拡張機能を見つけることができます
+      (ぜひインストールしておいてください)。</p>
+      <p>インストール後、次のようにウィンドウ右下の <strong>Go
+      Live</strong>
+      アイコンをクリックするとブラウザが起動して、VSCode上でのファイル編集がリアルタイム反映されるようになります。詳しい機能や使い方に関しては「<a
+      href="https://www.google.com/search?q=VSCode+Live+Server">VSCode
+      Live Server</a>」でウェブ検索してください。</p>
+      <figure>
+      <img src="figs/15/live-server.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      </div>
+      <h3 data-number="4.2.1" id="htmlのタグの意味"><span
+      class="header-section-number">4.2.1</span> HTMLのタグの意味</h3>
+      <p><strong><em>HTMLタグ</em></strong>
+      とは「HTMLファイルに記述するマークアップのための記号」で、特定のキーワードを
+      <strong>角括弧</strong> <code>&lt;</code> と <code>&gt;</code>
+      で囲んだものです。HTMLに利用可能なタグ一覧は「<a
+      href="https://www.google.com/search?q=HTML+タグ一覧">HTML
+      タグ一覧</a>」などでキーワード検索してください。</p>
+      <p>一般に、タグには <strong>開始タグ</strong> (例えば
+      <code>&lt;strong&gt;</code>) と、<strong>終了タグ</strong> (例えば
+      <code>&lt;/strong&gt;</code>) があり、終了タグにはスラッシュ
+      <code>/</code> が付きます。</p>
+      <p>上記の <code>index.html</code>
+      に使われている各タグの概要は次のとおりです。</p>
+      <ul>
+      <li><code>&lt;!DOCTYPE html&gt;</code>: このテキスト
+      (HTMLファイル) が HTML5
+      で書かれていることをブラウザに通知します。これにより、ブラウザがテキストを適切に解釈・表示できます。</li>
+      <li><code>&lt;html lang="ja"&gt;</code>: HTML
+      文書全体を囲む最も外側の要素です。<code>lang="ja"</code>
+      属性は、このページが日本語であることを示しています。</li>
+      <li><code>&lt;head&gt;</code>:
+      この要素は、メタデータやリンク、スクリプト、スタイルシートなど、ページに関する補足情報を含みます。</li>
+      <li><code>&lt;meta charset="utf-8" /&gt;</code>:
+      このファイルの文字エンコーディングが「UTF-8」であることを示しています。実際のファイルの文字コードにあわせて適切に設定しないと
+      <span class="masked">文字化け</span> が生じます。</li>
+      <li><code>&lt;title&gt;</code>:
+      ブラウザのタブやウィンドウで表示されるページのタイトルを設定します。</li>
+      <li><code>&lt;body&gt;</code>:
+      この要素内にページの主要なコンテンツ (テキスト、画像、リンクなど)
+      を配置します。</li>
+      <li><code>&lt;h1&gt;</code>, <code>&lt;h2&gt;</code>:
+      見出しを作成します。<code>&lt;h1&gt;</code> はトップレベル
+      (第1レベル) の見出し、<code>&lt;h2&gt;</code> はその次のレベル
+      (第2レベル) の見出しを意味します。</li>
+      <li><code>&lt;p&gt;</code>: 段落 (パラグラフ) を作成します。</li>
+      <li><code>&lt;strong&gt;</code>: テキストを強調します。</li>
+      <li><code>&lt;img&gt;</code>:
+      画像を埋め込みます。<code>src</code>属性でファイルパス、<code>alt</code>属性で代替テキスト、<code>width</code>属性で幅を指定します。</li>
+      <li><code>&lt;ul&gt;</code>:
+      「・」を行頭記号とする箇条書きを作成します。この要素の内部に
+      <code>&lt;li&gt;</code> を配置します。</li>
+      <li><code>&lt;li&gt;</code>: 箇条書きの各項目を定義します。</li>
+      <li><code>&lt;a&gt;</code>: アンカータグです。<span
+      class="masked">ハイパーリンク</span> を作成する際に使用され
+      <code>href</code> 属性でリンク先URLを指定します。</li>
+      </ul>
+      <p>各タグの詳細はウェブ検索したり、<a
+      href="https://chat.openai.com/chat">ChatGPT</a>や Bing AI
+      などの生成系AIで「<strong>HTMLの</strong><code>&lt;a&gt;</code><strong>タグについて初心者向けに解説してください。</strong>」などと質問して解決してください
+      (かなり丁寧に解説してくれます)。</p>
+      <ul>
+      <li>参考: <a
+      href="https://chat.openai.com/share/c87624e7-cb9e-41c1-b7ff-8ddfd7355e5f">ChatGPT-4での質問例・回答例</a>。</li>
+      </ul>
+      <h3 data-number="4.2.2" id="演習①"><span
+      class="header-section-number">4.2.2</span> 演習①</h3>
+      <p>次の要求を満たすように <code>index.html</code>
+      を編集し、その結果をウェブブラウザで確認せよ。</p>
+      <ul>
+      <li>カレーの材料に「<strong>じゃがいも …
+      2個</strong>」を追加したい。</li>
+      <li>カレーの材料に「<strong>ターメリック …
+      適量</strong>」を追加したい。また、ターメリックの文字をクリックしたときに、Wikipedia
+      の当該ページに遷移するようにしたい。</li>
+      <li>材料の説明文において「8皿分の分量です。」のあとに
+      <strong>改行</strong>
+      を入れて「予算や気分にあせて・・・」を表示したい。</li>
+      </ul>
+      <p>3つとも既に記述済みの HTML を注意深く見れば、そこに
+      <strong>ヒント (ほぼほぼ解答)</strong> があります。</p>
+      <h2 data-number="4.3" id="css"><span
+      class="header-section-number">4.3</span> CSS</h2>
+      <p>つづいて、ウェブページの
+      <strong>レイアウトや装飾を定義するCSSファイル</strong>
+      をプロジェクトフォルダに追加します。<code>main.css</code>
+      というファイルを新規作成して、以下の内容を貼り付けて保存してください。</p>
+      <div class="sourceCode" id="cb24" data-caption="main.css"><pre
+      class="sourceCode numberSource css numberLines"><code class="sourceCode css"><span id="cb24-1"><a href="#cb24-1"></a>html {</span>
+<span id="cb24-2"><a href="#cb24-2"></a>  <span class="kw">-ms-text-size-adjust</span>: <span class="dv">100</span><span class="dt">%</span><span class="op">;</span></span>
+<span id="cb24-3"><a href="#cb24-3"></a>  <span class="kw">-webkit-text-size-adjust</span>: <span class="dv">100</span><span class="dt">%</span><span class="op">;</span></span>
+<span id="cb24-4"><a href="#cb24-4"></a>  <span class="kw">font-family</span>: <span class="st">&quot;Yusei Magic&quot;</span><span class="op">,</span> <span class="dv">sans-serif</span><span class="op">;</span></span>
+<span id="cb24-5"><a href="#cb24-5"></a>  --theme-color-1<span class="in">: #f50</span>;</span>
+<span id="cb24-6"><a href="#cb24-6"></a>  --theme-color-2<span class="in">: #fc3</span>;</span>
+<span id="cb24-7"><a href="#cb24-7"></a>  <span class="kw">color</span>: <span class="cn">#454545</span><span class="op">;</span></span>
+<span id="cb24-8"><a href="#cb24-8"></a>}</span>
+<span id="cb24-9"><a href="#cb24-9"></a></span>
+<span id="cb24-10"><a href="#cb24-10"></a>body {</span>
+<span id="cb24-11"><a href="#cb24-11"></a>  <span class="kw">color</span>: <span class="fu">var(</span><span class="va">--main-foreground</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb24-12"><a href="#cb24-12"></a>  <span class="kw">line-height</span>: <span class="dv">1.5</span><span class="op">;</span></span>
+<span id="cb24-13"><a href="#cb24-13"></a>  <span class="kw">word-wrap</span>: <span class="dv">break-word</span><span class="op">;</span></span>
+<span id="cb24-14"><a href="#cb24-14"></a>  <span class="kw">box-sizing</span>: <span class="dv">border-box</span><span class="op">;</span></span>
+<span id="cb24-15"><a href="#cb24-15"></a>  <span class="kw">max-width</span>: <span class="dv">980</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb24-16"><a href="#cb24-16"></a>  <span class="kw">margin</span>: <span class="dv">2</span><span class="dt">em</span> <span class="bu">auto</span><span class="op">;</span></span>
+<span id="cb24-17"><a href="#cb24-17"></a>  <span class="kw">padding</span>: <span class="dv">0</span><span class="dt">px</span> <span class="dv">30</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb24-18"><a href="#cb24-18"></a>}</span>
+<span id="cb24-19"><a href="#cb24-19"></a></span>
+<span id="cb24-20"><a href="#cb24-20"></a>h1 {</span>
+<span id="cb24-21"><a href="#cb24-21"></a>  <span class="kw">position</span>: <span class="dv">relative</span><span class="op">;</span></span>
+<span id="cb24-22"><a href="#cb24-22"></a>  <span class="kw">text-align</span>: <span class="dv">center</span><span class="op">;</span></span>
+<span id="cb24-23"><a href="#cb24-23"></a>  <span class="kw">font-size</span>: <span class="dv">280</span><span class="dt">%</span><span class="op">;</span></span>
+<span id="cb24-24"><a href="#cb24-24"></a>  <span class="kw">padding</span>: <span class="dv">0.2</span><span class="dt">em</span> <span class="dv">0.5</span><span class="dt">em</span><span class="op">;</span></span>
+<span id="cb24-25"><a href="#cb24-25"></a>  <span class="kw">letter-spacing</span>: <span class="dv">0.1</span><span class="dt">em</span><span class="op">;</span></span>
+<span id="cb24-26"><a href="#cb24-26"></a>  <span class="kw">text-shadow</span>: <span class="cn">#fff</span> <span class="dv">2</span><span class="dt">px</span> <span class="dv">0</span><span class="op">,</span> <span class="cn">#fff</span> <span class="dv">-2</span><span class="dt">px</span> <span class="dv">0</span><span class="op">,</span> <span class="cn">#fff</span> <span class="dv">0</span> <span class="dv">-2</span><span class="dt">px</span><span class="op">,</span> <span class="cn">#fff</span> <span class="dv">0</span> <span class="dv">2</span><span class="dt">px</span><span class="op">,</span> <span class="cn">#fff</span> <span class="dv">2</span><span class="dt">px</span> <span class="dv">2</span><span class="dt">px</span><span class="op">,</span></span>
+<span id="cb24-27"><a href="#cb24-27"></a>    <span class="cn">#fff</span> <span class="dv">-2</span><span class="dt">px</span> <span class="dv">2</span><span class="dt">px</span><span class="op">,</span> <span class="cn">#fff</span> <span class="dv">2</span><span class="dt">px</span> <span class="dv">-2</span><span class="dt">px</span><span class="op">,</span> <span class="cn">#fff</span> <span class="dv">-2</span><span class="dt">px</span> <span class="dv">-2</span><span class="dt">px</span><span class="op">,</span> <span class="cn">#fff</span> <span class="dv">1</span><span class="dt">px</span> <span class="dv">2</span><span class="dt">px</span><span class="op">,</span> <span class="cn">#fff</span> <span class="dv">-1</span><span class="dt">px</span> <span class="dv">2</span><span class="dt">px</span><span class="op">,</span></span>
+<span id="cb24-28"><a href="#cb24-28"></a>    <span class="cn">#fff</span> <span class="dv">1</span><span class="dt">px</span> <span class="dv">-2</span><span class="dt">px</span><span class="op">,</span> <span class="cn">#fff</span> <span class="dv">-1</span><span class="dt">px</span> <span class="dv">-2</span><span class="dt">px</span><span class="op">,</span> <span class="cn">#fff</span> <span class="dv">2</span><span class="dt">px</span> <span class="dv">1</span><span class="dt">px</span><span class="op">,</span> <span class="cn">#fff</span> <span class="dv">-2</span><span class="dt">px</span> <span class="dv">1</span><span class="dt">px</span><span class="op">,</span> <span class="cn">#fff</span> <span class="dv">2</span><span class="dt">px</span> <span class="dv">-1</span><span class="dt">px</span><span class="op">,</span></span>
+<span id="cb24-29"><a href="#cb24-29"></a>    <span class="cn">#fff</span> <span class="dv">-2</span><span class="dt">px</span> <span class="dv">-1</span><span class="dt">px</span><span class="op">,</span> <span class="fu">rgba(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0.5</span><span class="fu">)</span> <span class="dv">3</span><span class="dt">px</span> <span class="dv">3</span><span class="dt">px</span> <span class="dv">3</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb24-30"><a href="#cb24-30"></a>  <span class="kw">background</span>: <span class="fu">var(</span><span class="va">--theme-color-2</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb24-31"><a href="#cb24-31"></a>  <span class="kw">box-shadow</span>: <span class="dv">0</span><span class="dt">px</span> <span class="dv">0</span><span class="dt">px</span> <span class="dv">0</span><span class="dt">px</span> <span class="dv">5</span><span class="dt">px</span> <span class="fu">var(</span><span class="va">--theme-color-2</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb24-32"><a href="#cb24-32"></a>  <span class="kw">border</span>: <span class="dv">dashed</span> <span class="dv">2</span><span class="dt">px</span> <span class="cn">white</span><span class="op">;</span></span>
+<span id="cb24-33"><a href="#cb24-33"></a>}</span>
+<span id="cb24-34"><a href="#cb24-34"></a></span>
+<span id="cb24-35"><a href="#cb24-35"></a>h1<span class="in">::after</span> {</span>
+<span id="cb24-36"><a href="#cb24-36"></a>  <span class="kw">position</span>: <span class="dv">absolute</span><span class="op">;</span></span>
+<span id="cb24-37"><a href="#cb24-37"></a>  <span class="kw">content</span>: <span class="st">&quot;&quot;</span><span class="op">;</span></span>
+<span id="cb24-38"><a href="#cb24-38"></a>  <span class="kw">left</span>: <span class="dv">-7.5</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb24-39"><a href="#cb24-39"></a>  <span class="kw">top</span>: <span class="dv">-7.5</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb24-40"><a href="#cb24-40"></a>  <span class="kw">border-width</span>: <span class="dv">0</span> <span class="dv">0</span> <span class="dv">1</span><span class="dt">em</span> <span class="dv">1</span><span class="dt">em</span><span class="op">;</span></span>
+<span id="cb24-41"><a href="#cb24-41"></a>  <span class="kw">border-style</span>: <span class="dv">solid</span><span class="op">;</span></span>
+<span id="cb24-42"><a href="#cb24-42"></a>  <span class="kw">border-color</span>: <span class="cn">#fff</span> <span class="cn">#fff</span> <span class="fu">var(</span><span class="va">--theme-color-2</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb24-43"><a href="#cb24-43"></a>  <span class="kw">box-shadow</span>: <span class="dv">1</span><span class="dt">px</span> <span class="dv">1</span><span class="dt">px</span> <span class="dv">1</span><span class="dt">px</span> <span class="fu">rgba(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0.15</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb24-44"><a href="#cb24-44"></a>}</span>
+<span id="cb24-45"><a href="#cb24-45"></a></span>
+<span id="cb24-46"><a href="#cb24-46"></a>h2 {</span>
+<span id="cb24-47"><a href="#cb24-47"></a>  <span class="kw">position</span>: <span class="dv">relative</span><span class="op">;</span></span>
+<span id="cb24-48"><a href="#cb24-48"></a>  <span class="kw">font-size</span>: <span class="dv">200</span><span class="dt">%</span><span class="op">;</span></span>
+<span id="cb24-49"><a href="#cb24-49"></a>  <span class="kw">letter-spacing</span>: <span class="dv">0.05</span><span class="dt">em</span><span class="op">;</span></span>
+<span id="cb24-50"><a href="#cb24-50"></a>  <span class="kw">font-weight</span>: <span class="dv">normal</span><span class="op">;</span></span>
+<span id="cb24-51"><a href="#cb24-51"></a>  <span class="kw">padding</span>: <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">1.5</span><span class="dt">em</span><span class="op">;</span></span>
+<span id="cb24-52"><a href="#cb24-52"></a>  <span class="kw">border-bottom</span>: <span class="dv">3</span><span class="dt">px</span> <span class="dv">solid</span> <span class="fu">var(</span><span class="va">--theme-color-2</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb24-53"><a href="#cb24-53"></a>}</span>
+<span id="cb24-54"><a href="#cb24-54"></a></span>
+<span id="cb24-55"><a href="#cb24-55"></a>h2<span class="in">::before</span> {</span>
+<span id="cb24-56"><a href="#cb24-56"></a>  <span class="kw">position</span>: <span class="dv">absolute</span><span class="op">;</span></span>
+<span id="cb24-57"><a href="#cb24-57"></a>  <span class="kw">left</span>: <span class="dv">0.4</span><span class="dt">em</span><span class="op">;</span></span>
+<span id="cb24-58"><a href="#cb24-58"></a>  <span class="kw">font-weight</span>: <span class="dv">bold</span><span class="op">;</span></span>
+<span id="cb24-59"><a href="#cb24-59"></a>  <span class="kw">font-family</span>: <span class="st">&quot;Font Awesome 6 Free&quot;</span><span class="op">;</span></span>
+<span id="cb24-60"><a href="#cb24-60"></a>  <span class="kw">content</span>: <span class="st">&quot;</span><span class="sc">\f5ad</span><span class="st">&quot;</span><span class="op">;</span></span>
+<span id="cb24-61"><a href="#cb24-61"></a>  <span class="kw">top</span>: <span class="dv">0.2</span><span class="dt">em</span><span class="op">;</span></span>
+<span id="cb24-62"><a href="#cb24-62"></a>  <span class="kw">font-size</span>: <span class="dv">85</span><span class="dt">%</span><span class="op">;</span></span>
+<span id="cb24-63"><a href="#cb24-63"></a>  <span class="kw">color</span>: <span class="fu">var(</span><span class="va">--theme-color-2</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb24-64"><a href="#cb24-64"></a>}</span>
+<span id="cb24-65"><a href="#cb24-65"></a></span>
+<span id="cb24-66"><a href="#cb24-66"></a>img {</span>
+<span id="cb24-67"><a href="#cb24-67"></a>  <span class="kw">box-shadow</span>: <span class="fu">rgba(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0.35</span><span class="fu">)</span> <span class="dv">0</span><span class="dt">px</span> <span class="dv">5</span><span class="dt">px</span> <span class="dv">15</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb24-68"><a href="#cb24-68"></a>  <span class="kw">border-radius</span>: <span class="dv">20</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb24-69"><a href="#cb24-69"></a>}</span>
+<span id="cb24-70"><a href="#cb24-70"></a></span>
+<span id="cb24-71"><a href="#cb24-71"></a>strong {</span>
+<span id="cb24-72"><a href="#cb24-72"></a>  <span class="kw">font-style</span>: <span class="dv">normal</span><span class="op">;</span></span>
+<span id="cb24-73"><a href="#cb24-73"></a>  <span class="kw">font-weight</span>: <span class="dv">normal</span><span class="op">;</span></span>
+<span id="cb24-74"><a href="#cb24-74"></a>  <span class="kw">font-size</span>: <span class="dv">125</span><span class="dt">%</span><span class="op">;</span></span>
+<span id="cb24-75"><a href="#cb24-75"></a>  <span class="kw">padding</span>: <span class="dv">0</span> <span class="dv">0.2</span><span class="dt">em</span><span class="op">;</span></span>
+<span id="cb24-76"><a href="#cb24-76"></a>  <span class="kw">color</span>: <span class="fu">var(</span><span class="va">--theme-color-1</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb24-77"><a href="#cb24-77"></a>}</span>
+<span id="cb24-78"><a href="#cb24-78"></a></span>
+<span id="cb24-79"><a href="#cb24-79"></a>a {</span>
+<span id="cb24-80"><a href="#cb24-80"></a>  <span class="kw">text-decoration</span>: <span class="dv">none</span><span class="op">;</span></span>
+<span id="cb24-81"><a href="#cb24-81"></a>  <span class="kw">color</span>: <span class="fu">var(</span><span class="va">--theme-color-1</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb24-82"><a href="#cb24-82"></a>  <span class="kw">cursor</span>: <span class="dv">pointer</span><span class="op">;</span></span>
+<span id="cb24-83"><a href="#cb24-83"></a>  <span class="kw">border-bottom</span>: <span class="dv">1.5</span><span class="dt">px</span> <span class="dv">dashed</span><span class="op">;</span></span>
+<span id="cb24-84"><a href="#cb24-84"></a>  <span class="kw">transition</span>: background-color <span class="dv">0.5</span><span class="dt">s</span><span class="op">;</span></span>
+<span id="cb24-85"><a href="#cb24-85"></a>}</span>
+<span id="cb24-86"><a href="#cb24-86"></a></span>
+<span id="cb24-87"><a href="#cb24-87"></a>a<span class="in">:hover</span> {</span>
+<span id="cb24-88"><a href="#cb24-88"></a>  <span class="kw">color</span>: <span class="cn">white</span><span class="op">;</span></span>
+<span id="cb24-89"><a href="#cb24-89"></a>  <span class="kw">background-color</span>: <span class="fu">var(</span><span class="va">--theme-color-1</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb24-90"><a href="#cb24-90"></a>  <span class="kw">border-radius</span>: <span class="dv">4</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb24-91"><a href="#cb24-91"></a>  <span class="kw">border-bottom</span>: <span class="dv">none</span><span class="op">;</span></span>
+<span id="cb24-92"><a href="#cb24-92"></a>}</span>
+<span id="cb24-93"><a href="#cb24-93"></a></span>
+<span id="cb24-94"><a href="#cb24-94"></a>ul {</span>
+<span id="cb24-95"><a href="#cb24-95"></a>  <span class="kw">list-style</span>: <span class="dv">none</span><span class="op">;</span></span>
+<span id="cb24-96"><a href="#cb24-96"></a>  <span class="kw">padding</span>: <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb24-97"><a href="#cb24-97"></a>  <span class="kw">margin-block-start</span>: <span class="dv">0.7</span><span class="dt">em</span><span class="op">;</span></span>
+<span id="cb24-98"><a href="#cb24-98"></a>  <span class="kw">margin-block-end</span>: <span class="dv">0.7</span><span class="dt">em</span><span class="op">;</span></span>
+<span id="cb24-99"><a href="#cb24-99"></a>}</span>
+<span id="cb24-100"><a href="#cb24-100"></a></span>
+<span id="cb24-101"><a href="#cb24-101"></a>ul li {</span>
+<span id="cb24-102"><a href="#cb24-102"></a>  <span class="kw">position</span>: <span class="dv">relative</span><span class="op">;</span></span>
+<span id="cb24-103"><a href="#cb24-103"></a>  <span class="kw">padding</span>: <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">1.6</span><span class="dt">em</span><span class="op">;</span></span>
+<span id="cb24-104"><a href="#cb24-104"></a>  <span class="kw">margin</span>: <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb24-105"><a href="#cb24-105"></a>  <span class="kw">text-indent</span>: <span class="dv">0.5</span><span class="dt">em</span><span class="op">;</span></span>
+<span id="cb24-106"><a href="#cb24-106"></a>}</span>
+<span id="cb24-107"><a href="#cb24-107"></a></span>
+<span id="cb24-108"><a href="#cb24-108"></a>ul li<span class="in">::before</span> {</span>
+<span id="cb24-109"><a href="#cb24-109"></a>  <span class="kw">position</span>: <span class="dv">absolute</span><span class="op">;</span></span>
+<span id="cb24-110"><a href="#cb24-110"></a>  <span class="kw">left</span>: <span class="dv">0.5</span><span class="dt">em</span><span class="op">;</span></span>
+<span id="cb24-111"><a href="#cb24-111"></a>  <span class="kw">top</span>: <span class="dv">0.4</span><span class="dt">em</span><span class="op">;</span></span>
+<span id="cb24-112"><a href="#cb24-112"></a>  <span class="kw">font-size</span>: <span class="dv">75</span><span class="dt">%</span><span class="op">;</span></span>
+<span id="cb24-113"><a href="#cb24-113"></a>  <span class="kw">font-family</span>: <span class="st">&quot;Font Awesome 6 Free&quot;</span><span class="op">;</span></span>
+<span id="cb24-114"><a href="#cb24-114"></a>  <span class="kw">font-weight</span>: <span class="dv">bold</span><span class="op">;</span></span>
+<span id="cb24-115"><a href="#cb24-115"></a>  <span class="kw">content</span>: <span class="st">&quot;</span><span class="sc">\f816</span><span class="st">&quot;</span><span class="op">;</span></span>
+<span id="cb24-116"><a href="#cb24-116"></a>}</span></code></pre></div>
+      <p>さらに <code>index.html</code> ファイルなかの
+      <code>&lt;head&gt;</code> から <code>&lt;/head&gt;</code>
+      の範囲を<strong>次の内容に差し替えて上書き保存してください</strong>。<code>&lt;link&gt;</code>
+      タグを使用して<strong>各種スタイルシートを取得して読み込ませる</strong>ようにしています。</p>
+      <div class="sourceCode" id="cb25"
+      data-caption="index.html (抜粋)"><pre
+      class="sourceCode numberSource html numberLines"><code class="sourceCode html"><span id="cb25-1"><a href="#cb25-1"></a><span class="kw">&lt;head&gt;</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a>  <span class="kw">&lt;meta</span> <span class="er">charset</span><span class="ot">=</span><span class="st">&quot;utf-8&quot;</span> <span class="kw">/&gt;</span></span>
+<span id="cb25-3"><a href="#cb25-3"></a>  <span class="kw">&lt;title&gt;</span>XXX&#39;s Curry Recipe<span class="kw">&lt;/title&gt;</span></span>
+<span id="cb25-4"><a href="#cb25-4"></a>  <span class="kw">&lt;meta</span></span>
+<span id="cb25-5"><a href="#cb25-5"></a><span class="ot">    name=</span><span class="st">&quot;viewport&quot;</span></span>
+<span id="cb25-6"><a href="#cb25-6"></a><span class="ot">    content=</span><span class="st">&quot;width=device-width, initial-scale=1.0, user-scalable=yes&quot;</span> <span class="kw">/&gt;</span></span>
+<span id="cb25-7"><a href="#cb25-7"></a>  <span class="kw">&lt;link</span></span>
+<span id="cb25-8"><a href="#cb25-8"></a><span class="ot">    rel=</span><span class="st">&quot;stylesheet&quot;</span></span>
+<span id="cb25-9"><a href="#cb25-9"></a><span class="ot">    href=</span><span class="st">&quot;https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css&quot;</span> <span class="kw">/&gt;</span></span>
+<span id="cb25-10"><a href="#cb25-10"></a>  <span class="kw">&lt;link</span></span>
+<span id="cb25-11"><a href="#cb25-11"></a><span class="ot">    rel=</span><span class="st">&quot;stylesheet&quot;</span></span>
+<span id="cb25-12"><a href="#cb25-12"></a><span class="ot">    href=</span><span class="st">&quot;https://fonts.googleapis.com/css2?family=Yusei+Magic</span><span class="er">&amp;</span><span class="st">display=swap&quot;</span> <span class="kw">/&gt;</span></span>
+<span id="cb25-13"><a href="#cb25-13"></a>  <span class="kw">&lt;link</span> <span class="er">rel</span><span class="ot">=</span><span class="st">&quot;stylesheet&quot;</span> <span class="er">href</span><span class="ot">=</span><span class="st">&quot;main.css&quot;</span> <span class="kw">/&gt;</span></span>
+<span id="cb25-14"><a href="#cb25-14"></a><span class="kw">&lt;/head&gt;</span></span></code></pre></div>
+      <p>第07行目にある1個目の<code>&lt;link&gt;</code>タグでは「<strong>アイコンフォントライブラリ</strong>」を提供している<a
+      href="https://fontawesome.com/icons/categories">FontAwesome</a>という外部サイトからスタイルシートを読み込んでいます。これにより<i class="fa-solid fa-fish-fins"></i><i class="fa-solid fa-faucet-drip"></i><i class="fa-solid fa-poo"></i><i class="fa-solid fa-skull"></i>　のようなアイコンを装飾として利用できるようにようになります。</p>
+      <p>第10行目にある2個目の<code>&lt;link&gt;</code>タグでは <a
+      href="https://fonts.google.com/?subset=japanese">Google
+      Fonts</a>から <code>Yusei Magic</code> (油性マジック)
+      というフォントのスタイルシートを読み込んでいます。</p>
+      <p>第13行目にある3個目の<code>&lt;link&gt;</code>タグでは、先ほど作成した
+      <code>main.css</code>
+      というオリジナルのスタイルシートを読み込んでいます。</p>
+      <p>上記を完了したら
+      (HTMLもCSSも上書き保存されていることを確認して)
+      、改めてウェブブラウザで <code>index.html</code>
+      を開いて表示を確認してください。CSS (スタイルシート)
+      を適用したことで、<strong>雰囲気も UI/UX
+      も大きく改善</strong>されたことが確認できるはずです。</p>
+      <div class="note type-tips">
+      <p><strong>Chromeのデベロッパーツール</strong></p>
+      <p>Google Chrome を起動中に <code>F12</code> または
+      <code>Ctrl+Shift+I</code> を押下すると<strong>デベロッパーツール
+      (開発者向けツール) </strong>が起動します。デベロッパーツールでは
+      <span
+      class="masked">スマートフォンやタブレットなどのモバイルデバイス画面をエミュレート</span>
+      することができます。</p>
+      <figure>
+      <img src="figs/15/chrome_dev_tool.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>プリセットで用意されているデバイスは限られているので、必要に応じて下記URLの情報を参考にエミュレートデバイスを追加してください。上記画像の「iPhone
+      15 Pro」はカスタム追加したものです。</p>
+      <ul>
+      <li>https://github.com/amirshnll/custom-device-emulation-chrome</li>
+      </ul>
+      <p>この他、デベロッパーツールでは開発に役立つ機能が多数存在します。詳しくは「<a
+      href="https://www.google.com/search?q=Chrome+DevTools+使い方">Chrome
+      DevTools 使い方</a>」などでウェブ検索してください。</p>
+      </div>
+      <h3 data-number="4.3.1" id="演習②"><span
+      class="header-section-number">4.3.1</span> 演習②</h3>
+      <p>次の内容に取り組め。</p>
+      <ul>
+      <li>プロジェクトフォルダをローカルリポジトリに設定し、さらに
+      GitHub
+      にリモートリポジトリを発行せよ。リモートリポジトリは「Public」とし、名称は「Curry-Recipe」とすること。</li>
+      <li>リモートリポジトリ <code>Curry-Recipe</code> を GitHub Pages
+      の機能によりウェブ公開せよ (URL
+      は<code>https://xxxx.github.io/Curry-Recipe/</code>
+      のようになるはずである)
+      。また、公開されたウェブページをブラウザから確認せよ。</li>
+      <li>公開されたウェブページURLを表す <strong>QRコード</strong>
+      を生成し、それを利用してスマートフォンから公開されたウェブページを確認せよ。</li>
+      <li>HTML または CSS
+      を編集し、その内容を「コミット」「プッシュ」することで、編集した内容がウェブページに反映されることを確認せよ。</li>
+      </ul>
+      <p>既に体験しているため知っていると思いますが GitHub Pages
+      の各種機能は即時反映型ではない
+      (=<strong>内容や設定を変更しても、それが反映されるまでに少なくとも3分程度の時間がかかる</strong>)
+      ので注意していください。</p>
+      <p>以上、すべての演習を終えたらリモートリポジトリとローカルリポジトリを削除しておいてください。</p>
+      <h2 data-number="4.4" id="guthubリポジトリのクローン"><span
+      class="header-section-number">4.4</span>
+      GutHubリポジトリのクローン</h2>
+      <p>今後、<strong>授業</strong> や <strong>実験実習</strong>
+      では「プログラムのサンプルコード」や「開発環境や提出課題のテンプレート」が
+      <strong>GitHubリポジトリとして教員から提供・配付されること</strong>
+      があります。このようなケースでは、学生側で
+      <strong><em>クローン</em></strong>
+      というgit操作により、リモートリポジトリで公開されている内容
+      (サンプルコードやテンプレート) を自分のPCにダウンロードしてくる (=
+      リモートリポジトリ の内容を ローカルリポジトリ
+      に<strong>複製</strong>する) という作業が必要になります。</p>
+      <p>ここでは「<strong>GitHubリモートリポジトリで「提出課題のためのテンプレート(ひな形)」が配布されていて、それをベースとした開発を行ない、その成果を自分のGitHubアカウントのリモートリポジトリに発行し、そのURLを提出する</strong>」という一連の流れについて解説します。この操作は、今後、実際に利用するものなので確実に習得してください。</p>
+      <h3 data-number="4.4.1" id="urlの確認"><span
+      class="header-section-number">4.4.1</span> URLの確認</h3>
+      <p>はじめに、リモートリポジトリのURLを確認します。</p>
+      <p>git のクローン操作に必要な URL は
+      <code>https://github.com/TakeshiWada1980/Curry-Recipe-2.git</code>
+      のように末尾が <code>.git</code> となる形式です。この URL
+      はリモートリポジトリのトップページから、次のように取得することもできます。</p>
+      <figure>
+      <img src="figs/15/git-clone-01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p><i class="fa-regular fa-copy"></i> アイコンをクリックすると URL
+      がクリップボードにコピーされます。</p>
+      <h3 data-number="4.4.2" id="git-clone-コマンドの実行"><span
+      class="header-section-number">4.4.2</span> git clone
+      コマンドの実行</h3>
+      <p>ターミナル (Git Bashモードを推奨) を起動して、<code>cd</code>
+      コマンドを使って「ローカルリポジトリ (=プロジェクトフォルダ)
+      を作成したいフォルダ」に移動します。移動後は <code>pwd</code>
+      コマンドで現在位置を確認しておきます。</p>
+      <div class="sourceCode" id="cb26" data-caption="実行例"><pre
+      class="sourceCode bash"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd <span class="st">&quot;C:\Users\xxxx\Documents&quot;</span></span></code></pre></div>
+      <p>次のように <code>git clone [URL]</code>
+      とコマンド入力すると、カレントフォルダに
+      <code>Curry-Recipe-2</code>
+      というフォルダが作成、そのなかにURLで指定したリモートリポジトリの内容がクローンされます。</p>
+      <div class="sourceCode" id="cb27" data-caption="実行例"><pre
+      class="sourceCode bash"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git clone https://github.com/TakeshiWada1980/Curry-Recipe-2.git</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Cloning</span> into <span class="st">&#39;Curry-Recipe-2&#39;</span>...</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="ex">remote:</span> Enumerating objects: 5, done.</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="ex">remote:</span> Counting objects: 100% <span class="er">(</span><span class="ex">5/5</span><span class="kw">)</span><span class="ex">,</span> done.</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="ex">remote:</span> Compressing objects: 100% <span class="er">(</span><span class="ex">5/5</span><span class="kw">)</span><span class="ex">,</span> done.</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Receiving</span> objects: 100% <span class="er">(</span><span class="ex">5/5</span><span class="kw">)</span><span class="ex">,</span> 151.90 KiB <span class="kw">|</span> <span class="ex">75.95</span> MiB/s, don</span></code></pre></div>
+      <p>なお、<strong>作成されるフォルダ名を変えることもできます</strong>。例えば
+      <code>My-Curry-Recipe</code> というフォルダにクローンしたい場合は
+      <code>git clone [URL] My-Curry-Recipe</code>
+      のようにコマンドを実行します。</p>
+      <h3 data-number="4.4.3" id="不要なファイルの削除"><span
+      class="header-section-number">4.4.3</span>
+      不要なファイルの削除</h3>
+      <p>クローンによって作成されたフォルダの内部に移動します。</p>
+      <div class="sourceCode" id="cb28" data-caption="実行例"><pre
+      class="sourceCode bash"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd Curry-Recipe-2/</span></code></pre></div>
+      <p><code>ls -al</code> で確認すると <code>.git</code>
+      フォルダが存在することが確認できます。ここでは、提出課題のテンプレートとして使用するためにクローンしてきたので、元のリポジトリの
+      git履歴 (<code>.git</code>の内容) は不要です。<code>rm</code>
+      コマンドで <code>.git</code>
+      <strong>フォルダを削除</strong>しておきます。</p>
+      <div class="sourceCode" id="cb29" data-caption="実行例"><pre
+      class="sourceCode bash"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> rm <span class="at">-fr</span> .git</span></code></pre></div>
+      <p>この <code>.git</code>
+      フォルダには元のリポジトリで使用していたgit設定 (config)
+      なども含まれているため
+      <strong>残しておくと思わトラブルの原因</strong>
+      になります。特に必要性がない限り、一旦、削除してください。</p>
+      <h3 data-number="4.4.4" id="git初期化-開発-github発行"><span
+      class="header-section-number">4.4.4</span> git初期化 / 開発 /
+      GitHub発行</h3>
+      <p>クローンしたテンプレートを使って開発を勧めるために、改めてgitの初期化を実行してください。そして、開発を進め、GitHubリポジトリとして発行します。課題として提出する場合はGitHubリポジトリを「<strong>Public</strong>」に設定する点に注意してください。</p>
+      <p>VSCodeを使用してこれらを行なう方法は <a
+      href="lecture14.html#リモートリポジトリの発行">前回の講義資料</a>
+      を参照してください。また、コマンドラインを使用する方法は <a
+      href="#gitの初期化">今回の講義の前半</a> を参照してください。</p>
+      <h3 data-number="4.4.5" id="リモートリポジトリurlの提出"><span
+      class="header-section-number">4.4.5</span>
+      リモートリポジトリURLの提出</h3>
+      <p><a
+      href="#urlの確認">先ほどの手順</a>により「<strong>GitHubリポジトリのURL</strong>
+      (末尾が <code>.git</code> のURL)
+      」を取得し、それを教員から指定された方法で提出します。</p>
+      <h3 data-number="4.4.6" id="演習③"><span
+      class="header-section-number">4.4.6</span> 演習③</h3>
+      <p>GitHubリポジトリ
+      <code>https://github.com/TakeshiWada1980/Curry-Recipe-2.git</code>
+      をローカルリポジトリにクローンせよ。ただし、ローカルリポジトリ
+      (=プロジェクトフォルダ) の名前は <code>My-Curry-Recipe</code>
+      に変更すること。</p>
+      <p>また、リポジトリの内容 (<code>index.html</code>
+      <code>main.css</code> <code>curryrice.jpg</code> )
+      には編集を加えず、自分の GitHub リポジトリに発行せよ。</p>
+      <p>※
+      次のセクション「コンフリクトの発生と解消」には、このリポジトリを利用します。</p>
+      <h2 data-number="4.5" id="コンフリクトの発生と解消"><span
+      class="header-section-number">4.5</span>
+      コンフリクトの発生と解消</h2>
+      <h3 data-number="4.5.1" id="コンフリクトの概要"><span
+      class="header-section-number">4.5.1</span> コンフリクトの概要</h3>
+      <p>Git/GitHub
+      でチーム開発をする場合、*<strong>コンフリクト</strong>
+      という問題が生じることがあります。この
+      <strong>コンフリクト</strong> は
+      ファイルの<strong>変更の競合</strong>
+      を意味し、2名以上が「同じファイルの同じ個所」に対して特定のタイミングで編集を加えてコミット操作すると発生します。</p>
+      <p>例えば、アリスとボブがチーム開発を行っているとき、次のような状況でコンフリクトが起こります。</p>
+      <ol type="1">
+      <li>アリスがリモートリポジトリからプルする。</li>
+      <li>アリスが <code>README.md</code>
+      の<strong>3行目</strong>を編集する。</li>
+      <li>アリスが変更をローカルリポジトリにコミットする。</li>
+      <li>アリスがローカルリポジトリの内容をリモートリポジトリにプッシュする。</li>
+      </ol>
+      <p>上記の 1 から 4 までの間に、ボブが以下の 1 から 4
+      を実行をすると、<strong>アリスがステップ4を実行したときにコンフリクトが発生し、アリスは問題を解消する必要が生じます</strong>。</p>
+      <ol type="1">
+      <li>ボブがリモートリポジトリからプルする。</li>
+      <li>ボブが <code>README.md</code>
+      の<strong>3行目</strong>を編集する。</li>
+      <li>ボブが変更をローカルリポジトリにコミットする。</li>
+      <li>ボブがローカルリポジトリの内容をリモートリポジトリにプッシュする。</li>
+      </ol>
+      <div class="note type-caution">
+      <p><strong>コンフリクトの対処法</strong></p>
+      <p>上記のケースにおいて、アリスはコンフリクトを解消しない限り、開発を続行することはできません
+      (次のコミットやプッシュ、プルをすることができません)。git/GitHub
+      にはアリス側でのコンフリクトをボブに自動で通知するような機能は存在せず、また、<strong>アリスの代わりにボブがコンフリクトを解消することもできません</strong>。</p>
+      <p>コンフリクトは、チーム開発の過程で一定の確率で発生するため、その対処法についてはメンバー全員が理解しておく必要があります。</p>
+      </div>
+      <h3 data-number="4.5.2" id="コンフリクトを発生させる"><span
+      class="header-section-number">4.5.2</span>
+      コンフリクトを発生させる</h3>
+      <p>演習③で作成したリポジトリを使って、意図的にコンフリクトを発生させてみます。</p>
+      <p>まずは <strong>アリス役</strong>の「ステップ1」として VSCode
+      で「<strong>プル</strong>」をします。これにより、リモートリポジトリの内容が、ローカルリポジトリにダウンロードされます。</p>
+      <figure>
+      <img src="figs/15/git-conflict-01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>つづいて <strong>アリス役</strong>の「ステップ2」として
+      <code>index.html</code> の <strong>第40行目</strong> を
+      <code>&lt;li&gt;鶏肉 ... 400g&lt;/li&gt;</code> から
+      <code>&lt;li&gt;鶏肉 ... 600g&lt;/li&gt;</code> に変更
+      (400gを600gに変更)
+      し、<strong>自動フォーマットせずに保存</strong>してください。</p>
+      <div class="note type-caution">
+      <p><strong>自動フォーマットせずに保存する方法</strong></p>
+      <p>この編集を保存する際、VSCodeの環境・設定によっては「自動フォーマット
+      (自動整形) 」が適用されて、他の行も変更される可能性があるので
+      <code>Ctrl+K,S</code>
+      のショートカットキーで「自動フォーマットせずに保存」の操作をしてください。<code>Ctrl+K,S</code>
+      は「Ctrl」を押しながら「K」を押下、つづいて「Ctrl」を<strong>離して</strong>「S」を押下します。</p>
+      </div>
+      <p>つづいて <strong>アリス役</strong>の「ステップ3」として
+      <code>index.html</code>
+      を<strong>ステージング</strong>して「<strong>鶏肉の分量を600gに変更</strong>」というコミットメッセージをつけて「コミット」だけをします。これで、変更がローカルリポジトリにだけ記録くされます。なお、<strong>ここで誤って「コミットして同期」を選ぶと「プッシュ」と「プル」の操作もしてしまうことになるので注意</strong>してください。</p>
+      <figure>
+      <img src="figs/15/git-conflict-02.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <hr />
+      <p>次に、<strong>ボブ役</strong>の「<strong>ステップ1～4</strong>」を実行します。</p>
+      <p><strong>ここではブラウザを使ってリモートリポジトリを直接操作することでボブ役を演じます</strong>。ブラウザからリモートリポジトリにアクセスして
+      <code>index.html</code> の <strong>第40行目</strong>
+      を確認します。アリスが行なった変更 (400g→600g)
+      は、まだアリスがプッシュをしていないため、リモートリポジトリには反映されていません。</p>
+      <p>ペンアイコンをクリックして編集モードに切り替え、第40行目を
+      <code>&lt;li&gt;鶏肉 ... 400g&lt;/li&gt;</code> から
+      <code>&lt;li&gt;牛肉 ... 600g&lt;/li&gt;</code> に変更
+      (鶏肉を牛肉に変更) して「Commit
+      changes…」のボタンを押下します。</p>
+      <figure>
+      <img src="figs/15/git-conflict-03.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>コミットメッセージを「<strong>鶏肉を牛肉に変更</strong>」として「Commit
+      changes」のボタンを押下します。リモートリポジトリで行なう「コミット」は、実質的に「プッシュ」の操作も兼ねることになります。</p>
+      <figure>
+      <img src="figs/15/git-conflict-04.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <hr />
+      <p>再び、<strong>アリス役</strong>に戻ります。</p>
+      <p>残していた「<strong>ステップ4</strong>」として「プッシュ」の操作を行ないます。</p>
+      <figure>
+      <img src="figs/15/git-conflict-05.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>すると、次のように「Can’t push refs to remote. Try running
+      “Pull” first to integrate your changes.
+      (<strong>リモートにプッシュできへんで。先に「Pull」して、変更統合してみてや。</strong>)」という警告メッセージのダイアログが表示され、<strong>プッシュに失敗</strong>します。一旦、「キャンセル」のボタンを押下してダイアログを閉じます。</p>
+      <figure>
+      <img src="figs/15/git-conflict-06.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>このままでは作業が続行できないので、指示に従って「プル」を実行します
+      (プル操作の方法は、アリスの「ステップ1」の説明を参照)。すると、これにより
+      <strong>コンフリクトが発生</strong> して、VSCode
+      が次のような画面に切り替わります。</p>
+      <figure>
+      <img src="figs/15/git-conflict-07.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>コンフリクトの発生により見慣れない画面表示になっても、慌てず落ち着いて深呼吸をします。</p>
+      <h3 data-number="4.5.3" id="コンフリクトを解消する"><span
+      class="header-section-number">4.5.3</span>
+      コンフリクトを解消する</h3>
+      <p>画面の表示を落ち着いて読み取っていきます。</p>
+      <figure>
+      <img src="figs/15/git-conflict-08.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>第41行目に緑背景で書かれている<code>&lt;li&gt;鶏肉 ... 600g&lt;/li&gt;</code>
+      が<strong>アリスによる変更</strong>で、第43行目に青背景で書かれている<code>&lt;li&gt;牛肉 ... 400g&lt;/li&gt;</code>
+      が<strong>ボブによる変更</strong>であることが分かります。</p>
+      <p>また、それら前後の行をみると、自分 (=アリス)
+      の変更を「<strong>現在の変更</strong>」と称して、ボブ
+      (=プルしようとしているリモートリポジトリ)
+      の変更を「<strong>入力側の変更</strong>」と称しています。</p>
+      <p>同じファイルの同じ行に編集がされたが「<strong>(gitには)それを、どう処理すればいいものか分からない
+      </strong>」という状態がコンフリクト (競合・衝突)
+      になります。よって、人間が手動でその指示を与える必要があります。その指示を与えることが、コンフリクトの解消になります。</p>
+      <p>この対処方法として、次のように様々なものが考えられます。</p>
+      <ol type="1">
+      <li>アリス側 (現在の変更) の「鶏肉 … 600g」を採用する
+      (現在の変更を取り込む)。</li>
+      <li>ボブ側 (リモートリポジトリ) の「牛肉 … 400g」にする
+      (入力側の変更を取り込む)。</li>
+      <li>あいだをとって「鶏肉または牛肉 …
+      400～600g」に書き換える。</li>
+      <li>あとでボブと話して解決するために「X肉 … X00g
+      (あとでボブと要協議)」にする。</li>
+      </ol>
+      <p>まずは、対処の方針をきめます。ここでは両者の意見を反映するように「<strong>鶏肉または牛肉
+      … 400～600g</strong>」のように書き換えて対応するものとします。</p>
+      <p>この場合、まずは VSCode で第40行目の
+      <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</code>、第42行目の
+      <code>=======</code>、第44行目の
+      <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt; 412b5...</code> を削除します (
+      普通の文字のように BackSpace や Del キーで削除できます
+      )。次に、残った部分を編集して
+      <code>&lt;li&gt;鶏肉または牛肉 ... 400～600g&lt;/li&gt;</code>
+      と書き換えます。</p>
+      <figure>
+      <img src="figs/15/git-conflict-09.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>書き換えが終わったら「保存」をします (ここでも
+      <code>Ctrl+K,S</code>
+      のショートカットキーで「自動フォーマットせずに保存」の操作をしてください)
+      。次のように、コンフリクトを解消した <code>index.html</code>
+      をステージングします。</p>
+      <figure>
+      <img src="figs/15/git-conflict-10.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>コンフリクトが問題なく解消されていれば、次のようにステージングされて「コミット」のボタンが押下可能になります。コミットボタンの右端を押して「コミットして同期」を実行します。「コミットして同期」ではなく「コミット」、「プッシュ」、「プル」という操作を個別に行なっても問題ありません。</p>
+      <figure>
+      <img src="figs/15/git-conflict-11.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>以上により、コンフリクトが解消され、アリス側でも開発を継続することができます。念のため、リモートリポジトリでも内容を確認すると「鶏肉または牛肉
+      … 400～600g」になっていることを確認できると思います。</p>
+      <h2 data-number="4.6" id="コンフリクトを効率よく解消"><span
+      class="header-section-number">4.6</span>
+      コンフリクトを効率よく解消</h2>
+      <p>VSCode
+      にはコンフリクトを効率よく解消するための機能が用意されています。</p>
+      <p>例えば、下記の「現在の変更を取り込む」をクリックすれば
+      <code>鶏肉 ... 600g</code>
+      だけを残して、<code>&lt;&lt;&lt;...</code> や <code>===...</code>
+      などのコンフリクト関連の行を自動削除してくれます。「入力側の変更を取り込む」では
+      <code>牛肉 ... 400g</code>
+      だけを残して同様の操作をしてくれます。</p>
+      <figure>
+      <img src="figs/15/git-conflict-12.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>また、コンフリクト状態のときに画面右下に表示される「<strong>マージエディタで解決</strong>」のボタンを押下すると、3画面で競合箇所を比較しながら修正を行なうことができます。詳しい使い方については「<a
+      href="https://www.google.com/search?q=Visual+Studio+Code+3+way+merge+editor">Visual
+      Studio Code 3 way merge editor</a>」でウェブ検索してください。</p>
+      <figure>
+      <img src="figs/15/git-conflict-14.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <div class="note type-caution">
+      <p><strong>「現在の変更を取り込む」の注意点</strong></p>
+      <p>コンフリクトが発生したい際「<strong>現在の変更を取り込む</strong>」を選択して、そのままステージングしてコミットすると以下のようなダイアログが表示されて<strong>コミットに失敗</strong>します。</p>
+      <p>これは、スペース1文字でもよいので何らかの変更を加えることで解決します。</p>
+      <figure>
+      <img src="figs/15/git-conflict-13.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>このエラーは、直前の「鶏肉の分量を600gに変更」のコミットからファイル内容が変更されていないことに起因します。</p>
+      </div>
+      <h2 data-number="4.7"
+      id="できるだけコンフリクトを発生させないためには"><span
+      class="header-section-number">4.7</span>
+      できるだけコンフリクトを発生させないためには</h2>
+      <h1 data-number="5" id="宿題"><span
+      class="header-section-number">5</span> 宿題</h1>
+      <p>講義時間内に終わらなかった内容に取り組み、少し時間をおいてから再復習してください。次回の講義は、今回までの内容が定着していることを前提として進めます。</p>
+      <!-- ---------------------------------------- -->
+    </main>
+
+    <footer class="markdown-body">
+      <p><a href="https://takeshiwada1980.github.io/Programming1-2023/">講義資料のIndexに移動</a></p>
+    </footer>
+
+    <script>
+      window.onload = function () {
+        // ナビゲーション関連
+        let openBtn = document.getElementsByClassName("openbtn")[0];
+        let navPnl = document.getElementById("g-nav");
+        openBtn.onclick = () => {
+          openBtn.classList.toggle("active");
+          navPnl.classList.toggle("panelactive");
+        };
+
+        let items = navPnl.getElementsByTagName("a");
+        Array.from(items).forEach((item) => {
+          item.onclick = () => {
+            openBtn.classList.toggle("active");
+            navPnl.classList.toggle("panelactive");
+          };
+        });
+
+        // マスク処理
+        let maskedSpans = document.getElementsByClassName("masked");
+        Array.from(maskedSpans).forEach((span) => {
+          span.onclick = () => {
+            span.classList.toggle("open");
+          };
+        });
+
+        // 画像にリンクを付与
+        let images = document.querySelectorAll("figure img");
+        Array.from(images).forEach((img) => {
+          img.onclick = () => {
+            location.href = img.getAttribute("src");
+          };
+        });
+      };
+    </script>
+  </body>
+</html>

@@ -904,8 +904,8 @@ git config --global core.quotepath false</code></pre>
       GitHub アカウントの <code>GitHub-Test</code>
       というリポジトリに正常に発行されたことを確認します。</p>
       <p>ウェブブラウザから
-      <code>https://github.com/XXXX/GitHub-Test**</code> つまり GitHub
-      の <code>GitHub-Test</code> リポジトリにアクセスして、次のように
+      <code>https://github.com/XXXX/GitHub-Test</code> つまり GitHub の
+      <code>GitHub-Test</code> リポジトリにアクセスして、次のように
       <code>README.md</code> が表示されることを確認してください (GitHub
       でマークダウンファイルはレンダリングされて画面表示されます)。URLの
       <code>XXXX</code> には各自のアカウント名 (≠表示名)
@@ -1047,7 +1047,7 @@ git config --global core.quotepath false</code></pre>
       <p>ここでは、ローカルリポジトリとリモートリポジトリの両方から
       <code>README.md</code>
       に対して編集を加えて、変更の統合を行ないました。同様に、チーム開発でアリスとボブが
-      <strong>別々に同じファイルに対して編集を加えた際にも、GitHubを通じて変更の統合を行なうことができます</strong>
+      <strong>それぞれに同じファイルに対して編集を加えた際にも、GitHubを通じて変更の統合を行なうことができます</strong>
       (このようなチーム開発支援に関する機能は次回以降に学びます)。</p>
       <p>以上が確認できたら VSCode を閉じてください。</p>
       <h1 data-number="5" id="リポジトリの削除"><span
@@ -1064,13 +1064,13 @@ git config --global core.quotepath false</code></pre>
       class="header-section-number">5.2</span>
       ローカルリポジトリの削除</h2>
       <p>PCのローカルストレージに作成したプロジェクトフォルダ
-      (=ローカルリポジトリ) を削除してください
-      (VSCodeを閉じた状態で削除してください)。なお、削除する際にフォルダのなかに
+      (=ローカルリポジトリ) を削除してください (この作業は VSCode
+      を閉じた状態で行なってください)。なお、削除する際にフォルダのなかに
       <code>.git</code>
       という隠しフォルダが作成されていることを確認しておいてください。</p>
       <p>ローカルリポジトリにおいては、この <code>.git</code>
-      というフォルダ内部に、変更の履歴が格納されていきます。そのため、リポジトリを削除するとき以外では、<code>.git</code>
-      を変更したり、削除したりしないようにしてください。</p>
+      というフォルダのなかに変更の履歴が格納されていきます。そのため、リポジトリを削除するとき以外に
+      <code>.git</code> を削除しないようにしてください。</p>
       <figure>
       <img src="figs/14/vscode-18.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
@@ -1082,10 +1082,12 @@ git config --global core.quotepath false</code></pre>
       最低限のスキルも身に付かないです。</p>
       <h2 data-number="6.1" id="宿題①"><span
       class="header-section-number">6.1</span> 宿題①</h2>
-      <p>再度、プロジェクトフォルダの新規作成し、そのプロジェクトのリモートリポジトリを
+      <p>再度、プロジェクトフォルダを新規作成し、リモートリポジトリを
       GitHub
-      に発行、フォルダ内のファイルを変更、変更内容のコミット・プッシュ、GitHubでのファイル変更とコミット、リポジトリの同期、リポジトリの削除という一連の操作を、再度、行なってください
-      (2回目以降は、GitHubの認証などの一部操作は不要になります。実際に操作してそれを確認してください)。</p>
+      に発行、フォルダ内のファイルを変更・保存、変更内容のコミットとプッシュ、GitHub
+      でのファイル変更とコミット、リポジトリの同期、リポジトリの削除という一連の操作・処理を、再度、実行してください
+      (2回目以降は GitHub
+      の認証などの一部操作は不要になります。実際に操作してそれを確認してください)。</p>
       <p>この<strong>一連の作業を3回程度繰返すと、講義資料を見なくても操作ができるようになります</strong>
       (1回では身に付かないので、繰返し練習してください) 。</p>
       <p>次回の授業では、<strong>ここまでの git/GitHub
