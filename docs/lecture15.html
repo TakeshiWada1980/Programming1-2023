@@ -1376,7 +1376,7 @@ branch &#39;main&#39; set up to track &#39;origin/main&#39;.</code></pre>
       <img src="figs/15/git-conflict-11.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
       </figure>
-      <p>以上により、コンフリクトが解消され、アリス側でも開発を継続することができます。</p>
+      <p>以上により、コンフリクトが解消されてアリス側でも開発を継続することができます。</p>
       <p>念のためにブラウザからリモートリポジトリの
       <code>index.html</code>
       の内容を確認してみてください。当該部分が「鶏肉または牛肉 …
@@ -1407,14 +1407,18 @@ branch &#39;main&#39; set up to track &#39;origin/main&#39;.</code></pre>
       </figure>
       <div class="note type-caution">
       <p><strong>「現在の変更を取り込む」の注意点</strong></p>
-      <p>コンフリクトが発生したい際「<strong>現在の変更を取り込む</strong>」を選択して、そのままステージングしてコミットすると以下のようなダイアログが表示されて<strong>コミットに失敗</strong>します。</p>
-      <p>これは、スペース1文字でもよいので何らかの変更を加えることで解決します。</p>
+      <p>コンフリクトが発生した際「<strong>現在の変更を取り込む</strong>」を選択して、そのままステージングしてコミットすると以下のようなダイアログが表示されて<strong>コミットに失敗</strong>します。</p>
+      <p>これは、スペース1文字でもよいので何らかの変更を加えて保存、ステージング、コミットすることで解決します。例えば、今回の例であれば
+      <code>&lt;li&gt;鶏肉 ... 600g&lt;/li&gt;</code> の
+      <code>&lt;/li&gt;</code> タグの前に半角スペースを1個追加して
+      <code>&lt;li&gt;鶏肉 ... 600g &lt;/li&gt;</code>
+      のようにしてファイル保存すれば解決します。</p>
       <figure>
       <img src="figs/15/git-conflict-13.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
       </figure>
-      <p>このエラーは、直前の「鶏肉の分量を600gに変更」のコミットからファイル内容が何も変更されていないことに起因します
-      (前回コミットとの差分がない状態では、新たにコミットすることができません)
+      <p>上記のエラーは、直前の「鶏肉の分量を600gに変更」のコミットから<strong>ファイル内容が何も変更されていないこと</strong>に起因しています
+      (前回コミットと内容に差分がない場合、新たにコミットすることができません)
       。</p>
       </div>
       <h1 data-number="6" id="宿題"><span

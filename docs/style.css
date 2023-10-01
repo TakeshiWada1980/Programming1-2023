@@ -76,6 +76,11 @@ footer.markdown-body p {
   text-align: right;
 }
 
+/* ------- 水平線 ------- */
+.markdown-body hr {
+  margin: 1.5em 0em;
+}
+
 /* ------- 強調 ------- */
 
 .markdown-body strong {
