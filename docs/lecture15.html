@@ -109,31 +109,26 @@ class="toc-section-number">4.4.5</span>
 <li><a href="#演習③" id="toc-演習③"><span
 class="toc-section-number">4.4.6</span> 演習③</a></li>
 </ul></li>
+</ul></li>
 <li><a href="#コンフリクトの発生と解消"
 id="toc-コンフリクトの発生と解消"><span
-class="toc-section-number">4.5</span> コンフリクトの発生と解消</a>
+class="toc-section-number">5</span> コンフリクトの発生と解消</a>
 <ul>
 <li><a href="#コンフリクトの概要" id="toc-コンフリクトの概要"><span
-class="toc-section-number">4.5.1</span> コンフリクトの概要</a></li>
+class="toc-section-number">5.1</span> コンフリクトの概要</a></li>
 <li><a href="#コンフリクトを発生させる"
 id="toc-コンフリクトを発生させる"><span
-class="toc-section-number">4.5.2</span>
-コンフリクトを発生させる</a></li>
+class="toc-section-number">5.2</span> コンフリクトを発生させる</a></li>
 <li><a href="#コンフリクトを解消する"
 id="toc-コンフリクトを解消する"><span
-class="toc-section-number">4.5.3</span> コンフリクトを解消する</a></li>
-</ul></li>
-<li><a href="#コンフリクトを効率よく解消"
-id="toc-コンフリクトを効率よく解消"><span
-class="toc-section-number">4.6</span>
-コンフリクトを効率よく解消</a></li>
-<li><a href="#極力コンフリクトを発生させないためには"
-id="toc-極力コンフリクトを発生させないためには"><span
-class="toc-section-number">4.7</span>
-極力コンフリクトを発生させないためには</a></li>
+class="toc-section-number">5.3</span> コンフリクトを解消する</a></li>
+<li><a href="#コンフリクトの解消に役立つvscodeの機能"
+id="toc-コンフリクトの解消に役立つvscodeの機能"><span
+class="toc-section-number">5.4</span>
+コンフリクトの解消に役立つVSCodeの機能</a></li>
 </ul></li>
 <li><a href="#宿題" id="toc-宿題"><span
-class="toc-section-number">5</span> 宿題</a></li>
+class="toc-section-number">6</span> 宿題</a></li>
 </ul> 
         <!-- ---------------------------------------- -->
       </div>
@@ -1201,19 +1196,19 @@ branch &#39;main&#39; set up to track &#39;origin/main&#39;.</code></pre>
       には編集を加えず、自分の GitHub リポジトリに発行せよ。</p>
       <p>※
       次のセクション「コンフリクトの発生と解消」には、このリポジトリを利用します。</p>
-      <h2 data-number="4.5" id="コンフリクトの発生と解消"><span
-      class="header-section-number">4.5</span>
-      コンフリクトの発生と解消</h2>
-      <h3 data-number="4.5.1" id="コンフリクトの概要"><span
-      class="header-section-number">4.5.1</span> コンフリクトの概要</h3>
+      <h1 data-number="5" id="コンフリクトの発生と解消"><span
+      class="header-section-number">5</span>
+      コンフリクトの発生と解消</h1>
+      <h2 data-number="5.1" id="コンフリクトの概要"><span
+      class="header-section-number">5.1</span> コンフリクトの概要</h2>
       <p>Git/GitHub
       でチーム開発をする場合、<strong><em>コンフリクト</em></strong>
       という問題が生じることがあります。この
       <strong>コンフリクト</strong> は
       ファイルの「<strong>変更の競合</strong>」を意味し <span
-      class="masked">2名以上が「同じファイルの同じ個所」に対して特定のタイミングで編集を加えてコミット操作</span>
-      すると発生します。</p>
-      <p>例えば、アリスとボブが<strong>共通のリモートリポジトリを使ってチーム開発</strong>をしているとき、次のような状況でコンフリクトが起こります。</p>
+      class="masked">2名以上が「同じファイルの同じ個所」に対して特定のタイミングで編集を加えて
+      git 操作</span> すると発生します。</p>
+      <p>例えば、アリスとボブが<strong>共通のリモートリポジトリを使ってチーム開発</strong>をしているとき、次のような状況で「コンフリクト」が発生します。</p>
       <ol type="1">
       <li>アリスがリモートリポジトリから「<strong>プル</strong>」する。</li>
       <li>アリスが <code>README.md</code>
@@ -1223,7 +1218,7 @@ branch &#39;main&#39; set up to track &#39;origin/main&#39;.</code></pre>
       </ol>
       <p>上記の「ステップ1」以降、「ステップ4」の完了までの間に、ボブが以下の
       1 から 4
-      の実行をすると、<strong>アリスが「ステップ4」を実行したときにコンフリクトが発生し、アリスは問題を解消する必要が生じます</strong>。</p>
+      の実行をすると<strong>アリスが「ステップ4」を実行したときにコンフリクトが発生し、アリス側でそれを解消する必要が生じます</strong>。</p>
       <ol type="1">
       <li>ボブがリモートリポジトリから「<strong>プル</strong>」する。</li>
       <li>ボブが <code>README.md</code>
@@ -1235,15 +1230,21 @@ branch &#39;main&#39; set up to track &#39;origin/main&#39;.</code></pre>
       <p><strong>コンフリクトの対処法</strong></p>
       <p>上記のケースにおいて、アリスはコンフリクトを解消しない限り、開発を続行することはできません
       (次のコミットやプッシュ、プルをすることができません)。git/GitHub
-      にはアリス側でのコンフリクトをボブに自動で通知するような機能は存在せず、また、<strong>アリスの代わりにボブがコンフリクトを解消することもできません</strong>。</p>
+      にはアリス側でのコンフリクトをボブに自動で通知するような機能は存在せず、また
+      <strong>アリスに代わってボブがコンフリクトを解消することもできません</strong>。</p>
       <p>コンフリクトは、チーム開発の過程で一定の確率で発生するため、その対処法についてはメンバー全員が理解しておく必要があります。</p>
       </div>
-      <h3 data-number="4.5.2" id="コンフリクトを発生させる"><span
-      class="header-section-number">4.5.2</span>
-      コンフリクトを発生させる</h3>
-      <p>演習③で作成したリポジトリを使って、意図的にコンフリクトを発生させてみます。</p>
+      <h2 data-number="5.2" id="コンフリクトを発生させる"><span
+      class="header-section-number">5.2</span>
+      コンフリクトを発生させる</h2>
+      <p>演習③で作成したリポジトリ <code>My-Curry-Recipe</code>
+      を使って、意図的にコンフリクトを発生させてみます。</p>
       <p>まずは <strong>アリス役</strong>の「ステップ1」として VSCode
-      で「<strong>プル</strong>」をします。これにより、リモートリポジトリの内容が、ローカルリポジトリにダウンロードされます。</p>
+      で「<strong>プル</strong>」をします。これにより、リモートリポジトリの
+      <strong>最新の内容</strong>
+      がローカルリポジトリにダウンロードされます。チーム開発を行っているときは
+      <span
+      class="masked">自分以外がリモートリポジトリの内容を更新する可能性</span>があるので、定期的に「<strong>プル</strong>」を実行して最新の内容をローカルリポジトリに取り込むことが必要となります。</p>
       <figure>
       <img src="figs/15/git-conflict-01.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
@@ -1251,13 +1252,13 @@ branch &#39;main&#39; set up to track &#39;origin/main&#39;.</code></pre>
       <p>つづいて <strong>アリス役</strong>の「ステップ2」として
       <code>index.html</code> の <strong>第40行目</strong> を
       <code>&lt;li&gt;鶏肉 ... 400g&lt;/li&gt;</code> から
-      <code>&lt;li&gt;鶏肉 ... 600g&lt;/li&gt;</code> に変更
-      (400gを600gに変更)
-      し、<strong>自動フォーマットせずに保存</strong>してください。</p>
+      <code>&lt;li&gt;鶏肉 ... 600g&lt;/li&gt;</code>
+      に変更し、<strong>自動フォーマットせずに保存</strong>してください。</p>
       <div class="note type-caution">
       <p><strong>自動フォーマットせずに保存する方法</strong></p>
       <p>この編集を保存する際、VSCodeの環境・設定によっては「自動フォーマット
-      (自動整形) 」が適用されて、他の行も変更される可能性があるので
+      (自動整形)
+      」が適用されて、<strong>他の行も変更される可能性</strong>があるので
       <code>Ctrl+K,S</code>
       のショートカットキーで「自動フォーマットせずに保存」の操作をしてください。<code>Ctrl+K,S</code>
       は「Ctrl」を押しながら「K」を押下、つづいて「Ctrl」を<strong>離して</strong>「S」を押下します。</p>
@@ -1270,22 +1271,23 @@ branch &#39;main&#39; set up to track &#39;origin/main&#39;.</code></pre>
       <figcaption aria-hidden="true">img</figcaption>
       </figure>
       <hr />
-      <p>次に、<strong>ボブ役</strong>の「<strong>ステップ1～4</strong>」を実行します。</p>
+      <p>次に、<strong>ボブ役</strong>になって「<strong>ステップ1～4</strong>」を実行します。</p>
       <p><strong>ここではブラウザを使ってリモートリポジトリを直接操作することでボブ役を演じます</strong>。ブラウザからリモートリポジトリにアクセスして
       <code>index.html</code> の <strong>第40行目</strong>
-      を確認します。アリスが行なった変更 (400g→600g)
-      は、まだアリスがプッシュをしていないため、リモートリポジトリには反映されていません。</p>
-      <p>ペンアイコンをクリックして編集モードに切り替え、第40行目を
+      を確認します。アリスが行なった変更 (400g→600g) は <span
+      class="masked">まだアリスがプッシュをしていない</span>
+      ため、リモートリポジトリには反映されていません。</p>
+      <p>GitHub上で <code>index.html</code>
+      を開き、ペンアイコンをクリックして編集モードに切り替え、第40行目を
       <code>&lt;li&gt;鶏肉 ... 400g&lt;/li&gt;</code> から
-      <code>&lt;li&gt;牛肉 ... 600g&lt;/li&gt;</code> に変更
-      (鶏肉を牛肉に変更) して「Commit
-      changes…」のボタンを押下します。</p>
+      <code>&lt;li&gt;牛肉 ... 600g&lt;/li&gt;</code> に変更 (鶏肉→牛肉)
+      して「Commit changes…」のボタンを押下します。</p>
       <figure>
       <img src="figs/15/git-conflict-03.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
       </figure>
       <p>コミットメッセージを「<strong>鶏肉を牛肉に変更</strong>」として「Commit
-      changes」のボタンを押下します。リモートリポジトリで行なう「コミット」は、実質的に「プッシュ」の操作も兼ねることになります。</p>
+      changes」のボタンを押下します。なお、リモートリポジトリで実行する「コミット」は、実質的に「プッシュ」の操作も兼ねることになります。</p>
       <figure>
       <img src="figs/15/git-conflict-04.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
@@ -1299,7 +1301,9 @@ branch &#39;main&#39; set up to track &#39;origin/main&#39;.</code></pre>
       </figure>
       <p>すると、次のように「Can’t push refs to remote. Try running
       “Pull” first to integrate your changes.
-      (<strong>リモートにプッシュできへんで。先に「Pull」して、変更統合してみてや。</strong>)」という警告メッセージのダイアログが表示され、<strong>プッシュに失敗</strong>します。一旦、「キャンセル」のボタンを押下してダイアログを閉じます。</p>
+      (<strong>リモートにプッシュできへんで。先に「Pull」して、変更統合してみてや</strong>)」という警告メッセージのダイアログが表示され
+      <strong>プッシュに失敗</strong>
+      します。一旦、「キャンセル」のボタンを押下してダイアログを閉じます。</p>
       <figure>
       <img src="figs/15/git-conflict-06.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
@@ -1312,10 +1316,10 @@ branch &#39;main&#39; set up to track &#39;origin/main&#39;.</code></pre>
       <img src="figs/15/git-conflict-07.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
       </figure>
-      <p>コンフリクトの発生により見慣れない画面表示になっても、慌てず落ち着いて深呼吸をします。</p>
-      <h3 data-number="4.5.3" id="コンフリクトを解消する"><span
-      class="header-section-number">4.5.3</span>
-      コンフリクトを解消する</h3>
+      <p>コンフリクトの発生によって、見慣れない画面表示になっても、まずは慌てず落ち着いて深呼吸をします。</p>
+      <h2 data-number="5.3" id="コンフリクトを解消する"><span
+      class="header-section-number">5.3</span>
+      コンフリクトを解消する</h2>
       <p>画面の表示を落ち着いて読み取っていきます。</p>
       <figure>
       <img src="figs/15/git-conflict-08.png" alt="img" />
@@ -1325,13 +1329,14 @@ branch &#39;main&#39; set up to track &#39;origin/main&#39;.</code></pre>
       が<strong>アリスによる変更</strong>で、第43行目に青背景で書かれている<code>&lt;li&gt;牛肉 ... 400g&lt;/li&gt;</code>
       が<strong>ボブによる変更</strong>であることが分かります。</p>
       <p>また、それら前後の行をみると、自分 (=アリス)
-      の変更を「<strong>現在の変更</strong>」と称して、ボブ
+      の変更を「<strong>現在の変更</strong>」と称していて、ボブ
       (=プルしようとしているリモートリポジトリ)
       の変更を「<strong>入力側の変更</strong>」と称しています。</p>
-      <p>同じファイルの同じ行に編集がされたが「<strong>(gitには)それを、どう処理すればいいものか分からない
-      </strong>」という状態がコンフリクト (競合・衝突)
+      <p>同じファイルの同じ行に変更があるが <span
+      class="masked">(gitには)それを、どう処理すればいいものか分からない</span>
+      という状態がコンフリクト (競合・衝突)
       になります。よって、人間が手動でその指示を与える必要があります。その指示を与えることが、コンフリクトの解消になります。</p>
-      <p>この対処方法として、次のように様々なものが考えられます。</p>
+      <p>今回のコンフリクトの対処方法としては次のようものが考えられます。</p>
       <ol type="1">
       <li>アリス側 (現在の変更) の「鶏肉 … 600g」を採用する
       (現在の変更を取り込む)。</li>
@@ -1340,16 +1345,16 @@ branch &#39;main&#39; set up to track &#39;origin/main&#39;.</code></pre>
       <li>あいだをとって「鶏肉または牛肉 …
       400～600g」に書き換える。</li>
       <li>あとでボブと話して解決するために「X肉 … X00g
-      (あとでボブと要協議)」にする。</li>
+      (あとでボブと要協議)」書き換えておく。</li>
       </ol>
       <p>まずは、対処の方針をきめます。ここでは両者の意見を反映するように「<strong>鶏肉または牛肉
       … 400～600g</strong>」のように書き換えて対応するものとします。</p>
       <p>この場合、まずは VSCode で第40行目の
       <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</code>、第42行目の
       <code>=======</code>、第44行目の
-      <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt; 412b5...</code> を削除します (
-      普通の文字のように BackSpace や Del キーで削除できます
-      )。次に、残った部分を編集して
+      <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt; 412b5...</code> を削除します
+      (<span class="masked">普通の文字のように BackSpace や Del
+      キーで削除できます</span>)。次に、残った部分を編集して
       <code>&lt;li&gt;鶏肉または牛肉 ... 400～600g&lt;/li&gt;</code>
       と書き換えます。</p>
       <figure>
@@ -1359,28 +1364,34 @@ branch &#39;main&#39; set up to track &#39;origin/main&#39;.</code></pre>
       <p>書き換えが終わったら「保存」をします (ここでも
       <code>Ctrl+K,S</code>
       のショートカットキーで「自動フォーマットせずに保存」の操作をしてください)
-      。次のように、コンフリクトを解消した <code>index.html</code>
+      。下図のように、コンフリクトを解消した <code>index.html</code>
       をステージングします。</p>
       <figure>
       <img src="figs/15/git-conflict-10.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
       </figure>
-      <p>コンフリクトが問題なく解消されていれば、次のようにステージングされて「コミット」のボタンが押下可能になります。コミットボタンの右端を押して「コミットして同期」を実行します。「コミットして同期」ではなく「コミット」、「プッシュ」、「プル」という操作を個別に行なっても問題ありません。</p>
+      <p>コンフリクトが問題なく解消されていれば、次のようにステージングされて「コミット」のボタンが押下可能になります。コミットボタンの右端を押して「<strong>コミットして同期</strong>」を実行します。エラーが返ってこなければ、これでコンフリクトが解消できたことになります。</p>
+      <p>なお「コミットして同期」ではなく「コミット」、「プッシュ」、「プル」という操作を個別に実行していっても問題ありません。既に何度もでてきていますが、VSCodeの「コミットして同期」は、「コミット」「プッシュ」「プル」をまとめて実行することを意味しています。</p>
       <figure>
       <img src="figs/15/git-conflict-11.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
       </figure>
-      <p>以上により、コンフリクトが解消され、アリス側でも開発を継続することができます。念のため、リモートリポジトリでも内容を確認すると「鶏肉または牛肉
-      … 400～600g」になっていることを確認できると思います。</p>
-      <h2 data-number="4.6" id="コンフリクトを効率よく解消"><span
-      class="header-section-number">4.6</span>
-      コンフリクトを効率よく解消</h2>
-      <p>VSCode
-      にはコンフリクトを効率よく解消するための機能が用意されています。</p>
+      <p>以上により、コンフリクトが解消され、アリス側でも開発を継続することができます。</p>
+      <p>念のためにブラウザからリモートリポジトリの
+      <code>index.html</code>
+      の内容を確認してみてください。当該部分が「鶏肉または牛肉 …
+      400～600g」になっていることが確認できると思います。</p>
+      <h2 data-number="5.4"
+      id="コンフリクトの解消に役立つvscodeの機能"><span
+      class="header-section-number">5.4</span>
+      コンフリクトの解消に役立つVSCodeの機能</h2>
+      <p>VSCode には
+      <strong>コンフリクトを効率よく解消するための機能</strong>
+      が用意されています。</p>
       <p>例えば、下記の「現在の変更を取り込む」をクリックすれば
       <code>鶏肉 ... 600g</code>
       だけを残して、<code>&lt;&lt;&lt;...</code> や <code>===...</code>
-      などのコンフリクト関連の行を自動削除してくれます。「入力側の変更を取り込む」では
+      などのコンフリクト関連の行を自動削除してくれます。また「入力側の変更を取り込む」クリックすれば
       <code>牛肉 ... 400g</code>
       だけを残して同様の操作をしてくれます。</p>
       <figure>
@@ -1402,15 +1413,15 @@ branch &#39;main&#39; set up to track &#39;origin/main&#39;.</code></pre>
       <img src="figs/15/git-conflict-13.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
       </figure>
-      <p>このエラーは、直前の「鶏肉の分量を600gに変更」のコミットからファイル内容が変更されていないことに起因します。</p>
+      <p>このエラーは、直前の「鶏肉の分量を600gに変更」のコミットからファイル内容が何も変更されていないことに起因します
+      (前回コミットとの差分がない状態では、新たにコミットすることができません)
+      。</p>
       </div>
-      <h2 data-number="4.7"
-      id="極力コンフリクトを発生させないためには"><span
-      class="header-section-number">4.7</span>
-      極力コンフリクトを発生させないためには</h2>
-      <h1 data-number="5" id="宿題"><span
-      class="header-section-number">5</span> 宿題</h1>
-      <p>講義時間内に終わらなかった内容に取り組み、少し時間をおいてから再復習してください。次回の講義は、今回までの内容が定着していることを前提として進めます。</p>
+      <h1 data-number="6" id="宿題"><span
+      class="header-section-number">6</span> 宿題</h1>
+      <p>講義時間内に終わらなかった内容に取り組んでください。また、2～3日程度の時間をおいてから再度、復習してください。次回の講義は
+      <strong>今回までの内容が定着していることを前提</strong>
+      として進めます。</p>
       <!-- ---------------------------------------- -->
     </main>
 
