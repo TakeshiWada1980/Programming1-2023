@@ -127,10 +127,10 @@ class="toc-section-number">4.5.3</span> コンフリクトを解消する</a></l
 id="toc-コンフリクトを効率よく解消"><span
 class="toc-section-number">4.6</span>
 コンフリクトを効率よく解消</a></li>
-<li><a href="#できるだけコンフリクトを発生させないためには"
-id="toc-できるだけコンフリクトを発生させないためには"><span
+<li><a href="#極力コンフリクトを発生させないためには"
+id="toc-極力コンフリクトを発生させないためには"><span
 class="toc-section-number">4.7</span>
-できるだけコンフリクトを発生させないためには</a></li>
+極力コンフリクトを発生させないためには</a></li>
 </ul></li>
 <li><a href="#宿題" id="toc-宿題"><span
 class="toc-section-number">5</span> 宿題</a></li>
@@ -235,9 +235,9 @@ class="toc-section-number">5</span> 宿題</a></li>
       を通じて git
       を操作する方法を学びました。実務においてもコミットやプッシュなどの操作は
       VSCode から行なうことが多いですが、<strong>VSCode の GUI
-      が対応していない込み入った git 操作については、コマンドラインから
+      が対応していない込み入った git 操作については、コマンドラインに
       git コマンドを入力して実行すること求められます</strong>。</p>
-      <p>ここでは、前回の講義で VSCode 経由で実行した一連の git 操作が
+      <p>ここでは、前回講義で VSCode 経由で実行した一連の git 操作が
       <strong>コマンドラインからでも同様に実行できることを体験・確認しておきます</strong>。</p>
       <p>Windows
       のスタートボタンを右クリックして「ターミナル」を起動し、ターミナルタブを
@@ -251,13 +251,13 @@ class="toc-section-number">5</span> 宿題</a></li>
       <figcaption aria-hidden="true">img</figcaption>
       </figure>
       <p>以下、<code>C:\Users\xxxx\Documents</code>
-      の直下に「プロジェクトフォルダ」を作成していきます。<code>xxxx</code>
+      の直下に「プロジェクトフォルダ」を作成して作業していきます。<code>xxxx</code>
       の部分は各自で読み替えてください。なお <code>xxxx</code>
       の部分に<strong>日本語が含まれていると正常に動作しない可能性があります</strong>。</p>
       <p>なお、以降で <strong>Linux系のコマンド</strong>
       を使用しますが、これは前期の「工学基礎実習」のネットワーク系テーマのなでかで既に学んでいる内容です
       (<span class="masked">PC と Raspberry Pi
-      と接続してコマンドライン操作を通じてネットワーク設定</span>をしているはずです)。</p>
+      を接続してコマンドラインからの操作でネットワーク設定</span>をしているはずです)。</p>
       <h2 data-number="3.1" id="プロジェクトフォルダの作成"><span
       class="header-section-number">3.1</span>
       プロジェクトフォルダの作成</h2>
@@ -269,9 +269,9 @@ class="toc-section-number">5</span> 宿題</a></li>
       class="masked">プロンプトの入力促進記号</span>なので実際には入力しません
       (以下同様))。なお、<strong>Git bash
       環境</strong>では、パスの区切り文字にスラッシュ <code>/</code>
-      が利用できるので、ここではスラッシュで入力しています。</p>
+      が利用できるので、ここではスラッシュを使用していきます。</p>
       <p>パスの表記法 (絶対パス/相対パス)
-      については「情報2」の第06回講義ノート の p.100
+      については「情報2」の第06回講義ノートの p.100
       を参照してください。</p>
       <pre><code>$ cd c:Users/xxxx/Documents</code></pre>
       <p>カレントフォルダ (=現在位置) を確認するために <code>pwd</code>
@@ -286,8 +286,8 @@ class="toc-section-number">5</span> 宿題</a></li>
       <p>この位置に <code>GitHub-Test-2</code>
       というフォルダを作成するために <code>mkdir</code>
       コマンドを入力します。<code>mkdir</code> は「<strong>Make
-      Directory</strong>」の略称です。また、<code>cd</code>
-      コマンドで作成したフォルダ内に移動します。</p>
+      Directory</strong>」の略称です。また <code>cd</code>
+      コマンドを使って、作成したフォルダ内に移動します。</p>
       <pre><code>$ mkdir GitHub-Test-2
 $ cd GitHub-Test-2/</code></pre>
       <p>正しくフォルダ移動できたことを <code>pwd</code>
@@ -302,44 +302,44 @@ $ cd GitHub-Test-2/</code></pre>
 total 4
 drwxr-xr-x 1 xxxx 197121 0  9月 22 12:57 ./
 drwxr-xr-x 1 xxxx 197121 0  9月 22 12:57 ../</code></pre>
-      <p>これにより、現在、このフォルダの内容は「空」であることが確認できました。情報2の第06回講義で学習したように
+      <p>これにより、現在、このフォルダの内容は「<strong>空</strong>」であることが確認できました。情報2の第06回講義で学習したように
       <code>./</code> は「カレントフォルダ」を意味し、<code>../</code>
-      は「親フォルダ」を意味します。これらの特殊フォルダ表記は、空のフォルダの内容を表示したときにも出力されます。</p>
-      <p>念のために <code>-l</code>
-      オプションだけを付けて実行してみます。</p>
+      は「親フォルダ」を意味します。これらの特殊フォルダ表記は、空のフォルダ内容を
+      <code>-a</code>
+      オプションを付けて表示したときにも出力されます。</p>
+      <p>念のために <code>-l</code> オプションだけを付けて
+      <code>ls</code> を実行してみます。</p>
       <pre><code>$ ls -l
 total 0</code></pre>
       <p>これより <code>GitHub-Test-2</code>
-      フォルダの中身が空であることが確認できました。</p>
+      フォルダの中身が「空」であることを改めて確認できました。</p>
       <p>また、<code>explorer .</code> をコマンド入力すると、Windows
-      のエクスプローラで <span
-      class="masked">カレントフォルダのエクスプローラウィンドウを開くこと</span>
+      の「エクスプローラ」で <span
+      class="masked">カレントフォルダを開くこと</span>
       ができます。<strong>ドットの入力を忘れないようにしてください</strong>。</p>
       <pre><code>$ explorer .</code></pre>
-      <p>ここからも、フォルダの中身が空であることが確認できました。</p>
+      <p>ここからも、フォルダの中身が「空」であることが確認できました。</p>
       <div class="note type-tips">
       <p><strong>コマンドオプション</strong></p>
       <p>Linuxコマンドのあとに <code>-</code> や <code>--</code>
-      をつけて入力する文字を<strong>(コマンド)
+      をつけて入力する文字を <strong>(コマンド)
       オプション</strong>といいます。例えば、<code>ls</code>
       のコマンドのオプションについて調べたいときは「<a
       href="https://www.google.com/search?q=lsコマンド+オプション">lsコマンド
-      オプション</a>」のように検索します。</p>
+      オプション</a>」のようにウェブ検索してください。</p>
       <p><code>ls</code> の <code>a</code> オプション、<code>l</code>
-      オプションの意味については、各自で調べてみてください。情報系技術者であれば、常識として知っておいてほしい内容です。</p>
+      オプションの意味については<strong>各自で調べて</strong>ください。情報系技術者であれば常識として知っておいてほしい内容になります。</p>
       </div>
       <h2 data-number="3.2" id="gitの初期化"><span
       class="header-section-number">3.2</span> gitの初期化</h2>
       <p>このプロジェクトフォルダを「ローカルリポジトリ」として git
       の管理下に置くために <code>git init</code>
-      をコマンド入力します。</p>
+      コマンドを入力します。</p>
       <pre><code>$ git init
 Initialized empty Git repository in C:/Users/xxxx/Documents/GitHub-Test-2/.git/</code></pre>
-      <p>これにより <code>.git</code>
+      <p>これによりプロジェクトフォルダ内に <code>.git</code>
       という「隠しフォルダ」が作成されます。<code>ls -al</code>
-      で確認します。Linux系では、<strong>名前がドット</strong>
-      <code>.</code>
-      <strong>から始まるファイルやフォルダ</strong>は、通常「隠しファイル」や「<span
+      で確認してみます。Linux系では、<strong>名前がドットから始まるファイルやフォルダ</strong>は、通常「隠しファイル」や「<span
       class="masked">設定ファイル</span>」、「隠しフォルダ」とされます。<code>ls</code>
       コマンドで隠しフォルダやファイルを表示するためには <code>a</code>
       オプションが必要になります。</p>
@@ -348,7 +348,7 @@ otal 8
 drwxr-xr-x 1 xxxx 197121 0  9月 22 14:03 ./
 drwxr-xr-x 1 xxxx 197121 0  9月 22 12:57 ../
 drwxr-xr-x 1 xxxx 197121 0  9月 22 14:03 .git/</code></pre>
-      <p>通常の利用範囲で、ユーザーが この <code>.git</code>
+      <p>通常の利用範囲では、皆さんが この <code>.git</code>
       のフォルダの内容に対して<strong>直接的な操作をすることはありません</strong>
       (誤って内容を変更したり、削除したりすると git
       による管理が壊れるので注意してください)。</p>
@@ -367,9 +367,9 @@ nothing to commit (create/copy files and use &quot;git add&quot; to track)</code
       <ul>
       <li>現在の<strong>ブランチ</strong>は <code>main</code>
       です。</li>
-      <li><strong>ブランチ</strong>(枝)
-      の概念については、追々、学んでいきます。とりあえず、現時点では「<code>main</code>
-      という名前の変更履歴の世界線にいる」という程度の理解でいてください。気になる人は
+      <li><strong>ブランチ</strong> (枝)
+      の概念については、追々、学んでいきます。とりあえず、現時点では「<strong>main
+      という名前をつけた変更履歴の世界線にいる</strong>」という程度の理解でいてください。気になる人は
       <a
       href="https://www.google.com/search?q=git+ブランチとは">ウェブで検索</a>
       してみてください。</li>
@@ -380,10 +380,11 @@ nothing to commit (create/copy files and use &quot;git add&quot; to track)</code
       </ul></li>
       <li><code>nothing to commit (create/copy files and use "git add" to track)</code>
       <ul>
-      <li>ファイルを作成またはコピーし、<code>git add</code>
+      <li>ファイルを作成するかコピーしてきて <code>git add</code>
       コマンドにより、そのファイルを <strong>トラッキング (=追跡)
       の対象</strong>
-      にしてください。<strong>トラッキング対象にする</strong>とは <span
+      にしてください。「<strong>トラッキング対象にする</strong>」とは
+      <span
       class="masked">Gitによって変更履歴を管理する対象にする</span>
       という意味になります。</li>
       </ul></li>
@@ -391,9 +392,9 @@ nothing to commit (create/copy files and use &quot;git add&quot; to track)</code
       <h2 data-number="3.3" id="ファイルの作成とコミット"><span
       class="header-section-number">3.3</span>
       ファイルの作成とコミット</h2>
-      <p>メモ帳などの適当なテキストエディタでプロジェクトフォルダ内に
+      <p>メモ帳などの適当なテキストエディタを使って
       <code>README.md</code>
-      というファイルを作成して、次のような内容を記述して保存してください。</p>
+      というファイルをプロジェクトフォルダ内に作成して、次のような内容を記述して保存してください。</p>
       <div class="sourceCode" id="cb11" data-caption="README.md"><pre
       class="sourceCode numberSource markdown numberLines"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu"># コマンドラインから git 操作</span></span>
 <span id="cb11-2"><a href="#cb11-2"></a><span class="ss">- </span>gitの初期化 <span class="in">`git init`</span></span>
@@ -401,18 +402,19 @@ nothing to commit (create/copy files and use &quot;git add&quot; to track)</code
       <p>ファイルを保存するとき、文字コードは <strong>UTF-8
       (BOMなし)</strong>
       となるように注意してください。また、ファイル名が
-      <code>README.md.txt</code>
-      のような2重拡張子にならないように注意してください。</p>
+      <code>README.md.txt</code> のような <span
+      class="masked">2重拡張子とならない</span>
+      ように注意してください。</p>
       <figure>
       <img src="figs/15/notepad-save.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
       </figure>
       <p>なお、コマンドラインから次のように打ち込むと
-      <strong>メモ帳のアプリが起動し</strong> <code>README.md</code>
+      <strong>「メモ帳」が起動し</strong> <code>README.md</code>
       <strong>の新規作成ができます</strong>。ただし、このように起動すると
       <span
-      class="masked">メモ帳のウィンドウを閉じるまでコマンドラインは操作できない</span>
-      ので注意してください。</p>
+      class="masked">メモ帳のウィンドウを閉じるまでは、コマンドラインは操作できない
+      (入力できない) </span> ので注意してください。</p>
       <pre><code>$ notepad README.md</code></pre>
       <p>ファイルが保存できたら <code>ls -al</code>
       コマンドでプロジェクトフォルダの内容を確認します。フォルダ内に
@@ -423,8 +425,8 @@ drwxr-xr-x 1 xxxx 197121   0  9月 22 14:26 ./
 drwxr-xr-x 1 xxxx 197121   0  9月 22 12:57 ../
 drwxr-xr-x 1 xxxx 197121   0  9月 22 14:12 .git/
 -rw-r--r-- 1 xxxx 197121 105  9月 22 14:28 README.md</code></pre>
-      <p>この状態で、再度 <code>git status</code>
-      を実行して状態を確認します。</p>
+      <p>この状態で、再度 <code>git status</code> を実行して git
+      状態を確認します。</p>
       <pre><code>$ git status
 On branch main
 
@@ -437,27 +439,26 @@ Untracked files:
 nothing added to commit but untracked files present (use &quot;git add&quot; to track)</code></pre>
       <p>ここで注目すべきは <code>Untracked files:</code>
       以降のメッセージです。<code>README.md</code> が
-      <code>Untracked</code>
-      (非追跡対象)の状態、つまり、コミットの対象になっていない
-      (ステージングされていない状態である)
+      <code>Untracked</code> (非追跡対象)
+      の状態、つまり、コミットの対象になっていない
+      (=ステージングされていない状態である)
       ことが書かれています。また、このファイルをコミット対象とするためには
       <code>git add README.md</code>
-      のコマンドを使って登録するように指示されています。</p>
+      コマンドを使って登録するようにヒントが指示されています。</p>
       <p><code>README.md</code> をコミット対象に加えるため
-      <code>git add</code> コマンドで <a
+      <code>git add</code> コマンドで<a
       href="lecture14.html#ファイルを変更してコミットプッシュ">ステージング</a>
       (=ステージングエリアに対象ファイルを追加する処理) をします。</p>
       <pre><code>$ git add README.md
 warning: in the working copy of &#39;README.md&#39;, CRLF will be replaced by LF the next time Git touches it</code></pre>
-      <p>「<strong>warning</strong>: in the working copy of ‘README.md’,
-      CRLF will be replaced by LF the next time Git touches it」は <span
-      class="masked"><code>README.md</code> というファイルの行末が
-      <code>CRLF</code> であるが、コミットなどの git 操作により、これが
-      <code>LF</code> に置き換えられる</span>
-      ということをの警告しています。これは <a
-      href="lecture14.html#改行コードに関する設定">意図的に設定していること</a>
-      なので問題ありません。</p>
-      <p>再度、<code>git status</code> で状態を確認します。</p>
+      <p>ここで「<strong>warning</strong>: in the working copy of
+      ‘README.md’, CRLF will be replaced by LF the next time Git touches
+      it」は <span class="masked"><code>README.md</code>
+      というファイルの行末が <code>CRLF</code> であるが、コミットなどの
+      git 操作により、これが <code>LF</code> に置き換えられる</span>
+      ということを警告しています。これは<a
+      href="lecture14.html#改行コードに関する設定">意図的に設定していること</a>なので問題ありません。</p>
+      <p>再度、<code>git status</code> で git 状態を確認します。</p>
       <pre><code>$ git status
 On branch main
 
@@ -469,7 +470,7 @@ Changes to be committed:
       <div class="note type-tips">
       <p><strong>git add コマンド</strong></p>
       <p><code>git add README.md</code> コマンドは、VSCode での git
-      操作で言えば、次のように「+」アイコンをクリックすることで・・・</p>
+      操作で言えば、次のように「<strong>+</strong>」アイコンをクリックすることにより</p>
       <figure>
       <img src="figs/15/git-command-01.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
@@ -486,68 +487,74 @@ Changes to be committed:
       <p>つづいて <code>git commit</code>
       コマンドを使って「<strong>プロジェクトフォルダに</strong>
       <code>README.md</code>
-      <strong>を追加した</strong>」という変更操作を
+      <strong>を新規作成したた</strong>」という変更履歴を
       <strong><em>コミット</em></strong> していきます。<code>-m</code>
       のオプションにつづけて (ダブルクォーテーションで括った)
       <strong>コミットメッセージ</strong> を指定します。</p>
       <p><strong>慣例的</strong>に最初のコミットには
       <code>first commit</code> や
       <code>initial commit</code>、<code>init commit</code>
-      というコミットメッセージを付けます。</p>
+      というコミットメッセージを付けます。コミットメッセージには日本語も使えます。</p>
       <pre><code>$ git commit -m &quot;first commit&quot;
 [main (root-commit) 0cd9a26] first commit
  1 file changed, 3 insertions(+)
  create mode 100644 README.md</code></pre>
-      <p>再度、<code>git status</code> で状態を確認します。</p>
+      <p>再度、<code>git status</code> で git 状態を確認します。</p>
       <pre><code>$ git status
 On branch main
 nothing to commit, working tree clean</code></pre>
-      <p>これは、現在のリポジトリ (ワーキングツリー)
+      <p>これは、現在のリポジトリ (厳密には Working Tree)
       において、<strong>コミット対象とするような変更操作はない</strong>という状態
       (前回のコミット以降、特に変更が加えられていない状態)
       であることを示しています。</p>
       <div class="note type-tips">
-      <p><strong>コミットメッセージを付けないでコミット操作をすると・・・</strong></p>
+      <p><strong>コミットメッセージを付けずにコミット操作をすると…</strong></p>
       <p>コマンドラインで <code>-m</code> オプションを付けずに
       <code>git commit</code> を実行したり、次のように VSCode 上で
-      <strong>コミットメッセージ欄を空欄にしてコミットのボタンを押下すると</strong>・・・</p>
+      <strong>コミットメッセージ欄を空欄</strong>でコミットボタンを押下すると…</p>
       <figure>
       <img src="figs/15/git-command-03.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
       </figure>
-      <p>git のインストール時に設定したデフォルトテキストエディタ
+      <p>git の<a
+      href="lecture14.html#git-で使用する既定のテキストエディタの設定">インストール時に設定したデフォルトテキストエディタ</a>
       (前回授業のインストール設定どおりであれば VSCode )
       が自動起動して「<strong>COMMIT_EDITMSG</strong>」というファイルにコミットメッセージを入力するように促されます。</p>
-      <p>ここで「<strong>COMMIT_EDITMSG</strong>」のタブをそっと閉じれば
+      <p>ここで立ち上がった「<strong>COMMIT_EDITMSG</strong>」のタブをそっと閉じれば
       <strong><em>コミットはキャンセルされます</em></strong> 。</p>
       <figure>
       <img src="figs/15/git-command-04.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
       </figure>
-      <p>また、以下のようにコミットメッセージの「タイトル」と「詳細内容」を記述して<strong>保存してからタブを閉じれば</strong>
+      <p>また、以下のようにコミットメッセージの「タイトル」と「詳細」を記述して<strong>保存してからタブを閉じれば</strong>
       そのコミットメッセージで
       <strong><em>コミットが実行されます</em></strong>。</p>
       <figure>
       <img src="figs/15/git-command-05.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
       </figure>
-      <p><code>COMMIT_EDITMSG</code> は、次のように構成します。</p>
+      <p>一般に <code>COMMIT_EDITMSG</code> (コミットメッセージ)
+      は、次のように構成します。<code>#</code>
+      から開始する行は無視されます。また、詳細は省略することができます
+      (その場合、1行目にタイトル (概要)
+      だけを記入して保存してタブを閉じてください)。</p>
       <div class="sourceCode" id="cb19"
       data-caption="COMMIT_EDITMSG"><pre
-      class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>1行目：変更内容をあらわすタイトル・要約・概要</span>
+      class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>1行目：タイトル (変更内容の概要)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>2行目 ：空行</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>3行目以降：変更した内容や理由などの詳細</span></code></pre></div>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>3行目以降：詳細 (変更した理由の詳細)</span></code></pre></div>
       <p>詳しくは「<a
       href="https://www.google.com/search?q=git+コミットメッセージ+書き方">git
-      コミットメッセージ 書き方</a>」などで検索してください。</p>
+      コミットメッセージ 書き方</a>」などでウェブ検索してください。</p>
       </div>
-      <p>以上で、<strong>ローカルリポジトリ</strong>(≠リモートリポジトリ)
-      に変更履歴が記録されたという状況になります。なお、<code>git log</code>
-      コマンドでコミットの履歴を確認できます。</p>
+      <p>以上で、<strong>ローカルリポジトリ</strong>
+      (≠リモートリポジトリ)
+      に変更履歴が記録された、という状態になります。なお
+      <code>git log</code> コマンドでコミットの履歴を確認できます。</p>
       <h2 data-number="3.4" id="リモートリポジトリにプッシュ"><span
       class="header-section-number">3.4</span>
       リモートリポジトリにプッシュ</h2>
-      <p>つついて GitHub 上に <strong>リモートリポジトリ</strong>
+      <p>つついて GitHub に <strong>リモートリポジトリ</strong>
       を作成して、そこにローカルリポジトリの内容を
       <strong><em>プッシュ</em></strong> していきます。</p>
       <p>準備として <a href="https://github.co.jp/">GitHub</a>
@@ -559,25 +566,27 @@ nothing to commit, working tree clean</code></pre>
       を作成する方法についてはウェブの情報を参照してください。作成時には<span
       class="masked">「Add a README
       file」のオプションにチェックを入れない</span>
-      ように注意してください。また「<strong>Public</strong>」なリポジトリとしてください。作成したリモートリポジトリの
-      URL <code>https://github.com/zzzz/GitHub-Test-2.git</code>
+      ように注意してください。また「<strong>Public</strong>」なリポジトリとしてください。</p>
+      <p>作成したリモートリポジトリの URL
+      <code>https://github.com/zzzz/GitHub-Test-2.git</code>
       をメモしておいてください、以降の作業で必要となります。</p>
       <div class="note type-senior">
-      <p><strong>コマンドラインからGutHubにリポジトリを新規作成するには</strong></p>
-      <p>前回講義の VSCode を使う方法では、VSCode から GitHub
-      に新規のリポジトリを作成することができました。この操作をコマンドラインから行なうためには、別途
+      <p><strong>コマンドラインから GutHub
+      にリポジトリを新規作成するには</strong></p>
+      <p>前回講義で学んだ VSCode を使う方法では、VSCode から GitHub
+      に新規リポジトリを作成することができました。この操作をコマンドラインから行なうためには、別途
       <a href="https://www.google.com/search?q=GitHub+CLI">GitHub
-      CLI</a> というソフトをPCにインストールする必要があります。CLI:
-      Command Line Interface。</p>
+      CLI</a> というソフトのインストールが必要になります。CLI: Command
+      Line Interface。</p>
       <p>この授業で扱う範囲では GitHub CLI
-      を使用する必要性がないので、ここではウェブブラウザ上からリポジトリを新規作成してもらっています。</p>
+      を使用する必要性は高くないので、ここではウェブブラウザ上から新規リポジトリを作成してもらっています。</p>
       </div>
-      <p>Git bash の操作に戻ります。<code>pwd</code>
+      <p>ローカルPCの Git bash の操作に戻ります。<code>pwd</code>
       でカレントフォルダが
       <code>/c/Users/xxxx/Documents/GitHub-Test-2</code>
-      であることを確認してください。</p>
+      であることを再確認してください。</p>
       <p><code>git remote add</code>
-      コマンドを使って「ローカルリポジトリ」と先ほど作成した「リモートリポジトリ」を紐づけます。以下のコマンドにより、以降
+      コマンドを使って「ローカルリポジトリ」といま作成した「リモートリポジトリ」を紐づけます。以下のコマンドを実行することで、以降
       <code>https://github.com/zzzz/GitHub-Test-2.git</code> を
       <code>origin</code>
       というショートカットネームで扱えるようになります。git では
@@ -585,13 +594,14 @@ nothing to commit, working tree clean</code></pre>
       <code>origin</code>(オリジン)
       <strong>という名前をつけます</strong>。</p>
       <pre><code>$ git remote add origin https://github.com/zzzz/GitHub-Test-2.git</code></pre>
-      <p>実行してエラーが返ってこなければ成功です。設定した<strong>リモートリポジトリURL</strong>は
+      <p>実行してエラーが返ってこなければ成功です。ここで設定した<strong>リモートリポジトリURL</strong>は
       <code>git remote -v</code> コマンドで確認できます。</p>
       <pre><code>$ git remote -v
 origin  https://github.com/zzzz/GitHub-Test-2.git (fetch)
 origin  https://github.com/zzzz/GitHub-Test-2.git (push)</code></pre>
-      <p>間違って設定した場合は、<code>git remote remove origin</code>
-      コマンドで情報を削除して、再度、<code>git remote add</code>
+      <p>もし、間違って設定した場合は
+      <code>git remote remove origin</code>
+      コマンドで情報を削除して、再度 <code>git remote add</code>
       コマンドを実行してください。</p>
       <p>準備ができたので <code>git push</code>
       で、ローカルリポジトリの内容を、リモートリポジトリに
@@ -609,7 +619,7 @@ To https://github.com/zzzz/GitHub-Test-2.git
 branch &#39;main&#39; set up to track &#39;origin/main&#39;.</code></pre>
       <p>上記のコマンドは「現在のブランチを <code>origin</code> の
       <code>main</code> ブランチにプッシュせよ」という意味になります。
-      ここで、現在のブランチとは (さきほど) <code>git status</code>
+      ここで「現在のブランチ」は <code>git status</code>
       で確認したようにローカルリポジトリの <code>main</code> です。また
       <code>origin</code> とは
       <code>https://github.com/zzzz/GitHub-Test-2.git</code>
@@ -617,27 +627,27 @@ branch &#39;main&#39; set up to track &#39;origin/main&#39;.</code></pre>
       <code>main</code> <strong>ブランチの情報 (変更履歴)
       を、リモートリポジトリの</strong> <code>main</code>
       <strong>ブランチにアップロードせよ</strong>、という意味になります。</p>
-      <p>もし、認証要求があれば、指示に従って GitHub の Username と
+      <p>もし、認証要求があれば指示に従って GitHub の Username と
       Password を入力してください (前回の授業で VSCode
       からのプッシュ操作を通じて認証を済ませており、その情報を git
       が持っているので認証要求はされないと思います)。</p>
       <p>念のため、ウェブブラウザで GitHub の
       <code>GitHub-Test-2.git</code> のトップページにアクセスして
       (必要に応じてウェブブラウザをリロードして)、ローカルリポジトリの内容
-      (<code>README.md</code>)
+      (新規作成した <code>README.md</code>)
       がリモートリポジトリに反映されていることを確認してください。</p>
       <figure>
       <img src="figs/15/git-command-06.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
       </figure>
-      <p>以上のように、本来 git
-      の操作はコマンドラインから実行します。ただし、この方法は煩雑であるため
+      <p>以上のように git
+      操作は、本来、コマンドラインから実行します。ただし、この方法は煩雑であるため
       VSCode や Sourcetree、<a href="https://desktop.github.com/">GitHub
       Desktop</a>
       などのGUIアプリが使用されなす。なお、中級者以上はコマンドラインからの操作を好む傾向にあります。</p>
       <h2 data-number="3.5" id="リポジトリの削除"><span
       class="header-section-number">3.5</span> リポジトリの削除</h2>
-      <p>ここで作成した「ローカルリポジトリ」と「リモートリポジトリ」を削除しておいてください。</p>
+      <p>このセクションで作成した「ローカルリポジトリ」と「リモートリポジトリ」を削除しておいてください。</p>
       <h1 data-number="4" id="htmlcssの基礎"><span
       class="header-section-number">4</span> HTML/CSSの基礎</h1>
       <p>GitHub
@@ -647,15 +657,20 @@ branch &#39;main&#39; set up to track &#39;origin/main&#39;.</code></pre>
       (ウェブページ)</strong> を作成するときにも利用します。</p>
       <div class="note type-senior">
       <p><strong>ポートフォリオとは</strong></p>
-      <p>IT系エンジニアを目指す学生にとっての「ポートフォリオ」とは、自分のスキルや経験、成果物をまとめて示すものです。履歴書や職務経歴書が経歴を示すのに対し、ポートフォリオは「自分が何ができるのか」を具体的に示す資料となります。具体的な内容としては「自己紹介・経歴」「スキルセット
-      (使用経験のあるプログラミング言語や開発環境、フレームワーク、クラウドサービス、ツールなど)」「成果物・制作物」「資格
-      (情報技術/その他)」「コンテスト・ハッカソン・イベント・セミナー・会社見学・インターンシップなどの参加歴」「その他
+      <p>IT系エンジニアを目指す学生にとっての「ポートフォリオ」とは
+      <span
+      class="masked">自分のスキルや経験、成果物をまとめて示すもの</span>
+      です。履歴書や職務経歴書が「経歴」を示すことに対し、ポートフォリオは「自分が何ができるのか」を具体的に示す資料となります。具体的な内容としては「自己紹介」「<strong>スキルセット
+      (使用経験のあるプログラミング言語や開発環境、フレームワーク、クラウドサービス、ツールなど)</strong>」「<strong>成果物・制作物</strong>」「<strong>資格
+      (情報技術/その他)</strong>」「<strong>コンテスト・ハッカソン・イベント・セミナー・会社見学・インターンシップなどの参加歴</strong>」「その他
       (GutHub / AtCoder / Techful / SNS などのリンク)
-      」など記載します。内容の特性上、一般にはウェブページの形式で作成・公開されることが多いです。</p>
+      」などを記載します。</p>
+      <p>内容の特性上、一般にはウェブページの形式で作成・公開されることが多いです。以下、ポートフォリオの作成例です。</p>
       <ol type="1">
-      <li>https://yamasy.info/ (明石高専OG)</li>
-      <li>https://kisaragi2342.com/portfolio/ (高専生)</li>
-      <li>https://nnsnodnb.github.io/ (高専生)</li>
+      <li>https://yamasy.info/ 　(明石高専OG)</li>
+      <li>https://herorobo.github.io/portfolio/ 　(公大高専OB)</li>
+      <li>https://kisaragi2342.com/portfolio/ 　(高専生)</li>
+      <li>https://nnsnodnb.github.io/ 　(高専生)</li>
       <li>https://sample-portfolio-psi.vercel.app/</li>
       </ol>
       </div>
@@ -663,29 +678,32 @@ branch &#39;main&#39; set up to track &#39;origin/main&#39;.</code></pre>
       <strong><em>HTML</em></strong> (<strong>HyperText Markup
       Language</strong>) と <strong><em>CSS</em></strong>
       (<strong>Cascading Style Sheets</strong>)
-      という言語を組み合わせつくられています。いずれも、Pythonプログラムと同じように実体は
+      という言語を組み合わせてつくられています。いずれも、Pythonプログラムと同じように実体は
       <span class="masked">テキストファイル</span> であり、それを Chrome
       や Edge などのウェブブラウザが解釈して
-      <strong>ウェブページとしてレンダリング</strong>して表示しています。</p>
-      <p>なお、ウェブブラウザが、ウェブサーバから HTML や CSS
+      <strong>レイアウトなどを整え装飾を施したウェブページとしてレンダリング</strong>
+      して表示しています。</p>
+      <p>なお、ウェブブラウザがウェブサーバから HTML や CSS
       を取得するときに使用する<strong>プロトコル</strong>
       (通信の規約・規則) を <span class="masked">HTTP (Hypertext
       Transfer Protocl)</span> といいます。</p>
       <div class="note type-tips">
       <p><strong>ウェブデザイナー</strong></p>
       <p><a
-      href="https://careergarden.jp/webdesigner/">ウェブデザイナー</a>はウェブサイトやウェブサービス、ウェブアプリケーションなどの「外観」「視覚要素」「使いやすさ」などを主に設計する仕事です。この仕事ではデザインの知識に加えて、それを実際に形にするために
+      href="https://careergarden.jp/webdesigner/">ウェブデザイナー</a>はウェブサイトやウェブサービス、ウェブアプリケーションなどの<span
+      class="masked">「外観」「視覚要素」「使いやすさ (UI/UX)
+      」</span>などを主に設計・実装する仕事です。この仕事ではデザインの知識に加えて、それを実際に形にするために
       <strong>HTML/CSS
       の理解と知識、実践スキルが求められます</strong>。その他にも
       JavaScript や Adobe Photoshop、Illustrator
-      などのデザインソフトのスキルも要求されます。また、仕事では経験や実績も重視さるため、将来ウェブデザイナーを目指す場合、早期に
+      などのデザインソフトのスキルも要求されます。</p>
+      <p>ウェブデザイナーの仕事では経験や実績も重視さるため、将来ウェブデザイナーを目指す場合、早期に
       HTML と CSS
-      を学び、ポートフォリオを充実させていくことが大切です。</p>
-      <p>また、企業に所属せずにフリーランス・個人として活躍する人も多いのが、ウェブデザイナーの特徴のひとつです。</p>
+      を学び、ポートフォリオを充実させていくことが大切です。また、企業に所属せずにフリーランス・個人として活躍する人も多いのが、ウェブデザイナーの特徴のひとつです。</p>
       </div>
       <h2 data-number="4.1" id="準備"><span
       class="header-section-number">4.1</span> 準備</h2>
-      <p>HTMLとCSSも概要を理解するために「カレーのレシピを掲載する簡素なウェブページ」を作成してみます。適当な場所に
+      <p>HTMLとCSSの概要を学ぶために「<strong>カレーのレシピを掲載する簡素なウェブページ</strong>」を制作してみます。適当な場所に
       <code>Curry-Recipe</code>
       という名前のプロジェクトフォルダを作成し、それを VSCode
       で開いてください。</p>
@@ -697,9 +715,10 @@ branch &#39;main&#39; set up to track &#39;origin/main&#39;.</code></pre>
       Sheets）</strong>
       はウェブページのレイアウトや体裁、装飾を制御するために使用されます。端的に言えば
       HTML は <span class="masked">何を表示するか</span> を、CSSは <span
-      class="masked">どのように表示するか</span> を担当します。</p>
+      class="masked">どのように表示するか</span>
+      を担当する言語になります。</p>
       <p>具体的には、HTMLでは「これはタイトルです」「これはリンクです」「これはXXXの子要素です」のように<strong>テキストコンテンツに意味</strong>を与えます。一方で、CSSでは「このテキストは赤色です」「この要素は画面の右上に配置します」といった<strong>純粋な視覚的な情報</strong>を与えます。</p>
-      <p>なお、CSSを使用せずにHTMLだけでもウェブページを作成することもできます。しかし、その場合、デザインやレイアウトのカスタマイズが限られることになります。</p>
+      <p>なお、<strong>CSSを使用せずにHTMLだけでもウェブページを作成することも可能</strong>です。しかし、その場合、デザインやレイアウトのカスタマイズが限られることになります。</p>
       </div>
       <h2 data-number="4.2" id="html"><span
       class="header-section-number">4.2</span> HTML</h2>
@@ -711,8 +730,8 @@ branch &#39;main&#39; set up to track &#39;origin/main&#39;.</code></pre>
       (=意味付けすることで) 、<span
       class="masked">「見出し」「段落」「リスト
       (箇条書き)」「リンク」「表」「画像の埋め込み」</span>といったページ構造や意味を定義するマークアップ言語です。</p>
-      <p>実際に HTMLファイル (<code>index.html</code>)
-      を作成して「ウェブブラウザから閲覧できること」を確認してみます。</p>
+      <p>実際に <code>index.html</code>
+      というHTMLファイルを作成して、それがウェブブラウザから閲覧できることを確認してみます。</p>
       <p>適当な場所に <code>Curry-Recipe</code>
       というプロジェクトフォルダを作成して VSCode でオープンし、そこで
       <code>index.html</code>
@@ -733,46 +752,49 @@ branch &#39;main&#39; set up to track &#39;origin/main&#39;.</code></pre>
 <span id="cb23-13"><a href="#cb23-13"></a></span>
 <span id="cb23-14"><a href="#cb23-14"></a>    <span class="kw">&lt;h1&gt;</span>XXX&#39;s Curry Recipe<span class="kw">&lt;/h1&gt;</span></span>
 <span id="cb23-15"><a href="#cb23-15"></a>    <span class="kw">&lt;p&gt;</span></span>
-<span id="cb23-16"><a href="#cb23-16"></a>      我が家に伝わる一子相伝・門外不出の<span class="kw">&lt;strong&gt;</span>秘伝のカレーレシピ<span class="kw">&lt;/strong&gt;</span>を今だけ特別に大公開！<span class="kw">&lt;br</span> <span class="kw">/&gt;</span></span>
-<span id="cb23-17"><a href="#cb23-17"></a>      このカレーがなぜ代々受け継がれてきたのか、その魅力をあなたも実感してください。秘伝のスパイスと調理法、家族を幸せにする魔法の一皿を体験してください！</span>
-<span id="cb23-18"><a href="#cb23-18"></a>    <span class="kw">&lt;/p&gt;</span></span>
-<span id="cb23-19"><a href="#cb23-19"></a></span>
-<span id="cb23-20"><a href="#cb23-20"></a>    <span class="kw">&lt;img</span> <span class="er">src</span><span class="ot">=</span><span class="st">&quot;curryrice.jpg&quot;</span> <span class="er">alt</span><span class="ot">=</span><span class="st">&quot;カレーライスの画像&quot;</span> <span class="er">width</span><span class="ot">=</span><span class="st">&quot;100%&quot;</span> <span class="kw">/&gt;</span></span>
+<span id="cb23-16"><a href="#cb23-16"></a>      我が家に伝わる一子相伝・門外不出の<span class="kw">&lt;strong&gt;</span>秘伝のカレーレシピ<span class="kw">&lt;/strong&gt;</span>を</span>
+<span id="cb23-17"><a href="#cb23-17"></a>      今だけ特別に大公開！<span class="kw">&lt;br</span> <span class="kw">/&gt;</span></span>
+<span id="cb23-18"><a href="#cb23-18"></a>      このカレーがなぜ代々受け継がれてきたのか、その魅力をあなたも実感してください。</span>
+<span id="cb23-19"><a href="#cb23-19"></a>      秘伝のスパイスと調理法、家族を幸せにする魔法の一皿を体験してください！</span>
+<span id="cb23-20"><a href="#cb23-20"></a>    <span class="kw">&lt;/p&gt;</span></span>
 <span id="cb23-21"><a href="#cb23-21"></a></span>
-<span id="cb23-22"><a href="#cb23-22"></a>    <span class="kw">&lt;h2&gt;</span>材料<span class="kw">&lt;/h2&gt;</span></span>
-<span id="cb23-23"><a href="#cb23-23"></a>    <span class="kw">&lt;p&gt;</span></span>
-<span id="cb23-24"><a href="#cb23-24"></a>      <span class="kw">&lt;strong&gt;</span>8皿分の分量<span class="kw">&lt;/strong&gt;</span>です。予算や気分にあわせて具材を追加したり、量を調整してください。</span>
-<span id="cb23-25"><a href="#cb23-25"></a>    <span class="kw">&lt;/p&gt;</span></span>
-<span id="cb23-26"><a href="#cb23-26"></a></span>
-<span id="cb23-27"><a href="#cb23-27"></a>    <span class="kw">&lt;ul&gt;</span></span>
-<span id="cb23-28"><a href="#cb23-28"></a>      <span class="kw">&lt;li&gt;</span>市販のカレールー（中辛）... 1/2箱<span class="kw">&lt;/li&gt;</span></span>
-<span id="cb23-29"><a href="#cb23-29"></a>      <span class="kw">&lt;li&gt;</span>鶏肉 ... 400g<span class="kw">&lt;/li&gt;</span></span>
-<span id="cb23-30"><a href="#cb23-30"></a>      <span class="kw">&lt;li&gt;</span>玉ねぎ ... 3個（中サイズ）<span class="kw">&lt;/li&gt;</span></span>
-<span id="cb23-31"><a href="#cb23-31"></a>      <span class="kw">&lt;li&gt;</span>にんにく ... 1片<span class="kw">&lt;/li&gt;</span></span>
-<span id="cb23-32"><a href="#cb23-32"></a>      <span class="kw">&lt;li&gt;</span>水 ... 700ml<span class="kw">&lt;/li&gt;</span></span>
-<span id="cb23-33"><a href="#cb23-33"></a>      <span class="kw">&lt;li&gt;</span>サラダ油 ... 大さじ1<span class="kw">&lt;/li&gt;</span></span>
-<span id="cb23-34"><a href="#cb23-34"></a>      <span class="kw">&lt;li&gt;</span></span>
-<span id="cb23-35"><a href="#cb23-35"></a>        <span class="kw">&lt;a</span> <span class="er">href</span><span class="ot">=</span><span class="st">&quot;https://ja.wikipedia.org/wiki/ガラムマサラ&quot;</span><span class="kw">&gt;</span>ガラムマサラ<span class="kw">&lt;/a&gt;</span></span>
-<span id="cb23-36"><a href="#cb23-36"></a>        ... 適量</span>
-<span id="cb23-37"><a href="#cb23-37"></a>      <span class="kw">&lt;/li&gt;</span></span>
-<span id="cb23-38"><a href="#cb23-38"></a>    <span class="kw">&lt;/ul&gt;</span></span>
-<span id="cb23-39"><a href="#cb23-39"></a></span>
-<span id="cb23-40"><a href="#cb23-40"></a>    <span class="kw">&lt;h2&gt;</span>作り方<span class="kw">&lt;/h2&gt;</span></span>
-<span id="cb23-41"><a href="#cb23-41"></a>    <span class="kw">&lt;p&gt;</span>近日大公開！<span class="kw">&lt;/p&gt;</span></span>
-<span id="cb23-42"><a href="#cb23-42"></a>    </span>
-<span id="cb23-43"><a href="#cb23-43"></a>  <span class="kw">&lt;/body&gt;</span> <span class="co">&lt;!-- ここまで本文終了 --&gt;</span></span>
-<span id="cb23-44"><a href="#cb23-44"></a><span class="kw">&lt;/html&gt;</span></span></code></pre></div>
-      <p>ファイルを保存のときは VSCode
-      のウィンドウ右下から文字コードが「<strong>UTF-8</strong>」になっていることを確認してください。</p>
+<span id="cb23-22"><a href="#cb23-22"></a>    <span class="kw">&lt;img</span> <span class="er">src</span><span class="ot">=</span><span class="st">&quot;curryrice.jpg&quot;</span> <span class="er">alt</span><span class="ot">=</span><span class="st">&quot;カレーライスの画像&quot;</span> <span class="er">width</span><span class="ot">=</span><span class="st">&quot;100%&quot;</span> <span class="kw">/&gt;</span></span>
+<span id="cb23-23"><a href="#cb23-23"></a></span>
+<span id="cb23-24"><a href="#cb23-24"></a>    <span class="kw">&lt;h2&gt;</span>材料<span class="kw">&lt;/h2&gt;</span></span>
+<span id="cb23-25"><a href="#cb23-25"></a>    <span class="kw">&lt;p&gt;</span></span>
+<span id="cb23-26"><a href="#cb23-26"></a>      <span class="kw">&lt;strong&gt;</span>8皿分の分量<span class="kw">&lt;/strong</span></span>
+<span id="cb23-27"><a href="#cb23-27"></a>      <span class="kw">&gt;</span>です。予算や気分にあわせて具材を追加したり、量を調整してください。</span>
+<span id="cb23-28"><a href="#cb23-28"></a>    <span class="kw">&lt;/p&gt;</span></span>
+<span id="cb23-29"><a href="#cb23-29"></a></span>
+<span id="cb23-30"><a href="#cb23-30"></a>    <span class="kw">&lt;ul&gt;</span></span>
+<span id="cb23-31"><a href="#cb23-31"></a>      <span class="kw">&lt;li&gt;</span>市販のカレールー（中辛）... 1/2箱<span class="kw">&lt;/li&gt;</span></span>
+<span id="cb23-32"><a href="#cb23-32"></a>      <span class="kw">&lt;li&gt;</span>鶏肉 ... 400g<span class="kw">&lt;/li&gt;</span></span>
+<span id="cb23-33"><a href="#cb23-33"></a>      <span class="kw">&lt;li&gt;</span>玉ねぎ ... 3個（中サイズ）<span class="kw">&lt;/li&gt;</span></span>
+<span id="cb23-34"><a href="#cb23-34"></a>      <span class="kw">&lt;li&gt;</span>にんにく ... 1片<span class="kw">&lt;/li&gt;</span></span>
+<span id="cb23-35"><a href="#cb23-35"></a>      <span class="kw">&lt;li&gt;</span>水 ... 700ml<span class="kw">&lt;/li&gt;</span></span>
+<span id="cb23-36"><a href="#cb23-36"></a>      <span class="kw">&lt;li&gt;</span>サラダ油 ... 大さじ1<span class="kw">&lt;/li&gt;</span></span>
+<span id="cb23-37"><a href="#cb23-37"></a>      <span class="kw">&lt;li&gt;</span></span>
+<span id="cb23-38"><a href="#cb23-38"></a>        <span class="kw">&lt;a</span> <span class="er">href</span><span class="ot">=</span><span class="st">&quot;https://ja.wikipedia.org/wiki/ガラムマサラ&quot;</span><span class="kw">&gt;</span>ガラムマサラ<span class="kw">&lt;/a&gt;</span></span>
+<span id="cb23-39"><a href="#cb23-39"></a>        ... 適量</span>
+<span id="cb23-40"><a href="#cb23-40"></a>      <span class="kw">&lt;/li&gt;</span></span>
+<span id="cb23-41"><a href="#cb23-41"></a>    <span class="kw">&lt;/ul&gt;</span></span>
+<span id="cb23-42"><a href="#cb23-42"></a></span>
+<span id="cb23-43"><a href="#cb23-43"></a>    <span class="kw">&lt;h2&gt;</span>作り方<span class="kw">&lt;/h2&gt;</span></span>
+<span id="cb23-44"><a href="#cb23-44"></a>    <span class="kw">&lt;p&gt;</span>近日大公開！<span class="kw">&lt;/p&gt;</span></span>
+<span id="cb23-45"><a href="#cb23-45"></a>  <span class="kw">&lt;/body&gt;</span> <span class="co">&lt;!-- ここまで本文終了 --&gt;</span></span>
+<span id="cb23-46"><a href="#cb23-46"></a><span class="kw">&lt;/html&gt;</span></span></code></pre></div>
+      <p>ファイルを保存するときは VSCode
+      のウィンドウ右下に表示される文字コードが「<strong>UTF-8</strong>」になっていることを確認してください。</p>
       <figure>
       <img src="figs/15/char-set.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
       </figure>
-      <p>また、<code>&lt;img src="curryrice.jpg" alt="カレーライスの画像" width="100%" /&gt;</code>
+      <p>また
+      <code>&lt;img src="curryrice.jpg" alt="カレーライスの画像" width="100%" /&gt;</code>
       のタグで画像を表示するために、次の画像をダウンロードしてプロジェクトフォルダの
       <code>index.html</code> と同じ階層に <code>curryrice.jpg</code>
       という名前で保存してください
-      (この画像は生成系AIから生成したものであり、著作権などの問題はありません)
+      (この画像は生成系AIで作成したものであり、著作権などの問題はありません)
       。</p>
       <figure>
       <img src="figs/15/curryrice.jpg" alt="img" />
@@ -780,9 +802,10 @@ branch &#39;main&#39; set up to track &#39;origin/main&#39;.</code></pre>
       </figure>
       <p>以上が完了したら、エクスプローラでドキュメントフォルダを開き
       <code>index.html</code>
-      をダブルクリックします。標準的な環境であれば、ウェブブラウザが起動して、レンダリングされた
-      HTML
-      を確認することができます。現時点では、<strong>CSSを適用していないため、簡素で地味なユーザーフレンドリーとは言えないページ</strong>となっていることが分かると思います。</p>
+      をダブルクリックします。標準的な環境であれば、ウェブブラウザが起動してレンダリングされた
+      HTML を確認することができます。現時点では
+      <strong>CSSを適用していないため、簡素で地味なユーザーフレンドリーとは言えないページ</strong>
+      となっていることが分かると思います。</p>
       <div class="note type-senior">
       <p><strong>VSCode拡張機能: Live Server</strong></p>
       <p>VSCodeに <strong>Live Server</strong>
@@ -793,9 +816,11 @@ branch &#39;main&#39; set up to track &#39;origin/main&#39;.</code></pre>
       の拡張機能の検索欄に <code>ritwickdey.liveserver</code>
       を入力すれば「Live Server」という拡張機能を見つけることができます
       (ぜひインストールしておいてください)。</p>
-      <p>インストール後、次のようにウィンドウ右下の <strong>Go
+      <p>インストール後は、次のようにウィンドウ右下に <strong>Go
       Live</strong>
-      アイコンをクリックするとブラウザが起動して、VSCode上でのファイル編集がリアルタイム反映されるようになります。詳しい機能や使い方に関しては「<a
+      というアイコンが表示されるので、それをクリックするとブラウザが起動して
+      VSCode
+      上でのファイル編集がリアルタイム反映されるようになります。詳しい機能や使い方に関しては「<a
       href="https://www.google.com/search?q=VSCode+Live+Server">VSCode
       Live Server</a>」でウェブ検索してください。</p>
       <figure>
@@ -866,8 +891,8 @@ branch &#39;main&#39; set up to track &#39;origin/main&#39;.</code></pre>
       <li>カレーの材料に「<strong>じゃがいも …
       2個</strong>」を追加したい。</li>
       <li>カレーの材料に「<strong>ターメリック …
-      適量</strong>」を追加したい。また、ターメリックの文字をクリックしたときに、Wikipedia
-      の当該ページに遷移するようにしたい。</li>
+      適量</strong>」を追加したい。また、ターメリックの文字をクリックしたときに
+      Wikipedia の当該ページに遷移するようにしたい。</li>
       <li>材料の説明文において「8皿分の分量です。」のあとに
       <strong>改行</strong>
       を入れて「予算や気分にあせて・・・」を表示したい。</li>
@@ -1000,7 +1025,9 @@ branch &#39;main&#39; set up to track &#39;origin/main&#39;.</code></pre>
       <p>さらに <code>index.html</code> ファイルなかの
       <code>&lt;head&gt;</code> から <code>&lt;/head&gt;</code>
       の範囲を<strong>次の内容に差し替えて上書き保存してください</strong>。<code>&lt;link&gt;</code>
-      タグを使用して<strong>各種スタイルシートを取得して読み込ませる</strong>ようにしています。</p>
+      タグを使用して <span
+      class="masked">各種スタイルシートを取得して読み込ませる</span>
+      ようにしています。</p>
       <div class="sourceCode" id="cb25"
       data-caption="index.html (抜粋)"><pre
       class="sourceCode numberSource html numberLines"><code class="sourceCode html"><span id="cb25-1"><a href="#cb25-1"></a><span class="kw">&lt;head&gt;</span></span>
@@ -1018,25 +1045,25 @@ branch &#39;main&#39; set up to track &#39;origin/main&#39;.</code></pre>
 <span id="cb25-13"><a href="#cb25-13"></a>  <span class="kw">&lt;link</span> <span class="er">rel</span><span class="ot">=</span><span class="st">&quot;stylesheet&quot;</span> <span class="er">href</span><span class="ot">=</span><span class="st">&quot;main.css&quot;</span> <span class="kw">/&gt;</span></span>
 <span id="cb25-14"><a href="#cb25-14"></a><span class="kw">&lt;/head&gt;</span></span></code></pre></div>
       <p>第07行目にある1個目の<code>&lt;link&gt;</code>タグでは「<strong>アイコンフォントライブラリ</strong>」を提供している<a
-      href="https://fontawesome.com/icons/categories">FontAwesome</a>という外部サイトからスタイルシートを読み込んでいます。これにより<i class="fa-solid fa-fish-fins"></i><i class="fa-solid fa-faucet-drip"></i><i class="fa-solid fa-poo"></i><i class="fa-solid fa-skull"></i>　のようなアイコンを装飾として利用できるようにようになります。</p>
+      href="https://fontawesome.com/icons/categories">FontAwesome</a>というサービス関連のスタイルシートを読み込んでいます。これにより<i class="fa-solid fa-fish-fins"></i><i class="fa-solid fa-faucet-drip"></i><i class="fa-solid fa-poo"></i><i class="fa-solid fa-skull"></i>　のようなアイコンを装飾として利用できるようにようになります。</p>
       <p>第10行目にある2個目の<code>&lt;link&gt;</code>タグでは <a
       href="https://fonts.google.com/?subset=japanese">Google
       Fonts</a>から <code>Yusei Magic</code> (油性マジック)
-      というフォントのスタイルシートを読み込んでいます。</p>
+      という日本語フォントのスタイルシートを読み込んでいます。PCやスマートフォンのローカル環境にインストールされているフォントに関係なく、どの環境でも同じフォントで描画されたウェブページを提供可能になります。</p>
       <p>第13行目にある3個目の<code>&lt;link&gt;</code>タグでは、先ほど作成した
       <code>main.css</code>
       というオリジナルのスタイルシートを読み込んでいます。</p>
-      <p>上記を完了したら
-      (HTMLもCSSも上書き保存されていることを確認して)
+      <p>上記の書き換えが完了したら
+      (HTMLもCSSも上書き保存されていることを確認したら)
       、改めてウェブブラウザで <code>index.html</code>
       を開いて表示を確認してください。CSS (スタイルシート)
-      を適用したことで、<strong>雰囲気も UI/UX
+      が適用されたことで <strong>雰囲気も UI/UX
       も大きく改善</strong>されたことが確認できるはずです。</p>
       <div class="note type-tips">
       <p><strong>Chromeのデベロッパーツール</strong></p>
-      <p>Google Chrome を起動中に <code>F12</code> または
-      <code>Ctrl+Shift+I</code> を押下すると<strong>デベロッパーツール
-      (開発者向けツール) </strong>が起動します。デベロッパーツールでは
+      <p>Google Chrome で <code>F12</code> または
+      <code>Ctrl+Shift+I</code> を押下すると「<strong>デベロッパーツール
+      (開発者向けツール) </strong>」が起動します。デベロッパーツールでは
       <span
       class="masked">スマートフォンやタブレットなどのモバイルデバイス画面をエミュレート</span>
       することができます。</p>
@@ -1044,18 +1071,19 @@ branch &#39;main&#39; set up to track &#39;origin/main&#39;.</code></pre>
       <img src="figs/15/chrome_dev_tool.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
       </figure>
-      <p>プリセットで用意されているデバイスは限られているので、必要に応じて下記URLの情報を参考にエミュレートデバイスを追加してください。上記画像の「iPhone
+      <p>プリセットで用意されているデバイスは限られているので、必要に応じて下記URLの情報を参考にエミュレートデバイスを追加・設定してください。上記画像の「iPhone
       15 Pro」はカスタム追加したものです。</p>
       <ul>
       <li>https://github.com/amirshnll/custom-device-emulation-chrome</li>
       </ul>
-      <p>この他、デベロッパーツールでは開発に役立つ機能が多数存在します。詳しくは「<a
+      <p>この他、デベロッパーツールでは HTML / CSS / JavaScript
+      の開発に役立つ機能が多数存在します。詳しくは「<a
       href="https://www.google.com/search?q=Chrome+DevTools+使い方">Chrome
       DevTools 使い方</a>」などでウェブ検索してください。</p>
       </div>
       <h3 data-number="4.3.1" id="演習②"><span
       class="header-section-number">4.3.1</span> 演習②</h3>
-      <p>次の内容に取り組め。</p>
+      <p>次の内容に取り組んでください。</p>
       <ul>
       <li>プロジェクトフォルダをローカルリポジトリに設定し、さらに
       GitHub
@@ -1068,9 +1096,9 @@ branch &#39;main&#39; set up to track &#39;origin/main&#39;.</code></pre>
       <li>公開されたウェブページURLを表す <strong>QRコード</strong>
       を生成し、それを利用してスマートフォンから公開されたウェブページを確認せよ。</li>
       <li>HTML または CSS
-      を編集し、その内容を「コミット」「プッシュ」することで、編集した内容がウェブページに反映されることを確認せよ。</li>
+      を編集し、その内容を「コミット」「プッシュ」することで、編集内容がウェブページに反映されることを確認せよ。</li>
       </ul>
-      <p>既に体験しているため知っていると思いますが GitHub Pages
+      <p>既に体験しているため把握していると思いますが GitHub Pages
       の各種機能は即時反映型ではない
       (=<strong>内容や設定を変更しても、それが反映されるまでに少なくとも3分程度の時間がかかる</strong>)
       ので注意していください。</p>
@@ -1079,18 +1107,19 @@ branch &#39;main&#39; set up to track &#39;origin/main&#39;.</code></pre>
       class="header-section-number">4.4</span>
       GutHubリポジトリのクローン</h2>
       <p>今後、<strong>授業</strong> や <strong>実験実習</strong>
-      では「プログラムのサンプルコード」や「開発環境や提出課題のテンプレート」が
+      では「サンプルコード」や「開発環境や提出課題のテンプレート」が
       <strong>GitHubリポジトリとして教員から提供・配付されること</strong>
       があります。このようなケースでは、学生側で
-      <strong><em>クローン</em></strong>
-      というgit操作により、リモートリポジトリで公開されている内容
-      (サンプルコードやテンプレート) を自分のPCにダウンロードしてくる (=
-      リモートリポジトリ の内容を ローカルリポジトリ
-      に<strong>複製</strong>する) という作業が必要になります。</p>
-      <p>ここでは「<strong>GitHubリモートリポジトリで「提出課題のためのテンプレート(ひな形)」が配布されていて、それをベースとした開発を行ない、その成果を自分のGitHubアカウントのリモートリポジトリに発行し、そのURLを提出する</strong>」という一連の流れについて解説します。この操作は、今後、実際に利用するものなので確実に習得してください。</p>
+      <strong><em>クローン</em></strong> というgit操作により <span
+      class="masked">リモートリポジトリで公開されている内容
+      (サンプルコードやテンプレート)
+      を自分のPCにダウンロードしてくる</span> (= リモートリポジトリ
+      の内容を ローカルリポジトリ に<strong>複製</strong>する)
+      という作業が必要になります。</p>
+      <p>ここでは、<strong>GitHubリモートリポジトリで「提出課題のためのテンプレート(ひな形)」が配布されていて、それをベースとした開発を行ない、その成果を自分のGitHubアカウントのリモートリポジトリに発行し、そのURLを提出する</strong>、という一連の流れについて解説します。この操作は、今後、実際に利用するものなので確実に習得してください。</p>
       <h3 data-number="4.4.1" id="urlの確認"><span
       class="header-section-number">4.4.1</span> URLの確認</h3>
-      <p>はじめに、リモートリポジトリのURLを確認します。</p>
+      <p>はじめにリモートリポジトリのURLを確認します。</p>
       <p>git のクローン操作に必要な URL は
       <code>https://github.com/TakeshiWada1980/Curry-Recipe-2.git</code>
       のように末尾が <code>.git</code> となる形式です。この URL
@@ -1106,14 +1135,14 @@ branch &#39;main&#39; set up to track &#39;origin/main&#39;.</code></pre>
       コマンドの実行</h3>
       <p>ターミナル (Git Bashモードを推奨) を起動して、<code>cd</code>
       コマンドを使って「ローカルリポジトリ (=プロジェクトフォルダ)
-      を作成したいフォルダ」に移動します。移動後は <code>pwd</code>
+      を作成したいフォルダ」まで移動します。移動後は <code>pwd</code>
       コマンドで現在位置を確認しておきます。</p>
       <div class="sourceCode" id="cb26" data-caption="実行例"><pre
       class="sourceCode bash"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd <span class="st">&quot;C:\Users\xxxx\Documents&quot;</span></span></code></pre></div>
       <p>次のように <code>git clone [URL]</code>
       とコマンド入力すると、カレントフォルダに
       <code>Curry-Recipe-2</code>
-      というフォルダが作成、そのなかにURLで指定したリモートリポジトリの内容がクローンされます。</p>
+      という<strong>フォルダが作成され</strong>、そのなかにURLで指定したリモートリポジトリの内容がクローンされます。</p>
       <div class="sourceCode" id="cb27" data-caption="実行例"><pre
       class="sourceCode bash"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git clone https://github.com/TakeshiWada1980/Curry-Recipe-2.git</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Cloning</span> into <span class="st">&#39;Curry-Recipe-2&#39;</span>...</span>
@@ -1146,7 +1175,9 @@ branch &#39;main&#39; set up to track &#39;origin/main&#39;.</code></pre>
       <h3 data-number="4.4.4" id="git初期化-開発-github発行"><span
       class="header-section-number">4.4.4</span> git初期化 / 開発 /
       GitHub発行</h3>
-      <p>クローンしたテンプレートを使って開発を勧めるために、改めてgitの初期化を実行してください。そして、開発を進め、GitHubリポジトリとして発行します。課題として提出する場合はGitHubリポジトリを「<strong>Public</strong>」に設定する点に注意してください。</p>
+      <p>クローンしたテンプレートを使って開発を勧めるために、<strong>改めてgitの初期化を実行</strong>します。そして、開発を進めて
+      GitHubリポジトリを発行します。課題として提出する場合は GitHub
+      リポジトリを「<strong>Public</strong>」に設定する点に注意してください。</p>
       <p>VSCodeを使用してこれらを行なう方法は <a
       href="lecture14.html#リモートリポジトリの発行">前回の講義資料</a>
       を参照してください。また、コマンドラインを使用する方法は <a
@@ -1176,27 +1207,29 @@ branch &#39;main&#39; set up to track &#39;origin/main&#39;.</code></pre>
       <h3 data-number="4.5.1" id="コンフリクトの概要"><span
       class="header-section-number">4.5.1</span> コンフリクトの概要</h3>
       <p>Git/GitHub
-      でチーム開発をする場合、*<strong>コンフリクト</strong>
+      でチーム開発をする場合、<strong><em>コンフリクト</em></strong>
       という問題が生じることがあります。この
       <strong>コンフリクト</strong> は
-      ファイルの<strong>変更の競合</strong>
-      を意味し、2名以上が「同じファイルの同じ個所」に対して特定のタイミングで編集を加えてコミット操作すると発生します。</p>
-      <p>例えば、アリスとボブがチーム開発を行っているとき、次のような状況でコンフリクトが起こります。</p>
+      ファイルの「<strong>変更の競合</strong>」を意味し <span
+      class="masked">2名以上が「同じファイルの同じ個所」に対して特定のタイミングで編集を加えてコミット操作</span>
+      すると発生します。</p>
+      <p>例えば、アリスとボブが<strong>共通のリモートリポジトリを使ってチーム開発</strong>をしているとき、次のような状況でコンフリクトが起こります。</p>
       <ol type="1">
-      <li>アリスがリモートリポジトリからプルする。</li>
+      <li>アリスがリモートリポジトリから「<strong>プル</strong>」する。</li>
       <li>アリスが <code>README.md</code>
       の<strong>3行目</strong>を編集する。</li>
-      <li>アリスが変更をローカルリポジトリにコミットする。</li>
-      <li>アリスがローカルリポジトリの内容をリモートリポジトリにプッシュする。</li>
+      <li>アリスが変更をローカルリポジトリに「<strong>コミット</strong>」する。</li>
+      <li>アリスがローカルリポジトリの内容をリモートリポジトリに「<strong>プッシュ</strong>」する。</li>
       </ol>
-      <p>上記の 1 から 4 までの間に、ボブが以下の 1 から 4
-      を実行をすると、<strong>アリスがステップ4を実行したときにコンフリクトが発生し、アリスは問題を解消する必要が生じます</strong>。</p>
+      <p>上記の「ステップ1」以降、「ステップ4」の完了までの間に、ボブが以下の
+      1 から 4
+      の実行をすると、<strong>アリスが「ステップ4」を実行したときにコンフリクトが発生し、アリスは問題を解消する必要が生じます</strong>。</p>
       <ol type="1">
-      <li>ボブがリモートリポジトリからプルする。</li>
+      <li>ボブがリモートリポジトリから「<strong>プル</strong>」する。</li>
       <li>ボブが <code>README.md</code>
       の<strong>3行目</strong>を編集する。</li>
-      <li>ボブが変更をローカルリポジトリにコミットする。</li>
-      <li>ボブがローカルリポジトリの内容をリモートリポジトリにプッシュする。</li>
+      <li>ボブが変更をローカルリポジトリに「<strong>コミット</strong>」する。</li>
+      <li>ボブがローカルリポジトリの内容をリモートリポジトリに「<strong>プッシュ</strong>」する。</li>
       </ol>
       <div class="note type-caution">
       <p><strong>コンフリクトの対処法</strong></p>
@@ -1372,9 +1405,9 @@ branch &#39;main&#39; set up to track &#39;origin/main&#39;.</code></pre>
       <p>このエラーは、直前の「鶏肉の分量を600gに変更」のコミットからファイル内容が変更されていないことに起因します。</p>
       </div>
       <h2 data-number="4.7"
-      id="できるだけコンフリクトを発生させないためには"><span
+      id="極力コンフリクトを発生させないためには"><span
       class="header-section-number">4.7</span>
-      できるだけコンフリクトを発生させないためには</h2>
+      極力コンフリクトを発生させないためには</h2>
       <h1 data-number="5" id="宿題"><span
       class="header-section-number">5</span> 宿題</h1>
       <p>講義時間内に終わらなかった内容に取り組み、少し時間をおいてから再復習してください。次回の講義は、今回までの内容が定着していることを前提として進めます。</p>
