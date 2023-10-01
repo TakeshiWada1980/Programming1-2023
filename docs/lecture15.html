@@ -233,6 +233,13 @@ class="toc-section-number">6</span> 宿題</a></li>
       VSCode から行なうことが多いですが、<strong>VSCode の GUI
       が対応していない込み入った git 操作については、コマンドラインに
       git コマンドを入力して実行すること求められます</strong>。</p>
+      <div class="note type-senior">
+      <p><strong>Arduino IDE と git の組合せ</strong></p>
+      <p>Arduino 関連の開発のように VSCode を IDE (Integrated
+      Development Environment: 統合開発環境)
+      として使用しない場合においても、コマンドラインから git
+      を操作することが求められます。</p>
+      </div>
       <p>ここでは、前回講義で VSCode 経由で実行した一連の git 操作が
       <strong>コマンドラインからでも同様に実行できることを体験・確認しておきます</strong>。</p>
       <p>Windows
@@ -330,7 +337,8 @@ total 0</code></pre>
       class="header-section-number">3.2</span> gitの初期化</h2>
       <p>このプロジェクトフォルダを「ローカルリポジトリ」として git
       の管理下に置くために <code>git init</code>
-      コマンドを入力します。</p>
+      コマンドを入力します。<code>init</code> は Initialize (初期化する)
+      の略語です。情報系では頻出するので覚えておいてください。</p>
       <pre><code>$ git init
 Initialized empty Git repository in C:/Users/xxxx/Documents/GitHub-Test-2/.git/</code></pre>
       <p>これによりプロジェクトフォルダ内に <code>.git</code>
@@ -884,6 +892,11 @@ branch &#39;main&#39; set up to track &#39;origin/main&#39;.</code></pre>
       <p>次の要求を満たすように <code>index.html</code>
       を編集し、その結果をウェブブラウザで確認せよ。</p>
       <ul>
+      <li>ブラウザのタブと、ページトップに表示されるタイトルを「<strong>影山飛雄’s
+      Curry Recipe</strong>」に変更したい。<a
+      href="https://ja.wikipedia.org/wiki/影山飛雄">影山飛雄</a>の部分は<a
+      href="https://ja.wikipedia.org/wiki/五等分の花嫁">中野五月</a>や<a
+      href="https://ja.wikipedia.org/wiki/文豪ストレイドッグス">織田作之助</a>、その他に変更してもよい。</li>
       <li>カレーの材料に「<strong>じゃがいも …
       2個</strong>」を追加したい。</li>
       <li>カレーの材料に「<strong>ターメリック …
@@ -1427,6 +1440,9 @@ branch &#39;main&#39; set up to track &#39;origin/main&#39;.</code></pre>
       <p>講義時間内に終わらなかった内容に取り組んでください。また、2～3日程度の時間をおいてから再度、復習してください。次回の講義は
       <strong>今回までの内容が定着していることを前提</strong>
       として進めます。</p>
+      <p>次回講義では、git
+      を使用して「プロジェクトフォルダの内容を過去のバージョンに戻す方法
+      (リストアする方法)」や「ブランチを作成・切り替える方法」「GitHubでコラボレーターを設定してチーム開発の環境を設定する方法」などを学習する予定です。</p>
       <!-- ---------------------------------------- -->
     </main>
 
