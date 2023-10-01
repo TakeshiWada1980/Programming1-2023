@@ -1040,11 +1040,11 @@ branch &#39;main&#39; set up to track &#39;origin/main&#39;.</code></pre>
 <span id="cb25-13"><a href="#cb25-13"></a>  <span class="kw">&lt;link</span> <span class="er">rel</span><span class="ot">=</span><span class="st">&quot;stylesheet&quot;</span> <span class="er">href</span><span class="ot">=</span><span class="st">&quot;main.css&quot;</span> <span class="kw">/&gt;</span></span>
 <span id="cb25-14"><a href="#cb25-14"></a><span class="kw">&lt;/head&gt;</span></span></code></pre></div>
       <p>第07行目にある1個目の<code>&lt;link&gt;</code>タグでは「<strong>アイコンフォントライブラリ</strong>」を提供している<a
-      href="https://fontawesome.com/icons/categories">FontAwesome</a>というサービス関連のスタイルシートを読み込んでいます。これにより<i class="fa-solid fa-fish-fins"></i><i class="fa-solid fa-faucet-drip"></i><i class="fa-solid fa-poo"></i><i class="fa-solid fa-skull"></i>　のようなアイコンを装飾として利用できるようにようになります。</p>
+      href="https://fontawesome.com/icons/categories">FontAwesome</a>というサービス関連のスタイルシートを読み込んでいます。これにより<i class="fa-solid fa-fish-fins"></i><i class="fa-solid fa-faucet-drip"></i><i class="fa-solid fa-poo"></i><i class="fa-solid fa-skull"></i>　のようなアイコンを装飾として利用できるようになります。</p>
       <p>第10行目にある2個目の<code>&lt;link&gt;</code>タグでは <a
       href="https://fonts.google.com/?subset=japanese">Google
       Fonts</a>から <code>Yusei Magic</code> (油性マジック)
-      という日本語フォントのスタイルシートを読み込んでいます。PCやスマートフォンのローカル環境にインストールされているフォントに関係なく、どの環境でも同じフォントで描画されたウェブページを提供可能になります。</p>
+      という日本語フォントのスタイルシートを読み込んでいます。閲覧環境・閲覧デバイスに左右されることなく、同じフォントで描画されたウェブページを提供可能になります。</p>
       <p>第13行目にある3個目の<code>&lt;link&gt;</code>タグでは、先ほど作成した
       <code>main.css</code>
       というオリジナルのスタイルシートを読み込んでいます。</p>
@@ -1052,10 +1052,10 @@ branch &#39;main&#39; set up to track &#39;origin/main&#39;.</code></pre>
       (HTMLもCSSも上書き保存されていることを確認したら)
       、改めてウェブブラウザで <code>index.html</code>
       を開いて表示を確認してください。CSS (スタイルシート)
-      が適用されたことで <strong>雰囲気も UI/UX
-      も大きく改善</strong>されたことが確認できるはずです。</p>
+      が適用されたことで <strong>雰囲気や UI/UX
+      が大きく改善</strong>されたことが確認できるはずです。</p>
       <div class="note type-tips">
-      <p><strong>Chromeのデベロッパーツール</strong></p>
+      <p><strong>Chrome のデベロッパーツール</strong></p>
       <p>Google Chrome で <code>F12</code> または
       <code>Ctrl+Shift+I</code> を押下すると「<strong>デベロッパーツール
       (開発者向けツール) </strong>」が起動します。デベロッパーツールでは
@@ -1066,13 +1066,13 @@ branch &#39;main&#39; set up to track &#39;origin/main&#39;.</code></pre>
       <img src="figs/15/chrome_dev_tool.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
       </figure>
-      <p>プリセットで用意されているデバイスは限られているので、必要に応じて下記URLの情報を参考にエミュレートデバイスを追加・設定してください。上記画像の「iPhone
-      15 Pro」はカスタム追加したものです。</p>
+      <p>プリセットとして用意されているデバイス・機種は限られているので、必要に応じて下記URLの情報を参考にエミュレートデバイスを追加・設定してください。上記画像の「iPhone
+      15 Pro」はカスタムで追加・設定したものです。</p>
       <ul>
       <li>https://github.com/amirshnll/custom-device-emulation-chrome</li>
       </ul>
       <p>この他、デベロッパーツールでは HTML / CSS / JavaScript
-      の開発に役立つ機能が多数存在します。詳しくは「<a
+      の開発に役立つ機能が多数利用できます。詳しくは「<a
       href="https://www.google.com/search?q=Chrome+DevTools+使い方">Chrome
       DevTools 使い方</a>」などでウェブ検索してください。</p>
       </div>
@@ -1088,15 +1088,15 @@ branch &#39;main&#39; set up to track &#39;origin/main&#39;.</code></pre>
       は<code>https://xxxx.github.io/Curry-Recipe/</code>
       のようになるはずである)
       。また、公開されたウェブページをブラウザから確認せよ。</li>
-      <li>公開されたウェブページURLを表す <strong>QRコード</strong>
-      を生成し、それを利用してスマートフォンから公開されたウェブページを確認せよ。</li>
+      <li>公開されたウェブページのURLの <strong>QRコード</strong>
+      を生成し、それを利用してスマートフォンからウェブページを確認せよ。</li>
       <li>HTML または CSS
-      を編集し、その内容を「コミット」「プッシュ」することで、編集内容がウェブページに反映されることを確認せよ。</li>
+      を編集し、その内容を「コミット」「プッシュ」することで、編集内容がウェブページにも反映されることを確認せよ。</li>
       </ul>
       <p>既に体験しているため把握していると思いますが GitHub Pages
-      の各種機能は即時反映型ではない
-      (=<strong>内容や設定を変更しても、それが反映されるまでに少なくとも3分程度の時間がかかる</strong>)
-      ので注意していください。</p>
+      の各種機能は即時反映型ではないので
+      (=<strong>内容や設定を変更しても、それが反映されるまでに少なくとも3分程度の時間がかかるので</strong>)
+      注意してください。</p>
       <p>以上、すべての演習を終えたらリモートリポジトリとローカルリポジトリを削除しておいてください。</p>
       <h2 data-number="4.4" id="guthubリポジトリのクローン"><span
       class="header-section-number">4.4</span>
