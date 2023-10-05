@@ -280,6 +280,25 @@ Download and install Git for Windows v2.42.0.windows.2 [N/y]?</code></pre>
       <p>上記に対して <code>y</code>
       を入力すると最新版へのアップデートが開始されます。<strong>基本的には最新版を利用</strong>するようにしてください。</p>
       </div>
+      <div class="note type-senior">
+      <p><strong>gitを再インストールする場合の注意点</strong></p>
+      <p>gitを再インストールする場合は、Windowsの「設定」-「アプリ」-「インストールされているアプリ」から
+      Git
+      選択して「アンインストール」してから、再度、下記のインストール作業を行ってください。</p>
+      <p>また <strong>git
+      の旧設定を引き継がずに完全に新規インストールと同じ状態にしたい場合</strong>は、アンインストールした後に下記のファイルも手動削除してください
+      (あるいは <code>.gitconfig.bak</code>
+      のようにリネームして無効化してください)。</p>
+      <ul>
+      <li><code>C:\Users\xxxx\.gitconfig</code> ここで <code>xxxx</code>
+      は各自のアカウントに読み替え</li>
+      <li><code>C:\Program Files\Git\etc\gitconfig</code>
+      <ul>
+      <li>もしくは
+      <code>C:\Program Files (x86)\Git\etc\gitconfig</code></li>
+      </ul></li>
+      </ul>
+      </div>
       <h2 data-number="2.2" id="github-の設定を確認"><span
       class="header-section-number">2.2</span> GitHub の設定を確認</h2>
       <p><strong><a href="https://github.co.jp/">GitHub</a></strong>
@@ -755,6 +774,17 @@ init.defaultbranch=main</code></pre>
       href="https://www.google.com/search?q=git+ローカル設定+グローバル設定+システム設定">git
       ローカル設定 グローバル設定
       システム設定</a>」などでウェブ検索してください。</p>
+      <div class="note type-senior">
+      <p><strong>設定ファイルのパス</strong></p>
+      <p>ここで <code>--global</code> オプションをつけて設定した内容は
+      <code>C:\Users\xxxx\.gitconfig</code>
+      に保存されます。そのため、このファイルを直接編集することでも設定が可能です。</p>
+      <p>また <code>--system</code> オプションをつけて設定した内容は
+      <code>C:\Program Files\Git\etc\gitconfig</code>
+      に保存されます。OS環境によっては
+      <code>C:\Program Files (x86)\Git\etc\gitconfig</code>
+      となります。</p>
+      </div>
       <h3 data-number="2.5.2"
       id="github-と連携させるための設定の追加"><span
       class="header-section-number">2.5.2</span> GitHub
