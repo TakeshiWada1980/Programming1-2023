@@ -145,7 +145,7 @@ class="toc-section-number">6</span> 宿題</a></li>
       class="header-section-number">1</span> 概要・連絡</h1>
       <p>前回の<a href="lecture15.html">講義</a>では
       <strong><em>git/GitHub</em></strong>
-      に関連して次のよう内容を取り上げました。<strong>今回の講義内容は、以下の操作が定着していること
+      に関連して次のような内容を取り上げました。<strong>今回の講義内容は、以下の内容理解と操作が定着していること
       (問題なくできること) を前提</strong>とします。</p>
       <ol type="1">
       <li>PCのローカルストレージに「プロジェクトフォルダ」を新規作成して
@@ -187,14 +187,15 @@ class="toc-section-number">6</span> 宿題</a></li>
       <div class="note type-tips">
       <p><strong>README.mdとは</strong></p>
       <p><code>README.md</code> は GitHub において
-      <strong>プロジェクトで開発しているアプリの使い方や、プロジェクトの説明を記述するファイル</strong>です。この名前が付いたファイルは、ウェブブラウザから
-      GitHub
-      のリモートリポジトリにアクセスしたときにトップページとして自動表示されるようになります。</p>
+      <strong>プロジェクトで開発しているアプリの使い方や、プロジェクトの説明を記述するファイル</strong>
+      (マークダウン形式のファイル)
+      です。この名前が付いたファイルは、ウェブブラウザから GitHub
+      のリモートリポジトリにアクセスしたときに、トップページに自動表示されるようになります。</p>
       <p>例えば、ディープラーニングに対応した機械学習のソフトウェアライブラリである
       <strong>TensorFlow</strong> は OSS (Open Source Software) として
       GitHub で開発されていますが、その<a
       href="https://github.com/tensorflow/tensorflow">リポジトリ</a>
-      にアクセスして、画面を少し下部にスクロールすると
+      にアクセスして、画面を少し下方にスクロールすると
       <code>README.md</code> として TensorFlow
       の概要が示されています。</p>
       <p>TensorFlow
@@ -202,26 +203,26 @@ class="toc-section-number">6</span> 宿題</a></li>
       </div>
       <h1 data-number="2" id="定着確認"><span
       class="header-section-number">2</span> 定着確認</h1>
-      <p>後期授業ではシラバス記載のように「<strong>小テスト</strong>」を実施して成績評価に組み込みます。以下、<strong>小テストの練習問題</strong>です
+      <p>後期授業ではシラバス記載のように「<strong>小テスト</strong>」を実施して成績評価のなかに組み込みます。以下、<strong>小テストの練習問題</strong>です
       (このままの形式で出題されるわけではありません)。</p>
       <ul>
       <li>git は主にソースコードのバージョンを管理するための <span
       class="masked">ソフトウェア (アプリ)</span> である。一方で、GitHub
       は、git で管理しているソースコードをプロジェクトチーム (複数人)
-      で簡単に共有するための<span class="masked">ウェブサービス</span>
-      である。</li>
+      で簡単に共有することを主機能とする <span
+      class="masked">ウェブサービス</span> である。</li>
       <li>gitにおいて変更履歴を保管しておく場所のことを <span
       class="masked">リポジトリ</span> という。</li>
       <li>gitにおいてファイルの変更履歴を記録する操作を <span
-      class="masked">コミット</span>
+      class="masked">コミット (commit) </span>
       という。また、この際に添えるメッセージのことを <span
       class="masked">コミットメッセージ</span>
       といい、これには日本語を使うことが <span
       class="masked">できる</span> 。</li>
       <li>ローカルリポジトリの内容をリモートリポジトリにアップロードする操作を
-      <span class="masked">プッシュ</span> という。</li>
+      <span class="masked">プッシュ (push)</span> という。</li>
       <li>リモートリポジトリの内容をローカルリポジトリにダウンロードして統合する操作を
-      <span class="masked">プル</span> という。</li>
+      <span class="masked">プル (pull)</span> という。</li>
       </ul>
       <h1 data-number="3"
       id="コマンドラインによる-gitgithub-の操作"><span
@@ -229,10 +230,12 @@ class="toc-section-number">6</span> 宿題</a></li>
       git/GitHub の操作</h1>
       <p>前回の講義では VSCode の GUI (=Graphical User Interface)
       を通じて git
-      を操作する方法を学びました。実務においてもコミットやプッシュなどの操作は
-      VSCode から行なうことが多いですが、<strong>VSCode の GUI
+      を操作する方法を学びました。実務においてもコミットやプッシュなどの<strong>単純操作</strong>については
+      VSCode から実行することが多いですが、<strong>VSCode の GUI
       が対応していない込み入った git 操作については、コマンドラインに
-      git コマンドを入力して実行すること求められます</strong>。</p>
+      git コマンドを入力して実行すること求められます</strong>
+      (つまり、皆さんはコマンドラインからの git
+      操作も覚える必要があります)。</p>
       <div class="note type-senior">
       <p><strong>Arduino IDE と git の組合せ</strong></p>
       <p>Arduino 関連の開発のように VSCode を IDE (Integrated
@@ -246,7 +249,9 @@ class="toc-section-number">6</span> 宿題</a></li>
       のスタートボタンを右クリックして「ターミナル」を起動し、ターミナルタブを
       <strong><em>Git Bash</em></strong>
       に切り替えておいてください。<strong>Git Bash</strong>
-      に切り替えることで、現在のブランチが表示され、文字に適切な色が付き、さらに
+      に切り替えることで、<strong>現在のブランチ</strong>
+      (ブランチの詳細は次回講義で解説)
+      が表示されるようになり、また文字に適切な色が付き、さらに
       <code>ls</code> などの <span
       class="masked">Linux系のコマンド</span>
       も使えるようになります。</p>
@@ -254,6 +259,17 @@ class="toc-section-number">6</span> 宿題</a></li>
       <img src="figs/14/bash-terminal.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
       </figure>
+      <div class="note type-senior">
+      <p><strong>Git Bashの機能</strong></p>
+      <p>Git Bash では git
+      管理下にあるフォルダにいるとき、次のように<strong>現在のブランチ</strong>
+      (下記の例では <code>main</code> ) が常時表示されます。git
+      のコマンドライン操作では「現在どのブランチにいるか」が極めて重要となるため、このブランチ表示機能は非常に便利です。</p>
+      <figure>
+      <img src="figs/15/git-bash-01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      </div>
       <p>以下、<code>C:\Users\xxxx\Documents</code>
       の直下に「プロジェクトフォルダ」を作成して作業していきます。<code>xxxx</code>
       の部分は各自で読み替えてください。なお <code>xxxx</code>
@@ -1061,7 +1077,10 @@ branch &#39;main&#39; set up to track &#39;origin/main&#39;.</code></pre>
 <span id="cb25-13"><a href="#cb25-13"></a>  <span class="kw">&lt;link</span> <span class="er">rel</span><span class="ot">=</span><span class="st">&quot;stylesheet&quot;</span> <span class="er">href</span><span class="ot">=</span><span class="st">&quot;main.css&quot;</span> <span class="kw">/&gt;</span></span>
 <span id="cb25-14"><a href="#cb25-14"></a><span class="kw">&lt;/head&gt;</span></span></code></pre></div>
       <p>第07行目にある1個目の<code>&lt;link&gt;</code>タグでは「<strong>アイコンフォントライブラリ</strong>」を提供している<a
-      href="https://fontawesome.com/icons/categories">FontAwesome</a>というサービス関連のスタイルシートを読み込んでいます。これにより<i class="fa-solid fa-fish-fins"></i><i class="fa-solid fa-faucet-drip"></i><i class="fa-solid fa-poo"></i><i class="fa-solid fa-skull"></i>　のようなアイコンを装飾として利用できるようになります。</p>
+      href="https://fontawesome.com/icons/categories">FontAwesome</a>というサービス関連のスタイルシートを読み込んでいます。これにより<i class="fa-solid fa-fish-fins"></i>
+      <i class="fa-solid fa-faucet-drip"></i>
+      <i class="fa-solid fa-poo"></i> <i class="fa-solid fa-skull"></i>
+      のようなアイコンを装飾として利用できるようになります。</p>
       <p>第10行目にある2個目の<code>&lt;link&gt;</code>タグでは <a
       href="https://fonts.google.com/?subset=japanese">Google
       Fonts</a>から <code>Yusei Magic</code> (油性マジック)

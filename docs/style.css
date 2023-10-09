@@ -239,6 +239,11 @@ div.sourceCode[data-caption]::before {
   }
 }
 
+/* ------- AweSome::本体 ------- */
+.markdown-body i.fa-solid {
+  text-indent: 0.15em;
+}
+
 /* ------- プログラムコード::本体 ------- */
 
 .markdown-body pre {
