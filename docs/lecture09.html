@@ -593,13 +593,28 @@ RemoteSigned</code></pre>
       class="header-section-number">3.5.5</span>
       Pythonファイルの実行</h3>
       <p><code>test-01.py</code> がアクティブな状態で <code>F5</code>
-      を押下して「デバッグ構成を選択する」から「Pythonファイル
-      現在のアクティブな Python ファイルをデバッグする」を選択します。
-      画面下部のターミナルでプログラムが実行されます。</p>
-      <p>左パネルに「launch.jsonファイルを作成します」というリンクがでているので押下します。さらに「Pythonファイル
+      を押下し、画面上部に表示される「<strong>デバッグ構成を選択する</strong>」から「<strong>Pythonファイル
       現在のアクティブな Python
-      ファイルをデバッグする」を選択します。実行とデバッグの設定ファイルが作成され、以降は
-      <code>F5</code> で実行できることを確認します。</p>
+      ファイルをデバッグする</strong>」を選択します。
+      画面下部のターミナルでプログラムが実行されます
+      (数値を入れて計算しましょう)。</p>
+      <figure>
+      <img src="figs/09/vscode-debug-01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>つづいて左パネルに「<strong>launch.jsonファイルを作成します</strong>」というリンクがでているので押下します。さらに「<strong>Pythonファイル
+      現在のアクティブな Python
+      ファイルをデバッグする</strong>」を選択します。実行とデバッグの<strong>設定ファイル</strong>
+      (<code>.vscode/launch.json</code>) が作成され、以降は
+      <code>F5</code>
+      の押下だけでプログラムの実行ができることを確認します。</p>
+      <figure>
+      <img src="figs/09/vscode-debug-02.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p><code>F5</code>
+      で実行とデバッグが正常に機能しない場合は、<code>.vscode/launch.json</code>
+      を削除して、再度、上記の操作を試してください。</p>
       <h3 data-number="3.5.6" id="終了と再開と破棄"><span
       class="header-section-number">3.5.6</span> 終了と再開と破棄</h3>
       <p>口頭説明。</p>
