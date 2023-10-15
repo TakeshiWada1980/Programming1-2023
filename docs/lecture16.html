@@ -1,0 +1,1796 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+
+    <script>
+      MathJax = {
+        chtml: {
+          displayAlign: "left",
+          displayIndent: "1em",
+        },
+      };
+    </script>
+
+    
+
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>第 16 回 2I-プログラミング 1</title>
+  </head>
+
+  <body>
+    <div class="openbtn"><span></span><span></span><span></span></div>
+    <nav id="g-nav">
+      <div id="g-nav-list">
+        <!-- ---------------------------------------- -->
+         <ul>
+<li><a href="#概要連絡" id="toc-概要連絡"><span
+class="toc-section-number">1</span> 概要・連絡</a></li>
+<li><a href="#定着確認" id="toc-定着確認"><span
+class="toc-section-number">2</span> 定着確認</a></li>
+<li><a href="#拡張機能のインストール"
+id="toc-拡張機能のインストール"><span
+class="toc-section-number">3</span> 拡張機能のインストール</a>
+<ul>
+<li><a href="#git-graph" id="toc-git-graph"><span
+class="toc-section-number">3.1</span> Git Graph</a></li>
+<li><a href="#auto-commit-message" id="toc-auto-commit-message"><span
+class="toc-section-number">3.2</span> Auto Commit Message</a></li>
+</ul></li>
+<li><a href="#プロジェクトフォルダを過去のコミット時点に戻す"
+id="toc-プロジェクトフォルダを過去のコミット時点に戻す"><span
+class="toc-section-number">4</span>
+プロジェクトフォルダを過去のコミット時点に戻す</a>
+<ul>
+<li><a href="#準備" id="toc-準備"><span
+class="toc-section-number">4.1</span> 準備</a>
+<ul>
+<li><a href="#first-commit" id="toc-first-commit"><span
+class="toc-section-number">4.1.1</span> 「first commit」</a></li>
+<li><a href="#nd-commit" id="toc-nd-commit"><span
+class="toc-section-number">4.1.2</span> 「2nd commit」</a></li>
+<li><a href="#直前のコミットを取り消す"
+id="toc-直前のコミットを取り消す"><span
+class="toc-section-number">4.1.3</span>
+直前のコミットを取り消す</a></li>
+<li><a href="#rd-commit" id="toc-rd-commit"><span
+class="toc-section-number">4.1.4</span> 「3rd commit」</a></li>
+<li><a href="#th-commit" id="toc-th-commit"><span
+class="toc-section-number">4.1.5</span> 「4th commit」</a></li>
+</ul></li>
+<li><a href="#gui-による変更履歴コミットグラフの確認"
+id="toc-gui-による変更履歴コミットグラフの確認"><span
+class="toc-section-number">4.2</span> GUI
+による変更履歴/コミットグラフの確認</a></li>
+<li><a href="#プロジェクトフォルダを過去の状態に戻す-git-graph-編"
+id="toc-プロジェクトフォルダを過去の状態に戻す-git-graph-編"><span
+class="toc-section-number">4.3</span>
+プロジェクトフォルダを過去の状態に戻す (Git Graph 編)</a></li>
+<li><a href="#プロジェクトフォルダを過去の状態に戻す-コマンドライン編"
+id="toc-プロジェクトフォルダを過去の状態に戻す-コマンドライン編"><span
+class="toc-section-number">4.4</span>
+プロジェクトフォルダを過去の状態に戻す (コマンドライン編)</a></li>
+<li><a href="#コミット間の差分を確認する"
+id="toc-コミット間の差分を確認する"><span
+class="toc-section-number">4.5</span>
+コミット間の差分を確認する</a></li>
+</ul></li>
+<li><a href="#github-を使用したチーム開発の概要"
+id="toc-github-を使用したチーム開発の概要"><span
+class="toc-section-number">5</span> GitHub
+を使用したチーム開発の概要</a>
+<ul>
+<li><a href="#最もシンプルなチーム開発フロー"
+id="toc-最もシンプルなチーム開発フロー"><span
+class="toc-section-number">5.1</span>
+最もシンプルなチーム開発フロー</a></li>
+</ul></li>
+<li><a href="#コラボレータの設定" id="toc-コラボレータの設定"><span
+class="toc-section-number">6</span> コラボレータの設定</a></li>
+<li><a href="#ブランチの利用" id="toc-ブランチの利用"><span
+class="toc-section-number">7</span> ブランチの利用</a>
+<ul>
+<li><a href="#ブランチを使わないときと使うときのコミットグラフの違い"
+id="toc-ブランチを使わないときと使うときのコミットグラフの違い"><span
+class="toc-section-number">7.1</span>
+ブランチを「使わないとき」と「使うとき」のコミットグラフの違い</a></li>
+<li><a href="#ブランチを利用することのメリット"
+id="toc-ブランチを利用することのメリット"><span
+class="toc-section-number">7.2</span>
+ブランチを利用することのメリット</a></li>
+<li><a href="#mainブランチだけで開発を進めることのデメリット"
+id="toc-mainブランチだけで開発を進めることのデメリット"><span
+class="toc-section-number">7.3</span>
+mainブランチだけで開発を進めることのデメリット</a></li>
+</ul></li>
+<li><a href="#ブランチを作成してチーム開発する方法"
+id="toc-ブランチを作成してチーム開発する方法"><span
+class="toc-section-number">8</span>
+ブランチを作成してチーム開発する方法</a>
+<ul>
+<li><a href="#アリス役のステップ-1" id="toc-アリス役のステップ-1"><span
+class="toc-section-number">8.1</span> 「アリス役」のステップ 1</a></li>
+<li><a href="#ボブ役のステップ-1" id="toc-ボブ役のステップ-1"><span
+class="toc-section-number">8.2</span> 「ボブ役」のステップ 1</a></li>
+<li><a href="#アリス役のステップ-2" id="toc-アリス役のステップ-2"><span
+class="toc-section-number">8.3</span> 「アリス役」のステップ 2</a></li>
+<li><a href="#ボブ役のステップ-2" id="toc-ボブ役のステップ-2"><span
+class="toc-section-number">8.4</span> 「ボブ役」のステップ 2</a></li>
+<li><a href="#アリス役のステップ-3" id="toc-アリス役のステップ-3"><span
+class="toc-section-number">8.5</span> 「アリス役」のステップ 3</a></li>
+<li><a href="#ボブ役のステップ-３" id="toc-ボブ役のステップ-３"><span
+class="toc-section-number">8.6</span> 「ボブ役」のステップ ３</a></li>
+<li><a href="#アリス役のステップ-4" id="toc-アリス役のステップ-4"><span
+class="toc-section-number">8.7</span> 「アリス役」のステップ 4</a></li>
+<li><a href="#ボブ役のステップ-4" id="toc-ボブ役のステップ-4"><span
+class="toc-section-number">8.8</span> 「ボブ役」のステップ 4</a></li>
+</ul></li>
+<li><a href="#宿題-授業時間外学習" id="toc-宿題-授業時間外学習"><span
+class="toc-section-number">9</span> 宿題 (授業時間外学習)</a></li>
+</ul> 
+        <!-- ---------------------------------------- -->
+      </div>
+    </nav>
+
+    <header class="markdown-body">
+      <p>2023-2I プログラミング1 第16回 講義資料</p>
+      <p>2023年10月16日（月）1・2時限</p>
+    </header>
+
+    <main class="markdown-body">
+      <!-- ---------------------------------------- -->
+      <h1 data-number="1" id="概要連絡"><span
+      class="header-section-number">1</span> 概要・連絡</h1>
+      <h1 data-number="2" id="定着確認"><span
+      class="header-section-number">2</span> 定着確認</h1>
+      <p>後期授業ではシラバス記載のように「<strong>小テスト</strong>」を実施し、その結果を成績評価のなかに組み込みます。以下、<strong>小テストの練習問題</strong>です
+      (このままの形式で出題されるわけではありません)。</p>
+      <blockquote>
+      <p>シラバスから抜粋<br>
+      課題の提出状況とその内容（80%）ならびに授業中に実施する小テスト（20%）を総合して評価する。</p>
+      </blockquote>
+      <ul>
+      <li>git
+      によるバージョン管理を開始するためには対象のプロジェクトフォルダに移動し、そこで
+      <span class="masked"><code>git init</code></span>
+      コマンドを実行する。これにより、プロジェクトフォルダのなかに <span
+      class="masked"><code>.git</code></span>
+      という<strong>隠しフォルダ</strong>が作成される。git
+      によるバージョン管理をやめたい場合は、この隠しフォルダを削除すればよい。</li>
+      <li>Git Bash などの Linux互換環境で <code>ls</code>
+      コマンド実行時に、隠しファイルや隠しフォルダを表示するためには
+      <span class="masked"><code>-a</code></span> オプションを付けて
+      <code>ls</code> を実行する。</li>
+      <li>git
+      管理されているプロジェクトフォルダにおいて、カレントフォルダ以下に存在するすべての変更ファイルを
+      <strong>ステージング</strong> するためには <span
+      class="masked"><code>git add .</code></span> コマンドあるいは
+      <span class="masked"><code>git add --all</code></span>
+      コマンドを実行する。</li>
+      <li>git 管理されているプロジェクトフォルダにおいて「first
+      commit」というメッセージをつけて <strong>コミット</strong>
+      するためには <span
+      class="masked"><code>git commit -m "first commit"</code></span>
+      のようにコマンドを実行する。</li>
+      <li><code>git remote add origin https://github.com/zzzz/Test.git</code>
+      のようにコマンドを実行すると、GitHub 上のリモートリポジトリ
+      (<code>https://github.com/zzzz/Test123.git</code>) を <span
+      class="masked">origin</span>というショートカットネームで扱えるようになる。</li>
+      <li>「ローカルリポジトリの <code>main</code>
+      ブランチ」を「リモートリポジトリ (<strong>origin</strong>) の
+      <code>main</code> ブランチ 」に <strong>プッシュ</strong>
+      するためには <code>git push origin main</code>
+      のようにコマンドを実行すればよい。この際 <span
+      class="masked">-u</span>
+      オプションをつけると、以降、ローカルリポジトリの <code>main</code>
+      ブランチにいるときは <span
+      class="masked"><code>git push</code></span> だけで
+      <code>git push origin main</code> に相当する
+      <strong>プッシュ</strong> ができる。</li>
+      <li>リモートリポジトリの内容をローカルリポジトリに
+      <strong>プル</strong> する (取り込む) ための <code>git pull</code>
+      コマンドは <span class="masked"><code>git fetch</code></span>
+      コマンドと <span class="masked">git merge</span>
+      コマンドを組み合わせた操作である。</li>
+      <li><code>git clone https://github.com/zzzz/Test123.git</code>
+      のようにコマンドを実行すると <span
+      class="masked">カレントフォルダ</span> に <code>Test123</code>
+      というフォルダが新規作成され、その内部にリポジトリが展開される。もし
+      <code>Test456</code> というフォルダにリポジトリを展開したい場合は
+      <span
+      class="masked"><code>git clone https://github.com/zzzz/Test123.git Test456</code></span>
+      のようにコマンドを実行すればよい。</li>
+      </ul>
+      <h1 data-number="3" id="拡張機能のインストール"><span
+      class="header-section-number">3</span> 拡張機能のインストール</h1>
+      <p>git を利用したバージョン管理に役立つ「<strong>VSCode
+      の拡張機能</strong>」として次の 2
+      つをインストールしてください。</p>
+      <h2 data-number="3.1" id="git-graph"><span
+      class="header-section-number">3.1</span> Git Graph</h2>
+      <p><strong><em>Git Graph</em></strong> は
+      「<strong>コミットグラフ</strong>」<strong>を VSCode
+      で表示するための拡張機能</strong> です。VSCode
+      の拡張機能の検索欄に <code>mhutchie.git-graph</code> と入力し、Git
+      Graph
+      をインストールしてください。使い方については、今回の授業のなかで紹介します。</p>
+      <figure>
+      <img src="figs/16/vscode-ex-02.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <h2 data-number="3.2" id="auto-commit-message"><span
+      class="header-section-number">3.2</span> Auto Commit Message</h2>
+      <p><strong><em>Auto Commit Message</em></strong> は
+      <strong>コミットメッセージを自動生成してくれる拡張機能</strong>
+      です。例えば、ファイルの追加や変更を読み取って「update xxx.html,
+      yyy.css and zzz.js」や「create 3 files and update 6
+      files」のようなコミットメッセージを生成してくれます。</p>
+      <p>VSCode の拡張機能の検索欄に
+      <code>michaelcurrin.auto-commit-msg</code> と入力し、Auto Commit
+      Message インストールしてください。</p>
+      <figure>
+      <img src="figs/16/vscode-ex-01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>Auto Commit Message
+      のインストール後、なんらかのコミット対象が存在するときに、次のようにアイコンをクリックすると
+      ❸
+      の「コミットメッセージ」のテキストボックスに、自動生成されたコミットメッセージが入力されます。</p>
+      <figure>
+      <img src="figs/16/vscode-ex-03.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <h1 data-number="4"
+      id="プロジェクトフォルダを過去のコミット時点に戻す"><span
+      class="header-section-number">4</span>
+      プロジェクトフォルダを過去のコミット時点に戻す</h1>
+      <p>ここでは git の機能を使用してプロジェクトフォルダ
+      (ローカルリポジトリ)
+      を「<strong>過去の任意のコミット時点に戻す方法</strong>」について学びます。また、この機能に関して理解を深めるためにいくつかの実験をしてみます。</p>
+      <h2 data-number="4.1" id="準備"><span
+      class="header-section-number">4.1</span> 準備</h2>
+      <p>準備として、プロジェクトフォルダに次のような変更を加えながら
+      <strong>4つのコミット</strong> を作成していきます。</p>
+      <hr />
+      <ol type="1">
+      <li><strong>first commit</strong>
+      <ul>
+      <li>フォルダの中身：<strong>(空)</strong></li>
+      </ul></li>
+      <li><strong>2nd commit「README.md と aaaa.txt を追加」</strong>
+      <ul>
+      <li>フォルダの中身：<code>README.md</code>,
+      <code>aaaa.txt</code></li>
+      </ul></li>
+      <li><strong>3rd commit「bbbb.txt を追加」</strong>
+      <ul>
+      <li>フォルダの中身：<code>README.md</code>, <code>aaaa.txt</code>,
+      <code>bbbb.txt</code></li>
+      </ul></li>
+      <li><strong>4th commit「cccc.txt を追加」</strong>
+      <ul>
+      <li>フォルダの中身：<code>README.md</code>, <code>aaaa.txt</code>,
+      <code>bbbb.txt</code>, <code>cccc.txt</code></li>
+      </ul></li>
+      </ol>
+      <hr />
+      <p>このような変更履歴の記録を作成した後、つまり「<strong>4th
+      commit</strong>」までを完了させた後、プロジェクトフォルダを「<strong>2nd
+      commit</strong>」の時点に巻き戻すような実験をしてみます。</p>
+      <p>以下に、実験の「<strong>準備手順</strong>」を示します。</p>
+      <h3 data-number="4.1.1" id="first-commit"><span
+      class="header-section-number">4.1.1</span> 「first commit」</h3>
+      <p>ターミナル (<strong>Git Bash モード</strong>) を起動して
+      <code>cd</code>
+      コマンドを使ってドキュメントフォルダなどの適切な場所に移動します
+      (例えば <code>C:\Users\xxxx\Documents</code>
+      などに移動します)。</p>
+      <p><code>Git-Playground</code>
+      というフォルダを作成し、そのフォルダ内に移動して「<strong>git初期化</strong>」します
+      (git によるバージョン管理を開始します)。 Playground
+      という単語は、一般には「子どもが遊ぶための場所や施設」を意味しますが、<strong>プログラミング分野では新しいアイディアや技術を試したり、実験したりするための環境やスペース</strong>を指す意味で使用されます。</p>
+      <pre><code>$ mkdir Git-Playground
+$ cd Git-Playground/
+$ git init
+Initialized empty Git repository in C:/Users/xxxx/Documents/Git-Playground/.git/</code></pre>
+      <p>上記の操作により <code>.git</code>
+      という隠しフォルダが作成されたことを確認しておきます (確認には
+      <code>ls -al</code> などのコマンドを利用してください)。</p>
+      <p>また <code>git status</code> コマンドで現在の「<strong>git
+      管理の状態</strong>」を確認しておきます</p>
+      <pre><code>$ git status
+On branch main
+No commits yet
+nothing to commit (create/copy files and use &quot;git add&quot; to track)</code></pre>
+      <p>「On branch main」「nothing to commit」、つまり、現在は
+      <code>main</code> <strong>という初期ブランチ (デフォルトブランチ)
+      にいて、まだコミットが存在していない状態</strong>
+      であることが確認できます。</p>
+      <p>ここで <code>main</code> というブランチ名は<a
+      href="lecture14.html#初期ブランチ名称の設定">git
+      のインストール設定</a>に基づいて設定されます。ブランチの概念や操作については<a
+      href="#ブランチの利用">講義後半</a>で詳しく取り上げます。</p>
+      <div class="note type-tips">
+      <p><strong>現在の「ブランチ」を確認する確認</strong></p>
+      <p>「現在、どのブランチにいるか」は Git Bash
+      の表示からも確認できます。下記の場合 <code>main</code>
+      ブランチにいることが読み取れます。</p>
+      <figure>
+      <img src="figs/15/git-bash-01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      </div>
+      <p>初期状態 (フォルダ内に <code>.git</code> 以外は存在しない状態)
+      で「first
+      commit」を作成します。<strong>フォルダが空の状態でコミットする場合には、次のように</strong>
+      <code>--allow-empty</code>
+      <strong>オプションを付ける必要があります</strong>
+      (このオプションをつけないとコミットできません)。</p>
+      <pre><code>$ git commit --allow-empty -m &quot;first commit&quot;
+[main (root-commit) d0e8462] first commit</code></pre>
+      <p><code>git log --oneline</code>
+      で「<strong>コミットの履歴</strong>」を確認します。<code>--oneline</code>
+      をつけると <span class="masked">1 コミットの情報が 1 行</span>
+      で出力されます。以下のような応答があればコミットに成功しています。</p>
+      <pre><code>$ git log --oneline
+d0e8462 (HEAD -&gt; main) first commit</code></pre>
+      <p>なお、上記応答の先頭にある 16進数で7桁の値 <code>d0e8462</code>
+      は <strong><em>コミットハッシュ</em></strong>
+      と呼ばれます。コミットハッシュは、コミットの<strong>内容</strong>や<strong>タイムスタンプ</strong>に基づき<a
+      href="https://www.google.com/search?q=SHA-1">SHA-1</a>(慣例的に「<strong>シャー・ワン</strong>」と読みます)
+      により生成される一意な ID となります。</p>
+      <p>このため、皆さんの手元で実行したときはコミットハッシュの値は、<strong>上記の実行例と違う値になるはず</strong>です。<strong>ハッシュ値</strong>
+      についての概要は「情報 2」の<a
+      href="https://classroom.google.com/c/NjAzMjM4NjAzNTQ3/m/NTE4NDg3MTA5MzQx/details">第09回講義資料</a>の
+      p.146 を参照してください。</p>
+      <h3 data-number="4.1.2" id="nd-commit"><span
+      class="header-section-number">4.1.2</span> 「2nd commit」</h3>
+      <p>プロジェクトフォルダにファイルを追加して編集をくわえるために
+      VSCode を起動します。</p>
+      <p>VSCode へのパスが適切に設定されていれば Git Bash から
+      <code>code . &amp;</code> と入力することで VSCode
+      を起動することができます。</p>
+      <div class="sourceCode" id="cb5"><pre
+      class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> code . <span class="kw">&amp;</span></span></code></pre></div>
+      <p>上記コマンドの末尾に <code>&amp;</code> (読み方は情報 1
+      で習ったように<span class="masked">アンパサンド</span>)
+      を付けずに実行すると <span class="masked">VSCode
+      のウィンドウを閉じるまで Git Bash が操作できない</span>
+      ので注意してください。このように <code>&amp;</code>
+      をつけて起動することを「<strong>バックグラウンド実行</strong>」といい、Linux
+      操作の基本として知られているので覚えておいてください
+      (現在利用している Git Bash は Linux 互換環境です)。</p>
+      <p>VSCode で <code>README.md</code>
+      を新規作成して以下の内容をコピペして保存してください。<strong>ここでは、保存操作を確実に実行してください</strong>
+      (保存しないまま操作すると以降の結果が違ってくるので注意してください)。</p>
+      <div class="sourceCode" id="cb6" data-caption="README.md"><pre
+      class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># first commit</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>フォルダの中身: (空)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu"># 2nd commit「README.md と aaaa.txt を追加」</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>フォルダの中身: <span class="in">`README.md`</span>,<span class="in">`aaaa.txt`</span></span></code></pre></div>
+      <div class="note type-tips">
+      <p><strong>VSCode のマークダウンプレビュー機能</strong></p>
+      <p>VSCode
+      でマークダウン形式のファイルを編集しているとき、下記のアイコンを押下するか、ショートカットキー
+      <code>Ctrl+K,V</code>
+      を入力すると「<strong>マークダウンのプレビュー表示</strong>」ができます。<code>Ctrl+K,V</code>
+      は「Ctrl」を押しながら「K」を押下、つづいて「Ctrl」を<strong>離して</strong>「V」を押下する操作です。</p>
+      <figure>
+      <img src="figs/16/vscode-tips-01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      </div>
+      <p>また、同様に <code>aaaa.txt</code>
+      というファイルも新規作成してください。このファイルの中身は空で問題ありません
+      (何かを記述してもよいです)。</p>
+      <p>そして <code>README.md</code> と <code>aaaa.txt</code> を
+      <strong>ステージング</strong> して
+      <code>2nd commit「README.md と aaaa.txt を追加」</code>
+      というコミットメッセージをつけて <strong>コミット</strong>
+      してください。<strong>これは VCode から実行しても、Git Bash
+      からコマンドを入力して実行してもどちらでも問題ありません</strong>。</p>
+      <div class="note type-tips">
+      <p><strong>VSCode
+      から変更内容をステージングしてコミットする</strong></p>
+      <p>左端の <strong><i class="fa-solid fa-code-branch"></i>
+      ソース管理</strong>
+      のアイコンをクリックして「ソース管理」パネルに切り替えます。</p>
+      <p>「<strong><i class="fa-solid fa-chevron-down"></i>
+      変更</strong>」から「<strong><i class="fa-solid fa-plus"></i></strong>」のアイコンをクリックしてファイルを<strong>ステージング
+      (=コミット対象として選択)
+      </strong>して、テキストボックスにコミットメッセージを入力してから「<strong><i class="fa-solid fa-check"></i>
+      コミット</strong>」のボタンを押下します。このセクションでは GitHub
+      は使用しないので「コミットしてプッシュ」や「コミットして同期」ではなく「<strong>コミット</strong>」を選んでください。</p>
+      <figure>
+      <img src="figs/16/vscode-commit-01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>今後、「<strong>ステージングとコミットの操作は再解説しない</strong>」ので覚えておくようにしてください。</p>
+      <p>なお、コミットメッセージを空欄にしてコミットボタンを押下してしまったときの対応は、前回講義の<a
+      href="lecture15.html#ファイルの作成とコミット">ファイルの作成とコミット</a>
+      のコラム「<strong>コミットメッセージを付けずにコミット操作をすると…</strong>」を参照してください。</p>
+      </div>
+      <div class="note type-senior">
+      <p><strong>コマンドライン
+      から変更内容をステージングしてコミットする</strong></p>
+      <p>コマンドラインからは <code>git add --all</code>
+      ですべての変更内容をステージングして、<code>git commit -m "xxxxx"</code>
+      でコミットができます。</p>
+      <pre><code>$ git add --all
+$ git commit -m &quot;2nd commit「README.md と aaaa.txt を追加」&quot;</code></pre>
+      <p><code>git add --all</code>
+      の代わりに、<code>git add README.md aaaa.txt</code>
+      のように対象となるファイルを明示的に指定しても実質的に同じ動作になります。</p>
+      </div>
+      <hr />
+      <p><code>git log --oneline</code> で
+      <strong><em>コミット履歴の確認</em></strong> をします
+      (<strong>VSCode
+      からコミットした場合もコマンドラインから必ず履歴の確認をしてください</strong>)。以下のようになっていれば問題ありません
+      (繰返しになりますがコミットハッシュの値は違っていても問題ありません)。</p>
+      <pre><code>$ git log --oneline
+9a305d1 (HEAD -&gt; main) 2nd commit「README.md と aaaa.txt を追加」
+d0e8462 first commit</code></pre>
+      <p>ここで「<strong>2nd commit</strong>」のところに
+      <code>(HEAD -&gt; main)</code>
+      という表記があることに着目してください
+      (<strong>重要</strong>)。これについての詳細は後で解説しますが「<strong>2nd
+      commitn</strong>」に対して <code>main</code>
+      という<strong>ブランチのポインタ</strong>が紐づいており、さらに
+      <code>main</code> には <code>HEAD</code>
+      というポインタが紐づいていることを意味します。ポインタとは「<strong>しおり</strong>」や「<strong>ブックマーク</strong>」「<strong>目印</strong>」をイメージしてください。</p>
+      <hr />
+      <p>このあともコミットメッセージを「<strong>3rd commit
+      …</strong>」「<strong>4th commit
+      …</strong>」のように続けていきますが
+      <strong>実務ではこのような「何番目のコミット」ようなメッセージの付け方はしない</strong>ので注意してください
+      (first commmit
+      は例外)。いまは、後で行なう実験を分かりやすくするために、このようなコミットメッセージにしています。</p>
+      <h3 data-number="4.1.3" id="直前のコミットを取り消す"><span
+      class="header-section-number">4.1.3</span>
+      直前のコミットを取り消す</h3>
+      <p>VSCode で
+      <strong><em>直近のコミットをやり直したいとき</em></strong>
+      (例えば「<strong>コミットメッセージを誤った</strong>」「<strong>変更の漏れがあった</strong>」などでコミットを取り消したいとき)
+      は、次のように「<strong>前回のコミットを元に戻す</strong>」を選択してください。</p>
+      <figure>
+      <img src="figs/16/vscode-commit-02.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>同様に
+      <strong>コマンドラインから直近のコミットをやり直したいとき</strong>
+      は、次のように <code>git reset --soft HEAD^</code>
+      を実行します。</p>
+      <pre><code>$ git reset --soft HEAD^</code></pre>
+      <p>ただし、VSCode
+      の場合でも、コマンドラインの場合でも、この取り消し操作は「<strong>当該コミットをリモートリポジトリにプッシュしたあとには絶対に実行しない</strong>」ようにしてください
+      (特にチーム開発をしている場合は絶対にしないでください)。リモートリポジトリとローカルリポジトリの履歴に不整合が生じて、その修正のためにコマンドラインを使って相当に面倒な修正が必要となります。</p>
+      <div class="note type-senior">
+      <p><strong>コミットメッセージだけの修正</strong></p>
+      <p>直前のコミットについて「<strong>コミットメッセージだけ</strong>」を修正したい場合は、次のように
+      <code>--amend</code> をつけて <code>git commit</code>
+      を実行します。</p>
+      <pre><code>$ git commit --amend -m &quot;新しいコミットメッセージ&quot;</code></pre>
+      <p>これも、<strong>リモートリポジトリにプッシュした後には実行しない</strong>ようにしてください。git
+      中級者になってリモートとローカルの不整合を自力で手動修正できるレベルになったら、プッシュ後に実行しても問題ありませんが・・・。</p>
+      </div>
+      <h3 data-number="4.1.4" id="rd-commit"><span
+      class="header-section-number">4.1.4</span> 「3rd commit」</h3>
+      <p><code>README.md</code> を以下のように書き換えて保存してください
+      (<strong>VSCode
+      を使用していると保存操作を忘れることが多いです。コミット前には確実に保存してください</strong>)。また
+      <code>bbbb.txt</code>
+      という空ファイルをプロジェクトフォルダに追加してください。そして、<code>README.md</code>
+      と <code>bbbb.txt</code> を <strong>ステージング</strong> して
+      <code>3rd commit「bbbb.txt を追加」</code>
+      というコミットメッセージをつけて <strong>コミット</strong>
+      してください。</p>
+      <div class="sourceCode" id="cb11" data-caption="README.md"><pre
+      class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># first commit</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>フォルダの中身: (空)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu"># 2nd commit「README.md と aaaa.txt を追加」</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>フォルダの中身: <span class="in">`README.md`</span>,<span class="in">`aaaa.txt`</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu"># 3rd commit「bbbb.txt を追加」</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>フォルダの中身: <span class="in">`README.md`</span>,<span class="in">`aaaa.txt`</span>,<span class="in">`bbbb.txt`</span></span></code></pre></div>
+      <p><code>git log --oneline</code> で
+      <strong><em>コミット履歴の確認</em></strong>
+      をします。以下のようになっていれば問題ありません。</p>
+      <pre><code>$ git log --oneline
+3757332 (HEAD -&gt; main) 3rd commit「bbbb.txt を追加」
+9a305d1 2nd commit「README.md と aaaa.txt を追加」
+d0e8462 first commit</code></pre>
+      <p>ここで、さきほどまで「<strong>2nd
+      commit</strong>」のところにあった <code>(HEAD -&gt; main)</code>
+      が「<strong>3rd
+      commit</strong>」のところに移動していることに着目してください
+      (=ブランチポインタ <code>main</code> が「<strong>3rd
+      commit</strong>」を指し示すようになり、<code>HEAD</code>
+      ポインタは引き続き <code>main</code>
+      を指し示していることに着目してください)。</p>
+      <ul>
+      <li><code>main</code>
+      ブランチでコミット操作すると、その<strong>ブランチポインタ
+      (ブランチ (枝・支流) の先端を示すブックマーク)
+      </strong>が、その<strong>最新のコミット</strong>に移動する。</li>
+      <li><code>main</code> を指し示していた <code>HEAD</code>
+      ポインタも、<code>main</code>
+      が移動することによって<strong>結果的に</strong>最新コミットに移動している。<code>HEAD</code>
+      が直接的に最新コミットを指し示しているわけではなく、<code>HEAD</code>
+      が指し示しているのはあくまで <code>main</code>
+      というブランチポインタという点に注意。</li>
+      </ul>
+      <p>現時点では、上記の説明がピンとこない、モヤモヤすると思いますが、以下、読み進めていくことで段々と理解できると思います。</p>
+      <h3 data-number="4.1.5" id="th-commit"><span
+      class="header-section-number">4.1.5</span> 「4th commit」</h3>
+      <p>同様に <code>README.md</code>
+      を書き換えて保存し、<code>cccc.txt</code>
+      という空ファイルをプロジェクトフォルダに追加し、<strong>ステージング</strong>
+      してから <code>4th commit「cccc.txt を追加」</code>
+      というコミットメッセージで <strong>コミット</strong>
+      してください。</p>
+      <div class="sourceCode" id="cb13" data-caption="README.md"><pre
+      class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># first commit</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>フォルダの中身: (空)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu"># 2nd commit「README.md と aaaa.txt を追加」</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>フォルダの中身: <span class="in">`README.md`</span>,<span class="in">`aaaa.txt`</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="fu"># 3rd commit「bbbb.txt を追加」</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>フォルダの中身: <span class="in">`README.md`</span>,<span class="in">`aaaa.txt`</span>,<span class="in">`bbbb.txt`</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="fu"># 4th commit「cccc.txt を追加」</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>フォルダの中身: <span class="in">`README.md`</span>,<span class="in">`aaaa.txt`</span>,<span class="in">`bbbb.txt`</span>,<span class="in">`cccc.txt`</span></span></code></pre></div>
+      <p><code>git log --oneline</code> で
+      <strong><em>コミット履歴の確認</em></strong> をします。</p>
+      <pre><code>$ git log --oneline
+15c7ee4 (HEAD -&gt; main) 4th commit「cccc.txt を追加」
+3757332 3rd commit「bbbb.txt を追加」
+9a305d1 2nd commit「README.md と aaaa.txt を追加」
+d0e8462 first commit</code></pre>
+      <p>ここでは「<strong>4th commit</strong>」のところに
+      <code>(HEAD -&gt; main)</code>
+      が移動していることに着目してください。</p>
+      <div class="note type-senior">
+      <p><strong>HEAD について</strong></p>
+      <p><code>HEAD</code> という<strong>ポインタ</strong>
+      (目印・ブックマーク・しおり) は、<code>(HEAD -&gt; main)</code> や
+      <code>(HEAD -&gt; dev)</code>、<code>(HEAD -&gt; bug-fix)</code>
+      のように、基本的には <strong>ブランチポインタ</strong>
+      (ブランチの先端を示すポインタ) を指し示します。</p>
+      <p>しかし、状況によっては、以下のように <code>HEAD</code>
+      が特定のブランチポインタを指さない状態 (通称「<strong>detached
+      HEAD</strong>」な状態) になることもあります。</p>
+      <pre><code>15c7ee4 (main) 4th commit「cccc.txt を追加」
+3757332 3rd commit「bbbb.txt を追加」
+9a305d1 (HEAD) 2nd commit「README.md と aaaa.txt を追加」
+d0e8462 first commit</code></pre>
+      <ul>
+      <li><a
+      href="https://www.google.com/search?q=detached+head">detached HEAD
+      とは</a></li>
+      </ul>
+      <p><strong>detached HEAD</strong> の状態は <span
+      class="masked">特定のコミットをチェックアウトして、プロジェクトフォルダを過去の状態に戻したとき</span>
+      などに発生します。この状態で新たな変更を加えてコミットを追加すると、そのコミットはどのブランチにも所属しないものとなり、あとから参照することが難しくなります
+      (もし、その状態で変更を加えてコミットする場合は、新たなブランチを作成することが推奨されます)
+      。このことから <strong>detached HEAD</strong>
+      の状態での作業は慎重に行う必要があります。</p>
+      </div>
+      <h2 data-number="4.2"
+      id="gui-による変更履歴コミットグラフの確認"><span
+      class="header-section-number">4.2</span> GUI
+      による変更履歴/コミットグラフの確認</h2>
+      <p>コマンドラインからは <code>git log --oneline</code>
+      でコミット履歴 (変更内容を記録した履歴)
+      が確認できました。これは、先にインストールした <strong>Git
+      Graph</strong> という拡張機能を使って VSCode
+      からも確認ができます。実際に確認してみてください。</p>
+      <figure>
+      <img src="figs/16/vscode-commit-03.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>上記の「<strong>Git Graph
+      表示</strong>」が、以下の「<code>git log</code>の出力」と同じ情報を表していることを確認してください。Git
+      Graph では、中抜きの丸印が <strong>HEAD</strong>
+      を表しています。</p>
+      <pre><code>15c7ee4 (HEAD -&gt; main) 4th commit「cccc.txt を追加」
+3757332 3rd commit「bbbb.txt を追加」
+9a305d1 2nd commit「README.md と aaaa.txt を追加」
+d0e8462 first commit</code></pre>
+      <h2 data-number="4.3"
+      id="プロジェクトフォルダを過去の状態に戻す-git-graph-編"><span
+      class="header-section-number">4.3</span>
+      プロジェクトフォルダを過去の状態に戻す (Git Graph 編)</h2>
+      <p>git
+      はバージョン管理システムであり、<strong>プロジェクトフォルダの内容を過去の時点
+      (任意のコミットの時点)
+      に戻すこと</strong>ができます。例として「<strong>2nd
+      commit</strong> (=プロジェクトフォルダ内に <code>README.md</code>
+      と <code>aaaa.txt</code> だけがあった状態)」に戻してみます。</p>
+      <p>以下のスクリーンショットを参考に Git Graph
+      のタブを表示して「戻したい時点のコミット行」をマウスでクリック選択し、その後、右クリックメニューから「<strong>Checkout…</strong>」を選択します。</p>
+      <p>作業中に「Are you sure you want to checkout commit 9a305d1a?
+      This will result in a ‘detrached HEAD’ state. (<span
+      class="masked">コミット a305d1a
+      に切り替えてもよろしいですか？これにより「detached
+      HEAD」の状態になります</span>)」という確認がでた場合は「<strong>Yes,
+      checkout</strong>」を選択します。</p>
+      <figure>
+      <img src="figs/16/vscode-commit-04.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>この操作により、リポジトリ (収納庫)
+      のなかから「選択したコミット (9a305d1a) 」を <strong>Checkoutする
+      (チェックアウト: リポジトリから取り出し手続きする)</strong>
+      という処理が行われます。そして、チェックアウトした内容は
+      <strong>ワーキングツリー (=プロジェクトフォルダ)</strong>
+      に展開されます。つまり <span
+      class="masked">プロジェクトフォルダの内容が「2nd
+      commit」時点のもの</span>に戻ります。</p>
+      <p>Git Graph ではチェックアウト操作をすると、以下のように
+      <strong>HEAD</strong> (=中抜きの丸印) が「<strong>2nd
+      commit</strong>」に移動します。プロジェクトフォルダのファイル構成が、そのコミット時点のものになっていることを確認してください。また
+      <code>README.md</code> の内容が「<strong>2nd
+      commit</strong>」時点の記述になっていること (<span
+      class="masked">ファイルの内容も過去時点に戻っていること</span>)
+      も確認してください。</p>
+      <figure>
+      <img src="figs/16/vscode-commit-05.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>つづいて <strong>最新 (=4th commit) の状態</strong>
+      に戻します。Git Graph の「<strong>4th
+      commit</strong>」のコミット行を選択し、右クリックから「<strong>Checkout…</strong>」を選択してください。ワーキングツリー
+      (プロジェクトフォルダ) に <code>bbbb.txt</code>,
+      <code>cccc.txt</code> が復活し、また <code>README.md</code>
+      の内容も最新 (=<strong>4th commit</strong>)
+      のものになっていることを確認してください。</p>
+      <p>このように git
+      ではプロジェクトフォルダの中身を過去コミット時点に戻すことができます。必要があれば、過去のコミットに戻した状態で、<strong>エクスプローラを使ってファイルを別フォルダに移動すること</strong>
+      などもできます。</p>
+      <h2 data-number="4.4"
+      id="プロジェクトフォルダを過去の状態に戻す-コマンドライン編"><span
+      class="header-section-number">4.4</span>
+      プロジェクトフォルダを過去の状態に戻す (コマンドライン編)</h2>
+      <p>プロジェクトフォルダを過去の状態に戻す操作は、コマンドラインからは次のように実行できます。</p>
+      <p>まずは <code>git log</code> を使って、戻したい時点のコミットの
+      <span class="masked">コミットハッシュ</span>
+      を調べてメモします。ここでは「<strong>2nd
+      commit</strong>」<strong>の状態に戻したい (切り替えたい)
+      ので</strong>メモすべき値は <code>9a305d1</code> となります。</p>
+      <pre><code>$ git log --oneline
+15c7ee4 (HEAD, main) 4th commit「cccc.txt を追加」
+3757332 3rd commit「bbbb.txt を追加」
+9a305d1 2nd commit「README.md と aaaa.txt を追加」
+d0e8462 first commit</code></pre>
+      <p>次のようにコミットハッシュを引数に与えて
+      <code>git checkout 9a305d1</code> のように
+      <strong>gitチェックアウトコマンド</strong> を実行します。</p>
+      <div class="sourceCode" id="cb18" data-caption="旧・非推奨"><pre
+      class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git checkout 9a305d1</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Previous</span> HEAD position was 15c7ee4 4th commit「cccc.txt を追加」</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="ex">HEAD</span> is now at 9a305d1 2nd commit「README.md と aaaa.txt を追加」</span></code></pre></div>
+      <p>最近の git (Git 2.23 以降) では <code>checkout</code> ではなく
+      <code>git switch 9a305d1 --detach</code> のような
+      <strong>gitスイッチコマンド</strong> を使うことが推奨されています
+      (実質的に同じコマンドです)。</p>
+      <div class="sourceCode" id="cb19" data-caption="新・推奨"><pre
+      class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git switch 9a305d1 <span class="at">--detach</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="ex">HEAD</span> is now at 9a305d1 2nd commit「README.md と aaaa.txt を追加」</span></code></pre></div>
+      <p>コマンドを実行したら、VSCode の Git Graph
+      を確認してください。Git Graph 上でも「<strong>2nd
+      commit</strong>」に戻っていることが確認できます (必要に応じて
+      <strong>GitGraphタブ</strong>
+      の右上にある「<strong><i class="fa-solid fa-rotate-right"></i></strong>」アイコンをクリックして画面更新してください)。</p>
+      <p>ここで注意すべきは、<span
+      class="masked">この状態でコマンドラインから
+      <code>git log --oneline</code>
+      を実行</span>したときの結果です。現時点で履歴を表示すると次のように
+      <span class="masked"> 3rd と 4th commit
+      は表示されず、戻るべき「4th commit」のコミットハッシュ</span>
+      が確認できません。</p>
+      <pre><code>$ git log --oneline
+9a305d1 (HEAD) 2nd commit「README.md と aaaa.txt を追加」
+d0e8462 first commit</code></pre>
+      <p>このようなときは <code>git reflog --oneline</code> (引数は
+      <code>log</code> ではなく <code>reflog</code>)
+      を実行して、そこから「<strong>4th
+      commit</strong>」のコミットハッシュ (=<code>15c7ee4</code>)
+      を調べて <code>git switch 15c7ee4 --detach</code>
+      のようにコマンドを打ち込んで最新の状態に戻ることができます。</p>
+      <pre><code>$ git reflog --oneline
+9a305d1 (HEAD) HEAD@{0}: checkout: moving from main to 9a305d1
+15c7ee4 (main) HEAD@{1}: commit: 4th commit「cccc.txt を追加」
+
+$ git switch 15c7ee4 --detach
+Previous HEAD position was 9a305d1 2nd commit「README.md と aaaa.txt を追加」
+HEAD is now at 15c7ee4 4th commit「cccc.txt を追加」</code></pre>
+      <div class="note type-senior">
+      <p><strong>ブランチのポインタを指定してチェックアウト/スイッチ</strong></p>
+      <p>「特定のコミット」と「ブランチのポインタ」が紐づいている場合は、そのブランチの名前を指定して
+      <code>git checkout [ブランチ名]</code> あるいは
+      <code>git switch [ブランチ名]</code>
+      を実行してチェックアウト/スイッチができます。</p>
+      <p>例えば、現在のケースでは以下のように <code>main</code>
+      というブランチのポインタが「<strong>4th
+      commit</strong>」を指し示しているので
+      <code>git checkout main</code> または <code>git switch main</code>
+      と入力して「<strong>4th
+      commit</strong>」に戻ることもできます。</p>
+      <pre><code>15c7ee4 (main) 4th commit「cccc.txt を追加」
+3757332 3rd commit「bbbb.txt を追加」
+9a305d1 (HEAD) 2nd commit「README.md と aaaa.txt を追加」
+d0e8462 first commit</code></pre>
+      </div>
+      <h2 data-number="4.5" id="コミット間の差分を確認する"><span
+      class="header-section-number">4.5</span>
+      コミット間の差分を確認する</h2>
+      <p>Git Graph を使って、任意のコミット間の<strong>差分</strong>
+      (=どの部分が異なるのか)
+      をグラフィカルに確認することができます。ここでは、<code>README.md</code>
+      について「<strong>4th commit</strong>」と「<strong>2nd
+      commit</strong>」の差分 (=どこが違うのか) を確認してみます。</p>
+      <p>まずは、「<strong>新しいほうのコミット行</strong>」をクリックして選択します。</p>
+      <figure>
+      <img src="figs/16/vscode-commit-06.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>次に、<code>Ctrl</code>
+      を押下しながら「<strong>古いほうのコミット行</strong>」を選択します
+      (選択後は <code>Ctrl</code> を離してください)
+      。つづいて差分を確認したいファイルをクリックします。</p>
+      <figure>
+      <img src="figs/16/vscode-commit-07.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>以下のスクリーンショットのように差分を確認することができます。緑背景になっている部分が追加された行になります
+      (ここでは該当行はありませんが、削除されている行があれば赤背景で表示されます)。なお、<span
+      class="masked">VSCode
+      のウィンドウを横に十分に広げれば、「旧」と「新」を左右にならべて比較した画面</span>で差分の確認ができます。</p>
+      <figure>
+      <img src="figs/16/vscode-commit-08.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>コマンドラインからはコミットハッシュを指定して
+      <code>git diff 9a305d1 15c7ee4 -- README.md</code>
+      のように差分を確認できます。<strong>差分表示には Git Graph
+      を使用することをお勧め</strong>します。</p>
+      <p>以上の作業が終わったら、必ず <span
+      class="masked">Git-Playground
+      のプロジェクトフォルダは、削除するか、フォルダ名を変更</span>
+      しておいてください。</p>
+      <h1 data-number="5" id="github-を使用したチーム開発の概要"><span
+      class="header-section-number">5</span> GitHub
+      を使用したチーム開発の概要</h1>
+      <p><a href="https://github.co.jp/">GitHub</a> のほか、<a
+      href="https://backlog.com/ja/">Backlog</a>、<a
+      href="https://bitbucket.org/">Bitbucket</a> のような「<strong>git
+      リポジトリのホスティングサービス</strong>」を利用することで <span
+      class="masked">複数人によるチーム開発を効率的・効果的に進めることができます</span>。このような開発スタイルは
+      <strong>OSS</strong> (Open Source Software)
+      の開発はもちろん、大学の研究室や<strong>企業における実開発</strong>でも広く採用されています。</p>
+      <p>GitHub のようなリモートリポジトリは、チーム開発で <span
+      class="masked">チーム全員のソースコードの変更を集約・統合・管理する中心的な場所</span>
+      として位置づけられることから
+      <strong><em>中央リポジトリ</em></strong> とも呼ばれます。</p>
+      <div class="note type-tips">
+      <p><strong>GitHubを利用したチーム開発の流れ (概要) </strong></p>
+      <p>チーム開発では、メンバー各自が PC
+      にローカルリポジトリを作成すると共に、GitHub などオンライン上に (1
+      個の)
+      <strong>中央リポジトリ</strong>を作成し全員で「<strong>共有</strong>」します。</p>
+      <p>そして、メンバーはそれぞれの<strong>ローカル環境で担当する範囲の開発を進め</strong>、ある程度、完成したものを中央リポジトリに「<strong>プッシュ</strong>
+      (アップロード)」していきます。また、定期的に中央リポジトリから変更内容を「<strong>プル</strong>
+      (ダウンロード)」することで、他のメンバーによる変更をローカルリポジトリに取り込みます。これを繰返すことでチーム全体でコードを共有・統合・同期しながら開発を進めます。</p>
+      </div>
+      <h2 data-number="5.1" id="最もシンプルなチーム開発フロー"><span
+      class="header-section-number">5.1</span>
+      最もシンプルなチーム開発フロー</h2>
+      <p>いつもの「アリス」と「ボブ」を例に <strong>GitHub
+      を利用してチーム開発する際の具体的なフロー (流れ)</strong>
+      を示します。このフローでは「<strong>フォーク</strong>」や「<strong>プルリクエスト
+      (プルリク)</strong>」は使用せず、<strong><em>ブランチの機能</em></strong>
+      と <strong><em>コラボレータの設定</em></strong>
+      だけを利用する<strong>最もシンプルな方法</strong>を示します。</p>
+      <p>未知の用語 (<strong>ブランチ</strong> (枝・分岐・支流)
+      や<strong>コラボレータ</strong>など)
+      もでてきますが、まずは全体の流れを理解しましょう。</p>
+      <p><strong>(準備・段取りフェーズ)</strong></p>
+      <ol type="1">
+      <li>アリスが「ローカルリポジトリ」を作成し、その <code>main</code>
+      ブランチに <span class="masked">プロジェクトのスケルトン
+      (=基盤・土台・フレームとなるプログラム) </span>
+      を作成します。</li>
+      <li>アリスが、GitHub に空の「<strong>中央リポジトリ</strong>
+      (リモートリポジトリ)」を作成し、ローカルリポジトリの内容を <span
+      class="masked">プッシュ (アップロード)</span> します。</li>
+      <li>アリスが、GitHub
+      の設定ページからボブを「<strong>コラボレータ</strong>」として招待する手続きをします。</li>
+      <li>ボブは招待通知のメールから GitHub
+      にアクセスし、アリスの作成した「中央リポジトリ」に「コラボレータ」として参加することを承諾します。ボブはコラボレータとなったことで
+      <span
+      class="masked">この中央リポジトリに「プッシュ」すること</span>
+      ができるようになります。</li>
+      <li>ボブが「中央リポジトリ」を<a
+      href="lecture15.html#guthubリポジトリのクローン">クローン</a>
+      して「ローカルリポジトリ」を作成します。</li>
+      </ol>
+      <p><strong>(開発編フェーズ)</strong></p>
+      <ol start="6" type="1">
+      <li>アリスとボブは、ローカルリポジトリで <span
+      class="masked"><code>main</code>ブランチを起点に新しいブランチを作成</span>して、その
+      <strong>ブランチ</strong> のうえで個別に担当部分の開発をします。
+      <ul>
+      <li>ここでは、アリスが <code>feature/dev-alice</code>
+      というブランチを作成し、ボブが <code>feature/dev-bob</code>
+      というブランチを作成するものとします。</li>
+      </ul></li>
+      <li>アリスは <code>feature/dev-alice</code>
+      で自分の担当範囲の開発を進めます。そして、その開発が完了したら
+      <code>main</code> ブランチに <code>feature/dev-alice</code>
+      ブランチを <span class="masked">マージ (取り込み)</span>
+      します。</li>
+      <li>同様に、ボブも自分の担当部分について
+      <code>feature/dev-bob</code>
+      ブランチで開発を進めます。そして、開発が完了したら
+      <code>main</code> に <code>feature/dev-bob</code> を <span
+      class="masked">マージ</span> します。</li>
+      <li>アリスとボブは
+      <strong>定期的</strong>に「中央リポジトリ」に自分のブランチを「プッシュ」するとともに、「プル」により中央ブランチの
+      <code>main</code>
+      ブランチにある最新の内容をローカルリポジトリに取り込み<strong>ソースコードの同期と統合を図ります</strong>。</li>
+      </ol>
+      <hr />
+      <p>このような方法で、アリスとボブは
+      <strong>各自が担当範囲を並行・独立して開発しながらも</strong>、中央リポジトリの
+      <code>main</code> ブランチには <span class="masked">
+      全体として統合・整合されたソースコードが</span>
+      積み詰みあがっていくことになります。<strong>この手法のポイントを整理</strong>すると次のようになります。</p>
+      <ul>
+      <li>中央リポジトリの管理者 (オーナー)
+      は、特定のメンバーを「<strong>コラボレータ</strong>」として招待することで、そのメンバーに対して
+      <strong>中央リポジトリへの直接的な書き込み権限</strong>
+      (プッシュ権限) を付与できる。
+      <ul>
+      <li>逆に言えば、コラボレータではないメンバーは、チーム開発に使用する中央リポジトリに対して直接的に「プッシュ」などの操作ができません。</li>
+      </ul></li>
+      <li>各メンバーは、それぞれ <span class="masked">ブランチ</span>
+      というものを作成して、そのブランチで開発作業を進め、それが完了したら
+      <code>main</code> ブランチに <span class="masked">マージ
+      (反映・取り込み)</span> するという運用をすることで、メンバーは
+      (ある程度独立して) 開発を進めることが可能とりなり、また統合の際の
+      <span class="masked">コンフリクト (作業衝突)</span>
+      も最小限に抑えることができる。
+      <ul>
+      <li>逆に言えば、<strong>ブランチを使用せずにチーム開発するとコンフリクト
+      (作業衝突)
+      が頻発</strong>して、その解決に多大な手間と時間を要することになります。</li>
+      </ul></li>
+      </ul>
+      <div class="note type-senior">
+      <p><strong>コラボレータを設定しないチーム開発</strong></p>
+      <p>不特定多数が参加する OSS
+      開発などでは、開発メンバーをコラボレータに設定することなく「<strong>フォーク</strong>」と「<strong>プルリク
+      (プルリクエスト)</strong>」という機能を使用してチーム開発する手法が採用されます。</p>
+      <p>この方式の利点は、開発に関わるメンバーが <span
+      class="masked">オリジナルの中央リポジトリに直接変更を加える</span>
+      ことなく、独立して作業を進めることができる点です。また、中央リポジトリの管理者
+      (オーナー や 数名のコラボレータ)
+      は、提出されたプルリクエストをレビュー
+      (=コードの品質や機能を確認・評価) し、<span
+      class="masked">品質を確保しながら変更を取り込むこと</span>
+      ができます。</p>
+      </div>
+      <h1 data-number="6" id="コラボレータの設定"><span
+      class="header-section-number">6</span> コラボレータの設定</h1>
+      <p>ここでは、GitHub
+      で「<strong>コラボレータ</strong>」を設定する手順を説明します。ここでは「アリス」がオーナーの中央リポジトリに、コラボレータとして「ボブ」を参加させるという設定で説明します。</p>
+      <p>なお、<strong>ここからの操作はあとの演習で実際に体験してもらうので、いまは実行する必要はありません</strong>。解説を読んで理解するだけでOKです。</p>
+      <hr />
+      <p>はじめに <strong>アリス側の操作</strong> です。</p>
+      <p>GitHub
+      にアクセスして、コラボレータとして「ボブ」をメンバーに加えたいリポジトリのページを開きます。上部にある「<strong>Settings</strong>」タブを選択して画面を切り替え、左パネルから「<strong>Collaborators</strong>」を選択します。</p>
+      <figure>
+      <img src="figs/16/git-colab-01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>初期状態では「You haven’t invited any collaborators yet (<span
+      class="masked">まだコラボレーターを招待していません</span>)」となっているので、コラボレータを追加するために「<strong>Add
+      people</strong>」ボタンを押下します。</p>
+      <figure>
+      <img src="figs/16/git-colab-02.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>テキストボックスに「Bob のユーザーカウント (≠
+      表示名)」を入力します。</p>
+      <figure>
+      <img src="figs/16/git-colab-03.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>候補となるユーザーが表示されるので、そこからボブのアカウントを選択して「<strong>Add
+      XXXX to this
+      repository</strong>」のボタンを押下して、「ボブ」をコラボレータとして招待します。</p>
+      <figure>
+      <img src="figs/16/git-colab-04.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>招待の処理をすると、Bob について以下のように「<strong>Pending
+      Invite</strong>」というステータスになります。これは、ボブ宛に<strong>招待通知が送信済み</strong>であるが、まだボブが「承認・承諾」の手続きをしていない状態であることを意味します。</p>
+      <figure>
+      <img src="figs/16/git-colab-05.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <hr />
+      <p>ここからは <strong>ボブ側の操作</strong> となります。</p>
+      <p>アリスがコラボレータの招待手続きをすると、ボブには以下のようなメールが届きます。メールにある「<strong>View
+      invitation</strong>」を押下します。</p>
+      <p>なお、メッセージの意訳は次のようになります。</p>
+      <blockquote>
+      <p>この招待状を承諾するか、辞退するかを選べます。また、https://github.com/ZZZZZ1980/Git-Playground
+      にアクセスしてリポジトリを確認するか、<span class="citation"
+      data-cites="ZZZZZ1980">@ZZZZZ1980</span>
+      の情報を少し見て、彼らについてもっと知ることもできます。</p>
+      <p>この招待は 7 日間で期限が切れます。</p>
+      </blockquote>
+      <figure>
+      <img src="figs/16/git-colab-06.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>GitHub
+      のページにアクセスするのでコラボレータとして参加することを承認する場合は「<strong>Accept
+      inviation</strong>」を押下します。なお、メッセージの意訳は次のようになります。</p>
+      <blockquote>
+      <p>「Git-Playground」のオーナー (ここではアリスのこと)
+      は以下の情報を確認できます<br />
+      ・あなたの公開プロフィールの情報<br />
+      ・このリポジトリ内での特定の活動<br />
+      ・リクエストが発信された国<br />
+      ・このリポジトリにおけるあなたの権限のレベル<br /> ・あなたの IP
+      アドレス</p>
+      </blockquote>
+      <figure>
+      <img src="figs/16/git-colab-07.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <hr />
+      <p>再び<strong>アリス側の操作</strong>です。</p>
+      <p>当該リポジトリの「<strong>Setting</strong>」の「<strong>Collaborators</strong>」の項目を確認するとボブについて以下のような表示になっていることが確認できます。なお、ボブのコラボレータ権限を解除するためには、右端の「<strong>Remove</strong>」を選択します。</p>
+      <figure>
+      <img src="figs/16/git-colab-08.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <h1 data-number="7" id="ブランチの利用"><span
+      class="header-section-number">7</span> ブランチの利用</h1>
+      <p>コラボレータを設定して GitHub を利用してチーム開発する場合、git
+      の <strong><em>ブランチ</em></strong>
+      <strong>という機能を利用することが (実質的には)
+      必須</strong>となります。</p>
+      <p>いま、「アリス」と「ボブ」の 2
+      名でチーム開発することを考えます。具体的には、アリスがプログラムの骨格となる「スケルトン」を作成を担当して、それに対してボブが「機能
+      B」の開発
+      (<strong>スタブ</strong>の作成、実装、<strong>リファクタリング</strong>)
+      を担当し、アリスも「機能
+      A」の開発を担当するという役割分担でチーム開発 (共同開発)
+      することを考えます。</p>
+      <ul>
+      <li>アリス: 「<strong>スケルトン</strong>」と「<strong>機能
+      A</strong>」の開発を担当する</li>
+      <li>ボブ: 「<strong>機能 B</strong>」の開発を担当する</li>
+      </ul>
+      <div class="note type-tips">
+      <p><strong>知っておいてほしいプログラミング用語「スタブ」と「リファクタリング」</strong></p>
+      <p>「<strong>スタブ</strong>
+      (stub)」とはプログラミングの分野では「まだ完成していない関数やクラス、モジュール」あるいは「仮の機能しか持っていない関数やクラス、モジュール」を指す用語として使われています。例えば、関数について
+      <span
+      class="masked">実際の処理を実装する前に、関数の名前や引数、返り値の形式だけを定義した</span>
+      ようなものが「スタブ」と呼ばれます。</p>
+      <p>「<strong>リファクタリング</strong> (<a
+      href="https://www.google.com/search?q=refactoring">refactoring</a>)」
+      とは、コードをより読みやすく、保守しやすく、再利用しやすい形に改善する作業を意味します。</p>
+      </div>
+      <h2 data-number="7.1"
+      id="ブランチを使わないときと使うときのコミットグラフの違い"><span
+      class="header-section-number">7.1</span>
+      ブランチを「使わないとき」と「使うとき」のコミットグラフの違い</h2>
+      <p><strong>ブランチを作成せずに</strong>、デフォルトブランチ
+      <code>main</code> で、アリスとボブが開発
+      (実装・コミット・プッシュ) していったときの
+      <strong>コミットグラフ</strong> は次のようになります。</p>
+      <figure>
+      <img src="figs/16/commit-graph-01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>一方で、アリスは <code>feature/dev-alice</code>
+      というブランチを作成して「機能A」を開発し、ボブは
+      <code>feature/dev-bob</code>
+      というブランチを作成して「機能B」を開発したときの
+      <strong>コミットグラフ</strong> は次のようになります。</p>
+      <figure>
+      <img src="figs/16/commit-graph-02.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>アリスは <code>feature/dev-alice</code> というブランチ
+      (上記でマゼンタ色で表示)
+      で作業とコミットを繰返し、「機能A」の開発を終えたら、それを
+      <code>main</code> に取り込んでいることが分かると思います。</p>
+      <p>図から読み取れるように、ブランチを使う開発とは「
+      <code>main</code> <strong>から</strong>
+      <code>feature/dev-alice</code>
+      <strong>に分岐して作業を進め、それが終わったら</strong>
+      <code>feature/dev-alice</code> <strong>を</strong>
+      <code>main</code> <strong>にマージする (取り込む)</strong>
+      」という流れが運用の<strong>基本形</strong>になります。</p>
+      <h2 data-number="7.2" id="ブランチを利用することのメリット"><span
+      class="header-section-number">7.2</span>
+      ブランチを利用することのメリット</h2>
+      <p>git において <strong>ブランチ (branch)</strong>
+      とは「枝」「分岐」「支流」といった意味で使われ <span
+      class="masked">任意のコミットから分岐をつくる</span>
+      ことで、元のブランチや他のブランチに影響を受けず（同時に影響を与えず）に開発作業とコミットを可能にする機能です。</p>
+      <p>例えば、<code>main</code> ブランチの任意のコミット
+      (=アリスがスケルトンを作成した時点) から
+      <code>feature/dev-alice</code> と <code>feature/dev-bob</code>
+      というブランチを作成し、前者 (図中のマゼンタのブランチ)
+      でアリスが「機能A」の開発を行い、後者でボブ (図中の緑色のブランチ)
+      が「機能B」の開発を進めるとします。</p>
+      <figure>
+      <img src="figs/16/commit-graph-03.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>このようにすることで、アリスは
+      <strong>ボブの影響を受けずに「機能A」の開発</strong>
+      を進めることができます。ここで
+      <strong><em>ボブの影響を受けずに開発</em></strong>
+      とは次のことを意味します。</p>
+      <ul>
+      <li>アリスが開発途中のコードのなかに
+      <strong>ボブの開発途中のコード</strong>、つまり <span
+      class="masked">不具合やコンパイルエラーを含むかもしれないボブのコード</span>
+      や <span
+      class="masked">あとからの大幅変更されるかもしれないボブのコード</span>
+      が混入することありません。</li>
+      <li>(アリスが「機能A」を開発途中に)
+      プッシュやプルなどの操作をしてもコンフリクトが生じない。つまり、その解消に煩わされることなく<span
+      class="masked">「機能A」の開発に集中すること</span>
+      ができます。</li>
+      </ul>
+      <div class="note type-tips">
+      <p><strong>ブランチを使えばコンフリクトが生じないの?!</strong></p>
+      <p>「ブランチを使えば永遠にコンフリクトが生じない」というわけではありません。アリスが「機能A」の開発を完了し
+      <code>feature/dev-alice</code> を <code>main</code>
+      に<strong>マージ</strong>するとき
+      (下図の<strong>矢印部</strong>のように支流の変更を源流に取り込むとき)
+      にはコンフリクトが発生する可能性があります。</p>
+      <figure>
+      <img src="figs/16/commit-graph-04.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>しかしながら <span
+      class="masked">開発途中にプッシュやプルするたびにコンフリクトが発生して解消に追われる</span>
+      よりも、担当範囲の開発が完了して <strong>マージをする段階</strong>
+      でまとめて解消できるほうが格段に労力と時間を削減できます。</p>
+      <p>また、「機能A」の開発途中でも (必要があれば) アリスは
+      <code>main</code> を <code>feature/dev-alice</code>
+      にマージして<strong>段階的にコンフリクトを解消すること</strong>ができます。</p>
+      </div>
+      <h2 data-number="7.3"
+      id="mainブランチだけで開発を進めることのデメリット"><span
+      class="header-section-number">7.3</span>
+      mainブランチだけで開発を進めることのデメリット</h2>
+      <p>アリスもボブも新たにブランチをつくることなく、デフォルトの
+      <code>main</code>
+      ブランチの上で開発することも技術的には可能です。しかし、この方法を選ぶと、プルやプッシュの操作をするたびにコンフリクトが発生するリスクがあります。さらに、<strong>相手の開発の途中段階のコードが随時自分の環境に組み込まれるため、作業の混乱も生じやすくなります</strong>。</p>
+      <p>例えば、下図の矢印の部分でコンフリクトが生じる可能性があります。</p>
+      <p>マゼンタ色の矢印部分はアリス側で、緑色の矢印部分はボブ側で
+      <span class="masked">コンフリクトが発生し、その解消をしなければならない可能性</sapn>
+      が生じます。</p>
+      <figure>
+      <img src="figs/16/commit-graph-05.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>基本的に、リモートリポジトリに対して「<strong>プッシュ</strong>」しようとしたとき
+      <span
+      class="masked">リモート側の当該ブランチの直前のコミットが他人により行われて</span>
+      いると、(自分のローカルリポジトリの状態とリモートのリポジトリの内容が異なることに起因して)
+      以下のように<strong>プッシュが拒否される</strong>ことがあります。</p>
+      <figure>
+      <img src="figs/16/vscode-push-01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <blockquote>
+      <p>Can’t push refs to remote. Tty running “Pull” first to
+      integrate your changes.<br> (意訳)
+      リモートへの「プッシュ」ができません。あなたのローカルの変更とリモートの変更が衝突している可能性があります。まずは「プル」を実行し、リモートの最新の変更をローカルに取り込んで、それを統合してから再度「プッシュ」を試してください。</p>
+      </blockquote>
+      <p>この場合、まずは<span
+      class="masked">「プル」または「フェッチ・マージ」によってリモート側の変更をローカル側に取り込み統合
+      (マージ)
+      </span>する必要が生じます。そして、その「<strong>マージ</strong>」の過程でコンフリクトが生じる可能性があります。</p>
+      <p>一方で、<code>feature/dev-alice</code>
+      のようなブランチを作成して、そこで開発を進める場合、<code>feature/dev-alice</code>
+      というブランチに「プッシュ」するのは <strong>アリスだけ</strong>
+      です (運用ルールを守らずにボブが <code>feature/dev-alice</code>
+      にプッシュするようなことがあれば別ですが)
+      。そのため、基本的には「<strong>リモート側の当該ブランチの直前のコミット</strong>」=「<span
+      class="masked">自分のコミット</span>」という状況になり、コンフリクトが起こることが無くなります。</p>
+      <h1 data-number="8"
+      id="ブランチを作成してチーム開発する方法"><span
+      class="header-section-number">8</span>
+      ブランチを作成してチーム開発する方法</h1>
+      <p>以下、<strong>2名1組による実習</strong>になります
+      (3名1組の場合は1名は見学になります)。「アリス役」と「ボブ役」を決めて作業してください。</p>
+      <p>チーム開発のチュートリアルとして、最終的に以下のような「コミットグラフ」が形成されるような開発を体験していきます。なお、<span
+      class="masked">相手役の操作解説も飛ばさず読み、相手役のPCの操作画面も覗き込んで学ぶ</span>
+      ようにしてください。また、授業時間外には
+      <strong>復習として役割交代して体験</strong> してみてください。</p>
+      <figure>
+      <img src="figs/16/colab2-06.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>手順を飛ばすなどで失敗した場合は <span
+      class="masked">リモートリポジトリとローカルリポジトリを完全削除して、再度、最初から
+      (コラボレータの設定から) やり直してください
+      (やり直しのときは初回の1/3も時間がかからないと思います)</span>。</p>
+      <div class="note type-caution">
+      <p><strong>git/GitHubは繰返し体験して慣れるしかない</strong></p>
+      <p>git/GitHub
+      の利用は、開発の「目的」ではなく、開発の「<strong>手段</strong>」です。そして、git/GitHub
+      は単なる「<strong>ツール (道具)</strong>」に過ぎません。git/GitHub
+      の内部の仕組みや細かな挙動を理解することは重要ですが、極論を言えば
+      <span class="masked">使えればよい</span> です (だって道具だもの)
+      。自動車でも、駆動原理を理解するより、運転できるようになることが優先されるのと同じです。</p>
+      <p>git/GitHub の習得には
+      <strong>とにかく繰返し積極的に使用し、慣れることと、頭と手先で覚えていこと</strong>
+      が必要です。<span class="masked">解説を見ながらなら使えます</span>
+      というレベルでは不十分です。それは「<strong>教本を見ながらなら自動車を運転できます</strong>」と言っているようなものです。そんな運転者が公道で自動車を運転していたら恐ろしいですよね?
+      同じく、そんな git/GitHub の習練度の人が (業務レベルの)
+      チーム開発に参加していたら恐いのです。</p>
+      <p><span
+      class="masked">「この授業で解説を読みながら問題なく操作できたからOK」</span>ではなく、授業時間外や個人開発、その他の開発活動でも積極的に使用して習得するように努めてください。</p>
+      </div>
+      <h2 data-number="8.1" id="アリス役のステップ-1"><span
+      class="header-section-number">8.1</span> 「アリス役」のステップ
+      1</h2>
+      <p>GitHub に <code>Git-Playground</code> という
+      <strong>空のリポジトリ</strong> を作成してください
+      (<code>README.md</code> や <code>.gitignore</code>
+      を含めないでください)。公開設定は「パブリック」としてください。つづいて、前半の「<a
+      href="#コラボレータの設定">コラボレータの設定</a>」の解説に従って、<strong>ボブ役をコラボレータとして招待</strong>してください。</p>
+      <p>また、この <strong>リポジトリのURL</strong>
+      (<code>https://github.com/XXXX/Git-Playground.git</code>)
+      をメモしておいてください (末尾の <code>.git</code>
+      は重要なので抜けないように)。</p>
+      <figure>
+      <img src="figs/16/colab-01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <h2 data-number="8.2" id="ボブ役のステップ-1"><span
+      class="header-section-number">8.2</span> 「ボブ役」のステップ
+      1</h2>
+      <p>前半の「<a
+      href="#コラボレータの設定">コラボレータの設定</a>」の解説に従って
+      <strong>コラボレータ招待を承諾</strong>
+      してください。また、アリスと同様に
+      <strong>リポジトリのURL</strong>
+      (<code>https://github.com/XXXX/Git-Playground.git</code>)
+      をメモしておいてください。この URL は <span
+      class="masked">アリスがメモしたURLと完全に同じになる</span>はずです。</p>
+      <h2 data-number="8.3" id="アリス役のステップ-2"><span
+      class="header-section-number">8.3</span> 「アリス役」のステップ
+      2</h2>
+      <p>PCのローカルストレージの適当な場所に
+      <code>Git-Playground</code>
+      というプロジェクトフォルダを新規作成してください。ターミナルを Git
+      Bash
+      モードで開いて、その作成した<strong>プロジェクトフォルダの中</strong>に移動してください
+      (<code>pwd</code>
+      コマンドなどで作成したプロジェクトフォルダの中にいることを確実に確認してください)。</p>
+      <p>以下のコマンドで「ローカルリポジトリとしての初期化」、「空状態での初期コミット」、「<a
+      href="lecture15.html#リモートリポジトリにプッシュ">ローカルリポジトリに紐づける中央リモートリポジトリ
+      (リモートリポジトリ)
+      の設定</a>」「リモートリポジトリへのプッシュ」をします。3番目のコマンドでは
+      <code>https://github.com/...</code>
+      の部分を先ほどのメモに置き換えてください。</p>
+      <pre><code>$ git init
+$ git commit --allow-empty -m &quot;first commit&quot;
+$ git remote add origin https://github.com/XXXX/Git-Playground.git
+$ git push -u origin main</code></pre>
+      <p>次に VSCode を起動してください。</p>
+      <pre><code>$ code . &amp;</code></pre>
+      <p>プログラムの「スケルトン」として、次の内容の
+      <code>main.py</code> を作成して保存してください。</p>
+      <p>また、プログラムが「正常実行できること」を確認してください。今回は
+      (<code>pip install</code>
+      による追加ライブラリのインストール予定はないので)
+      <code>python -m venv .venv</code>
+      で仮想環境を<strong>作成する必要はありません</strong>。なお、VSCode
+      で Python プログラム を実行する方法を忘れた学生は<a
+      href="lecture09.html#pythonファイルの作成">第09回の講義資料</a>
+      を参照してください。</p>
+      <div class="sourceCode" id="cb25" data-caption="main.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a><span class="im">import</span> math</span>
+<span id="cb25-2"><a href="#cb25-2"></a></span>
+<span id="cb25-3"><a href="#cb25-3"></a><span class="co"># [機能A]@アリス担当 #############</span></span>
+<span id="cb25-4"><a href="#cb25-4"></a></span>
+<span id="cb25-5"><a href="#cb25-5"></a></span>
+<span id="cb25-6"><a href="#cb25-6"></a><span class="co"># [機能B]@ボブ担当 ###############</span></span>
+<span id="cb25-7"><a href="#cb25-7"></a></span>
+<span id="cb25-8"><a href="#cb25-8"></a></span>
+<span id="cb25-9"><a href="#cb25-9"></a><span class="co"># メイン処理 #####################</span></span>
+<span id="cb25-10"><a href="#cb25-10"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>: </span>
+<span id="cb25-11"><a href="#cb25-11"></a></span>
+<span id="cb25-12"><a href="#cb25-12"></a>  <span class="bu">print</span>(<span class="st">&quot;start.&quot;</span>)</span>
+<span id="cb25-13"><a href="#cb25-13"></a></span>
+<span id="cb25-14"><a href="#cb25-14"></a>  <span class="co">## 機能Aの実行</span></span>
+<span id="cb25-15"><a href="#cb25-15"></a></span>
+<span id="cb25-16"><a href="#cb25-16"></a>  <span class="co">## 機能Bの実行</span></span>
+<span id="cb25-17"><a href="#cb25-17"></a></span>
+<span id="cb25-18"><a href="#cb25-18"></a>  <span class="bu">print</span>(<span class="st">&quot;end.&quot;</span>)</span></code></pre></div>
+      <p>次に <code>.gitignore</code> というファイルを作成して
+      、以下の内容を記述して保存してください。この
+      <code>.gitignore</code> ファイルには <span
+      class="masked">git/GitHub
+      管理をしないファイルやフォルダ</span>を記載します。例えば VSCode
+      のプロジェクト固有の設定を保存する <code>.vscode</code>
+      フォルダや、仮想環境を展開する <code>.venv</code> フォルダ、<span
+      class="masked">パスワードや個人的なメモを書いたファイル</span>などは
+      <code>.gitignore</code> に記述して <strong>git/GitHub
+      の管理から外します</strong>。</p>
+      <p>ここでは <code>.gitignore</code>
+      の詳細は解説しないので、詳しくは「<a
+      href="https://www.google.com/search?q=.gitignore+書き方">.gitignore　書き方</a>」などで検索してください。</p>
+      <div class="sourceCode" id="cb26" data-caption=".gitignore"><pre
+      class="sourceCode numberSource numberLines"><code class="sourceCode"><span id="cb26-1"><a href="#cb26-1"></a>.vscode/</span>
+<span id="cb26-2"><a href="#cb26-2"></a>.venv/</span></code></pre></div>
+      <p>VSCode から <code>main.py</code> と <code>.gitignore</code>
+      をステージングし、「<strong>アリスがスケルトンを作成</strong>」というコミットメッセージを付け「<strong>コミット</strong>」してください。また、その後、以下のように「<strong>プッシュ</strong>」をしてください。</p>
+      <figure>
+      <img src="figs/16/colab-02.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>Git Graph を確認すると次のようになっているはずです。</p>
+      <figure>
+      <img src="figs/16/colab-03.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <h2 data-number="8.4" id="ボブ役のステップ-2"><span
+      class="header-section-number">8.4</span> 「ボブ役」のステップ
+      2</h2>
+      <p>ターミナルを Git Bash モードで開いて
+      <code>Git-Playground</code>
+      という<strong>プロジェクトフォルダを作成したいフォルダ</strong>に移動して開いください。</p>
+      <div class="note type-caution">
+      <p><strong>注意</strong></p>
+      <p>「<code>Git-Playground</code>
+      フォルダを作成する」のでははなくて「<code>Git-Playground</code>
+      <strong>フォルダを作成したいフォルダに移動</strong>」してください。例えば、最終的に
+      <code>C:\Users\xxxx\Documents\Git-Playground</code>
+      を作成したいのなら、Git Bash のカレントフォルダが
+      <code>C:\Users\xxxx\Documents</code>
+      になるようにしてください。</p>
+      </div>
+      <p>以下のコマンドで、中央リポジトリをクローンして、<code>Git-Playground</code>
+      の中部に移動してください。最初のコマンドでは
+      <code>https://github.com/...</code>
+      の部分は先ほどメモしたURLに置き換えてください。</p>
+      <pre><code>$ git clone https://github.com/XXXX/Git-Playground.git
+$ cd Git-Playground/</code></pre>
+      <p><code>git log --oneline</code>
+      でコミット履歴を確認してください。</p>
+      <pre><code>$ git log --oneline
+91fe5c4 (HEAD -&gt; main, origin/main, origin/HEAD) アリスがスケルトンを作成
+b7d80d6 first commit</code></pre>
+      <p>また <strong>現在のブランチを確認する</strong>ために
+      <code>git branch</code>
+      を実行してください。以下のような結果になります。これは、ローカルリポジトリに
+      <code>main</code> というブランチが1個だけ存在し、<code>*</code>
+      印の <code>main</code>
+      が現在のブランチであることを意味しています。</p>
+      <pre><code>$ git branch
+* main</code></pre>
+      <p>いまからボブが「機能B」を開発するために「<strong>アリスがスケルトンを作成</strong>」というコミットを起点に<span
+      class="masked"> <code>feature/dev-bob</code>
+      というブランチを新規作成し、そのブランチに切り替えます(スイッチします)</span>。次のコマンドを実行してください。なお、新機能を開発するブランチには、慣例的に
+      <code>feature/</code> という<a
+      href="https://www.google.com/search?q=プレフィックスとは">プレフィックス</a>を付けます。</p>
+      <pre><code>$ git branch feature/dev-bob
+$ git switch feature/dev-bob</code></pre>
+      <p>これで <code>feature/dev-bob</code>
+      というブランチが作成され、そのブランチに切り替えられたことになります。念のため
+      <code>git branch</code> で確認します。<code>feature/dev-bob</code>
+      に <code>*</code> 印がつき、現在は<code>feature/dev-bob</code>
+      ブランチに切り替わっていることが確認できます。</p>
+      <pre><code>$ git branch
+* feature/dev-bob
+  main</code></pre>
+      <p>実際にコードを編集して「<strong>機能B</strong>」を実装していくために
+      VSCode を起動してください。</p>
+      <pre><code>$ code . &amp;</code></pre>
+      <p>VSCode
+      では<strong>画面左下</strong>で「<strong>現在のブランチ</strong>」を確認できます。確かに
+      VSCode 上でも <code>feature/dev-bob</code>
+      に切り替わっていることを確認してください。</p>
+      <figure>
+      <img src="figs/16/colab-04.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>まずは「<strong>機能B</strong>」のスタブを作成します。<code>main.py</code>
+      を次のように編集してください
+      (02、08-09、19行目に編集を加えています)。また、編集したプログラムが正常に実行できることを確認してください。</p>
+      <div class="sourceCode" id="cb33" data-caption="main.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a><span class="im">import</span> math</span>
+<span id="cb33-2"><a href="#cb33-2"></a><span class="im">import</span> datetime</span>
+<span id="cb33-3"><a href="#cb33-3"></a></span>
+<span id="cb33-4"><a href="#cb33-4"></a><span class="co"># [機能A]@アリス担当 #############</span></span>
+<span id="cb33-5"><a href="#cb33-5"></a></span>
+<span id="cb33-6"><a href="#cb33-6"></a></span>
+<span id="cb33-7"><a href="#cb33-7"></a><span class="co"># [機能B]@ボブ担当 ###############</span></span>
+<span id="cb33-8"><a href="#cb33-8"></a><span class="kw">def</span> func_B ():</span>
+<span id="cb33-9"><a href="#cb33-9"></a>  <span class="bu">print</span>(<span class="st">&#39;func_B called.&#39;</span>)</span>
+<span id="cb33-10"><a href="#cb33-10"></a></span>
+<span id="cb33-11"><a href="#cb33-11"></a><span class="co"># メイン処理 ####################</span></span>
+<span id="cb33-12"><a href="#cb33-12"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>: </span>
+<span id="cb33-13"><a href="#cb33-13"></a></span>
+<span id="cb33-14"><a href="#cb33-14"></a>  <span class="bu">print</span>(<span class="st">&quot;start.&quot;</span>)</span>
+<span id="cb33-15"><a href="#cb33-15"></a></span>
+<span id="cb33-16"><a href="#cb33-16"></a>  <span class="co">## 機能Aの実行</span></span>
+<span id="cb33-17"><a href="#cb33-17"></a></span>
+<span id="cb33-18"><a href="#cb33-18"></a>  <span class="co">## 機能Bの実行</span></span>
+<span id="cb33-19"><a href="#cb33-19"></a>  func_B()</span>
+<span id="cb33-20"><a href="#cb33-20"></a></span>
+<span id="cb33-21"><a href="#cb33-21"></a>  <span class="bu">print</span>(<span class="st">&quot;end.&quot;</span>)</span></code></pre></div>
+      <p>動作が確認できたら「<strong>ボブが機能Bのスタブを作成</strong>」というコミットメッセージでファイルの変更を「<strong>コミット</strong>」します。つづいて「<strong>機能B</strong>」のつくり込みをします。関数
+      <code>func_B</code>
+      を以下のように書き換えて動作することを確認します。</p>
+      <div class="sourceCode" id="cb34"
+      data-caption="main.py (部分抜粋)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a><span class="kw">def</span> func_B ():</span>
+<span id="cb34-2"><a href="#cb34-2"></a>  t1 <span class="op">=</span> datetime.datetime.now() <span class="co"># 現在時刻</span></span>
+<span id="cb34-3"><a href="#cb34-3"></a>  t2 <span class="op">=</span> datetime.datetime(<span class="dv">2023</span>,<span class="dv">11</span>,<span class="dv">4</span>,<span class="dv">10</span>,<span class="dv">00</span>,<span class="dv">00</span>) <span class="co"># 11/4 10:00</span></span>
+<span id="cb34-4"><a href="#cb34-4"></a>  diff <span class="op">=</span> t2 <span class="op">-</span> t1</span>
+<span id="cb34-5"><a href="#cb34-5"></a>  days <span class="op">=</span> diff.days</span>
+<span id="cb34-6"><a href="#cb34-6"></a>  hours<span class="op">=</span> diff.seconds <span class="op">//</span> <span class="dv">3600</span></span>
+<span id="cb34-7"><a href="#cb34-7"></a>  <span class="bu">print</span>(<span class="st">&#39;高専祭まで、あと&#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb34-8"><a href="#cb34-8"></a>  <span class="bu">print</span>(days,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb34-9"><a href="#cb34-9"></a>  <span class="bu">print</span>(<span class="st">&#39;日と&#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb34-10"><a href="#cb34-10"></a>  <span class="bu">print</span>(hours,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb34-11"><a href="#cb34-11"></a>  <span class="bu">print</span>(<span class="st">&#39;時間&#39;</span>)</span></code></pre></div>
+      <p>動作が確認できたら「<strong>ボブが機能Bを実装</strong>」というコミットメッセージで「<strong>コミット</strong>」します。その後「<strong>Branchの発行</strong>」というボタンを押下します。</p>
+      <figure>
+      <img src="figs/16/colab-05.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <h2 data-number="8.5" id="アリス役のステップ-3"><span
+      class="header-section-number">8.5</span> 「アリス役」のステップ
+      3</h2>
+      <p>VSCode
+      で作業します。VSCodeでは<strong>定期的に</strong>「<strong>フェッチ</strong>
+      (中央リポジトリの内容を取得すること)」<strong>が自動実行</strong>されますが、念のために手動でも「<strong>フェッチ</strong>」をしておきます。下図のように
+      Git Graph
+      のタブの右上の「<i class="fa-solid fa-cloud-arrow-down"></i>
+      <strong>雲マーク</strong>」のアイコンをクリックして、中央リポジトリの最新情報を取得します。</p>
+      <p>この結果、次のようなコミッグラフが得られます。</p>
+      <figure>
+      <img src="figs/16/colab-06.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>ボブの作業によって中央リポジトリ(<code>origin</code>)
+      のコミットは伸びていますが、中抜きの丸印で表されるアリスの
+      <code>HEAD</code> (現在コミット位置) は <span
+      class="masked">「アリスがスケルトンを作成」に留まっていることが</span>
+      分かります。</p>
+      <p>いまからアリスが「機能A」を開発するために、この「<strong>アリスがスケルトンを作成</strong>」というコミットを起点に<span
+      class="masked"> <code>feature/dev-alice</code>
+      というブランチを新規作成し、そのブランチに切
+      り替えます(スイッチします)</span>。さきほどは、コマンドラインからこの作業を実行しましたが、<strong>今回は
+      VSCode で行ってみます</strong>。</p>
+      <p>画面左下の現在のブランチを表示している部分をクリックします。画面上部にメニューが表示されるので「<strong>新しいブランチの作成…</strong>」を選択します。</p>
+      <figure>
+      <img src="figs/16/colab-07.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>新規作成するブランチの名前 <code>feature/dev-alice</code>
+      を入力して Enter を押下します。</p>
+      <figure>
+      <img src="figs/16/colab-08.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>これでブランチが作成され、それが現在のブランチになります。画面左下の表示が
+      <code>feature/dev-alice</code>
+      になっていることを確認してください。</p>
+      <figure>
+      <img src="figs/16/colab-09.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>VSCode で <code>main.py</code>
+      を開きます。内容が「<strong>アリスがスケルトンを作成</strong>」のコミット時点のものであることを確認してください。ボブは
+      <code>feature/dev-bob</code>
+      で行なわれているので、こちらは影響を受けていません。</p>
+      <p>「機能A」のスタブを作成として次のように <code>main.py</code>
+      を編集して保存し「<strong>アリスが機能Aのスタブを作成</strong>」というコミットメッセージで「<strong>コミット</strong>」します。さらに「<strong>ブランチの発行</strong>」を実行します。</p>
+      <div class="sourceCode" id="cb35" data-caption="main.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a><span class="im">import</span> math</span>
+<span id="cb35-2"><a href="#cb35-2"></a><span class="im">import</span> fractions</span>
+<span id="cb35-3"><a href="#cb35-3"></a></span>
+<span id="cb35-4"><a href="#cb35-4"></a><span class="co"># [機能A]@アリス担当 #############</span></span>
+<span id="cb35-5"><a href="#cb35-5"></a><span class="kw">def</span> func_A ():</span>
+<span id="cb35-6"><a href="#cb35-6"></a>  <span class="bu">print</span>(<span class="st">&#39;func_A called.&#39;</span>)</span>
+<span id="cb35-7"><a href="#cb35-7"></a></span>
+<span id="cb35-8"><a href="#cb35-8"></a><span class="co"># [機能B]@ボブ担当 ###############</span></span>
+<span id="cb35-9"><a href="#cb35-9"></a></span>
+<span id="cb35-10"><a href="#cb35-10"></a></span>
+<span id="cb35-11"><a href="#cb35-11"></a><span class="co"># メイン処理 ####################</span></span>
+<span id="cb35-12"><a href="#cb35-12"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>: </span>
+<span id="cb35-13"><a href="#cb35-13"></a></span>
+<span id="cb35-14"><a href="#cb35-14"></a>  <span class="bu">print</span>(<span class="st">&quot;start.&quot;</span>)</span>
+<span id="cb35-15"><a href="#cb35-15"></a></span>
+<span id="cb35-16"><a href="#cb35-16"></a>  <span class="co">## 機能Aの実行</span></span>
+<span id="cb35-17"><a href="#cb35-17"></a>  func_A()</span>
+<span id="cb35-18"><a href="#cb35-18"></a>  </span>
+<span id="cb35-19"><a href="#cb35-19"></a>  <span class="co">## 機能Bの実行</span></span>
+<span id="cb35-20"><a href="#cb35-20"></a></span>
+<span id="cb35-21"><a href="#cb35-21"></a>  <span class="bu">print</span>(<span class="st">&quot;end.&quot;</span>)</span></code></pre></div>
+      <p>コミットグラフを確認すると次のようになっていることが確認できます。</p>
+      <figure>
+      <img src="figs/16/colab-10.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>つづいて「機能A」の実装をします。関数 <code>func_A</code>
+      を以下のように書き換え、動作することを確認します。</p>
+      <div class="sourceCode" id="cb36"
+      data-caption="main.py (部分抜粋)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a><span class="kw">def</span> func_A ():</span>
+<span id="cb36-2"><a href="#cb36-2"></a>  ans <span class="op">=</span> fractions.Fraction(<span class="dv">2</span>,<span class="dv">3</span>)<span class="op">+</span>fractions.Fraction(<span class="dv">4</span>,<span class="dv">6</span>)</span>
+<span id="cb36-3"><a href="#cb36-3"></a>  <span class="bu">print</span>(<span class="ss">f&#39;2/3 + 4/6 = </span><span class="sc">{</span>ans<span class="sc">}</span><span class="ss"> (= </span><span class="sc">{</span><span class="bu">float</span>(ans)<span class="sc">:.2f}</span><span class="ss">)&#39;</span>)  </span></code></pre></div>
+      <p>「<strong>アリスが機能Aを実装</strong>」というコミットメッセージで「<strong>コミット</strong>」します。ソース管理パネルには、既に「ブランチの発行」を終えているので「<strong>変更の同期</strong>」が表示されます。このボタンを押下することで、中央リポジトリに「<strong>プッシュ</strong>」ができます。</p>
+      <figure>
+      <img src="figs/16/colab-11.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>現時点のコミットグラフは次のようになっているはずです。</p>
+      <figure>
+      <img src="figs/16/colab-12.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <h2 data-number="8.6" id="ボブ役のステップ-３"><span
+      class="header-section-number">8.6</span> 「ボブ役」のステップ
+      ３</h2>
+      <p>VSCode
+      で作業します。繰返しになりますが、VSCodeでは<strong>定期的に</strong>「<strong>フェッチ</strong>
+      (中央リポジトリの内容を取得すること)」<strong>が自動実行</strong>されます。<a
+      href="#アリス役のステップ-3">アリス役のステップ3</a>と同様の方法で、手動で「<strong>フェッチ</strong>」して、コミットグラフを確認してください。</p>
+      <figure>
+      <img src="figs/16/colab-13.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>「<strong>機能B</strong>」のリファクタリングとして、次のように
+      <code>main.py</code> を編集して保存してください。</p>
+      <div class="sourceCode" id="cb37"
+      data-caption="main.py (部分抜粋)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a><span class="kw">def</span> func_B ():</span>
+<span id="cb37-2"><a href="#cb37-2"></a>  t <span class="op">=</span> datetime.datetime(<span class="dv">2023</span>,<span class="dv">11</span>,<span class="dv">4</span>,<span class="dv">10</span>,<span class="dv">00</span>,<span class="dv">00</span>) <span class="co"># 11/4 10:00</span></span>
+<span id="cb37-3"><a href="#cb37-3"></a>  diff <span class="op">=</span> t <span class="op">-</span> datetime.datetime.now()</span>
+<span id="cb37-4"><a href="#cb37-4"></a>  days <span class="op">=</span> diff.days</span>
+<span id="cb37-5"><a href="#cb37-5"></a>  hours<span class="op">=</span> diff.seconds <span class="op">//</span> <span class="dv">3600</span></span>
+<span id="cb37-6"><a href="#cb37-6"></a>  <span class="bu">print</span>(<span class="ss">f&#39;高専祭まで、あと</span><span class="sc">{</span>days<span class="sc">}</span><span class="ss">日と</span><span class="sc">{</span>hours<span class="sc">}</span><span class="ss">時間&#39;</span>)</span></code></pre></div>
+      <p>保存したら「<strong>ボブが機能Bをリファクタリング</strong>」というコミットメッセージで「<strong>コミット</strong>」を実行します。さらに「<strong>変更の同期</strong>」を実行します。なお、この「<strong>コミット</strong>」して「<strong>変更の同期</strong>」をするという操作は、コミットボタンを展開して「<strong>コミットして同期</strong>」からまとめて実行もできます。</p>
+      <p>これでボブの開発が終了したので、この
+      <code>feature/dev-bob</code> を源流の <code>main</code>
+      にマージします(取り込みます)。マージする場合は <span
+      class="masked">取り込む側 (≠取り込まれる側) のブランチ</span>
+      で操作します (重要ポイント) になります。</p>
+      <p><code>feature/dev-bob</code> を <code>main</code>
+      にマージします。今回は、コマンドライン (Git Bash)
+      で実行してみます。まずは <code>git fetch</code>
+      で中央リポジトリの最新の情報を取得します。次に
+      <code>git switch main</code> で現在のブランチを <code>main</code>
+      に切り替えます。念のために <code>git branch</code>
+      で、現在のブランチが <code>main</code>
+      であることを確認します。</p>
+      <pre><code>$ git fetch
+
+$ git switch main
+Switched to branch &#39;main&#39;
+Your branch is up to date with &#39;origin/main&#39;.
+
+$ git branch
+  feature/dev-bob
+* main</code></pre>
+      <p>次のコマンドで <code>feature/dev-bob</code>
+      ブランチを現在のブランチ(=<code>main</code>)
+      に取り込みます。<code>--no-ff</code> オプションをつけることで
+      <span
+      class="masked">コミットグラフ上でブランチがマージされる様子が分かりやすくなる
+      (明示的になる) </span> ので付けておきます。</p>
+      <pre><code>$ git merge feature/dev-bob --no-ff
+Merge made by the &#39;ort&#39; strategy.
+ main.py | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)</code></pre>
+      <p>コンフリクトが生じることなくマージが完了しました
+      (なお、コンフリクトが発生するとデフォルトエディタが起動します)。<code>git log</code>
+      で状態を確認します。マージ操作によって「<strong>Merge branch
+      ‘feature/dev-bob’</strong>」というコミットが自動作成されたことが確認できます。</p>
+      <pre><code>$ git log --oneline
+e2ffe93 (HEAD -&gt; main) Merge branch &#39;feature/dev-bob&#39;
+73d84a8 (origin/feature/dev-bob, feature/dev-bob) ボブが機能Bをリファクタリング
+ecc8cfc ボブが機能Bを実装
+133fdd0 ボブが機能Bのスタブを作成
+91fe5c4 (origin/main, origin/HEAD) アリスがスケルトンを作成
+b7d80d6 first commit</code></pre>
+      <p>このコミットを「中央リポジトリ」にもプッシュしておきます。</p>
+      <pre><code>$ git push -u origin main</code></pre>
+      <p>VSCode に戻って Git Graph
+      からコミットグラフを確認してください。次のように <span
+      class="masked"><code>feature/dev-bob</code> が <code>main</code>
+      に取り込まれたこと</span> が分かります。</p>
+      <figure>
+      <img src="figs/16/colab-14.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <h2 data-number="8.7" id="アリス役のステップ-4"><span
+      class="header-section-number">8.7</span> 「アリス役」のステップ
+      4</h2>
+      <p>VSCode
+      で作業します。念のため「<strong>フェッチ</strong>」して最新の中央リポジトリの情報を取得してください。コミットグラフは次のようになっているはずです。</p>
+      <p><code>HEAD</code> を表す「中抜きの丸印」が <span
+      class="masked"><code>feature/dev-bob</code>
+      ブランチ先端の「アリスが機能Aを実装」コミットを指し示していること</span>
+      が分かります。つまり、ワーキングツリー (=プロジェクトフォルダ)
+      は、<code>feature/dev-bob</code>
+      ブランチ先端の「<strong>アリスが機能Aを実装</strong>」コミット時点の構成・内容になっています
+      (「<strong>フェッチ</strong>」の操作をしても影響を受けていないことが確認できます)。</p>
+      <figure>
+      <img src="figs/16/colab-15.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p><code>main.py</code>
+      を開きます。「<strong>機能A</strong>」の仕上げのリファクタリングとして、次のように
+      <code>main.py</code> を編集して保存してください。</p>
+      <div class="sourceCode" id="cb42"
+      data-caption="main.py (部分抜粋)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a><span class="kw">def</span> func_A ():</span>
+<span id="cb42-2"><a href="#cb42-2"></a>  f <span class="op">=</span> fractions.Fraction</span>
+<span id="cb42-3"><a href="#cb42-3"></a>  t1 <span class="op">=</span> f(<span class="dv">2</span>,<span class="dv">3</span>)</span>
+<span id="cb42-4"><a href="#cb42-4"></a>  t2 <span class="op">=</span> f(<span class="dv">4</span>,<span class="dv">6</span>)</span>
+<span id="cb42-5"><a href="#cb42-5"></a>  ans <span class="op">=</span> t1 <span class="op">+</span> t2</span>
+<span id="cb42-6"><a href="#cb42-6"></a>  <span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>t1<span class="sc">}</span><span class="ss"> + </span><span class="sc">{</span>t2<span class="sc">}</span><span class="ss"> = </span><span class="sc">{</span>ans<span class="sc">}</span><span class="ss"> (= </span><span class="sc">{</span><span class="bu">float</span>(ans)<span class="sc">:.2f}</span><span class="ss">)&#39;</span>)  </span></code></pre></div>
+      <p>変更を保存したらコミットメッセージ「<strong>アリスが機能Aをリファクタリング</strong>」で「<strong>コミット</strong>」して「<strong>プッシュ</strong>」してください。これにより、現在のコミットグラフは次のようになります。</p>
+      <figure>
+      <img src="figs/16/colab-16.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>これでアリスが担当する「<strong>機能A</strong>」の開発が終了したので、この
+      <code>feature/dev-alice</code> ブランチを <code>main</code>
+      ブランチに「<strong>マージ</strong>」していきます。今度は、コマンドラインではなく
+      VSCode を使ってマージを実行してみます。</p>
+      <p>まずは、<strong>取り込む側</strong>のブランチである
+      <code>main</code> に切り替える必要があります。<strong>VSCode
+      の画面左下</strong>にある <code>feature/dev-alice</code>
+      のブランチ名をクリックして、現在のブランチを <code>main</code>
+      に切り替えてください。</p>
+      <p>現在のブランチが <code>main</code>
+      に切り替わったことで、コミットグラフの <code>HEAD</code> も
+      <code>main</code> のところに移動しました
+      (下図の矢印を参照)。しかし、現状で「中央リポジトリ
+      (<code>orgin</code>)」の <code>main</code> ブランチである
+      <code>origin/main</code> は、ローカルリポジトリの
+      <code>main</code>
+      よりも先に伸びています。よって、同期が必要で、そのために「<strong>変更の同期</strong>」のボタンを押下します。</p>
+      <figure>
+      <img src="figs/16/colab2-01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>中央リポジトリとローカルリポジトリの同期が完了すると、次のように
+      <code>HEAD</code> が <code>main</code>
+      ブランチのの先端に移動します (<span
+      class="masked"><code>main</code>
+      ブランチの最新のコミットに対してマージができるようになりました</span>)。このように
+      <strong>マージ</strong> を行なう場合は、同期 (フェッチやプル)
+      によって関係するブランチを
+      <strong>最新の状態にしておく必要</strong> があります。</p>
+      <figure>
+      <img src="figs/16/colab2-02.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>マージ作業をはじめていきます。現在のブランチが取り込む側のである
+      <code>main</code> になっていることを再確認します (VSCode
+      の画面左下を参照)。つづいて、ソース管理から「<strong>ブランチをマージ</strong>」を選択します。</p>
+      <figure>
+      <img src="figs/16/colab2-03.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>「<strong>マージ元のブランチの選択</strong>」として
+      <code>feature/dev-alice</code> を選択します。VSCodce
+      ではこのようにして <code>main</code> (=現在のブランチ) に
+      <code>feature/dev-alice</code> をマージ (取り込み)
+      する指示を与えることができます。</p>
+      <figure>
+      <img src="figs/16/colab-19.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>ここで <code>main.py</code> をすると
+      <strong>コンフリクト</strong>
+      が生じています。ファイル名の横の「<strong>!マーク</strong>」がコンフリクトが起きていることの通知になります。コンフリクトを解消するまではマージは完了となりません。</p>
+      <figure>
+      <img src="figs/16/colab2-04.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p><strong>コンフリクトマーカー</strong>を削除して、ボブの更新も取り込むように編集して保存してください
+      (コンフリクトの解消については<a
+      href="lecture15.html#コンフリクトを解消する">前回資料</a>を参照してください)。</p>
+      <p>以下のようなコードになれば、「機能A」も「機能B」も取り込めた状態と言えます。実際に、2つの機能が正常動作することも確認してみてください。</p>
+      <div class="sourceCode" id="cb43" data-caption="main.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a><span class="im">import</span> math</span>
+<span id="cb43-2"><a href="#cb43-2"></a><span class="im">import</span> datetime</span>
+<span id="cb43-3"><a href="#cb43-3"></a><span class="im">import</span> fractions</span>
+<span id="cb43-4"><a href="#cb43-4"></a></span>
+<span id="cb43-5"><a href="#cb43-5"></a><span class="co"># [機能A]@アリス担当 #############</span></span>
+<span id="cb43-6"><a href="#cb43-6"></a><span class="kw">def</span> func_A ():</span>
+<span id="cb43-7"><a href="#cb43-7"></a>  f <span class="op">=</span> fractions.Fraction</span>
+<span id="cb43-8"><a href="#cb43-8"></a>  t1 <span class="op">=</span> f(<span class="dv">2</span>,<span class="dv">3</span>)</span>
+<span id="cb43-9"><a href="#cb43-9"></a>  t2 <span class="op">=</span> f(<span class="dv">4</span>,<span class="dv">6</span>)</span>
+<span id="cb43-10"><a href="#cb43-10"></a>  ans <span class="op">=</span> t1 <span class="op">+</span> t2</span>
+<span id="cb43-11"><a href="#cb43-11"></a>  <span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>t1<span class="sc">}</span><span class="ss"> + </span><span class="sc">{</span>t2<span class="sc">}</span><span class="ss"> = </span><span class="sc">{</span>ans<span class="sc">}</span><span class="ss"> (= </span><span class="sc">{</span><span class="bu">float</span>(ans)<span class="sc">:.2f}</span><span class="ss">)&#39;</span>)  </span>
+<span id="cb43-12"><a href="#cb43-12"></a>    </span>
+<span id="cb43-13"><a href="#cb43-13"></a><span class="co"># [機能B]@ボブ担当 ###############</span></span>
+<span id="cb43-14"><a href="#cb43-14"></a><span class="kw">def</span> func_B ():</span>
+<span id="cb43-15"><a href="#cb43-15"></a>  t <span class="op">=</span> datetime.datetime(<span class="dv">2023</span>,<span class="dv">11</span>,<span class="dv">4</span>,<span class="dv">10</span>,<span class="dv">00</span>,<span class="dv">00</span>) <span class="co"># 11/4 10:00</span></span>
+<span id="cb43-16"><a href="#cb43-16"></a>  diff <span class="op">=</span> t <span class="op">-</span> datetime.datetime.now()</span>
+<span id="cb43-17"><a href="#cb43-17"></a>  days <span class="op">=</span> diff.days</span>
+<span id="cb43-18"><a href="#cb43-18"></a>  hours<span class="op">=</span> diff.seconds <span class="op">//</span> <span class="dv">3600</span></span>
+<span id="cb43-19"><a href="#cb43-19"></a>  <span class="bu">print</span>(<span class="ss">f&#39;高専祭まで、あと</span><span class="sc">{</span>days<span class="sc">}</span><span class="ss">日と</span><span class="sc">{</span>hours<span class="sc">}</span><span class="ss">時間&#39;</span>)</span>
+<span id="cb43-20"><a href="#cb43-20"></a></span>
+<span id="cb43-21"><a href="#cb43-21"></a><span class="co"># メイン処理 ####################</span></span>
+<span id="cb43-22"><a href="#cb43-22"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>: </span>
+<span id="cb43-23"><a href="#cb43-23"></a></span>
+<span id="cb43-24"><a href="#cb43-24"></a>  <span class="bu">print</span>(<span class="st">&quot;start.&quot;</span>)</span>
+<span id="cb43-25"><a href="#cb43-25"></a></span>
+<span id="cb43-26"><a href="#cb43-26"></a>  <span class="co">## 機能Aの実行</span></span>
+<span id="cb43-27"><a href="#cb43-27"></a>  func_A()</span>
+<span id="cb43-28"><a href="#cb43-28"></a>  </span>
+<span id="cb43-29"><a href="#cb43-29"></a>  <span class="co">## 機能Bの実行</span></span>
+<span id="cb43-30"><a href="#cb43-30"></a>  func_B()</span>
+<span id="cb43-31"><a href="#cb43-31"></a></span>
+<span id="cb43-32"><a href="#cb43-32"></a>  <span class="bu">print</span>(<span class="st">&quot;end.&quot;</span>)</span></code></pre></div>
+      <p>下図のように「<strong>変更のマージ</strong>」の項目にある
+      <code>main.py</code>
+      をステージングして「<strong>コミット</strong>」してください
+      (コミットメッセージはデフォルトのままで構いません)。その後「<strong>変更の同期</strong>」で、このマージによって更新された
+      <code>main</code>
+      ブランチを「<strong>プッシュ</strong>」します。</p>
+      <figure>
+      <img src="figs/16/colab2-05.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>コミットグラフを確認すると次のようになっています。そして
+      <code>main</code> ブランチの最新コミット (<code>307ab0f4</code>)
+      には「機能A」と「機能B」の両方が実装された <code>main.py</code>
+      が得られます。</p>
+      <figure>
+      <img src="figs/16/colab2-06.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <div class="note type-tips">
+      <p><strong>VSCodeの「同期」とは</strong></p>
+      <p>VSCode の git/GitHub
+      関連の機能では「<strong>コミットして同期</strong>」や「<strong>変更の同期</strong>」という用語でてきます。ここでの「<strong>同期
+      (Sync)</strong>」とは <span
+      class="masked">「プル」操作をしてから「プッシュ」操作すること</span>
+      を意味します。</p>
+      <figure>
+      <img src="figs/16/colab2-08.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>そのため「<strong>変更の同期</strong>」というボタンを押下することは、2段階にわけて「<strong>プル</strong>」してから「<strong>プッシュ</strong>」することと<strong>実質的に同じ</strong>です。VSCodeで「プル」と「プッシュ」を単独、個別に実行したい場合は、次のように対象操作を選んでください。</p>
+      <figure>
+      <img src="figs/16/colab2-07.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      </div>
+      <h2 data-number="8.8" id="ボブ役のステップ-4"><span
+      class="header-section-number">8.8</span> 「ボブ役」のステップ
+      4</h2>
+      <p>VSCode
+      で「<strong>フェッチ</strong>」します。ソース管理パネルに「<strong>変更の同期</strong>」のボタンが出現するので押下します。これにより、ボブ側でも「機能A」と「機能B」の両方が実装された
+      <code>main.py</code> が得られます。</p>
+      <hr />
+      <p>git/GitHub を利用したチーム開発では、機能の開発は
+      <code>main</code>
+      ブランチの<strong>最新のコミット</strong>を起点に
+      <code>feature/xxxxx</code>
+      というブランチを作成して行ない、それが完了したら、そこでの変更内容を
+      <code>main</code>
+      ブランチに<strong>マージ</strong>するという運用方法が推奨されています。この運用方法により
+      <code>main</code>
+      ブランチには常にリリース可能な（すなわち、正常に動作する）プログラムのバージョンを維持できるというメリットが得られます。</p>
+      <h1 data-number="9" id="宿題-授業時間外学習"><span
+      class="header-section-number">9</span> 宿題 (授業時間外学習)</h1>
+      <ul>
+      <li><a
+      href="#ブランチを作成してチーム開発する方法">ブランチを作成してチーム開発する方法</a>
+      について繰返し練習してください。今回の授業で示したチュートリアルの内容は、慣れてくれば
+      <strong>10分</strong>
+      もかからずにサクサクと作業できるようになります。</li>
+      <li>git/GitHub
+      についての詳しい解説は今回で終わりです。次回以降の授業でも
+      git/GitHub
+      は利用しますが、細かな利用法の解説はしません。<strong>この授業で扱った
+      git/GitHub
+      の知識・操作は初心者レベルの限定的なものです</strong>。より深く理解するために
+      YouTube などの動画で勉強してください。
+      <ul>
+      <li>YouTube検索： <a
+      href="https://www.youtube.com/results?search_query=git+入門">Git
+      入門</a></li>
+      <li>YouTube検索： <a
+      href="https://www.youtube.com/results?search_query=GitHub+入門">GitHub
+      入門</a><br />
+      </li>
+      </ul></li>
+      <li>次回、「小テスト」を実施します。鉛筆と消しゴムを持参してください。</li>
+      </ul>
+      <!-- ---------------------------------------- -->
+    </main>
+
+    <footer class="markdown-body">
+      <p><a href="https://takeshiwada1980.github.io/Programming1-2023/">講義資料のIndexに移動</a></p>
+    </footer>
+
+    <script>
+      window.onload = function () {
+        // ナビゲーション関連
+        let openBtn = document.getElementsByClassName("openbtn")[0];
+        let navPnl = document.getElementById("g-nav");
+        openBtn.onclick = () => {
+          openBtn.classList.toggle("active");
+          navPnl.classList.toggle("panelactive");
+        };
+
+        let items = navPnl.getElementsByTagName("a");
+        Array.from(items).forEach((item) => {
+          item.onclick = () => {
+            openBtn.classList.toggle("active");
+            navPnl.classList.toggle("panelactive");
+          };
+        });
+
+        // マスク処理
+        let maskedSpans = document.getElementsByClassName("masked");
+        Array.from(maskedSpans).forEach((span) => {
+          span.onclick = () => {
+            span.classList.toggle("open");
+          };
+        });
+
+        // 画像にリンクを付与
+        let images = document.querySelectorAll("figure img");
+        Array.from(images).forEach((img) => {
+          img.onclick = () => {
+            location.href = img.getAttribute("src");
+          };
+        });
+      };
+    </script>
+  </body>
+</html>
