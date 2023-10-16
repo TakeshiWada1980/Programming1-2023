@@ -323,9 +323,17 @@ class="toc-section-number">9</span> 宿題 (授業時間外学習)</a></li>
       class="header-section-number">4.1.1</span> 「first commit」</h3>
       <p>ターミナル (<strong>Git Bash モード</strong>) を起動して
       <code>cd</code>
-      コマンドを使ってドキュメントフォルダなどの適切な場所に移動します
-      (例えば <code>C:\Users\xxxx\Documents</code>
-      などに移動します)。</p>
+      コマンドを使ってドキュメントフォルダなどの適切な場所に移動します。例えば
+      <code>C:\Users\xxxx\Documents</code> などに移動します。</p>
+      <div class="note type-tips">
+      <p><strong>Git Bash でのフォルダ移動</strong></p>
+      <p>Git Bash は Linux互換環境です。そのため <code>cd</code>
+      する場合、<code>C:</code> などのドライブレター (Windows特有の表記)
+      を含むときは <code>cd "C:\Users\xxxx\Documents"</code>
+      のようにダブルクォーテーションで囲むか、あるいは
+      <code>cd /C/Users/xxxx/Documents</code>
+      のようにLinux形式のファイルパスを使用してください。</p>
+      </div>
       <p><code>Git-Playground</code>
       というフォルダを作成し、そのフォルダ内に移動して「<strong>git初期化</strong>」します
       (git によるバージョン管理を開始します)。 Playground
