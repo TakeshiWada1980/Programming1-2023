@@ -61,10 +61,10 @@ class="toc-section-number">2.1</span> 初期化と要素の参照</a></li>
 class="toc-section-number">2.2</span> 要素の参照</a></li>
 <li><a href="#要素の追加" id="toc-要素の追加"><span
 class="toc-section-number">2.3</span> 要素の追加</a></li>
-<li><a href="#繰返し構文と組み合わせた操作"
-id="toc-繰返し構文と組み合わせた操作"><span
+<li><a href="#繰返し構文と組み合わせたリストの操作"
+id="toc-繰返し構文と組み合わせたリストの操作"><span
 class="toc-section-number">2.4</span>
-繰返し構文と組み合わせた操作</a></li>
+繰返し構文と組み合わせたリストの操作</a></li>
 <li><a href="#スライス" id="toc-スライス"><span
 class="toc-section-number">2.5</span> スライス</a></li>
 <li><a href="#浅いコピーと深いコピーの違い"
@@ -155,10 +155,10 @@ class="toc-section-number">8</span> GoogleColab の ノートブックを GitHub
       <h1 data-number="1" id="概要連絡"><span
       class="header-section-number">1</span> 概要・連絡</h1>
       <p>2年生の後期となりました。コース専門科目では<span
-      class="masked">「これまでに学んできたこと」を前提とする内容</span>が一気に増加します。課題を提出したり、定期試験を終えたりすると<strong>sそれまで「学んだこと」をキレイに忘れてしまう学生</strong>や、そもそも定着を前提としない勉強
+      class="masked">「これまでに学んできたこと」を前提とする内容</span>が一気に増加します。課題を提出したり、定期試験を終えたりすると<strong>それまで「学んだこと」をキレイに忘れてしまう学生</strong>や、そもそも定着を前提としない勉強
       (=<span
       class="masked">学ぶことが目的ではなく、単位を取ることを目的にした勉強</span>)
-      になっている学生もいますが、専門科目でその方針をとると、いずれ「詰み」という状況に直面するので十分に注意ください。</p>
+      になっている学生もいますが、専門科目でその方針をとると、いずれ「詰み」という状況に直面するので十分に注意してください。</p>
       <p>一方で、それなりに学んできた学生については、これからの時期は<span
       class="masked">科目の枠を越えて、点と点が線として繋がる瞬間</span>
       が増えて「学び」が面白くなってくると思います。</p>
@@ -166,7 +166,8 @@ class="toc-section-number">8</span> GoogleColab の ノートブックを GitHub
       class="header-section-number">1.1</span> 今回講義の達成目標</h2>
       <ul>
       <li>リスト型とタプル型の特性の違いを理解し説明できる。</li>
-      <li>NumPy の ndarray 型の初期化や基本操作ができる。</li>
+      <li>NumPy の ndarray
+      型の特性を理解し、初期化や基本操作ができる。</li>
       <li>Google Colab. ノートブックを GitHub
       にプッシュすることができる。</li>
       </ul>
@@ -174,9 +175,10 @@ class="toc-section-number">8</span> GoogleColab の ノートブックを GitHub
       class="header-section-number">1.2</span> 連絡事項</h2>
       <ul>
       <li>小テストで <strong>8点未満</strong>
-      の学生は、次回に再度小テストを実施します。自己採点で8点未満と思う学生は再度準備をしておいてください。</li>
-      <li>今回の講義では <code>%timeit</code>
-      などの時間計測用の<strong>マジックコマンド</strong>も使用するので<a
+      の学生は、再度、次回に小テストを実施します。自己採点で8点未満と思う学生は準備しておいてください。</li>
+      <li>今回の講義では <code>%timeit</code> などの時間計測用の <a
+      href="lecture03.html#補足-マジックコマンド">マジックコマンド</a>
+      も使用するので<a
       href="https://colab.research.google.com/?hl=ja">GoogleColab.</a>もしくは<a
       href="lecture09.html#jupyterの実行">ローカルPCに構築したJupyter環境</a>の利用を推奨します。</li>
       </ul>
@@ -187,19 +189,19 @@ class="toc-section-number">8</span> GoogleColab の ノートブックを GitHub
       のなかで取り上げました。また「<strong>2次元リスト</strong>」も<a
       href="lecture13.html#二次元リスト">第13回講義</a>
       のなかで取り上げました。</p>
-      <p>ここでは、後述する「<strong>タプル型</strong>」や、<strong>NumPyライブラリ</strong>
-      (「<strong>ナンパイ</strong>」と読む)
+      <p>ここでは、後述する「<strong>タプル型</strong>」や、<strong>NumPy
+      ライブラリ</strong> (「<strong>ナンパイ</strong>」と読む)
       の「<strong>ndarray型</strong>」と比較するために、リスト型の「特性」や「操作」を簡単に<strong>復習</strong>しておきます。</p>
       <h2 data-number="2.1" id="初期化と要素の参照"><span
       class="header-section-number">2.1</span> 初期化と要素の参照</h2>
       <p>リスト型は、その「<strong>要素</strong>」として<strong>様々な型</strong>
       (<span
       class="masked">整数型、浮動小数点数型(実数型)、文字列型、ブール型など</span>)
-      <strong>を混在させることが可能</strong>で、1次元の場合は
+      <strong>を</strong>「<strong>混在させること</strong>」<strong>が可能</strong>で、1次元の場合は
       <code>list-01.py</code> の <code>arr1</code>
       のように初期化ができまた。</p>
       <p>また、2次元の場合は <code>arr2</code>
-      のように初期化ができました。この際、<strong>行ごとに要素数 (列数)
+      のように初期化ができました。この際、<strong>行ごとの要素数 (列数)
       を変えることも可能</strong>でした。</p>
       <div class="sourceCode" id="cb1" data-caption="list-01.py"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
@@ -223,10 +225,10 @@ class="toc-section-number">8</span> GoogleColab の ノートブックを GitHub
       f文字列のプレースホルダのなかの <code>None</code>
       を適切なものに書き換えよ)。<strong>ヒント</strong>: <span
       class="masked">組み込み関数の <code>len</code>
-      関数を利用してください。</span></p>
+      関数を利用してください。</span>ブラウザの横幅が狭い場合や、モバイル端末からアクセスしていると行番号が表示されないため注意ください。</p>
       <h2 data-number="2.2" id="要素の参照"><span
       class="header-section-number">2.2</span> 要素の参照</h2>
-      <p>リストを構成する<strong>要素にアクセスするための値</strong>
+      <p>リストを構成する<strong>「要素」にアクセスするための値</strong>
       (例えば <code>a[5]</code> における <code>5</code> のこと) を <span
       class="masked">インデックス</span> あるいは <span
       class="masked">添え字</span>
@@ -271,38 +273,40 @@ class="toc-section-number">8</span> GoogleColab の ノートブックを GitHub
       <h2 data-number="2.3" id="要素の追加"><span
       class="header-section-number">2.3</span> 要素の追加</h2>
       <p>リスト型では <code>append()</code>
-      というメソッドを使って、末尾に要素を <span
+      というメソッドを使って、リスト末尾に要素を <span
       class="masked">追加</span> することができました。なお<a
-      href="lecture08.html#リストにおける要素の書き換えと追加">「先頭」や「任意のインデックス位置」に挿入すること</a>もできました。</p>
+      href="lecture08.html#リストにおける要素の書き換えと追加">「先頭」や「任意のインデックス位置」に要素を挿入すること</a>もできました。</p>
       <p>以下のプログラムを実行して、その動作について確認と理解をしてください。</p>
       <div class="sourceCode" id="cb3" data-caption="list-03.py"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
 <span id="cb3-2"><a href="#cb3-2"></a>arr4 <span class="op">=</span> [<span class="st">&#39;A&#39;</span>,<span class="st">&#39;B&#39;</span>,<span class="st">&#39;C&#39;</span>]</span>
-<span id="cb3-3"><a href="#cb3-3"></a>arr4.append(<span class="st">&#39;D&#39;</span>) <span class="co"># 末尾に追加</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>arr4.append(<span class="st">&#39;D&#39;</span>) <span class="co"># 末尾に &#39;D&#39; を挿入</span></span>
 <span id="cb3-4"><a href="#cb3-4"></a>arr4.append(<span class="st">&#39;E&#39;</span>)</span>
 <span id="cb3-5"><a href="#cb3-5"></a><span class="bu">print</span>(<span class="st">&#39;arr4 = &#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
 <span id="cb3-6"><a href="#cb3-6"></a><span class="bu">print</span>(arr4) <span class="co"># =&gt; [&#39;A&#39;,&#39;B&#39;,&#39;C&#39;,&#39;D&#39;,&#39;E&#39;]</span></span>
 <span id="cb3-7"><a href="#cb3-7"></a></span>
 <span id="cb3-8"><a href="#cb3-8"></a>arr5 <span class="op">=</span> []</span>
-<span id="cb3-9"><a href="#cb3-9"></a>arr5.append([])</span>
-<span id="cb3-10"><a href="#cb3-10"></a>arr5[<span class="dv">0</span>].append(<span class="st">&#39;A&#39;</span>)</span>
-<span id="cb3-11"><a href="#cb3-11"></a>arr5[<span class="dv">0</span>].append(<span class="st">&#39;B&#39;</span>)</span>
-<span id="cb3-12"><a href="#cb3-12"></a>arr5.append([<span class="st">&#39;C&#39;</span>,<span class="st">&#39;D&#39;</span>])</span>
+<span id="cb3-9"><a href="#cb3-9"></a>arr5.append([<span class="st">&#39;A&#39;</span>,<span class="st">&#39;B&#39;</span>])</span>
+<span id="cb3-10"><a href="#cb3-10"></a>arr5.append([]) <span class="co"># 末尾に 空のリスト [] を挿入</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a>arr5[<span class="dv">1</span>].append(<span class="st">&#39;C&#39;</span>) <span class="co"># 上で挿入した空リストの末尾に &#39;C&#39; を挿入</span></span>
+<span id="cb3-12"><a href="#cb3-12"></a>arr5[<span class="dv">1</span>].append(<span class="st">&#39;D&#39;</span>)</span>
 <span id="cb3-13"><a href="#cb3-13"></a><span class="bu">print</span>(<span class="st">&#39;arr5 = &#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
 <span id="cb3-14"><a href="#cb3-14"></a><span class="bu">print</span>(arr5) <span class="co"># =&gt;[[&#39;A&#39;,&#39;B&#39;], [&#39;C&#39;,&#39;D&#39;]]</span></span></code></pre></div>
       <p><strong>演習</strong>: <code>arr5</code> の内容が
       <code>[['A','B'], ['C','D'], ['E','F']]</code>
-      となるように第12行目以降のプログラムを書き換えよ。</p>
-      <h2 data-number="2.4" id="繰返し構文と組み合わせた操作"><span
+      となるように<strong>第13行目</strong>以降にプログラムを追加せよ。</p>
+      <h2 data-number="2.4"
+      id="繰返し構文と組み合わせたリストの操作"><span
       class="header-section-number">2.4</span>
-      繰返し構文と組み合わせた操作</h2>
+      繰返し構文と組み合わせたリストの操作</h2>
       <p>リストを構成する要素に対する一括操作は「<strong>繰返し構文</strong>
       (for文)」と組み合わせることで実現しました。例えば
       <code>list-04.py</code> の <code>arr6</code>
       の各要素に「5を加算」するためには <span
-      class="masked">繰返し構文を2重にして利用しました</span>。ここでは、特に第07行目で
-      <code>range(len(arr6[i]))</code>
-      のように記述していることについて、しっかりと理解してください。</p>
+      class="masked">繰返し構文を2重にして利用しました</span>。ここでは、特に<strong>第07行目</strong>で
+      <code>range(len(arr6[i]))</code> のように記述していること (<span
+      class="masked">これにより、各行の要素数が違っていても対応できること</span>)
+      について、しっかりと理解してください。</p>
       <div class="sourceCode" id="cb4" data-caption="list-04.py"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
 <span id="cb4-2"><a href="#cb4-2"></a>arr6 <span class="op">=</span> [[<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>],</span>
@@ -334,12 +338,13 @@ class="toc-section-number">8</span> GoogleColab の ノートブックを GitHub
       <h2 data-number="2.5" id="スライス"><span
       class="header-section-number">2.5</span> スライス</h2>
       <p>Pythonのリストでは <code>arr[3:]</code> や <code>arr[:3]</code>
-      のような簡潔な表記で<a
+      のような表記により<a
       href="lecture12.html#リストの扱いに関する補足③-スライス">スライス</a>という機能も利用できました。他のプログラム言語
       (C/C++言語やJavsScriptなど)
       ではあまり採用されていない表記ですが、<strong>Python (実務)
       では頻繁に使われる</strong>ので覚えておくようにしてください。</p>
-      <p>スライスは、次のようにリスト内の「指定部分の範囲を取得」する機能になります。</p>
+      <p>スライスは、次のようにリスト内の「<strong>指定範囲 (部分)
+      を取得</strong>」する機能になります。</p>
       <div class="sourceCode" id="cb5" data-caption="list-05.py"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
 <span id="cb5-2"><a href="#cb5-2"></a>arr <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">11</span>)) <span class="co"># rangeを使用した初期化</span></span>
@@ -350,8 +355,8 @@ class="toc-section-number">8</span> GoogleColab の ノートブックを GitHub
 <span id="cb5-7"><a href="#cb5-7"></a><span class="bu">print</span>(arr[<span class="dv">4</span>:])   <span class="co"># arr[4]から末尾までスライス</span></span>
 <span id="cb5-8"><a href="#cb5-8"></a><span class="bu">print</span>(arr[<span class="dv">5</span>:<span class="dv">5</span><span class="op">+</span><span class="dv">3</span>])  <span class="co"># arr[5]から要素3個をスライス</span></span></code></pre></div>
       <p>なお、<a
-      href="lecture12.html#文字列に対する１文字参照やスライス処理">文字列についてもスライスを利用すること</a>
-      ができました。こちらも、多用するので覚えておいてください。</p>
+      href="lecture12.html#文字列に対する１文字参照やスライス処理">文字列についてもスライスを適用すること</a>
+      ができました。こちらも多用するので覚えておいてください。</p>
       <p><strong>演習</strong>: <code>list-05.py</code> の
       <code>arr</code> から <code>[2,3,4,5,6]</code>
       を取得するようなスライスを記述せよ。</p>
@@ -359,7 +364,8 @@ class="toc-section-number">8</span> GoogleColab の ノートブックを GitHub
       class="header-section-number">2.6</span>
       浅いコピーと深いコピーの違い</h2>
       <p>第13回講義で<a
-      href="lecture13.html#リストの浅いコピーと深いコピー">丁寧に解説</a>したようにリストを「<strong>複製</strong>(コピー)」する場合には、その特性の違いに注意して「<strong>浅いコピー
+      href="lecture13.html#リストの浅いコピーと深いコピー">丁寧に解説</a>したようにリストを「<strong>複製</strong>
+      (コピー)」する場合には、その特性の違いに注意して「<strong>浅いコピー
       (Shallow copy)</strong>」と「<strong>深いコピー (Deep
       copy)</strong>」を使い分ける必要がありました。</p>
       <div class="sourceCode" id="cb6" data-caption="list-06.py"><pre
@@ -395,19 +401,19 @@ class="toc-section-number">8</span> GoogleColab の ノートブックを GitHub
       <p>リストは <code>a=[20,30]</code> のように「<strong>角括弧
       (大括弧)</strong>」で初期化していたのに対して、タプルは
       <code>tpl=(20,30)</code>
-      のように「丸括弧」で初期化します。次のプログラムを実行して確認してください
+      のように「<strong>丸括弧</strong>」で初期化します。次のプログラムを実行して確認してください
       (変数名を型名と同じ <code>tuple</code> にしたり、ファイル名を
       <code>tuple.py</code> にすると機能しないので注意してください)
       。</p>
       <div class="sourceCode" id="cb7"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
-<span id="cb7-2"><a href="#cb7-2"></a>arr <span class="op">=</span> [<span class="dv">20</span>,<span class="dv">30</span>]    <span class="co"># [ ] により リスト型として初期化される</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>arr <span class="op">=</span> [<span class="dv">20</span>,<span class="dv">30</span>]    <span class="co"># [ ] により「リスト型」として初期化される</span></span>
 <span id="cb7-3"><a href="#cb7-3"></a><span class="bu">print</span>(<span class="bu">type</span>(arr)) <span class="co"># =&gt; &lt;class &#39;list&#39;&gt;</span></span>
 <span id="cb7-4"><a href="#cb7-4"></a></span>
-<span id="cb7-5"><a href="#cb7-5"></a>tpl <span class="op">=</span> (<span class="dv">20</span>,<span class="dv">30</span>)    <span class="co"># ( ) により タプル型として初期化される</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a>tpl <span class="op">=</span> (<span class="dv">20</span>,<span class="dv">30</span>)    <span class="co"># ( ) により「タプル型」として初期化される</span></span>
 <span id="cb7-6"><a href="#cb7-6"></a><span class="bu">print</span>(<span class="bu">type</span>(tpl)) <span class="co"># =&gt; &lt;class &#39;tuple&#39;&gt;</span></span></code></pre></div>
-      <p>先に示したように
-      <strong>タプルは、初期化に要素を変更したり</strong>、<code>append()</code>
+      <p>先に解説したように
+      <strong>タプルは、初期化後に要素を変更したり</strong>、<code>append()</code>
       <strong>メソッドで要素を追加したりすることはできません</strong>。</p>
       <div class="sourceCode" id="cb8"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
@@ -426,10 +432,10 @@ class="toc-section-number">8</span> GoogleColab の ノートブックを GitHub
       <div class="sourceCode" id="cb10"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
 <span id="cb10-2"><a href="#cb10-2"></a>tpl <span class="op">=</span> (<span class="dv">20</span>,<span class="dv">30</span>)</span>
-<span id="cb10-3"><a href="#cb10-3"></a>tpl <span class="op">=</span> (<span class="dv">50</span>,<span class="dv">60</span>)</span>
+<span id="cb10-3"><a href="#cb10-3"></a>tpl <span class="op">=</span> (<span class="dv">50</span>,<span class="dv">60</span>) <span class="co"># 丸ごと入れ替え</span></span>
 <span id="cb10-4"><a href="#cb10-4"></a><span class="bu">print</span>(<span class="ss">f&#39;tpl = </span><span class="sc">{</span>tpl<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># tpl =&gt; (50,60)</span></span></code></pre></div>
       <p>以上の変更可能/不可能の特性の違いさえ意識しておけば<span
-      class="masked">関数引数などにリストもタプルも同じように使用すること</span>ができます。</p>
+      class="masked">関数の引数にリストと同様にタプルを使用すること</span>ができます。</p>
       <div class="note type-tips">
       <p><strong>リストとタプルは関数の引数として (ほとんどのケースで)
       互換性がある</strong></p>
@@ -438,7 +444,7 @@ class="toc-section-number">8</span> GoogleColab の ノートブックを GitHub
       で学んだように <code>random.choices</code> は、引数
       <code>weights</code> で与えた確率に従って、ランダムに
       <code>k</code>
-      個の要素を選択して返す関数でした。これまでは、次のように「<strong>リスト型</strong>」で引数を与えてきました。</p>
+      個の要素を選択して返す関数でした。これまでは、次のように引数を「<strong>リスト型</strong>」で与えてきました。</p>
       <div class="sourceCode" id="cb11"
       data-caption="リストバージョン"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
@@ -454,12 +460,12 @@ class="toc-section-number">8</span> GoogleColab の ノートブックを GitHub
       <h2 data-number="3.2" id="タプルを利用する価値はあるのか"><span
       class="header-section-number">3.2</span>
       タプルを利用する価値はあるのか</h2>
-      <p>タプルとすることで、その値が変更不可であることを明示することができます。初期化以降、プログラムの途中で要素を変更することや
+      <p>タプルと採用することで「<strong>その値が変更不可であること</strong>」を明示できます。初期化以降、プログラムの途中で要素を変更することや
       <span class="masked">要素を追加や削除すること</span>
       を意図しないケースでは、<strong>リスト型ではなくタプル型を使用することが望まれます</strong>。特にチーム開発では、タプル型にしておくことで
       <span class="masked">要素の変更を想定していないこと </span>、<span
       class="masked">要素の追加や削除を想定していないこと</span>
-      を簡単にメンバーに共有することができるとというメリットがあります。</p>
+      を簡単にメンバーに共有することができるというメリットがあります。</p>
       <p>また、リスト型はない <strong>タプル型のメリット</strong> として
       <strong>辞書型 (dict型・連想配列型)</strong>
       の「<strong>キー</strong>」に使用できる点が挙げられます
@@ -482,9 +488,8 @@ class="toc-section-number">8</span> GoogleColab の ノートブックを GitHub
 <span id="cb13-10"><a href="#cb13-10"></a><span class="co"># for構文の組合せた全列挙</span></span>
 <span id="cb13-11"><a href="#cb13-11"></a><span class="cf">for</span> key <span class="kw">in</span> course.keys():</span>
 <span id="cb13-12"><a href="#cb13-12"></a>  <span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>key<span class="sc">}</span><span class="ss"> ... </span><span class="sc">{</span>course[key]<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
-      <p>上記のプログラミングでは「<strong>文字列</strong>」をキー
-      (<code>key</code>)
-      に使用しましたが、次のように「<strong>タプル</strong>」をキーにすることができます。</p>
+      <p>上記のプログラムでは、<strong>キー</strong> (<code>key</code>)
+      に「<strong>文字列</strong>」を使用しましたが、次のようにキーに「<strong>タプル</strong>」を使用することもできます。</p>
       <div class="sourceCode" id="cb14"
       data-caption="タプルを辞書型のキーに利用する"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
@@ -519,7 +524,7 @@ class="toc-section-number">8</span> GoogleColab の ノートブックを GitHub
       <h2 data-number="3.3" id="タプル型とリスト型の相互変換"><span
       class="header-section-number">3.3</span>
       タプル型とリスト型の相互変換</h2>
-      <p>「タプル型」と「リスト型」は次のように相互変換できます。プログラミングを実行して確認してみてください。特に
+      <p>「タプル型」と「リスト型」は次のように相互変換できます。プログラムを実行して確認してみてください。特に
       <span
       class="masked">タプル型とリスト型の「丸括弧」と「角括弧」の違いが、初期化や
       <code>print</code> 関数の出力に表われていること</span>
@@ -539,7 +544,7 @@ class="toc-section-number">8</span> GoogleColab の ノートブックを GitHub
       <div class="sourceCode" id="cb16"
       data-caption="タプル型をリスト型に変換"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
-<span id="cb16-2"><a href="#cb16-2"></a>t <span class="op">=</span> (<span class="dv">20</span>,<span class="dv">30</span>)     <span class="co"># 変数a にリスト型のオブジェクトを格納</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a>t <span class="op">=</span> (<span class="dv">20</span>,<span class="dv">30</span>)     <span class="co"># 変数a にタプル型のオブジェクトを格納</span></span>
 <span id="cb16-3"><a href="#cb16-3"></a><span class="bu">print</span>(<span class="bu">type</span>(t))  <span class="co"># =&gt; &lt;class &#39;tuple&#39;&gt;</span></span>
 <span id="cb16-4"><a href="#cb16-4"></a><span class="bu">print</span>(<span class="ss">f&#39;t=</span><span class="sc">{</span>t<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># =&gt; t=(20, 30)</span></span>
 <span id="cb16-5"><a href="#cb16-5"></a><span class="bu">print</span>()</span>
@@ -554,7 +559,7 @@ class="toc-section-number">8</span> GoogleColab の ノートブックを GitHub
       <code>float</code>、<code>str</code> で同様に「<strong>実数型
       (浮動小数点数型)</strong>」「<strong>文字列型</strong>」に変換することができます。</p>
       <p><strong>演習</strong> :
-      次のプログラミングを実行したときの<strong>第07行目の出力</strong>を予想せよ。また、プログラムを実行して確認せよ。</p>
+      次のプログラムを実行したときの<strong>第07行目の出力</strong>を予想せよ。また、実際にプログラムを実行して確認せよ。</p>
       <div class="sourceCode" id="cb17"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
 <span id="cb17-2"><a href="#cb17-2"></a>a <span class="op">=</span> [<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">30</span>]</span>
@@ -571,20 +576,20 @@ class="toc-section-number">8</span> GoogleColab の ノートブックを GitHub
       <strong>Numerical Python</strong> の略称で<span
       class="masked">Pythonの数値計算のためのライブラリ
       (モジュール)</span>です。数値計算や科学技術計算に関連する「計算」や「処理」を<strong>簡潔なコードで記述可能</strong>で、またライブラリの本体が<span
-      class="masked">「C言語」で実装されていることから</span>、<strong>非常に高速な計算が可能</strong>なことが特長になっています。</p>
+      class="masked">「C言語」で実装されていることから</span>、<strong>非常に高速な処理が可能</strong>なことが特長になっています。</p>
       <p>また、NumPy
       は、その他の様々なPythonライブラリでも内部的に使用されており、それらライブラリとデータをやり取りするときには
-      (<span
+      (=<span
       class="masked">引数として与える、戻り値として受け取るときには</span>)
       NumPy の <code>ndarray</code>
       型が頻繁に使用されます。例えば、データ処理ライブラリの「<strong>Pandas</strong>」や可視化ライブラリの「<a
       href="https://matplotlib.org/stable/gallery/index">Matplotlib</a>」「<a
-      href="https://seaborn.pydata.org/examples/index.html">Seaborn</a>」、画像処理ライブラリの「<strong>OpenCV</strong>」、機械学習関連ライブラリの「<strong>scikit-learn</strong>」「<strong>TensorFlow</strong>」「<strong>PyTorch</strong>」などを効率よく利用するためには、NumPy
-      の基礎知識が必要となります。</p>
+      href="https://seaborn.pydata.org/examples/index.html">Seaborn</a>」、画像処理ライブラリの「<strong>OpenCV</strong>」、機械学習関連ライブラリの「<strong>scikit-learn</strong>」「<strong>TensorFlow</strong>」「<strong>PyTorch</strong>」などを効率よく利用するためには「NumPy
+      の基礎知識」が必要となります。</p>
       <h2 data-number="4.2" id="numpyのインポートとndarray型"><span
       class="header-section-number">4.2</span>
       NumPyのインポートとndarray型</h2>
-      <p>GoogleColab. 環境では既に NumPy
+      <p>GoogleColab. 環境ではデフォルトで NumPy
       がインストールされているので、インポートすればそのまま利用することができます。また、ローカルPCに環境を構築した場合
       (仮想環境を構築した場合) は、コマンドラインから
       <code>pip install numpy</code> で NumPy
@@ -605,7 +610,7 @@ class="toc-section-number">8</span> GoogleColab の ノートブックを GitHub
       <div class="sourceCode" id="cb19"
       data-caption="NumPyで行列の和を求める例"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
-<span id="cb19-2"><a href="#cb19-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb19-2"><a href="#cb19-2"></a><span class="im">import</span> numpy <span class="im">as</span> np  <span class="co"># numpy をインポート </span></span>
 <span id="cb19-3"><a href="#cb19-3"></a></span>
 <span id="cb19-4"><a href="#cb19-4"></a>A <span class="op">=</span> np.array([[<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">40</span>],[<span class="dv">50</span>,<span class="dv">40</span>,<span class="dv">30</span>]])</span>
 <span id="cb19-5"><a href="#cb19-5"></a>B <span class="op">=</span> np.array([[<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">10</span>],[<span class="dv">20</span>,<span class="dv">10</span>,<span class="dv">10</span>]])</span>
@@ -617,12 +622,12 @@ class="toc-section-number">8</span> GoogleColab の ノートブックを GitHub
       B=\begin{bmatrix} 10 &amp; 20 &amp; 10 \\ 20 &amp; 10 &amp; 10 \\
       \end{bmatrix}\]</span></p>
       <p>先ほど「<a
-      href="lecture17.html#繰返し構文と組み合わせた操作">リストと繰返しの組み合わせ</a>」のセクションの「演習」で、同じ計算をしてもらいましたが、それよりも<strong>格段に直感的で簡潔なコードになっていること</strong>が分かると思います。また、ここでは実感がないと思いますが
+      href="#繰返し構文と組み合わせたリストの操作">繰返し構文と組み合わせたリストの操作</a>」のセクションの「演習」で、同じ計算をしてもらいましたが、それよりも<strong>格段に直感的で簡潔なコードになっていること</strong>が分かると思います。また、ここでは実感がないと思いますが
       NumPy を使ったほうが <span class="masked">
       実行にかかる時間も格段に短く</span>なっています。</p>
       <p>第06行目のように NumPy では行列 (ベクトル) は
       <code>ndarray</code> という <strong>型 (データ構造)</strong>
-      で扱います。「データ分析」や「可視化」「機械学習」などのライブラリを使うときは
+      で扱います。「データ分析」や「画像処理」「可視化」「機械学習」などのライブラリを使うときは
       <span class="masked"><code>ndarray</code> 型でデータを与える /
       データを受け取ること</span>
       が頻繁にあるので頭のなかに入れておいてください。</p>
@@ -680,7 +685,7 @@ class="toc-section-number">8</span> GoogleColab の ノートブックを GitHub
       <p><strong>演習1</strong>: 行列 <span
       class="math inline">\(A\)</span> と 行列 <span
       class="math inline">\(B\)</span> が次のように与えられるとき <span
-      class="math inline">\(2(A-4B)*3(A+2B)\)</span> を NumPy
+      class="math inline">\(2(A-4B)+3(A+2B)\)</span> を NumPy
       を利用して求めよ。また、適切な結果が得られていることを手計算と比較して確認せよ。※「ベクトル・行列」の教科書
       p.47 の 問3.3</p>
       <p><span class="math display">\[ A=\begin{bmatrix} 0 &amp; 1 \\ 5
@@ -698,7 +703,7 @@ class="toc-section-number">8</span> GoogleColab の ノートブックを GitHub
       class="header-section-number">4.3</span> 要素の参照</h2>
       <p>2次元以上の <code>ndarray</code> 型では
       <strong>要素にアクセスする方法</strong>
-      として、次のような表記も使用できるので覚えておいてください。</p>
+      として、次のような表記も使用できます。</p>
       <div class="sourceCode" id="cb22"><pre
       class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -758,8 +763,9 @@ class="toc-section-number">8</span> GoogleColab の ノートブックを GitHub
       </figure>
       <div class="note type-senior">
       <p><strong>高度な整形出力</strong></p>
-      <p>次のように整形出力ができます。<code>sp.latex(...)</code> により
-      LaTeX形式の数式 (文字列) に変換し、<code>display(Math(..))</code>
+      <p>次のように高度な整形出力もできます。<code>sp.latex(...)</code>
+      により LaTeX形式の数式 (文字列)
+      に変換し、<code>display(Math(..))</code>
       によりそれをレンダリング出力します。</p>
       <div class="sourceCode" id="cb26"
       data-caption="行列の整形出力 (高度)"><pre
@@ -842,7 +848,7 @@ class="toc-section-number">8</span> GoogleColab の ノートブックを GitHub
 <span id="cb28-7"><a href="#cb28-7"></a>A <span class="op">=</span> np.array(a) <span class="co"># a を引数に np.array() で ndarray を作成(初期化)</span></span>
 <span id="cb28-8"><a href="#cb28-8"></a><span class="bu">print</span>(<span class="ss">f&#39;変数 A の型は </span><span class="sc">{</span><span class="bu">type</span>(A)<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># =&gt; 変数 A の型は &lt;class &#39;numpy.ndarray&#39;&gt;</span></span></code></pre></div>
       <p>この他に <code>np.arange()</code> や <code>np.linspace()</code>
-      を利用して ndarray を作成(初期化) ができます。</p>
+      を利用して ndarray を作成 (初期化) ができます。</p>
       <h3 data-number="4.7.1" id="np.arange-による初期化"><span
       class="header-section-number">4.7.1</span> np.arange()
       による初期化</h3>
@@ -850,7 +856,7 @@ class="toc-section-number">8</span> GoogleColab の ノートブックを GitHub
       <strong>0.25</strong> 刻みの値 (=<strong>等差数列</strong>)
       を得たいときは <code>np.arange()</code> の「第1引数(開始値)」に
       <code>0.00</code>、「第2引数(終了値(未満))」に
-      <code>3.01</code>、「第3引数(間隔)」に <code>0.25</code>
+      <code>3.01</code>、「第3引数(間隔・等差)」に <code>0.25</code>
       を与えます。なお、リストを生成する <code>range()</code> では <span
       class="masked">「間隔」を小数値で与えること</span>ができませんでした</span>。</p>
       <div class="sourceCode" id="cb29"
@@ -889,7 +895,7 @@ class="toc-section-number">8</span> GoogleColab の ノートブックを GitHub
       <h2 data-number="4.8" id="ndarray型とリスト型の相互変換"><span
       class="header-section-number">4.8</span>
       ndarray型とリスト型の相互変換</h2>
-      <p>NumPyの「ndarray型」と「リスト型」は次のように<strong>相互変換</strong>できます。実際にプログラミングを実行して確認してみてください。</p>
+      <p>NumPyの「ndarray型」と「リスト型」は次のように<strong>相互変換</strong>できます。実際にプログラムを実行して確認してみてください。</p>
       <div class="sourceCode" id="cb33"
       data-caption="リスト型をndarray型に変換"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
@@ -940,7 +946,7 @@ class="toc-section-number">8</span> GoogleColab の ノートブックを GitHub
       class="header-section-number">5.1</span> 数学関数の計算</h2>
       <p>NumPy
       を利用すると数学関数の「<strong>数値計算</strong>」を効率的に実行することができます。例えば
-      <span class="math inline">\(y=2*x+3\)</span> について <span
+      <span class="math inline">\(y=2x+3\)</span> について <span
       class="math inline">\(0\le x \le 1.0\)</span> の範囲における <span
       class="math inline">\(0.1\)</span> 刻みの <span
       class="math inline">\(y\)</span>
