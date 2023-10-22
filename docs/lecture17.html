@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+
+    <script>
+      MathJax = {
+        chtml: {
+          displayAlign: "left",
+          displayIndent: "1em",
+        },
+      };
+    </script>
+
+     <script
+src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+type="text/javascript"></script> 
+
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>第17回 2I-プログラミング1</title>
+  </head>
+
+  <body>
+    <div class="openbtn"><span></span><span></span><span></span></div>
+    <nav id="g-nav">
+      <div id="g-nav-list">
+        <!-- ---------------------------------------- -->
+         <ul>
+<li><a href="#概要連絡" id="toc-概要連絡"><span
+class="toc-section-number">1</span> 概要・連絡</a>
+<ul>
+<li><a href="#今回講義の達成目標" id="toc-今回講義の達成目標"><span
+class="toc-section-number">1.1</span> 今回講義の達成目標</a></li>
+<li><a href="#連絡事項" id="toc-連絡事項"><span
+class="toc-section-number">1.2</span> 連絡事項</a></li>
+</ul></li>
+<li><a href="#リスト型-list-の復習" id="toc-リスト型-list-の復習"><span
+class="toc-section-number">2</span> リスト型 (List) の復習</a>
+<ul>
+<li><a href="#初期化と要素の参照" id="toc-初期化と要素の参照"><span
+class="toc-section-number">2.1</span> 初期化と要素の参照</a></li>
+<li><a href="#要素の参照" id="toc-要素の参照"><span
+class="toc-section-number">2.2</span> 要素の参照</a></li>
+<li><a href="#要素の追加" id="toc-要素の追加"><span
+class="toc-section-number">2.3</span> 要素の追加</a></li>
+<li><a href="#繰返し構文と組み合わせた操作"
+id="toc-繰返し構文と組み合わせた操作"><span
+class="toc-section-number">2.4</span>
+繰返し構文と組み合わせた操作</a></li>
+<li><a href="#スライス" id="toc-スライス"><span
+class="toc-section-number">2.5</span> スライス</a></li>
+<li><a href="#浅いコピーと深いコピーの違い"
+id="toc-浅いコピーと深いコピーの違い"><span
+class="toc-section-number">2.6</span>
+浅いコピーと深いコピーの違い</a></li>
+</ul></li>
+<li><a href="#タプル型-tuple" id="toc-タプル型-tuple"><span
+class="toc-section-number">3</span> タプル型 (Tuple)</a>
+<ul>
+<li><a href="#タプルは変更不可" id="toc-タプルは変更不可"><span
+class="toc-section-number">3.1</span> タプルは変更不可</a></li>
+<li><a href="#タプルを利用する価値はあるのか"
+id="toc-タプルを利用する価値はあるのか"><span
+class="toc-section-number">3.2</span>
+タプルを利用する価値はあるのか</a></li>
+<li><a href="#タプル型とリスト型の相互変換"
+id="toc-タプル型とリスト型の相互変換"><span
+class="toc-section-number">3.3</span>
+タプル型とリスト型の相互変換</a></li>
+</ul></li>
+<li><a href="#numpy" id="toc-numpy"><span
+class="toc-section-number">4</span> NumPy</a>
+<ul>
+<li><a href="#numpyとは" id="toc-numpyとは"><span
+class="toc-section-number">4.1</span> NumPyとは</a></li>
+<li><a href="#numpyのインポートとndarray型"
+id="toc-numpyのインポートとndarray型"><span
+class="toc-section-number">4.2</span>
+NumPyのインポートとndarray型</a></li>
+<li><a href="#要素の参照-1" id="toc-要素の参照-1"><span
+class="toc-section-number">4.3</span> 要素の参照</a></li>
+<li><a href="#ブロードキャスト" id="toc-ブロードキャスト"><span
+class="toc-section-number">4.4</span> ブロードキャスト</a></li>
+<li><a href="#余談行列の整形出力" id="toc-余談行列の整形出力"><span
+class="toc-section-number">4.5</span> 余談：行列の整形出力</a></li>
+<li><a href="#ndarray型とリスト型の違い"
+id="toc-ndarray型とリスト型の違い"><span
+class="toc-section-number">4.6</span> ndarray型とリスト型の違い</a></li>
+<li><a href="#ndarray型の初期化" id="toc-ndarray型の初期化"><span
+class="toc-section-number">4.7</span> ndarray型の初期化</a>
+<ul>
+<li><a href="#np.arange-による初期化"
+id="toc-np.arange-による初期化"><span
+class="toc-section-number">4.7.1</span> np.arange()
+による初期化</a></li>
+<li><a href="#np.linspace-による初期化"
+id="toc-np.linspace-による初期化"><span
+class="toc-section-number">4.7.2</span> np.linspace()
+による初期化</a></li>
+</ul></li>
+<li><a href="#ndarray型とリスト型の相互変換"
+id="toc-ndarray型とリスト型の相互変換"><span
+class="toc-section-number">4.8</span>
+ndarray型とリスト型の相互変換</a></li>
+</ul></li>
+<li><a href="#numpyを活用した数学関数計算とグラフ描画"
+id="toc-numpyを活用した数学関数計算とグラフ描画"><span
+class="toc-section-number">5</span>
+NumPyを活用した数学関数計算とグラフ描画</a>
+<ul>
+<li><a href="#数学関数の計算" id="toc-数学関数の計算"><span
+class="toc-section-number">5.1</span> 数学関数の計算</a></li>
+<li><a href="#グラフ描画" id="toc-グラフ描画"><span
+class="toc-section-number">5.2</span> グラフ描画</a></li>
+</ul></li>
+<li><a href="#画像処理" id="toc-画像処理"><span
+class="toc-section-number">6</span> 画像処理</a></li>
+<li><a href="#numpyを活用した高速計算"
+id="toc-numpyを活用した高速計算"><span
+class="toc-section-number">7</span> NumPyを活用した高速計算</a></li>
+<li><a href="#googlecolab-の-ノートブックを-github-にプッシュする方法"
+id="toc-googlecolab-の-ノートブックを-github-にプッシュする方法"><span
+class="toc-section-number">8</span> GoogleColab の ノートブックを GitHub
+にプッシュする方法</a></li>
+</ul> 
+        <!-- ---------------------------------------- -->
+      </div>
+    </nav>
+
+    <header class="markdown-body">
+      <p>2023-2I プログラミング1 第17回 講義資料</p>
+      <p>2023年10月23日（月）1・2時限</p>
+    </header>
+
+    <main class="markdown-body">
+      <!-- ---------------------------------------- -->
+      <h1 data-number="1" id="概要連絡"><span
+      class="header-section-number">1</span> 概要・連絡</h1>
+      <p>2年生の後期となりました。コース専門科目では<span
+      class="masked">「これまでに学んできたこと」を前提とする内容</span>が一気に増加します。課題を提出したり、定期試験を終えたりすると<strong>sそれまで「学んだこと」をキレイに忘れてしまう学生</strong>や、そもそも定着を前提としない勉強
+      (=<span
+      class="masked">学ぶことが目的ではなく、単位を取ることを目的にした勉強</span>)
+      になっている学生もいますが、専門科目でその方針をとると、いずれ「詰み」という状況に直面するので十分に注意ください。</p>
+      <p>一方で、それなりに学んできた学生については、これからの時期は<span
+      class="masked">科目の枠を越えて、点と点が線として繋がる瞬間</span>
+      が増えて「学び」が面白くなってくると思います。</p>
+      <h2 data-number="1.1" id="今回講義の達成目標"><span
+      class="header-section-number">1.1</span> 今回講義の達成目標</h2>
+      <ul>
+      <li>リスト型とタプル型の特性の違いを理解し説明できる。</li>
+      <li>NumPy の ndarray 型の初期化や基本操作ができる。</li>
+      <li>Google Colab. ノートブックを GitHub
+      にプッシュすることができる。</li>
+      </ul>
+      <h2 data-number="1.2" id="連絡事項"><span
+      class="header-section-number">1.2</span> 連絡事項</h2>
+      <ul>
+      <li>小テストで <strong>8点未満</strong>
+      の学生は、次回に再度小テストを実施します。自己採点で8点未満と思う学生は再度準備をしておいてください。</li>
+      <li>今回の講義では <code>%timeit</code>
+      などの時間計測用の<strong>マジックコマンド</strong>も使用するので<a
+      href="https://colab.research.google.com/?hl=ja">GoogleColab.</a>もしくは<a
+      href="lecture09.html#jupyterの実行">ローカルPCに構築したJupyter環境</a>の利用を推奨します。</li>
+      </ul>
+      <h1 data-number="2" id="リスト型-list-の復習"><span
+      class="header-section-number">2</span> リスト型 (List) の復習</h1>
+      <p>Python の「<strong>リスト型</strong>」については<a
+      href="lecture08.html#pythonにおけるリストとは">第08回講義</a>
+      のなかで取り上げました。また「<strong>2次元リスト</strong>」も<a
+      href="lecture13.html#二次元リスト">第13回講義</a>
+      のなかで取り上げました。</p>
+      <p>ここでは、後述する「<strong>タプル型</strong>」や、<strong>NumPyライブラリ</strong>
+      (「<strong>ナンパイ</strong>」と読む)
+      の「<strong>ndarray型</strong>」と比較するために、リスト型の「特性」や「操作」を簡単に<strong>復習</strong>しておきます。</p>
+      <h2 data-number="2.1" id="初期化と要素の参照"><span
+      class="header-section-number">2.1</span> 初期化と要素の参照</h2>
+      <p>リスト型は、その「<strong>要素</strong>」として<strong>様々な型</strong>
+      (<span
+      class="masked">整数型、浮動小数点数型(実数型)、文字列型、ブール型など</span>)
+      <strong>を混在させることが可能</strong>で、1次元の場合は
+      <code>list-01.py</code> の <code>arr1</code>
+      のように初期化ができまた。</p>
+      <p>また、2次元の場合は <code>arr2</code>
+      のように初期化ができました。この際、<strong>行ごとに要素数 (列数)
+      を変えることも可能</strong>でした。</p>
+      <div class="sourceCode" id="cb1" data-caption="list-01.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb1-2"><a href="#cb1-2"></a>arr1 <span class="op">=</span> [<span class="dv">29</span>, <span class="fl">3.14</span>, <span class="st">&quot;円周率&quot;</span>, <span class="va">False</span>] <span class="co"># 様々な型を内包することが可能</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a>arr2 <span class="op">=</span> [[<span class="fl">0.0</span>, <span class="fl">0.1</span>],       <span class="co"># 行ごとの要素数が違っていても可</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>        [<span class="fl">1.0</span>, <span class="fl">1.1</span>, <span class="fl">1.2</span>],</span>
+<span id="cb1-5"><a href="#cb1-5"></a>        [<span class="fl">2.0</span>],</span>
+<span id="cb1-6"><a href="#cb1-6"></a>        [<span class="fl">3.0</span>, <span class="fl">3.1</span>, <span class="fl">3.2</span>, <span class="fl">3.3</span>]]</span>
+<span id="cb1-7"><a href="#cb1-7"></a></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="bu">print</span>(<span class="ss">f&#39;型確認 arr1 =&gt; </span><span class="sc">{</span><span class="bu">type</span>(arr1)<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># 型確認 arr1 =&gt; &lt;class &#39;list&#39;&gt;</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="bu">print</span>(<span class="ss">f&#39;型確認 arr2 =&gt; </span><span class="sc">{</span><span class="bu">type</span>(arr2)<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># 型確認 arr1 =&gt; &lt;class &#39;list&#39;&gt;</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a></span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="bu">print</span>(<span class="ss">f&#39;arr1 の長さ（要素数）は </span><span class="sc">{</span><span class="va">None</span><span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># =&gt; 4</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="bu">print</span>(<span class="ss">f&#39;arr2 の長さ（要素数）は </span><span class="sc">{</span><span class="va">None</span><span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># =&gt; 4</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="bu">print</span>(<span class="ss">f&#39;arr2[0] の長さ（要素数）は </span><span class="sc">{</span><span class="va">None</span><span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># =&gt; 2</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="bu">print</span>(<span class="ss">f&#39;arr2[1] の長さ（要素数）は </span><span class="sc">{</span><span class="va">None</span><span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># =&gt; 3</span></span></code></pre></div>
+      <p><strong>演習</strong>: <code>list-01.py</code>
+      の第<strong>11</strong>行目から第<strong>14</strong>行目で期待する値
+      (<code># =&gt; ?</code> で表記した値)
+      が出力されるようにプログラムを書き換えよ (=
+      f文字列のプレースホルダのなかの <code>None</code>
+      を適切なものに書き換えよ)。<strong>ヒント</strong>: <span
+      class="masked">組み込み関数の <code>len</code>
+      関数を利用してください。</span></p>
+      <h2 data-number="2.2" id="要素の参照"><span
+      class="header-section-number">2.2</span> 要素の参照</h2>
+      <p>リストを構成する<strong>要素にアクセスするための値</strong>
+      (例えば <code>a[5]</code> における <code>5</code> のこと) を <span
+      class="masked">インデックス</span> あるいは <span
+      class="masked">添え字</span>
+      と呼び、これは「<strong>先頭要素を</strong> <code>0</code>
+      <strong>番目</strong>」からカウントする特性がありました。このように「ゼロからカウントすること」を
+      <strong>ゼロオリジン</strong> と表現しました。</p>
+      <p>また、2次元配列の要素にアクセスするときのインデックスの指定順は、数学の「行列」の添え字の表記順と
+      <span class="masked">同じでした</span>。例えば
+      <code>list-02.py</code> の <code>arr3</code>
+      のなかの「14」という値を参照 (取得) したい場合は <span
+      class="masked"><code>arr[0][2]</code></span>
+      のように指定しました。</p>
+      <div class="sourceCode" id="cb2" data-caption="list-02.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb2-2"><a href="#cb2-2"></a>arr3 <span class="op">=</span> [[<span class="dv">26</span>, <span class="dv">38</span>, <span class="dv">14</span>, <span class="dv">57</span>], <span class="co"># 3行4列の2次配列の初期化</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>        [<span class="dv">39</span>, <span class="dv">31</span>, <span class="dv">94</span>, <span class="dv">63</span>],</span>
+<span id="cb2-4"><a href="#cb2-4"></a>        [<span class="dv">41</span>, <span class="dv">72</span>, <span class="dv">65</span>, <span class="dv">24</span>]]</span>
+<span id="cb2-5"><a href="#cb2-5"></a></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="co"># 演習1</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a>a <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="bu">print</span>(<span class="ss">f&#39;a = </span><span class="sc">{</span><span class="va">None</span><span class="sc">}</span><span class="ss">&#39;</span>)</span>
+<span id="cb2-9"><a href="#cb2-9"></a></span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="co"># 演習2</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="bu">print</span>(arr3)</span>
+<span id="cb2-12"><a href="#cb2-12"></a></span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="co"># 演習3</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a>b <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="bu">print</span>(<span class="ss">f&#39;b = </span><span class="sc">{</span><span class="va">None</span><span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+      <p><strong>演習1</strong>: <code>arr3</code> の要素「31」を変数
+      <code>a</code> に取得せよ。</p>
+      <p><strong>演習2</strong>: <code>arr3</code>
+      の要素「57」を「60」に書き換えよ。</p>
+      <p><strong>演習3</strong>: <code>arr3</code> の要素「24
+      (最終行の最終列の値)」を変数 <code>b</code>
+      に取得せよ。ただし、<code>arr3[2][3]</code>
+      <strong>以外の方法</strong>で取得 (参照)
+      すること。<strong>ヒント</strong>: <span
+      class="masked">インデックスに <code>-1</code>
+      を使用する方法と、リスト長さを取得する関数 <code>len()</code>
+      を使用する方法があります。どちらの方法でも末尾の値を取得 (参照)
+      できるようにしておいてください。</span></p>
+      <h2 data-number="2.3" id="要素の追加"><span
+      class="header-section-number">2.3</span> 要素の追加</h2>
+      <p>リスト型では <code>append()</code>
+      というメソッドを使って、末尾に要素を <span
+      class="masked">追加</span> することができました。なお<a
+      href="lecture08.html#リストにおける要素の書き換えと追加">「先頭」や「任意のインデックス位置」に挿入すること</a>もできました。</p>
+      <p>以下のプログラムを実行して、その動作について確認と理解をしてください。</p>
+      <div class="sourceCode" id="cb3" data-caption="list-03.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb3-2"><a href="#cb3-2"></a>arr4 <span class="op">=</span> [<span class="st">&#39;A&#39;</span>,<span class="st">&#39;B&#39;</span>,<span class="st">&#39;C&#39;</span>]</span>
+<span id="cb3-3"><a href="#cb3-3"></a>arr4.append(<span class="st">&#39;D&#39;</span>) <span class="co"># 末尾に追加</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>arr4.append(<span class="st">&#39;E&#39;</span>)</span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="bu">print</span>(<span class="st">&#39;arr4 = &#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="bu">print</span>(arr4) <span class="co"># =&gt; [&#39;A&#39;,&#39;B&#39;,&#39;C&#39;,&#39;D&#39;,&#39;E&#39;]</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a></span>
+<span id="cb3-8"><a href="#cb3-8"></a>arr5 <span class="op">=</span> []</span>
+<span id="cb3-9"><a href="#cb3-9"></a>arr5.append([])</span>
+<span id="cb3-10"><a href="#cb3-10"></a>arr5[<span class="dv">0</span>].append(<span class="st">&#39;A&#39;</span>)</span>
+<span id="cb3-11"><a href="#cb3-11"></a>arr5[<span class="dv">0</span>].append(<span class="st">&#39;B&#39;</span>)</span>
+<span id="cb3-12"><a href="#cb3-12"></a>arr5.append([<span class="st">&#39;C&#39;</span>,<span class="st">&#39;D&#39;</span>])</span>
+<span id="cb3-13"><a href="#cb3-13"></a><span class="bu">print</span>(<span class="st">&#39;arr5 = &#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb3-14"><a href="#cb3-14"></a><span class="bu">print</span>(arr5) <span class="co"># =&gt;[[&#39;A&#39;,&#39;B&#39;], [&#39;C&#39;,&#39;D&#39;]]</span></span></code></pre></div>
+      <p><strong>演習</strong>: <code>arr5</code> の内容が
+      <code>[['A','B'], ['C','D'], ['E','F']]</code>
+      となるように第12行目以降のプログラムを書き換えよ。</p>
+      <h2 data-number="2.4" id="繰返し構文と組み合わせた操作"><span
+      class="header-section-number">2.4</span>
+      繰返し構文と組み合わせた操作</h2>
+      <p>リストを構成する要素に対する一括操作は「<strong>繰返し構文</strong>
+      (for文)」と組み合わせることで実現しました。例えば
+      <code>list-04.py</code> の <code>arr6</code>
+      の各要素に「5を加算」するためには <span
+      class="masked">繰返し構文を2重にして利用しました</span>。ここでは、特に第07行目で
+      <code>range(len(arr6[i]))</code>
+      のように記述していることについて、しっかりと理解してください。</p>
+      <div class="sourceCode" id="cb4" data-caption="list-04.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb4-2"><a href="#cb4-2"></a>arr6 <span class="op">=</span> [[<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>],</span>
+<span id="cb4-3"><a href="#cb4-3"></a>        [<span class="dv">50</span>, <span class="dv">60</span>, <span class="dv">70</span>],</span>
+<span id="cb4-4"><a href="#cb4-4"></a>        [<span class="dv">80</span>, <span class="dv">90</span>]]</span>
+<span id="cb4-5"><a href="#cb4-5"></a></span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(arr6)):</span>
+<span id="cb4-7"><a href="#cb4-7"></a>  <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(arr6[i])):</span>
+<span id="cb4-8"><a href="#cb4-8"></a>    arr6[i][j] <span class="op">+=</span> <span class="dv">5</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a></span>
+<span id="cb4-10"><a href="#cb4-10"></a><span class="bu">print</span>(arr6)</span>
+<span id="cb4-11"><a href="#cb4-11"></a></span>
+<span id="cb4-12"><a href="#cb4-12"></a><span class="co"># 演習</span></span>
+<span id="cb4-13"><a href="#cb4-13"></a>arr7 <span class="op">=</span> [[<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">40</span>],[<span class="dv">50</span>,<span class="dv">40</span>,<span class="dv">30</span>]]</span>
+<span id="cb4-14"><a href="#cb4-14"></a>arr8 <span class="op">=</span> [[<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">10</span>],[<span class="dv">20</span>,<span class="dv">10</span>,<span class="dv">10</span>]]</span>
+<span id="cb4-15"><a href="#cb4-15"></a>arr9 <span class="op">=</span> []</span>
+<span id="cb4-16"><a href="#cb4-16"></a><span class="bu">print</span>(arr9) <span class="co"># =&gt; [[30, 50, 50], [70, 50, 40]]</span></span></code></pre></div>
+      <p><strong>演習</strong>: <code>arr7</code> と <code>arr8</code>
+      を使って次のような行列計算をして <code>arr9</code>
+      に格納せよ。まずは <code>arr9=arr7+arr8</code>
+      では期待するような結果 (<code>[[30, 50, 50], [70, 50, 40]]</code>)
+      に「<strong>ならないこと</strong>」を確認すること。</p>
+      <p><span class="math display">\[ \begin{bmatrix} 20 &amp; 30 &amp;
+      40 \\ 50 &amp; 40 &amp; 30 \\ \end{bmatrix} +
+      \begin{bmatrix} 10 &amp; 20 &amp; 10 \\ 20 &amp; 10 &amp; 10 \\
+      \end{bmatrix} =
+      \begin{bmatrix} 30 &amp; 50 &amp; 50 \\ 70 &amp; 50 &amp; 40 \\
+      \end{bmatrix} \]</span></p>
+      <h2 data-number="2.5" id="スライス"><span
+      class="header-section-number">2.5</span> スライス</h2>
+      <p>Pythonのリストでは <code>arr[3:]</code> や <code>arr[:3]</code>
+      のような簡潔な表記で<a
+      href="lecture12.html#リストの扱いに関する補足③-スライス">スライス</a>という機能も利用できました。他のプログラム言語
+      (C/C++言語やJavsScriptなど)
+      ではあまり採用されていない表記ですが、<strong>Python (実務)
+      では頻繁に使われる</strong>ので覚えておくようにしてください。</p>
+      <p>スライスは、次のようにリスト内の「指定部分の範囲を取得」する機能になります。</p>
+      <div class="sourceCode" id="cb5" data-caption="list-05.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb5-2"><a href="#cb5-2"></a>arr <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">11</span>)) <span class="co"># rangeを使用した初期化</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="bu">print</span>(arr) <span class="co"># =&gt; [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="bu">print</span>(arr[:<span class="dv">3</span>])   <span class="co"># arr[0]からarr[3-1]までスライス</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="bu">print</span>(arr[<span class="dv">2</span>:<span class="dv">5</span>])  <span class="co"># arr[2]からarr[5-1]までスライス</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="bu">print</span>(arr[<span class="dv">4</span>:])   <span class="co"># arr[4]から末尾までスライス</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="bu">print</span>(arr[<span class="dv">5</span>:<span class="dv">5</span><span class="op">+</span><span class="dv">3</span>])  <span class="co"># arr[5]から要素3個をスライス</span></span></code></pre></div>
+      <p>なお、<a
+      href="lecture12.html#文字列に対する１文字参照やスライス処理">文字列についてもスライスを利用すること</a>
+      ができました。こちらも、多用するので覚えておいてください。</p>
+      <p><strong>演習</strong>: <code>list-05.py</code> の
+      <code>arr</code> から <code>[2,3,4,5,6]</code>
+      を取得するようなスライスを記述せよ。</p>
+      <h2 data-number="2.6" id="浅いコピーと深いコピーの違い"><span
+      class="header-section-number">2.6</span>
+      浅いコピーと深いコピーの違い</h2>
+      <p>第13回講義で<a
+      href="lecture13.html#リストの浅いコピーと深いコピー">丁寧に解説</a>したようにリストを「<strong>複製</strong>(コピー)」する場合には、その特性の違いに注意して「<strong>浅いコピー
+      (Shallow copy)</strong>」と「<strong>深いコピー (Deep
+      copy)</strong>」を使い分ける必要がありました。</p>
+      <div class="sourceCode" id="cb6" data-caption="list-06.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="im">import</span> copy</span>
+<span id="cb6-3"><a href="#cb6-3"></a></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="co"># ■■ 浅いコピー ■■ </span></span>
+<span id="cb6-5"><a href="#cb6-5"></a>arr10 <span class="op">=</span> [<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">30</span>]</span>
+<span id="cb6-6"><a href="#cb6-6"></a>arr11 <span class="op">=</span> arr10  <span class="co"># 浅いコピー </span></span>
+<span id="cb6-7"><a href="#cb6-7"></a>arr11[<span class="dv">0</span>] <span class="op">=</span> <span class="st">&#39;A&#39;</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="bu">print</span>(<span class="st">&#39;浅いコピー&#39;</span>)</span>
+<span id="cb6-9"><a href="#cb6-9"></a><span class="bu">print</span>(<span class="ss">f&#39;arr10 = </span><span class="sc">{</span>arr10<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># =&gt; arr10 = [&#39;A&#39;, 20, 30] ← !!!</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="bu">print</span>(<span class="ss">f&#39;arr11 = </span><span class="sc">{</span>arr11<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># =&gt; arr11 = [&#39;A&#39;, 20, 30]</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a></span>
+<span id="cb6-12"><a href="#cb6-12"></a><span class="co"># ■■ 深いコピー ■■ </span></span>
+<span id="cb6-13"><a href="#cb6-13"></a>arr10 <span class="op">=</span> [<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">30</span>]</span>
+<span id="cb6-14"><a href="#cb6-14"></a>arr11 <span class="op">=</span> copy.deepcopy(arr10)  <span class="co"># 深いコピー</span></span>
+<span id="cb6-15"><a href="#cb6-15"></a>arr11[<span class="dv">0</span>] <span class="op">=</span> <span class="st">&#39;A&#39;</span></span>
+<span id="cb6-16"><a href="#cb6-16"></a><span class="bu">print</span>(<span class="st">&#39;深いコピー&#39;</span>)</span>
+<span id="cb6-17"><a href="#cb6-17"></a><span class="bu">print</span>(<span class="ss">f&#39;arr10 = </span><span class="sc">{</span>arr10<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># =&gt; arr10 = [10, 20, 30] ← :D</span></span>
+<span id="cb6-18"><a href="#cb6-18"></a><span class="bu">print</span>(<span class="ss">f&#39;arr11 = </span><span class="sc">{</span>arr11<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># =&gt; arr11 = [&#39;A&#39;, 20, 30]</span></span></code></pre></div>
+      <p><code>:D</code> は海外でよく使われる顔文字です
+      (顔を90度傾けてみてください)。</p>
+      <p>この「浅いコピー」と「深いコピー」の問題は <span
+      class="masked">リストに限らず「辞書」や「クラス」でも同様に起きます</span>。理解が難しい概念ですが、避けては通れないのでどこかの段階ではしっかりと理解してください。</p>
+      <h1 data-number="3" id="タプル型-tuple"><span
+      class="header-section-number">3</span> タプル型 (Tuple)</h1>
+      <p>Python には <strong>リスト (List)</strong> に似て非なる型として
+      <strong><em>タプル (Tuple)</em></strong> という型 (データ構造)
+      が存在します。簡単に言えば、タプルは「<strong>読み取り専用のリストのような型</strong>」と言えます。</p>
+      <h2 data-number="3.1" id="タプルは変更不可"><span
+      class="header-section-number">3.1</span> タプルは変更不可</h2>
+      <p>リストは <code>a=[20,30]</code> のように「<strong>角括弧
+      (大括弧)</strong>」で初期化していたのに対して、タプルは
+      <code>tpl=(20,30)</code>
+      のように「丸括弧」で初期化します。次のプログラムを実行して確認してください
+      (変数名を型名と同じ <code>tuple</code> にしたり、ファイル名を
+      <code>tuple.py</code> にすると機能しないので注意してください)
+      。</p>
+      <div class="sourceCode" id="cb7"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb7-2"><a href="#cb7-2"></a>arr <span class="op">=</span> [<span class="dv">20</span>,<span class="dv">30</span>]    <span class="co"># [ ] により リスト型として初期化される</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="bu">print</span>(<span class="bu">type</span>(arr)) <span class="co"># =&gt; &lt;class &#39;list&#39;&gt;</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a></span>
+<span id="cb7-5"><a href="#cb7-5"></a>tpl <span class="op">=</span> (<span class="dv">20</span>,<span class="dv">30</span>)    <span class="co"># ( ) により タプル型として初期化される</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="bu">print</span>(<span class="bu">type</span>(tpl)) <span class="co"># =&gt; &lt;class &#39;tuple&#39;&gt;</span></span></code></pre></div>
+      <p>先に示したように
+      <strong>タプルは、初期化に要素を変更したり</strong>、<code>append()</code>
+      <strong>メソッドで要素を追加したりすることはできません</strong>。</p>
+      <div class="sourceCode" id="cb8"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb8-2"><a href="#cb8-2"></a>tpl <span class="op">=</span> (<span class="dv">20</span>,<span class="dv">30</span>)</span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="co"># 要素の「変更」は不可</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a>tpl[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">40</span> <span class="co"># =&gt; TypeError: &#39;tuple&#39; object does not support item assignment</span></span></code></pre></div>
+      <div class="sourceCode" id="cb9"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb9-2"><a href="#cb9-2"></a>tpl <span class="op">=</span> (<span class="dv">20</span>,<span class="dv">30</span>)</span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="co"># 要素の「追加」も不可</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a>tpl.append(<span class="dv">50</span>)  <span class="co"># =&gt; AttributeError: &#39;tuple&#39; object has no attribute &#39;append&#39;</span></span></code></pre></div>
+      <p>ただし、以下のように<strong>丸ごと入れ替えること</strong>は可能です。なぜならば、変数に格納されるものは「データそのもの」ではなく、そのデータを指し示す「<strong>オブジェクトID</strong>」であるためです
+      (このあたりの内部動作やオブジェクトID云々を忘れてしまった人は第13回講義の<a
+      href="lecture13.html#理解のためのステップ4">解説</a>
+      を読み返してください)。</p>
+      <div class="sourceCode" id="cb10"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb10-2"><a href="#cb10-2"></a>tpl <span class="op">=</span> (<span class="dv">20</span>,<span class="dv">30</span>)</span>
+<span id="cb10-3"><a href="#cb10-3"></a>tpl <span class="op">=</span> (<span class="dv">50</span>,<span class="dv">60</span>)</span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="bu">print</span>(<span class="ss">f&#39;tpl = </span><span class="sc">{</span>tpl<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># tpl =&gt; (50,60)</span></span></code></pre></div>
+      <p>以上の変更可能/不可能の特性の違いさえ意識しておけば<span
+      class="masked">関数引数などにリストもタプルも同じように使用すること</span>ができます。</p>
+      <div class="note type-tips">
+      <p><strong>リストとタプルは関数の引数として (ほとんどのケースで)
+      互換性がある</strong></p>
+      <p><a
+      href="lecture08.html#ランダム処理とリストの組み合わせ">第08回講義</a>
+      で学んだように <code>random.choices</code> は、引数
+      <code>weights</code> で与えた確率に従って、ランダムに
+      <code>k</code>
+      個の要素を選択して返す関数でした。これまでは、次のように「<strong>リスト型</strong>」で引数を与えてきました。</p>
+      <div class="sourceCode" id="cb11"
+      data-caption="リストバージョン"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="im">import</span> random <span class="im">as</span> r</span>
+<span id="cb11-3"><a href="#cb11-3"></a>x <span class="op">=</span> r.choices([<span class="st">&#39;R&#39;</span>,<span class="st">&#39;SR&#39;</span>,<span class="st">&#39;SSR&#39;</span>], weights<span class="op">=</span>[<span class="fl">0.6</span>,<span class="fl">0.3</span>,<span class="fl">0.1</span>], k<span class="op">=</span><span class="dv">10</span>)</span></code></pre></div>
+      <p>これは「<strong>タプル型</strong>」に置き換えることができます。</p>
+      <div class="sourceCode" id="cb12"
+      data-caption="タプルバージョン"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="im">import</span> random <span class="im">as</span> r</span>
+<span id="cb12-3"><a href="#cb12-3"></a>x <span class="op">=</span> r.choices((<span class="st">&#39;R&#39;</span>,<span class="st">&#39;SR&#39;</span>,<span class="st">&#39;SSR&#39;</span>), weights<span class="op">=</span>(<span class="fl">0.6</span>,<span class="fl">0.3</span>,<span class="fl">0.1</span>), k<span class="op">=</span><span class="dv">10</span>)</span></code></pre></div>
+      </div>
+      <h2 data-number="3.2" id="タプルを利用する価値はあるのか"><span
+      class="header-section-number">3.2</span>
+      タプルを利用する価値はあるのか</h2>
+      <p>タプルとすることで、その値が変更不可であることを明示することができます。初期化以降、プログラムの途中で要素を変更することや
+      <span class="masked">要素を追加や削除すること</span>
+      を意図しないケースでは、<strong>リスト型ではなくタプル型を使用することが望まれます</strong>。特にチーム開発では、タプル型にしておくことで
+      <span class="masked">要素の変更を想定していないこと </span>、<span
+      class="masked">要素の追加や削除を想定していないこと</span>
+      を簡単にメンバーに共有することができるとというメリットがあります。</p>
+      <p>また、リスト型はない <strong>タプル型のメリット</strong> として
+      <strong>辞書型 (dict型・連想配列型)</strong>
+      の「<strong>キー</strong>」に使用できる点が挙げられます
+      (辞書型について忘れてしまった学生は<a
+      href="lecture12.html#辞書-dict">第12回講義</a>を再読してください)
+      。</p>
+      <p>まずは文字列を辞書型のキーに利用する例 (復習)
+      を以下に示します。</p>
+      <div class="sourceCode" id="cb13"
+      data-caption="(復習) 文字列を辞書型のキーに利用する"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb13-2"><a href="#cb13-2"></a>course <span class="op">=</span> {<span class="st">&#39;I&#39;</span>:<span class="st">&#39;知能情報&#39;</span>, <span class="st">&#39;M&#39;</span>:<span class="st">&#39;エネルギー機械&#39;</span>} <span class="co"># 辞書の初期化</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a>course[<span class="st">&#39;E&#39;</span>] <span class="op">=</span> <span class="st">&#39;エレクトロニクス&#39;</span> <span class="co"># 初期化後の辞書に追加</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a>course[<span class="st">&#39;D&#39;</span>] <span class="op">=</span> <span class="st">&#39;プロダクトデザイン&#39;</span></span>
+<span id="cb13-5"><a href="#cb13-5"></a></span>
+<span id="cb13-6"><a href="#cb13-6"></a>key <span class="op">=</span> <span class="st">&#39;I&#39;</span></span>
+<span id="cb13-7"><a href="#cb13-7"></a><span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>key<span class="sc">}</span><span class="ss"> ... </span><span class="sc">{</span>course[key]<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+<span id="cb13-8"><a href="#cb13-8"></a><span class="bu">print</span>()</span>
+<span id="cb13-9"><a href="#cb13-9"></a></span>
+<span id="cb13-10"><a href="#cb13-10"></a><span class="co"># for構文の組合せた全列挙</span></span>
+<span id="cb13-11"><a href="#cb13-11"></a><span class="cf">for</span> key <span class="kw">in</span> course.keys():</span>
+<span id="cb13-12"><a href="#cb13-12"></a>  <span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>key<span class="sc">}</span><span class="ss"> ... </span><span class="sc">{</span>course[key]<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+      <p>上記のプログラミングでは「<strong>文字列</strong>」をキー
+      (<code>key</code>)
+      に使用しましたが、次のように「<strong>タプル</strong>」をキーにすることができます。</p>
+      <div class="sourceCode" id="cb14"
+      data-caption="タプルを辞書型のキーに利用する"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb14-2"><a href="#cb14-2"></a>timetable <span class="op">=</span> { </span>
+<span id="cb14-3"><a href="#cb14-3"></a>  (<span class="st">&#39;月&#39;</span>,<span class="dv">1</span>) : <span class="st">&#39;プログラミング1&#39;</span>,</span>
+<span id="cb14-4"><a href="#cb14-4"></a>  (<span class="st">&#39;月&#39;</span>,<span class="dv">3</span>) : <span class="st">&#39;基礎物理2&#39;</span>,</span>
+<span id="cb14-5"><a href="#cb14-5"></a>  (<span class="st">&#39;月&#39;</span>,<span class="dv">5</span>) : <span class="st">&#39;微分積分2&#39;</span></span>
+<span id="cb14-6"><a href="#cb14-6"></a>} </span>
+<span id="cb14-7"><a href="#cb14-7"></a>timetable[ (<span class="st">&#39;火&#39;</span>,<span class="dv">1</span>) ] <span class="op">=</span> <span class="st">&#39;メディアデザイン入門&#39;</span></span>
+<span id="cb14-8"><a href="#cb14-8"></a>timetable[ (<span class="st">&#39;火&#39;</span>,<span class="dv">3</span>) ] <span class="op">=</span> <span class="st">&#39;社会2&#39;</span></span>
+<span id="cb14-9"><a href="#cb14-9"></a></span>
+<span id="cb14-10"><a href="#cb14-10"></a>key <span class="op">=</span> (<span class="st">&#39;水&#39;</span>,<span class="dv">1</span>) </span>
+<span id="cb14-11"><a href="#cb14-11"></a><span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>key[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">曜日 </span><span class="sc">{</span>key[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">時限 &#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb14-12"><a href="#cb14-12"></a><span class="cf">if</span> key <span class="kw">not</span> <span class="kw">in</span> timetable.keys(): <span class="co"># キーが存在するかチェック</span></span>
+<span id="cb14-13"><a href="#cb14-13"></a>  <span class="bu">print</span>(<span class="ss">f&#39;に授業は登録されていません&#39;</span>)</span>
+<span id="cb14-14"><a href="#cb14-14"></a><span class="cf">else</span>:</span>
+<span id="cb14-15"><a href="#cb14-15"></a>  <span class="bu">print</span>(<span class="ss">f&#39;は「</span><span class="sc">{</span>timetable[key]<span class="sc">}</span><span class="ss">」が開講されます&#39;</span>)</span>
+<span id="cb14-16"><a href="#cb14-16"></a></span>
+<span id="cb14-17"><a href="#cb14-17"></a>key <span class="op">=</span> (<span class="st">&#39;月&#39;</span>,<span class="dv">3</span>) </span>
+<span id="cb14-18"><a href="#cb14-18"></a><span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>key[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">曜日 </span><span class="sc">{</span>key[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">時限 &#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb14-19"><a href="#cb14-19"></a><span class="cf">if</span> key <span class="kw">not</span> <span class="kw">in</span> timetable.keys():</span>
+<span id="cb14-20"><a href="#cb14-20"></a>  <span class="bu">print</span>(<span class="ss">f&#39;に授業は登録されていません&#39;</span>)</span>
+<span id="cb14-21"><a href="#cb14-21"></a><span class="cf">else</span>:</span>
+<span id="cb14-22"><a href="#cb14-22"></a>  <span class="bu">print</span>(<span class="ss">f&#39;は「</span><span class="sc">{</span>timetable[key]<span class="sc">}</span><span class="ss">」が開講がされています&#39;</span>)</span></code></pre></div>
+      <p>上記では2個の要素を持ったタプルを使いましたが
+      <code>('2I','火',3)</code> や <code>(2,'I','火',3)</code>
+      のように<strong>3個以上の要素を持ったタプル</strong>もキーとして使用できます。</p>
+      <p>一方で、辞書型のキーに「<strong>リスト型</strong>」を使用すると
+      <span
+      class="masked"><code>TypeError: unhashable type: 'list'</code></span>
+      という実行時エラーが発生します。</p>
+      <h2 data-number="3.3" id="タプル型とリスト型の相互変換"><span
+      class="header-section-number">3.3</span>
+      タプル型とリスト型の相互変換</h2>
+      <p>「タプル型」と「リスト型」は次のように相互変換できます。プログラミングを実行して確認してみてください。特に
+      <span
+      class="masked">タプル型とリスト型の「丸括弧」と「角括弧」の違いが、初期化や
+      <code>print</code> 関数の出力に表われていること</span>
+      に注意してください。</p>
+      <div class="sourceCode" id="cb15"
+      data-caption="リスト型をタプル型に変換"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb15-2"><a href="#cb15-2"></a>a <span class="op">=</span> [<span class="dv">20</span>,<span class="dv">30</span>]     <span class="co"># 変数a にリスト型のオブジェクトを格納</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="bu">print</span>(<span class="bu">type</span>(a))  <span class="co"># =&gt; &lt;class &#39;list&#39;&gt;</span></span>
+<span id="cb15-4"><a href="#cb15-4"></a><span class="bu">print</span>(<span class="ss">f&#39;a=</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># =&gt; a=[20, 30]</span></span>
+<span id="cb15-5"><a href="#cb15-5"></a><span class="bu">print</span>()</span>
+<span id="cb15-6"><a href="#cb15-6"></a></span>
+<span id="cb15-7"><a href="#cb15-7"></a>t <span class="op">=</span> <span class="bu">tuple</span>(a)    <span class="co"># リスト型→タプル型に変換</span></span>
+<span id="cb15-8"><a href="#cb15-8"></a></span>
+<span id="cb15-9"><a href="#cb15-9"></a><span class="bu">print</span>(<span class="bu">type</span>(t))  <span class="co"># =&gt; &lt;class &#39;tuple&#39;&gt;</span></span>
+<span id="cb15-10"><a href="#cb15-10"></a><span class="bu">print</span>(<span class="ss">f&#39;t=</span><span class="sc">{</span>t<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># =&gt; t=(20, 30)</span></span></code></pre></div>
+      <div class="sourceCode" id="cb16"
+      data-caption="タプル型をリスト型に変換"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb16-2"><a href="#cb16-2"></a>t <span class="op">=</span> (<span class="dv">20</span>,<span class="dv">30</span>)     <span class="co"># 変数a にリスト型のオブジェクトを格納</span></span>
+<span id="cb16-3"><a href="#cb16-3"></a><span class="bu">print</span>(<span class="bu">type</span>(t))  <span class="co"># =&gt; &lt;class &#39;tuple&#39;&gt;</span></span>
+<span id="cb16-4"><a href="#cb16-4"></a><span class="bu">print</span>(<span class="ss">f&#39;t=</span><span class="sc">{</span>t<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># =&gt; t=(20, 30)</span></span>
+<span id="cb16-5"><a href="#cb16-5"></a><span class="bu">print</span>()</span>
+<span id="cb16-6"><a href="#cb16-6"></a></span>
+<span id="cb16-7"><a href="#cb16-7"></a>a <span class="op">=</span> <span class="bu">list</span>(t)     <span class="co"># タプル型→リスト型に変換</span></span>
+<span id="cb16-8"><a href="#cb16-8"></a></span>
+<span id="cb16-9"><a href="#cb16-9"></a><span class="bu">print</span>(<span class="bu">type</span>(a))  <span class="co"># =&gt; &lt;class &#39;list&#39;&gt;</span></span>
+<span id="cb16-10"><a href="#cb16-10"></a><span class="bu">print</span>(<span class="ss">f&#39;a=</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># =&gt; a=[20, 30]</span></span></code></pre></div>
+      <p>これらの変換は <code>x=int('10')</code> により文字列型
+      <code>'10'</code> を <strong>整数型</strong> (int型)
+      に変換できたことと同じです。既に学習済みですが
+      <code>float</code>、<code>str</code> で同様に「<strong>実数型
+      (浮動小数点数型)</strong>」「<strong>文字列型</strong>」に変換することができます。</p>
+      <p><strong>演習</strong> :
+      次のプログラミングを実行したときの<strong>第07行目の出力</strong>を予想せよ。また、プログラムを実行して確認せよ。</p>
+      <div class="sourceCode" id="cb17"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb17-2"><a href="#cb17-2"></a>a <span class="op">=</span> [<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">30</span>]</span>
+<span id="cb17-3"><a href="#cb17-3"></a>t <span class="op">=</span> <span class="bu">tuple</span>(a)</span>
+<span id="cb17-4"><a href="#cb17-4"></a><span class="bu">print</span>(<span class="ss">f&#39;t=</span><span class="sc">{</span>t<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># =&gt; t=(10, 20, 30)</span></span>
+<span id="cb17-5"><a href="#cb17-5"></a></span>
+<span id="cb17-6"><a href="#cb17-6"></a>a[<span class="dv">1</span>] <span class="op">=</span> <span class="dv">20</span></span>
+<span id="cb17-7"><a href="#cb17-7"></a><span class="bu">print</span>(<span class="ss">f&#39;t=</span><span class="sc">{</span>t<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># =&gt; ???</span></span></code></pre></div>
+      <h1 data-number="4" id="numpy"><span
+      class="header-section-number">4</span> NumPy</h1>
+      <h2 data-number="4.1" id="numpyとは"><span
+      class="header-section-number">4.1</span> NumPyとは</h2>
+      <p><strong><em>NumPy</em></strong> (<strong>ナンパイ</strong>) は
+      <strong>Numerical Python</strong> の略称で<span
+      class="masked">Pythonの数値計算のためのライブラリ
+      (モジュール)</span>です。数値計算や科学技術計算に関連する「計算」や「処理」を<strong>簡潔なコードで記述可能</strong>で、またライブラリの本体が<span
+      class="masked">「C言語」で実装されていることから</span>、<strong>非常に高速な計算が可能</strong>なことが特長になっています。</p>
+      <p>また、NumPy
+      は、その他の様々なPythonライブラリでも内部的に使用されており、それらライブラリとデータをやり取りするときには
+      (<span
+      class="masked">引数として与える、戻り値として受け取るときには</span>)
+      NumPy の <code>ndarray</code>
+      型が頻繁に使用されます。例えば、データ処理ライブラリの「<strong>Pandas</strong>」や可視化ライブラリの「<a
+      href="https://matplotlib.org/stable/gallery/index">Matplotlib</a>」「<a
+      href="https://seaborn.pydata.org/examples/index.html">Seaborn</a>」、画像処理ライブラリの「<strong>OpenCV</strong>」、機械学習関連ライブラリの「<strong>scikit-learn</strong>」「<strong>TensorFlow</strong>」「<strong>PyTorch</strong>」などを効率よく利用するためには、NumPy
+      の基礎知識が必要となります。</p>
+      <h2 data-number="4.2" id="numpyのインポートとndarray型"><span
+      class="header-section-number">4.2</span>
+      NumPyのインポートとndarray型</h2>
+      <p>GoogleColab. 環境では既に NumPy
+      がインストールされているので、インポートすればそのまま利用することができます。また、ローカルPCに環境を構築した場合
+      (仮想環境を構築した場合) は、コマンドラインから
+      <code>pip install numpy</code> で NumPy
+      をインストールしてください。</p>
+      <div class="note type-caution">
+      <p><strong>常に最新版の pip を使用すること</strong></p>
+      <p>久しぶりに pip を実行する場合は、以下のコマンドで pip
+      を<strong>最新版にアップグレード</strong>してください。少しでもバージョンが古いと正常動作しないことがあります。詳しくは、第09回講義の<a
+      href="lecture09.html#pipの基本">pipの基本</a>を再読してください。</p>
+      <pre><code>python -m pip install --upgrade pip</code></pre>
+      </div>
+      <p>NumPy
+      がインストールされた環境では、次のようにライブラリを読み込みます。<strong>慣例的に</strong>
+      <code>np</code>
+      <strong>という略称で利用</strong>するので覚えておいてください。また、ライブラリの名称は「NumPy」ですが、<strong>インポートするときは全て小文字で</strong>
+      <code>numpy</code> と記述する点にも注意してください。</p>
+      <p>次のプログラムを実行して、その結果を確認してください。</p>
+      <div class="sourceCode" id="cb19"
+      data-caption="NumPyで行列の和を求める例"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb19-2"><a href="#cb19-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb19-3"><a href="#cb19-3"></a></span>
+<span id="cb19-4"><a href="#cb19-4"></a>A <span class="op">=</span> np.array([[<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">40</span>],[<span class="dv">50</span>,<span class="dv">40</span>,<span class="dv">30</span>]])</span>
+<span id="cb19-5"><a href="#cb19-5"></a>B <span class="op">=</span> np.array([[<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">10</span>],[<span class="dv">20</span>,<span class="dv">10</span>,<span class="dv">10</span>]])</span>
+<span id="cb19-6"><a href="#cb19-6"></a><span class="co"># print(type(A)) # =&gt; &lt;class &#39;numpy.ndarray&#39;&gt;</span></span>
+<span id="cb19-7"><a href="#cb19-7"></a><span class="bu">print</span>(A<span class="op">+</span>B)</span></code></pre></div>
+      <p>上記は、次の行列の和を計算するプログラムです。</p>
+      <p><span class="math display">\[ A=\begin{bmatrix} 20 &amp; 30
+      &amp; 40 \\ 50 &amp; 40 &amp; 30 \\ \end{bmatrix},\ \ \  
+      B=\begin{bmatrix} 10 &amp; 20 &amp; 10 \\ 20 &amp; 10 &amp; 10 \\
+      \end{bmatrix}\]</span></p>
+      <p>先ほど「<a
+      href="lecture17.html#繰返し構文と組み合わせた操作">リストと繰返しの組み合わせ</a>」のセクションの「演習」で、同じ計算をしてもらいましたが、それよりも<strong>格段に直感的で簡潔なコードになっていること</strong>が分かると思います。また、ここでは実感がないと思いますが
+      NumPy を使ったほうが <span class="masked">
+      実行にかかる時間も格段に短く</span>なっています。</p>
+      <p>第06行目のように NumPy では行列 (ベクトル) は
+      <code>ndarray</code> という <strong>型 (データ構造)</strong>
+      で扱います。「データ分析」や「可視化」「機械学習」などのライブラリを使うときは
+      <span class="masked"><code>ndarray</code> 型でデータを与える /
+      データを受け取ること</span>
+      が頻繁にあるので頭のなかに入れておいてください。</p>
+      <div class="note type-tips">
+      <p><strong>参考：NumPyを使わずに行列の和を求める場合との比較</strong></p>
+      <p>NumPy
+      ライブラリを使わずに「<strong>リストとfor文を組み合わせ</strong>」で「行列の和」を求めるプログラム例を示します。<code>ndarray</code>
+      型では単に <code>A+B</code> で計算できましたが、<code>List</code>
+      型では2重ループを使用する必要があります。</p>
+      <div class="sourceCode" id="cb20"
+      data-caption="(参考) NumPyを使わずに行列の和を求める例"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb20-2"><a href="#cb20-2"></a>A <span class="op">=</span> [[<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">40</span>],[<span class="dv">50</span>,<span class="dv">40</span>,<span class="dv">30</span>]]</span>
+<span id="cb20-3"><a href="#cb20-3"></a>B <span class="op">=</span> [[<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">10</span>],[<span class="dv">20</span>,<span class="dv">10</span>,<span class="dv">10</span>]]</span>
+<span id="cb20-4"><a href="#cb20-4"></a><span class="bu">print</span>(<span class="bu">type</span>(A)) <span class="co"># =&gt; &lt;class &#39;list&#39;&gt;</span></span>
+<span id="cb20-5"><a href="#cb20-5"></a>C <span class="op">=</span> []</span>
+<span id="cb20-6"><a href="#cb20-6"></a></span>
+<span id="cb20-7"><a href="#cb20-7"></a><span class="co"># ▼▼▼ ここから 行列の和の計算処理 ▼▼▼</span></span>
+<span id="cb20-8"><a href="#cb20-8"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(A)):</span>
+<span id="cb20-9"><a href="#cb20-9"></a>  C.append([])</span>
+<span id="cb20-10"><a href="#cb20-10"></a>  <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(A[i])):</span>
+<span id="cb20-11"><a href="#cb20-11"></a>    C[i].append( A[i][j]<span class="op">+</span>B[i][j])</span>
+<span id="cb20-12"><a href="#cb20-12"></a><span class="co"># ▲▲▲ ここまで ▲▲▲</span></span>
+<span id="cb20-13"><a href="#cb20-13"></a></span>
+<span id="cb20-14"><a href="#cb20-14"></a><span class="bu">print</span>(C)</span></code></pre></div>
+      </div>
+      <p>ベクトルや行列の <strong><em>実数倍 (スカラー倍)</em></strong>
+      は、変数 <code>A</code> が <code>ndarray</code> 型とすれば
+      <code>4*A</code> や <code>A*(-2)</code>
+      のように計算できます。また、<strong><em>積</em></strong> は変数
+      <code>A</code> と <code>B</code> が <code>ndarray</code>
+      型とすれば <code>np.dot(A,B)</code> あるいは <code>A@B</code>
+      により計算ができます。</p>
+      <div class="sourceCode" id="cb21"
+      data-caption="行列の実数倍と積"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb21-3"><a href="#cb21-3"></a>A <span class="op">=</span> np.array([[ <span class="dv">1</span>, <span class="dv">3</span>],[ <span class="dv">2</span>, <span class="dv">5</span>]])</span>
+<span id="cb21-4"><a href="#cb21-4"></a>B <span class="op">=</span> np.array([[ <span class="dv">2</span>,<span class="op">-</span><span class="dv">1</span>],[<span class="op">-</span><span class="dv">3</span>, <span class="dv">1</span>]])</span>
+<span id="cb21-5"><a href="#cb21-5"></a></span>
+<span id="cb21-6"><a href="#cb21-6"></a><span class="co">#【実数倍】 例：2A-B</span></span>
+<span id="cb21-7"><a href="#cb21-7"></a>X <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>A<span class="op">-</span>B</span>
+<span id="cb21-8"><a href="#cb21-8"></a><span class="bu">print</span>(X)</span>
+<span id="cb21-9"><a href="#cb21-9"></a></span>
+<span id="cb21-10"><a href="#cb21-10"></a><span class="co">#【積】 例：A・B</span></span>
+<span id="cb21-11"><a href="#cb21-11"></a>Y <span class="op">=</span> A<span class="op">@</span>B <span class="co"># もしくは np.dot(A,B)</span></span>
+<span id="cb21-12"><a href="#cb21-12"></a><span class="bu">print</span>(Y)</span></code></pre></div>
+      <div class="note type-caution">
+      <p><strong>ndarray 型の積の計算に関する注意</strong></p>
+      <p><code>*</code> 演算子を使用すると、いわゆる<strong>行列の積
+      (matrix product)</strong> ではなく <strong>アダマール積 (Hadamard
+      product)</strong> が計算されるので注意してください。</p>
+      </div>
+      <hr />
+      <p><strong>演習1</strong>: 行列 <span
+      class="math inline">\(A\)</span> と 行列 <span
+      class="math inline">\(B\)</span> が次のように与えられるとき <span
+      class="math inline">\(2(A-4B)*3(A+2B)\)</span> を NumPy
+      を利用して求めよ。また、適切な結果が得られていることを手計算と比較して確認せよ。※「ベクトル・行列」の教科書
+      p.47 の 問3.3</p>
+      <p><span class="math display">\[ A=\begin{bmatrix} 0 &amp; 1 \\ 5
+      &amp; 2 \\ \end{bmatrix},\ \ \  
+      B=\begin{bmatrix} 0 &amp; -1 \\ 4 &amp; 2 \\
+      \end{bmatrix}\]</span></p>
+      <p><strong>演習2</strong>:
+      次の行列の積を計算せよ。※「ベクトル・行列」の教科書 p.49 の 問3.4
+      (5)</p>
+      <p><span class="math display">\[ X=\begin{bmatrix} 2 &amp; -4
+      &amp; 3 \\ 1 &amp; 2  &amp; -3 \\ \end{bmatrix}\begin{bmatrix} 1
+      &amp; -3  &amp; 2 \\ -1 &amp; -2  &amp; 1 \\ -2 &amp; 0 &amp; 5\\
+      \end{bmatrix}\]</span></p>
+      <h2 data-number="4.3" id="要素の参照-1"><span
+      class="header-section-number">4.3</span> 要素の参照</h2>
+      <p>2次元以上の <code>ndarray</code> 型では
+      <strong>要素にアクセスする方法</strong>
+      として、次のような表記も使用できるので覚えておいてください。</p>
+      <div class="sourceCode" id="cb22"><pre
+      class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> np.array([[ <span class="dv">1</span>, <span class="dv">3</span>],[ <span class="dv">2</span>, <span class="dv">5</span>]])</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&#39;ndarray型の変数 a の1行0列目の値は =&gt; </span><span class="sc">{</span>a[<span class="dv">1</span>][<span class="dv">0</span>]<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&#39;ndarray型の変数 a の1行0列目の値は =&gt; </span><span class="sc">{</span>a[<span class="dv">1</span>,<span class="dv">0</span>]<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># 注目</span></span></code></pre></div>
+      <ul>
+      <li>リスト型に対しては <code>a[1,0]</code>
+      のような参照ができないので注意してください。</li>
+      <li><code>ndarray</code> 型では <code>a[1,0]</code>
+      を使用したほうが処理上では効率的であり、またエラーが発生した場合にも原因が特定しやすいです。</li>
+      </ul>
+      <h2 data-number="4.4" id="ブロードキャスト"><span
+      class="header-section-number">4.4</span> ブロードキャスト</h2>
+      <p>NumPy には <strong>ブロードキャスト</strong> (形状の自動変換)
+      という機能があります。これは「<strong>形状が異なる行列同士の四則演算</strong>」や「<strong>行列とスカラーの加算・減算</strong>」の際に自動で適用される機能になります。</p>
+      <p>例えば、次のような「<strong>行列からスカラーを減じる計算</strong>」は数学的には通常許されませんが、NumPy
+      では<strong>ブロードキャスト機能により可能</strong>になります。この例では、スカラー値の「3」がブロードキャストにより、<strong>2行3列の行列に自動変換</strong>
+      されて計算が行われます。</p>
+      <p><span class="math display">\[ \begin{bmatrix} 3 &amp; 4 &amp; 5
+      \\ 6 &amp; 7 &amp; 8 \\ \end{bmatrix} - 3 \]</span></p>
+      <p>つまり、NumPy
+      では、<strong>自動的に次のように解釈されて計算</strong>されます。</p>
+      <p><span class="math display">\[ \begin{bmatrix} 3 &amp; 4 &amp; 5
+      \\ 6 &amp; 7 &amp; 8 \\ \end{bmatrix} - \begin{bmatrix} 3 &amp; 3
+      &amp; 3 \\ 3 &amp; 3 &amp; 3 \\ \end{bmatrix} = \begin{bmatrix} 0
+      &amp; 1 &amp; 2 \\ 3 &amp; 4 &amp; 5 \\ \end{bmatrix}
+      \]</span></p>
+      <div class="sourceCode" id="cb23"
+      data-caption="NumPyのブロードキャスト機能"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb23-2"><a href="#cb23-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb23-3"><a href="#cb23-3"></a>A <span class="op">=</span> np.array([[<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>],[<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>]])</span>
+<span id="cb23-4"><a href="#cb23-4"></a>X <span class="op">=</span> A <span class="op">-</span> <span class="dv">3</span> <span class="co"># ここでブロードキャストが適用</span></span>
+<span id="cb23-5"><a href="#cb23-5"></a><span class="bu">print</span>(X)</span></code></pre></div>
+      <p>実行結果は次のようになります。</p>
+      <pre><code>[[0 1 2]
+ [3 4 5]]</code></pre>
+      <h2 data-number="4.5" id="余談行列の整形出力"><span
+      class="header-section-number">4.5</span> 余談：行列の整形出力</h2>
+      <p>GoogleColab. 環境や Jupyter
+      環境では次のように行列を<strong>整形出力</strong>することができます。</p>
+      <div class="sourceCode" id="cb25"
+      data-caption="行列の整形出力"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb25-2"><a href="#cb25-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb25-3"><a href="#cb25-3"></a><span class="im">import</span> sympy <span class="im">as</span> sp  <span class="co"># sympyをspとしてインポート</span></span>
+<span id="cb25-4"><a href="#cb25-4"></a>A <span class="op">=</span> np.array([[<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">40</span>],[<span class="dv">50</span>,<span class="dv">40</span>,<span class="dv">30</span>]])</span>
+<span id="cb25-5"><a href="#cb25-5"></a>B <span class="op">=</span> np.array([[<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">10</span>],[<span class="dv">20</span>,<span class="dv">10</span>,<span class="dv">10</span>]])</span>
+<span id="cb25-6"><a href="#cb25-6"></a>X <span class="op">=</span> A<span class="op">+</span>B</span>
+<span id="cb25-7"><a href="#cb25-7"></a><span class="bu">print</span>(<span class="st">&#39;A+B=&#39;</span>)</span>
+<span id="cb25-8"><a href="#cb25-8"></a>display(sp.Matrix(X)) <span class="co"># ndarray型の行列を整形出力</span></span></code></pre></div>
+      <p>実行結果は次のようになります。</p>
+      <figure>
+      <img src="figs/17/mathjax-01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <div class="note type-senior">
+      <p><strong>高度な整形出力</strong></p>
+      <p>次のように整形出力ができます。<code>sp.latex(...)</code> により
+      LaTeX形式の数式 (文字列) に変換し、<code>display(Math(..))</code>
+      によりそれをレンダリング出力します。</p>
+      <div class="sourceCode" id="cb26"
+      data-caption="行列の整形出力 (高度)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb26-2"><a href="#cb26-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb26-3"><a href="#cb26-3"></a><span class="im">import</span> sympy <span class="im">as</span> sp  <span class="co"># sympyをspとしてインポート</span></span>
+<span id="cb26-4"><a href="#cb26-4"></a><span class="im">from</span> IPython.display <span class="im">import</span> Math</span>
+<span id="cb26-5"><a href="#cb26-5"></a></span>
+<span id="cb26-6"><a href="#cb26-6"></a><span class="co"># 行列をLaTeX形式で表示する関数</span></span>
+<span id="cb26-7"><a href="#cb26-7"></a><span class="kw">def</span> display_math(equation_str, matrix):</span>
+<span id="cb26-8"><a href="#cb26-8"></a>  math_str <span class="op">=</span> equation_str <span class="op">+</span> sp.latex(sp.Matrix(matrix))</span>
+<span id="cb26-9"><a href="#cb26-9"></a>  display(Math(math_str))</span>
+<span id="cb26-10"><a href="#cb26-10"></a></span>
+<span id="cb26-11"><a href="#cb26-11"></a><span class="co"># 数値行列の作成</span></span>
+<span id="cb26-12"><a href="#cb26-12"></a>A <span class="op">=</span> np.array([[<span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>], [<span class="dv">50</span>, <span class="dv">40</span>, <span class="dv">30</span>]])</span>
+<span id="cb26-13"><a href="#cb26-13"></a>B <span class="op">=</span> np.array([[<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">10</span>], [<span class="dv">20</span>, <span class="dv">10</span>, <span class="dv">10</span>]])</span>
+<span id="cb26-14"><a href="#cb26-14"></a></span>
+<span id="cb26-15"><a href="#cb26-15"></a><span class="co"># 行列の加算</span></span>
+<span id="cb26-16"><a href="#cb26-16"></a>X <span class="op">=</span> A <span class="op">+</span> B</span>
+<span id="cb26-17"><a href="#cb26-17"></a></span>
+<span id="cb26-18"><a href="#cb26-18"></a><span class="co"># 結果の表示</span></span>
+<span id="cb26-19"><a href="#cb26-19"></a>display_math(<span class="st">&#39;A=&#39;</span>,A)</span>
+<span id="cb26-20"><a href="#cb26-20"></a>display_math(<span class="st">&#39;B=&#39;</span>,B)</span>
+<span id="cb26-21"><a href="#cb26-21"></a>display_math(<span class="st">&#39;X=A+B=&#39;</span>,X)</span></code></pre></div>
+      <p>以下、<a
+      href="lecture09.html#jupyterの実行">ローカル環境に構築したJupyter</a>で実行したときのスクリーンショットです。</p>
+      <figure>
+      <img src="figs/17/mathjax-02.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>なお、<code>display(Math(..))</code> は汎用性があるので NumPy
+      とは無関係に次のように利用もできます。</p>
+      <div class="sourceCode" id="cb27"
+      data-caption="LaTeX数式のレンダリング"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="im">from</span> IPython.display <span class="im">import</span> Math</span>
+<span id="cb27-3"><a href="#cb27-3"></a>eq1 <span class="op">=</span> <span class="vs">r&#39;\lim_{n \to -1}\frac{-1}{(x+1)^2}=-\infty&#39;</span></span>
+<span id="cb27-4"><a href="#cb27-4"></a>eq2 <span class="op">=</span> <span class="vs">r&#39;\sin^{-1}\frac{\sqrt</span><span class="sc">{3}</span><span class="vs">}</span><span class="sc">{2}</span><span class="vs">=\frac{\pi}</span><span class="sc">{3}</span><span class="vs">&#39;</span></span>
+<span id="cb27-5"><a href="#cb27-5"></a>display(Math(eq1))</span>
+<span id="cb27-6"><a href="#cb27-6"></a>display(Math(eq2))</span></code></pre></div>
+      <p>実行すれば、<strong>出力セル</strong>に次のように<strong>美しくレンダリングされた数式</strong>を得ることができます。数式のLaTeX表記については、<a
+      href="lecture06.html#colab.のテキストセルにおける数式記述">第06講義</a>や「<a
+      href="https://www.google.com/search?q=TeX+数式">TeX
+      数式</a>」などでウェブ検索してください。</p>
+      <p><span class="math display">\[ \lim_{n \to
+      -1}\frac{-1}{(x+1)^2}=-\infty \]</span> <span
+      class="math display">\[ \sin^{-1}\frac{\sqrt{3}}{2}=\frac{\pi}{3}
+      \]</span></p>
+      </div>
+      <h2 data-number="4.6" id="ndarray型とリスト型の違い"><span
+      class="header-section-number">4.6</span>
+      ndarray型とリスト型の違い</h2>
+      <p>NumPy の <code>ndarray</code>
+      型は、Python標準のリスト型と違い、次のような制約があるので注意してください。</p>
+      <ul>
+      <li><code>ndarray</code>
+      は「<strong>同じデータ型の要素</strong>」で構成する必要があります。異なるデータ型の要素を混在させることはできません。</li>
+      <li><code>ndarray</code>
+      は作成後、そのサイズを変更することができません。要素の追加や削除をしたい場合、新しい
+      <code>ndarray</code> を作成する必要があります。</li>
+      <li><code>ndarray</code>
+      は、各次元ごとに同じサイズを持つ配列のみが扱えます。<code>[[10,20,30], [40,50], [60]]</code>
+      のように各行の長さが違うような配列
+      (=「<strong>ジャグ配列</strong>」や「<strong>不規則配列</strong>」という)
+      を扱うことはできません。</li>
+      </ul>
+      <h2 data-number="4.7" id="ndarray型の初期化"><span
+      class="header-section-number">4.7</span> ndarray型の初期化</h2>
+      <p>ここまでに扱ってきたように <code>ndarray</code>
+      型は、<code>np.array()</code>
+      関数の引数に「リスト型」を与えて初期化することができました。</p>
+      <div class="sourceCode" id="cb28"
+      data-caption="リストを使った ndarray の初期化"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb28-2"><a href="#cb28-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb28-3"><a href="#cb28-3"></a></span>
+<span id="cb28-4"><a href="#cb28-4"></a>a <span class="op">=</span> [[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],[<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>]]</span>
+<span id="cb28-5"><a href="#cb28-5"></a><span class="bu">print</span>(<span class="ss">f&#39;変数 a の型は </span><span class="sc">{</span><span class="bu">type</span>(a)<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># =&gt; 変数 a の型は &lt;class &#39;list&#39;&gt;</span></span>
+<span id="cb28-6"><a href="#cb28-6"></a></span>
+<span id="cb28-7"><a href="#cb28-7"></a>A <span class="op">=</span> np.array(a) <span class="co"># a を引数に np.array() で ndarray を作成(初期化)</span></span>
+<span id="cb28-8"><a href="#cb28-8"></a><span class="bu">print</span>(<span class="ss">f&#39;変数 A の型は </span><span class="sc">{</span><span class="bu">type</span>(A)<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># =&gt; 変数 A の型は &lt;class &#39;numpy.ndarray&#39;&gt;</span></span></code></pre></div>
+      <p>この他に <code>np.arange()</code> や <code>np.linspace()</code>
+      を利用して ndarray を作成(初期化) ができます。</p>
+      <h3 data-number="4.7.1" id="np.arange-による初期化"><span
+      class="header-section-number">4.7.1</span> np.arange()
+      による初期化</h3>
+      <p><strong>0.00</strong> から <strong>3.00</strong> まで
+      <strong>0.25</strong> 刻みの値 (=<strong>等差数列</strong>)
+      を得たいときは <code>np.arange()</code> の「第1引数(開始値)」に
+      <code>0.00</code>、「第2引数(終了値(未満))」に
+      <code>3.01</code>、「第3引数(間隔)」に <code>0.25</code>
+      を与えます。なお、リストを生成する <code>range()</code> では <span
+      class="masked">「間隔」を小数値で与えること</span>ができませんでした</span>。</p>
+      <div class="sourceCode" id="cb29"
+      data-caption="np.arange() による初期化"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb29-2"><a href="#cb29-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb29-3"><a href="#cb29-3"></a>x <span class="op">=</span> np.arange(<span class="fl">0.00</span>,<span class="fl">3.01</span>,<span class="fl">0.25</span>)</span>
+<span id="cb29-4"><a href="#cb29-4"></a><span class="bu">print</span>(<span class="ss">f&#39;x.size =&gt; </span><span class="sc">{</span>x<span class="sc">.</span>size<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+<span id="cb29-5"><a href="#cb29-5"></a><span class="bu">print</span>(x)</span></code></pre></div>
+      <p>実行結果は、次のようになります。<code>x.size</code>
+      で要素数を得ることができます。終了値は「<strong>以下</strong>」ではなく「<strong>未満</strong>」の指定になることに注意してください
+      (第2引数に <code>3.00</code>
+      を指定すると、どのように結果が変わるかを確認してください) 。</p>
+      <pre><code>x.size =&gt; 13
+[0.   0.25 0.5  0.75 1.   1.25 1.5  1.75 2.   2.25 2.5  2.75 3.  ]</code></pre>
+      <h3 data-number="4.7.2" id="np.linspace-による初期化"><span
+      class="header-section-number">4.7.2</span> np.linspace()
+      による初期化</h3>
+      <p>np.linspace() では「<strong>開始値
+      (以上)</strong>」と「<strong>終了値
+      (以下)</strong>」と「分割数」与えて <code>ndarray</code>
+      型を生成することができます。例えば「0.00」以上「3.00」以下の範囲を13等分
+      (結果的には0.25刻み) にする場合は次のようにします。</p>
+      <div class="sourceCode" id="cb31"
+      data-caption="np.linspace() による初期化"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb31-2"><a href="#cb31-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb31-3"><a href="#cb31-3"></a>x <span class="op">=</span> np.linspace(<span class="fl">0.00</span>,<span class="fl">3.00</span>,<span class="dv">13</span>)</span>
+<span id="cb31-4"><a href="#cb31-4"></a><span class="cf">assert</span> x.size <span class="op">==</span> <span class="dv">13</span></span>
+<span id="cb31-5"><a href="#cb31-5"></a><span class="bu">print</span>(x)</span></code></pre></div>
+      <p>実行結果 (<code>ndarray</code>型の変数<code>x</code>の内容)
+      は、先ほどと同じく次のようになります。第04行目の
+      <strong>assert文</strong> について忘れてしまった学生は<a
+      href="lecture11.html#アサート文">第11回講義</a>を再読してください。</p>
+      <pre><code>[0.   0.25 0.5  0.75 1.   1.25 1.5  1.75 2.   2.25 2.5  2.75 3.  ]</code></pre>
+      <h2 data-number="4.8" id="ndarray型とリスト型の相互変換"><span
+      class="header-section-number">4.8</span>
+      ndarray型とリスト型の相互変換</h2>
+      <p>NumPyの「ndarray型」と「リスト型」は次のように<strong>相互変換</strong>できます。実際にプログラミングを実行して確認してみてください。</p>
+      <div class="sourceCode" id="cb33"
+      data-caption="リスト型をndarray型に変換"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb33-2"><a href="#cb33-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb33-3"><a href="#cb33-3"></a></span>
+<span id="cb33-4"><a href="#cb33-4"></a>p <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">10</span>,<span class="dv">16</span>)) <span class="co"># リスト型を生成</span></span>
+<span id="cb33-5"><a href="#cb33-5"></a><span class="bu">print</span>(<span class="bu">type</span>(p))  <span class="co"># =&gt; &lt;class &#39;list&#39;&gt;</span></span>
+<span id="cb33-6"><a href="#cb33-6"></a><span class="bu">print</span>(<span class="ss">f&#39;p=</span><span class="sc">{</span>p<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># =&gt; p=[10, 11, 12, 13, 14, 15]</span></span>
+<span id="cb33-7"><a href="#cb33-7"></a><span class="bu">print</span>()</span>
+<span id="cb33-8"><a href="#cb33-8"></a></span>
+<span id="cb33-9"><a href="#cb33-9"></a>q <span class="op">=</span> np.array(p) <span class="co"># リスト型→ndarray型に変換</span></span>
+<span id="cb33-10"><a href="#cb33-10"></a></span>
+<span id="cb33-11"><a href="#cb33-11"></a><span class="bu">print</span>(<span class="bu">type</span>(q))  <span class="co"># =&gt; &lt;class &#39;numpy.ndarray&#39;&gt;</span></span>
+<span id="cb33-12"><a href="#cb33-12"></a><span class="bu">print</span>(<span class="ss">f&#39;q=</span><span class="sc">{</span>q<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># =&gt; q=[10 11 12 13 14 15]</span></span></code></pre></div>
+      <div class="sourceCode" id="cb34"
+      data-caption="ndarray型をリスト型に変換"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb34-2"><a href="#cb34-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb34-3"><a href="#cb34-3"></a></span>
+<span id="cb34-4"><a href="#cb34-4"></a>q <span class="op">=</span> np.arange(<span class="dv">10</span>,<span class="dv">16</span>) <span class="co"># ndarray型を生成</span></span>
+<span id="cb34-5"><a href="#cb34-5"></a><span class="bu">print</span>(<span class="bu">type</span>(q))  <span class="co"># =&gt; &lt;class &#39;numpy.ndarray&#39;&gt;</span></span>
+<span id="cb34-6"><a href="#cb34-6"></a><span class="bu">print</span>(<span class="ss">f&#39;q=</span><span class="sc">{</span>q<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># =&gt; q=[10 11 12 13 14 15]</span></span>
+<span id="cb34-7"><a href="#cb34-7"></a><span class="bu">print</span>()</span>
+<span id="cb34-8"><a href="#cb34-8"></a></span>
+<span id="cb34-9"><a href="#cb34-9"></a>p <span class="op">=</span> q.tolist()  <span class="co"># ndarray型→リスト型に変換</span></span>
+<span id="cb34-10"><a href="#cb34-10"></a></span>
+<span id="cb34-11"><a href="#cb34-11"></a><span class="bu">print</span>(<span class="bu">type</span>(p))  <span class="co"># =&gt; &lt;class &#39;list&#39;&gt;</span></span>
+<span id="cb34-12"><a href="#cb34-12"></a><span class="bu">print</span>(<span class="ss">f&#39;p=</span><span class="sc">{</span>p<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># =&gt; p=[10, 11, 12, 13, 14, 15]</span></span></code></pre></div>
+      <p>ここでは、リスト型と <code>ndarray</code> 型 では <span
+      class="masked"><code>print</code> 関数で出力したときの表示
+      (カンマの有無) が違うこと</span> また <span
+      class="masked">等差数列を生成するときの関数 /
+      メソッドの名前が微妙に違うこと (<code>range</code> と
+      <code>arange</code> )</span> に注意してください。</p>
+      <p><strong>演習1</strong>: <code>[10, 15.5, 20]</code>
+      のような整数型 (<code>int</code>) と浮動小数点数型
+      (<code>float</code>) が混在するリストを <code>ndarray</code>
+      型に変換しようとするとどうなるか確認せよ。また
+      <code>[10, 15.0, 20]</code> の場合はどうなるか確認せよ。</p>
+      <p><strong>演習2</strong>: タプル型 を <code>ndarray</code>
+      型に変換するためにはどうすればよいか。逆に <code>ndarray</code>
+      型を タプル型 に変換するためにはどうすばよいか。</p>
+      <h1 data-number="5"
+      id="numpyを活用した数学関数計算とグラフ描画"><span
+      class="header-section-number">5</span>
+      NumPyを活用した数学関数計算とグラフ描画</h1>
+      <h2 data-number="5.1" id="数学関数の計算"><span
+      class="header-section-number">5.1</span> 数学関数の計算</h2>
+      <p>NumPy
+      を利用すると数学関数の「<strong>数値計算</strong>」を効率的に実行することができます。例えば
+      <span class="math inline">\(y=2*x+3\)</span> について <span
+      class="math inline">\(0\le x \le 1.0\)</span> の範囲における <span
+      class="math inline">\(0.1\)</span> 刻みの <span
+      class="math inline">\(y\)</span>
+      の値は次のように計算できます。</p>
+      <div class="sourceCode" id="cb35"><pre
+      class="sourceCode python"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span>  numpy <span class="im">as</span> np</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="fl">0.0</span>,<span class="fl">1.0</span>,<span class="dv">11</span>) <span class="co"># 0.0 から 1.0 の範囲を11等分</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&#39;x = </span><span class="sc">{</span>x<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>x <span class="op">+</span> <span class="dv">3</span> <span class="co"># ブロードキャストによる計算</span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&#39;y = </span><span class="sc">{</span>y<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+      <p>NumPyの初期化とブロードキャスト計算によって <span
+      class="masked">繰り返し構文を用いることなく簡潔にコードが記述できている</span>ことが分かります。実行結果は次のようになります
+      (ここでは、見やすいようにスペースを追加しています)。<code>print</code>
+      関数で <code>ndarray</code>
+      型を出力すると「3.0」は「3.」のように省略表示される点に注意してください。</p>
+      <pre><code>x = [0.  0.1  0.2  0.3  0.4  0.5  0.6  0.7  0.8  0.9  1. ]
+y = [3.  3.2  3.4  3.6  3.8  4.   4.2  4.4  4.6  4.8  5. ]</code></pre>
+      <h2 data-number="5.2" id="グラフ描画"><span
+      class="header-section-number">5.2</span> グラフ描画</h2>
+      <p><a
+      href="lecture11.html#斜方投射のシミュレーションと可視化">第11回講義</a>
+      で簡単に紹介したように Python には <strong>Matplotlib</strong>
+      (マットプロットリブ) という <strong>可視化支援ライブラリ</strong>
+      があります。Matplotlib は <strong>シンプルなグラフ描画</strong>
+      から <strong>Excelでは不可能な高度な可視化
+      (Visualization)</strong>
+      までを幅広くサポートしており、様々な場面で利用されています。</p>
+      <ul>
+      <li><a
+      href="https://matplotlib.org/stable/gallery/index.html">Matplotlib
+      で作成可能なグラフ例</a></li>
+      </ul>
+      <p>Matplotlib
+      には<strong>リスト型でデータを与えることも可能です</strong>が、<code>ndarray</code>
+      型にも対応しています。特に<span
+      class="masked">多次元の配列</span>については、リスト型ではなく
+      <code>ndarray</code> 型で与えることが現実的になります。</p>
+      <p>以下に、NumPy で関数 <span
+      class="math inline">\(f(x)=-x^3+3x^2+9x-27\)</span>
+      について、<span class="math inline">\(-4\le x \le 4\)</span>
+      の範囲を数値計算したものを Matplotlib
+      により可視化する例を示します。プログラムを実行して結果を確認してください。</p>
+      <div class="sourceCode" id="cb37"
+      data-caption="NumPy と Matplotlib の組み合わせ"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb37-2"><a href="#cb37-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb37-3"><a href="#cb37-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt  <span class="co"># Matplotlib の読込み</span></span>
+<span id="cb37-4"><a href="#cb37-4"></a></span>
+<span id="cb37-5"><a href="#cb37-5"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">101</span>)</span>
+<span id="cb37-6"><a href="#cb37-6"></a>y <span class="op">=</span> <span class="op">-</span>x<span class="op">**</span><span class="dv">3</span> <span class="op">+</span> <span class="dv">3</span><span class="op">*</span>x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> <span class="dv">9</span><span class="op">*</span>x <span class="op">-</span><span class="dv">27</span></span>
+<span id="cb37-7"><a href="#cb37-7"></a><span class="cf">assert</span> <span class="bu">type</span>(x) <span class="op">==</span> np.ndarray  <span class="co"># x は ndarray型であることを確認</span></span>
+<span id="cb37-8"><a href="#cb37-8"></a><span class="cf">assert</span> <span class="bu">type</span>(y) <span class="op">==</span> np.ndarray  <span class="co"># y は 〃</span></span>
+<span id="cb37-9"><a href="#cb37-9"></a></span>
+<span id="cb37-10"><a href="#cb37-10"></a>fig,ax <span class="op">=</span> plt.subplots(dpi<span class="op">=</span><span class="dv">120</span>)</span>
+<span id="cb37-11"><a href="#cb37-11"></a><span class="co"># ax.plot(x,y)</span></span>
+<span id="cb37-12"><a href="#cb37-12"></a>ax.scatter(x,y,marker<span class="op">=</span><span class="st">&#39;o&#39;</span>,s<span class="op">=</span><span class="dv">15</span>,alpha<span class="op">=</span><span class="fl">0.5</span>) <span class="co"># x と y を与えて丸を描画</span></span>
+<span id="cb37-13"><a href="#cb37-13"></a>ax.axhline(<span class="dv">0</span>,c<span class="op">=</span><span class="st">&#39;black&#39;</span>,lw<span class="op">=</span><span class="fl">0.5</span>) <span class="co"># y=0 に太線を描画</span></span>
+<span id="cb37-14"><a href="#cb37-14"></a>ax.axvline(<span class="dv">0</span>,c<span class="op">=</span><span class="st">&#39;black&#39;</span>,lw<span class="op">=</span><span class="fl">0.5</span>) <span class="co"># x=0 に太線を描画</span></span>
+<span id="cb37-15"><a href="#cb37-15"></a>ax.grid() <span class="co"># グリッドの表示</span></span>
+<span id="cb37-16"><a href="#cb37-16"></a>plt.show()</span></code></pre></div>
+      <p>このプログラムでは、特に <strong>第12行目</strong>
+      で「<code>ndarray</code> 型の <code>x</code> と
+      <code>y</code>」を描画データとして Matplotlib
+      の関数に与えている点に注意してください。</p>
+      <p><strong>演習1</strong>: <strong>第05行目</strong> を
+      <code>x = np.linspace(-4,4,51)</code>
+      に変更するどうなるか予想し、実際に結果を確認せよ。</p>
+      <p><strong>演習2</strong>: <strong>第05行目</strong> を
+      <code>x = np.linspace(-4,6,101)</code>
+      に変更するどうなるか予想し、実際に結果を確認せよ。</p>
+      <p><strong>演習3</strong>: <strong>第12行目</strong> の引数
+      <code>marker='o'</code> を <code>marker='x'</code>
+      に変更して結果を確認せよ。</p>
+      <p><strong>演習4</strong>: <strong>第12行目</strong>
+      をコメントアウトして、<strong>第11行目</strong>
+      をアンコメントして結果を確認せよ。</p>
+      <h1 data-number="6" id="画像処理"><span
+      class="header-section-number">6</span> 画像処理</h1>
+      <p>画像処理ライブラリである<a
+      href="https://www.google.com/search?q=OpenCVとは">OpenCV</a>において「画像」は
+      NumPy の <code>ndarray</code> 型として扱われます。</p>
+      <p>前期の「情報2」の<a
+      href="https://classroom.google.com/c/NjAzMjM4NjAzNTQ3/m/NTE4NDg3MTA5MzQx/details">第05回講義</a>
+      で学んだように、ラスター形式の画像（ビットマップ形式の画像）は、通常、2次元に並べられた数値によって表現されます。Python
+      の OpenCVライブラリ では効率性や機能性の理由から <span
+      class="masked">これら画像を「リスト型」ではなく、2次元または3次元の「<code>ndarray</code>
+      型」として扱います</span>。</p>
+      <p>以下に、OpenCV において NumPy
+      が使われていることが確認できるプログラムを示します。なお、プログラムを実行する場合は
+      <a href="figs/17/lenna_256x256.png">lenna_256x256.png</a>
+      を実行フォルダに配置してください。GoogleClab.の場合は画像を<a
+      href="https://www.google.com/search?q=google+colab+ファイルアップロード">アップロード</a>してください。</p>
+      <p>ここでは、特に<strong>第22行目</strong>
+      の<strong>ネガポジ変換処理</strong> (
+      <code>img_r = 255 - img</code> ) で NumPy
+      の<strong>ブロードキャスト機能</strong>が効果的に活用されていることに注目してください。画像のネガポジ変換について忘れてしまった学生は、「情報2」の第05回講義資料の
+      p.84 を参照してください。</p>
+      <div class="sourceCode" id="cb38"
+      data-caption="NumPy と OpenCV の組み合わせ"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a><span class="im">import</span> cv2</span>
+<span id="cb38-2"><a href="#cb38-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb38-3"><a href="#cb38-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb38-4"><a href="#cb38-4"></a></span>
+<span id="cb38-5"><a href="#cb38-5"></a><span class="co"># 画像表示(Matplotlibのimshowを利用)</span></span>
+<span id="cb38-6"><a href="#cb38-6"></a><span class="kw">def</span> show_image(img):</span>
+<span id="cb38-7"><a href="#cb38-7"></a>  plt.imshow(img,cmap<span class="op">=</span><span class="st">&#39;gray&#39;</span>)</span>
+<span id="cb38-8"><a href="#cb38-8"></a>  plt.axis(<span class="st">&#39;off&#39;</span>)</span>
+<span id="cb38-9"><a href="#cb38-9"></a>  plt.show()</span>
+<span id="cb38-10"><a href="#cb38-10"></a></span>
+<span id="cb38-11"><a href="#cb38-11"></a><span class="co"># 画像をグレースケール(8bit)で読み込み</span></span>
+<span id="cb38-12"><a href="#cb38-12"></a>img <span class="op">=</span> cv2.imread(<span class="st">&#39;lenna_256x256.png&#39;</span>,cv2.IMREAD_GRAYSCALE)</span>
+<span id="cb38-13"><a href="#cb38-13"></a></span>
+<span id="cb38-14"><a href="#cb38-14"></a><span class="co"># 変数imgが格納するオブジェクトの基本情報の確認</span></span>
+<span id="cb38-15"><a href="#cb38-15"></a><span class="bu">print</span>(<span class="ss">f&#39;img は </span><span class="sc">{</span><span class="bu">type</span>(img)<span class="sc">}</span><span class="ss"> 型のデータで、&#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb38-16"><a href="#cb38-16"></a><span class="bu">print</span>(<span class="ss">f&#39;次元は </span><span class="sc">{</span>img<span class="sc">.</span>ndim<span class="sc">}</span><span class="ss">、サイズは </span><span class="sc">{</span>img<span class="sc">.</span>shape<span class="sc">}</span><span class="ss"> です。&#39;</span>)</span>
+<span id="cb38-17"><a href="#cb38-17"></a></span>
+<span id="cb38-18"><a href="#cb38-18"></a><span class="co"># 画像の出力</span></span>
+<span id="cb38-19"><a href="#cb38-19"></a>show_image(img)</span>
+<span id="cb38-20"><a href="#cb38-20"></a></span>
+<span id="cb38-21"><a href="#cb38-21"></a><span class="co"># 反転処理と処理後画像の出力</span></span>
+<span id="cb38-22"><a href="#cb38-22"></a>img_r <span class="op">=</span> <span class="dv">255</span> <span class="op">-</span> img</span>
+<span id="cb38-23"><a href="#cb38-23"></a>show_image(img_r)</span></code></pre></div>
+      <p><code>ndarray</code> 型は <code>.ndim</code> で<strong>次元数
+      (number of dimensions)</strong>
+      が取得可能です。また、<code>.shape</code>
+      で配列の形状、つまり、<strong>各次元のサイズ
+      (2次元であれば行数と列数) </strong>
+      が取得可能です。これらは、開発中やデバッグでよく使用するので覚えておいてください。</p>
+      <h1 data-number="7" id="numpyを活用した高速計算"><span
+      class="header-section-number">7</span>
+      NumPyを活用した高速計算</h1>
+      <p>NumPy
+      を使用すると<strong>配列に関連する計算</strong>を高速に実行することができます。次のプログラムは
+      0以上1未満の乱数を 10,000,000
+      個生成し、それを配列に格納して平均値を求める例です。この例ではNumPyを「使わない場合」と「使う場合」の計算時間を比較しています。<code>%timeit</code>
+      は GoogleColab. または Jupyter のマジックコマンドであり、<span
+      class="masked">指定した行のコードの「平均実行時間」を繰り返し試行することにより計測する機能</span>
+      です。</p>
+      <div class="sourceCode" id="cb39" data-caption="平均値の計算"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb39-2"><a href="#cb39-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb39-3"><a href="#cb39-3"></a></span>
+<span id="cb39-4"><a href="#cb39-4"></a><span class="co"># 10,000,000個の乱数を生成</span></span>
+<span id="cb39-5"><a href="#cb39-5"></a>q <span class="op">=</span> np.random.rand(<span class="dv">10_000_000</span>)</span>
+<span id="cb39-6"><a href="#cb39-6"></a>p <span class="op">=</span> q.tolist()</span>
+<span id="cb39-7"><a href="#cb39-7"></a></span>
+<span id="cb39-8"><a href="#cb39-8"></a><span class="co"># リストとして平均値を計算</span></span>
+<span id="cb39-9"><a href="#cb39-9"></a><span class="cf">assert</span> <span class="bu">type</span>(p) <span class="op">==</span> <span class="bu">list</span> </span>
+<span id="cb39-10"><a href="#cb39-10"></a><span class="op">%</span>timeit <span class="bu">sum</span>(p)<span class="op">/</span><span class="bu">len</span>(p)</span>
+<span id="cb39-11"><a href="#cb39-11"></a></span>
+<span id="cb39-12"><a href="#cb39-12"></a><span class="co"># ndarray として平均値を計算</span></span>
+<span id="cb39-13"><a href="#cb39-13"></a><span class="cf">assert</span> <span class="bu">type</span>(q) <span class="op">==</span> np.ndarray </span>
+<span id="cb39-14"><a href="#cb39-14"></a><span class="op">%</span>timeit q.mean()</span></code></pre></div>
+      <p>実行結果の一例を示します。</p>
+      <pre><code>60.3 ms ± 835 µs per loop (mean ± std. dev. of 7 runs, 10 loops each)
+7.78 ms ± 664 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)</code></pre>
+      <p>この結果から、NumPyを使用した場合、配列の平均値を計算する時間が格段に短くなっていることが分かります。これは
+      NumPy ライブラリが C言語
+      で実装されてており、そこで計算が実行されているためです。</p>
+      <p><code>60.3 ms ± 835 µs per loop (mean ± std. dev. of 7 runs, 10 loops each)</code>
+      は、「このプログラム (当該行の文) は平均して 60.3 ミリ秒で実行され
+      835マイクロ秒 の標準偏差があります。この計測は 7回
+      の試行で行われ、各試行は 10回
+      繰り返されました」という意味になります。</p>
+      <h1 data-number="8"
+      id="googlecolab-の-ノートブックを-github-にプッシュする方法"><span
+      class="header-section-number">8</span> GoogleColab の
+      ノートブックを GitHub にプッシュする方法</h1>
+      <p><a href="https://colab.research.google.com/">Google
+      Colab.</a>で作成したノートブックは、既存の GitHubリポジトリ
+      に追加して一般公開することができます。以下に手順を示します。</p>
+      <ol type="1">
+      <li><a
+      href="https://github.com/">GitHub</a>に<strong>リポジトリ</strong>を作成しておきます。完全に「空」のリポジトリ
+      (=<strong>ブランチが存在ない状態のリポジトリ</strong>) には
+      GoogleColab からプッシュできないので、<code>README.md</code>
+      などを作成しておいてください。</li>
+      </ol>
+      <figure>
+      <img src="figs/17/g-colab-02.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <ol start="2" type="1">
+      <li>Google Colab. でノートブックを作成します。</li>
+      <li>Colab.
+      のメニューから「<strong>ファイル</strong>」-「<strong>GitHubにコピーを保存</strong>」を選択します。なお<strong>初回時は</strong>「Colaboratory
+      が GitHub
+      からの認証を待機しています」と表示され、認証ダイアログが立ちあがるので認証情報を入力してください。</li>
+      <li>ノートブックをコミット・プッシュする先の「リポジトリ」や「ブランチ」を選択し、「コミットメッセージ」を設定して「<strong>OK</strong>」を押下してください。</li>
+      <li>コミットとプッシュに成功するとブラウザのタブが立ち上がって
+      GitHub に移動します。</li>
+      </ol>
+      <figure>
+      <img src="figs/17/g-colab-03.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>以上の手順で</p>
+      <!-- ---------------------------------------- -->
+    </main>
+
+    <footer class="markdown-body">
+      <p><a href="https://takeshiwada1980.github.io/Programming1-2023/">講義資料のIndexに移動</a></p>
+    </footer>
+
+    <script>
+      window.onload = function () {
+        // ナビゲーション関連
+        let openBtn = document.getElementsByClassName("openbtn")[0];
+        let navPnl = document.getElementById("g-nav");
+        openBtn.onclick = () => {
+          openBtn.classList.toggle("active");
+          navPnl.classList.toggle("panelactive");
+        };
+
+        let items = navPnl.getElementsByTagName("a");
+        Array.from(items).forEach((item) => {
+          item.onclick = () => {
+            openBtn.classList.toggle("active");
+            navPnl.classList.toggle("panelactive");
+          };
+        });
+
+        // マスク処理
+        let maskedSpans = document.getElementsByClassName("masked");
+        Array.from(maskedSpans).forEach((span) => {
+          span.onclick = () => {
+            span.classList.toggle("open");
+          };
+        });
+
+        // 画像にリンクを付与
+        let images = document.querySelectorAll("figure img");
+        Array.from(images).forEach((img) => {
+          img.onclick = () => {
+            location.href = img.getAttribute("src");
+          };
+        });
+      };
+    </script>
+  </body>
+</html>
