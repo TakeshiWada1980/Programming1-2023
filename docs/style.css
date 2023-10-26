@@ -37,15 +37,18 @@ html {
   padding: 0px 45px;
 }
 
+mjx-container {
+  font-size: 100% !important;
+}
+
 @media (max-width: 767px) {
   .markdown-body {
     padding-left: 15px;
     padding-right: 15px;
   }
-}
-
-mjx-container {
-  font-size: 85% !important;
+  mjx-container {
+    font-size: 85% !important;
+  }
 }
 
 main.markdown-body p {
