@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+
+    <script>
+      MathJax = {
+        chtml: {
+          displayAlign: "left",
+          displayIndent: "1em",
+        },
+      };
+    </script>
+
+     <script
+src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+type="text/javascript"></script> 
+
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>第18回 2I-プログラミング1</title>
+  </head>
+
+  <body>
+    <div class="openbtn"><span></span><span></span><span></span></div>
+    <nav id="g-nav">
+      <div id="g-nav-list">
+        <!-- ---------------------------------------- -->
+         <ul>
+<li><a href="#概要連絡" id="toc-概要連絡"><span
+class="toc-section-number">1</span> 概要・連絡</a>
+<ul>
+<li><a href="#連絡事項" id="toc-連絡事項"><span
+class="toc-section-number">1.1</span> 連絡事項</a></li>
+<li><a href="#今回講義の達成目標" id="toc-今回講義の達成目標"><span
+class="toc-section-number">1.2</span> 今回講義の達成目標</a></li>
+<li><a href="#プログラミング学習のポイント"
+id="toc-プログラミング学習のポイント"><span
+class="toc-section-number">1.3</span>
+プログラミング学習のポイント</a></li>
+</ul></li>
+<li><a href="#タプルとfor文の組み合わせ"
+id="toc-タプルとfor文の組み合わせ"><span
+class="toc-section-number">2</span> タプルとfor文の組み合わせ</a></li>
+<li><a href="#論理演算" id="toc-論理演算"><span
+class="toc-section-number">3</span> 論理演算</a>
+<ul>
+<li><a href="#ブール値" id="toc-ブール値"><span
+class="toc-section-number">3.1</span> ブール値</a></li>
+<li><a href="#論理和論理積論理否定" id="toc-論理和論理積論理否定"><span
+class="toc-section-number">3.2</span> 論理和・論理積・論理否定</a></li>
+</ul></li>
+<li><a href="#テキストファイルの読み込みと書き込み"
+id="toc-テキストファイルの読み込みと書き込み"><span
+class="toc-section-number">4</span>
+テキストファイルの「読み込み」と「書き込み」</a>
+<ul>
+<li><a href="#準備-テキストファイルの作成"
+id="toc-準備-テキストファイルの作成"><span
+class="toc-section-number">4.1</span> 準備:
+テキストファイルの作成</a></li>
+<li><a href="#テキストファイルの読み込み"
+id="toc-テキストファイルの読み込み"><span
+class="toc-section-number">4.2</span>
+テキストファイルの読み込み</a></li>
+<li><a href="#テキストファイルの処理"
+id="toc-テキストファイルの処理"><span
+class="toc-section-number">4.3</span> テキストファイルの処理</a>
+<ul>
+<li><a href="#末尾の改行削除とカンマ位置での文字列分割"
+id="toc-末尾の改行削除とカンマ位置での文字列分割"><span
+class="toc-section-number">4.3.1</span>
+「末尾の改行削除」と「カンマ位置での文字列分割」</a></li>
+<li><a href="#文字列の分割" id="toc-文字列の分割"><span
+class="toc-section-number">4.3.2</span> 文字列の分割</a></li>
+<li><a href="#処理を組み合わせて辞書型に格納"
+id="toc-処理を組み合わせて辞書型に格納"><span
+class="toc-section-number">4.3.3</span>
+処理を組み合わせて辞書型に格納</a></li>
+<li><a href="#補足-型変換" id="toc-補足-型変換"><span
+class="toc-section-number">4.3.4</span> (補足) 型変換</a></li>
+<li><a href="#補足-不足情報の確認" id="toc-補足-不足情報の確認"><span
+class="toc-section-number">4.3.5</span> (補足) 不足情報の確認</a></li>
+</ul></li>
+<li><a href="#テキストファイルの書き込み"
+id="toc-テキストファイルの書き込み"><span
+class="toc-section-number">4.4</span>
+テキストファイルの書き込み</a></li>
+<li><a href="#考察" id="toc-考察"><span
+class="toc-section-number">4.5</span> 考察</a></li>
+</ul></li>
+<li><a href="#json形式のシリアライズとデシリアライズ"
+id="toc-json形式のシリアライズとデシリアライズ"><span
+class="toc-section-number">5</span>
+JSON形式のシリアライズとデシリアライズ</a>
+<ul>
+<li><a href="#シリアライズ" id="toc-シリアライズ"><span
+class="toc-section-number">5.1</span> シリアライズ</a></li>
+<li><a href="#デシリアライズ" id="toc-デシリアライズ"><span
+class="toc-section-number">5.2</span> デシリアライズ</a></li>
+<li><a href="#注意点" id="toc-注意点"><span
+class="toc-section-number">5.3</span> 注意点</a></li>
+</ul></li>
+<li><a href="#pickle形式のシリアライズとデシリアライズ"
+id="toc-pickle形式のシリアライズとデシリアライズ"><span
+class="toc-section-number">6</span>
+pickle形式のシリアライズとデシリアライズ</a>
+<ul>
+<li><a href="#シリアライズ-1" id="toc-シリアライズ-1"><span
+class="toc-section-number">6.1</span> シリアライズ</a></li>
+<li><a href="#デシリアライズ-1" id="toc-デシリアライズ-1"><span
+class="toc-section-number">6.2</span> デシリアライズ</a></li>
+<li><a href="#注意点-1" id="toc-注意点-1"><span
+class="toc-section-number">6.3</span> 注意点</a></li>
+</ul></li>
+<li><a href="#pandas-を使った-csv-excel-ファイルの読み込み"
+id="toc-pandas-を使った-csv-excel-ファイルの読み込み"><span
+class="toc-section-number">7</span> Pandas を使った CSV / Excel
+ファイルの読み込み</a>
+<ul>
+<li><a href="#pandas-のインストール"
+id="toc-pandas-のインストール"><span
+class="toc-section-number">7.1</span> Pandas のインストール</a></li>
+<li><a href="#csvファイルの読込み" id="toc-csvファイルの読込み"><span
+class="toc-section-number">7.2</span> CSVファイルの読込み</a></li>
+<li><a href="#任意列をndarray型に変換"
+id="toc-任意列をndarray型に変換"><span
+class="toc-section-number">7.3</span> 任意列をndarray型に変換</a></li>
+<li><a href="#dataframe型を引数とするグラフ描画と整形"
+id="toc-dataframe型を引数とするグラフ描画と整形"><span
+class="toc-section-number">7.4</span>
+DataFrame型を引数とするグラフ描画と整形</a></li>
+</ul></li>
+<li><a href="#課題07" id="toc-課題07"><span
+class="toc-section-number">8</span> 課題07</a></li>
+</ul> 
+        <!-- ---------------------------------------- -->
+      </div>
+    </nav>
+
+    <header class="markdown-body">
+      <p>2023-2I プログラミング1 第18回 講義資料</p>
+      <p>2023年10月30日（月）1・2時限</p>
+    </header>
+
+    <main class="markdown-body">
+      <!-- ---------------------------------------- -->
+      <h1 data-number="1" id="概要連絡"><span
+      class="header-section-number">1</span> 概要・連絡</h1>
+      <h2 data-number="1.1" id="連絡事項"><span
+      class="header-section-number">1.1</span> 連絡事項</h2>
+      <ul>
+      <li>前回実施の <strong><em>小テスト01</em></strong>
+      で8点未満だった学生は、再度、小テストを実施します。
+      <ul>
+      <li>小テスト01 (1回目) で <strong>8点以上</strong> →
+      点数をそのまま成績評価に使用</li>
+      <li>小テスト01 (1回目) で <strong>8点未満</strong> → 小テスト01
+      の「1回目」と「2回目」の平均を成績に使用 (上限は8点)</li>
+      </ul></li>
+      <li>講義資料の最後に <strong><em>課題07</em></strong> <a
+      href="#課題07">ポートフォリオの作成</a>に関する説明があります。</li>
+      <li>今回の講義でも <code>%%writefile</code> などの <a
+      href="lecture03.html#補足-マジックコマンド">マジックコマンド</a>
+      を使用するので<a
+      href="https://colab.research.google.com/?hl=ja">GoogleColab.</a>もしくは<a
+      href="lecture09.html#jupyterの実行">ローカルPCに構築したJupyter環境</a>の利用を推奨します。</li>
+      <li>次回の授業は2週間後の 11月13日(月) になります。</li>
+      </ul>
+      <h2 data-number="1.2" id="今回講義の達成目標"><span
+      class="header-section-number">1.2</span> 今回講義の達成目標</h2>
+      <ul>
+      <li>基本的な<strong>論理演算</strong>ができる。</li>
+      <li>テキストファイルの基本的な「<strong>読み込み</strong>」と「<strong>書き込み</strong>」ができる。</li>
+      <li><code>json</code> と <code>pickle</code>
+      ライブラリを利用した「<strong>シリアライズ</strong>」と「<strong>デシリアライズ</strong>」ができる。</li>
+      </ul>
+      <h2 data-number="1.3" id="プログラミング学習のポイント"><span
+      class="header-section-number">1.3</span>
+      プログラミング学習のポイント</h2>
+      <p>モチベーションを保って
+      <strong>効果的にプログラミングを習得するコツ</strong>
+      は「授業や参考書で与えられる課題や演習」をこなすのではなく、<strong>「自分が
+      “真似してつくってみたい”
+      と思えるモノやサービス」</strong>や、<span
+      class="masked">身近な人が「あったら便利、助かる～」って思ってくれそうなアイデア</span>
+      を見つけ、それを設計・実装することです。</p>
+      <p>そのためには日頃から「<strong>この作業をプログラムで自動化できないか?</strong>」や<span
+      class="masked">この作業や行動に付加価値をつけることができないか?</span>
+      といったことを頭の片隅で考える癖をつけておくことが大切です。</p>
+      <h1 data-number="2" id="タプルとfor文の組み合わせ"><span
+      class="header-section-number">2</span>
+      タプルとfor文の組み合わせ</h1>
+      <p>前回講義では<a
+      href="lecture17.html#タプル型-tuple">タプル</a>について学びました。タプルは「<strong>アンパック</strong>」と組み合わせて、繰り返し構文の「<strong>ループ変数</strong>」としても利用されます
+      (アンパック自体は<a
+      href="lecture07.html#アンパック-多重代入展開">第07回講義</a>で簡単に触れています)
+      。</p>
+      <p>まず、<strong>アンパック (unpacking)</strong> とは、次のように
+      <span
+      class="masked">「タプル」を展開して各要素を「個別の変数」に代入する操作のこと</span>
+      を指します。以下にアンパックを使った例を示します。</p>
+      <div class="sourceCode" id="cb1"
+      data-caption="タプルのアンパック"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>tpl <span class="op">=</span> (<span class="dv">2</span>,<span class="st">&#39;知能情報&#39;</span>,<span class="st">&#39;高専太郎&#39;</span>) <span class="co"># タプルの作成</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="bu">print</span>(<span class="bu">type</span>(tpl)) <span class="co">#=&gt; &lt;class &#39;tuple&#39;&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a>grade, course, name <span class="op">=</span> tpl  <span class="co"># アンパック:「右辺のタプル」を「左辺の変数」に展開</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="bu">print</span>(<span class="bu">type</span>(grade))  <span class="co">#=&gt; &lt;class &#39;int&#39;&gt;</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="bu">print</span>(<span class="bu">type</span>(course)) <span class="co">#=&gt; &lt;class &#39;str&#39;&gt;</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="bu">print</span>(<span class="bu">type</span>(name))   <span class="co">#=&gt; &lt;class &#39;str&#39;&gt;</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="bu">print</span>(<span class="ss">f&#39;grade  = </span><span class="sc">{</span>grade<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="bu">print</span>(<span class="ss">f&#39;course = </span><span class="sc">{</span>course<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="bu">print</span>(<span class="ss">f&#39;name   = </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+      <p>そして「タプルのタプル」あるいは「タプルのリスト」について、次のように「for文」と「アンパック」を組み合わせて利用することがあります。</p>
+      <div class="sourceCode" id="cb2"
+      data-caption="tuple-for-01.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb2-2"><a href="#cb2-2"></a>nums <span class="op">=</span> ( (<span class="dv">1</span>,<span class="st">&#39;壱&#39;</span>), (<span class="dv">2</span>,<span class="st">&#39;弐&#39;</span>), (<span class="dv">3</span>,<span class="st">&#39;参&#39;</span>) )</span>
+<span id="cb2-3"><a href="#cb2-3"></a>i<span class="op">=</span><span class="dv">1</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="cf">for</span> num <span class="kw">in</span> nums:</span>
+<span id="cb2-5"><a href="#cb2-5"></a>  <span class="co"># print(type(num)) #=&gt; &lt;class &#39;tuple&#39;&gt;</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>  n0, n1 <span class="op">=</span> num  <span class="co"># アンパック</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a>  <span class="bu">print</span>(<span class="ss">f&#39;【</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">回目のループ num =&gt; </span><span class="sc">{</span>num<span class="sc">}</span><span class="ss">】&#39;</span>)</span>
+<span id="cb2-8"><a href="#cb2-8"></a>  <span class="bu">print</span>(<span class="ss">f&#39;  </span><span class="sc">{</span>n0<span class="sc">}</span><span class="ss">0,000円 は </span><span class="sc">{</span>n1<span class="sc">}</span><span class="ss">萬円 と表記&#39;</span>)</span>
+<span id="cb2-9"><a href="#cb2-9"></a>  i<span class="op">=</span>i<span class="op">+</span><span class="dv">1</span></span></code></pre></div>
+      <p>上記プログラムの<strong>第02行目</strong>で初期化している
+      <code>nums</code> (≠<code>num</code>) は
+      <strong>タプルを要素とするタプル</strong>です
+      (つまり「タプルのタプル」です)。</p>
+      <p>そして、<strong>第04行目</strong>のfor構文のなかでループ変数
+      <code>num</code> (≠<code>nums</code>) には、ループ毎に
+      <code>(1,'壱')</code>、<code>(2,'弐')</code>、<code>(3,'参')</code>
+      というタプルが代入されていきます。<strong>第06行目</strong>では、そのタプルからアンパックされた最初の要素が
+      <code>n0</code> に、次の要素が <code>n1</code>
+      に格納されています。なお、アンパックせずに
+      <span><code>print(f'{num[0]}0,000円 は {num[1]}萬円 と表記')</code></span>
+      にプログラムを書いても同じ結果が得られます。</p>
+      <p>この処理は、次のようにシンプルに記述することができます。<strong>for文の開始ブロックにアンパックを組み込むこと</strong>はよくあるので覚えておいてください。</p>
+      <div class="sourceCode" id="cb3"
+      data-caption="tuple-for-02.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb3-2"><a href="#cb3-2"></a>nums <span class="op">=</span> ( (<span class="dv">1</span>,<span class="st">&#39;壱&#39;</span>), (<span class="dv">2</span>,<span class="st">&#39;弐&#39;</span>), (<span class="dv">3</span>,<span class="st">&#39;参&#39;</span>) )</span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="cf">for</span> n1, n2 <span class="kw">in</span> nums: <span class="co"># ここで【アンパック】している</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>  <span class="co"># print(type(n1)) #=&gt; &lt;class &#39;int&#39;&gt;</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>  <span class="co"># print(type(n2)) #=&gt; &lt;class &#39;str&#39;&gt;</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a>  <span class="bu">print</span>(<span class="ss">f&#39;  </span><span class="sc">{</span>n1<span class="sc">}</span><span class="ss">0,000円 は </span><span class="sc">{</span>n2<span class="sc">}</span><span class="ss">萬円 と表記&#39;</span>)</span></code></pre></div>
+      <hr />
+      <p><strong>演習</strong>「期待する結果」が得られるように次のプログラムを追記せよ。</p>
+      <div class="sourceCode" id="cb4" data-caption="演習"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb4-2"><a href="#cb4-2"></a>table<span class="op">=</span>((<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>),(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>),(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>),(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>),</span>
+<span id="cb4-3"><a href="#cb4-3"></a>       (<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>),(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>),(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>),(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="bu">print</span>(<span class="st">&#39;A B C | D&#39;</span>)</span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="bu">print</span>(<span class="st">&#39;------+--&#39;</span>)</span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="co"># 以下に追記せよ</span></span></code></pre></div>
+      <p>(<strong>期待する結果</strong>) ここで D は A+B+C
+      を計算した値です。</p>
+      <pre><code>A B C | D
+------+--
+0 0 0 | 0
+0 0 1 | 1
+0 1 0 | 1
+0 1 1 | 2
+1 0 0 | 1
+1 0 1 | 2
+1 1 0 | 2
+1 1 1 | 3</code></pre>
+      <h1 data-number="3" id="論理演算"><span
+      class="header-section-number">3</span> 論理演算</h1>
+      <p>2年後期の科目「<strong>論理回路1</strong>」で学んでいるように
+      <strong>論理演算 (ブール演算)</strong>
+      は「<strong>0</strong>と<strong>1</strong>」あるいは「<strong>True</strong>と<strong>False</strong>」「真と偽」という2つの値のみを取り扱う演算のことを指します
+      (これらの値を「<strong>ブール値</strong>」「<strong>真偽値</strong>」「<strong>真理値</strong>」とも称します）。</p>
+      <p><strong>論理演算</strong> (<strong>ブール演算</strong>)
+      は、コンピュータが最も得意とする計算処理であり、当然ながら Python
+      でも取り扱うことができます。</p>
+      <h2 data-number="3.1" id="ブール値"><span
+      class="header-section-number">3.1</span> ブール値</h2>
+      <p>Python において「<strong>ブール値 (bool値)</strong>」は
+      <code>True</code> と <code>False</code>
+      というリテラルで表現します。いずれも先頭が <strong>大文字</strong>
+      である点に注意してください。これらのブール値の「型」は
+      <code>&lt;class 'bool'&gt;</code> となります。</p>
+      <p>Pythonでブール値の「リテラル表現」と「型」を確認する一例です。</p>
+      <div class="sourceCode" id="cb6"
+      data-caption="ブール値のリテラル表現と型の確認"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb6-2"><a href="#cb6-2"></a>b1 <span class="op">=</span> <span class="va">True</span>  <span class="co"># シングルクォートをつけた &#39;True&#39; や true では不可</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a>b2 <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="bu">print</span>(<span class="ss">f&#39;b1 =&gt; </span><span class="sc">{</span>b1<span class="sc">}</span><span class="ss">, type(b1) =&gt; </span><span class="sc">{</span><span class="bu">type</span>(b1)<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="bu">print</span>(<span class="ss">f&#39;b2 =&gt; </span><span class="sc">{</span>b2<span class="sc">}</span><span class="ss">, type(b2) =&gt; </span><span class="sc">{</span><span class="bu">type</span>(b2)<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="bu">print</span>(<span class="ss">f&#39;int(b1) =&gt; </span><span class="sc">{</span><span class="bu">int</span>(b1)<span class="sc">}</span><span class="ss">, int(b2) =&gt; </span><span class="sc">{</span><span class="bu">int</span>(b2)<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+      <p>上記の<strong>第06行目</strong>では <code>int()</code> によって
+      <strong>ブール型</strong> を <strong>整数型</strong>
+      に変換しています。<code>int(True)</code> は <code>1</code>
+      になり、<code>int(False)</code> は <code>0</code> になります。</p>
+      <p><strong>演習1</strong> : <strong>第02行目</strong>で
+      <code>b1 = 'True'</code>
+      としたときの結果を予想せよ。また、実際にコードを実行して結果を確認せよ。</p>
+      <p><strong>演習2</strong> : <strong>第02行目</strong>で
+      <code>b1 = true</code>
+      としたときの結果を予想せよ。また、実際にコードを実行して結果を確認せよ。</p>
+      <h2 data-number="3.2" id="論理和論理積論理否定"><span
+      class="header-section-number">3.2</span>
+      論理和・論理積・論理否定</h2>
+      <p>Python において <strong>論理和 (OR)</strong> には
+      <code>or</code> 演算子、<strong>論理積 (AND)</strong> には
+      <code>and</code> 演算子、<strong>論理否定 (NOT)</strong> は
+      <code>not</code>
+      演算子を使用します。これらの演算子は、第06回講義の「if文」の「<a
+      href="lecture06.html#and条件">AND条件</a>」「<a
+      href="lecture06.html#or条件">OR条件</a>」で学んだ演算子と同じです。</p>
+      <p>次のプログラムを実行して、論理演算が正しくできていることを確認してください。</p>
+      <div class="sourceCode" id="cb7"
+      data-caption="論理和・論理積・論理否定"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb7-2"><a href="#cb7-2"></a>A <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a>B <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="bu">print</span>(<span class="ss">f&#39;A=</span><span class="sc">{</span>A<span class="sc">}</span><span class="ss">, B=</span><span class="sc">{</span>B<span class="sc">}</span><span class="ss">&#39;</span> )</span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="bu">print</span>(<span class="ss">f&#39;論理和  A or B  = </span><span class="sc">{</span>A <span class="kw">or</span> B<span class="sc">}</span><span class="ss">&#39;</span> )</span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="bu">print</span>(<span class="ss">f&#39;論理積  A and B = </span><span class="sc">{</span>A <span class="kw">and</span> B<span class="sc">}</span><span class="ss">&#39;</span> )</span>
+<span id="cb7-7"><a href="#cb7-7"></a><span class="bu">print</span>(<span class="ss">f&#39;否　定  not A   = </span><span class="sc">{</span><span class="kw">not</span> A<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+      <p>実行結果は次のようになります。</p>
+      <pre><code>A=True, B=False
+論理和  A or B  = True
+論理積  A and B = False
+否　定  not A   = False</code></pre>
+      <p>なお、論理演算子の「<strong>優先順位</strong>」は高いほうから
+      <span class="masked">論理否定 (not)、論理積 (and)、論理和
+      (or)</span> となります。</p>
+      <p>簡単な応用例として、次のような論理回路 (排他的論理和 XOR) の
+      <strong>真理値表</strong> を作成してみます。排他的論理和は EX-OR
+      のように記述することもあります。</p>
+      <figure>
+      <img src="figs/18/circuit-01.svg" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <div class="sourceCode" id="cb9"
+      data-caption="排他的論理和の真理値表の作成"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="co"># 入力のパターン</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a>inputs <span class="op">=</span>((<span class="va">False</span>,<span class="va">False</span>),(<span class="va">False</span>,<span class="va">True</span>),(<span class="va">True</span>,<span class="va">False</span>),(<span class="va">True</span>,<span class="va">True</span>))</span>
+<span id="cb9-4"><a href="#cb9-4"></a></span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="bu">print</span>(<span class="st">&#39;A B | X&#39;</span>)</span>
+<span id="cb9-6"><a href="#cb9-6"></a><span class="bu">print</span>(<span class="st">&#39;----+--&#39;</span>)</span>
+<span id="cb9-7"><a href="#cb9-7"></a><span class="cf">for</span> A,B <span class="kw">in</span> inputs:</span>
+<span id="cb9-8"><a href="#cb9-8"></a>  X <span class="op">=</span> ( A <span class="kw">and</span> <span class="kw">not</span> B ) <span class="kw">or</span> ( <span class="kw">not</span> A <span class="kw">and</span> B )</span>
+<span id="cb9-9"><a href="#cb9-9"></a>  <span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span><span class="bu">int</span>(A)<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span><span class="bu">int</span>(B)<span class="sc">}</span><span class="ss"> | </span><span class="sc">{</span><span class="bu">int</span>(X)<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+      <p>実行結果は次のようになります。</p>
+      <pre><code>A B | X
+----+--
+0 0 | 0
+0 1 | 1
+1 0 | 1
+1 1 | 0</code></pre>
+      <hr />
+      <p><strong>演習</strong> 次のような論理回路の
+      <strong>真理値表</strong> を作成せよ。</p>
+      <figure>
+      <img src="figs/18/circuit-02.svg" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <div class="note type-senior">
+      <p><strong>SymPyライブラリを利用した論理演算</strong></p>
+      <p>論理演算 は Python
+      の標準機能だけでも行なうことができます。しかし、数式処理・記号計算用のライブラリである
+      <strong>SymPy (シムパイ)</strong> を利用すれば、より
+      <strong>効率的</strong> かつ <strong>直感的</strong>
+      に論理演算を行うことができます。論理回路の学習
+      (<strong>手計算した結果の検証など</strong>)
+      に効果的に役立てください。</p>
+      <p>ローカルPCにPython環境を構築している場合は、コマンドラインから
+      <code>pip install sympy</code> で SymPy
+      をインストールしてください。GoogleColab. 環境ではデフォルトで
+      SymPy がインストールされています。</p>
+      <hr />
+      <p>SymPyを利用して、次のような <strong>論理式の簡略化
+      (論理圧縮)</strong> をしてみます。</p>
+      <p><span class="math display">\[ X = \mathrm{A} \cdot \mathrm{B}
+      \cdot \mathrm{C} + \bar{\mathrm{A}}\cdot \mathrm{B} \cdot
+      \mathrm{C} + \mathrm{A}\cdot \bar{\mathrm{B}} \cdot \mathrm{C} +
+      \mathrm{B} \cdot \bar{\mathrm{C}} \]</span></p>
+      <div class="sourceCode" id="cb11" data-caption="論理式の圧縮"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="im">import</span> sympy</span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="im">import</span> re</span>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="im">from</span> IPython.display <span class="im">import</span> Math</span>
+<span id="cb11-5"><a href="#cb11-5"></a></span>
+<span id="cb11-6"><a href="#cb11-6"></a><span class="kw">def</span> display2(out,expr):</span>
+<span id="cb11-7"><a href="#cb11-7"></a>  t <span class="op">=</span> sympy.latex(expr)</span>
+<span id="cb11-8"><a href="#cb11-8"></a>  s <span class="op">=</span> re.sub(<span class="vs">r&#39;\\neg ([a-zA-Z]+)&#39;</span>, <span class="vs">r&#39;\\overline{\1}&#39;</span>, t)</span>
+<span id="cb11-9"><a href="#cb11-9"></a>  s <span class="op">=</span> s.replace(<span class="vs">r&#39;\vee&#39;</span>,<span class="vs">r&#39;+&#39;</span>)</span>
+<span id="cb11-10"><a href="#cb11-10"></a>  s <span class="op">=</span> s.replace(<span class="vs">r&#39;\wedge&#39;</span>,<span class="vs">r&#39;\cdot&#39;</span>)</span>
+<span id="cb11-11"><a href="#cb11-11"></a>  display(Math(<span class="ss">f&#39;</span><span class="sc">{</span>out<span class="sc">}</span><span class="ss">=</span><span class="sc">{</span>s<span class="sc">}</span><span class="ss">&#39;</span>))</span>
+<span id="cb11-12"><a href="#cb11-12"></a></span>
+<span id="cb11-13"><a href="#cb11-13"></a><span class="co"># 論理式の簡略化</span></span>
+<span id="cb11-14"><a href="#cb11-14"></a>A, B, C <span class="op">=</span> sympy.symbols(<span class="st">&#39;A,B,C&#39;</span>)</span>
+<span id="cb11-15"><a href="#cb11-15"></a><span class="bu">print</span>(<span class="bu">type</span>(A)) <span class="co"># =&gt; &lt;class &#39;sympy.core.symbol.Symbol&#39;&gt;</span></span>
+<span id="cb11-16"><a href="#cb11-16"></a>X <span class="op">=</span> A<span class="op">&amp;</span>B<span class="op">&amp;</span>C <span class="op">|</span> <span class="op">~</span>A<span class="op">&amp;</span>B<span class="op">&amp;</span>C <span class="op">|</span> A<span class="op">&amp;~</span>B<span class="op">&amp;</span>C <span class="op">|</span> B<span class="op">&amp;~</span>C</span>
+<span id="cb11-17"><a href="#cb11-17"></a>display2(<span class="st">&#39;X&#39;</span>,sympy.to_dnf(X,simplify<span class="op">=</span><span class="va">True</span>))</span></code></pre></div>
+      <p>このプログラムを実行すると「<span
+      class="math inline">\(X=B+(A\cdot
+      C)\)</span>」という出力が得られます。</p>
+      <p>関数 <code>display2</code>
+      は「TeX形式」で論理式を整形出力するための関数なので本質ではありません。<strong>第14行目</strong>と<strong>第16行目</strong>、<strong>第17行目</strong>
+      が本質の部分になります。</p>
+      <p><strong>第14行目</strong>で
+      <code>sympy.core.symbol.Symbol</code> 型 (以降、単に
+      <code>Symble</code> 型と表記) の変数 <code>A</code> <code>B</code>
+      <code>C</code> を作成しています。<code>Symble</code>
+      型は、<strong>論理和</strong>を <code>|</code>
+      演算子で計算します。また、<strong>論理積</strong>を
+      <code>&amp;</code> 演算子、<strong>論理否定</strong>を
+      <code>~</code>
+      演算子で計算します。<strong>第16行目</strong>では、これら演算子で
+      <span class="math inline">\(X=...\)</span> を定義しています。</p>
+      <p>そして、<strong>第17行目</strong>の
+      <code>sympy.to_dnf(...)</code>
+      で<strong>最小積和形</strong>に変換しています。DNF: Disjunction
+      Normal Form (加法標準形)。</p>
+      <hr />
+      <p>SymPyを利用して、次のような
+      <strong>真理値表から論理式(簡略化済み)</strong>
+      を導いてみます。ABCが入力、Yが出力になります。</p>
+      <pre><code>| A | B | C | Y |
+|---|---|---|---|
+| 0 | 0 | 0 | 1 |
+| 0 | 0 | 1 | 0 |
+| 0 | 1 | 0 | 0 |
+| 0 | 1 | 1 | 1 |
+| 1 | 0 | 0 | 1 |
+| 1 | 0 | 1 | 0 |
+| 1 | 1 | 0 | 1 |
+| 1 | 1 | 1 | 0 |</code></pre>
+      <div class="sourceCode" id="cb13"
+      data-caption="真理値表から論理式を導出"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="im">import</span> sympy</span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="im">import</span> re</span>
+<span id="cb13-4"><a href="#cb13-4"></a><span class="im">from</span> IPython.display <span class="im">import</span> Math</span>
+<span id="cb13-5"><a href="#cb13-5"></a></span>
+<span id="cb13-6"><a href="#cb13-6"></a><span class="kw">def</span> display2(out,expr):</span>
+<span id="cb13-7"><a href="#cb13-7"></a>  t <span class="op">=</span> sympy.latex(expr)</span>
+<span id="cb13-8"><a href="#cb13-8"></a>  s <span class="op">=</span> re.sub(<span class="vs">r&#39;\\neg ([a-zA-Z]+)&#39;</span>, <span class="vs">r&#39;\\overline{\1}&#39;</span>, t)</span>
+<span id="cb13-9"><a href="#cb13-9"></a>  s <span class="op">=</span> s.replace(<span class="vs">r&#39;\vee&#39;</span>,<span class="vs">r&#39;+&#39;</span>)</span>
+<span id="cb13-10"><a href="#cb13-10"></a>  s <span class="op">=</span> s.replace(<span class="vs">r&#39;\wedge&#39;</span>,<span class="vs">r&#39;\cdot&#39;</span>)</span>
+<span id="cb13-11"><a href="#cb13-11"></a>  display(Math(<span class="ss">f&#39;</span><span class="sc">{</span>out<span class="sc">}</span><span class="ss">=</span><span class="sc">{</span>s<span class="sc">}</span><span class="ss">&#39;</span>))</span>
+<span id="cb13-12"><a href="#cb13-12"></a></span>
+<span id="cb13-13"><a href="#cb13-13"></a><span class="co"># 真理値表から簡略化した論理式を作成</span></span>
+<span id="cb13-14"><a href="#cb13-14"></a>A, B, C <span class="op">=</span> sympy.symbols(<span class="st">&#39;A,B,C&#39;</span>)</span>
+<span id="cb13-15"><a href="#cb13-15"></a>Y <span class="op">=</span> sympy.SOPform((A,B,C),((<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>),</span>
+<span id="cb13-16"><a href="#cb13-16"></a>                           (<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>),</span>
+<span id="cb13-17"><a href="#cb13-17"></a>                           (<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>),</span>
+<span id="cb13-18"><a href="#cb13-18"></a>                           (<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>)))</span>
+<span id="cb13-19"><a href="#cb13-19"></a>display2(<span class="st">&#39;Y&#39;</span>,sympy.to_dnf(Y,simplify<span class="op">=</span><span class="va">True</span>))</span></code></pre></div>
+      <p>このプログラムを実行すると「<span
+      class="math inline">\(Y=(A\cdot \bar{C})+(\bar{B}\cdot
+      \bar{C})+(B\cdot C\cdot
+      \bar{A})\)</span>」という出力が得られます。</p>
+      <p><strong>第15行目</strong>の <code>sympy.SOPform</code>
+      の第2引数には「<strong>真理値表で出力Yが</strong> <code>1</code>
+      <strong>となる入力</strong>」をタプルで与えています。</p>
+      </div>
+      <h1 data-number="4"
+      id="テキストファイルの読み込みと書き込み"><span
+      class="header-section-number">4</span>
+      テキストファイルの「読み込み」と「書き込み」</h1>
+      <p>ここでは Python
+      プログラムから「<strong>テキストファイルを読み込む方法</strong>」と「<strong>テキストファイルに書き込む方法</strong>」について学習します。</p>
+      <h2 data-number="4.1" id="準備-テキストファイルの作成"><span
+      class="header-section-number">4.1</span> 準備:
+      テキストファイルの作成</h2>
+      <p>まずは準備として、読み込みテストのための「テキストファイル」を用意
+      (作成) します。</p>
+      <p><a
+      href="https://colab.research.google.com/?hl=ja">GoogleColab.</a>もしくは<a
+      href="lecture09.html#jupyterの実行">Jupyter</a>では
+      <code>%%writefile</code>
+      というマジックを使用してテキストファイルを生成することができます。例えば、コードセルに次のような内容を記述して実行すると
+      <strong>第02行目</strong> 以降の内容が書かれた
+      <code>test-01.txt</code>
+      というテキストファイルが生成されます。</p>
+      <pre><code>%%writefile test-01.txt
+Name,ヨシヒコ
+Job,勇者
+Lv,21</code></pre>
+      <p>生成されるテキストファイルの「<strong>改行コード</strong>」は、Windows環境に構築したJupyterでは「<strong>CR+LF</strong>」、GoogleColab.
+      (=Linux仮想マシンで動作している)
+      では「<strong>LF</strong>」となります。また、文字コードはいずれも「<strong>UTF-8</strong>」となります。「<strong>改行コード</strong>」については「情報2」の<a
+      href="https://classroom.google.com/c/NjAzMjM4NjAzNTQ3/m/NTE4NDg3MTA5MzQx/details">第11回講義ノート</a>
+      の p.176- を参照してください。</p>
+      <p><strong>演習</strong>: <code>%%writefile</code>
+      使って日本語を含んだ「テキストファイル」を生成せよ。また、そのテキストファイルの「文字コード」と「改行コード」を確認せよ。GoogleColab.で生成したテキストファイルは
+      <span class="masked"> ダウンロードして VSCode
+      に読み込ませて「文字コード」と「改行コード」を確認せよ</span>。</p>
+      <div class="note type-tips">
+      <p><strong>文字コードと改行コードを確認する方法</strong></p>
+      <p>対象のテキストファイルを VSCode に読み込ませて
+      <strong>ウィンドウ右下の表示</strong>
+      から「文字コード」と「改行コード」を確認することができます。</p>
+      <figure>
+      <img src="figs/18/vscode-01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      </div>
+      <h2 data-number="4.2" id="テキストファイルの読み込み"><span
+      class="header-section-number">4.2</span>
+      テキストファイルの読み込み</h2>
+      <p>テキストファイルは、次のように
+      Pythonプログラムから読み込むことができます。<code>readlines()</code>
+      メソッドは、テキストファイルの1行1行を要素とする <span
+      class="masked">文字列のリスト</span> が戻値になります。</p>
+      <div class="sourceCode" id="cb15"
+      data-caption="テキストファイルの読み込み"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="im">import</span> os</span>
+<span id="cb15-3"><a href="#cb15-3"></a></span>
+<span id="cb15-4"><a href="#cb15-4"></a><span class="co"># ファイル名・ファイルパスを設定</span></span>
+<span id="cb15-5"><a href="#cb15-5"></a>fn <span class="op">=</span> <span class="st">&#39;test-01.txt&#39;</span></span>
+<span id="cb15-6"><a href="#cb15-6"></a></span>
+<span id="cb15-7"><a href="#cb15-7"></a><span class="co"># 指定のファイルが存在しなければエラーを発生させて強制停止</span></span>
+<span id="cb15-8"><a href="#cb15-8"></a><span class="cf">if</span> <span class="kw">not</span> os.path.isfile(fn):</span>
+<span id="cb15-9"><a href="#cb15-9"></a>  <span class="cf">raise</span> <span class="pp">FileNotFoundError</span>(<span class="ss">f&#39;</span><span class="sc">{</span>fn<span class="sc">}</span><span class="ss"> は存在しません。強制終了します。&#39;</span>)</span>
+<span id="cb15-10"><a href="#cb15-10"></a></span>
+<span id="cb15-11"><a href="#cb15-11"></a><span class="co"># ファイルから文字列を読み込み、変数textに格納</span></span>
+<span id="cb15-12"><a href="#cb15-12"></a><span class="cf">with</span> <span class="bu">open</span>(fn, encoding<span class="op">=</span><span class="st">&#39;utf_8&#39;</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb15-13"><a href="#cb15-13"></a>  text <span class="op">=</span> <span class="bu">file</span>.readlines()</span>
+<span id="cb15-14"><a href="#cb15-14"></a></span>
+<span id="cb15-15"><a href="#cb15-15"></a><span class="co"># 変数textの内容を確認</span></span>
+<span id="cb15-16"><a href="#cb15-16"></a><span class="bu">print</span>(<span class="ss">f&#39;type(text) =&gt; </span><span class="sc">{</span><span class="bu">type</span>(text)<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># textはリスト型</span></span>
+<span id="cb15-17"><a href="#cb15-17"></a><span class="bu">print</span>(<span class="ss">f&#39;len(text)  =&gt; </span><span class="sc">{</span><span class="bu">len</span>(text)<span class="sc">}</span><span class="ss">&#39;</span> ) <span class="co"># リストの要素数は「3」</span></span>
+<span id="cb15-18"><a href="#cb15-18"></a><span class="bu">print</span>(<span class="ss">f&#39;text =&gt; </span><span class="sc">{</span>text<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># リストの内容</span></span></code></pre></div>
+      <p>テキストファイルの読み込みの本質部分は<strong>第12行目</strong>と<strong>第13行目</strong>です。上記のプログラムを実行すると、次のような結果が得られます。</p>
+      <pre><code>type(text) =&gt; &lt;class &#39;list&#39;&gt;
+len(text)  =&gt; 3
+text =&gt; [&#39;Name,ヨシヒコ\n&#39;, &#39;Job,勇者\n&#39;, &#39;Lv,21\n&#39;]</code></pre>
+      <p>この実行結果から、変数 <code>text</code>
+      は要素数が「<strong>3</strong>」の「<strong>文字列のリスト</strong>」であることが確認できます。また、その要素である各文字列の末尾には
+      <span class="masked">改行 <code>\n</code> がついていること</span>
+      に注意してください。</p>
+      <h2 data-number="4.3" id="テキストファイルの処理"><span
+      class="header-section-number">4.3</span>
+      テキストファイルの処理</h2>
+      <p><code>readlines()</code>
+      により読み込まれた値は「文字列型のリスト」となっています。これを処理して
+      <strong>辞書型</strong>の変数 <code>data</code>
+      に格納し、<code>data['Name']</code> のような表記で
+      <code>ヨシヒコ</code> を参照できるようにしていきます。</p>
+      <p>「<strong>辞書型</strong>」について忘れてしまった学生は<a
+      href="lecture12.html#辞書-dict">第12回講義</a>を再読してください
+      (また<a
+      href="lecture17.html#タプルを利用する価値はあるのか">前回講義</a>でも辞書型について扱いました)
+      。</p>
+      <h3 data-number="4.3.1"
+      id="末尾の改行削除とカンマ位置での文字列分割"><span
+      class="header-section-number">4.3.1</span>
+      「末尾の改行削除」と「カンマ位置での文字列分割」</h3>
+      <p>準備として <code>'Name,ヨシヒコ\n'</code>
+      のような文字列から、末尾の改行を削除し、さらにカンマの位置で文字列を分割する方法について考えていきます。</p>
+      <p>最初に「<strong>文字列の末尾の改行</strong> <code>\n</code>
+      <strong>を削除</strong>」する方法ですが、これは
+      <code>strip()</code> メソッドを使用します。<code>strip()</code>
+      メソッドは、文字列前後の「改行」や「空白文字」などを削除した文字列を返すメソッドになります
+      (詳しくは「<a
+      href="https://www.google.com/search?q=python+strip">python
+      strip</a>」などで検索してください) 。</p>
+      <p>次のプログラムを実行して、使い方と結果を確認してください。</p>
+      <div class="sourceCode" id="cb17"
+      data-caption="stripによる末尾改行の削除"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb17-2"><a href="#cb17-2"></a>t <span class="op">=</span> <span class="st">&#39;Name,ヨシヒコ</span><span class="ch">\n</span><span class="st">&#39;</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a></span>
+<span id="cb17-4"><a href="#cb17-4"></a><span class="co"># 末尾に改行を含む</span></span>
+<span id="cb17-5"><a href="#cb17-5"></a><span class="bu">print</span>(<span class="st">&#39;----&#39;</span>)</span>
+<span id="cb17-6"><a href="#cb17-6"></a><span class="bu">print</span>(t)</span>
+<span id="cb17-7"><a href="#cb17-7"></a><span class="bu">print</span>(<span class="st">&#39;----&#39;</span>)</span>
+<span id="cb17-8"><a href="#cb17-8"></a></span>
+<span id="cb17-9"><a href="#cb17-9"></a>t <span class="op">=</span> t.strip() <span class="co"># 末尾の改行を削除して、変数 t を上書き</span></span>
+<span id="cb17-10"><a href="#cb17-10"></a><span class="bu">print</span>()</span>
+<span id="cb17-11"><a href="#cb17-11"></a></span>
+<span id="cb17-12"><a href="#cb17-12"></a><span class="co"># 末尾の改行を取り除いたあと</span></span>
+<span id="cb17-13"><a href="#cb17-13"></a><span class="bu">print</span>(<span class="st">&#39;----&#39;</span>)</span>
+<span id="cb17-14"><a href="#cb17-14"></a><span class="bu">print</span>(t)</span>
+<span id="cb17-15"><a href="#cb17-15"></a><span class="bu">print</span>(<span class="st">&#39;----&#39;</span>)</span></code></pre></div>
+      <p><strong>演習1</strong>: <strong>第02行目</strong>を
+      <code>t = '\n\n    Name,ヨシヒコ\n\n\n'</code>
+      に変更するとどうなるか予想し、実際に結果を確認せよ。</p>
+      <p><strong>演習2</strong>: <strong>第09行目</strong>を
+      <code>t = t.strip()</code> から <code>t.strip()</code>
+      に変更すると (つまり <code>t=</code> を抜くと)
+      どうなるか予想し、実際に結果を確認せよ。</p>
+      <h3 data-number="4.3.2" id="文字列の分割"><span
+      class="header-section-number">4.3.2</span> 文字列の分割</h3>
+      <p>次に、<code>strip</code> メソッドを使って文字列内のカンマ
+      <code>,</code>
+      を「<strong>区切り文字</strong>」にとして分割する処理を扱います。区切り文字は
+      <sapn calss="masked">Delimiter (デリミタ)</span> や
+      <sapn calss="masked"> Separator (セパレータ) </span>
+      と呼ばれることもあるので覚えておいてください。</p>
+      <p>次のプログラムを実行して、使い方と結果を確認してください。</p>
+      <div class="sourceCode" id="cb18"
+      data-caption="splitによる文字列の分割"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb18-2"><a href="#cb18-2"></a>t <span class="op">=</span> <span class="st">&#39;Name,ヨシヒコ&#39;</span></span>
+<span id="cb18-3"><a href="#cb18-3"></a></span>
+<span id="cb18-4"><a href="#cb18-4"></a>tmp <span class="op">=</span> t.split(<span class="st">&#39;,&#39;</span>) <span class="co"># カンマで分割して文字列のリストに変換</span></span>
+<span id="cb18-5"><a href="#cb18-5"></a></span>
+<span id="cb18-6"><a href="#cb18-6"></a><span class="bu">print</span>(<span class="ss">f&#39;type(tmp) =&gt; </span><span class="sc">{</span><span class="bu">type</span>(tmp)<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+<span id="cb18-7"><a href="#cb18-7"></a><span class="bu">print</span>(<span class="ss">f&#39;len(tmp)  =&gt; </span><span class="sc">{</span><span class="bu">len</span>(tmp)<span class="sc">}</span><span class="ss">&#39;</span>,end<span class="op">=</span><span class="st">&#39;</span><span class="ch">\n\n</span><span class="st">&#39;</span>)</span>
+<span id="cb18-8"><a href="#cb18-8"></a></span>
+<span id="cb18-9"><a href="#cb18-9"></a><span class="bu">print</span>(<span class="ss">f&#39;tmp =&gt; </span><span class="sc">{</span>tmp<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+<span id="cb18-10"><a href="#cb18-10"></a></span>
+<span id="cb18-11"><a href="#cb18-11"></a><span class="cf">assert</span> <span class="bu">len</span>(tmp) <span class="op">&gt;=</span> <span class="dv">2</span></span>
+<span id="cb18-12"><a href="#cb18-12"></a><span class="bu">print</span>(<span class="ss">f&#39;tmp[0] =&gt; </span><span class="sc">{</span>tmp[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+<span id="cb18-13"><a href="#cb18-13"></a><span class="bu">print</span>(<span class="ss">f&#39;tmp[1] =&gt; </span><span class="sc">{</span>tmp[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+      <p><strong>第11行目</strong> の assert (アサート)
+      について忘れてしまった学生は、<a
+      href="lecture11.html#アサート文">第07回講義</a>
+      を再読してください。このあとも登場するので、しっかりと理解しておいてください。</p>
+      <p><strong>演習1</strong>: <strong>第02行目</strong>を
+      <code>t = 'Name,ヨシヒコ,山田'</code>
+      に変更するとどうなるか予想し、実際に結果を確認せよ。</p>
+      <p><strong>演習2</strong>: <strong>第02行目</strong>を
+      <code>t = 'Name,ヨシヒコ,,山田'</code>
+      に変更するとどうなるか予想し、実際に結果を確認せよ。カンマが連続している点に着目して予想すること。</p>
+      <p><strong>演習3</strong>: <strong>第02行目</strong>を
+      <code>t = 'Name'</code>
+      に変更するとどうなるか予想し、実際に結果を確認せよ。文字列内にカンマがない点に着目して予想すること。</p>
+      <p><strong>演習4</strong>: <strong>第02行目</strong>を
+      <code>t = 'Name，ヨシヒコ'</code>
+      に変更するとどうなるか予想し、実際に結果を確認せよ。カンマが全角文字である点に着目して予想すること。</p>
+      <h3 data-number="4.3.3" id="処理を組み合わせて辞書型に格納"><span
+      class="header-section-number">4.3.3</span>
+      処理を組み合わせて辞書型に格納</h3>
+      <p>テキストファイルを読み込み、辞書型に格納する処理を総合すると次のようなプログラムになります。</p>
+      <div class="sourceCode" id="cb19"
+      data-caption="splitによる文字列の分割"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb19-2"><a href="#cb19-2"></a><span class="im">import</span> os</span>
+<span id="cb19-3"><a href="#cb19-3"></a></span>
+<span id="cb19-4"><a href="#cb19-4"></a>fn <span class="op">=</span> <span class="st">&#39;test-01.txt&#39;</span></span>
+<span id="cb19-5"><a href="#cb19-5"></a><span class="cf">if</span> <span class="kw">not</span> os.path.isfile(fn):</span>
+<span id="cb19-6"><a href="#cb19-6"></a>  <span class="cf">raise</span> <span class="pp">FileNotFoundError</span>(<span class="ss">f&#39;</span><span class="sc">{</span>fn<span class="sc">}</span><span class="ss"> は存在しません。強制終了します。&#39;</span>)</span>
+<span id="cb19-7"><a href="#cb19-7"></a></span>
+<span id="cb19-8"><a href="#cb19-8"></a><span class="cf">with</span> <span class="bu">open</span>(fn, encoding<span class="op">=</span><span class="st">&#39;utf_8&#39;</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb19-9"><a href="#cb19-9"></a>  text <span class="op">=</span> <span class="bu">file</span>.readlines()</span>
+<span id="cb19-10"><a href="#cb19-10"></a></span>
+<span id="cb19-11"><a href="#cb19-11"></a>data <span class="op">=</span> {} <span class="co"># 空の辞書を作成。data = dict() でも可</span></span>
+<span id="cb19-12"><a href="#cb19-12"></a><span class="cf">for</span> t <span class="kw">in</span> text:</span>
+<span id="cb19-13"><a href="#cb19-13"></a>  t <span class="op">=</span> t.strip()</span>
+<span id="cb19-14"><a href="#cb19-14"></a>  tmp <span class="op">=</span> t.split(<span class="st">&#39;,&#39;</span>)</span>
+<span id="cb19-15"><a href="#cb19-15"></a>  <span class="cf">assert</span> <span class="bu">len</span>(tmp) <span class="op">==</span> <span class="dv">2</span></span>
+<span id="cb19-16"><a href="#cb19-16"></a>  key <span class="op">=</span> tmp[<span class="dv">0</span>]</span>
+<span id="cb19-17"><a href="#cb19-17"></a>  value <span class="op">=</span> tmp[<span class="dv">1</span>]</span>
+<span id="cb19-18"><a href="#cb19-18"></a>  data[key]<span class="op">=</span>value <span class="co"># 辞書に追加</span></span>
+<span id="cb19-19"><a href="#cb19-19"></a></span>
+<span id="cb19-20"><a href="#cb19-20"></a><span class="bu">print</span>(<span class="ss">f&#39;data =&gt; </span><span class="sc">{</span>data<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+<span id="cb19-21"><a href="#cb19-21"></a><span class="bu">print</span>(<span class="ss">f&quot;data[&#39;Name&#39;] =&gt; </span><span class="sc">{</span>data[<span class="st">&#39;Name&#39;</span>]<span class="sc">}</span><span class="ss">&quot;</span>) <span class="co"># =&gt; ヨシヒコ</span></span></code></pre></div>
+      <p><strong>演習</strong>:
+      テキストファイルの内容が次のような場合、どのようになるか予想し、実際に結果を確認せよ。</p>
+      <pre><code>Job,勇者
+Name,ヨシヒコ
+Lv,21
+HP,512
+MP,128</code></pre>
+      <h3 data-number="4.3.4" id="補足-型変換"><span
+      class="header-section-number">4.3.4</span> (補足) 型変換</h3>
+      <p>テキストファイルから読み込んだ情報は、すべて <span
+      class="masked">文字列型</span>
+      となります。整数型などの変換する場合は、次のように型を変換する必要があります。</p>
+      <div class="sourceCode" id="cb21" data-caption="型変換"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb21-2"><a href="#cb21-2"></a>data <span class="op">=</span> {<span class="st">&#39;Name&#39;</span>:<span class="st">&#39;ヨシヒコ&#39;</span>,<span class="st">&#39;Job&#39;</span>:<span class="st">&#39;勇者&#39;</span>,<span class="st">&#39;Lv&#39;</span>:<span class="st">&#39;21&#39;</span>}</span>
+<span id="cb21-3"><a href="#cb21-3"></a><span class="bu">print</span>(<span class="bu">type</span>(data[<span class="st">&#39;Lv&#39;</span>]))      <span class="co"># =&gt; &lt;class &#39;str&#39;&gt;</span></span>
+<span id="cb21-4"><a href="#cb21-4"></a>data[<span class="st">&#39;Lv&#39;</span>] <span class="op">=</span> <span class="bu">int</span>(data[<span class="st">&#39;Lv&#39;</span>]) <span class="co"># str -&gt; int 変換して上書き</span></span>
+<span id="cb21-5"><a href="#cb21-5"></a><span class="bu">print</span>(<span class="bu">type</span>(data[<span class="st">&#39;Lv&#39;</span>]))      <span class="co"># =&gt; &lt;class &#39;int&#39;&gt; </span></span></code></pre></div>
+      <h3 data-number="4.3.5" id="補足-不足情報の確認"><span
+      class="header-section-number">4.3.5</span> (補足)
+      不足情報の確認</h3>
+      <p>テキストファイルから読み込んで構成した辞書に、特定のキー
+      (例えば <code>Job</code> や <code>Name</code>)
+      が含まれているかは<a
+      href="lecture12.html#辞書が特定のキーを持つかチェックする方法">第12回講義</a>で学習したように
+      <code>in</code> または <code>not in</code>
+      と条件分岐で確認できます。</p>
+      <div class="sourceCode" id="cb22" data-caption="キーの確認"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb22-2"><a href="#cb22-2"></a>data <span class="op">=</span> {<span class="st">&#39;Name&#39;</span>:<span class="st">&#39;ヨシヒコ&#39;</span>,<span class="st">&#39;Job&#39;</span>:<span class="st">&#39;勇者&#39;</span>,<span class="st">&#39;Lv&#39;</span>:<span class="st">&#39;21&#39;</span>}</span>
+<span id="cb22-3"><a href="#cb22-3"></a><span class="cf">if</span> <span class="st">&#39;HP&#39;</span> <span class="kw">not</span> <span class="kw">in</span> data.keys() :</span>
+<span id="cb22-4"><a href="#cb22-4"></a>  <span class="bu">print</span>(<span class="st">&#39;セーブファイルに HP の項目が存在しません&#39;</span>)</span></code></pre></div>
+      <h2 data-number="4.4" id="テキストファイルの書き込み"><span
+      class="header-section-number">4.4</span>
+      テキストファイルの書き込み</h2>
+      <p>Pythonプログラムからは、次のようにテキストファイルを作成することができます。ここでは
+      <code>open</code> 関数の引数に <code>mode='w'</code>
+      を追加することを忘れないでください。<code>mode='w'</code>
+      は書き込みモード (Write Mode)
+      でファイルをオープンする指示になります。</p>
+      <div class="sourceCode" id="cb23" data-caption="型変換"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb23-2"><a href="#cb23-2"></a>fn <span class="op">=</span> <span class="st">&#39;test-02.txt&#39;</span></span>
+<span id="cb23-3"><a href="#cb23-3"></a><span class="cf">with</span> <span class="bu">open</span>(fn, mode<span class="op">=</span><span class="st">&#39;w&#39;</span>, encoding<span class="op">=</span><span class="st">&#39;utf_8&#39;</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb23-4"><a href="#cb23-4"></a>  <span class="bu">file</span>.write(<span class="st">&#39;Name,メレブ</span><span class="ch">\n</span><span class="st">&#39;</span>)</span>
+<span id="cb23-5"><a href="#cb23-5"></a>  <span class="bu">file</span>.write(<span class="st">&#39;Job,賢者</span><span class="ch">\n</span><span class="st">&#39;</span>)</span>
+<span id="cb23-6"><a href="#cb23-6"></a>  <span class="bu">file</span>.write(<span class="st">&#39;Lv,19</span><span class="ch">\n</span><span class="st">&#39;</span>)</span></code></pre></div>
+      <p>なお、<code>file.write</code> メソッドのなかで <code>\n</code>
+      を使用すると、Windows環境では「CR+LF」、Linux環境では「LF」の改行コードでファイルに文字列が出力されます。</p>
+      <p><strong>演習</strong>: <strong>第03行目</strong>を
+      <code>with open(fn, encoding='utf_8') as file:</code>
+      に変更するとどうなるか予想し、実際に結果を確認せよ。</p>
+      <h2 data-number="4.5" id="考察"><span
+      class="header-section-number">4.5</span> 考察</h2>
+      <p>このセクションでは、ファイルの基本的な読み書き方法について紹介しました。しかし、この方法では
+      <strong>複雑なデータ構造を持つ情報</strong>
+      を「テキストファイルに出力すること」や「テキストファイルから入力すること」は難しく、コードも複雑となります。</p>
+      <p>例えば、既存の情報 (NameやJob) に加えて、以下の
+      <code>data</code> のように <span
+      class="masked">所持アイテムの種類や個数に関する情報</span>
+      などを含めたデータを セーブ / ロード
+      する処理を考えると、そのプログラムは格段に複雑化します。</p>
+      <div class="sourceCode" id="cb24" data-caption="型変換"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb24-2"><a href="#cb24-2"></a>p1 <span class="op">=</span> {<span class="st">&#39;Name&#39;</span>:<span class="st">&#39;ヨシヒコ&#39;</span>, <span class="st">&#39;Job&#39;</span>:<span class="st">&#39;勇者&#39;</span>, <span class="st">&#39;Lv&#39;</span>:<span class="dv">21</span>,</span>
+<span id="cb24-3"><a href="#cb24-3"></a>      <span class="st">&#39;BatStatus&#39;</span>:[<span class="st">&#39;毒&#39;</span>,<span class="st">&#39;呪い&#39;</span>],</span>
+<span id="cb24-4"><a href="#cb24-4"></a>      <span class="st">&#39;Items&#39;</span>:[[<span class="st">&#39;銅のつるぎ&#39;</span>,<span class="dv">1</span>],[<span class="st">&#39;薬草&#39;</span>,<span class="dv">4</span>]]}</span>
+<span id="cb24-5"><a href="#cb24-5"></a>p2 <span class="op">=</span> {<span class="st">&#39;Name&#39;</span>:<span class="st">&#39;メレブ&#39;</span>, <span class="st">&#39;Job&#39;</span>:<span class="st">&#39;賢者&#39;</span>, <span class="st">&#39;Lv&#39;</span>:<span class="dv">19</span>,</span>
+<span id="cb24-6"><a href="#cb24-6"></a>      <span class="st">&#39;BatStatus&#39;</span>:[<span class="st">&#39;混乱&#39;</span>],</span>
+<span id="cb24-7"><a href="#cb24-7"></a>      <span class="st">&#39;Items&#39;</span>:[[<span class="st">&#39;聖なるナイフ&#39;</span>,<span class="dv">1</span>],[<span class="st">&#39;いのりの指輪&#39;</span>,<span class="dv">2</span>],[<span class="st">&#39;毒消し草&#39;</span>,<span class="dv">3</span>]]}</span>
+<span id="cb24-8"><a href="#cb24-8"></a>data <span class="op">=</span> [p1,p2]</span>
+<span id="cb24-9"><a href="#cb24-9"></a><span class="bu">print</span>(data)</span></code></pre></div>
+      <p>このようなことから、Pythonでは
+      <strong>オブジェクト（変数の内容）を「テキストデータ」や「バイトデータ」に簡単に変換する処理</strong>
+      をサポートするライブラリが提供されています。この変換処理を
+      <strong><em>シリアライズ</em></strong>
+      (<strong>Serialization</strong>)
+      といい、逆に、シリアライズされたデータを元のオブジェクトに戻す処理を
+      <strong><em>デシリアライズ</em></strong>
+      (<strong>Deserialization</strong>) といいます。次に紹介する
+      <code>json</code> や <code>pickle</code> は、この シリアライズ /
+      デシリアライズ の機能を提供するライブラリの例です。</p>
+      <p>これらのライブラリを利用すると、オブジェクトの <span
+      class="masked">ファイル保存</span> や <span
+      class="masked">ネットワーク経由の送受信</span>
+      が容易になります。</p>
+      <h1 data-number="5"
+      id="json形式のシリアライズとデシリアライズ"><span
+      class="header-section-number">5</span>
+      JSON形式のシリアライズとデシリアライズ</h1>
+      <p><strong><em>JSON</em></strong> (<strong>JavaScript Object
+      Notation</strong>）は、もともと <span
+      class="masked">JavaScriptのオブジェクト表記法</span> から派生した
+      <strong>軽量なデータ交換フォーマット</strong>
+      です。テキストベースのフォーマットで、適切に整形されていれば人間にとっても読みやすい形になっています。主にWebアプリケーションでサーバーとクライアント間のデータ送受信に使われ、<strong><em>WebAPI</em></strong>
+      (Web Application Programming Interface)
+      のデータ交換フォーマットとしても標準的に採用されています。</p>
+      <p>Python では <code>json</code>
+      ライブラリを利用することで「JSON形式」のデータの
+      <strong>シリアライズ (エンコード)</strong> と
+      <strong>デシリアライズ (デコード)</strong>
+      を簡単に実行することができます。先にも述べたように「シリアライズ」は
+      <span
+      class="masked">PythonオブジェクトをJSON形式の「文字列」に変換するプロセス</span>
+      を指し、「デシリアライズ」は、<span
+      class="masked">JSON形式の「文字列」をPythonオブジェクトに変換するプロセス
+      </span> を指します。</p>
+      <h2 data-number="5.1" id="シリアライズ"><span
+      class="header-section-number">5.1</span> シリアライズ</h2>
+      <p><code>json</code> ライブラリ (モジュール)
+      を使用した「シリアライズ」の例を示します。なお <code>json</code>
+      ライブラリは、Pythonの標準ライブラリの一部であるため特別なインストールは必要ありません。</p>
+      <div class="sourceCode" id="cb25"
+      data-caption="JSON形式にシリアライズしてファイルに出力"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb25-2"><a href="#cb25-2"></a><span class="im">import</span> json <span class="co"># 要インポート</span></span>
+<span id="cb25-3"><a href="#cb25-3"></a></span>
+<span id="cb25-4"><a href="#cb25-4"></a><span class="co"># データの準備</span></span>
+<span id="cb25-5"><a href="#cb25-5"></a>p1 <span class="op">=</span> {<span class="st">&#39;Name&#39;</span>:<span class="st">&#39;ヨシヒコ&#39;</span>, <span class="st">&#39;Job&#39;</span>:<span class="st">&#39;勇者&#39;</span>, <span class="st">&#39;Lv&#39;</span>:<span class="dv">21</span>,</span>
+<span id="cb25-6"><a href="#cb25-6"></a>      <span class="st">&#39;BatStatus&#39;</span>:[<span class="st">&#39;毒&#39;</span>,<span class="st">&#39;呪い&#39;</span>],</span>
+<span id="cb25-7"><a href="#cb25-7"></a>      <span class="st">&#39;Items&#39;</span>:[[<span class="st">&#39;銅のつるぎ&#39;</span>,<span class="dv">1</span>],[<span class="st">&#39;薬草&#39;</span>,<span class="dv">4</span>]]}</span>
+<span id="cb25-8"><a href="#cb25-8"></a>p2 <span class="op">=</span> {<span class="st">&#39;Name&#39;</span>:<span class="st">&#39;メレブ&#39;</span>, <span class="st">&#39;Job&#39;</span>:<span class="st">&#39;賢者&#39;</span>, <span class="st">&#39;Lv&#39;</span>:<span class="dv">19</span>,</span>
+<span id="cb25-9"><a href="#cb25-9"></a>      <span class="st">&#39;BatStatus&#39;</span>:[<span class="st">&#39;混乱&#39;</span>],</span>
+<span id="cb25-10"><a href="#cb25-10"></a>      <span class="st">&#39;Items&#39;</span>:[[<span class="st">&#39;聖なるナイフ&#39;</span>,<span class="dv">1</span>],[<span class="st">&#39;いのりの指輪&#39;</span>,<span class="dv">2</span>],[<span class="st">&#39;毒消し草&#39;</span>,<span class="dv">3</span>]]}</span>
+<span id="cb25-11"><a href="#cb25-11"></a>data <span class="op">=</span> [p1,p2]</span>
+<span id="cb25-12"><a href="#cb25-12"></a></span>
+<span id="cb25-13"><a href="#cb25-13"></a><span class="co"># JSON形式にシリアライズしてテキストファイルとして保存</span></span>
+<span id="cb25-14"><a href="#cb25-14"></a>fn <span class="op">=</span> <span class="st">&#39;test-03.json&#39;</span></span>
+<span id="cb25-15"><a href="#cb25-15"></a><span class="cf">with</span> <span class="bu">open</span>(fn, mode<span class="op">=</span><span class="st">&#39;w&#39;</span>, encoding<span class="op">=</span><span class="st">&#39;utf_8&#39;</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb25-16"><a href="#cb25-16"></a>  json.dump(data, <span class="bu">file</span>, ensure_ascii<span class="op">=</span><span class="va">False</span>) </span></code></pre></div>
+      <p>上記のプログラムを実行すると、カレントフォルダに
+      <code>test-03.json</code>
+      というファイルが生成されます。テキストエディタで
+      <code>test-03.json</code>
+      を開いて内容を確認してください。また、<code>json.dump</code> で
+      <code>indent=2</code> オプションを付けると <span
+      class="masked">人間が読みやすいように改行とインデントが追加された形式</span>
+      でJSONファイルが出力されます。</p>
+      <p><strong>演習1</strong>: <code>json.dump</code> に
+      <code>indent=4</code>
+      オプションを追加して実行し、その結果を確認せよ。</p>
+      <p><strong>演習2</strong>: <code>json.dump</code> から
+      <code>ensure_ascii=False</code>
+      オプションを抜いて実行し、その結果を確認せよ。</p>
+      <h2 data-number="5.2" id="デシリアライズ"><span
+      class="header-section-number">5.2</span> デシリアライズ</h2>
+      <p><code>json</code> ライブラリ (モジュール)
+      を使用した「デシリアライズ」の例を示します。</p>
+      <div class="sourceCode" id="cb26"
+      data-caption="JSON形式のファイルからデシリアライズ"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb26-2"><a href="#cb26-2"></a><span class="im">import</span> os</span>
+<span id="cb26-3"><a href="#cb26-3"></a><span class="im">import</span> json</span>
+<span id="cb26-4"><a href="#cb26-4"></a></span>
+<span id="cb26-5"><a href="#cb26-5"></a><span class="co"># ファイルの存在チェック</span></span>
+<span id="cb26-6"><a href="#cb26-6"></a>fn <span class="op">=</span> <span class="st">&#39;test-03.json&#39;</span></span>
+<span id="cb26-7"><a href="#cb26-7"></a><span class="cf">if</span> <span class="kw">not</span> os.path.isfile(fn):</span>
+<span id="cb26-8"><a href="#cb26-8"></a>  <span class="cf">raise</span> <span class="pp">FileNotFoundError</span>(<span class="ss">f&#39;</span><span class="sc">{</span>fn<span class="sc">}</span><span class="ss"> は存在しません。強制終了します。&#39;</span>)</span>
+<span id="cb26-9"><a href="#cb26-9"></a></span>
+<span id="cb26-10"><a href="#cb26-10"></a><span class="co"># JSON形式のファイルからデシリアライズ</span></span>
+<span id="cb26-11"><a href="#cb26-11"></a><span class="cf">with</span> <span class="bu">open</span>(fn, encoding<span class="op">=</span><span class="st">&#39;utf_8&#39;</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb26-12"><a href="#cb26-12"></a>  data <span class="op">=</span> json.load(<span class="bu">file</span>)</span>
+<span id="cb26-13"><a href="#cb26-13"></a></span>
+<span id="cb26-14"><a href="#cb26-14"></a><span class="co"># print(data)</span></span>
+<span id="cb26-15"><a href="#cb26-15"></a><span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span> data[<span class="dv">1</span>][<span class="st">&#39;Job&#39;</span>] <span class="sc">}</span><span class="ss"> </span><span class="sc">{</span> data[<span class="dv">1</span>][<span class="st">&#39;Name&#39;</span>] <span class="sc">}</span><span class="ss"> は &quot;</span>)</span>
+<span id="cb26-16"><a href="#cb26-16"></a><span class="cf">for</span> name, count <span class="kw">in</span> data[<span class="dv">1</span>][<span class="st">&#39;Items&#39;</span>] :</span>
+<span id="cb26-17"><a href="#cb26-17"></a>  <span class="bu">print</span>(<span class="ss">f&#39;「</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">」を </span><span class="sc">{</span>count<span class="sc">}</span><span class="ss">個&#39;</span>)</span>
+<span id="cb26-18"><a href="#cb26-18"></a><span class="bu">print</span>(<span class="st">&#39;所持しています。&#39;</span>)</span></code></pre></div>
+      <p><code>json</code>
+      ライブラリを使用することで、非常に簡単にデータのセーブとロードができることが分かります。</p>
+      <h2 data-number="5.3" id="注意点"><span
+      class="header-section-number">5.3</span> 注意点</h2>
+      <p>JSONは <strong>テキストベース</strong>
+      のデータ交換フォーマットです。このフォーマットは
+      <strong>データの構造を保存することは可能</strong>ですが、<strong>具体的な型情報</strong>（例：リスト型か、ndarray型かの区別）までは保存できません。その結果、<code>json</code>
+      モジュールで扱えるのは
+      Pythonの基本的なデータ型（文字列、数値、リスト、辞書、ブール値）に限られます。</p>
+      <p>例えば、次のように NumPy の <code>ndarray</code>
+      型のオブジェクトをシリアライズしようとすると <span
+      class="masked">TypeError: Object of type ndarray is not JSON
+      serializable</span> が発生します。</p>
+      <div class="sourceCode" id="cb27"
+      data-caption="ndarray型のシリアライズの失敗"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb27-3"><a href="#cb27-3"></a><span class="im">import</span> json </span>
+<span id="cb27-4"><a href="#cb27-4"></a></span>
+<span id="cb27-5"><a href="#cb27-5"></a>a1 <span class="op">=</span> np.array([[<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>],[<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>]])</span>
+<span id="cb27-6"><a href="#cb27-6"></a><span class="bu">print</span>(<span class="bu">type</span>(a1)) <span class="co"># =&gt; numpy.ndarray</span></span>
+<span id="cb27-7"><a href="#cb27-7"></a></span>
+<span id="cb27-8"><a href="#cb27-8"></a><span class="co"># JSONにシリアライズしてセーブ</span></span>
+<span id="cb27-9"><a href="#cb27-9"></a>fn <span class="op">=</span> <span class="st">&#39;test-04.json&#39;</span></span>
+<span id="cb27-10"><a href="#cb27-10"></a><span class="cf">with</span> <span class="bu">open</span>(fn, mode<span class="op">=</span><span class="st">&#39;w&#39;</span>, encoding<span class="op">=</span><span class="st">&#39;utf_8&#39;</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb27-11"><a href="#cb27-11"></a>  json.dump(a1, <span class="bu">file</span>, ensure_ascii<span class="op">=</span><span class="va">False</span>) </span></code></pre></div>
+      <p>この問題を解決するには、<code>ndarray</code>
+      型のオブジェクトを「リスト型」に変換してからシリアライズする必要があります。</p>
+      <div class="sourceCode" id="cb28"
+      data-caption="ndarray型のシリアライズ"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb28-2"><a href="#cb28-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb28-3"><a href="#cb28-3"></a><span class="im">import</span> json </span>
+<span id="cb28-4"><a href="#cb28-4"></a></span>
+<span id="cb28-5"><a href="#cb28-5"></a>a1 <span class="op">=</span> np.array([[<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>],[<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>]])</span>
+<span id="cb28-6"><a href="#cb28-6"></a><span class="bu">print</span>(<span class="bu">type</span>(a1)) <span class="co"># =&gt; &lt;class &#39;numpy.ndarray&#39;&gt;</span></span>
+<span id="cb28-7"><a href="#cb28-7"></a>a2 <span class="op">=</span> a1.tolist()</span>
+<span id="cb28-8"><a href="#cb28-8"></a><span class="bu">print</span>(<span class="bu">type</span>(a2)) <span class="co"># =&gt; &lt;class &#39;list&#39;&gt;</span></span>
+<span id="cb28-9"><a href="#cb28-9"></a></span>
+<span id="cb28-10"><a href="#cb28-10"></a>fn <span class="op">=</span> <span class="st">&#39;test-04.json&#39;</span></span>
+<span id="cb28-11"><a href="#cb28-11"></a><span class="cf">with</span> <span class="bu">open</span>(fn, mode<span class="op">=</span><span class="st">&#39;w&#39;</span>, encoding<span class="op">=</span><span class="st">&#39;utf_8&#39;</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb28-12"><a href="#cb28-12"></a>  json.dump(a2, <span class="bu">file</span>, ensure_ascii<span class="op">=</span><span class="va">False</span>) </span></code></pre></div>
+      <p>また、JSONはテキストファイルであり、その可読性も高いためデバッグなどには有利ですが、同時に<span
+      class="masked">セキュリティ</span>のリスクが伴います。具体的には、プログラムの使用者がJSONファイルの内容を簡単に閲覧・書き換えることができるため
+      <span
+      class="masked">データの機密性や整合性が損なわれる可能性</span>
+      があります。</p>
+      <p>例えば、RPGゲームのセーブデータを
+      <strong>JSON形式で管理・保存していた場合</strong>、プレイヤーがファイルを開いてキャラクターのステータスや所持アイテムを変更する可能性があります。これにより、ゲームのバランスが崩れたり、不正なプレイが発生する可能性があります。</p>
+      <p>これを防ぐためには、以下のような対策が考えられます。</p>
+      <ul>
+      <li>ファイルの暗号化:
+      <strong>JSONファイル自体を暗号化する</strong>
+      ことで不正なアクセスを防ぐ。</li>
+      <li>チェックサムの使用: ファイル
+      の<strong>改ざんを検出するためにチェックサム</strong>
+      を用いる。</li>
+      <li>サーバーサイドでの検証:
+      ゲームの重要なデータは<strong>サーバーサイドで管理</strong>し、クライアントでは表示だけを行うようにする。</li>
+      </ul>
+      <h1 data-number="6"
+      id="pickle形式のシリアライズとデシリアライズ"><span
+      class="header-section-number">6</span>
+      pickle形式のシリアライズとデシリアライズ</h1>
+      <p><strong>pickle</strong> (ピクル) ライブラリを使用すると、NumPy
+      の <code>ndarray</code>
+      型のほか、自作したクラスのインスタンスなど、様々なオブジェクトをシリアライズ
+      / デシリアライズすることができます。</p>
+      <p><strong>pickle</strong>
+      ライブラリのシリアライズにより生成される「<strong>pickleファイル</strong>」は<strong>バイナリ形式</strong>となります。そのため「JSONファイル」のようにライトユーザーがテキストエディタで開いて閲覧、編集することは簡単にはできません。また、「pickleファイル」は、Python
+      特有のフォーマットであるため、<strong>基本的にはPython以外の言語や環境で利用にはできません</strong>。</p>
+      <div class="note type-tips">
+      <p><strong>pickle (ピクル) の由来</strong></p>
+      <p>pickle (ピクル)
+      は、酢漬けや塩漬けの漬物に由来しています。ピクルの複数形が「ピクルス」で、日本ではハンバーガーのアレとして知られています。データを漬物にする
+      (=保存する) という洒落から、このようなライブラリ (モジュール)
+      の名前がついたそうです。</p>
+      </div>
+      <p><code>pickle</code>
+      ライブラリは、Pythonの標準ライブラリの一部であるため特別なインストールは必要ありません。</p>
+      <h2 data-number="6.1" id="シリアライズ-1"><span
+      class="header-section-number">6.1</span> シリアライズ</h2>
+      <p><code>json</code> ライブラリ (モジュール)
+      を使用した「シリアライズ」の例を示します。<code>ndarray</code>
+      型がそのままシリアライズできる点に注意してください。</p>
+      <div class="sourceCode" id="cb29"
+      data-caption="pickle形式にシリアライズしてファイルに出力"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb29-2"><a href="#cb29-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb29-3"><a href="#cb29-3"></a><span class="im">import</span> pickle</span>
+<span id="cb29-4"><a href="#cb29-4"></a></span>
+<span id="cb29-5"><a href="#cb29-5"></a><span class="co"># データの準備</span></span>
+<span id="cb29-6"><a href="#cb29-6"></a>a1 <span class="op">=</span> np.array([[<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>],[<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>]])</span>
+<span id="cb29-7"><a href="#cb29-7"></a>a2 <span class="op">=</span> np.array([[<span class="dv">9</span>,<span class="dv">8</span>,<span class="dv">7</span>],[<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">4</span>]])</span>
+<span id="cb29-8"><a href="#cb29-8"></a><span class="bu">print</span>(<span class="bu">type</span>(a1)) <span class="co"># =&gt; &lt;class &#39;numpy.ndarray&#39;&gt;</span></span>
+<span id="cb29-9"><a href="#cb29-9"></a>data <span class="op">=</span> {<span class="st">&#39;A&#39;</span>:a1, <span class="st">&#39;B&#39;</span>:a2 }</span>
+<span id="cb29-10"><a href="#cb29-10"></a></span>
+<span id="cb29-11"><a href="#cb29-11"></a><span class="co"># シリアライズ</span></span>
+<span id="cb29-12"><a href="#cb29-12"></a>fn <span class="op">=</span> <span class="st">&#39;test-05.pickle&#39;</span></span>
+<span id="cb29-13"><a href="#cb29-13"></a><span class="cf">with</span> <span class="bu">open</span>(fn, mode<span class="op">=</span><span class="st">&#39;wb&#39;</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb29-14"><a href="#cb29-14"></a>  pickle.dump(data, <span class="bu">file</span>)</span></code></pre></div>
+      <p><strong>第13行目</strong> の　<code>open</code>
+      関数のキーワード引数の <code>mode='rb'</code>
+      は、ファイルをバイナリ形式 (binary format) で書き込み (write)
+      モードでオープンすることを指定するものです。</p>
+      <p>このプログラムを実行すると、カレントフォルダに
+      <code>test-05.pickle</code> というファイルが生成されます
+      (テキストエディタでは内容を適切に確認することができません)。</p>
+      <h2 data-number="6.2" id="デシリアライズ-1"><span
+      class="header-section-number">6.2</span> デシリアライズ</h2>
+      <p>「デシリアライズ」の例を示します。<code>ndarray</code>
+      という型情報が維持されていることを確認してください。</p>
+      <div class="sourceCode" id="cb30"
+      data-caption="pickle形式のファイルからデシリアライズ"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb30-2"><a href="#cb30-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb30-3"><a href="#cb30-3"></a><span class="im">import</span> pickle</span>
+<span id="cb30-4"><a href="#cb30-4"></a></span>
+<span id="cb30-5"><a href="#cb30-5"></a><span class="co"># デシリアライズ</span></span>
+<span id="cb30-6"><a href="#cb30-6"></a>fn <span class="op">=</span> <span class="st">&#39;test-05.pickle&#39;</span></span>
+<span id="cb30-7"><a href="#cb30-7"></a><span class="cf">with</span> <span class="bu">open</span>(fn,<span class="st">&#39;rb&#39;</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb30-8"><a href="#cb30-8"></a>  data <span class="op">=</span> pickle.load(<span class="bu">file</span>)</span>
+<span id="cb30-9"><a href="#cb30-9"></a></span>
+<span id="cb30-10"><a href="#cb30-10"></a><span class="bu">print</span>(<span class="bu">type</span>(data[<span class="st">&#39;A&#39;</span>])) <span class="co"># =&gt; &lt;class &#39;numpy.ndarray&#39;&gt;</span></span>
+<span id="cb30-11"><a href="#cb30-11"></a><span class="bu">print</span>(data[<span class="st">&#39;A&#39;</span>])</span></code></pre></div>
+      <p><code>open</code> 関数のキーワード引数の <code>mode='rb'</code>
+      は、ファイルをバイナリ形式 (binary format) で読み込む (read)
+      でオープンすることを指定するものです。</p>
+      <p><strong>演習1</strong>: 第02行目の
+      <code>import numpy as np</code>
+      を削除するとどうなるか確認せよ。</p>
+      <h2 data-number="6.3" id="注意点-1"><span
+      class="header-section-number">6.3</span> 注意点</h2>
+      <p>pickleファイルはバイナリ形式であるため、直接の閲覧・編集は難しいですが、一定の知識とスキルがあれば
+      <span class="masked">改ざんすること</span> も可能です。特に
+      <strong>パスワード</strong> や <strong>APIキー</strong>
+      などの機密性が高い情報は、pickleファイルに直接保存せず、適切な方法で安全に保管するよう心掛けてください。</p>
+      <p>セキュリティの観点からも、pickleファイルの取り扱いには注意が必要です。信頼性の確認できない
+      ソース
+      からpickleファイルを読み込む場合、悪意のあるコードが埋め込まれている可能性があり、それが実行されるとシステムが危険にさらされます。信頼できるソースからのみpickleファイルを読み込むようにし、さらに適切なセキュリティ対策を行うよう努めてください。</p>
+      <h1 data-number="7"
+      id="pandas-を使った-csv-excel-ファイルの読み込み"><span
+      class="header-section-number">7</span> Pandas を使った CSV / Excel
+      ファイルの読み込み</h1>
+      <p>「計測実験の結果」や「データ分析や機械学習のデータ」は
+      <strong>CSVファイル</strong>
+      として提供されることが多いです。「情報1」の<a
+      href="https://classroom.google.com/c/NjAzMjM4NjAzNTQ3/m/NTE4NDg3MTMwMTYx/details">第11回講義
+      (p.185～)</a>で学んだように、<strong>CSV</strong> は<span
+      class="masked">Comma Separated Values</span>
+      の頭文字あり、表データの列を「カンマ
+      (コンマ)」で区切り、行を「改行」で区切って表現したテキストデータです。Excelがインストールされた環境では、CSVファイルをダブルクリックすると
+      Excel
+      が起動しますが、実体は<strong>単なるテキストファイル</strong>である点に注意してください。</p>
+      <p>CSVデータは、テキストデータとしてPythonで読み込むことができますが、<strong><em>Pandas</em></strong>
+      (<strong>パンダス</strong>)
+      モジュールを使うことで「柔軟」かつ「簡単」に
+      <strong>CSVの読み込み</strong> ができます。さらに、Pandasは <span
+      class="masked">読み込んだ表形式データに対する様々な操作や処理の機能</span>
+      を提供し、Pythonで「データ分析」や「機械学習（AIを含む）」に取り組む際には
+      NumPy、Matplotlib とあわせて必須ライブラリとなっています。</p>
+      <p>Pandas
+      を使ったデータ処理については次回の講義で扱います。ここでは
+      CSVファイル の「読込み」についてのみ簡単に紹介します。</p>
+      <h2 data-number="7.1" id="pandas-のインストール"><span
+      class="header-section-number">7.1</span> Pandas
+      のインストール</h2>
+      <p>GoogleColab. 環境ではデフォルトで Pandas
+      がインストールされているので、インポートすればそのまま利用することができます。また、ローカルPCに環境を構築した場合
+      (仮想環境を構築した場合) は、コマンドラインから
+      <code>pip install pandas</code> で Pandas
+      をインストールしてください。</p>
+      <h2 data-number="7.2" id="csvファイルの読込み"><span
+      class="header-section-number">7.2</span> CSVファイルの読込み</h2>
+      <p>次のような CSV ファイル <code>Current(mW)_00.csv</code>
+      があるとします
+      (このデータに見覚えはありませんか？)。<code>%%writefile</code>
+      を利用し、このCSVファイルを生成してください。</p>
+      <pre><code>created,current (mA)
+2023/9/23 10:30:00.138,1.8359375
+2023/9/23 10:30:30.75,1.953125
+2023/9/23 10:31:03.656,1.796875
+2023/9/23 10:31:50.695,3.6328125
+2023/9/23 10:32:20.137,3.7109375
+2023/9/23 10:32:50.59,3.671875
+2023/9/23 10:33:21.470,3.7109375
+2023/9/23 10:33:51.744,3.4765625
+2023/9/23 10:34:21.533,3.671875
+2023/9/23 10:34:58.539,5.4296875
+2023/9/23 10:35:27.895,5.2734375
+2023/9/23 10:35:58.61,5.4296875
+2023/9/23 10:36:28.479,5.46875
+2023/9/23 10:36:57.977,5.5078125
+2023/9/23 10:37:28.19,5.078125
+2023/9/23 10:38:12.777,4.0625
+2023/9/23 10:38:42.173,4.140625
+2023/9/23 10:39:12.312,4.1015625
+2023/9/23 10:39:42.341,3.984375</code></pre>
+      <p>生成したCSVファイル <code>Current(mW)_00.csv</code> は、Pandas
+      を使って次のように読み込むことができます。</p>
+      <div class="sourceCode" id="cb32"
+      data-caption="PandasによるCSVファイルの読込み"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb32-2"><a href="#cb32-2"></a><span class="im">import</span> os</span>
+<span id="cb32-3"><a href="#cb32-3"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb32-4"><a href="#cb32-4"></a></span>
+<span id="cb32-5"><a href="#cb32-5"></a>fn <span class="op">=</span> <span class="st">&#39;Current(mW)_00.csv&#39;</span></span>
+<span id="cb32-6"><a href="#cb32-6"></a><span class="cf">assert</span> os.path.isfile(fn)  <span class="co"># ファイルの存在チェック</span></span>
+<span id="cb32-7"><a href="#cb32-7"></a></span>
+<span id="cb32-8"><a href="#cb32-8"></a>df <span class="op">=</span> pd.read_csv(fn) <span class="co"># CSVファイルを読込み、変数dfに格納</span></span>
+<span id="cb32-9"><a href="#cb32-9"></a><span class="bu">print</span>({<span class="bu">type</span>(df)})    <span class="co"># =&gt; &lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;</span></span>
+<span id="cb32-10"><a href="#cb32-10"></a></span>
+<span id="cb32-11"><a href="#cb32-11"></a>display(df) <span class="co"># DataFrame型の変数dfの内容を整形出力</span></span></code></pre></div>
+      <p>コードについて解説します。</p>
+      <ul>
+      <li><p><strong>第02行目</strong>: Pandas ライブラリ (モジュール)
+      をインポートしています。<strong>慣例的に Pandas は</strong>
+      <code>pd</code>
+      <strong>という省略名で使用します</strong>。インポートの際は
+      <code>pandas</code>
+      のように小文字で表記することに注意してください。</p></li>
+      <li><p><strong>第06行目</strong>: assert (アサート文) を使って
+      <span class="masked">ファイルが存在していること</span>
+      を確認しています。通常、<code>assert</code>
+      に続けて「<strong>条件式</strong>」を記述しますが、それに限らず
+      <code>True</code> または <code>False</code>
+      を返すものであれば何でも記述ができます。関数
+      <code>os.path.isfile(...)</code>
+      は、引数で与えたファイルが存在するなら
+      <code>True</code>、存在しないなら <code>False</code>
+      を返す関数なので、アサートに続けてそのまま記述しています。もし、丁寧
+      (冗長) に記載するなら
+      <code>assert os.path.isfile(fn) == True</code>
+      となります。</p></li>
+      <li><p><strong>第08行目</strong>: Pandas の <code>read_csv</code>
+      関数を使ってファイルを読込み、そこから <code>DataFrame</code>
+      という「型」のオブジェクトを生成し、変数 <code>df</code>
+      に格納しています (慣例的に <code>DataFrame</code> 型の変数には
+      <code>df</code> という名前を使います)。</p>
+      <ul>
+      <li>Pandas には <code>read_excel</code> や <code>read_json</code>
+      などの関数も用意されています。つまり、<span
+      class="masked">ほぼ同様に Excel ファイル (<code>.xlsx</code> や
+      <code>.xls</code>) からも表データを読み込むこと</span>
+      ができます。</li>
+      </ul></li>
+      <li><p><strong>第09行目</strong>: 変数 <code>df</code>
+      の「型」を確認しています。<code>DataFrame</code>
+      型であることが確認できます。</p></li>
+      <li><p><strong>第11行目</strong>: <code>df</code>
+      を整形出力しています。この <code>display</code>
+      はJupyter環境、GoogleColab.環境でのみ有効です。</p></li>
+      </ul>
+      <p>上記プログラムを実行すると次のような出力が得られるとおもいます</p>
+      <figure>
+      <img src="figs/18/pandas-01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p><strong>演習</strong>: <strong>第11行目</strong>の
+      <code>display(df)</code> を <code>print(df)</code>
+      に書き換えるとどのようになるか確認せよ。</p>
+      <h2 data-number="7.3" id="任意列をndarray型に変換"><span
+      class="header-section-number">7.3</span>
+      任意列をndarray型に変換</h2>
+      <p><code>DataFrame</code> 型の任意の列は、NumPy の
+      <code>ndarray</code>
+      型に変換することができます。ところで、前回講義では
+      <code>ndarray</code> 型のデータを使って<a
+      href="lecture17.html#グラフ描画">グラフを作成</a>しました。よって、この
+      <code>df</code> についてもグラフを作成することができます。</p>
+      <p>次のプログラムを実行して結果を確認してください。</p>
+      <div class="sourceCode" id="cb33"
+      data-caption="ndarray型への変換とグラフ描画"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb33-2"><a href="#cb33-2"></a><span class="im">import</span> os</span>
+<span id="cb33-3"><a href="#cb33-3"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb33-4"><a href="#cb33-4"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb33-5"><a href="#cb33-5"></a></span>
+<span id="cb33-6"><a href="#cb33-6"></a>fn <span class="op">=</span> <span class="st">&#39;Current(mW)_00.csv&#39;</span></span>
+<span id="cb33-7"><a href="#cb33-7"></a><span class="cf">assert</span> os.path.isfile(fn)  <span class="co"># ファイルの存在チェック</span></span>
+<span id="cb33-8"><a href="#cb33-8"></a>df <span class="op">=</span> pd.read_csv(fn) <span class="co"># CSVファイルを読込み、変数dfに格納</span></span>
+<span id="cb33-9"><a href="#cb33-9"></a></span>
+<span id="cb33-10"><a href="#cb33-10"></a>x <span class="op">=</span> df[<span class="st">&#39;created&#39;</span>].to_numpy()      <span class="co"># ndarray型に変換</span></span>
+<span id="cb33-11"><a href="#cb33-11"></a>y <span class="op">=</span> df[<span class="st">&#39;current (mA)&#39;</span>].to_list() <span class="co"># 〃</span></span>
+<span id="cb33-12"><a href="#cb33-12"></a></span>
+<span id="cb33-13"><a href="#cb33-13"></a><span class="bu">print</span>(<span class="bu">type</span>(x)) <span class="co"># =&gt; &lt;class &#39;numpy.ndarray&#39;&gt;</span></span>
+<span id="cb33-14"><a href="#cb33-14"></a><span class="bu">print</span>(<span class="bu">type</span>(y)) <span class="co"># =&gt; &lt;class &#39;numpy.ndarray&#39;&gt;</span></span>
+<span id="cb33-15"><a href="#cb33-15"></a></span>
+<span id="cb33-16"><a href="#cb33-16"></a>fig,ax <span class="op">=</span> plt.subplots(dpi<span class="op">=</span><span class="dv">120</span>)</span>
+<span id="cb33-17"><a href="#cb33-17"></a>ax.plot(x,y,marker<span class="op">=</span><span class="st">&#39;o&#39;</span>)</span>
+<span id="cb33-18"><a href="#cb33-18"></a>plt.show()</span></code></pre></div>
+      <p>実行すると、次のように (工学系レポートとしては苦笑い品質の)
+      グラフが生成できました。</p>
+      <figure>
+      <img src="figs/18/graph-01.svg" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p><strong>演習</strong>: <strong>第11行目</strong>を
+      <code>x = df['created'].to_list()</code>、<strong>第12行目</strong>を
+      <code>y = df['current (mA)'].to_list()</code>
+      に書き換えるとどのようになるか確認せよ。</p>
+      <h2 data-number="7.4"
+      id="dataframe型を引数とするグラフ描画と整形"><span
+      class="header-section-number">7.4</span>
+      DataFrame型を引数とするグラフ描画と整形</h2>
+      <p>上記では <code>DataFrame</code> 型の変数 <code>df</code>
+      から任意列を取り出して、<code>ndarray</code> 型に変換して
+      Matplotlib に与えていました。しかし、実際は
+      <code>ax.plot(df['created'],df['current (mA)'],marker='o')</code>
+      のように <code>DataFrame</code> 型のままでMatplotlib
+      にデータを与えることができます。</p>
+      <p>また、レポートに許容される品質にグラフを整形するプログラムを示します。なお、第12行目や整形に関する詳細は現時点で理解する必要はありません
+      (<a
+      href="https://www.google.com/search?q=python+lambda">ラムダ式</a>などの中級者レベルの内容を含みます)。</p>
+      <div class="sourceCode" id="cb34"
+      data-caption="整形されたグラフの作成"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb34-2"><a href="#cb34-2"></a><span class="im">import</span> os</span>
+<span id="cb34-3"><a href="#cb34-3"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb34-4"><a href="#cb34-4"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb34-5"><a href="#cb34-5"></a><span class="im">import</span> matplotlib.ticker <span class="im">as</span> ticker </span>
+<span id="cb34-6"><a href="#cb34-6"></a><span class="im">import</span> pylab</span>
+<span id="cb34-7"><a href="#cb34-7"></a><span class="im">from</span> datetime <span class="im">import</span> datetime <span class="im">as</span> dt</span>
+<span id="cb34-8"><a href="#cb34-8"></a></span>
+<span id="cb34-9"><a href="#cb34-9"></a>fn <span class="op">=</span> <span class="st">&#39;Current(mW)_00.csv&#39;</span></span>
+<span id="cb34-10"><a href="#cb34-10"></a><span class="cf">assert</span> os.path.isfile(fn)</span>
+<span id="cb34-11"><a href="#cb34-11"></a>df <span class="op">=</span> pd.read_csv(fn)</span>
+<span id="cb34-12"><a href="#cb34-12"></a>df[<span class="st">&#39;created&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;created&#39;</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: dt.strptime(x, <span class="st">&#39;%Y/%m/</span><span class="sc">%d</span><span class="st"> %H:%M:%S.</span><span class="sc">%f</span><span class="st">&#39;</span>))</span>
+<span id="cb34-13"><a href="#cb34-13"></a></span>
+<span id="cb34-14"><a href="#cb34-14"></a>fig,ax <span class="op">=</span> plt.subplots(dpi<span class="op">=</span><span class="dv">120</span>)</span>
+<span id="cb34-15"><a href="#cb34-15"></a>ax.plot(df[<span class="st">&#39;created&#39;</span>],df[<span class="st">&#39;current (mA)&#39;</span>],marker<span class="op">=</span><span class="st">&#39;o&#39;</span>)</span>
+<span id="cb34-16"><a href="#cb34-16"></a>ax.set_xlabel(<span class="st">&#39;Time [ 2023/09/23 10:30-10:40 ]&#39;</span>,labelpad<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb34-17"><a href="#cb34-17"></a>ax.set_ylabel(<span class="st">&#39;Current (mA)&#39;</span>)</span>
+<span id="cb34-18"><a href="#cb34-18"></a></span>
+<span id="cb34-19"><a href="#cb34-19"></a>ax.set_xlim(dt(<span class="dv">2023</span>,<span class="dv">9</span>,<span class="dv">23</span>,<span class="dv">10</span>,<span class="dv">30</span>),dt(<span class="dv">2023</span>,<span class="dv">9</span>,<span class="dv">23</span>,<span class="dv">10</span>,<span class="dv">40</span>))</span>
+<span id="cb34-20"><a href="#cb34-20"></a>ax.set_ylim(<span class="dv">0</span>,<span class="dv">6</span>)</span>
+<span id="cb34-21"><a href="#cb34-21"></a></span>
+<span id="cb34-22"><a href="#cb34-22"></a>ax.xaxis.set_major_formatter(ticker.FuncFormatter(<span class="kw">lambda</span> p,q: pylab.num2date(p).strftime(<span class="st">&#39;%H:%M&#39;</span>)))</span>
+<span id="cb34-23"><a href="#cb34-23"></a>ax.yaxis.set_major_formatter(ticker.FuncFormatter(<span class="kw">lambda</span> p,q: <span class="ss">f&#39;</span><span class="sc">{</span>p<span class="sc">:.1f}</span><span class="ss">&#39;</span>))</span>
+<span id="cb34-24"><a href="#cb34-24"></a>ax.tick_params(axis<span class="op">=</span><span class="st">&#39;x&#39;</span>,labelrotation<span class="op">=-</span><span class="dv">90</span>)</span>
+<span id="cb34-25"><a href="#cb34-25"></a>ax.tick_params(direction<span class="op">=</span><span class="st">&#39;inout&#39;</span>)</span>
+<span id="cb34-26"><a href="#cb34-26"></a></span>
+<span id="cb34-27"><a href="#cb34-27"></a>ax.grid()</span>
+<span id="cb34-28"><a href="#cb34-28"></a>plt.tight_layout()</span>
+<span id="cb34-29"><a href="#cb34-29"></a>plt.show()</span></code></pre></div>
+      <p>実行すると次のようなグラフが生成されます。これならレポートにも使用できそうです。</p>
+      <figure>
+      <img src="figs/18/graph-02.svg" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <h1 data-number="8" id="課題07"><span
+      class="header-section-number">8</span> 課題07</h1>
+      <p><strong>HTML</strong>と<strong>CSS</strong>を使用して、今後の「インターンシップ」「就職」「進学」などの<strong>キャリア活動に利用してくための</strong>
+      <strong><em>ポートフォリオ</em></strong>
+      を作成してください。今回作成してもらうものは「第1版」であり、今後の学生生活のなかでコンテンツを追加・更新し、構造やデザインをブラッシュアップしていくものと捉えてください。</p>
+      <p>無論、JavsScriptを使用してもOKです。</p>
+      <div class="note type-tips">
+      <p><strong>ポートフォリオとは</strong></p>
+      <p>ICT系のエンジニアを目指す学生にとっての「<strong>ポートフォリオ</strong>」とは
+      <span
+      class="masked">自分のスキルや経験・活動、制作物をまとめて示すもの</span>
+      です。履歴書や職務経歴書が「経歴」を示すことに対し、ポートフォリオは「<strong>自分が何ができるのか</strong>」を具体的にアピール・証明する資料となります。</p>
+      <p>特に <span
+      class="masked">ゲーム業界やエンターテインメント業界のソフトウェアエンジニア</span>
+      を目指す場合、そのインターンシップや就職における (意欲や技術面の)
+      評価に「ポートフォリオ」がとても重要になってきます。</p>
+      <p>具体的な内容としては「自己紹介
+      (所属や年齢)」「<strong>スキルセット
+      (使用経験のあるプログラミング言語や開発環境、フレームワーク、クラウドサービス、ツールなど)</strong>」「<strong>得意分野</strong>」「<strong>成果物・制作物</strong>」「<strong>保有資格
+      (情報技術系/その他)</strong>」「<strong>コンテスト・ハッカソン・イベント・セミナー・プロジェクト・会社見学・インターンシップなどの取り組みの記録</strong>
+      (現在進行形の活動を含む)」「 GutHub / AtCoder / Techful / SNS /
+      ブログ / YouTube などのリンク や 連絡先 (メールアドレスなど)
+      」などを記載します。ただし、すべてを網羅するのではなく、目的に応じてアピールしたい情報を選んで記載します。</p>
+      <p>以下、ポートフォリオの作成例です。そのほか「<a
+      href="https://www.google.com/search?q=高専+ポートフォリオ+site:github.io">高専
+      ポートフォリオ
+      site:github.io</a>」で検索すると参考になる様々なポートフォリオを見つけることができます。</p>
+      <ol type="1">
+      <li>https://yamasy.info/ 　(明石高専OG)</li>
+      <li>https://herorobo.github.io/portfolio/ 　(公大高専OB)</li>
+      <li>https://kisaragi2342.com/portfolio/ 　(高専生)</li>
+      <li>https://nnsnodnb.github.io/ 　(高専生)</li>
+      <li>https://datsuka-qwerty.github.io/my-page/　(高専生)</li>
+      <li>https://yamagn.github.io/　(高専生)</li>
+      <li>https://oriishitakahiro.github.io/portfolio/　(高専OB)</li>
+      <li>https://chinnanagosge.github.io/portfolio/　(高専OB)</li>
+      <li>https://chige12.github.io/　(高専OB)</li>
+      <li>https://onsd.github.io/　(高専・専攻科生)</li>
+      <li>https://sample-portfolio-psi.vercel.app/</li>
+      <li>https://terupro.site/</li>
+      </ol>
+      <p>また、構成や書き方についての詳細は「<a
+      href="https://www.google.com/search?q=ポートフォリオ+IT業界+学生">ポートフォリオ
+      IT業界
+      学生</a>」などで検索してみてください。また、テンプレートなども公開されているので、第1版では、それを利用することもお勧めします。また
+      <a href="lecture15.html#htmlcssの基礎">第15回講義</a>
+      のカレーレシピの HTML/CSS も有効に利用してください
+      (最低限のページは作成できるはずです)。</p>
+      </div>
+      <p>作成したポートフォリオは <strong>GitHub Pages</strong>
+      で公開し、その URL (= https://xxxxx.github.io/yyy/zzz.html) を <a
+      href="">Google Classroom</a>
+      で指示する方法で提出してください。</p>
+      <ul>
+      <li>「8点」を標準として「10点満点」で評価します
+      (学年末の成績評価の際には「重み」が付けられます)。</li>
+      <li><strong>提出期限</strong>: 2023年11月12日 (日) 23時
+      <ul>
+      <li>取組みの目安となる時間: <strong>240分</strong> (4時間)。</li>
+      <li>本科目には中間試験や期末試験がありません。それらの試験勉強時間の代替として取り組んでください。</li>
+      </ul></li>
+      <li><strong>想定する閲覧者</strong>:
+      企業でインターンシップの受け入れを審査する担当者。または、大学の研究室
+      (情報工学系) の夏季実習 (5日間)
+      の受け入れを審査する大学教授。</li>
+      <li>提出された課題は
+      <strong>必要に応じて知能情報コースの学生と教員、保護者に公開</strong>
+      します。</li>
+      </ul>
+      <hr />
+      <p>ポートフォリオの「構成」や「レイアウト」「デザイン」などは自由ですが、次の内容は必ず含めるようにしてください。</p>
+      <ul>
+      <li>所属と学年 /
+      年齢。最もぼかした表現としては「高専2年生」「高専生(17歳)」。無論、それより詳しく記載してもOKです。</li>
+      <li><strong><em>課題05</em></strong> <strong>(自由課題)</strong>
+      として作成した<a
+      href="lecture12.html#課題05-自由課題">Pythonプログラム</a>の概要とリンク
+      (GoogleColab. から GitHub にプッシュして、その
+      <strong>リポジトリを示すリンク</strong> が望ましいです)。</li>
+      <li>今年度の高専祭展示に向けたプロジェクト活動の成果物と概要
+      (役割や担当)。スクリーンショットや動画、リポジトリへのリンクなどを必要に応じて付けてください。</li>
+      <li>プログラミング言語やソフトウェア (ウェブサービス)
+      に関する経験・スキルを示すもの。
+      <ul>
+      <li>プログラミング言語としては少なくとも「Python言語」「Arduino言語」「Scratch」については学校授業レベルの使用経験があるはずです。また、ソフトウェア
+      (ウェブサービス) としては「Git/GitHub」「VSCode
+      (venvによるPython開発)」「ArduinoIDE」「Deeds-DCS」「MakeCode for
+      micro:bit」「Tinkercad」「WSL (Windows Subsystem for
+      Linux)」は全員が利用しているはずです。その他、実験班によっては「Ambient」「Real
+      VNC」「Tera Term」「Wireshark」「Cisco Packet
+      Tracer」なども利用しているはずです。</li>
+      <li>閲覧者が皆さんのスキルや経験を適切に評価できるように、明確かつ適切に記述する必要があります。<strong>誤解を招かないように</strong>
+      (=<span
+      class="masked">過大評価あるいは過小評価されないように</span>)、自身の経験やスキルを
+      <strong>客観的</strong> かつ <strong>具体的</strong>
+      に記載するように意識してください。</li>
+      <li>ポートフォリオの書き方や構成に<strong>「正解」は存在しません</strong>。悩むところがあれば、クラスメイトと一緒に考えたり、ChatGPT
+      に相談したり、ウェブで公開されている多数のポートフォリオを参考にしたりしてください。</li>
+      </ul></li>
+      </ul>
+      <!-- ---------------------------------------- -->
+    </main>
+
+    <footer class="markdown-body">
+      <p><a href="https://takeshiwada1980.github.io/Programming1-2023/">講義資料のIndexに移動</a></p>
+    </footer>
+
+    <script>
+      window.onload = function () {
+        // ナビゲーション関連
+        let openBtn = document.getElementsByClassName("openbtn")[0];
+        let navPnl = document.getElementById("g-nav");
+        openBtn.onclick = () => {
+          openBtn.classList.toggle("active");
+          navPnl.classList.toggle("panelactive");
+        };
+
+        let items = navPnl.getElementsByTagName("a");
+        Array.from(items).forEach((item) => {
+          item.onclick = () => {
+            openBtn.classList.toggle("active");
+            navPnl.classList.toggle("panelactive");
+          };
+        });
+
+        // マスク処理
+        let maskedSpans = document.getElementsByClassName("masked");
+        Array.from(maskedSpans).forEach((span) => {
+          span.onclick = () => {
+            span.classList.toggle("open");
+          };
+        });
+
+        // 画像にリンクを付与
+        let images = document.querySelectorAll("figure img");
+        Array.from(images).forEach((img) => {
+          img.onclick = () => {
+            location.href = img.getAttribute("src");
+          };
+        });
+      };
+    </script>
+  </body>
+</html>
