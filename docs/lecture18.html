@@ -191,6 +191,8 @@ class="toc-section-number">8</span> 課題07</a></li>
       <li>テキストファイルの基本的な「<strong>読み込み</strong>」と「<strong>書き込み</strong>」ができる。</li>
       <li><code>json</code> と <code>pickle</code>
       ライブラリを利用した「<strong>シリアライズ</strong>」と「<strong>デシリアライズ</strong>」ができる。</li>
+      <li>CSVファイルの読込みや表形式データの操作や処理には
+      <code>pandas</code> ライブラリが適していること知る。</li>
       </ul>
       <h2 data-number="1.3" id="プログラミング学習のポイント"><span
       class="header-section-number">1.3</span>
@@ -1000,7 +1002,7 @@ MP,128</code></pre>
       <p>CSVデータは、テキストデータとしてPythonで読み込むことができますが、<strong><em>Pandas</em></strong>
       (<strong>パンダス</strong>)
       モジュールを使うことで「柔軟」かつ「簡単」に
-      <strong>CSVの読み込み</strong> ができます。さらに、Pandasは <span
+      <strong>CSVの読込み</strong> ができます。さらに、Pandasは <span
       class="masked">読み込んだ表形式データに対する様々な操作や処理の機能</span>
       を提供し、Pythonで「データ分析」や「機械学習（AIを含む）」に取り組む際には
       NumPy、Matplotlib とあわせて必須ライブラリとなっています。</p>
@@ -1011,15 +1013,15 @@ MP,128</code></pre>
       class="header-section-number">7.1</span> Pandas
       のインストール</h2>
       <p>GoogleColab. 環境ではデフォルトで Pandas
-      がインストールされているので、インポートすればそのまま利用することができます。また、ローカルPCに環境を構築した場合
-      (仮想環境を構築した場合) は、コマンドラインから
+      がインストールされているので、インポートすればそのまま利用することができます。一方、ローカルPCに環境を構築している場合
+      (仮想環境を構築している場合) は、コマンドラインから
       <code>pip install pandas</code> で Pandas
       をインストールしてください。</p>
       <h2 data-number="7.2" id="csvファイルの読込み"><span
       class="header-section-number">7.2</span> CSVファイルの読込み</h2>
-      <p>次のような CSV ファイル <code>Current(mW)_00.csv</code>
-      があるとします
-      (このデータに見覚えはありませんか？)。<code>%%writefile</code>
+      <p>次のような CSV ファイル <code>Current(mA)_00.csv</code>
+      があるとします (このデータに見覚えはありませんか？)。まず
+      <code>%%writefile</code>
       を利用し、このCSVファイルを生成してください。</p>
       <pre><code>created,current (mA)
 2023/9/23 10:30:00.138,1.8359375
@@ -1041,7 +1043,7 @@ MP,128</code></pre>
 2023/9/23 10:38:42.173,4.140625
 2023/9/23 10:39:12.312,4.1015625
 2023/9/23 10:39:42.341,3.984375</code></pre>
-      <p>生成したCSVファイル <code>Current(mW)_00.csv</code> は、Pandas
+      <p>生成したCSVファイル <code>Current(mA)_00.csv</code> は、Pandas
       を使って次のように読み込むことができます。</p>
       <div class="sourceCode" id="cb32"
       data-caption="PandasによるCSVファイルの読込み"><pre
@@ -1049,7 +1051,7 @@ MP,128</code></pre>
 <span id="cb32-2"><a href="#cb32-2"></a><span class="im">import</span> os</span>
 <span id="cb32-3"><a href="#cb32-3"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb32-4"><a href="#cb32-4"></a></span>
-<span id="cb32-5"><a href="#cb32-5"></a>fn <span class="op">=</span> <span class="st">&#39;Current(mW)_00.csv&#39;</span></span>
+<span id="cb32-5"><a href="#cb32-5"></a>fn <span class="op">=</span> <span class="st">&#39;Current(mA)_00.csv&#39;</span></span>
 <span id="cb32-6"><a href="#cb32-6"></a><span class="cf">assert</span> os.path.isfile(fn)  <span class="co"># ファイルの存在チェック</span></span>
 <span id="cb32-7"><a href="#cb32-7"></a></span>
 <span id="cb32-8"><a href="#cb32-8"></a>df <span class="op">=</span> pd.read_csv(fn) <span class="co"># CSVファイルを読込み、変数dfに格納</span></span>
@@ -1107,21 +1109,21 @@ MP,128</code></pre>
       <h2 data-number="7.3" id="任意列をndarray型に変換"><span
       class="header-section-number">7.3</span>
       任意列をndarray型に変換</h2>
-      <p><code>DataFrame</code> 型の任意の列は、NumPy の
-      <code>ndarray</code>
-      型に変換することができます。ところで、前回講義では
-      <code>ndarray</code> 型のデータを使って<a
+      <p><code>df</code> (<code>DataFrame</code> 型)
+      の任意の「列」は、NumPy の <code>ndarray</code>
+      型に変換ができます。ところで、前回講義では <code>ndarray</code>
+      型のデータを使って<a
       href="lecture17.html#グラフ描画">グラフを作成</a>しました。よって、この
-      <code>df</code> についてもグラフを作成することができます。</p>
-      <p>次のプログラムを実行して結果を確認してください。</p>
+      <code>df</code> からもグラフを作成できます。</p>
+      <p>次のプログラムを実行して「CSVファイルを読込んでグラフを作成できること」を確認してください。</p>
       <div class="sourceCode" id="cb33"
-      data-caption="ndarray型への変換とグラフ描画"><pre
+      data-caption="CSVファイルの読込みとグラフ作成"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
 <span id="cb33-2"><a href="#cb33-2"></a><span class="im">import</span> os</span>
 <span id="cb33-3"><a href="#cb33-3"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb33-4"><a href="#cb33-4"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb33-5"><a href="#cb33-5"></a></span>
-<span id="cb33-6"><a href="#cb33-6"></a>fn <span class="op">=</span> <span class="st">&#39;Current(mW)_00.csv&#39;</span></span>
+<span id="cb33-6"><a href="#cb33-6"></a>fn <span class="op">=</span> <span class="st">&#39;Current(mA)_00.csv&#39;</span></span>
 <span id="cb33-7"><a href="#cb33-7"></a><span class="cf">assert</span> os.path.isfile(fn)  <span class="co"># ファイルの存在チェック</span></span>
 <span id="cb33-8"><a href="#cb33-8"></a>df <span class="op">=</span> pd.read_csv(fn) <span class="co"># CSVファイルを読込み、変数dfに格納</span></span>
 <span id="cb33-9"><a href="#cb33-9"></a></span>
@@ -1149,14 +1151,16 @@ MP,128</code></pre>
       class="header-section-number">7.4</span>
       DataFrame型を引数とするグラフ描画と整形</h2>
       <p>上記では <code>DataFrame</code> 型の変数 <code>df</code>
-      から任意列を取り出して、<code>ndarray</code> 型に変換して
-      Matplotlib に与えていました。しかし、実際は
+      から任意列を取り出して、<code>ndarray</code> 型に変換してから
+      Matplotlib に与えていました。しかし、これは
       <code>ax.plot(df['created'],df['current (mA)'],marker='o')</code>
       のように <code>DataFrame</code> 型のままでMatplotlib
       にデータを与えることができます。</p>
-      <p>また、レポートに許容される品質にグラフを整形するプログラムを示します。なお、第12行目や整形に関する詳細は現時点で理解する必要はありません
-      (<a
-      href="https://www.google.com/search?q=python+lambda">ラムダ式</a>などの中級者レベルの内容を含みます)。</p>
+      <p>また、レポートに使用できるようにグラフを整形するプログラムを示します。なお、第12行目や整形に関する詳細は現時点で理解する必要はありませんが、パラメータと出力結果の関係については把握しておいてください
+      (例えば <span class="masked">グラフの右端を <code>10:39</code>
+      にするためには、どのパラメータを変更すればよいか</span> や <span
+      class="masked">X軸の時刻表示を「HH時MM分」の形式にするためには、どのパラメータを変更すればよいか</span>
+      など)。</p>
       <div class="sourceCode" id="cb34"
       data-caption="整形されたグラフの作成"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
