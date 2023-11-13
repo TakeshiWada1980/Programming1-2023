@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+
+    <script>
+      MathJax = {
+        chtml: {
+          displayAlign: "left",
+          displayIndent: "1em",
+        },
+      };
+    </script>
+
+     <script
+src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+type="text/javascript"></script> 
+
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>第20回 2I-プログラミング1</title>
+  </head>
+
+  <body>
+    <div class="openbtn"><span></span><span></span><span></span></div>
+    <nav id="g-nav">
+      <div id="g-nav-list">
+        <!-- ---------------------------------------- -->
+         <ul>
+<li><a href="#概要連絡" id="toc-概要連絡"><span
+class="toc-section-number">1</span> 概要・連絡</a>
+<ul>
+<li><a href="#連絡事項" id="toc-連絡事項"><span
+class="toc-section-number">1.1</span> 連絡事項</a></li>
+<li><a href="#今回講義の達成目標" id="toc-今回講義の達成目標"><span
+class="toc-section-number">1.2</span> 今回講義の達成目標</a></li>
+</ul></li>
+<li><a href="#人工知能の勢いがすごくて将来に対して不安しかない"
+id="toc-人工知能の勢いがすごくて将来に対して不安しかない"><span
+class="toc-section-number">2</span>
+人工知能の勢いがすごくて将来に対して不安しかない…?</a></li>
+<li><a href="#ベクトル行列" id="toc-ベクトル行列"><span
+class="toc-section-number">3</span> ベクトル・行列</a></li>
+<li><a href="#座標をベクトルを使って表現"
+id="toc-座標をベクトルを使って表現"><span
+class="toc-section-number">4</span> 座標をベクトルを使って表現</a>
+<ul>
+<li><a href="#移動" id="toc-移動"><span
+class="toc-section-number">4.1</span> 移動</a></li>
+</ul></li>
+<li><a href="#べくとる" id="toc-べくとる"><span
+class="toc-section-number">5</span> べくとる</a></li>
+</ul> 
+        <!-- ---------------------------------------- -->
+      </div>
+    </nav>
+
+    <header class="markdown-body">
+      <p>2023-2I プログラミング1 第20回 講義資料</p>
+      <p>2023年11月20日（月）1・2時限</p>
+    </header>
+
+    <main class="markdown-body">
+      <!-- ---------------------------------------- -->
+      <h1 data-number="1" id="概要連絡"><span
+      class="header-section-number">1</span> 概要・連絡</h1>
+      <h2 data-number="1.1" id="連絡事項"><span
+      class="header-section-number">1.1</span> 連絡事項</h2>
+      <ul>
+      <li>12月25日 (月)
+      の1-2時限は教の都合により「<strong>休講</strong>」とさせてください。ただ、いつもと同じようにウェブテキストを用意しておくので、各自で教室や自宅で取り組みをお願いします。</li>
+      <li>今回講義でも <a
+      href="https://colab.research.google.com/?hl=ja">GoogleColab</a>もしくは<a
+      href="lecture09.html#jupyterの実行">ローカルPCに構築したJupyter環境</a>の利用を推奨します。</li>
+      </ul>
+      <h2 data-number="1.2" id="今回講義の達成目標"><span
+      class="header-section-number">1.2</span> 今回講義の達成目標</h2>
+      <ul>
+      <li>あｄｄｄｄ</li>
+      </ul>
+      <h1 data-number="2"
+      id="人工知能の勢いがすごくて将来に対して不安しかない"><span
+      class="header-section-number">2</span>
+      人工知能の勢いがすごくて将来に対して不安しかない…?</h1>
+      <p>(<a
+      href="lecture19.html#人工知能の勢いがすごくて将来に対して不安しかない">前回</a>のつづき)</p>
+      <p>ときどき「<strong>適切な仕様さえ与えればAIがコードを自動生成してくれるので、ICTエンジニアにはプログラミングスキルは必要ない</strong>」のように言われることもありますが、次のような理由から、最低でもジュニアレベルのプログラミングができないと、ICTエンジニアとして活躍することは難しいです。</p>
+      <ul>
+      <li>生成系AIが出力したプログラムを業務レベルのシステムに組み込むには
+      <span
+      class="masked">調整・修正、統合・評価検証、品質保証などが必要</span>であり、そのためには
+      生成系AIを使う人間
+      がプログラムについて深く内容を理解している必要があります。例えば、ChatGPT
+      などの生成系AIでは、入力として「まったく同じ仕様」を与えても、毎回、異なるプログラムコードを出力します
+      (実質的には無意味なランダムシードに左右されて、出力が変わってきます)。このようなとき、どのコードを採用するのか、採用することに責任を持つのか、最終的な判断をして責任を持つのは人間です。</li>
+      <li>業務として開発するソフトウェアには、特許や秘密情報が含まれます。</li>
+      <li>オープン系のAIを使用する場合、</li>
+      </ul>
+      <p>さらに、ICTエンジニアとして成功するためには、技術だけでなく、問題解決能力、批判的思考、創造性が不可欠です。また、チームで協力してプロジェクトを完成させるコミュニケーションスキルも同様に重要です。AIがコーディングの一部を自動化できるとしても、それを適切に監督し、改善し、統合する人間の専門家が必要です。さらに、エンドユーザーのニーズを理解し、それら</p>
+      <h1 data-number="3" id="ベクトル行列"><span
+      class="header-section-number">3</span> ベクトル・行列</h1>
+      <p>アクションやシューティングなどのジャンルのコンピュータゲームの開発やコンピュータグラフィックス
+      (CG)
+      の分野では、ベクトル・行列の概念を理解し、これらを計算に利用することで効率的なプログラム開発を行うことができます。</p>
+      <p>今回の講義では、ベクトルと行列を利用して、図形の移動や任意の点を基準とした拡大縮小、回転ができることを体験的に確認していきたいと思います。また、位置、速度、加速度をベクトル
+      (行列) として扱い、多数の点の動きを NumPy
+      を使ったシンプルなコードでシミュレートできることも体験していきたいと思います。</p>
+      <h1 data-number="4" id="座標をベクトルを使って表現"><span
+      class="header-section-number">4</span>
+      座標をベクトルを使って表現</h1>
+      <p>XY平面上の任意の座標は <strong>幾何ベクトル</strong>
+      として表現することができます。例えば、X=5, Y=3 の座標点は、原点
+      <span class="math inline">\((0, 0)\)</span> を始点とする <span
+      class="math inline">\((5,3)\)</span>
+      というベクトルとして捉えることができます。</p>
+      <figure>
+      <img src="figs/20/vec-01.svg" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>また、三角形を構成する3つの頂点 <span
+      class="math inline">\((1.5, 4.0)\)</span>、<span
+      class="math inline">\((3.5, 5.0)\)</span>、<span
+      class="math inline">\((4.5, 2.0)\)</span> は、以下のような行列
+      <span class="math inline">\(P_{1}\)</span> で表現できます。</p>
+      <p><span class="math display">\[ P_{1} = \begin{bmatrix} x_0 &amp;
+      y_0 \\ x_1 &amp; y_1 \\ x_2 &amp; y_2 \end{bmatrix} =
+      \begin{bmatrix} 1.5 &amp; 4.0 \\ 3.5 &amp; 5.0 \\ 4.5 &amp; 2.0
+      \end{bmatrix} \]</span></p>
+      <figure>
+      <img src="figs/20/vec-02.svg" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>このようにすることで、N個の点から構成される図形は
+      <strong>N行2列</strong>
+      の行列として表現できます。また、その転置、すなわち
+      <strong>2行N列</strong>
+      としての表現も可能です。どちらの表現方法を使用するかは状況によって異なりますが、この講義では基本的には
+      <strong>N行2列</strong> の行列として表現します。</p>
+      <h2 data-number="4.1" id="移動"><span
+      class="header-section-number">4.1</span> 移動</h2>
+      <p>行列で表現された図形 <span
+      class="math inline">\(P_{1}\)</span>は、次のようにして移動させることができます。ここで
+      <span class="math inline">\(P_{2}\)</span>
+      は移動後の図形の位置を表す行列であり、<span
+      class="math inline">\(M\)</span>
+      は<strong>移動量</strong>を表す行列になります。<span
+      class="math inline">\(M\)</span> の要素である <span
+      class="math inline">\(m_{x}\)</span>
+      は<strong>X方向の移動量</strong>を、<span
+      class="math inline">\(m_{y}\)</span>
+      は<strong>Y方向の移動量</strong>を示します。</p>
+      <p><span class="math display">\[ P_{2} = P_{1} + M  =
+      \begin{bmatrix} 1.5 &amp; 4.0 \\ 3.5 &amp; 5.0 \\ 4.5 &amp; 2.0
+      \end{bmatrix}+ \begin{bmatrix} m_{x} &amp; m_{y} \\ m_{x} &amp;
+      m_{y} \\ m_{x} &amp; m_{y} \end{bmatrix}\]</span></p>
+      <p>例えば、この図形をX方向に <span
+      class="math inline">\(2\)</span>、Y方向に <span
+      class="math inline">\(-1\)</span>
+      だけ移動する場合は次のようになります。</p>
+      <p><span class="math display">\[ P_{2} = P_{1} + M  =
+      \begin{bmatrix} 1.5 &amp; 4.0 \\ 3.5 &amp; 5.0 \\ 4.5 &amp; 2.0
+      \end{bmatrix}+ \begin{bmatrix} 2 &amp; -1 \\ 2 &amp; -1 \\ 2 &amp;
+      -1 \end{bmatrix} =\begin{bmatrix} 3.5 &amp; 3.0 \\ 5.5 &amp; 4.0
+      \\ 6.5 &amp; 1.0 \end{bmatrix} \]</span></p>
+      <figure>
+      <img src="figs/20/vec-03.svg" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>この行列計算を NumPy を利用した Pythonプログラム
+      により行ないます。</p>
+      <div class="sourceCode" id="cb1" data-caption="図形の移動"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="co"># P1の初期化</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>P1 <span class="op">=</span> np.array([[<span class="fl">1.5</span>, <span class="fl">4.0</span>],</span>
+<span id="cb1-6"><a href="#cb1-6"></a>               [<span class="fl">3.5</span>, <span class="fl">5.0</span>],</span>
+<span id="cb1-7"><a href="#cb1-7"></a>               [<span class="fl">4.5</span>, <span class="fl">2.0</span>]],dtype<span class="op">=</span><span class="bu">float</span>)</span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="co"># print(type(P1))  # =&gt; &lt;class &#39;numpy.ndarray&#39;&gt;</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="bu">print</span>(<span class="ss">f&#39;P1.shape =&gt; </span><span class="sc">{</span>P1<span class="sc">.</span>shape<span class="sc">}</span><span class="ss"> ,,, </span><span class="sc">{</span>P1<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">行</span><span class="sc">{</span>P1<span class="sc">.</span>shape[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">列&#39;</span>)</span>
+<span id="cb1-10"><a href="#cb1-10"></a></span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="co"># 移動行列の初期化</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a>M <span class="op">=</span> np.array([[<span class="dv">2</span>, <span class="op">-</span><span class="dv">1</span>]],dtype<span class="op">=</span><span class="bu">float</span>)</span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="bu">print</span>(<span class="ss">f&#39;M.shape  =&gt; </span><span class="sc">{</span>M<span class="sc">.</span>shape<span class="sc">}</span><span class="ss"> ,,, </span><span class="sc">{</span>M<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">行</span><span class="sc">{</span>M<span class="sc">.</span>shape[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">列&#39;</span>)</span>
+<span id="cb1-14"><a href="#cb1-14"></a></span>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="co"># 移動後図形 P2 の計算 </span></span>
+<span id="cb1-16"><a href="#cb1-16"></a>P2 <span class="op">=</span> P1 <span class="op">+</span> M  <span class="co"># 注: ブロードキャスト機能の自動適用</span></span>
+<span id="cb1-17"><a href="#cb1-17"></a><span class="bu">print</span>(<span class="ss">f&#39;P2.shape =&gt; </span><span class="sc">{</span>P2<span class="sc">.</span>shape<span class="sc">}</span><span class="ss"> ,,, </span><span class="sc">{</span>P2<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">行</span><span class="sc">{</span>P2<span class="sc">.</span>shape[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">列&#39;</span>)</span>
+<span id="cb1-18"><a href="#cb1-18"></a></span>
+<span id="cb1-19"><a href="#cb1-19"></a><span class="bu">print</span>(<span class="st">&#39;P2=&#39;</span>)</span>
+<span id="cb1-20"><a href="#cb1-20"></a><span class="bu">print</span>(P2)</span></code></pre></div>
+      <p><strong>第02行目</strong>: NumPy をインポートして
+      <code>np</code> という省略名で使用できるようにしています。もし
+      <code>as np</code> を付けない場合は、以降のプログラムで
+      <code>np</code> の部分を <code>numpy</code>
+      のように記述しなければなりません。</p>
+      <p><strong>第05行目</strong>: <code>np.array</code>
+      に2次元リストとして渡して、ndarray型 (=NumPyで行列を表現する型)
+      の初期化をしています。オプションとして <code>dype=float</code>
+      を与えて行列の要素が <code>float64</code>
+      となるように指示しています。もし、<code>P1 = np.array([[1,2],[3,4],[5,6]])</code>
+      のように要素がすべて整数値の場合、<code>dtype=float</code>
+      を明示していないと <code>int64</code>
+      になるので注意してください。</p>
+      <p><strong>第09行目</strong>: ndarrayオブジェクトの
+      <code>shape</code> プロパティで</p>
+      <p>実行結果は次のようになります。</p>
+      <pre><code>P1.shape =&gt; (3, 2) ,,, 3行2列
+M.shape  =&gt; (1, 2) ,,, 1行2列
+P2.shape =&gt; (3, 2) ,,, 3行2列
+P2=
+[[3.5 3. ]
+ [5.5 4. ]
+ [6.5 1. ]]</code></pre>
+      <h1 data-number="5" id="べくとる"><span
+      class="header-section-number">5</span> べくとる</h1>
+      <p><span class="math display">\[ P_{1} = \begin{bmatrix} x_0 &amp;
+      y_0 \\ x_1 &amp; y_1 \\ x_2 &amp; y_2 \end{bmatrix} \]</span></p>
+      <p><span class="math display">\[ P_{1} = \begin{bmatrix} 1.5 &amp;
+      4.0 \\ 3.5 &amp; 5.0 \\ 4.5 &amp; 2.0 \end{bmatrix} \]</span></p>
+      <p><span class="math display">\[ P_{1}^{\mathrm{T}} =
+      \begin{bmatrix} x_0 &amp; x_1 &amp; x_2 \\ y_0 &amp; y_1 &amp;
+      y_2  \end{bmatrix} \]</span></p>
+      <p><span class="math display">\[ P_{1}^{\mathrm{T}} =
+      \begin{bmatrix} 1.5 &amp; 3.5 &amp; 4.5 \\ 4.0 &amp; 5.0 &amp;
+      2.0  \end{bmatrix} \]</span></p>
+      <p><span class="math display">\[ R = \begin{bmatrix} \cos\theta
+      &amp; -\sin\theta \\ \sin\theta &amp; \cos\theta \end{bmatrix}
+      \]</span></p>
+      <p><span class="math display">\[ R^{\mathrm{T}} = \begin{bmatrix}
+      \cos\theta &amp; \sin\theta \\ -\sin\theta &amp; \cos\theta
+      \end{bmatrix} \]</span></p>
+      <p><span class="math display">\[ \begin{bmatrix}
+      \cos\theta &amp; -\sin\theta \\
+      \sin\theta &amp; \cos\theta
+      \end{bmatrix}
+      \begin{bmatrix}x \\ y\end{bmatrix}
+      =
+      \begin{bmatrix}
+      x\cdot \cos\theta - y \cdot \sin\theta \\
+      x\cdot \sin\theta + y \cdot \cos\theta \\
+      \end{bmatrix}
+      \]</span></p>
+      <p><span class="math display">\[ \begin{bmatrix}x &amp; y
+      \end{bmatrix}
+      \begin{bmatrix}
+      \cos\theta &amp; \sin\theta \\ -\sin\theta &amp; \cos\theta
+      \end{bmatrix}
+      =
+      \begin{bmatrix}
+      x\cdot \cos\theta - y \cdot \sin\theta &amp; x\cdot \sin\theta + y
+      \cdot \cos\theta
+      \end{bmatrix}
+      \]</span></p>
+      <!-- ---------------------------------------- -->
+    </main>
+
+    <footer class="markdown-body">
+      <p><a href="https://takeshiwada1980.github.io/Programming1-2023/">講義資料のIndexに移動</a></p>
+    </footer>
+
+    <script>
+      window.onload = function () {
+        // ナビゲーション関連
+        let openBtn = document.getElementsByClassName("openbtn")[0];
+        let navPnl = document.getElementById("g-nav");
+        openBtn.onclick = () => {
+          openBtn.classList.toggle("active");
+          navPnl.classList.toggle("panelactive");
+        };
+
+        let items = navPnl.getElementsByTagName("a");
+        Array.from(items).forEach((item) => {
+          item.onclick = () => {
+            openBtn.classList.toggle("active");
+            navPnl.classList.toggle("panelactive");
+          };
+        });
+
+        // マスク処理
+        let maskedSpans = document.getElementsByClassName("masked");
+        Array.from(maskedSpans).forEach((span) => {
+          span.onclick = () => {
+            span.classList.toggle("open");
+          };
+        });
+
+        // 画像にリンクを付与
+        let images = document.querySelectorAll("figure img");
+        Array.from(images).forEach((img) => {
+          img.onclick = () => {
+            location.href = img.getAttribute("src");
+          };
+        });
+      };
+    </script>
+  </body>
+</html>
