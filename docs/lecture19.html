@@ -1,0 +1,1576 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+
+    <script>
+      MathJax = {
+        chtml: {
+          displayAlign: "left",
+          displayIndent: "1em",
+        },
+      };
+    </script>
+
+     <script
+src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+type="text/javascript"></script> 
+
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>第19回 2I-プログラミング1</title>
+  </head>
+
+  <body>
+    <div class="openbtn"><span></span><span></span><span></span></div>
+    <nav id="g-nav">
+      <div id="g-nav-list">
+        <!-- ---------------------------------------- -->
+         <ul>
+<li><a href="#概要連絡" id="toc-概要連絡"><span
+class="toc-section-number">1</span> 概要・連絡</a>
+<ul>
+<li><a href="#連絡事項" id="toc-連絡事項"><span
+class="toc-section-number">1.1</span> 連絡事項</a></li>
+<li><a href="#今回講義の達成目標" id="toc-今回講義の達成目標"><span
+class="toc-section-number">1.2</span> 今回講義の達成目標</a></li>
+</ul></li>
+<li><a href="#京都大学プログラミング演習の教科書"
+id="toc-京都大学プログラミング演習の教科書"><span
+class="toc-section-number">2</span>
+京都大学「プログラミング演習」の教科書</a></li>
+<li><a href="#人工知能の勢いがすごくて将来に対して不安しかない"
+id="toc-人工知能の勢いがすごくて将来に対して不安しかない"><span
+class="toc-section-number">3</span>
+人工知能の勢いがすごくて将来に対して不安しかない…?</a></li>
+<li><a href="#ラムダ式" id="toc-ラムダ式"><span
+class="toc-section-number">4</span> ラムダ式</a>
+<ul>
+<li><a href="#関数の定義と呼び出し-復習"
+id="toc-関数の定義と呼び出し-復習"><span
+class="toc-section-number">4.1</span> 関数の定義と呼び出し
+(復習)</a></li>
+<li><a href="#関数における-return-の省略"
+id="toc-関数における-return-の省略"><span
+class="toc-section-number">4.2</span> 関数における return
+の省略</a></li>
+<li><a href="#関数を変数に代入する" id="toc-関数を変数に代入する"><span
+class="toc-section-number">4.3</span> 関数を変数に代入する</a></li>
+<li><a href="#ラムダ式-無名関数" id="toc-ラムダ式-無名関数"><span
+class="toc-section-number">4.4</span> ラムダ式 (無名関数)</a></li>
+<li><a href="#ラムダ式の記述法" id="toc-ラムダ式の記述法"><span
+class="toc-section-number">4.5</span> ラムダ式の記述法</a></li>
+</ul></li>
+<li><a href="#mapとラムダ式の組み合わせ"
+id="toc-mapとラムダ式の組み合わせ"><span
+class="toc-section-number">5</span> mapとラムダ式の組み合わせ</a>
+<ul>
+<li><a href="#map関数" id="toc-map関数"><span
+class="toc-section-number">5.1</span> map関数</a></li>
+<li><a href="#mapと自作関数の組合せ"
+id="toc-mapと自作関数の組合せ"><span
+class="toc-section-number">5.2</span> mapと自作関数の組合せ</a></li>
+<li><a href="#mapとラムダ式の組合せ"
+id="toc-mapとラムダ式の組合せ"><span
+class="toc-section-number">5.3</span> mapとラムダ式の組合せ</a></li>
+<li><a href="#三項演算子とラムダ式" id="toc-三項演算子とラムダ式"><span
+class="toc-section-number">5.4</span> 三項演算子とラムダ式</a></li>
+<li><a href="#条件式-三項演算子" id="toc-条件式-三項演算子"><span
+class="toc-section-number">5.5</span> 条件式 (三項演算子)</a></li>
+</ul></li>
+<li><a href="#pandas入門" id="toc-pandas入門"><span
+class="toc-section-number">6</span> Pandas入門</a>
+<ul>
+<li><a href="#csvファイルの読込み" id="toc-csvファイルの読込み"><span
+class="toc-section-number">6.1</span> CSVファイルの読込み</a></li>
+<li><a href="#型の確認" id="toc-型の確認"><span
+class="toc-section-number">6.2</span> 型の確認</a></li>
+<li><a href="#準備-インデックスの設定"
+id="toc-準備-インデックスの設定"><span
+class="toc-section-number">6.3</span> 準備: インデックスの設定</a></li>
+<li><a href="#前処理-欠損値の設定" id="toc-前処理-欠損値の設定"><span
+class="toc-section-number">6.4</span> 前処理: 欠損値の設定</a></li>
+<li><a href="#前処理-型の変換" id="toc-前処理-型の変換"><span
+class="toc-section-number">6.5</span> 前処理: 型の変換</a></li>
+<li><a href="#要約統計量の確認" id="toc-要約統計量の確認"><span
+class="toc-section-number">6.6</span> 要約統計量の確認</a></li>
+<li><a href="#簡易グラフ出力" id="toc-簡易グラフ出力"><span
+class="toc-section-number">6.7</span> 簡易グラフ出力</a></li>
+<li><a href="#dataframeのサブセットの取得"
+id="toc-dataframeのサブセットの取得"><span
+class="toc-section-number">6.8</span>
+DataFrameのサブセットの取得</a></li>
+<li><a href="#集計処理" id="toc-集計処理"><span
+class="toc-section-number">6.9</span> 集計処理</a></li>
+<li><a href="#ラムダ式を使った変換" id="toc-ラムダ式を使った変換"><span
+class="toc-section-number">6.10</span> ラムダ式を使った変換</a></li>
+</ul></li>
+<li><a href="#大学編入試の問題に挑戦-1"
+id="toc-大学編入試の問題に挑戦-1"><span
+class="toc-section-number">7</span> 大学編入試の問題に挑戦 (1)</a></li>
+</ul> 
+        <!-- ---------------------------------------- -->
+      </div>
+    </nav>
+
+    <header class="markdown-body">
+      <p>2023-2I プログラミング1 第19回 講義資料</p>
+      <p>2023年11月13日（月）1・2時限</p>
+    </header>
+
+    <main class="markdown-body">
+      <!-- ---------------------------------------- -->
+      <h1 data-number="1" id="概要連絡"><span
+      class="header-section-number">1</span> 概要・連絡</h1>
+      <h2 data-number="1.1" id="連絡事項"><span
+      class="header-section-number">1.1</span> 連絡事項</h2>
+      <ul>
+      <li><a href="lecture18.html#課題07">課題07</a>
+      を遅れて提出する場合には、提出後、必ずLINEで個別連絡をいれてください
+      (連絡がない場合は「未提出」の扱いのまま「遅れの減点」が累積されます)。また、提出後に、大幅に内容を更新したときもLINEで個別連絡をお願いします
+      (連絡がないと、過去の提出時点での内容で評価される可能性があります)。
+      <ul>
+      <li><a
+      href="https://classroom.google.com/c/NjAyNDMyMzIwNzg2/a/NTMwMzQ2ODA2NjEy/details">課題07の提出先</a></li>
+      </ul></li>
+      <li>12月25日 (月)
+      の1-2時限は教員の都合により「<strong>休講</strong>」とさせてください。ただ、いつもと同じようにウェブテキストを用意しておくので、各自で自宅や教室で取り組みをお願いします。
+      <ul>
+      <li>内容についての不明点や質問点があれば、後日、対面やメール・LINE等で問い合わせてください。</li>
+      </ul></li>
+      <li>今回講義では <code>IPython.Display</code>
+      を用いて<strong>表</strong> (=<code>DataFrame</code>型)
+      を<strong>整形出力</strong>します。そのため<a
+      href="https://colab.research.google.com/?hl=ja">Google
+      Colab</a>もしくは<a
+      href="lecture09.html#jupyterの実行">ローカルPCに構築したJupyter環境</a>を利用することを推奨します。</li>
+      </ul>
+      <h2 data-number="1.2" id="今回講義の達成目標"><span
+      class="header-section-number">1.2</span> 今回講義の達成目標</h2>
+      <ul>
+      <li>ラムダ式 (無名関数) を理解して記述することができる。</li>
+      <li>ラムダ式とmap関数を組み合わせてリストに対して適用ができる。</li>
+      <li>Pandas を使って CSVファイル の読込みができる。</li>
+      <li>Pandas を使って 表形式データ
+      に対する初歩的な操作や処理ができる。</li>
+      </ul>
+      <h1 data-number="2" id="京都大学プログラミング演習の教科書"><span
+      class="header-section-number">2</span>
+      京都大学「プログラミング演習」の教科書</h1>
+      <p>昨年度の「情報1」や、知能情報コースの紹介のスライドなどで既に何度か紹介していますが、京都大学の<strong>全学共通科目</strong>である「<strong>プログラミング演習
+      (Python)</strong>」のテキスト (教科書) の
+      <strong>2023年度版</strong>
+      が最近公開されたのでリンクを貼っておきます。</p>
+      <p>皆さんでも十分に理解できるものになっている (と思う)
+      ので、ちょっと背伸びして読んでみて欲しいと思います。</p>
+      <ul>
+      <li><a
+      href="http://hdl.handle.net/2433/285599">http://hdl.handle.net/2433/285599</a></li>
+      </ul>
+      <h1 data-number="3"
+      id="人工知能の勢いがすごくて将来に対して不安しかない"><span
+      class="header-section-number">3</span>
+      人工知能の勢いがすごくて将来に対して不安しかない…?</h1>
+      <p>過去1年間で、<strong>ChatGPT-4</strong>を含むAI技術が顕著な進化を遂げました。この科目に関連するAI技術としては
+      <span
+      class="masked">高品質なプログラムが生成できるようになってきたこと</span>
+      が挙げられます。これにより「<strong>情報系技術者としての将来・未来</strong>」に不安を抱く学生や保護者、さらには一部の教員もいるようなので「プログラミングの教科担当者」として、この変化に対する<strong>私の見解</strong>を示しておきたいと思います。</p>
+      <hr />
+      <p>最初に結論から言えば <span
+      class="masked">狭義のプログラマ</span>
+      という職業は、<strong>将来的にほぼ間違いなく減少していくと考えておいたほうが良いでしょう</strong>。</p>
+      <p>ここで言う「<strong>狭義のプログラマ</strong>」とは <span
+      class="masked">単に「仕様書」や「詳細設計」に基づいてコーディングすること</span>
+      を主な仕事とする人々を指します。このタイプのプログラマの仕事は、<strong>生成系AIによって代替される可能性が高く</strong>、専門職としての需要は減少していくでしょう。これは「<strong>タイピスト</strong>」や「<strong>キーパンチャ</strong>」という専門職
+      (=手書きの文章やデータをキーボードを使ってコンピュータに入力することを仕事にする職業)
+      が1980年代以降に消滅していったことに似ています。しかし、ここで<strong>注意してほしいこと</strong>は「タイピング」という行為が消滅したり、そのスキルが不要になったわけではなく
+      <span
+      class="masked">逆に、需要が高まって一般的な必須スキルになった</span>
+      ということです。</p>
+      <p>これは、プログラミングも同様で、その重要性・必要性は今後も増していくと考えられます。</p>
+      <p>無論、AIを<a
+      href="https://www.google.com/search?q=copilot+ai+programming">コパイロット
+      (Copilot)</a>や <strong>アシスタント(Assistant)</strong>
+      として活用しながらのプログラミングというスタイルになると思いますが…。これは、マシン語を使ったプログラミング
+      → <span class="masked">低級言語 (低水準言語)</span>
+      を使ったプログラミング → <span class="masked">高級言語
+      (高水準言語)</span> と IDE を使ったプログラミング → フレームワーク
+      や ライブラリ/ウェブAPI を駆使するプログラミング → AIを Copilot
+      として駆使するプログラミング
+      という流れと考えることもできます。</p>
+      <hr />
+      <p>一方、「プログラミング」をはじめとする「AI」や「IoT」などのあらゆるデジタル技術を、「<strong>新しい価値や体験の創出</strong>」や「<strong>種々の問題解決や省力化・自動化</strong>」のための道具や手段として活用する「<strong>ICTエンジニア</strong>」という職業は、今後20～30年間は引き続き需要がある職業として残ると考えられます。※
+      ICT: Information and Communication Technology。</p>
+      <p>「<strong>狭義のプログラマ</strong>」と「<strong>ICTエンジニア</strong>」の違いは、後者には<strong>高度なプログラミングスキル</strong>に加えて
+      <span
+      class="masked">複雑な問題を解決したり、創造的なアイディアを形にするための「システム」や「サービス」をデザインする能力
+      (誤解を恐れずに端的に言えば、モノゴトを企画して、適切な仕様書や設計書を作成する能力)
+      </span>
+      が要求される点にあります。また、仲間と協力してプロジェクトを進行させるためのコミュニケーション能力、マネジメント能力なども同様に要求されます。</p>
+      <p>このことから、学校の授業で「教員から与えられる
+      (正解が存在するような)
+      演習」に独りで黙々と取り組むだけでは不十分であり、(授業で学んだことを土台にして)
+      <span
+      class="masked">個人やチームでアプリやウェブサービスの開発</span>
+      に取り組むこと、各種開発系のコンテスト (例えば<a
+      href="https://www.procon.gr.jp/">高専プロコンの課題部門や自由部門</a>など)、<a
+      href="https://www.google.com/search?q=ハッカソンとは">ハッカソン</a>
+      に挑戦することが、より重要になってきます。</p>
+      <p>ときどき「<strong>適切な仕様さえ与えればAIがコードを自動生成してくれるので、(上流工程を担当する)
+      ICTエンジニアにはプログラミングスキルは必要ない</strong>」のように言われることもあります。しかし、これは
+      <span
+      class="masked">「電卓で計算できるから算数を学ぶ必要はない」</span>
+      とか <span
+      class="masked">「スマホに漢字変換機能や音声読み上げ機能があるから国語で読み書きを学ぶ必要はない」</span>
+      という主張と同様に誤りです。上流工程を担うICTエンジニアでも、ジュニアレベルのプログラミングのスキルや経験は最低限必要となります。</p>
+      <h1 data-number="4" id="ラムダ式"><span
+      class="header-section-number">4</span> ラムダ式</h1>
+      <p>ここでは「<strong>ラムダ式</strong>」というものについて学びます。ラムダ式は
+      <span class="masked">無名関数</span>
+      と呼ばれることもあります。「<strong>ラムダ式</strong>」と組合せて利用することが多い
+      <code>map</code> 関数は、以前の <a
+      href="lecture06.html#標準入力からの書式付き入力の対応">第06回講義</a>
+      のなかで、次のようなコードとして触れています。</p>
+      <div class="sourceCode" id="cb1"
+      data-caption="SP区切りの文字列を個別の数値に変換"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb1-2"><a href="#cb1-2"></a>s <span class="op">=</span> <span class="bu">input</span>()        <span class="co"># スペース区切りで数値入力 例:「10 20 30」</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="co"># print(type(s))   # =&gt; &lt;class &#39;str&#39;&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>ss <span class="op">=</span> s.split()</span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="co"># print(type(ss))  # =&gt; &lt;class &#39;str&#39;&gt;</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>a, b, c <span class="op">=</span> <span class="bu">map</span>(<span class="bu">float</span>, ss) <span class="co"># リスト ss に対する map 関数の利用</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="co"># print(type(a))   # =&gt; &lt;class &#39;float&#39;&gt;</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="bu">print</span>(a)</span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="bu">print</span>(b)</span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="bu">print</span>(c)</span></code></pre></div>
+      <p>上記のようなプログラムを理解したうえで利用できるようになるために、まずは
+      <strong>ラムダ式</strong>
+      周辺の理解が必要です。なお、<strong>第04行目</strong>の
+      <code>split()</code> メソッドについては<a
+      href="lecture18.html#文字列の分割">前回講義</a>のなかで学習済みです。</p>
+      <p><strong>演習1</strong>:
+      上記のプログラムを実行して、その出力と動作について確認せよ。</p>
+      <p><strong>演習2</strong>: <code>10, 20, 30</code>
+      のように「カンマ区切りで数値が入力される場合」に対応したプログラムに書き換えよ。また、実際に実行して結果を確認せよ。</p>
+      <p><strong>演習3</strong>: 変数 <code>a</code> <code>b</code>
+      <code>c</code>
+      に格納される値が「整数型」になるようにプログラムに書き換えよ。また、実際に実行して結果を確認せよ。</p>
+      <h2 data-number="4.1" id="関数の定義と呼び出し-復習"><span
+      class="header-section-number">4.1</span> 関数の定義と呼び出し
+      (復習)</h2>
+      <p><a
+      href="lecture11.html#関数-fuction-初級">第11回講義</a>で学んだように、Python
+      では次のように <strong><em>関数</em></strong>
+      (<strong>Function</strong>)
+      を「<strong>定義</strong>」し、また関数の「<strong>呼び出し</strong>
+      (Call)」をしました。</p>
+      <div class="sourceCode" id="cb2"
+      data-caption="「関数の定義」と「関数の呼び出し」"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb2-2"><a href="#cb2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="co"># 自作関数 add の定義</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="kw">def</span> add(a,b):</span>
+<span id="cb2-5"><a href="#cb2-5"></a>  c <span class="op">=</span> a<span class="op">+</span>b</span>
+<span id="cb2-6"><a href="#cb2-6"></a>  <span class="cf">return</span> c</span>
+<span id="cb2-7"><a href="#cb2-7"></a></span>
+<span id="cb2-8"><a href="#cb2-8"></a>x <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a>y <span class="op">=</span> <span class="dv">20</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a>z <span class="op">=</span> add(x,y) <span class="co"># 自作関数 add の呼び出し (コール)</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a></span>
+<span id="cb2-12"><a href="#cb2-12"></a><span class="bu">print</span>(<span class="ss">f&#39;z =&gt; </span><span class="sc">{</span>z<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+      <p>このプログラムのでは、<strong>第04行目</strong>から<strong>第06行目</strong>にかけて
+      <code>add</code>
+      という名前の自作関数を「<strong>定義</strong>」し、<strong>引数</strong>として受け取った2つの値
+      <code>a</code> <code>b</code> を加算して変数 <code>c</code>
+      に格納し、それを <code>return c</code>
+      で「<strong>戻り値</strong>」としています。ここで <code>def</code>
+      は <strong>Define</strong> (定義という意味) の略語になります。</p>
+      <p>つづいて <strong>第10行目</strong> では、変数 <code>x</code> と
+      <code>y</code> を <span class="masked">引数</span> にして自作関数
+      <code>add</code> を呼び出して、その <span
+      class="masked">戻り値</span> を変数 <code>z</code>
+      に代入しています。</p>
+      <p>このプログラムを実行すると、次のような結果が得られます。</p>
+      <pre><code>z =&gt; 30</code></pre>
+      <p>以上は、<a
+      href="lecture11.html#関数-fuction-初級">第11回講義</a>の「<strong>復習</strong>」であり、以降の解説を理解する大前提になります
+      (ここまでの内容が曖昧だと以降の説明を理解することはできません)
+      。</p>
+      <p><strong>演習1</strong>:
+      関数の「定義」が「呼び出し」以降の行に記述されている場合、つまり、<strong>第04行～第06行</strong>の内容が、<strong>第10行目</strong>よりも後に記述されていた場合、どのような結果になるか予想せよ。また、実際にコードを書き換えて結果を確認せよ。</p>
+      <p><strong>演習2</strong>: 関数 <code>add</code> を
+      <code>add(10,20,30)</code> あるいは <code>add(10)</code>
+      のように呼び出すと (つまり、引数の過不足がある状態で呼び出すと)
+      どのようになるか確認せよ。</p>
+      <p><strong>演習3</strong>: 関数 <code>add</code>
+      について、<strong>3個の引数</strong>を受け取り、それらを加算する処理に書き換えよ。</p>
+      <h2 data-number="4.2" id="関数における-return-の省略"><span
+      class="header-section-number">4.2</span> 関数における return
+      の省略</h2>
+      <p>前のセクションにおいて、関数 <code>add</code> の定義
+      (<strong>第04行目</strong>から<strong>第06行目</strong>)
+      では、変数 <code>c</code> に計算結果を格納し、それを
+      <code>return c</code>
+      のようにして「<strong>戻り値</strong>」を明示しました。この処理は、次のように
+      変数 <code>c</code>
+      を作成せずに直接的に記述することができます。つまり <span
+      class="masked"><code>return 変数</code></span> ではなく <span
+      class="masked"><code>return 式</code></span>
+      のように記述することができます。</p>
+      <div class="sourceCode" id="cb4"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="co"># 関数の定義</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="kw">def</span> add(a,b):</span>
+<span id="cb4-4"><a href="#cb4-4"></a>  <span class="cf">return</span> a<span class="op">+</span>b</span>
+<span id="cb4-5"><a href="#cb4-5"></a></span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="co"># 関数の呼び出し</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a>z <span class="op">=</span> add(<span class="dv">10</span>,<span class="dv">20</span>)</span></code></pre></div>
+      <h2 data-number="4.3" id="関数を変数に代入する"><span
+      class="header-section-number">4.3</span> 関数を変数に代入する</h2>
+      <p>関数は、次のように <strong>変数に代入 (格納)
+      して、そこから呼び出すこと</strong> ができます。</p>
+      <div class="sourceCode" id="cb5"
+      data-caption="関数を変数に代入して、その変数から関数を呼び出す例"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="kw">def</span> add(a,b):</span>
+<span id="cb5-3"><a href="#cb5-3"></a>  <span class="cf">return</span> a<span class="op">+</span>b</span>
+<span id="cb5-4"><a href="#cb5-4"></a></span>
+<span id="cb5-5"><a href="#cb5-5"></a>sum_two_numbers <span class="op">=</span> add        <span class="co"># 関数add を 変数 sum_two... に代入</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="bu">print</span>(<span class="bu">type</span>(sum_two_numbers)) <span class="co"># =&gt; &lt;class &#39;function&#39;&gt;</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a>z <span class="op">=</span> sum_two_numbers(<span class="dv">10</span>,<span class="dv">20</span>)   <span class="co"># 注目!</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="bu">print</span>(<span class="ss">f&#39;z =&gt; </span><span class="sc">{</span>z<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+      <p><strong>第02行目～第03行目</strong> で自作関数 <code>add</code>
+      を定義しています。つづいて <strong>第05行目</strong>
+      では、この自作関数 <code>add</code> を変数
+      <code>sum_two_numbers</code>
+      に<strong>代入</strong>しています。代入の際は <span
+      class="masked"> <code>=add()</code> ではなく <code>=add</code>
+      </span>
+      のように<strong>記述している点に注意</strong>してください。もしも、括弧をつけて代入すると
+      <span
+      class="masked">「関数そのものの代入」ではなく「関数を実行した結果の戻り値の代入」</span>
+      になってしまいます。</p>
+      <p>そして、<strong>第07行目</strong>では、<code>z=sum_two_numbers(10,20)</code>
+      のように関数を呼び出しています。これは、関数 <code>add</code> に
+      <code>sum_two_numbers</code>
+      という「<strong>別名</strong>」を与えて、その別名で関数を呼び出していると捉えることもできます。無論、別名を与えた後も
+      <code>z=add(10,20)</code>
+      のようにオリジナルの名前で関数を呼び出すことは有効です。</p>
+      <p>このように Python
+      では、<strong>数値や文字列と同様に、「関数」も変数に代入して利用すること</strong>ができます。これは、自作関数に限らず
+      <span class="masked">各種ライブラリが提供する関数</span>
+      についても同様です。</p>
+      <p>例えば、math
+      ライブラリには、引数に「弧度法のラジアン」を与えて「度数法の角度」を返す関数
+      <code>math.degrees</code> がありますが、以下のように、これに
+      <code>r2d</code> という<strong>省略命 (別名)</strong>
+      を与えて利用することができます (<code>r2d</code> は「Radians to
+      Degrees」の略です。<span
+      class="masked">関数名などで「to」の代わりに「2」を使うこと</span>
+      がよくあるので覚えておいてください)。</p>
+      <div class="sourceCode" id="cb6"
+      data-caption="ライブラリが提供する関数に省略名を与える例"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="im">import</span> math</span>
+<span id="cb6-3"><a href="#cb6-3"></a>r2d <span class="op">=</span> math.degrees  <span class="co"># ここに注目!</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="bu">print</span>(<span class="ss">f&#39;pi/2 は </span><span class="sc">{</span>r2d(math.pi<span class="op">/</span><span class="dv">2</span>)<span class="sc">:.1f}</span><span class="ss"> 度です。&#39;</span>)</span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="bu">print</span>(<span class="ss">f&#39;pi/4 は </span><span class="sc">{</span>r2d(math.pi<span class="op">/</span><span class="dv">4</span>)<span class="sc">:.1f}</span><span class="ss"> 度です。&#39;</span>)</span></code></pre></div>
+      <div class="note type-tips">
+      <p><strong>関数に別名を与える場合の注意事項</strong></p>
+      <p>関数を変数に代入することは、つまり「関数に別名を与えること」であり、これは非常に便利です。例えば、<code>p=print</code>
+      のように記述することで、コードを劇的にシンプルにすることができます。しかし、この方法（標準関数やライブラリ関数に別名を与える方法）には<strong>注意が必要</strong>です。</p>
+      <p>クローズな個人開発では問題ありませんが、チームでの開発や他の人がコードを閲覧する可能性がある場合、別名の使用はプログラムの
+      <strong>可読性</strong> や <strong>移植性</strong>
+      に悪影響を与えます。特にチーム開発において、チーム内での合意がないままに利用すると、確実に注意と修正の指示をうけることになります。</p>
+      </div>
+      <p>また、変数に 格納 (代入) できるということは、次のように <span
+      class="masked">「辞書型」や「リスト型」の要素にすることもできる</span>
+      ということになります。以下のプログラムで <code>calc</code>
+      という変数は「Calculation (演算)」の略称として使用しています。</p>
+      <div class="sourceCode" id="cb7"
+      data-caption="関数を辞書の 値 (Value) として登録"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="kw">def</span> add(a,b):</span>
+<span id="cb7-3"><a href="#cb7-3"></a>  <span class="cf">return</span> a<span class="op">+</span>b</span>
+<span id="cb7-4"><a href="#cb7-4"></a></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="kw">def</span> subtract(a,b):</span>
+<span id="cb7-6"><a href="#cb7-6"></a>  <span class="cf">return</span> a<span class="op">-</span>b</span>
+<span id="cb7-7"><a href="#cb7-7"></a></span>
+<span id="cb7-8"><a href="#cb7-8"></a>calc <span class="op">=</span> {} <span class="co"># 空の辞書 </span></span>
+<span id="cb7-9"><a href="#cb7-9"></a>calc[<span class="st">&#39;加算&#39;</span>]<span class="op">=</span>add       <span class="co"># 関数を辞書の「値」として登録</span></span>
+<span id="cb7-10"><a href="#cb7-10"></a>calc[<span class="st">&#39;減算&#39;</span>]<span class="op">=</span>subtract  <span class="co"># 〃</span></span>
+<span id="cb7-11"><a href="#cb7-11"></a></span>
+<span id="cb7-12"><a href="#cb7-12"></a>z1 <span class="op">=</span> calc[<span class="st">&#39;加算&#39;</span>](<span class="dv">10</span>,<span class="dv">20</span>) <span class="co"># 辞書から関数を呼び出し</span></span>
+<span id="cb7-13"><a href="#cb7-13"></a>z2 <span class="op">=</span> calc[<span class="st">&#39;減算&#39;</span>](<span class="dv">10</span>,<span class="dv">20</span>) <span class="co"># 〃</span></span>
+<span id="cb7-14"><a href="#cb7-14"></a><span class="bu">print</span>(<span class="ss">f&#39;z1 =&gt; </span><span class="sc">{</span>z1<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+<span id="cb7-15"><a href="#cb7-15"></a><span class="bu">print</span>(<span class="ss">f&#39;z2 =&gt; </span><span class="sc">{</span>z2<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+      <p><strong>演習</strong>
+      上記のプログラムに「<strong>乗算</strong>」をする関数
+      <code>multiply</code> を追加実装して、辞書型の変数
+      <code>calc</code>
+      に追加せよ。また、それが問題なく呼び出せることも確認せよ。</p>
+      <h2 data-number="4.4" id="ラムダ式-無名関数"><span
+      class="header-section-number">4.4</span> ラムダ式 (無名関数)</h2>
+      <p>Pythonには <strong><em>ラムダ式</em></strong> あるいは
+      <strong><em>無名関数</em></strong>
+      と呼ばれる<strong>概念・構文</strong>があります (これは Python
+      固有のものではなく最近のプログラミング言語にも一般的に備えられているものです)。この講義では主に「<strong>ラムダ式</strong>」という呼称を使用します。</p>
+      <p>ラムダ式は、関数定義の構文のひとつで <span
+      class="masked">名前を持たない一時的な関数を定義</span>
+      するための構文です。<code>lambda</code>
+      キーワードを使用して定義され、主に「<strong>短い処理の関数</strong>」や「<strong>関数を引数として渡す場合</strong>」に使用されます。ラムダ式には<strong>名前を付ける必要がなく</strong>
+      (=<span
+      class="masked">適切な関数名を考えることに悩まされることなく</span>)
+      1行 (ワンライナー)
+      で記述できるため、実務的なコードでは頻繁に使用されます。</p>
+      <p>ラムダ式を使うと、先ほどのプログラムは次のように記述することができます。ここでは
+      <code>add</code> や <code>subtract</code> 、<code>multiply</code>
+      などの名前付けた関数定義が不要な点に着目してください。<code>calc['XX']=</code>
+      という<strong>代入部分 (右辺)
+      で関数を定義</strong>しています。</p>
+      <div class="sourceCode" id="cb8"
+      data-caption="ラムダ式の利用"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb8-2"><a href="#cb8-2"></a>calc <span class="op">=</span> {}</span>
+<span id="cb8-3"><a href="#cb8-3"></a>calc[<span class="st">&#39;加算&#39;</span>]<span class="op">=</span> <span class="kw">lambda</span> a,b : a <span class="op">+</span> b</span>
+<span id="cb8-4"><a href="#cb8-4"></a>calc[<span class="st">&#39;減算&#39;</span>]<span class="op">=</span> <span class="kw">lambda</span> a,b : a <span class="op">-</span> b</span>
+<span id="cb8-5"><a href="#cb8-5"></a>calc[<span class="st">&#39;乗算&#39;</span>]<span class="op">=</span> <span class="kw">lambda</span> a,b : a <span class="op">*</span> b</span>
+<span id="cb8-6"><a href="#cb8-6"></a></span>
+<span id="cb8-7"><a href="#cb8-7"></a>z1 <span class="op">=</span> calc[<span class="st">&#39;加算&#39;</span>](<span class="dv">10</span>,<span class="dv">20</span>)</span>
+<span id="cb8-8"><a href="#cb8-8"></a>z2 <span class="op">=</span> calc[<span class="st">&#39;減算&#39;</span>](<span class="dv">10</span>,<span class="dv">20</span>)</span>
+<span id="cb8-9"><a href="#cb8-9"></a>z3 <span class="op">=</span> calc[<span class="st">&#39;乗算&#39;</span>](<span class="dv">10</span>,<span class="dv">20</span>)</span>
+<span id="cb8-10"><a href="#cb8-10"></a><span class="bu">print</span>(<span class="ss">f&#39;z1 =&gt; </span><span class="sc">{</span>z1<span class="sc">}</span><span class="ss">,  z2 =&gt; </span><span class="sc">{</span>z2<span class="sc">}</span><span class="ss">,  z3 =&gt; </span><span class="sc">{</span>z3<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+      <p>Pythonのラムダ式には <span
+      class="masked">1個の式しか記述できないこと</span>
+      に注意してください。つまり、<strong>複数行を必要とする処理をラムダ式として記述することはできません</strong>
+      (そのような場合は、通常の関数定義を使用します)。一方で、C# や
+      JavaScript などの言語では、ラムダ式
+      (JSの場合は「アロー関数」と呼称)
+      に複数の文を含むことができます。</p>
+      <h2 data-number="4.5" id="ラムダ式の記述法"><span
+      class="header-section-number">4.5</span> ラムダ式の記述法</h2>
+      <p>「<strong>通常の関数定義</strong>
+      <code>func-lambda-01.py</code>」と「<strong>ラムダ式による関数定義</strong>
+      <code>func-lambda-02.py</code>」について相互変換 (相互書き換え)
+      ができるようになっておいてください
+      (構文の違いについて理解しておいてください)。</p>
+      <div class="sourceCode" id="cb9"
+      data-caption="func-lambda-01.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="kw">def</span> add (a,b):</span>
+<span id="cb9-2"><a href="#cb9-2"></a>  <span class="cf">return</span> a<span class="op">+</span>b</span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="bu">print</span>(<span class="bu">type</span>(add))  <span class="co"># =&gt; &lt;class &#39;function&#39;&gt;</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="bu">print</span>(add(<span class="dv">10</span>,<span class="dv">20</span>)) <span class="co"># =&gt; 30</span></span></code></pre></div>
+      <div class="sourceCode" id="cb10"
+      data-caption="func-lambda-02.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>add <span class="op">=</span> <span class="kw">lambda</span> a,b : a<span class="op">+</span>b</span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="bu">print</span>(<span class="bu">type</span>(add))  <span class="co"># =&gt; &lt;class &#39;function&#39;&gt;</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="bu">print</span>(add(<span class="dv">10</span>,<span class="dv">20</span>)) <span class="co"># =&gt; 30</span></span></code></pre></div>
+      <p>通常の関数もラムダ式も、定義した後の「型」や「呼び出し方法」は同じです。</p>
+      <p><strong>演習</strong> <code>add = lambda a,b : a+b</code> を
+      <code>add = lambda (a,b) : a+b</code>
+      のように書き換えるとどのようになるか確認せよ。</p>
+      <h1 data-number="5" id="mapとラムダ式の組み合わせ"><span
+      class="header-section-number">5</span>
+      mapとラムダ式の組み合わせ</h1>
+      <p>ラムダ式は、一般に <code>map</code> 関数、<code>filter</code>
+      関数、<code>sorted</code> 関数、<code>functools.reduce</code>
+      関数などと組み合わせて使用することが多いです。ここでは、最も利用頻度が高いと思われる
+      <code>map</code> 関数との組み合わせについて紹介しておきます。</p>
+      <h2 data-number="5.1" id="map関数"><span
+      class="header-section-number">5.1</span> map関数</h2>
+      <p>Pythonの組み込み関数である <code>map</code> は <span
+      class="masked">リストやタプルを構成する個々の要素に任意の関数を適用</span>
+      する機能を提供します。</p>
+      <p>例えば、次のように「<strong>文字列</strong>」を要素に持つリスト
+      <code>arr1</code> があるとします。</p>
+      <div class="sourceCode" id="cb11"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>arr1<span class="op">=</span>[<span class="st">&#39;10&#39;</span>,<span class="st">&#39;20&#39;</span>,<span class="st">&#39;30&#39;</span>,<span class="st">&#39;40&#39;</span>]</span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="bu">print</span>(<span class="bu">type</span>(arr1[<span class="dv">0</span>])) <span class="co"># =&gt; &lt;class &#39;str&#39;&gt;</span></span></code></pre></div>
+      <p>そして、この <code>arr1</code> の各要素に対して
+      <code>int()</code> 関数を適用して「<strong>(文字列を)
+      整数値に変換したい</strong>」とします　(<span
+      class="masked"><code>a=int('100')</code> のようにすれば
+      <code>a</code> には整数型の<code>100</code>
+      が得られることは学習済みです</span>)。この場合、次のように
+      <code>map</code> 関数を使用します。</p>
+      <div class="sourceCode" id="cb12"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># map を適用</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>arr2 <span class="op">=</span> <span class="bu">map</span>(<span class="bu">int</span>, arr1)</span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="bu">print</span>(<span class="bu">type</span>(arr2))    <span class="co"># =&gt; &lt;class &#39;map&#39;&gt;</span></span>
+<span id="cb12-4"><a href="#cb12-4"></a></span>
+<span id="cb12-5"><a href="#cb12-5"></a><span class="co"># map型をリスト型に変換</span></span>
+<span id="cb12-6"><a href="#cb12-6"></a>arr2 <span class="op">=</span> <span class="bu">list</span>(arr2)</span>
+<span id="cb12-7"><a href="#cb12-7"></a></span>
+<span id="cb12-8"><a href="#cb12-8"></a><span class="bu">print</span>(<span class="bu">type</span>(arr2))    <span class="co"># =&gt; &lt;class &#39;list&#39;&gt;</span></span>
+<span id="cb12-9"><a href="#cb12-9"></a><span class="bu">print</span>(<span class="bu">type</span>(arr2[<span class="dv">0</span>])) <span class="co"># =&gt; &lt;class &#39;int&#39;&gt;</span></span></code></pre></div>
+      <p>この結果、<code>arr2</code> には
+      <code>[10,　20,　30,　40]</code>
+      のような整数型を要素に持つリストが得られます。ここでは、<code>map</code>
+      関数を使うことで <span class="masked"><code>for</code>
+      などの繰り返し構文を使用せずに簡潔に処理が書けていること</span>
+      に注目してください。</p>
+      <p>なお、タプル型で結果を得たい場合は、<strong>第06行目</strong>の
+      <code>arr2 = list(arr2)</code> を <code>arr2 = tuple(arr2)</code>
+      のように書き換えます。また、処理を2段階に分けずに <span
+      class="masked"><code>arr2 = list(map(int,arr1))</code></span> や
+      <span
+      class="masked"><code>arr2 = tuple(map(int,arr1))</code></span>
+      のように1行で書くこともできます
+      (基本的には1行で書くことが多いです)。</p>
+      <h2 data-number="5.2" id="mapと自作関数の組合せ"><span
+      class="header-section-number">5.2</span>
+      mapと自作関数の組合せ</h2>
+      <p>先の例では <code>arr2 = list(map(int,arr1))</code>
+      のように標準関数である <code>int</code> と <code>map</code>
+      を組み合わせました。しかし、<code>map</code>
+      には標準関数以外にも、次のように<strong>自作関数を組み合わせることができます</strong>。</p>
+      <p>次のプログラムは、文字列として数値が格納されるリストを対象に、整数型に変換して、さらに値を2倍にする処理を行ないます。実際にプログラムを実行して結果を確認してください。</p>
+      <div class="sourceCode" id="cb13"
+      data-caption="mapと自作関数の組合せ"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb13-2"><a href="#cb13-2"></a></span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="co"># 値を2倍にする関数</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a><span class="kw">def</span> double(a):</span>
+<span id="cb13-5"><a href="#cb13-5"></a>  <span class="cf">return</span> a<span class="op">*</span><span class="dv">2</span></span>
+<span id="cb13-6"><a href="#cb13-6"></a></span>
+<span id="cb13-7"><a href="#cb13-7"></a>arr <span class="op">=</span> [<span class="st">&#39;10&#39;</span>,<span class="st">&#39;20&#39;</span>,<span class="st">&#39;30&#39;</span>,<span class="st">&#39;40&#39;</span>]</span>
+<span id="cb13-8"><a href="#cb13-8"></a>arr <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="bu">int</span>, arr))   <span class="co"># 標準関数 int を適用し...</span></span>
+<span id="cb13-9"><a href="#cb13-9"></a>arr <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(double,arr)) <span class="co"># 自作関数 double を適用</span></span>
+<span id="cb13-10"><a href="#cb13-10"></a><span class="bu">print</span>(arr) <span class="co"># =&gt; [20, 40, 60, 80]</span></span></code></pre></div>
+      <h2 data-number="5.3" id="mapとラムダ式の組合せ"><span
+      class="header-section-number">5.3</span>
+      mapとラムダ式の組合せ</h2>
+      <p>先の例では、自作関数 <code>double</code> を定義して
+      <code>map</code>
+      の第1引数に与えましたが、次のようにラムダ式を直接与えることができます。実際に上記のプログラムを実行して結果を確認してください。</p>
+      <div class="sourceCode" id="cb14"
+      data-caption="mapと自作関数の組合せ 1"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb14-2"><a href="#cb14-2"></a>arr <span class="op">=</span> [<span class="st">&#39;10&#39;</span>,<span class="st">&#39;20&#39;</span>,<span class="st">&#39;30&#39;</span>,<span class="st">&#39;40&#39;</span>]</span>
+<span id="cb14-3"><a href="#cb14-3"></a>arr <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="bu">int</span>, arr))</span>
+<span id="cb14-4"><a href="#cb14-4"></a>arr <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>( <span class="kw">lambda</span> a : <span class="dv">2</span><span class="op">*</span>a, arr)) </span>
+<span id="cb14-5"><a href="#cb14-5"></a><span class="bu">print</span>(arr) <span class="co"># =&gt; [20, 40, 60, 80]</span></span></code></pre></div>
+      <p>このプログラムは <strong>第03行目</strong> と
+      <strong>第04行目</strong>
+      をまとめて次のように書くこともできます。</p>
+      <div class="sourceCode" id="cb15"
+      data-caption="mapと自作関数の組合せ 2"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb15-2"><a href="#cb15-2"></a>arr <span class="op">=</span> [<span class="st">&#39;10&#39;</span>,<span class="st">&#39;20&#39;</span>,<span class="st">&#39;30&#39;</span>,<span class="st">&#39;40&#39;</span>]</span>
+<span id="cb15-3"><a href="#cb15-3"></a>arr <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>( <span class="kw">lambda</span> a : <span class="bu">int</span>(a)<span class="op">*</span><span class="dv">2</span>, arr)) </span>
+<span id="cb15-4"><a href="#cb15-4"></a><span class="bu">print</span>(arr) <span class="co"># =&gt; [20, 40, 60, 80]</span></span></code></pre></div>
+      <p>なお、<code>map</code>
+      を使わずに記述すると、次のような<strong>繰返し構文を含むプログラム</strong>となります。</p>
+      <div class="sourceCode" id="cb16"
+      data-caption="mapと自作関数の組合せ"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb16-2"><a href="#cb16-2"></a>arr <span class="op">=</span> [<span class="st">&#39;10&#39;</span>,<span class="st">&#39;20&#39;</span>,<span class="st">&#39;30&#39;</span>,<span class="st">&#39;40&#39;</span>]</span>
+<span id="cb16-3"><a href="#cb16-3"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(arr)):</span>
+<span id="cb16-4"><a href="#cb16-4"></a>  arr[i] <span class="op">=</span> <span class="bu">int</span>(arr[i])<span class="op">*</span><span class="dv">2</span></span>
+<span id="cb16-5"><a href="#cb16-5"></a><span class="bu">print</span>(arr) <span class="co"># =&gt; [20, 40, 60, 80]</span></span></code></pre></div>
+      <h2 data-number="5.4" id="三項演算子とラムダ式"><span
+      class="header-section-number">5.4</span> 三項演算子とラムダ式</h2>
+      <p>いま、「何らかの計測実験で電流」を測定したとします。本来、その実験では電流は「非負の値」となるはずですが、ノイズの影響で稀にマイナスの値も計測されてしまうという問題があります。このため、<strong>マイナスの計測値は全て「0.0」に書き換えたいという要求</strong>があるとします。</p>
+      <p>このような処理は、自作関数と <code>map</code>
+      関数を組み合わせで実現できます。プログラムを実行して、意図した結果が得られるか確認してください。</p>
+      <div class="sourceCode" id="cb17"
+      data-caption="mapと自作関数の組合せ"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb17-2"><a href="#cb17-2"></a><span class="kw">def</span> clip_negative(a):</span>
+<span id="cb17-3"><a href="#cb17-3"></a>  <span class="cf">if</span> a <span class="op">&gt;=</span> <span class="dv">0</span>:</span>
+<span id="cb17-4"><a href="#cb17-4"></a>    <span class="cf">return</span> a</span>
+<span id="cb17-5"><a href="#cb17-5"></a>  <span class="cf">else</span> :</span>
+<span id="cb17-6"><a href="#cb17-6"></a>    <span class="cf">return</span> <span class="fl">0.0</span></span>
+<span id="cb17-7"><a href="#cb17-7"></a></span>
+<span id="cb17-8"><a href="#cb17-8"></a>arr <span class="op">=</span> [<span class="fl">2.3</span>, <span class="fl">0.2</span>, <span class="op">-</span><span class="fl">1.9</span>, <span class="fl">1.8</span>]</span>
+<span id="cb17-9"><a href="#cb17-9"></a>arr <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(clip_negative,arr)) </span>
+<span id="cb17-10"><a href="#cb17-10"></a><span class="bu">print</span>(arr) <span class="co"># =&gt; [2.3, 0.2, 0.0, 1.8]</span></span></code></pre></div>
+      <p>この処理を「ラムダ式」を使って記述することを考えます。しかし、既に述べたように
+      Python のラムダ式は <span
+      class="masked">１つの式しか含めることができず、複数行にわたる文を含むこと</span>
+      はできません。上記の <code>clip_negative</code>
+      関数は<strong>条件分岐</strong>を含み、複数の文から構成されており、そのままラムダ式として記述することはできません。</p>
+      <p>このようなとき、<strong>条件式（三項演算子）</strong>
+      を使用することでラムダ式にできる場合があります。</p>
+      <h2 data-number="5.5" id="条件式-三項演算子"><span
+      class="header-section-number">5.5</span> 条件式 (三項演算子)</h2>
+      <p>条件式 (三項演算子)
+      は、<code>a = [真のときの値] if [条件] else [偽のときの値]</code>
+      という形式で記述します。そして、次のように動作します。</p>
+      <ol type="1">
+      <li><code>[条件]</code> を評価します。</li>
+      <li>評価が <code>True</code> であれば <code>[真のときの値]</code>
+      が返され変数 <code>a</code> に代入されます。</li>
+      <li>評価が <code>False</code> であれば <code>[偽のときの値]</code>
+      が返され変数 <code>a</code> に代入されます。</li>
+      </ol>
+      <p>具体的な記述を見たほうが分かりやすいです。既に学習済みですが
+      <code>%</code>
+      は割った「余り」を求める演算子です。つまり、<code>dice%2==0</code>
+      は <span class="masked">2で割ったときの余りは 0 であるか?</span>
+      の意味になります。次のプログラムを実行して動作を確認してください。</p>
+      <div class="sourceCode" id="cb18"
+      data-caption="mapと自作関数の組合せ"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb18-2"><a href="#cb18-2"></a><span class="im">import</span> random <span class="im">as</span> r</span>
+<span id="cb18-3"><a href="#cb18-3"></a>dice <span class="op">=</span> r.randint(<span class="dv">1</span>,<span class="dv">6</span>) <span class="co"># 1～6の整数乱数</span></span>
+<span id="cb18-4"><a href="#cb18-4"></a>a <span class="op">=</span> <span class="st">&#39;丁(偶数)&#39;</span> <span class="cf">if</span> dice<span class="op">%</span><span class="dv">2</span><span class="op">==</span><span class="dv">0</span> <span class="cf">else</span> <span class="st">&#39;半(奇数)&#39;</span> <span class="co"># 条件式 (三項演算子)</span></span>
+<span id="cb18-5"><a href="#cb18-5"></a><span class="bu">print</span>(<span class="ss">f&#39;賽の目 </span><span class="sc">{</span>dice<span class="sc">}</span><span class="ss"> で </span><span class="sc">{</span>a<span class="sc">}</span><span class="ss"> です&#39;</span>)</span></code></pre></div>
+      <p>この条件式を使えば、先ほどのプログラム
+      (リストに含まれる負の値を 0.0 にする)
+      は次のように記述することができます。</p>
+      <div class="sourceCode" id="cb19"
+      data-caption="条件式 (三項演算子) の利用 1"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb19-2"><a href="#cb19-2"></a><span class="kw">def</span> clip_negative(a):</span>
+<span id="cb19-3"><a href="#cb19-3"></a>  b <span class="op">=</span> a <span class="cf">if</span> a <span class="op">&gt;=</span> <span class="dv">0</span> <span class="cf">else</span> <span class="fl">0.0</span>  <span class="co"># 条件式 (三項演算子) で記述</span></span>
+<span id="cb19-4"><a href="#cb19-4"></a>  <span class="cf">return</span> b</span>
+<span id="cb19-5"><a href="#cb19-5"></a></span>
+<span id="cb19-6"><a href="#cb19-6"></a>arr <span class="op">=</span> [<span class="fl">2.3</span>, <span class="fl">0.2</span>, <span class="op">-</span><span class="fl">1.9</span>, <span class="fl">1.8</span>]</span>
+<span id="cb19-7"><a href="#cb19-7"></a>arr <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(clip_negative,arr)) </span>
+<span id="cb19-8"><a href="#cb19-8"></a><span class="bu">print</span>(arr)</span></code></pre></div>
+      <p>さらに、関数 <code>clip_negative</code> の変数 <code>b</code>
+      を省略して次のように記述できます。</p>
+      <div class="sourceCode" id="cb20"
+      data-caption="条件式 (三項演算子) の利用 2"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="kw">def</span> clip_negative(a):</span>
+<span id="cb20-3"><a href="#cb20-3"></a>  <span class="cf">return</span> a <span class="cf">if</span> a <span class="op">&gt;=</span> <span class="dv">0</span> <span class="cf">else</span> <span class="fl">0.0</span>  <span class="co"># 注目</span></span>
+<span id="cb20-4"><a href="#cb20-4"></a></span>
+<span id="cb20-5"><a href="#cb20-5"></a>arr <span class="op">=</span> [<span class="fl">2.3</span>, <span class="fl">0.2</span>, <span class="op">-</span><span class="fl">1.9</span>, <span class="fl">1.8</span>]</span>
+<span id="cb20-6"><a href="#cb20-6"></a>arr <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(clip_negative,arr)) </span>
+<span id="cb20-7"><a href="#cb20-7"></a><span class="bu">print</span>(arr)</span></code></pre></div>
+      <p>ここまでくれば、関数 <code>clip_negative</code>
+      を<strong>ラムダ式で記述できること</strong>に気付いたと思います。条件式
+      (三項演算子) を含むラムダ式と <code>map</code>
+      関数の組み合わせたプログラムを次に示します。実行して動作を確認してください。</p>
+      <div class="sourceCode" id="cb21"
+      data-caption="条件式 (三項演算子) を含むラムダ式"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb21-2"><a href="#cb21-2"></a>arr <span class="op">=</span> [<span class="fl">2.3</span>, <span class="fl">0.2</span>, <span class="op">-</span><span class="fl">1.9</span>, <span class="fl">1.8</span>]</span>
+<span id="cb21-3"><a href="#cb21-3"></a>arr <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>( <span class="kw">lambda</span> a : a <span class="cf">if</span> a <span class="op">&gt;=</span> <span class="dv">0</span> <span class="cf">else</span> <span class="fl">0.0</span>, arr)) <span class="co"># 注目</span></span>
+<span id="cb21-4"><a href="#cb21-4"></a><span class="bu">print</span>(arr)</span></code></pre></div>
+      <p>条件式 (三項演算子)
+      を使用すると<strong>可読性は犠牲になるものの</strong>プログラムを劇的に短くすることができます。</p>
+      <div class="note type-tips">
+      <p><strong>標準関数 max</strong></p>
+      <p>標準関数の <code>max</code>
+      を使用すると上記の処理はよりシンプルに記述できます。<code>max</code>
+      は与えられた引数のうち、大きいほうの値を返す標準関数
+      (インポート不要) です。例えば <code>a = ( -1.2, 0.0 )</code>
+      とした場合は、変数 <code>a</code> には <code>0.0</code>
+      が格納されます。</p>
+      <div class="sourceCode" id="cb22"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>arr <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>( <span class="kw">lambda</span> a : <span class="bu">max</span>(a,<span class="fl">0.0</span>), arr))</span></code></pre></div>
+      <p><code>max</code>
+      関数には「3つ以上の引数を与えること」や「リスト形式で1個の引数を与えること」もできます。同様に、引数のうちもっとも小さい値を返す
+      <code>min</code> 関数もあります。</p>
+      </div>
+      <p><strong>演習</strong>: <code>arr1</code>
+      には100点満点の「成績」が格納されている。60点未満を「不合格」、60点以上を「合格」として
+      <strong>第04行目</strong>
+      ような値が得られるようにプログラムを記述せよ。</p>
+      <div class="sourceCode" id="cb23" data-caption="演習"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb23-2"><a href="#cb23-2"></a>arr1 <span class="op">=</span> [<span class="dv">60</span>, <span class="dv">70</span>, <span class="dv">45</span>, <span class="dv">55</span>, <span class="dv">90</span>]</span>
+<span id="cb23-3"><a href="#cb23-3"></a>arr2 <span class="op">=</span> <span class="dv">0</span>    <span class="co"># ここを書き換え</span></span>
+<span id="cb23-4"><a href="#cb23-4"></a><span class="bu">print</span>(arr2) <span class="co"># =&gt; [&#39;合格&#39;, &#39;合格&#39;, &#39;不合格&#39;, &#39;不合格&#39;, &#39;合格&#39;]</span></span></code></pre></div>
+      <p>なお、次のような解答は期待していません (ここでは
+      <code>map</code>、ラムダ式、条件式を使用することを期待しています)
+      。</p>
+      <div class="sourceCode" id="cb24"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb24-2"><a href="#cb24-2"></a>arr1 <span class="op">=</span> [<span class="dv">60</span>, <span class="dv">70</span>, <span class="dv">45</span>, <span class="dv">55</span>, <span class="dv">90</span>]</span>
+<span id="cb24-3"><a href="#cb24-3"></a>arr2 <span class="op">=</span> []</span>
+<span id="cb24-4"><a href="#cb24-4"></a><span class="cf">for</span> a <span class="kw">in</span> arr1:</span>
+<span id="cb24-5"><a href="#cb24-5"></a>  <span class="cf">if</span> a <span class="op">&gt;=</span> <span class="dv">60</span>:</span>
+<span id="cb24-6"><a href="#cb24-6"></a>    arr2.append(<span class="st">&#39;合格&#39;</span>)</span>
+<span id="cb24-7"><a href="#cb24-7"></a>  <span class="cf">else</span>:</span>
+<span id="cb24-8"><a href="#cb24-8"></a>    arr2.append(<span class="st">&#39;不合格&#39;</span>)</span>
+<span id="cb24-9"><a href="#cb24-9"></a><span class="bu">print</span>(arr2) <span class="co"># =&gt; [&#39;合格&#39;, &#39;合格&#39;, &#39;不合格&#39;, &#39;不合格&#39;, &#39;合格&#39;]</span></span></code></pre></div>
+      <h1 data-number="6" id="pandas入門"><span
+      class="header-section-number">6</span> Pandas入門</h1>
+      <p><a
+      href="lecture18.html#pandas-を使った-csv-excel-ファイルの読み込み">前回講義</a>
+      で学習したように <strong><em>Pandas</em></strong>
+      (<strong>パンダス</strong>)
+      は「<strong>表形式データ</strong>」の操作や処理を得意とするライブラリ
+      (モジュール)
+      です。CSV/Excelをはじめとした様々な表形式データの読込みや書出し、表形式データの操作や処理を効率的かつ高速に実行する機能を提供します。</p>
+      <p>また、Pandas は、Pythonを使った <strong>データ分析</strong> や
+      <span class="masked">機械学習 (マシンラーニング)</span> の
+      <strong>前処理</strong>
+      のための「定番ツール」であり、多くの場合、数値計算ライブラリ「<strong>NumPy</strong>」と可視化ライブラリ「<strong>Matplotlib</strong>」と組み合わせて使用されます。特に「データサイエンティスト」や「AIエンジニア」にとって
+      Pandas はほぼ必須ツールになります。</p>
+      <div class="note type-tips">
+      <p><strong>データサイエンティスト・AIエンジニア</strong></p>
+      <p>データサイエンティスト、AIエンジニアの「<strong>業務内容や将来性</strong>」「年収」「適性
+      (向いている人)」「関連資格」などは、下記を参考にしてください。なお、高専卒業後に大学編入して<strong>大学院まで</strong>に進むことで、これらの職に就ける可能性が高くなります
+      (チャンスや機会に恵まれるようになります)。</p>
+      <ul>
+      <li><strong>データサイエンティスト</strong> @ キャリアガーデン
+      <ul>
+      <li>https://careergarden.jp/ai-engineer/</li>
+      </ul></li>
+      <li><strong>AIエンジニア</strong> @ キャリアガーデン
+      <ul>
+      <li>https://careergarden.jp/data-scientist/</li>
+      </ul></li>
+      </ul>
+      </div>
+      <h2 data-number="6.1" id="csvファイルの読込み"><span
+      class="header-section-number">6.1</span> CSVファイルの読込み</h2>
+      <p><a
+      href="lecture18.html#pandas-を使った-csv-excel-ファイルの読み込み">前回講義</a>でも体験したように
+      Pandas ライブラリを使用すると CSVファイル のデータを
+      <code>DataFrame</code>
+      型として、プログラムのなかに簡単に取り込むことができました。</p>
+      <p>以下に <a href="data/19/score-1.csv">score-1.csv</a>
+      を「<strong>DataFrame型</strong>」として読込み、その内容を表示するプログラムを示します。なお、ウェブからのファイルダウンロードに使用する
+      <code>requests</code> ライブラリは、Pythonの標準ライブラリ
+      (モジュール) ではありません。そのため、実行時に <span
+      class="masked"><code>ModuleNotFoundError: No module named 'requests'</code></span>
+      が生じたら <span
+      class="masked"><code>pip install requests</code></span>
+      で当該ライブラリをインストールしてください
+      (<strong>GoogleColab環境ではデフォルトでインストールされています</strong>)。</p>
+      <div class="sourceCode" id="cb25"
+      data-caption="CSVファイルの読込みと確認"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a><span class="im">import</span> os</span>
+<span id="cb25-2"><a href="#cb25-2"></a><span class="im">import</span> requests  <span class="co"># ウェブからファイルをダウンロードする際に利用</span></span>
+<span id="cb25-3"><a href="#cb25-3"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb25-4"><a href="#cb25-4"></a></span>
+<span id="cb25-5"><a href="#cb25-5"></a><span class="co"># CSVファイルをウェブから取得してカレントフォルダに保存</span></span>
+<span id="cb25-6"><a href="#cb25-6"></a>url <span class="op">=</span> <span class="st">&#39;https://takeshiwada1980.github.io/Programming1-2023/data/19/score-1.csv&#39;</span></span>
+<span id="cb25-7"><a href="#cb25-7"></a>res <span class="op">=</span> requests.get(url)</span>
+<span id="cb25-8"><a href="#cb25-8"></a><span class="co"># print(type(res)) # =&gt; &lt;class &#39;requests.models.Response&#39;&gt;</span></span>
+<span id="cb25-9"><a href="#cb25-9"></a></span>
+<span id="cb25-10"><a href="#cb25-10"></a><span class="cf">if</span> res.status_code <span class="op">!=</span> <span class="dv">200</span>:</span>
+<span id="cb25-11"><a href="#cb25-11"></a>  <span class="cf">raise</span> <span class="pp">Exception</span>(<span class="ss">f&#39;ファイルのDLに失敗。強制終了します。Code:</span><span class="sc">{</span>res<span class="sc">.</span>status_code<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+<span id="cb25-12"><a href="#cb25-12"></a></span>
+<span id="cb25-13"><a href="#cb25-13"></a>fn <span class="op">=</span> <span class="st">&#39;score-1.csv&#39;</span></span>
+<span id="cb25-14"><a href="#cb25-14"></a><span class="cf">with</span> <span class="bu">open</span>(fn,<span class="st">&#39;wb&#39;</span>) <span class="im">as</span> <span class="bu">file</span>: </span>
+<span id="cb25-15"><a href="#cb25-15"></a>  <span class="bu">file</span>.write(res.content)</span>
+<span id="cb25-16"><a href="#cb25-16"></a></span>
+<span id="cb25-17"><a href="#cb25-17"></a><span class="co"># CSVファイルの読込み</span></span>
+<span id="cb25-18"><a href="#cb25-18"></a><span class="cf">assert</span> os.path.isfile(fn)</span>
+<span id="cb25-19"><a href="#cb25-19"></a>df <span class="op">=</span> pd.read_csv(fn,encoding<span class="op">=</span><span class="st">&#39;utf-8&#39;</span>)</span>
+<span id="cb25-20"><a href="#cb25-20"></a><span class="co"># print(type(df)) # =&gt; &lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;</span></span>
+<span id="cb25-21"><a href="#cb25-21"></a></span>
+<span id="cb25-22"><a href="#cb25-22"></a><span class="co"># データフレームの整形出力</span></span>
+<span id="cb25-23"><a href="#cb25-23"></a>display(df)</span></code></pre></div>
+      <ul>
+      <li><p><strong>第03行目</strong>では、Pandas ライブラリ
+      (モジュール) をインポートしています。<strong>慣例的に Pandas
+      は</strong> <code>pd</code>
+      <strong>という省略名で使用します</strong>。インポートの際は
+      <code>pandas</code>
+      のように<strong>小文字</strong>で表記することに注意してください。</p></li>
+      <li><p><strong>第07行目</strong> では、指定したURLに「<strong>HTTP
+      GET リクエスト</strong>」を送り、その結果 (レスポンス) を変数
+      <code>res</code> に格納しています。<code>res</code> という変数名は
+      <span class="masked">response (応答)</span>
+      の略語としてよく利用されます。変数 <code>res</code> は
+      <code>requests.models.Response</code>
+      型のオブジェクトになります。</p></li>
+      <li><p><strong>第10行目～第11行目</strong> では、変数
+      <code>res</code> の<a
+      href="https://www.google.com/search?q=HTTPステータスコード">HTTPステータスコード</a>を確認しています。ステータスコードは「<strong>3桁の数字</strong>」から構成され
+      <code>200</code> は「OK」を意味します。ここでは <code>200</code>
+      <strong>以外</strong>のステータスコードが返ってきた場合には<span
+      class="masked">「エラー」としてプログラムを強制終了するようにしています</span>。<code>raise Exception(...)</code>
+      は、この強制終了に関連した <strong>例外処理</strong>
+      というものに関連する命令です (詳しくは今後の講義で扱います)。</p>
+      <ul>
+      <li>ステータスコードとして知っておいてほしいものとしては
+      <code>404</code> の「<strong>Not
+      Found</strong>」、<code>401</code>
+      の「<strong>Unauthorized</strong>」、<code>501</code>
+      の「<strong>Internal Server Error</strong>」などがあります。</li>
+      </ul></li>
+      <li><p><strong>第13行目～第15行目</strong>
+      では、<code>score-1.csv</code> という名前でファイルを
+      <strong>バイナリ書き込みモード</strong> (<code>wb</code>モード)
+      でオープン (新規作成) して、ウェブから取得した内容
+      (<code>res.content</code>) を書き込んでいます。</p></li>
+      <li><p><strong>第19行目</strong> では、Pandas の
+      <code>read_csv</code>
+      関数を使って「CSVファイル」を読み込み、<strong>DataFrameオブジェクト</strong>として変数
+      <code>df</code> に格納しています (<span class="masked">慣例的に
+      Pandas のサンプルコードでは、DataFrameオブジェクトに
+      <code>df</code>
+      という変数名をつけます</span>)。なお、CSVファイルに「日本語」が含まれ、その文字コードが
+      <strong>ShiftJIS</strong> の場合は、引数に
+      <code>encoding='cp932'</code> を指定します。</p></li>
+      <li><p><strong>第23行目</strong> では、<code>df</code>
+      の内容を<strong>整形して表示</strong>しています。この
+      <code>display</code> 関数は、Jupyter や GoogleColab
+      で有効です。それ以外の Python 環境では <code>print(df)</code>
+      を使用してください。</p></li>
+      </ul>
+      <p>上記のプログラムを実行して動作を確認してください。</p>
+      <hr />
+      <p><strong>演習1</strong>: <code>display(df)</code> を
+      <code>print(df)</code> に書き換えて動作を確認せよ。</p>
+      <p><strong>演習2</strong>: <strong>第19行目</strong> で
+      <code>encoding='cp932'</code>
+      のように引数を指定するとどのようなるか確認せよ。</p>
+      <h2 data-number="6.2" id="型の確認"><span
+      class="header-section-number">6.2</span> 型の確認</h2>
+      <p>DataFrameオブジェクトでは「<strong>列単位</strong>」で型 (type)
+      が<strong>統一</strong>されます。通常、型はファイル読み込み時に最適なものが自動設定されます。各列の「<strong>型</strong>」は、次のように
+      DataFrameオブジェクトの <code>dtypes</code>
+      <strong>プロパティ</strong> を使って確認できます。</p>
+      <div class="sourceCode" id="cb26"
+      data-caption="DataFrameオブジェクトの各列の「型」の確認"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb26-2"><a href="#cb26-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb26-3"><a href="#cb26-3"></a></span>
+<span id="cb26-4"><a href="#cb26-4"></a>fn <span class="op">=</span> <span class="st">&#39;score-1.csv&#39;</span></span>
+<span id="cb26-5"><a href="#cb26-5"></a>df <span class="op">=</span> pd.read_csv(fn,encoding<span class="op">=</span><span class="st">&#39;utf-8&#39;</span>)</span>
+<span id="cb26-6"><a href="#cb26-6"></a><span class="bu">print</span>(df.dtypes)</span></code></pre></div>
+      <p>実行結果は次のようになるはずです
+      (実際に実行して確認してください) 。最終行の
+      <code>dtype: object</code> は無視して構いません。</p>
+      <pre><code>ID      int64
+氏名     object
+性別     object
+国語      int64
+数学     object
+英語      int64
+理科      int64
+社会    float64
+備考     object
+dtype: object</code></pre>
+      <p>列の要素に「<strong>文字列</strong>」が含まれる場合、型は
+      <code>object</code>
+      になります。列のうち「<strong>氏名</strong>」「<strong>性別</strong>」「<strong>備考</strong>」に加えて
+      <span class="masked">「欠」という文字列を含む「数学」</span> も
+      <code>object</code> となっています。<code>object</code>
+      に対しては、算術演算や、合計・平均などの統計処理ができません。</p>
+      <p>また、列要素のすべてが「<strong>整数</strong>」に変換できる場合、型は
+      <code>int64</code>
+      になります。これは「<strong>64ビットの整数型</strong>」を意味しており
+      <span class="math inline">\(-2^{63}\)</span> から <span
+      class="math inline">\(2^{63}-1\)</span>
+      までの整数値を扱うことができます。なお、<span
+      class="math inline">\(2^{63}-1\)</span> は <span
+      class="masked">9,223,372,036,854,775,807</span> となります。</p>
+      <p>列要素に「<strong>実数値 (小数)</strong>」を含む場合、型は
+      <code>float64</code>
+      になります。「<strong>社会</strong>」の列には「洞木 ヒカリ」の成績
+      <code>90.5</code> を含むため <code>float64</code> となります
+      (繰返しになりますが、<span
+      class="masked">列内に整数型と浮動小数点数型を混在させること</span>
+      はできません)。型が <code>float64</code> の場合、整数値であっても
+      <code>90.0</code> のように小数部のついた表示となります。</p>
+      <p>DataFrameに対して、各種操作 (列同士の計算などを含む)
+      をするためには、不適切な値の修正をして、型を統一しておく必要があります。これらの処理を
+      <strong><em>前処理</em></strong> (<strong>Preprocessing</strong>)
+      と言います。</p>
+      <h2 data-number="6.3" id="準備-インデックスの設定"><span
+      class="header-section-number">6.3</span> 準備:
+      インデックスの設定</h2>
+      <p>Pandas における <strong>インデックス (index)</strong>
+      とは「<strong>行</strong>」を特定するためのラベルです。現時点ではインデックスとして
+      <strong>0</strong> から <strong>7</strong>
+      が自動的に設定されています。例えば、値を修正する場合には、<strong>この「インデックス」と「列名」を用いて位置を特定</strong>します。そのため、<span
+      class="masked">分かりやすい値をインデックスとして設定しておくこと</span>が推奨されます。</p>
+      <p>現在の「インデックス」は「ID」とも値がずれており、分かりづらい
+      (混乱しやすい)
+      ものとなっています。以降の作業のために「氏名」をインデックスに設定していきたいと思います。</p>
+      <figure>
+      <img src="figs/19/df-index-01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>次のプログラムの <strong>第06行目</strong>
+      のようにDataFrameオブジェクトの <code>set_index</code>
+      メソッドを使って
+      <strong>任意の「列」をインデックスに置き換えること</strong>ができます。</p>
+      <div class="sourceCode" id="cb28"
+      data-caption="インデックスの設定"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb28-2"><a href="#cb28-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb28-3"><a href="#cb28-3"></a></span>
+<span id="cb28-4"><a href="#cb28-4"></a>fn <span class="op">=</span> <span class="st">&#39;score-1.csv&#39;</span></span>
+<span id="cb28-5"><a href="#cb28-5"></a>df <span class="op">=</span> pd.read_csv(fn,encoding<span class="op">=</span><span class="st">&#39;utf-8&#39;</span>)</span>
+<span id="cb28-6"><a href="#cb28-6"></a>df.set_index(<span class="st">&#39;氏名&#39;</span>,inplace<span class="op">=</span><span class="va">True</span>) <span class="co"># 列「氏名」をインデックスに設定</span></span>
+<span id="cb28-7"><a href="#cb28-7"></a>display(df)</span></code></pre></div>
+      <p>実行結果は次のようになります。「氏名」がインデックスになりました。なお、<strong>第06行目</strong>は
+      <code>df = df.set_index('氏名')</code>
+      のように記述することもできます。</p>
+      <figure>
+      <img src="figs/19/df-index-02.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p><strong>演習1</strong>: <strong>第06行目</strong> を
+      <code>df.set_index('氏名')</code>
+      に書き換えるとどのようになるか確認せよ。</p>
+      <p><strong>演習2</strong>: <strong>第06行目</strong> を
+      <code>df = df.set_index('氏名')</code>
+      に書き換えるとどのようになるか確認せよ。</p>
+      <p><strong>演習3</strong>: <strong>第06行目</strong> を
+      <code>df = df.set_index('氏名',inplace=True)</code>
+      に書き換えるとどのようになるか確認せよ。</p>
+      <div class="note type-tips">
+      <p><strong>inplaceオプション</strong></p>
+      <p>DataFrameオブジェクト のメソッドには <code>set_index</code>
+      の他に <code>inplace</code>
+      <strong>オプション</strong>を指定できるものがいくつか存在します。基本的には
+      <code>inplace=False</code>
+      が<strong>デフォルト</strong>であり、オプションを明示的に指定しない場合は、これ
+      (<code>inplace=False</code>) が適用されます。</p>
+      <p><code>inplace=True</code> を<strong>指定せず</strong>
+      <code>df.set_index('氏名')</code>
+      とすると、変更を加えた<strong>新しい DataFrame
+      オブジェクトが生成され</strong>、それが戻り値として返されます。このとき、元々の
+      DataFrameオブジェクト である <code>df</code>
+      には変更は加えられません。変更後の DataFrame
+      オブジェクトを使用するためには
+      <code>df2 = df.set_index('氏名')</code> のように新しい変数 (例えば
+      <code>df2</code> など)
+      に割り当てるか、<code>df = df.set_index('氏名')</code> のように
+      <strong>元の変数に上書きする必要</strong> があります。</p>
+      <p>一方で、<code>inplace=True</code> を指定すると、元々の
+      DataFrame オブジェクト <code>df</code> を
+      <strong>直接変更</strong> します。つまり、<code>set_index</code>
+      メソッドは「戻り値」を返さず (何もないことを意味する
+      <code>None</code> を戻り値として返して)、元の <code>df</code>
+      が変更されます。</p>
+      </div>
+      <h2 data-number="6.4" id="前処理-欠損値の設定"><span
+      class="header-section-number">6.4</span> 前処理: 欠損値の設定</h2>
+      <p>「綾波
+      レイ」の「数学」の成績は、現状で「<strong>文字列</strong>」の「欠」となっています。「欠」という文字列は、人間から見れば「<strong>(欠席によって)
+      成績が存在しない</strong>」ということが分かりますが、コンピュータ
+      (=Pandasライブラリ) にはそのようには認識されません。</p>
+      <p>一般に「欠」や「-」「空白」のような記号で表記される
+      <strong>欠損値</strong> (Missing Data) は、Pandas では NumPy の
+      <code>np.npn</code>
+      を使って与えます。また、そのように与えられた欠損値は、整形出力された表では「<strong>NaN</strong>
+      (<strong>Not a Number</strong>)」のように表示されます。</p>
+      <p>次のプログラムは、「綾波
+      レイ」の「数学」の成績を「欠」という文字列から、NaN
+      (=<code>np.nan</code>) へと書き換える例です。DataFrame
+      オブジェクトは <code>df.loc['綾波 レイ','数学']</code> のように
+      <span
+      class="masked"><code>df.loc[インデックス名,列名]</code></span>
+      で値の参照/書き換えができます。</p>
+      <div class="sourceCode" id="cb29"
+      data-caption="欠損値(NaN)の設定"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb29-2"><a href="#cb29-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb29-3"><a href="#cb29-3"></a><span class="im">import</span> numpy <span class="im">as</span> np   <span class="co"># 要インポート</span></span>
+<span id="cb29-4"><a href="#cb29-4"></a></span>
+<span id="cb29-5"><a href="#cb29-5"></a>fn <span class="op">=</span> <span class="st">&#39;score-1.csv&#39;</span></span>
+<span id="cb29-6"><a href="#cb29-6"></a>df <span class="op">=</span> pd.read_csv(fn,encoding<span class="op">=</span><span class="st">&#39;utf-8&#39;</span>)</span>
+<span id="cb29-7"><a href="#cb29-7"></a>df.set_index(<span class="st">&#39;氏名&#39;</span>,inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb29-8"><a href="#cb29-8"></a>df.loc[<span class="st">&#39;綾波 レイ&#39;</span>,<span class="st">&#39;数学&#39;</span>] <span class="op">=</span> np.nan  <span class="co"># インデックスと列名で位置を指定して値を変更</span></span>
+<span id="cb29-9"><a href="#cb29-9"></a>display(df)</span></code></pre></div>
+      <p>実行結果は次のようになります。「欠」であったものが「NaN」に変わっていることが確認できます。</p>
+      <figure>
+      <img src="figs/19/df-nan-01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>なお、DataFrame
+      内に「欠」が<strong>多数存在する場合</strong>、上記の
+      <code>df.loc['綾波 レイ','数学'] = np.nan</code>
+      のように1個1個の位置を指定することは非常に面倒です。そのような場合は
+      <code>df.replace('欠', np.nan, inplace=True)</code>
+      のようにして一括処理ができます。Replaceは「置き換える」の意味です。</p>
+      <p><strong>演習1</strong>: <strong>第08行目</strong> を
+      <code>df.replace('欠', np.nan, inplace=True)</code>
+      に書き換え、その結果について確認せよ。</p>
+      <p><strong>演習2</strong>:「洞木 ヒカリ」の「理科」の成績を
+      <code>75</code> に修正せよ。解答例 <span
+      class="masked"><code>df.loc['洞木 ヒカリ','理科'] = 75</code>。</span></p>
+      <h2 data-number="6.5" id="前処理-型の変換"><span
+      class="header-section-number">6.5</span> 前処理: 型の変換</h2>
+      <p>現状で「国語」「英語」「理科」の型は
+      <code>int64</code>、「社会」の型は
+      <code>float64</code>、「理科」の型は <code>object</code>
+      のようにバラバラです。この状態では「5科目の合計点」などを適切に求めることができません。そのため、これらの列の「型」を全て
+      <code>float64</code> に変換します。なお、これらは 成績 (得点)
+      なので <code>int64</code> のほうが適切ですが <span
+      class="masked"><code>int64</code> では <code>NaN</code>
+      を扱えない</span> ため、<code>float64</code> に変換します。</p>
+      <p>型の変換には <code>astype</code> メソッドを利用します
+      (<code>astype</code> には <code>inplace</code>
+      オプションはありません)。また、以降の処理で「<strong>ID</strong>」と「<strong>備考</strong>」の列は不要なので、ここで<strong>削除</strong>
+      (Drop) もしておきます。</p>
+      <div class="sourceCode" id="cb30"
+      data-caption="欠損値(NaN)の設定"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb30-2"><a href="#cb30-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb30-3"><a href="#cb30-3"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb30-4"><a href="#cb30-4"></a></span>
+<span id="cb30-5"><a href="#cb30-5"></a>fn <span class="op">=</span> <span class="st">&#39;score-1.csv&#39;</span></span>
+<span id="cb30-6"><a href="#cb30-6"></a>df <span class="op">=</span> pd.read_csv(fn,encoding<span class="op">=</span><span class="st">&#39;utf-8&#39;</span>)</span>
+<span id="cb30-7"><a href="#cb30-7"></a>df.set_index(<span class="st">&#39;氏名&#39;</span>,inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb30-8"><a href="#cb30-8"></a>df.loc[<span class="st">&#39;綾波 レイ&#39;</span>,<span class="st">&#39;数学&#39;</span>] <span class="op">=</span> np.nan</span>
+<span id="cb30-9"><a href="#cb30-9"></a></span>
+<span id="cb30-10"><a href="#cb30-10"></a><span class="co"># 列の型変換</span></span>
+<span id="cb30-11"><a href="#cb30-11"></a>df[<span class="st">&#39;国語&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;国語&#39;</span>].astype(<span class="bu">float</span>) <span class="co"># int64  -&gt; float64</span></span>
+<span id="cb30-12"><a href="#cb30-12"></a>df[<span class="st">&#39;数学&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;数学&#39;</span>].astype(<span class="bu">float</span>) <span class="co"># object -&gt; float64</span></span>
+<span id="cb30-13"><a href="#cb30-13"></a>df[<span class="st">&#39;英語&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;英語&#39;</span>].astype(<span class="bu">float</span>) <span class="co"># int64  -&gt; float64</span></span>
+<span id="cb30-14"><a href="#cb30-14"></a>df[<span class="st">&#39;理科&#39;</span>] <span class="op">=</span> df[<span class="st">&#39;理科&#39;</span>].astype(<span class="bu">float</span>) <span class="co">#  〃</span></span>
+<span id="cb30-15"><a href="#cb30-15"></a></span>
+<span id="cb30-16"><a href="#cb30-16"></a><span class="co"># 不要列の削除</span></span>
+<span id="cb30-17"><a href="#cb30-17"></a>df.drop([<span class="st">&#39;ID&#39;</span>,<span class="st">&#39;備考&#39;</span>], axis<span class="op">=</span><span class="st">&#39;columns&#39;</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb30-18"><a href="#cb30-18"></a></span>
+<span id="cb30-19"><a href="#cb30-19"></a><span class="bu">print</span>(df.dtypes)         <span class="co"># 各列の型確認</span></span>
+<span id="cb30-20"><a href="#cb30-20"></a>display(df)              <span class="co"># 内容確認</span></span>
+<span id="cb30-21"><a href="#cb30-21"></a>df.to_csv(<span class="st">&#39;score-2.csv&#39;</span>) <span class="co"># 保存</span></span></code></pre></div>
+      <p>上記の実行結果は次のようになります。「<strong>ID</strong>」と「<strong>備考</strong>」の列が削除され、各科目の成績をあらわす列の型が
+      <code>float64</code>
+      になっていることが確認できます。<strong>第17行目</strong> での
+      <strong>不要列の削除</strong> では <code>axis='columns'</code>
+      を指定していますが、これを指定しないと <span
+      class="masked">「列」ではなく、「ID」や「備考」というインデックスの「行」を削除しようと</span>
+      するため注意してください。</p>
+      <p>また、<strong>第21行目</strong> では、DataFrameオブジェクト の
+      <code>to_csv</code> メソッドを使って、前処理した内容を
+      <code>score-2.csv</code> として保存しています。カレントフォルダに
+      CSVファイル が生成されていることも確認てください。</p>
+      <pre><code>性別     object
+国語    float64
+数学    float64
+英語    float64
+理科    float64
+社会    float64
+dtype: object</code></pre>
+      <div class="note type-tips">
+      <p><strong>複数の列をまとめて型変換</strong></p>
+      <p>次のようにリストを使って、複数の列について同時に「型変換」をすることができます。</p>
+      <div class="sourceCode" id="cb32"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a><span class="co"># 列の型変換</span></span>
+<span id="cb32-2"><a href="#cb32-2"></a>subjects <span class="op">=</span> [<span class="st">&#39;国語&#39;</span>,<span class="st">&#39;数学&#39;</span>,<span class="st">&#39;英語&#39;</span>,<span class="st">&#39;理科&#39;</span>]  <span class="co"># 対象の列名のリスト </span></span>
+<span id="cb32-3"><a href="#cb32-3"></a>df[subjects] <span class="op">=</span> df[subjects].astype(<span class="bu">float</span>)</span></code></pre></div>
+      </div>
+      <h2 data-number="6.6" id="要約統計量の確認"><span
+      class="header-section-number">6.6</span> 要約統計量の確認</h2>
+      <p>Pandas の機能を使って「データ概要」を把握してみます。</p>
+      <p>まずは、<strong>前処理後に保存したデータ</strong>
+      (<code>score-2.csv</code>)
+      を再読み込みして、そのデータの「<strong>型</strong>」と「<strong>内容</strong>」について念のために確認します。次のプログラムの
+      <strong>第04行目</strong> のように <code>index_col</code>
+      を指定すると <span
+      class="masked">指定した列がインデックスとして使用される</span>
+      ようになります。</p>
+      <div class="sourceCode" id="cb33"
+      data-caption="インデックスとして使用する列を指定する読込み"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb33-2"><a href="#cb33-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb33-3"><a href="#cb33-3"></a>fn <span class="op">=</span> <span class="st">&#39;score-2.csv&#39;</span></span>
+<span id="cb33-4"><a href="#cb33-4"></a>df <span class="op">=</span> pd.read_csv(fn,encoding<span class="op">=</span><span class="st">&#39;utf-8&#39;</span>,index_col<span class="op">=</span><span class="st">&#39;氏名&#39;</span>)</span>
+<span id="cb33-5"><a href="#cb33-5"></a><span class="bu">print</span>(df.dtypes)</span>
+<span id="cb33-6"><a href="#cb33-6"></a>display(df)</span></code></pre></div>
+      <p>実行すると、各列の型情報とともに、次のように「氏名」がインデックスに設定された
+      DataFrameオブジェクト の内容が確認できるはずです。</p>
+      <figure>
+      <img src="figs/19/df-index-03.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>これらについて、基本的な「<strong>要約統計量</strong>」を計算して出力させてみます。これには、DataFrameオブジェクトの
+      <code>describe</code> メソッドを使用します。</p>
+      <div class="sourceCode" id="cb34"
+      data-caption="インデックスとして使用する列を指定する読込み"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb34-2"><a href="#cb34-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb34-3"><a href="#cb34-3"></a>fn <span class="op">=</span> <span class="st">&#39;score-2.csv&#39;</span></span>
+<span id="cb34-4"><a href="#cb34-4"></a>df <span class="op">=</span> pd.read_csv(fn,encoding<span class="op">=</span><span class="st">&#39;utf-8&#39;</span>,index_col<span class="op">=</span><span class="st">&#39;氏名&#39;</span>)</span>
+<span id="cb34-5"><a href="#cb34-5"></a>display(df.describe()) <span class="co"># 要約統計量の表示</span></span></code></pre></div>
+      <p>実行結果は次のようになります。なお、デフォルトでは<strong>小数点以下の表示桁数が大きく見づらい</strong>ため、必要に応じて
+      <strong>第05行目</strong> を
+      <code>display(df.describe().round(1))</code>
+      のように書き換えてください。<code>.round(1)</code>
+      メソッドで、小数部が1桁になるような丸め処理がされます。</p>
+      <figure>
+      <img src="figs/19/df-describe-01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>各行の項目は、次のような意味となります。</p>
+      <ul>
+      <li><strong>count</strong> - データの個数
+      (<code>NaN</code>を含めない個数)</li>
+      <li><strong>mean</strong> - 算術平均</li>
+      <li><strong>std</strong> -
+      標準偏差（データの「ばらつき」の度合い）</li>
+      <li><strong>min</strong> - 最小値</li>
+      <li><strong>25%</strong> - 第1四分位数
+      (データを小さい方から並べたときの 25% 地点の値)</li>
+      <li><strong>50%</strong> - 中央値（メディアン）、第2四分位数</li>
+      <li><strong>75%</strong> - 第3四分位数
+      (データを小さい方から並べたときの 75% 地点の値)</li>
+      <li><strong>max</strong> - 最大値</li>
+      </ul>
+      <p>mean (平均値計算) などでは <code>NaN</code>
+      が除外されていることが確認できると思います。</p>
+      <h2 data-number="6.7" id="簡易グラフ出力"><span
+      class="header-section-number">6.7</span> 簡易グラフ出力</h2>
+      <p>DataFrameオブジェクト は <span class="masked">内部的に
+      Matplotlib
+      を呼び出して簡易的なグラフを描画する機能</span>を持っています。ただし、DataFrame
+      オブジェクトに「日本語テキスト」を含むときは、グラフに日本語を表示するために<a
+      href="https://pypi.org/project/japanize-matplotlib/">japanize-matplotlib</a>をインポートする必要があります。</p>
+      <p><code>ModuleNotFoundError: No module named 'japanize_matplotlib'</code>
+      が発生する場合は、次のように japanize-matplotlib を pip
+      でインストールしてください。</p>
+      <pre><code>pip install japanize_matplotlib</code></pre>
+      <p>GoogleColab環境では、<strong>独立したコードセル</strong>で
+      <code>!</code>
+      を先頭に付けて、ライブラリのインストールができます。</p>
+      <figure>
+      <img src="figs/19/pip-01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>次のように <code>df.plot.barh()</code>
+      メソッドにより、簡易的な棒グラフを描画することができます。</p>
+      <div class="sourceCode" id="cb36"
+      data-caption="簡易的な棒グラフの描画"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb36-2"><a href="#cb36-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb36-3"><a href="#cb36-3"></a><span class="im">import</span> japanize_matplotlib <span class="co"># 日本語対応</span></span>
+<span id="cb36-4"><a href="#cb36-4"></a>fn <span class="op">=</span> <span class="st">&#39;score-2.csv&#39;</span></span>
+<span id="cb36-5"><a href="#cb36-5"></a>df <span class="op">=</span> pd.read_csv(fn,encoding<span class="op">=</span><span class="st">&#39;utf-8&#39;</span>,index_col<span class="op">=</span><span class="st">&#39;氏名&#39;</span>)</span>
+<span id="cb36-6"><a href="#cb36-6"></a>df.plot.barh() <span class="co"># 水平の棒グラフ (簡易)</span></span></code></pre></div>
+      <p>実行すると次のようなグラフが出力されます。</p>
+      <figure>
+      <img src="figs/19/df-chart-01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>また、<strong>第06行目</strong> を <code>df.plot.box()</code>
+      にすると、次のような <strong>箱ひげ図 (ボックスプロット)</strong>
+      を描画することができます。英語の「〇」印は <strong>外れ値</strong>
+      を表します。なお、箱ひげ図の読み取り方法は、「情報1」の第11回講義
+      p.190 で学習済みです。</p>
+      <figure>
+      <img src="figs/19/df-chart-02.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p><strong>演習</strong> <code>import japanize_matplotlib</code>
+      を削除してプログラムを実行するとどのようになるか確認せよ。</p>
+      <div class="note type-senior">
+      <p><strong>美しく体裁を整えたグラフを描画するためには…</strong></p>
+      <p>DataFrameオブジェクトの <code>plot.xxxx()</code>
+      メソッドでは、Pandas の内部で Matplotlib
+      が呼び出されグラフが描画されます。ごく簡単にグラフを描画できますが、その<strong>体裁について細かな設定や調整をしたい場合</strong>は、次のように
+      <span class="masked">Matplotlib 側から DataFrame
+      オブジェクトを参照</span> してグラフを描画する必要があります。</p>
+      <figure>
+      <img src="figs/19/df-chart-03.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <div class="sourceCode" id="cb37"
+      data-caption="整形されたグラフ-1"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb37-2"><a href="#cb37-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb37-3"><a href="#cb37-3"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb37-4"><a href="#cb37-4"></a><span class="im">import</span> japanize_matplotlib</span>
+<span id="cb37-5"><a href="#cb37-5"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb37-6"><a href="#cb37-6"></a></span>
+<span id="cb37-7"><a href="#cb37-7"></a>fn <span class="op">=</span> <span class="st">&#39;score-2.csv&#39;</span></span>
+<span id="cb37-8"><a href="#cb37-8"></a>df <span class="op">=</span> pd.read_csv(fn,encoding<span class="op">=</span><span class="st">&#39;utf-8&#39;</span>,index_col<span class="op">=</span><span class="st">&#39;氏名&#39;</span>)</span>
+<span id="cb37-9"><a href="#cb37-9"></a></span>
+<span id="cb37-10"><a href="#cb37-10"></a>n <span class="op">=</span> <span class="bu">len</span>(df) </span>
+<span id="cb37-11"><a href="#cb37-11"></a>w <span class="op">=</span> <span class="fl">1.2</span></span>
+<span id="cb37-12"><a href="#cb37-12"></a>cmap <span class="op">=</span> plt.get_cmap(<span class="st">&#39;Pastel2&#39;</span>)</span>
+<span id="cb37-13"><a href="#cb37-13"></a>fig,ax <span class="op">=</span> plt.subplots(dpi<span class="op">=</span><span class="dv">120</span>,figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">5</span>))</span>
+<span id="cb37-14"><a href="#cb37-14"></a>ax.axvline(<span class="dv">60</span>,c<span class="op">=</span><span class="st">&#39;tab:pink&#39;</span>,lw<span class="op">=</span><span class="dv">5</span>,zorder<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb37-15"><a href="#cb37-15"></a><span class="cf">for</span> i,subject <span class="kw">in</span> <span class="bu">enumerate</span>([<span class="st">&#39;国語&#39;</span>,<span class="st">&#39;数学&#39;</span>,<span class="st">&#39;英語&#39;</span>,<span class="st">&#39;理科&#39;</span>,<span class="st">&#39;社会&#39;</span>]):</span>
+<span id="cb37-16"><a href="#cb37-16"></a>  ax.barh( np.arange(n)<span class="op">+</span>(w<span class="op">*</span>i<span class="op">/</span>n)<span class="op">-</span>w<span class="op">*</span><span class="dv">2</span><span class="op">/</span>n, df[subject].values, height<span class="op">=</span>w<span class="op">/</span>n, </span>
+<span id="cb37-17"><a href="#cb37-17"></a>          label<span class="op">=</span>subject, color <span class="op">=</span> cmap(i),edgecolor<span class="op">=</span><span class="st">&#39;black&#39;</span>,linewidth<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb37-18"><a href="#cb37-18"></a>ax.set_yticks(np.arange(n),df.index)</span>
+<span id="cb37-19"><a href="#cb37-19"></a>ax.invert_yaxis()</span>
+<span id="cb37-20"><a href="#cb37-20"></a>ax.tick_params(axis<span class="op">=</span><span class="st">&#39;y&#39;</span>,length<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb37-21"><a href="#cb37-21"></a>ax.tick_params(axis<span class="op">=</span><span class="st">&#39;x&#39;</span>,direction<span class="op">=</span><span class="st">&#39;in&#39;</span>)</span>
+<span id="cb37-22"><a href="#cb37-22"></a>ax.legend(loc<span class="op">=</span><span class="st">&#39;upper left&#39;</span>, bbox_to_anchor<span class="op">=</span>(<span class="dv">1</span>,<span class="dv">1</span>), frameon<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb37-23"><a href="#cb37-23"></a>ax.grid(axis<span class="op">=</span><span class="st">&#39;x&#39;</span>,ls<span class="op">=</span><span class="st">&#39;--&#39;</span>)</span>
+<span id="cb37-24"><a href="#cb37-24"></a>ax.set_axisbelow(<span class="va">True</span>)</span>
+<span id="cb37-25"><a href="#cb37-25"></a>plt.tight_layout()</span>
+<span id="cb37-26"><a href="#cb37-26"></a>plt.savefig(<span class="st">&#39;df-chart-03.png&#39;</span>,dpi<span class="op">=</span><span class="dv">150</span>)</span>
+<span id="cb37-27"><a href="#cb37-27"></a>plt.show()</span></code></pre></div>
+      <hr />
+      <figure>
+      <img src="figs/19/df-chart-04.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <div class="sourceCode" id="cb38"
+      data-caption="整形されたグラフ-2"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb38-2"><a href="#cb38-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb38-3"><a href="#cb38-3"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb38-4"><a href="#cb38-4"></a><span class="im">import</span> japanize_matplotlib</span>
+<span id="cb38-5"><a href="#cb38-5"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb38-6"><a href="#cb38-6"></a></span>
+<span id="cb38-7"><a href="#cb38-7"></a>fn <span class="op">=</span> <span class="st">&#39;score-2.csv&#39;</span></span>
+<span id="cb38-8"><a href="#cb38-8"></a>df <span class="op">=</span> pd.read_csv(fn,encoding<span class="op">=</span><span class="st">&#39;utf-8&#39;</span>,index_col<span class="op">=</span><span class="st">&#39;氏名&#39;</span>)</span>
+<span id="cb38-9"><a href="#cb38-9"></a></span>
+<span id="cb38-10"><a href="#cb38-10"></a>fig,axis <span class="op">=</span> plt.subplots(dpi<span class="op">=</span><span class="dv">120</span>,figsize<span class="op">=</span>(<span class="dv">9</span>,<span class="dv">7</span>),ncols<span class="op">=</span><span class="dv">3</span>,nrows<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb38-11"><a href="#cb38-11"></a><span class="cf">for</span> i,ax <span class="kw">in</span> <span class="bu">enumerate</span>(axis.flatten()):</span>
+<span id="cb38-12"><a href="#cb38-12"></a>  <span class="cf">if</span> i <span class="op">&lt;</span> <span class="bu">len</span>(df) :</span>
+<span id="cb38-13"><a href="#cb38-13"></a>    ax.axhline(<span class="dv">60</span>,lw<span class="op">=</span><span class="dv">2</span>,c<span class="op">=</span><span class="st">&#39;tab:pink&#39;</span>,zorder<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb38-14"><a href="#cb38-14"></a>    ax.bar(df.columns[<span class="dv">1</span>:],df.iloc[i][<span class="dv">1</span>:], edgecolor<span class="op">=</span><span class="st">&#39;black&#39;</span>,</span>
+<span id="cb38-15"><a href="#cb38-15"></a>           linewidth<span class="op">=</span><span class="fl">0.75</span>, color<span class="op">=</span>plt.get_cmap(<span class="st">&#39;Pastel2&#39;</span>).colors)</span>
+<span id="cb38-16"><a href="#cb38-16"></a>    ax.tick_params(axis<span class="op">=</span><span class="st">&#39;x&#39;</span>,length<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb38-17"><a href="#cb38-17"></a>    ax.tick_params(axis<span class="op">=</span><span class="st">&#39;y&#39;</span>,direction<span class="op">=</span><span class="st">&#39;in&#39;</span>)</span>
+<span id="cb38-18"><a href="#cb38-18"></a>    ax.set_ylim(<span class="dv">0</span>,<span class="dv">100</span>)</span>
+<span id="cb38-19"><a href="#cb38-19"></a>    ax.set_yticks(<span class="bu">range</span>(<span class="dv">0</span>,<span class="dv">101</span>,<span class="dv">20</span>))</span>
+<span id="cb38-20"><a href="#cb38-20"></a>    ax.grid(axis<span class="op">=</span><span class="st">&#39;y&#39;</span>)</span>
+<span id="cb38-21"><a href="#cb38-21"></a>    ax.set_axisbelow(<span class="va">True</span>)</span>
+<span id="cb38-22"><a href="#cb38-22"></a>    ax.set_title(df.index[i])</span>
+<span id="cb38-23"><a href="#cb38-23"></a>  <span class="cf">else</span> :</span>
+<span id="cb38-24"><a href="#cb38-24"></a>    ax.axis(<span class="st">&#39;off&#39;</span>)</span>
+<span id="cb38-25"><a href="#cb38-25"></a></span>
+<span id="cb38-26"><a href="#cb38-26"></a>plt.tight_layout()</span>
+<span id="cb38-27"><a href="#cb38-27"></a>plt.savefig(<span class="st">&#39;df-chart-04.png&#39;</span>,dpi<span class="op">=</span><span class="dv">150</span>)</span>
+<span id="cb38-28"><a href="#cb38-28"></a>plt.show()</span></code></pre></div>
+      </div>
+      <h2 data-number="6.8" id="dataframeのサブセットの取得"><span
+      class="header-section-number">6.8</span>
+      DataFrameのサブセットの取得</h2>
+      <p>DataFrame
+      から<strong>特定の列や行を選択して作成されるオブジェクト</strong>を
+      (DataFrameの) <strong>サブセット</strong>と言います
+      (サブセットとは数学の用語で「部分集合」を意味します)。</p>
+      <p>例えば、性別と理系科目の列だけを選択したサブセット
+      <code>df2</code> は、次のように作成できます。</p>
+      <div class="sourceCode" id="cb39"
+      data-caption="特定の列を含むサブセットの取得-1"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb39-2"><a href="#cb39-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb39-3"><a href="#cb39-3"></a>fn <span class="op">=</span> <span class="st">&#39;score-2.csv&#39;</span></span>
+<span id="cb39-4"><a href="#cb39-4"></a>df <span class="op">=</span> pd.read_csv(fn,encoding<span class="op">=</span><span class="st">&#39;utf-8&#39;</span>,index_col<span class="op">=</span><span class="st">&#39;氏名&#39;</span>)</span>
+<span id="cb39-5"><a href="#cb39-5"></a>df2 <span class="op">=</span> df[[<span class="st">&#39;性別&#39;</span>,<span class="st">&#39;数学&#39;</span>,<span class="st">&#39;理科&#39;</span>]] <span class="co"># サブセットの作成</span></span>
+<span id="cb39-6"><a href="#cb39-6"></a>display(df2)</span></code></pre></div>
+      <p>実行すると次のようになります。なお、<strong>第05行目</strong>
+      を <code>df2 = df['性別','数学','理科']</code> のように
+      <strong>間違えて書く人が多い</strong> ので注意してください
+      (この場合、どのようになるか確認してみてください)。</p>
+      <figure>
+      <img src="figs/19/df-subset-01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>また、列の指定は、次のように変数を経由して行なうこともできます。また、このサブセットの作成を利用することで
+      <span class="masked">列の順番を並べ替え</span>したり、<span
+      class="masked">不要な列の削除</span>
+      したりすることもできます。</p>
+      <div class="sourceCode" id="cb40"
+      data-caption="特定の列を含むサブセットの取得-2"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb40-2"><a href="#cb40-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb40-3"><a href="#cb40-3"></a>fn <span class="op">=</span> <span class="st">&#39;score-2.csv&#39;</span></span>
+<span id="cb40-4"><a href="#cb40-4"></a>df <span class="op">=</span> pd.read_csv(fn,encoding<span class="op">=</span><span class="st">&#39;utf-8&#39;</span>,index_col<span class="op">=</span><span class="st">&#39;氏名&#39;</span>)</span>
+<span id="cb40-5"><a href="#cb40-5"></a>subjects <span class="op">=</span> [<span class="st">&#39;理科&#39;</span>,<span class="st">&#39;英語&#39;</span>,<span class="st">&#39;数学&#39;</span>,<span class="st">&#39;国語&#39;</span>,<span class="st">&#39;社会&#39;</span>]</span>
+<span id="cb40-6"><a href="#cb40-6"></a>df2 <span class="op">=</span> df[subjects]  <span class="co"># リストを与えて特定列のサブセットを作成</span></span>
+<span id="cb40-7"><a href="#cb40-7"></a>display(df2)</span></code></pre></div>
+      <p>また「行」については以下のように <strong>スライス</strong>
+      を使ってサブセットを取得することができます。スライスについては<a
+      href="lecture17.html#スライス">第17回講義</a>で学習済みです。</p>
+      <div class="sourceCode" id="cb41"
+      data-caption="行の指定によるサブセット取得"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb41-2"><a href="#cb41-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb41-3"><a href="#cb41-3"></a>fn <span class="op">=</span> <span class="st">&#39;score-2.csv&#39;</span></span>
+<span id="cb41-4"><a href="#cb41-4"></a>df <span class="op">=</span> pd.read_csv(fn,encoding<span class="op">=</span><span class="st">&#39;utf-8&#39;</span>,index_col<span class="op">=</span><span class="st">&#39;氏名&#39;</span>)</span>
+<span id="cb41-5"><a href="#cb41-5"></a>df2 <span class="op">=</span> df.iloc[<span class="dv">3</span>:]  <span class="co"># ゼロオリジンで3行目以降を取得</span></span>
+<span id="cb41-6"><a href="#cb41-6"></a>display(df2)</span></code></pre></div>
+      <h2 data-number="6.9" id="集計処理"><span
+      class="header-section-number">6.9</span> 集計処理</h2>
+      <p>ここでは、DataFrame オブジェクト
+      を対象に「合計」や「平均」などを求める集計処理を行なう方法を紹介します。DataFrame
+      オブジェクト
+      の各種メソッドを使うことで、繰返し構文を使わずに処理できる点に着目してください。</p>
+      <p>まずは、各学生について、国語・数学・英語・理解・社会の「5科目」の試験成績に対して「合計
+      (Sum)」、「平均
+      (Mean)」、「欠点科目数」を求めてみたいと思います。</p>
+      <p>次のプログラムを実行してみてください。</p>
+      <div class="sourceCode" id="cb42" data-caption="集計処理.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb42-2"><a href="#cb42-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb42-3"><a href="#cb42-3"></a></span>
+<span id="cb42-4"><a href="#cb42-4"></a>fn <span class="op">=</span> <span class="st">&#39;score-2.csv&#39;</span></span>
+<span id="cb42-5"><a href="#cb42-5"></a>df <span class="op">=</span> pd.read_csv(fn,encoding<span class="op">=</span><span class="st">&#39;utf-8&#39;</span>,index_col<span class="op">=</span><span class="st">&#39;氏名&#39;</span>)</span>
+<span id="cb42-6"><a href="#cb42-6"></a></span>
+<span id="cb42-7"><a href="#cb42-7"></a>subjects <span class="op">=</span> [<span class="st">&#39;国語&#39;</span>,<span class="st">&#39;数学&#39;</span>,<span class="st">&#39;英語&#39;</span>,<span class="st">&#39;理科&#39;</span>,<span class="st">&#39;社会&#39;</span>] </span>
+<span id="cb42-8"><a href="#cb42-8"></a>df[<span class="st">&#39;合計&#39;</span>] <span class="op">=</span> df[subjects].<span class="bu">sum</span>(axis<span class="op">=</span><span class="st">&#39;columns&#39;</span>)</span>
+<span id="cb42-9"><a href="#cb42-9"></a>df[<span class="st">&#39;平均点&#39;</span>] <span class="op">=</span> df[subjects].mean(axis<span class="op">=</span><span class="st">&#39;columns&#39;</span>)</span>
+<span id="cb42-10"><a href="#cb42-10"></a>df[<span class="st">&#39;欠点科目数&#39;</span>] <span class="op">=</span> (df[subjects] <span class="op">&lt;</span> <span class="dv">60</span>).<span class="bu">sum</span>(axis<span class="op">=</span><span class="st">&#39;columns&#39;</span>)</span>
+<span id="cb42-11"><a href="#cb42-11"></a>display(df)</span></code></pre></div>
+      <p>実行結果は、次のようになります。</p>
+      <figure>
+      <img src="figs/19/df-01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p><strong>第08行目</strong> では、DataFrame
+      に「合計」という「<strong>列</strong>」を新規に作成して、そこに各科目の点数の合計を格納しています。<code>df[subjects].sum(axis='columns')</code>
+      は
+      <code>df[['国語','数学','英語','理科','社会']].sum(axis='columns')</code>
+      の意味であり、「国語」「数学」「英語」「理科」「社会」の「<strong>列</strong>
+      (<code>columns</code>)」を対象に合計 (<code>sum</code>)
+      を求める処理になります。<code>sum</code> メソッドのオプションで
+      <code>axis='columns'</code> を指定しないと <span
+      class="masked">行方向 (縦方向) の合計を求める処理</span>
+      になってしまうので注意してください。また、このオプションは
+      <code>axis=1</code> のように数字で指定することもできます。</p>
+      <p><strong>第09行目</strong> では、同様の考え方で
+      <code>mean</code>
+      メソッドを使って「<strong>平均</strong>」を求める処理をしています。<code>sum</code>
+      や <code>mean</code> の他に、最大値を求める <code>max</code>
+      メソッド、最小値を求める <code>min</code> メソッド、<span
+      class="masked">中央値</span> を求める <code>median</code>
+      メソッドなどがあります。</p>
+      <hr />
+      <p><strong>第10行目</strong>
+      では「<strong>60点未満の科目数</strong>」をカウントしています。この部分は、やや複雑なので
+      <strong>第10行目</strong>
+      を以下のように分解して、2段階で考えていきます。</p>
+      <div class="sourceCode" id="cb43" data-caption="解説1.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a>df2 <span class="op">=</span> df[subjects] <span class="op">&lt;</span> <span class="dv">60</span></span>
+<span id="cb43-2"><a href="#cb43-2"></a>display(df2)</span>
+<span id="cb43-3"><a href="#cb43-3"></a>df[<span class="st">&#39;欠点科目数&#39;</span>] <span class="op">=</span> df2.<span class="bu">sum</span>(axis<span class="op">=</span><span class="st">&#39;columns&#39;</span>)</span></code></pre></div>
+      <p><code>解説1.py</code> の <strong>第01行目</strong> では
+      <code>df[subjects] &lt; 60</code> の結果を <code>df2</code>
+      に代入し、<strong>第02行目</strong>
+      では整形出力しています。出力の結果、<code>df2</code>
+      は次のような内容を持った DataFrameオブジェクト
+      であることが分かります。</p>
+      <figure>
+      <img src="figs/19/df-02.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p><code>df2</code> のなかで <code>True</code>
+      となっている箇所は、元々の <code>df</code>
+      で値が「60未満」だった箇所です。例えば、鈴原トウジの国語が
+      <code>True</code> になっているのは、元々の <code>df</code> で
+      <code>40.0</code> であっためです。このように DataFrame
+      オブジェクトに比較演算子を適用すると
+      (<code>df[subjects] &lt; 60</code> のようにすると)、真偽値の
+      DataFrame オブジェクトが生成されます。</p>
+      <p>そして、<code>解説1.py</code> の <strong>第03行目</strong>
+      では、真偽値を値に持った <code>df2</code> に対して
+      <code>df2.sum(axis='columns')</code> として、列方向 (横方向)
+      の合計を求めています。<code>sum</code> や <code>mean</code>
+      などのメソッドで、<code>True</code> は「1」、<code>False</code>
+      は「0」として扱われます。これにより、欠点科目数のカウントができています。</p>
+      <hr />
+      <p><strong>演習1</strong>: <code>集計処理.py</code> の第08行目を
+      <code>sum(axis=1)</code>
+      としても同じ結果が得られることを確認せよ。また
+      <code>sum(axis='rows')</code> あるいは <code>sum(axis=0)</code>
+      とすると、どのような結果になるか確認せよ。</p>
+      <p><strong>演習2</strong>:「理系科目平均」と「文系科目平均」という列を作成し、適切な値が表示されるようにせよ。小数以下の桁数も適切に表示すること。</p>
+      <ul>
+      <li><strong>解答例</strong>: <span
+      class="masked"><code>df['理系科目平均'] = df[['理科','数学']].mean(axis='columns').round(1)</code></span></li>
+      <li><strong>解答例</strong>: <span
+      class="masked"><code>df['文系科目平均'] = df[['国語','英語','社会']].mean(axis='columns').round(1)</code></span></li>
+      </ul>
+      <p><strong>演習3</strong>:「欠点率」という列を作成し、適切な値が表示されるようにせよ。</p>
+      <ul>
+      <li><strong>解答例</strong>: <span
+      class="masked"><code>df['欠点率'] = (df[subjects] &lt;span 60).sum(axis='columns')/5*100</code></span></li>
+      </ul>
+      <p><br></p>
+      <p>(参考)</p>
+      <figure>
+      <img src="figs/19/df-03.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <h2 data-number="6.10" id="ラムダ式を使った変換"><span
+      class="header-section-number">6.10</span>
+      ラムダ式を使った変換</h2>
+      <p>DataFrameオブジェクト の <code>applymap</code>
+      メソッドを使うと、DataFrame内の「各要素」に対して「任意の関数
+      (ラムダ式)を適用すること」ができます。<code>applymap</code>
+      は、元の DataFrameオブジェクトを
+      <strong>変更せず</strong>に、新しい DataFrameオブジェクト
+      を戻り値として返します。</p>
+      <p>以下のプログラムは <code>applymap</code> メソッドを使って
+      <strong>60点未満を「不合格」、60点以上を「合格」という文字列</strong>
+      に置き換えた <code>df2</code> という DataFrameオブジェクト
+      を作成・生成出力する例です。ここでは
+      <code>lambda p: '合格' if p &gt;=60 else '不合格'</code>
+      という条件式を含んだ「ラムダ式」を利用しています。</p>
+      <div class="sourceCode" id="cb44"
+      data-caption="合格・不合格.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb44-2"><a href="#cb44-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb44-3"><a href="#cb44-3"></a></span>
+<span id="cb44-4"><a href="#cb44-4"></a>fn <span class="op">=</span> <span class="st">&#39;score-2.csv&#39;</span></span>
+<span id="cb44-5"><a href="#cb44-5"></a>df <span class="op">=</span> pd.read_csv(fn,encoding<span class="op">=</span><span class="st">&#39;utf-8&#39;</span>,index_col<span class="op">=</span><span class="st">&#39;氏名&#39;</span>)</span>
+<span id="cb44-6"><a href="#cb44-6"></a></span>
+<span id="cb44-7"><a href="#cb44-7"></a>subjects <span class="op">=</span> [<span class="st">&#39;国語&#39;</span>,<span class="st">&#39;数学&#39;</span>,<span class="st">&#39;英語&#39;</span>,<span class="st">&#39;理科&#39;</span>,<span class="st">&#39;社会&#39;</span>]</span>
+<span id="cb44-8"><a href="#cb44-8"></a>df2 <span class="op">=</span> df[subjects].applymap(<span class="kw">lambda</span> p: <span class="st">&#39;合格&#39;</span> <span class="cf">if</span> p <span class="op">&gt;=</span><span class="dv">60</span> <span class="cf">else</span> <span class="st">&#39;不合格&#39;</span> )</span>
+<span id="cb44-9"><a href="#cb44-9"></a>display(df2)</span>
+<span id="cb44-10"><a href="#cb44-10"></a><span class="co"># display(df) # df は影響を受けていない。</span></span></code></pre></div>
+      <p>実行結果は次のようになります。</p>
+      <figure>
+      <img src="figs/19/df-04.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>なお <code>print(df2.dtypes)</code>
+      を実行すると次のようになります (各列の型が <code>float64</code>
+      から <code>object</code> (文字列)
+      になっていることが確認できます)。</p>
+      <pre><code>国語    object
+数学    object
+英語    object
+理科    object
+社会    object
+dtype: object</code></pre>
+      <p><strong>演習</strong>
+      90点以上を「秀」、90点未満80点以上を「優」、80点未満70点以上を「良」、70点未満60点以上を「可」、60点未満を「不可」のような文字列に置き換えた
+      DataFrameオブジェクト <code>df3</code>
+      を作成し、出力せよ。なお、このような多段階の条件分岐をラムダ式で扱うことは適切ではないので、通常の関数定義を利用すること。</p>
+      <p>(<strong>ヒント</strong>) 上記の <code>合格・不合格.py</code>
+      をラムダ式を使用せずに通常の関数定義を使って記述すると、次のようになります。</p>
+      <div class="sourceCode" id="cb46"
+      data-caption="合格・不合格2.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb46-2"><a href="#cb46-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb46-3"><a href="#cb46-3"></a></span>
+<span id="cb46-4"><a href="#cb46-4"></a><span class="kw">def</span> grade_converter(p):</span>
+<span id="cb46-5"><a href="#cb46-5"></a>  <span class="cf">if</span> p <span class="op">&gt;=</span> <span class="dv">60</span> :</span>
+<span id="cb46-6"><a href="#cb46-6"></a>    <span class="cf">return</span> <span class="st">&#39;合格&#39;</span></span>
+<span id="cb46-7"><a href="#cb46-7"></a>  <span class="cf">else</span> :</span>
+<span id="cb46-8"><a href="#cb46-8"></a>    <span class="cf">return</span> <span class="st">&#39;不合格&#39;</span></span>
+<span id="cb46-9"><a href="#cb46-9"></a></span>
+<span id="cb46-10"><a href="#cb46-10"></a>fn <span class="op">=</span> <span class="st">&#39;score-2.csv&#39;</span></span>
+<span id="cb46-11"><a href="#cb46-11"></a>df <span class="op">=</span> pd.read_csv(fn,encoding<span class="op">=</span><span class="st">&#39;utf-8&#39;</span>,index_col<span class="op">=</span><span class="st">&#39;氏名&#39;</span>)</span>
+<span id="cb46-12"><a href="#cb46-12"></a></span>
+<span id="cb46-13"><a href="#cb46-13"></a>subjects <span class="op">=</span> [<span class="st">&#39;国語&#39;</span>,<span class="st">&#39;数学&#39;</span>,<span class="st">&#39;英語&#39;</span>,<span class="st">&#39;理科&#39;</span>,<span class="st">&#39;社会&#39;</span>]</span>
+<span id="cb46-14"><a href="#cb46-14"></a>df2 <span class="op">=</span> df[subjects].applymap(grade_converter)</span>
+<span id="cb46-15"><a href="#cb46-15"></a>display(df2)</span></code></pre></div>
+      <h1 data-number="7" id="大学編入試の問題に挑戦-1"><span
+      class="header-section-number">7</span> 大学編入試の問題に挑戦
+      (1)</h1>
+      <p>大学編入学 (学力選抜) の情報系学科の <strong>専門試験</strong>
+      では <span
+      class="masked">C言語を用いたデータ構造とアルゴリズム</span>
+      に関する問題がよく出題されます。</p>
+      <p>「<strong>C言語</strong>」については3年生の前期科目「<strong>プログラミング2</strong>」で詳しく学びますが、その基本文法は「<strong>マイクロコンピュータ</strong>」の授業で既に学んでいるはずです。さらに「データ構造とアルゴリズム」は
+      <strong>特定のプログラミング言語に依存しない</strong> ため
+      (つまり、これまでに本科目で Python言語
+      を用いて学んできた内容を応用できるため)、<span
+      class="masked">現段階でも十分に解答できる問題</span>
+      が多数あります。</p>
+      <p>以下に紹介する問題は、豊橋技術科学大学「情報・知能工学課程」の令和5年度の編入学試験問題
+      (https://www.tut.ac.jp/exam/entrance/past.html)
+      から抜粋したものです。即答できる問題ではありませんが、PCを道具に使って取り組めば、<strong>現時点でも十分に解ける内容</strong>となっています。</p>
+      <hr />
+      <p>リスト1 は, 3つの変数, <code>a</code> と <code>b</code> と
+      <code>M</code> のそれぞれにある自然数を入力として与えたとき,
+      変数の値を出力する <strong>C言語プログラム</strong>
+      である。以下の空欄 <strong>[A]</strong> ～ <strong>[C]</strong>
+      に入れる適切なものを答えよ。ただし, int型は 32bit であるとし,
+      扱う自然数はint型で表現できるものとする。</p>
+      <blockquote>
+      <p>リスト1において, <code>a</code> に4, <code>b</code> に2,
+      <code>M</code> に5を入力したとき, 19行目の値 は
+      <strong>[A]</strong> である。また, <code>a</code> に4,
+      <code>b</code> に8, <code>M</code> に5を入力したとき, 19行目の
+      <code>n</code> の値は <strong>[B]</strong> である。また,
+      <code>a</code> に 4, <code>b</code> に256, <code>M</code>
+      に5を入力したとき, 19行目の値は <strong>[C]</strong> である。</p>
+      </blockquote>
+      <div class="sourceCode" id="cb47"
+      data-caption="リスト1 (C言語プログラム)"><pre
+      class="sourceCode numberSource c numberLines"><code class="sourceCode c"><span id="cb47-1"><a href="#cb47-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb47-2"><a href="#cb47-2"></a></span>
+<span id="cb47-3"><a href="#cb47-3"></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">void</span><span class="op">){</span></span>
+<span id="cb47-4"><a href="#cb47-4"></a></span>
+<span id="cb47-5"><a href="#cb47-5"></a>  <span class="dt">int</span> i<span class="op">,</span> a<span class="op">,</span> b<span class="op">,</span> M<span class="op">;</span></span>
+<span id="cb47-6"><a href="#cb47-6"></a>  <span class="dt">int</span> n <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb47-7"><a href="#cb47-7"></a></span>
+<span id="cb47-8"><a href="#cb47-8"></a>  printf<span class="op">(</span><span class="st">&quot;自然数を入力:&quot;</span><span class="op">);</span></span>
+<span id="cb47-9"><a href="#cb47-9"></a>  scanf<span class="op">(</span><span class="st">&quot;</span><span class="sc">%d</span><span class="st">&quot;</span><span class="op">,</span> <span class="op">&amp;</span>a<span class="op">);</span></span>
+<span id="cb47-10"><a href="#cb47-10"></a>  printf<span class="op">(</span><span class="st">&quot;自然数を入力:&quot;</span><span class="op">);</span></span>
+<span id="cb47-11"><a href="#cb47-11"></a>  scanf<span class="op">(</span><span class="st">&quot;</span><span class="sc">%d</span><span class="st">&quot;</span><span class="op">,</span> <span class="op">&amp;</span>b<span class="op">);</span></span>
+<span id="cb47-12"><a href="#cb47-12"></a>  printf<span class="op">(</span><span class="st">&quot;自然数 M を入力:&quot;</span><span class="op">);</span></span>
+<span id="cb47-13"><a href="#cb47-13"></a>  scanf<span class="op">(</span><span class="st">&quot;</span><span class="sc">%d</span><span class="st">&quot;</span><span class="op">,</span> <span class="op">&amp;</span>M<span class="op">);</span></span>
+<span id="cb47-14"><a href="#cb47-14"></a></span>
+<span id="cb47-15"><a href="#cb47-15"></a>  <span class="cf">for</span><span class="op">(</span>i<span class="op">=</span><span class="dv">1</span><span class="op">;</span> i<span class="op">&lt;=</span>b<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb47-16"><a href="#cb47-16"></a>    n<span class="op">=(</span>a<span class="op">*</span>n<span class="op">)%</span>M<span class="op">;</span></span>
+<span id="cb47-17"><a href="#cb47-17"></a>  <span class="op">}</span></span>
+<span id="cb47-18"><a href="#cb47-18"></a></span>
+<span id="cb47-19"><a href="#cb47-19"></a>  printf<span class="op">(</span><span class="st">&quot;n = </span><span class="sc">%d\n</span><span class="st">&quot;</span><span class="op">,</span>n<span class="op">);</span></span>
+<span id="cb47-20"><a href="#cb47-20"></a></span>
+<span id="cb47-21"><a href="#cb47-21"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb47-22"><a href="#cb47-22"></a><span class="op">}</span></span></code></pre></div>
+      <p>実際の試験ではPC（各種言語の実行・開発環境）を使用することはできません（紙と鉛筆、頭だけを用いて解答する必要があります）。しかし、<strong>入試勉強として取り組む際には</strong>、単に問題を眺めて挑むのではなく
+      <span
+      class="masked">PCを使って実際に手を動かしてコーディング・実行し、それを通じて理解を深め、思考力を鍛えること</span>
+      を<strong>強く推奨</strong>します。上記の問題であれば
+      <strong>第19行目</strong>
+      の周辺に、ループ毎の変数値を出力する文を追加することは非常に効果的です。</p>
+      <p>C言語の実行開発については、昨年度の「<strong>情報1</strong>」の<a
+      href="https://classroom.google.com/c/NjAzMjM4NjAzNTQ3/m/NTE4NDg3MTMwMTYx/details">第10回講義資料</a>
+      p.173～ で紹介しているように<a
+      href="https://paiza.io/ja">Paiza.IO</a>や<a
+      href="https://www.tutorialspoint.com/compile_c99_online.php">Tutorialspoint</a>などのウェブブラウザから利用可能な<span
+      class="masked">オンライン型のC言語の実行開発環境</span>を利活用してください。</p>
+      <p>また、C言語プログラム を Pythonプログラム に移植することで
+      <span class="masked">「理解が深化する」</span> <span
+      class="masked">「勘違いに気づく」</span>「実装力が鍛えられる」といった効果があります。一見すると遠回りのように思えるかもしれませんが、<strong>実際には非常に効果的で効率的な学習法</strong>です。</p>
+      <!-- ---------------------------------------- -->
+    </main>
+
+    <footer class="markdown-body">
+      <p><a href="https://takeshiwada1980.github.io/Programming1-2023/">講義資料のIndexに移動</a></p>
+    </footer>
+
+    <script>
+      window.onload = function () {
+        // ナビゲーション関連
+        let openBtn = document.getElementsByClassName("openbtn")[0];
+        let navPnl = document.getElementById("g-nav");
+        openBtn.onclick = () => {
+          openBtn.classList.toggle("active");
+          navPnl.classList.toggle("panelactive");
+        };
+
+        let items = navPnl.getElementsByTagName("a");
+        Array.from(items).forEach((item) => {
+          item.onclick = () => {
+            openBtn.classList.toggle("active");
+            navPnl.classList.toggle("panelactive");
+          };
+        });
+
+        // マスク処理
+        let maskedSpans = document.getElementsByClassName("masked");
+        Array.from(maskedSpans).forEach((span) => {
+          span.onclick = () => {
+            span.classList.toggle("open");
+          };
+        });
+
+        // 画像にリンクを付与
+        let images = document.querySelectorAll("figure img");
+        Array.from(images).forEach((img) => {
+          img.onclick = () => {
+            location.href = img.getAttribute("src");
+          };
+        });
+      };
+    </script>
+  </body>
+</html>
