@@ -52,21 +52,56 @@ class="toc-section-number">1.1</span> 連絡事項</a></li>
 <li><a href="#今回講義の達成目標" id="toc-今回講義の達成目標"><span
 class="toc-section-number">1.2</span> 今回講義の達成目標</a></li>
 </ul></li>
-<li><a href="#人工知能の勢いがすごくて将来に対して不安しかない"
-id="toc-人工知能の勢いがすごくて将来に対して不安しかない"><span
-class="toc-section-number">2</span>
-人工知能の勢いがすごくて将来に対して不安しかない…?</a></li>
-<li><a href="#ベクトル行列" id="toc-ベクトル行列"><span
-class="toc-section-number">3</span> ベクトル・行列</a></li>
-<li><a href="#座標をベクトルを使って表現"
-id="toc-座標をベクトルを使って表現"><span
-class="toc-section-number">4</span> 座標をベクトルを使って表現</a>
+<li><a href="#定着確認" id="toc-定着確認"><span
+class="toc-section-number">2</span> 定着確認</a></li>
+<li><a href="#numpy-の基礎-復習を含む"
+id="toc-numpy-の基礎-復習を含む"><span
+class="toc-section-number">3</span> NumPy の基礎 (復習を含む)</a>
 <ul>
-<li><a href="#移動" id="toc-移動"><span
-class="toc-section-number">4.1</span> 移動</a></li>
+<li><a href="#初期化" id="toc-初期化"><span
+class="toc-section-number">3.1</span> 初期化</a></li>
+<li><a href="#各次元ごとの要素数の確認"
+id="toc-各次元ごとの要素数の確認"><span
+class="toc-section-number">3.2</span> 各次元ごとの要素数の確認</a></li>
+<li><a href="#転置行列" id="toc-転置行列"><span
+class="toc-section-number">3.3</span> 転置行列</a></li>
+<li><a href="#行列の積" id="toc-行列の積"><span
+class="toc-section-number">3.4</span> 行列の積</a>
+<ul>
+<li><a href="#アダマール積-hadamard-product"
+id="toc-アダマール積-hadamard-product"><span
+class="toc-section-number">3.4.1</span> <strong>アダマール積</strong>
+(Hadamard product)</a></li>
+<li><a href="#行列の積-matrix-product"
+id="toc-行列の積-matrix-product"><span
+class="toc-section-number">3.4.2</span> <strong>行列の積</strong>
+(Matrix product)</a></li>
 </ul></li>
-<li><a href="#べくとる" id="toc-べくとる"><span
-class="toc-section-number">5</span> べくとる</a></li>
+</ul></li>
+<li><a href="#ベクトル行列の応用-1" id="toc-ベクトル行列の応用-1"><span
+class="toc-section-number">4</span> ベクトル・行列の応用 1</a>
+<ul>
+<li><a href="#ベクトル行列を使った図形の表現"
+id="toc-ベクトル行列を使った図形の表現"><span
+class="toc-section-number">4.1</span>
+ベクトル・行列を使った図形の表現</a></li>
+<li><a href="#移動" id="toc-移動"><span
+class="toc-section-number">4.2</span> 移動</a></li>
+<li><a href="#拡大縮小" id="toc-拡大縮小"><span
+class="toc-section-number">4.3</span> 拡大縮小</a></li>
+<li><a href="#任意点を基準とする拡大縮小"
+id="toc-任意点を基準とする拡大縮小"><span
+class="toc-section-number">4.4</span>
+任意点を基準とする拡大縮小</a></li>
+<li><a href="#回転" id="toc-回転"><span
+class="toc-section-number">4.5</span> 回転</a></li>
+<li><a href="#任意点を基準-中心-とする回転"
+id="toc-任意点を基準-中心-とする回転"><span
+class="toc-section-number">4.6</span> 任意点を基準 (中心)
+とする回転</a></li>
+</ul></li>
+<li><a href="#ベクトル行列の応用-2" id="toc-ベクトル行列の応用-2"><span
+class="toc-section-number">5</span> ベクトル・行列の応用 2</a></li>
 </ul> 
         <!-- ---------------------------------------- -->
       </div>
@@ -84,52 +119,446 @@ class="toc-section-number">5</span> べくとる</a></li>
       <h2 data-number="1.1" id="連絡事項"><span
       class="header-section-number">1.1</span> 連絡事項</h2>
       <ul>
+      <li>次回、「小テスト」を実施します。鉛筆と消しゴムを持参してください。
+      <ul>
+      <li>出題範囲は今回講義の「<strong>定着確認</strong>」です。Pythonの基礎文法に関する内容です。</li>
+      </ul></li>
       <li>12月25日 (月)
-      の1-2時限は教の都合により「<strong>休講</strong>」とさせてください。ただ、いつもと同じようにウェブテキストを用意しておくので、各自で教室や自宅で取り組みをお願いします。</li>
-      <li>今回講義でも <a
-      href="https://colab.research.google.com/?hl=ja">GoogleColab</a>もしくは<a
+      の1-2時限は教員の都合により「<strong>休講</strong>」とさせてください。ただ、いつもと同じようにウェブテキストを用意しておくので、各自、教室や自宅で取り組みをお願いします。</li>
+      <li>今回の講義でも <a
+      href="https://colab.research.google.com/?hl=ja">GoogleColab環境</a>もしくは<a
       href="lecture09.html#jupyterの実行">ローカルPCに構築したJupyter環境</a>の利用を推奨します。</li>
       </ul>
       <h2 data-number="1.2" id="今回講義の達成目標"><span
       class="header-section-number">1.2</span> 今回講義の達成目標</h2>
       <ul>
-      <li>あｄｄｄｄ</li>
+      <li>NumPy
+      を利用してベクトルと行列に関する基本的な演算ができる。</li>
+      <li>行列を使用して、2次元平面上の図形の移動、拡大縮小、回転の処理ができる。</li>
+      <li>位置、速度、加速度をベクトルとして扱い、物体運動についてシミュレートができる。</li>
       </ul>
-      <h1 data-number="2"
-      id="人工知能の勢いがすごくて将来に対して不安しかない"><span
-      class="header-section-number">2</span>
-      人工知能の勢いがすごくて将来に対して不安しかない…?</h1>
-      <p>(<a
-      href="lecture19.html#人工知能の勢いがすごくて将来に対して不安しかない">前回</a>のつづき)</p>
-      <p>ときどき「<strong>適切な仕様さえ与えればAIがコードを自動生成してくれるので、ICTエンジニアにはプログラミングスキルは必要ない</strong>」のように言われることもありますが、次のような理由から、最低でもジュニアレベルのプログラミングができないと、ICTエンジニアとして活躍することは難しいです。</p>
+      <figure>
+      <img src="figs/20/vec-08.svg" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <figure>
+      <img src="figs/20/sim-03.gif" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <h1 data-number="2" id="定着確認"><span
+      class="header-section-number">2</span> 定着確認</h1>
+      <p>後期授業ではシラバスに記載のように「<strong>小テスト</strong>」を実施し、その結果を成績評価のなかに組み込みます。以下、<strong>小テストの練習問題</strong>です
+      (このままの内容や形式で出題されるわけではありません)。</p>
       <ul>
-      <li>生成系AIが出力したプログラムを業務レベルのシステムに組み込むには
-      <span
-      class="masked">調整・修正、統合・評価検証、品質保証などが必要</span>であり、そのためには
-      生成系AIを使う人間
-      がプログラムについて深く内容を理解している必要があります。例えば、ChatGPT
-      などの生成系AIでは、入力として「まったく同じ仕様」を与えても、毎回、異なるプログラムコードを出力します
-      (実質的には無意味なランダムシードに左右されて、出力が変わってきます)。このようなとき、どのコードを採用するのか、採用することに責任を持つのか、最終的な判断をして責任を持つのは人間です。</li>
-      <li>業務として開発するソフトウェアには、特許や秘密情報が含まれます。</li>
-      <li>オープン系のAIを使用する場合、</li>
+      <li>次のプログラムを実行して標準出力に
+      <code>0, 1, 2, 3, 4, 5, 6, 7,</code>
+      を得たい。【A】に記述すべきコードを答えよ。<strong>答え:</strong>
+      <span class="masked"><code>i in range(8):</code></span></li>
       </ul>
-      <p>さらに、ICTエンジニアとして成功するためには、技術だけでなく、問題解決能力、批判的思考、創造性が不可欠です。また、チームで協力してプロジェクトを完成させるコミュニケーションスキルも同様に重要です。AIがコーディングの一部を自動化できるとしても、それを適切に監督し、改善し、統合する人間の専門家が必要です。さらに、エンドユーザーのニーズを理解し、それら</p>
-      <h1 data-number="3" id="ベクトル行列"><span
-      class="header-section-number">3</span> ベクトル・行列</h1>
-      <p>アクションやシューティングなどのジャンルのコンピュータゲームの開発やコンピュータグラフィックス
-      (CG)
-      の分野では、ベクトル・行列の概念を理解し、これらを計算に利用することで効率的なプログラム開発を行うことができます。</p>
-      <p>今回の講義では、ベクトルと行列を利用して、図形の移動や任意の点を基準とした拡大縮小、回転ができることを体験的に確認していきたいと思います。また、位置、速度、加速度をベクトル
-      (行列) として扱い、多数の点の動きを NumPy
-      を使ったシンプルなコードでシミュレートできることも体験していきたいと思います。</p>
-      <h1 data-number="4" id="座標をベクトルを使って表現"><span
-      class="header-section-number">4</span>
-      座標をベクトルを使って表現</h1>
-      <p>XY平面上の任意の座標は <strong>幾何ベクトル</strong>
-      として表現することができます。例えば、X=5, Y=3 の座標点は、原点
-      <span class="math inline">\((0, 0)\)</span> を始点とする <span
-      class="math inline">\((5,3)\)</span>
-      というベクトルとして捉えることができます。</p>
+      <div class="sourceCode" id="cb1"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>for【A】</span>
+<span id="cb1-2"><a href="#cb1-2"></a>  <span class="bu">print</span>(i,end<span class="op">=</span><span class="st">&#39;, &#39;</span>)</span></code></pre></div>
+      <ul>
+      <li>次のプログラムを実行したとき、変数 <code>d</code> の値が
+      <strong>4 以上 8 未満</strong> であれば標準出力に
+      <code>はずれ</code> を得たい (それ以外のときは <code>あたり</code>
+      を得たい)。【A】に記述すべきコードを答えよ。<strong>答え:</strong>
+      <span class="masked"><code>4 &lt;= d &lt; 8 :</code></span></li>
+      </ul>
+      <div class="sourceCode" id="cb2"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> random <span class="im">as</span> r</span>
+<span id="cb2-2"><a href="#cb2-2"></a>d <span class="op">=</span> r.randint(<span class="dv">1</span>,<span class="dv">10</span>)</span>
+<span id="cb2-3"><a href="#cb2-3"></a>if【A】</span>
+<span id="cb2-4"><a href="#cb2-4"></a>  <span class="bu">print</span>(<span class="st">&#39;はずれ&#39;</span>)</span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="cf">else</span> :</span>
+<span id="cb2-6"><a href="#cb2-6"></a>  <span class="bu">print</span>(<span class="st">&#39;あたり&#39;</span>)</span></code></pre></div>
+      <ul>
+      <li>次のプログラムを実行したとき、変数 <code>d</code> の値が
+      <strong>4 または 8</strong> であれば標準出力に <code>はずれ</code>
+      を得たい (それ以外のときは <code>あたり</code>
+      を得たい)。【A】に記述すべきコードを答えよ。<strong>答え:</strong>
+      <span class="masked"><code>d == 4 or d == 8 :</code></span></li>
+      </ul>
+      <div class="sourceCode" id="cb3"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> random <span class="im">as</span> r</span>
+<span id="cb3-2"><a href="#cb3-2"></a>d <span class="op">=</span> r.randint(<span class="dv">1</span>,<span class="dv">10</span>)</span>
+<span id="cb3-3"><a href="#cb3-3"></a>if【A】</span>
+<span id="cb3-4"><a href="#cb3-4"></a>  <span class="bu">print</span>(<span class="st">&#39;はずれ&#39;</span>)</span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="cf">else</span> :</span>
+<span id="cb3-6"><a href="#cb3-6"></a>  <span class="bu">print</span>(<span class="st">&#39;あたり&#39;</span>)</span></code></pre></div>
+      <ul>
+      <li>次のプログラムを実行したとき、標準入力から与える文字列を
+      <strong>浮動小数点型</strong> として変数 <code>x</code>
+      に得たい。【A】に記述すべきコードを答えよ。<strong>答え:</strong>
+      <span class="masked"><code>float(input())</code></span></li>
+      </ul>
+      <div class="sourceCode" id="cb4"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>x <span class="op">=</span>【A】</span></code></pre></div>
+      <ul>
+      <li>次のプログラムを実行したとき、下記の (期待する結果)
+      のような標準出力を得たい。【A】に記述すべきコードを答えよ。<strong>答え:</strong>
+      <span
+      class="masked"><code>i in range(len(items)):</code></span></li>
+      </ul>
+      <div class="sourceCode" id="cb5"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>items <span class="op">=</span> [<span class="st">&#39;銅の剣&#39;</span>,<span class="st">&#39;薬草&#39;</span>,<span class="st">&#39;毒消し草&#39;</span>,<span class="st">&#39;布の服&#39;</span>]</span>
+<span id="cb5-2"><a href="#cb5-2"></a>for【A】</span>
+<span id="cb5-3"><a href="#cb5-3"></a>  <span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">. </span><span class="sc">{</span>items[i]<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+      <p>(期待する結果)</p>
+      <pre><code>0. 銅の剣
+1. 薬草
+2. 毒消し草
+3. 布の服</code></pre>
+      <ul>
+      <li>次のプログラムを実行したとき、下記の (期待する結果)
+      のような標準出力を得たい。【A】に記述すべきコードを答えよ。<strong>答え:</strong>
+      <span class="masked"><code>enumerate(items):</code></span></li>
+      </ul>
+      <div class="sourceCode" id="cb7"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>items <span class="op">=</span> [<span class="st">&#39;銅の剣&#39;</span>,<span class="st">&#39;薬草&#39;</span>,<span class="st">&#39;毒消し草&#39;</span>,<span class="st">&#39;布の服&#39;</span>]</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="cf">for</span> i, p in【A】</span>
+<span id="cb7-3"><a href="#cb7-3"></a>  <span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">. </span><span class="sc">{</span>p<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+      <p>(期待する結果)</p>
+      <pre><code>0. 銅の剣
+1. 薬草
+2. 毒消し草
+3. 布の服</code></pre>
+      <ul>
+      <li>次の関数 <code>func</code> を呼び出したとき、仮引数
+      <code>a</code>
+      が「整数型」でなければアサートによってプログラムを強制終了したい。【A】に記述すべきコードを答えよ。<strong>答え:</strong>
+      <span
+      class="masked"><code>assert type(a) == int</code></span></li>
+      </ul>
+      <div class="sourceCode" id="cb9"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="kw">def</span> func(a, b, c):</span>
+<span id="cb9-2"><a href="#cb9-2"></a> 【A】</span>
+<span id="cb9-3"><a href="#cb9-3"></a>  x <span class="op">=</span> (<span class="dv">2</span><span class="op">*</span>b<span class="op">+</span>c)<span class="op">%</span>a</span>
+<span id="cb9-4"><a href="#cb9-4"></a>  <span class="cf">return</span> x</span></code></pre></div>
+      <ul>
+      <li>次のプログラムを実行したとき、リスト <code>arr</code> の
+      <strong>2番目から5番目までの要素</strong> を変数 <code>s</code>
+      に合計し、標準出力に <code>s=180</code>
+      を得たい。【A】に記述すべきコードを答えよ
+      (ただし、スライスを利用すること)。<strong>答え:</strong> <span
+      class="masked"><code>sum(arr[2:6])</code></span></li>
+      </ul>
+      <div class="sourceCode" id="cb10"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>arr <span class="op">=</span> [<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">40</span>,<span class="dv">50</span>,<span class="dv">60</span>,<span class="dv">70</span>,<span class="dv">80</span>]</span>
+<span id="cb10-2"><a href="#cb10-2"></a>s <span class="op">=</span>【A】</span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="bu">print</span>(<span class="ss">f&#39;s=</span><span class="sc">{</span>s<span class="sc">}</span><span class="ss">&#39;</span>) </span></code></pre></div>
+      <ul>
+      <li>次のプログラムを実行したとき、標準出力に <code>pi=3.142</code>
+      を得たい。【A】に記述すべきコードを答えよ。<strong>答え:</strong>
+      <span class="masked"><code>pi:.3f</code></span></li>
+      </ul>
+      <div class="sourceCode" id="cb11"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>pi <span class="op">=</span> <span class="fl">3.141592653589</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="bu">print</span>(<span class="ss">f&#39;pi=</span><span class="sc">{【</span>A<span class="sc">】}</span><span class="ss">&#39;</span>) </span></code></pre></div>
+      <h1 data-number="3" id="numpy-の基礎-復習を含む"><span
+      class="header-section-number">3</span> NumPy の基礎
+      (復習を含む)</h1>
+      <p><strong>NumPy</strong>
+      (<strong>ナンパイ</strong>/<strong>ナムパイ</strong>)
+      の基礎については<a
+      href="lecture17.html#numpy">第17回講義</a>で学びました。今回は、それを前提とした解説になります。もし、以下の説明が分からない場合は、<a
+      href="lecture17.html#numpy">第17回講義</a>に戻って学んでください。</p>
+      <p>また、2年生の通年科目「<strong>ベクトル・行列</strong>」で現時点までに学んでいる内容が概ね理解できている前提の解説になります。</p>
+      <h2 data-number="3.1" id="初期化"><span
+      class="header-section-number">3.1</span> 初期化</h2>
+      <p>NumPy では <strong>ndarray型オブジェクト</strong>
+      により、<strong>ベクトル</strong> (Vector) や
+      <strong>行列</strong> (Matrix)
+      を表現しました。例えば、以下のような 行列<span
+      class="math inline">\(A\)</span> (2行3列) と 行列<span
+      class="math inline">\(B\)</span> (3行2列)は、<code>np.array</code>
+      の引数に<a
+      href="lecture13.html#二次元リスト">2次元リスト</a>を与えて<strong>初期化</strong>することができました。</p>
+      <p><span class="math display">\[ A = \begin{bmatrix} 20 &amp; 30
+      &amp; 40 \\ 50 &amp; 60 &amp; 70\end{bmatrix}\ \ \ \ B =
+      \begin{bmatrix} 20 &amp; 50 \\ 30 &amp; 60 \\ 40 &amp; 70
+      \end{bmatrix} \]</span></p>
+      <div class="sourceCode" id="cb12"
+      data-caption="ndarray型の初期化"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="im">import</span> numpy <span class="im">as</span> np  <span class="co"># numpy をインポート </span></span>
+<span id="cb12-3"><a href="#cb12-3"></a></span>
+<span id="cb12-4"><a href="#cb12-4"></a>A <span class="op">=</span> np.array([[<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">40</span>],[<span class="dv">50</span>,<span class="dv">60</span>,<span class="dv">70</span>]])   <span class="co"># 2次元リストを与えて初期化</span></span>
+<span id="cb12-5"><a href="#cb12-5"></a>B <span class="op">=</span> np.array([[<span class="dv">20</span>,<span class="dv">50</span>],[<span class="dv">30</span>,<span class="dv">60</span>],[<span class="dv">40</span>,<span class="dv">70</span>]])</span>
+<span id="cb12-6"><a href="#cb12-6"></a></span>
+<span id="cb12-7"><a href="#cb12-7"></a><span class="cf">assert</span> <span class="bu">type</span>(A) <span class="op">==</span> np.ndarray  <span class="co"># 型を確認 </span></span>
+<span id="cb12-8"><a href="#cb12-8"></a><span class="cf">assert</span> <span class="bu">type</span>(B) <span class="op">==</span> np.ndarray</span></code></pre></div>
+      <p><strong>第07行目</strong> と <strong>第08行目</strong>
+      では、変数 <code>A</code> と <code>B</code>
+      が「<strong>ndarray型</strong>」であることを (念のために)
+      確認しています。もし、「ndarray型」でなければ <span
+      class="masked">AssertionError</span>
+      が発生しプログラムは強制終了します。</p>
+      <p>Python標準の「リスト」と違い、<strong>ndarray型オブジェクト</strong>
+      は<span class="masked">全要素が同じデータ型</span>
+      である必要があります。初期化の際、引数として与える<strong>リストに異なる型が混在する場合</strong>、NumPy
+      は自動的に型を変換してndarrayオブジェクトを生成します。</p>
+      <p>例えば、要素に「整数」と「浮動小数点数」が混在している場合、全ての要素を「浮動小数点数」に変換します。ndarrayオブジェクトが持つ要素の型は
+      <code>dtype</code>
+      プロパティで確認することができます。<strong>プロパティ</strong>
+      とは、<code>.</code> でアクセスできる <span
+      class="masked">オブジェクト内部の変数のようなもの</span>
+      と考えてください (詳しいことは、<strong>クラス (Class)</strong>
+      に関する講義で説明します)。</p>
+      <div class="sourceCode" id="cb13" data-caption="型の確認"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb13-3"><a href="#cb13-3"></a>A <span class="op">=</span> np.array([[<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">40</span>],[<span class="dv">50</span>,<span class="dv">60</span>,<span class="dv">70</span>]])</span>
+<span id="cb13-4"><a href="#cb13-4"></a><span class="bu">print</span>(<span class="ss">f&#39;A.dtype =&gt; </span><span class="sc">{</span>A<span class="sc">.</span>dtype<span class="sc">}</span><span class="ss">&#39;</span>)  <span class="co"># A の要素の型を確認 </span></span>
+<span id="cb13-5"><a href="#cb13-5"></a><span class="bu">print</span>(A)</span></code></pre></div>
+      <p>実行結果は次のようになります。</p>
+      <pre><code>A.dtype =&gt; int64
+[[20 30 40]
+ [50 60 70]]</code></pre>
+      <p><code>A.dtype</code> により、ndarrayオブジェクトである
+      <code>A</code> が持っている「要素の型」が <code>int64</code>
+      であることが確認できます。これは <code>np.array()</code>
+      で初期化する際に与える引数 (例えば
+      <code>[[20,30,40],[50,40,30]]</code> )
+      によって自動的に決定されています。もし、型を明示的に指定したい場合は
+      <code>np.array()</code> に <code>dtype</code>
+      オプションを指定します。</p>
+      <div class="sourceCode" id="cb15"
+      data-caption="型を指定した初期化"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb15-3"><a href="#cb15-3"></a>A <span class="op">=</span> np.array([[<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">40</span>],[<span class="dv">50</span>,<span class="dv">60</span>,<span class="dv">70</span>]],dtype<span class="op">=</span><span class="bu">float</span>)</span>
+<span id="cb15-4"><a href="#cb15-4"></a><span class="bu">print</span>(<span class="ss">f&#39;A.dtype =&gt; </span><span class="sc">{</span>A<span class="sc">.</span>dtype<span class="sc">}</span><span class="ss">&#39;</span>)  <span class="co"># A.dtype =&gt; float64</span></span>
+<span id="cb15-5"><a href="#cb15-5"></a><span class="bu">print</span>(A)</span></code></pre></div>
+      <p>実行結果は次のようになります。</p>
+      <pre><code>A.dtype =&gt; float64
+[[20. 30. 40.]
+ [50. 60. 70.]]</code></pre>
+      <p><code>A.dtype</code> が <code>float64</code>
+      に変わっていることが確認できます。また、<code>print</code>
+      関数で出力した場合の要素の形式も <code>20</code> から
+      <code>20.</code> になっていることが確認できます。<code>20.</code>
+      は <code>20.0</code> の省略表記です。</p>
+      <h2 data-number="3.2" id="各次元ごとの要素数の確認"><span
+      class="header-section-number">3.2</span>
+      各次元ごとの要素数の確認</h2>
+      <p>ndarray型のオブジェクトは、次のように <code>shape</code>
+      プロパティを使って
+      <strong>各次元ごとの要素数</strong>、つまり、次元数が
+      <strong>2</strong> であれば <span
+      class="masked">何行何列の行列なのか</span> という情報を
+      <strong>タプル型</strong>
+      で得ることができます。具体例を以下に示します。</p>
+      <div class="sourceCode" id="cb17" data-caption="行列の初期化"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb17-2"><a href="#cb17-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb17-3"><a href="#cb17-3"></a>A <span class="op">=</span> np.array([[<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">40</span>],[<span class="dv">50</span>,<span class="dv">60</span>,<span class="dv">70</span>]])</span>
+<span id="cb17-4"><a href="#cb17-4"></a>B <span class="op">=</span> np.array([[<span class="dv">20</span>,<span class="dv">50</span>],[<span class="dv">30</span>,<span class="dv">60</span>],[<span class="dv">40</span>,<span class="dv">70</span>]])</span>
+<span id="cb17-5"><a href="#cb17-5"></a></span>
+<span id="cb17-6"><a href="#cb17-6"></a>a_shape <span class="op">=</span> A.shape</span>
+<span id="cb17-7"><a href="#cb17-7"></a>b_shape <span class="op">=</span> B.shape</span>
+<span id="cb17-8"><a href="#cb17-8"></a><span class="bu">print</span>(<span class="ss">f&#39;a_shape =&gt; </span><span class="sc">{</span>a_shape<span class="sc">}</span><span class="ss">  type(a_shape)=&gt; </span><span class="sc">{</span><span class="bu">type</span>(a_shape)<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+<span id="cb17-9"><a href="#cb17-9"></a><span class="bu">print</span>(<span class="ss">f&#39;b_shape =&gt; </span><span class="sc">{</span>b_shape<span class="sc">}</span><span class="ss">  type(b_shape)=&gt; </span><span class="sc">{</span><span class="bu">type</span>(b_shape)<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+      <p>実行結果は次のようになります。</p>
+      <pre><code>a_shape =&gt; (2, 3)  type(a_shape)=&gt; &lt;class &#39;tuple&#39;&gt;
+b_shape =&gt; (3, 2)  type(b_shape)=&gt; &lt;class &#39;tuple&#39;&gt;</code></pre>
+      <p>これより、変数 <code>A</code> は<strong>2行3列</strong>の行列
+      (=<span class="math inline">\(2\times3\)</span> 型行列)、変数
+      <code>B</code> は<span class="masked">3行2列 (=<span
+      class="math inline">\(3\times2@\)</span>
+      型行列)</span>の行列であることが分かります。なお、<code>a_shape</code>
+      はタプル型なので <code>a_shape[0]</code>
+      で「<strong>行</strong>」の数を、<code>b_shape[1]</code>
+      で「<strong>列</strong>」の数を整数型として得ることができます。</p>
+      <div class="sourceCode" id="cb19"
+      data-caption="行列形状の確認"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb19-2"><a href="#cb19-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb19-3"><a href="#cb19-3"></a>A <span class="op">=</span> np.array([[<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">40</span>],[<span class="dv">50</span>,<span class="dv">60</span>,<span class="dv">70</span>]])</span>
+<span id="cb19-4"><a href="#cb19-4"></a><span class="cf">assert</span> <span class="bu">type</span>(A.shape) <span class="op">==</span> <span class="bu">tuple</span></span>
+<span id="cb19-5"><a href="#cb19-5"></a><span class="cf">assert</span> <span class="bu">type</span>(A.shape[<span class="dv">0</span>]) <span class="op">==</span> <span class="bu">int</span></span>
+<span id="cb19-6"><a href="#cb19-6"></a><span class="bu">print</span>(<span class="ss">f&#39;Aは「</span><span class="sc">{</span>A<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">行</span><span class="sc">{</span>A<span class="sc">.</span>shape[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">列」の行列です。&#39;</span>)</span></code></pre></div>
+      <p>上記のプログラムを実行すると標準出力に
+      <code>Aは「2行3列」の行列です。</code> を得ることができます。</p>
+      <hr />
+      <p><strong>演習1</strong> 次に示す ndarrayオブジェクト
+      <code>A</code> から <code>D</code> の <code>shape</code>
+      プロパティの値を確認せよ (値を標準出力せよ)。</p>
+      <div class="sourceCode" id="cb20"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb20-3"><a href="#cb20-3"></a>A <span class="op">=</span> np.array([[<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">40</span>],[<span class="dv">50</span>,<span class="dv">60</span>,<span class="dv">70</span>]])</span>
+<span id="cb20-4"><a href="#cb20-4"></a>B <span class="op">=</span> np.array([[[<span class="dv">10</span>,<span class="dv">20</span>],[<span class="dv">30</span>,<span class="dv">40</span>]],[[<span class="dv">50</span>,<span class="dv">60</span>],[<span class="dv">70</span>,<span class="dv">80</span>]],</span>
+<span id="cb20-5"><a href="#cb20-5"></a>              [[<span class="dv">20</span>,<span class="dv">10</span>],[<span class="dv">40</span>,<span class="dv">30</span>]],[[<span class="dv">40</span>,<span class="dv">50</span>],[<span class="dv">80</span>,<span class="dv">70</span>]]])</span>
+<span id="cb20-6"><a href="#cb20-6"></a>C <span class="op">=</span> np.array([<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">30</span>])    <span class="co"># 注意 C≠D</span></span>
+<span id="cb20-7"><a href="#cb20-7"></a>D <span class="op">=</span> np.array([[<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">30</span>]])  <span class="co"># 注意 C≠D</span></span></code></pre></div>
+      <p><strong>演習2</strong> ndarrayオブジェクトは <code>ndim</code>
+      プロパティを持ち、そこから配列の「<strong>次元数</strong>」を整数型で得ることができる。<strong>演習1</strong>
+      で示した <strong>ndarrayオブジェクト</strong> <code>A</code> から
+      <code>D</code> の <code>ndim</code>
+      プロパティの「型」と「値」を確認せよ (結果を標準出力せよ)。</p>
+      <h2 data-number="3.3" id="転置行列"><span
+      class="header-section-number">3.3</span> 転置行列</h2>
+      <p>ndarrayオブジェクトは <code>T</code>
+      プロパティで「<strong>転置行列</strong> (Transposed Matrix)
+      」を得ることができます。例えば、行列 <span
+      class="math inline">\(B\)</span> の<strong>転置行列</strong> <span
+      class="math inline">\(B^\top\)</span> (あるいは分野によっては
+      <span class="math inline">\(^{t}B\)</span> のように表記 )
+      は、<code>B.T</code> により得ることができます。</p>
+      <p><span class="math display">\[ B = \begin{bmatrix} 20 &amp; 50
+      \\ 30 &amp; 60 \\ 40 &amp; 70 \end{bmatrix}\ \ \ \ B^\top =
+      \begin{bmatrix} 20 &amp; 30 &amp; 40 \\ 50 &amp; 60 &amp;
+      70\end{bmatrix} \]</span></p>
+      <div class="sourceCode" id="cb21"
+      data-caption="&#39;T&#39;プロパティによる転置行列の取得"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb21-3"><a href="#cb21-3"></a>B <span class="op">=</span> np.array([[<span class="dv">20</span>,<span class="dv">50</span>],[<span class="dv">30</span>,<span class="dv">60</span>],[<span class="dv">40</span>,<span class="dv">70</span>]]) <span class="co"># 3行2列の行列</span></span>
+<span id="cb21-4"><a href="#cb21-4"></a></span>
+<span id="cb21-5"><a href="#cb21-5"></a>B2 <span class="op">=</span> B.T  <span class="co"># Bの転置行列を取得して B2 に代入</span></span>
+<span id="cb21-6"><a href="#cb21-6"></a><span class="bu">print</span>(B2)</span>
+<span id="cb21-7"><a href="#cb21-7"></a><span class="bu">print</span>(<span class="ss">f&#39;B2.shape =&gt; </span><span class="sc">{</span>B2<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+      <p>実行結果は次のようになります。</p>
+      <pre><code>[[20 30 40]
+ [50 60 70]]
+B2.shape =&gt; (2, 3)</code></pre>
+      <p>m行n列の行列 (=<span class="math inline">\(m\times n\)</span>
+      型行列) の転置は <span class="masked">n行m列 (<span
+      class="math inline">\(n\times m\)</span> 型)</span>
+      になります。</p>
+      <h2 data-number="3.4" id="行列の積"><span
+      class="header-section-number">3.4</span> 行列の積</h2>
+      <p>ndarrayオブジェクト <code>A</code> と <code>B</code> の
+      <strong><em>積</em></strong> (<strong>Matrix product</strong>)
+      は、<code>np.dot(A,B)</code> あるいは <code>A@B</code>
+      により計算ができます。</p>
+      <p>なお、演算子 <code>*</code> を使って <span
+      class="masked"><code>A*B</code></span> のようにコードを記述すると
+      <strong>アダマール積</strong> (<strong>Hadamard product</strong>)
+      の計算処理になるので十分に注意してださい。</p>
+      <h3 data-number="3.4.1" id="アダマール積-hadamard-product"><span
+      class="header-section-number">3.4.1</span>
+      <strong>アダマール積</strong> (Hadamard product)</h3>
+      <p><strong>アダマール積</strong>は、以下のように<strong>同じサイズの行列</strong>に対して
+      <span class="masked">要素ごと (成分ごと) の積</span>
+      をとる計算となります (要素の添え字 <span
+      class="math inline">\(e_{ij}\)</span> はプログラムの世界にあわせて
+      <strong>ゼロオリジン</strong> にしています) 。数学上の記号としては
+      <span class="masked"><span class="math inline">\(\circ\)</span> や
+      <span class="math inline">\(\odot\)</span></span>
+      が使われることがあります。</p>
+      <p><span class="math display">\[ A\otimes B = \begin{bmatrix}
+      a_{00} &amp; a_{01} \\ a_{10} &amp; a_{11} \end{bmatrix}\otimes
+      \begin{bmatrix} b_{00} &amp; b_{01} \\ b_{10} &amp;
+      b_{11}\end{bmatrix} = \begin{bmatrix} a_{00}\cdot b_{00} &amp;
+      a_{01}\cdot b_{01} \\ a_{10}\cdot b_{10} &amp; a_{11}\cdot
+      b_{11}\end{bmatrix} \]</span></p>
+      <p><span class="math display">\[ A\otimes B = \begin{bmatrix} 20
+      &amp; 30 \\ 40 &amp; 50 \end{bmatrix}\otimes \begin{bmatrix} 2
+      &amp; 3 \\ 2 &amp; 3\end{bmatrix} = \begin{bmatrix} 40 &amp; 90 \\
+      80 &amp; 150\end{bmatrix} \]</span></p>
+      <p>プログラムでは次のようになります。</p>
+      <div class="sourceCode" id="cb23"
+      data-caption="行列のアダマール積の計算例"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb23-2"><a href="#cb23-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb23-3"><a href="#cb23-3"></a>A <span class="op">=</span> np.array([[<span class="dv">20</span>,<span class="dv">30</span>],[<span class="dv">40</span>,<span class="dv">50</span>]])</span>
+<span id="cb23-4"><a href="#cb23-4"></a>B <span class="op">=</span> np.array([[ <span class="dv">2</span>, <span class="dv">3</span>],[ <span class="dv">2</span>, <span class="dv">3</span>]])</span>
+<span id="cb23-5"><a href="#cb23-5"></a>X <span class="op">=</span> A<span class="op">*</span>B  <span class="co"># *演算子による「アダマール積」の計算</span></span>
+<span id="cb23-6"><a href="#cb23-6"></a><span class="bu">print</span>(X)</span></code></pre></div>
+      <p>実行結果は次のようになります。</p>
+      <pre><code>[[ 40  90]
+ [ 80 150]]</code></pre>
+      <div class="note type-caution">
+      <p><code>B</code> が ndarrayオブジェクトのとき、<code>B**2</code>
+      は「<span class="math inline">\(B^2\)</span>」ではなく「<span
+      class="math inline">\(B\otimes
+      B\)</span>」の計算になことに注意してください。</p>
+      </div>
+      <h3 data-number="3.4.2" id="行列の積-matrix-product"><span
+      class="header-section-number">3.4.2</span>
+      <strong>行列の積</strong> (Matrix product)</h3>
+      <p>「ベクトル・行列」の授業で習っているような「<strong>積</strong>」です。</p>
+      <p><span class="math display">\[ AB = \begin{bmatrix} a_{00} &amp;
+      a_{01} \\ a_{10} &amp; a_{11} \end{bmatrix} \begin{bmatrix} b_{00}
+      &amp; b_{01} \\ b_{10} &amp; b_{11}\end{bmatrix} = \begin{bmatrix}
+      a_{00}\cdot b_{00}+ a_{01}\cdot b_{10} &amp; a_{00}\cdot b_{01} +
+      a_{01}\cdot b_{11} \\ a_{10}\cdot b_{00} + a_{11}\cdot b_{10}
+      &amp; a_{10}\cdot b_{01}+a_{11}\cdot b_{11}\end{bmatrix}
+      \]</span></p>
+      <p><span class="math display">\[ AB = \begin{bmatrix} 20 &amp; 30
+      \\ 40 &amp; 50 \end{bmatrix}\begin{bmatrix} 2 &amp; 3 \\ 2 &amp;
+      3\end{bmatrix} = \begin{bmatrix} 100 &amp; 150 \\ 180 &amp;
+      270\end{bmatrix} \]</span></p>
+      <p>プログラムでは次のようになります。</p>
+      <div class="sourceCode" id="cb25"
+      data-caption="行列の積の計算例"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb25-2"><a href="#cb25-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb25-3"><a href="#cb25-3"></a>A <span class="op">=</span> np.array([[<span class="dv">20</span>,<span class="dv">30</span>],[<span class="dv">40</span>,<span class="dv">50</span>]])</span>
+<span id="cb25-4"><a href="#cb25-4"></a>B <span class="op">=</span> np.array([[ <span class="dv">2</span>, <span class="dv">3</span>],[ <span class="dv">2</span>, <span class="dv">3</span>]])</span>
+<span id="cb25-5"><a href="#cb25-5"></a>X <span class="op">=</span> A<span class="op">@</span>B  <span class="co"># @演算子による積の計算</span></span>
+<span id="cb25-6"><a href="#cb25-6"></a><span class="bu">print</span>(X)</span></code></pre></div>
+      <p>実行結果は次のようになります。</p>
+      <pre><code>[[100 150]
+ [180 270]]</code></pre>
+      <p>なお、「ベクトル・行列」の授業で学んだように「行列の積と転置」に関連して、次のことが成立します
+      (<strong>この性質は後半の解説で利用します</strong>)。線形代数の教科書
+      p.54 参照。</p>
+      <p><span class="math display">\[ A^{\top}B^{\top} =
+      (BA)^{\top}\]</span></p>
+      <p>この性質は、次のようなプログラムでも確認できます。</p>
+      <div class="sourceCode" id="cb27"
+      data-caption="積と転置行列に関する性質"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb27-3"><a href="#cb27-3"></a>A <span class="op">=</span> np.array([[<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">40</span>],[<span class="dv">50</span>,<span class="dv">60</span>,<span class="dv">70</span>]])</span>
+<span id="cb27-4"><a href="#cb27-4"></a>B <span class="op">=</span> np.array([[<span class="dv">20</span>,<span class="dv">50</span>],[<span class="dv">30</span>,<span class="dv">60</span>],[<span class="dv">40</span>,<span class="dv">70</span>]])</span>
+<span id="cb27-5"><a href="#cb27-5"></a></span>
+<span id="cb27-6"><a href="#cb27-6"></a>X <span class="op">=</span> A.T <span class="op">@</span> B.T <span class="co"># X:「Aの転置行列」と「Bの転置行列」の積</span></span>
+<span id="cb27-7"><a href="#cb27-7"></a>Y <span class="op">=</span> (B<span class="op">@</span>A).T   <span class="co"># Y:「AとBの積」の転置行列</span></span>
+<span id="cb27-8"><a href="#cb27-8"></a></span>
+<span id="cb27-9"><a href="#cb27-9"></a><span class="bu">print</span>(<span class="st">&#39;X = &#39;</span>)</span>
+<span id="cb27-10"><a href="#cb27-10"></a><span class="bu">print</span>(X,end<span class="op">=</span><span class="st">&#39;</span><span class="ch">\n\n</span><span class="st">&#39;</span>)</span>
+<span id="cb27-11"><a href="#cb27-11"></a></span>
+<span id="cb27-12"><a href="#cb27-12"></a><span class="bu">print</span>(<span class="st">&#39;Y = &#39;</span>)</span>
+<span id="cb27-13"><a href="#cb27-13"></a><span class="bu">print</span>(Y)</span></code></pre></div>
+      <p>実行結果は次のようになります。</p>
+      <pre><code>X = 
+[[2900 3600 4300]
+ [3600 4500 5400]
+ [4300 5400 6500]]
+
+Y = 
+[[2900 3600 4300]
+ [3600 4500 5400]
+ [4300 5400 6500]]</code></pre>
+      <h1 data-number="4" id="ベクトル行列の応用-1"><span
+      class="header-section-number">4</span> ベクトル・行列の応用 1</h1>
+      <p><strong>コンピュータゲーム</strong>
+      (主にアクションやシューティングなど)
+      や<strong>コンピュータグラフィックス</strong> (CG) の分野では
+      <span class="masked">ベクトルと行列の計算が重要な役割</span>
+      を果たしています。ベクトルと行列の概念を正しく理解し、計算処理に効果的に活用することで
+      <strong>よりシンプルで効率的なプログラム</strong>
+      が作成できるようになります (また、<span
+      class="masked">既存のプログラムを解読・理解</span>
+      できるようになります)。</p>
+      <p>まずは、<strong>ベクトルと行列の応用例として</strong>図形の「移動」<span
+      class="masked">「任意の点を基準とした拡大縮小」</span>、<span
+      class="masked">「任意の点を基準とした回転」</span>
+      について体験的に学びます。その後、多数の「点」の位置、速度、加速度をベクトルとして扱い、これらの点の運動が
+      NumPy (行列計算)
+      を使うことで、<strong>極めてシンプルなプログラムでシミュレートできること</strong>
+      を体験的に学びます。</p>
+      <h2 data-number="4.1" id="ベクトル行列を使った図形の表現"><span
+      class="header-section-number">4.1</span>
+      ベクトル・行列を使った図形の表現</h2>
+      <p>XY平面上の任意の座標は「<strong>幾何ベクトル</strong>」として表現することができます。ベクトルは「方向」と「大きさ」を持つ量で、例えば、X=5,
+      Y=3 の座標点は、原点 <span class="math inline">\((0, 0)\)</span>
+      を始点として <span class="math inline">\((5, 3)\)</span>
+      を終点とする<strong>ベクトル</strong>として捉えることができます。</p>
       <figure>
       <img src="figs/20/vec-01.svg" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
@@ -137,8 +566,11 @@ class="toc-section-number">5</span> べくとる</a></li>
       <p>また、三角形を構成する3つの頂点 <span
       class="math inline">\((1.5, 4.0)\)</span>、<span
       class="math inline">\((3.5, 5.0)\)</span>、<span
-      class="math inline">\((4.5, 2.0)\)</span> は、以下のような行列
-      <span class="math inline">\(P_{1}\)</span> で表現できます。</p>
+      class="math inline">\((4.5, 2.0)\)</span>
+      は、以下のような<strong>行列</strong> <span
+      class="math inline">\(P_{1}\)</span>
+      として表現できます。この行列では、<strong>各行</strong>が<span
+      class="masked">三角形の1つの頂点</span> に対応しています。</p>
       <p><span class="math display">\[ P_{1} = \begin{bmatrix} x_0 &amp;
       y_0 \\ x_1 &amp; y_1 \\ x_2 &amp; y_2 \end{bmatrix} =
       \begin{bmatrix} 1.5 &amp; 4.0 \\ 3.5 &amp; 5.0 \\ 4.5 &amp; 2.0
@@ -147,33 +579,40 @@ class="toc-section-number">5</span> べくとる</a></li>
       <img src="figs/20/vec-02.svg" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
       </figure>
-      <p>このようにすることで、N個の点から構成される図形は
-      <strong>N行2列</strong>
-      の行列として表現できます。また、その転置、すなわち
-      <strong>2行N列</strong>
-      としての表現も可能です。どちらの表現方法を使用するかは状況によって異なりますが、この講義では基本的には
-      <strong>N行2列</strong> の行列として表現します。</p>
-      <h2 data-number="4.1" id="移動"><span
-      class="header-section-number">4.1</span> 移動</h2>
-      <p>行列で表現された図形 <span
-      class="math inline">\(P_{1}\)</span>は、次のようにして移動させることができます。ここで
-      <span class="math inline">\(P_{2}\)</span>
+      <p>このようにすることで、<strong>n個の点から構成される図形</strong>は
+      <span class="masked">n行2列の行列 (<span
+      class="math inline">\(n\times 2\)</span> 型行列)</span>
+      として表現できます。また、<span
+      class="masked">その転置、すなわち「2行n列」の行列</span>
+      としても表現可能です。どちらの表現方法を使用するか
+      (=プログラムとして分かりやすくシンプルに記述できるか)
+      は状況によって異なりますが、この講義では基本的には
+      <strong>n行2列</strong> の行列として表現します。</p>
+      <h2 data-number="4.2" id="移動"><span
+      class="header-section-number">4.2</span> 移動</h2>
+      <p>行列により表現された図形 <span
+      class="math inline">\(P_{1}\)</span> は、次のような行列計算
+      (加減算) で「<strong>移動</strong>」させることができます。</p>
+      <p><span class="math display">\[ P_{2} = P_{1} + M  =
+      \begin{bmatrix} x_0 &amp; y_0 \\ x_1 &amp; y_1 \\ x_2 &amp; y_2
+      \end{bmatrix}+ \begin{bmatrix} m_{x} &amp; m_{y} \\ m_{x} &amp;
+      m_{y} \\ m_{x} &amp; m_{y} \end{bmatrix} = \begin{bmatrix} x_0 +
+      m_{x} &amp; y_0 + m_{y} \\ x_1 + m_{x} &amp; y_1 + m_{y} \\ x_2 +
+      m_{x} &amp; y_2 +m_{y} \end{bmatrix}\]</span></p>
+      <p>ここで <span class="math inline">\(P_{2}\)</span>
       は移動後の図形の位置を表す行列であり、<span
       class="math inline">\(M\)</span>
       は<strong>移動量</strong>を表す行列になります。<span
       class="math inline">\(M\)</span> の要素である <span
       class="math inline">\(m_{x}\)</span>
-      は<strong>X方向の移動量</strong>を、<span
+      は「<strong>X方向の移動量</strong>」を、<span
       class="math inline">\(m_{y}\)</span>
-      は<strong>Y方向の移動量</strong>を示します。</p>
-      <p><span class="math display">\[ P_{2} = P_{1} + M  =
-      \begin{bmatrix} 1.5 &amp; 4.0 \\ 3.5 &amp; 5.0 \\ 4.5 &amp; 2.0
-      \end{bmatrix}+ \begin{bmatrix} m_{x} &amp; m_{y} \\ m_{x} &amp;
-      m_{y} \\ m_{x} &amp; m_{y} \end{bmatrix}\]</span></p>
-      <p>例えば、この図形をX方向に <span
-      class="math inline">\(2\)</span>、Y方向に <span
-      class="math inline">\(-1\)</span>
-      だけ移動する場合は次のようになります。</p>
+      は「<strong>Y方向の移動量</strong>」を表します。図形を構成する<strong>各頂点は独立して同じ量だけ移動するため</strong>、行列
+      <span class="math inline">\(M\)</span>
+      の各行は同じ値になっています。</p>
+      <p>例えば、下図 (左) に示す三角形を「X方向に <span
+      class="math inline">\(2\)</span>」、「Y方向に <span
+      class="math inline">\(-1\)</span>」だけ移動させる行列計算は次のようになります。</p>
       <p><span class="math display">\[ P_{2} = P_{1} + M  =
       \begin{bmatrix} 1.5 &amp; 4.0 \\ 3.5 &amp; 5.0 \\ 4.5 &amp; 2.0
       \end{bmatrix}+ \begin{bmatrix} 2 &amp; -1 \\ 2 &amp; -1 \\ 2 &amp;
@@ -183,92 +622,911 @@ class="toc-section-number">5</span> べくとる</a></li>
       <img src="figs/20/vec-03.svg" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
       </figure>
-      <p>この行列計算を NumPy を利用した Pythonプログラム
-      により行ないます。</p>
-      <div class="sourceCode" id="cb1" data-caption="図形の移動"><pre
-      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-3"><a href="#cb1-3"></a></span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="co"># P1の初期化</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a>P1 <span class="op">=</span> np.array([[<span class="fl">1.5</span>, <span class="fl">4.0</span>],</span>
-<span id="cb1-6"><a href="#cb1-6"></a>               [<span class="fl">3.5</span>, <span class="fl">5.0</span>],</span>
-<span id="cb1-7"><a href="#cb1-7"></a>               [<span class="fl">4.5</span>, <span class="fl">2.0</span>]],dtype<span class="op">=</span><span class="bu">float</span>)</span>
-<span id="cb1-8"><a href="#cb1-8"></a><span class="co"># print(type(P1))  # =&gt; &lt;class &#39;numpy.ndarray&#39;&gt;</span></span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="bu">print</span>(<span class="ss">f&#39;P1.shape =&gt; </span><span class="sc">{</span>P1<span class="sc">.</span>shape<span class="sc">}</span><span class="ss"> ,,, </span><span class="sc">{</span>P1<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">行</span><span class="sc">{</span>P1<span class="sc">.</span>shape[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">列&#39;</span>)</span>
-<span id="cb1-10"><a href="#cb1-10"></a></span>
-<span id="cb1-11"><a href="#cb1-11"></a><span class="co"># 移動行列の初期化</span></span>
-<span id="cb1-12"><a href="#cb1-12"></a>M <span class="op">=</span> np.array([[<span class="dv">2</span>, <span class="op">-</span><span class="dv">1</span>]],dtype<span class="op">=</span><span class="bu">float</span>)</span>
-<span id="cb1-13"><a href="#cb1-13"></a><span class="bu">print</span>(<span class="ss">f&#39;M.shape  =&gt; </span><span class="sc">{</span>M<span class="sc">.</span>shape<span class="sc">}</span><span class="ss"> ,,, </span><span class="sc">{</span>M<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">行</span><span class="sc">{</span>M<span class="sc">.</span>shape[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">列&#39;</span>)</span>
-<span id="cb1-14"><a href="#cb1-14"></a></span>
-<span id="cb1-15"><a href="#cb1-15"></a><span class="co"># 移動後図形 P2 の計算 </span></span>
-<span id="cb1-16"><a href="#cb1-16"></a>P2 <span class="op">=</span> P1 <span class="op">+</span> M  <span class="co"># 注: ブロードキャスト機能の自動適用</span></span>
-<span id="cb1-17"><a href="#cb1-17"></a><span class="bu">print</span>(<span class="ss">f&#39;P2.shape =&gt; </span><span class="sc">{</span>P2<span class="sc">.</span>shape<span class="sc">}</span><span class="ss"> ,,, </span><span class="sc">{</span>P2<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">行</span><span class="sc">{</span>P2<span class="sc">.</span>shape[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">列&#39;</span>)</span>
-<span id="cb1-18"><a href="#cb1-18"></a></span>
-<span id="cb1-19"><a href="#cb1-19"></a><span class="bu">print</span>(<span class="st">&#39;P2=&#39;</span>)</span>
-<span id="cb1-20"><a href="#cb1-20"></a><span class="bu">print</span>(P2)</span></code></pre></div>
+      <p>このような行列計算により、図形を移動させることができます。この処理は
+      NumPy
+      を利用して次のように実装することができます。プログラムにおいて
+      <code>P1</code> が移動前の図形、<code>M</code>
+      が移動行列、<code>P2</code> が移動後の行列になります。</p>
+      <div class="sourceCode" id="cb29" data-caption="図形の移動"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb29-2"><a href="#cb29-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb29-3"><a href="#cb29-3"></a></span>
+<span id="cb29-4"><a href="#cb29-4"></a><span class="co"># P1の初期化</span></span>
+<span id="cb29-5"><a href="#cb29-5"></a>P1 <span class="op">=</span> np.array([[<span class="fl">1.5</span>, <span class="fl">4.0</span>],</span>
+<span id="cb29-6"><a href="#cb29-6"></a>               [<span class="fl">3.5</span>, <span class="fl">5.0</span>],</span>
+<span id="cb29-7"><a href="#cb29-7"></a>               [<span class="fl">4.5</span>, <span class="fl">2.0</span>]],dtype<span class="op">=</span><span class="bu">float</span>)</span>
+<span id="cb29-8"><a href="#cb29-8"></a></span>
+<span id="cb29-9"><a href="#cb29-9"></a><span class="cf">assert</span> <span class="bu">type</span>(P1) <span class="op">==</span>  np.ndarray</span>
+<span id="cb29-10"><a href="#cb29-10"></a><span class="bu">print</span>(<span class="ss">f&#39;P1.shape =&gt; </span><span class="sc">{</span>P1<span class="sc">.</span>shape<span class="sc">}</span><span class="ss"> ... </span><span class="sc">{</span>P1<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">行</span><span class="sc">{</span>P1<span class="sc">.</span>shape[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">列&#39;</span>)</span>
+<span id="cb29-11"><a href="#cb29-11"></a></span>
+<span id="cb29-12"><a href="#cb29-12"></a><span class="co"># 移動行列の初期化</span></span>
+<span id="cb29-13"><a href="#cb29-13"></a>M <span class="op">=</span> np.array([[<span class="dv">2</span>, <span class="op">-</span><span class="dv">1</span>]],dtype<span class="op">=</span><span class="bu">float</span>)</span>
+<span id="cb29-14"><a href="#cb29-14"></a><span class="bu">print</span>(<span class="ss">f&#39;M.shape  =&gt; </span><span class="sc">{</span>M<span class="sc">.</span>shape<span class="sc">}</span><span class="ss"> ... </span><span class="sc">{</span>M<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">行</span><span class="sc">{</span>M<span class="sc">.</span>shape[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">列&#39;</span>)</span>
+<span id="cb29-15"><a href="#cb29-15"></a></span>
+<span id="cb29-16"><a href="#cb29-16"></a><span class="co"># 移動後図形 P2 の計算</span></span>
+<span id="cb29-17"><a href="#cb29-17"></a>P2 <span class="op">=</span> P1 <span class="op">+</span> M  <span class="co"># 注: ブロードキャスト機能の自動適用</span></span>
+<span id="cb29-18"><a href="#cb29-18"></a><span class="bu">print</span>(<span class="ss">f&#39;P2.shape =&gt; </span><span class="sc">{</span>P2<span class="sc">.</span>shape<span class="sc">}</span><span class="ss"> ... </span><span class="sc">{</span>P2<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">行</span><span class="sc">{</span>P2<span class="sc">.</span>shape[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">列&#39;</span>)</span>
+<span id="cb29-19"><a href="#cb29-19"></a></span>
+<span id="cb29-20"><a href="#cb29-20"></a><span class="bu">print</span>()</span>
+<span id="cb29-21"><a href="#cb29-21"></a><span class="bu">print</span>(<span class="st">&#39;P2=&#39;</span>)</span>
+<span id="cb29-22"><a href="#cb29-22"></a><span class="bu">print</span>(P2)</span></code></pre></div>
+      <p>実行結果は次のようになります。適切に移動ができていることが確認できます。</p>
+      <pre><code>P1.shape =&gt; (3, 2) ... 3行2列
+M.shape  =&gt; (1, 2) ... 1行2列
+P2.shape =&gt; (3, 2) ... 3行2列
+
+P2=
+[[3.5 3. ]
+ [5.5 4. ]
+ [6.5 1. ]]</code></pre>
       <p><strong>第02行目</strong>: NumPy をインポートして
       <code>np</code> という省略名で使用できるようにしています。もし
       <code>as np</code> を付けない場合は、以降のプログラムで
       <code>np</code> の部分を <code>numpy</code>
       のように記述しなければなりません。</p>
-      <p><strong>第05行目</strong>: <code>np.array</code>
-      に2次元リストとして渡して、ndarray型 (=NumPyで行列を表現する型)
-      の初期化をしています。オプションとして <code>dype=float</code>
-      を与えて行列の要素が <code>float64</code>
-      となるように指示しています。もし、<code>P1 = np.array([[1,2],[3,4],[5,6]])</code>
-      のように要素がすべて整数値の場合、<code>dtype=float</code>
-      を明示していないと <code>int64</code>
-      になるので注意してください。</p>
-      <p><strong>第09行目</strong>: ndarrayオブジェクトの
-      <code>shape</code> プロパティで</p>
-      <p>実行結果は次のようになります。</p>
-      <pre><code>P1.shape =&gt; (3, 2) ,,, 3行2列
-M.shape  =&gt; (1, 2) ,,, 1行2列
-P2.shape =&gt; (3, 2) ,,, 3行2列
-P2=
-[[3.5 3. ]
- [5.5 4. ]
- [6.5 1. ]]</code></pre>
-      <h1 data-number="5" id="べくとる"><span
-      class="header-section-number">5</span> べくとる</h1>
-      <p><span class="math display">\[ P_{1} = \begin{bmatrix} x_0 &amp;
-      y_0 \\ x_1 &amp; y_1 \\ x_2 &amp; y_2 \end{bmatrix} \]</span></p>
-      <p><span class="math display">\[ P_{1} = \begin{bmatrix} 1.5 &amp;
-      4.0 \\ 3.5 &amp; 5.0 \\ 4.5 &amp; 2.0 \end{bmatrix} \]</span></p>
-      <p><span class="math display">\[ P_{1}^{\mathrm{T}} =
-      \begin{bmatrix} x_0 &amp; x_1 &amp; x_2 \\ y_0 &amp; y_1 &amp;
-      y_2  \end{bmatrix} \]</span></p>
-      <p><span class="math display">\[ P_{1}^{\mathrm{T}} =
-      \begin{bmatrix} 1.5 &amp; 3.5 &amp; 4.5 \\ 4.0 &amp; 5.0 &amp;
-      2.0  \end{bmatrix} \]</span></p>
-      <p><span class="math display">\[ R = \begin{bmatrix} \cos\theta
-      &amp; -\sin\theta \\ \sin\theta &amp; \cos\theta \end{bmatrix}
-      \]</span></p>
-      <p><span class="math display">\[ R^{\mathrm{T}} = \begin{bmatrix}
-      \cos\theta &amp; \sin\theta \\ -\sin\theta &amp; \cos\theta
+      <p><strong>第05行目</strong>、<strong>第13行目</strong>:
+      <code>np.array</code>
+      に2次元リストを引数として渡して、ndarrayオブジェクト
+      (=NumPyで行列を表現する型)
+      の「<strong>初期化</strong>」をしています。<code>dype=float</code>
+      オプションにより、行列の要素の型が <code>float64</code>
+      となるように明示しています。なお、<code>M</code>
+      は、<strong>「ブロードキャスト機能」の利用を想定し</strong> <span
+      class="masked"><code>np.array([[2, -1]])</code>
+      のように「1行2列」</span> として初期化しています。</p>
+      <p><strong>第10行目</strong>、<strong>第14行目</strong>、<strong>第18行目</strong>:
+      <code>shape</code> プロパティで各ndarrayオブジェクトの形状
+      (行列の行数と列数) を確認しています。</p>
+      <p><strong>第17行目</strong>:
+      移動のための行列計算をしています。注意してほしいことは、数学的には
+      <span class="masked"> 行2列の <span
+      class="math inline">\(P_1\)</span> に、1行2列の <span
+      class="math inline">\(M\)</span> を加算することはできない</span>
+      ということです。しかし、ここでは<a
+      href="lecture17.html#ブロードキャスト">第17回講義</a>で解説した
+      NumPy
+      の「<strong>ブロードキャスト</strong>」という機能により、<code>M</code>
+      が「1行2列」から「3行2列」に
+      <strong>自動拡張され計算</strong>されています。つまり、計算の際、<span
+      class="math inline">\(M\)</span> が、次の <span
+      class="math inline">\(M&#39;\)</span>
+      に自動拡張されることで、<code>P1</code>
+      の各頂点が同じ量だけ移動し、新しい位置が <code>P2</code>
+      に格納されます。</p>
+      <p><span class="math display">\[ M = \begin{bmatrix} 2 &amp; -1
+      \end{bmatrix} \]</span> <span class="math display">\[ M&#39; =
+      \begin{bmatrix} 2 &amp; -1 \\ 2 &amp; -1 \\ 2 &amp; -1
       \end{bmatrix} \]</span></p>
-      <p><span class="math display">\[ \begin{bmatrix}
-      \cos\theta &amp; -\sin\theta \\
-      \sin\theta &amp; \cos\theta
-      \end{bmatrix}
-      \begin{bmatrix}x \\ y\end{bmatrix}
-      =
-      \begin{bmatrix}
-      x\cdot \cos\theta - y \cdot \sin\theta \\
-      x\cdot \sin\theta + y \cdot \cos\theta \\
-      \end{bmatrix}
+      <p>ここでのポイントは、行列 (ndarrayオブジェクト) を利用することで
+      <span class="masked">繰返し構文を利用することなく</span>
+      <code>P2 = P1 + M</code>
+      という極めてシンプルなコードで処理が書けていることです。また、NumPy
+      ライブラリは「<strong>C言語</strong>」で実装されているため、(Pythonで繰返し構文とリストを使って計算するよりも)<span
+      class="masked">はるかに効率的かつ高速に (内部的に)
+      計算される</span> というメリットもあります。</p>
+      <hr />
+      <p><strong>演習1</strong>: 移動行列 <code>M</code>
+      は、ブロードキャストの利用を想定せずに、次のように初期化することもできます。実際に試して同じ結果が得られることを確認してください。</p>
+      <div class="sourceCode" id="cb31"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a>M <span class="op">=</span> np.array([[<span class="dv">2</span>, <span class="op">-</span><span class="dv">1</span>],[<span class="dv">2</span>, <span class="op">-</span><span class="dv">1</span>],[<span class="dv">2</span>, <span class="op">-</span><span class="dv">1</span>]],dtype<span class="op">=</span><span class="bu">float</span>) <span class="co"># 3行2列で初期化</span></span></code></pre></div>
+      <p><strong>演習2</strong>: 次のプログラムは <strong>Matplotlib
+      を使った処理の可視化</strong>
+      を含めた図形移動のサンプルプログラムである (Matplotlib は<a
+      href="lecture11.html#斜方投射のシミュレーションと可視化">第11回講義</a>や<a
+      href="lecture19.html#簡易グラフ出力">第19回講義</a>で簡単に学びました)。まずは、プログラムの動作確認をせよ。次に、四角形以上の任意の図形に対しても、最低限の変更で移動処理ができることを確認せよ。</p>
+      <p>さらに (授業時間外学習として ChatGPT などを利用して)
+      可視化処理に関するプログラムを読解をせよ。</p>
+      <div class="sourceCode" id="cb32"
+      data-caption="図形の移動処理+可視化"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb32-2"><a href="#cb32-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb32-3"><a href="#cb32-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb32-4"><a href="#cb32-4"></a><span class="im">from</span> matplotlib.patheffects <span class="im">import</span> Normal,Stroke</span>
+<span id="cb32-5"><a href="#cb32-5"></a><span class="im">from</span> matplotlib.ticker <span class="im">import</span> FuncFormatter</span>
+<span id="cb32-6"><a href="#cb32-6"></a><span class="im">from</span> matplotlib.patches <span class="im">import</span> Polygon</span>
+<span id="cb32-7"><a href="#cb32-7"></a></span>
+<span id="cb32-8"><a href="#cb32-8"></a>P1 <span class="op">=</span> np.array([[<span class="fl">1.5</span>, <span class="fl">4.0</span>],</span>
+<span id="cb32-9"><a href="#cb32-9"></a>               [<span class="fl">3.5</span>, <span class="fl">5.0</span>],</span>
+<span id="cb32-10"><a href="#cb32-10"></a>               [<span class="fl">4.5</span>, <span class="fl">2.0</span>]],dtype<span class="op">=</span><span class="bu">float</span>)</span>
+<span id="cb32-11"><a href="#cb32-11"></a></span>
+<span id="cb32-12"><a href="#cb32-12"></a>M <span class="op">=</span> np.array([[<span class="dv">2</span>, <span class="op">-</span><span class="dv">1</span>]],dtype<span class="op">=</span><span class="bu">float</span>)</span>
+<span id="cb32-13"><a href="#cb32-13"></a></span>
+<span id="cb32-14"><a href="#cb32-14"></a>P2 <span class="op">=</span> P1 <span class="op">+</span> M</span>
+<span id="cb32-15"><a href="#cb32-15"></a></span>
+<span id="cb32-16"><a href="#cb32-16"></a><span class="bu">print</span>(<span class="ss">f&#39;P1 =</span><span class="ch">\n</span><span class="sc">{</span>P1<span class="sc">}</span><span class="ch">\n</span><span class="ss">&#39;</span>)</span>
+<span id="cb32-17"><a href="#cb32-17"></a><span class="bu">print</span>(<span class="ss">f&#39;M  =</span><span class="ch">\n</span><span class="sc">{</span>M<span class="sc">}</span><span class="ch">\n</span><span class="ss">&#39;</span>)</span>
+<span id="cb32-18"><a href="#cb32-18"></a><span class="bu">print</span>(<span class="ss">f&#39;P2 = P1+M</span><span class="ch">\n</span><span class="sc">{</span>P2<span class="sc">}</span><span class="ch">\n</span><span class="ss">&#39;</span>)</span>
+<span id="cb32-19"><a href="#cb32-19"></a></span>
+<span id="cb32-20"><a href="#cb32-20"></a><span class="co"># 以下、可視化に関する処理</span></span>
+<span id="cb32-21"><a href="#cb32-21"></a>plt.rcParams[<span class="st">&#39;mathtext.fontset&#39;</span>] <span class="op">=</span> <span class="st">&#39;cm&#39;</span></span>
+<span id="cb32-22"><a href="#cb32-22"></a></span>
+<span id="cb32-23"><a href="#cb32-23"></a>fig,axis <span class="op">=</span> plt.subplots(dpi<span class="op">=</span><span class="dv">120</span>,figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">3</span>),ncols<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb32-24"><a href="#cb32-24"></a></span>
+<span id="cb32-25"><a href="#cb32-25"></a>x_min,x_max <span class="op">=</span> <span class="op">-</span><span class="dv">2</span>,<span class="dv">8</span><span class="op">;</span> y_min,y_max <span class="op">=</span> <span class="op">-</span><span class="dv">2</span>,<span class="dv">8</span></span>
+<span id="cb32-26"><a href="#cb32-26"></a>ot_prm <span class="op">=</span> (Stroke(linewidth<span class="op">=</span><span class="dv">3</span>,foreground<span class="op">=</span><span class="st">&#39;#fff&#39;</span>),Normal(),)</span>
+<span id="cb32-27"><a href="#cb32-27"></a></span>
+<span id="cb32-28"><a href="#cb32-28"></a><span class="cf">for</span> i,ax <span class="kw">in</span> <span class="bu">enumerate</span>(axis.flatten()):</span>
+<span id="cb32-29"><a href="#cb32-29"></a></span>
+<span id="cb32-30"><a href="#cb32-30"></a>  <span class="cf">if</span> i<span class="op">==</span><span class="dv">1</span>:</span>
+<span id="cb32-31"><a href="#cb32-31"></a>    ax.add_patch(Polygon(P1,ec<span class="op">=</span><span class="st">&#39;tab:gray&#39;</span>,ls<span class="op">=</span><span class="st">&#39;:&#39;</span>,fill<span class="op">=</span><span class="va">False</span>))</span>
+<span id="cb32-32"><a href="#cb32-32"></a></span>
+<span id="cb32-33"><a href="#cb32-33"></a>  P <span class="op">=</span> P1 <span class="cf">if</span> i<span class="op">==</span><span class="dv">0</span> <span class="cf">else</span> P2</span>
+<span id="cb32-34"><a href="#cb32-34"></a>  ax.add_patch(Polygon(P,alpha<span class="op">=</span><span class="fl">0.5</span>))</span>
+<span id="cb32-35"><a href="#cb32-35"></a>  ax.scatter(P.T[<span class="dv">0</span>],P.T[<span class="dv">1</span>], marker<span class="op">=</span><span class="st">&#39;.&#39;</span>)</span>
+<span id="cb32-36"><a href="#cb32-36"></a>  <span class="cf">for</span> i,p <span class="kw">in</span> <span class="bu">enumerate</span>(P):</span>
+<span id="cb32-37"><a href="#cb32-37"></a>    t <span class="op">=</span> ax.text(p[<span class="dv">0</span>],p[<span class="dv">1</span>]<span class="op">+</span><span class="fl">0.2</span>,<span class="ss">f&#39;$(</span><span class="sc">{</span>p[<span class="dv">0</span>]<span class="sc">:.1f}</span><span class="ss">, </span><span class="sc">{</span>p[<span class="dv">1</span>]<span class="sc">:.1f}</span><span class="ss">)$&#39;</span>,</span>
+<span id="cb32-38"><a href="#cb32-38"></a>                va<span class="op">=</span><span class="st">&#39;bottom&#39;</span>,ha<span class="op">=</span><span class="st">&#39;center&#39;</span>,fontsize<span class="op">=</span><span class="dv">10</span>, c<span class="op">=</span><span class="st">&#39;tab:blue&#39;</span>)</span>
+<span id="cb32-39"><a href="#cb32-39"></a>    t.set_path_effects(ot_prm)</span>
+<span id="cb32-40"><a href="#cb32-40"></a></span>
+<span id="cb32-41"><a href="#cb32-41"></a>  ax.set_aspect(<span class="st">&#39;equal&#39;</span>, adjustable<span class="op">=</span><span class="st">&#39;box&#39;</span>)</span>
+<span id="cb32-42"><a href="#cb32-42"></a></span>
+<span id="cb32-43"><a href="#cb32-43"></a>  <span class="co"># ticks + ticklabels</span></span>
+<span id="cb32-44"><a href="#cb32-44"></a>  ax.spines[<span class="st">&#39;bottom&#39;</span>].set_position(<span class="st">&#39;zero&#39;</span>)</span>
+<span id="cb32-45"><a href="#cb32-45"></a>  ax.spines[<span class="st">&#39;left&#39;</span>].set_position(<span class="st">&#39;zero&#39;</span>)</span>
+<span id="cb32-46"><a href="#cb32-46"></a>  ax.spines[<span class="st">&#39;top&#39;</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb32-47"><a href="#cb32-47"></a>  ax.spines[<span class="st">&#39;right&#39;</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb32-48"><a href="#cb32-48"></a>  ax.tick_params(direction<span class="op">=</span><span class="st">&#39;inout&#39;</span>,which<span class="op">=</span><span class="st">&#39;both&#39;</span>)</span>
+<span id="cb32-49"><a href="#cb32-49"></a></span>
+<span id="cb32-50"><a href="#cb32-50"></a>  ax.set_xlim(x_min,x_max)</span>
+<span id="cb32-51"><a href="#cb32-51"></a>  ax.set_ylim(y_min,y_max)</span>
+<span id="cb32-52"><a href="#cb32-52"></a>  ax.set_xticks(<span class="bu">range</span>(x_min,x_max<span class="op">+</span><span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb32-53"><a href="#cb32-53"></a>  ax.set_yticks(<span class="bu">range</span>(y_min,y_max<span class="op">+</span><span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb32-54"><a href="#cb32-54"></a>  ax.set_xticks(<span class="bu">range</span>(x_min,x_max<span class="op">+</span><span class="dv">1</span>),minor<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb32-55"><a href="#cb32-55"></a>  ax.set_yticks(<span class="bu">range</span>(y_min,y_max<span class="op">+</span><span class="dv">1</span>),minor<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb32-56"><a href="#cb32-56"></a></span>
+<span id="cb32-57"><a href="#cb32-57"></a>  ax.xaxis.set_major_formatter(FuncFormatter(<span class="kw">lambda</span> p,q : <span class="ss">f&#39;</span><span class="sc">{</span>p<span class="sc">:.0f}</span><span class="ss">&#39;</span> <span class="cf">if</span> p<span class="op">!=</span><span class="dv">0</span> <span class="cf">else</span> <span class="st">&#39;&#39;</span>))</span>
+<span id="cb32-58"><a href="#cb32-58"></a>  ax.yaxis.set_major_formatter(FuncFormatter(<span class="kw">lambda</span> p,q : <span class="ss">f&#39;</span><span class="sc">{</span>p<span class="sc">:.0f}</span><span class="ss">&#39;</span> <span class="cf">if</span> p<span class="op">!=</span><span class="dv">0</span> <span class="cf">else</span> <span class="st">&#39;&#39;</span>))</span>
+<span id="cb32-59"><a href="#cb32-59"></a></span>
+<span id="cb32-60"><a href="#cb32-60"></a>  <span class="cf">for</span> t <span class="kw">in</span> ax.get_xticklabels()<span class="op">+</span>ax.get_yticklabels():</span>
+<span id="cb32-61"><a href="#cb32-61"></a>    t.set_path_effects(ot_prm)</span>
+<span id="cb32-62"><a href="#cb32-62"></a></span>
+<span id="cb32-63"><a href="#cb32-63"></a>  ax.scatter(<span class="dv">0</span>,<span class="dv">0</span>,c<span class="op">=</span><span class="st">&#39;#000&#39;</span>,marker<span class="op">=</span><span class="st">&#39;.&#39;</span>)</span>
+<span id="cb32-64"><a href="#cb32-64"></a>  ax.set_axisbelow(<span class="va">True</span>)</span>
+<span id="cb32-65"><a href="#cb32-65"></a>  ax.grid(lw<span class="op">=</span><span class="fl">0.5</span>,which<span class="op">=</span><span class="st">&#39;both&#39;</span>,clip_on<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb32-66"><a href="#cb32-66"></a></span>
+<span id="cb32-67"><a href="#cb32-67"></a>plt.tight_layout()</span>
+<span id="cb32-68"><a href="#cb32-68"></a>plt.show()</span></code></pre></div>
+      <h2 data-number="4.3" id="拡大縮小"><span
+      class="header-section-number">4.3</span> 拡大縮小</h2>
+      <p>行列により表現された図形 <span
+      class="math inline">\(P_{1}\)</span>
+      は、次のような行列計算で「<strong>拡大縮小</strong>」させることができます。</p>
+      <p><span class="math display">\[ P_{2} = P_{1} S  =
+      \begin{bmatrix} x_0 &amp; y_0 \\ x_1 &amp; y_1 \\ x_2 &amp; y_2
+      \end{bmatrix} \begin{bmatrix} s_{x} &amp; 0 \\ 0 &amp; s_{y}
+      \end{bmatrix} = \begin{bmatrix} s_{x}x_0 &amp; s_{y}y_0 \\
+      s_{x}x_1 &amp; s_{y}y_1 \\ s_{x}x_2 &amp; s_{y}y_2 \end{bmatrix}
       \]</span></p>
-      <p><span class="math display">\[ \begin{bmatrix}x &amp; y
-      \end{bmatrix}
-      \begin{bmatrix}
-      \cos\theta &amp; \sin\theta \\ -\sin\theta &amp; \cos\theta
-      \end{bmatrix}
-      =
-      \begin{bmatrix}
+      <p>ここで <span class="math inline">\(P_{2}\)</span>
+      は拡大縮小後の図形を表す行列であり、<span
+      class="math inline">\(S\)</span>
+      は<strong>XYの拡大縮小倍率</strong>を表す行列になります。<span
+      class="math inline">\(S\)</span> の要素である <span
+      class="math inline">\(s_{x}\)</span>
+      は「<strong>X軸方向の拡大縮小の倍率</strong>」を、<span
+      class="math inline">\(s_{y}\)</span>
+      は「<strong>Y軸方向の拡大縮小の倍率</strong>」を表します。</p>
+      <p><span class="math inline">\(P_{1}\)</span>
+      は「<strong>n行2列</strong>」の行列で、<span
+      class="math inline">\(S\)</span>
+      は「<strong>2行2列</strong>」の行列であるため、その積である <span
+      class="math inline">\(P_{1}S=P_{2}\)</span>
+      は「<strong>n行2列</strong>」の行列になります ( <span
+      class="math inline">\(P_2\)</span> と <span
+      class="math inline">\(P_1\)</span> は同じ形状 (<code>shape</code>)
+      になります) 。</p>
+      <p>例えば、図形を<strong>横方向 (X方向)
+      に1.6倍</strong>、<strong>縦方向 (Y方向)
+      に1.2倍</strong>に拡大する処理は、NumPyを使ったプログラムでは次のように書くことができます。</p>
+      <div class="sourceCode" id="cb33"
+      data-caption="図形の拡大縮小"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb33-2"><a href="#cb33-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb33-3"><a href="#cb33-3"></a>P1 <span class="op">=</span> np.array([[<span class="fl">1.5</span>, <span class="fl">4.0</span>],</span>
+<span id="cb33-4"><a href="#cb33-4"></a>               [<span class="fl">3.5</span>, <span class="fl">5.0</span>],</span>
+<span id="cb33-5"><a href="#cb33-5"></a>               [<span class="fl">4.5</span>, <span class="fl">2.0</span>]],dtype<span class="op">=</span><span class="bu">float</span>)</span>
+<span id="cb33-6"><a href="#cb33-6"></a>S  <span class="op">=</span> np.array([[<span class="fl">1.6</span>,   <span class="dv">0</span>],</span>
+<span id="cb33-7"><a href="#cb33-7"></a>               [  <span class="dv">0</span>, <span class="fl">1.2</span>]],dtype<span class="op">=</span><span class="bu">float</span>)</span>
+<span id="cb33-8"><a href="#cb33-8"></a>P2 <span class="op">=</span> P1<span class="op">@</span>S  <span class="co"># 拡大処理</span></span>
+<span id="cb33-9"><a href="#cb33-9"></a><span class="bu">print</span>(P2)</span></code></pre></div>
+      <p>なお、<strong>第08行目</strong> は
+      <code>P2 = np.dot(P1,S)</code> のように書くこともできます
+      (<code>@</code> を使った記法は Python 3.5
+      で導入されたものになります)。実行結果は次のようになります。</p>
+      <pre><code>[[2.4 4.8]
+ [5.6 6. ]
+ [7.2 2.4]]</code></pre>
+      <p>実行結果を可視化すると次のようになります。</p>
+      <figure>
+      <img src="figs/20/vec-04.svg" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>数式と可視化した結果をみれば分かるように、幾何ベクトルの「X成分」「Y成分」が、それぞれ
+      <span class="math inline">\(s_x\)</span> 倍、<span
+      class="math inline">\(s_y\)</span>
+      倍された結果として、図形が拡大縮小されています。この処理は <span
+      class="masked">原点 <span class="math inline">\((0, 0)\)</span>
+      を基準とした拡大縮小をするもの</span>
+      であり、人間にとっては「<strong>拡大縮小と同時に図形が移動してしまっているように感じる処理</strong>」になってしまいます。</p>
+      <p>PowerPoint や
+      ドロー系のアプリでは、このような<strong>原点基準の拡大縮小</strong>ではなく、<span
+      class="masked">図形に外接する長方形の左上</span> や <span
+      class="masked">図形の重心</span>
+      を基準とする拡大縮小処理が実装されています。</p>
+      <h2 data-number="4.4" id="任意点を基準とする拡大縮小"><span
+      class="header-section-number">4.4</span>
+      任意点を基準とする拡大縮小</h2>
+      <p>原点以外の「任意の点」を基準とする拡大縮小処理は、図形の「<strong>移動</strong>」と「<strong>原点を基準とする拡大縮小</strong>」を組み合わせて行うことができます。</p>
+      <p>例えば、<strong>図形の「重心」を基準として「1.5倍」に拡大したい</strong>場合、次のように操作します。</p>
+      <ol type="1">
+      <li>行列により表現された図形 <span
+      class="math inline">\(P_{1}\)</span> の<strong>重心の座標</strong>
+      <span class="math inline">\(G=(g_x, g_y)\)</span>
+      を計算します。</li>
+      <li>この重心 <span class="math inline">\(G\)</span> が 原点 <span
+      class="math inline">\(O\)</span>
+      と重なるように図形を移動します。これは、図形をX方向に <span
+      class="math inline">\(-g_x\)</span>、Y方向に <span
+      class="math inline">\(-g_y\)</span>
+      だけ移動させる操作に相当します。</li>
+      <li>原点 <span class="math inline">\(O\)</span>
+      を基準に<strong>1.5倍</strong> (<span
+      class="math inline">\(s_{x}=s_{y}=1.5\)</span>)
+      に図形を拡大をします。</li>
+      <li>図形の重心を元の位置 <span class="math inline">\(G\)</span>
+      に戻します。つまり、図形を X方向に <span
+      class="math inline">\(g_x\)</span>、Y方向に <span
+      class="math inline">\(g_y\)</span> だけ移動します。</li>
+      </ol>
+      <figure>
+      <img src="figs/20/vec-05.svg" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>図形の <strong>重心</strong>
+      は、図形を構成する各頂点のX座標とY座標について、それぞれを平均することで求めることができます
+      (数学で学んでいるはずです)。つまり、次式のように計算できます。</p>
+      <p><span class="math display">\[ G = (g_x,\ g_y) = \left(
+      \frac{x_0+x_1+x_2}{3},\ \frac{y_0+y_1+y_2}{3} \right)
+      \]</span></p>
+      <p>ndarrayオブジェクトでは <code>.mean(axis=0)</code>
+      メソッドで図形の重心を求める計算ができます。<strong>メソッド</strong>
+      とは、オブジェクトから <code>.</code> でアクセスできる <span
+      class="masked">「関数のようなもの」</span> と考えてください
+      (詳しいことは、<strong>クラス (Class)</strong>
+      に関する講義で説明します)。</p>
+      <div class="sourceCode" id="cb35"
+      data-caption="図形重心の計算"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb35-2"><a href="#cb35-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb35-3"><a href="#cb35-3"></a>P1 <span class="op">=</span> np.array([[<span class="fl">1.5</span>, <span class="fl">4.0</span>],</span>
+<span id="cb35-4"><a href="#cb35-4"></a>               [<span class="fl">3.5</span>, <span class="fl">5.0</span>],</span>
+<span id="cb35-5"><a href="#cb35-5"></a>               [<span class="fl">4.5</span>, <span class="fl">2.0</span>]])</span>
+<span id="cb35-6"><a href="#cb35-6"></a>G <span class="op">=</span> P1.mean(axis<span class="op">=</span><span class="dv">0</span>)  <span class="co"># 重心を計算</span></span>
+<span id="cb35-7"><a href="#cb35-7"></a><span class="cf">assert</span> <span class="bu">type</span>(G) <span class="op">==</span> np.ndarray </span>
+<span id="cb35-8"><a href="#cb35-8"></a><span class="bu">print</span>(G)</span></code></pre></div>
+      <p>実行結果は、次のようになります。<span
+      class="math inline">\((1.5+3.5+4.5)/3=3.16..\)</span>
+      なので正しく計算できていることが分かります。</p>
+      <pre><code>[3.16666667 3.66666667]</code></pre>
+      <p>なお、ndarrayオブジェクトの <code>mean</code>
+      メソッドでは、<code>axis</code> の指定で <span
+      class="masked">平均を計算する軸 (方向) </span>
+      を指定することができます。今回は、座標を「n行2列」の行列
+      (座標を表す「行ベクトル」を束ねたもの)
+      に格納しているので、<code>mean(axis=0)</code>
+      により重心を計算しています。</p>
+      <figure>
+      <img src="figs/20/mat-axis-01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>以上を踏まえて、図形の重心を基準に拡大縮小するプログラムは、次のように書くことができます。</p>
+      <div class="sourceCode" id="cb37"
+      data-caption="図形の重心を基準とした拡大縮小"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb37-2"><a href="#cb37-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb37-3"><a href="#cb37-3"></a></span>
+<span id="cb37-4"><a href="#cb37-4"></a>P1 <span class="op">=</span> np.array([[<span class="fl">1.5</span>, <span class="fl">4.0</span>],[<span class="fl">3.5</span>, <span class="fl">5.0</span>],[<span class="fl">4.5</span>, <span class="fl">2.0</span>]])</span>
+<span id="cb37-5"><a href="#cb37-5"></a>S <span class="op">=</span> np.array([[ <span class="fl">1.5</span>,   <span class="dv">0</span>],</span>
+<span id="cb37-6"><a href="#cb37-6"></a>              [   <span class="dv">0</span>, <span class="fl">1.5</span>]]) <span class="co"># 拡大行列</span></span>
+<span id="cb37-7"><a href="#cb37-7"></a>G <span class="op">=</span> P1.mean(axis<span class="op">=</span><span class="dv">0</span>)         <span class="co"># 重心</span></span>
+<span id="cb37-8"><a href="#cb37-8"></a></span>
+<span id="cb37-9"><a href="#cb37-9"></a>P2 <span class="op">=</span> (P1<span class="op">-</span>G)<span class="op">@</span>S<span class="op">+</span>G  <span class="co"># 重心を基準とした拡大縮小</span></span>
+<span id="cb37-10"><a href="#cb37-10"></a><span class="bu">print</span>(P2.<span class="bu">round</span>(<span class="dv">1</span>))</span></code></pre></div>
+      <p>実行結果は次のようになります。</p>
+      <pre><code>[[0.7 4.2]
+ [3.7 5.7]
+ [5.2 1.2]]</code></pre>
+      <p>実行結果を可視化すると次のようになります。</p>
+      <figure>
+      <img src="figs/20/vec-06.svg" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <hr />
+      <p><strong>演習</strong>: 次のプログラムは <strong>Matplotlib
+      を使った処理の可視化</strong>
+      を含めた図形の拡大縮小処理のサンプルプログラムである。まずは、プログラムの動作確認をせよ。</p>
+      <p>次に、<strong>図形に外接する四角形の左下の点</strong>を基準に拡大縮小するようなプログラムに書き換えよ
+      (ヒント:<code>P1.min(axis=0)</code>
+      を利用するとよい)。また、同様に外接四角形の「左上」の点を基準に拡大縮小するようなプログラムに書き換えよ。</p>
+      <div class="sourceCode" id="cb39"
+      data-caption="図形の拡大縮小処理(任意基準点)+可視化"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb39-2"><a href="#cb39-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb39-3"><a href="#cb39-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb39-4"><a href="#cb39-4"></a><span class="im">from</span> matplotlib.patheffects <span class="im">import</span> Normal,Stroke</span>
+<span id="cb39-5"><a href="#cb39-5"></a><span class="im">from</span> matplotlib.ticker <span class="im">import</span> FuncFormatter</span>
+<span id="cb39-6"><a href="#cb39-6"></a><span class="im">from</span> matplotlib.patches <span class="im">import</span> Polygon</span>
+<span id="cb39-7"><a href="#cb39-7"></a></span>
+<span id="cb39-8"><a href="#cb39-8"></a>P1 <span class="op">=</span> np.array([[<span class="fl">1.5</span>, <span class="fl">4.0</span>],[<span class="fl">3.5</span>, <span class="fl">5.0</span>],[<span class="fl">4.5</span>, <span class="fl">2.0</span>]])</span>
+<span id="cb39-9"><a href="#cb39-9"></a>S <span class="op">=</span> np.array([[ <span class="fl">1.5</span>,   <span class="dv">0</span>],</span>
+<span id="cb39-10"><a href="#cb39-10"></a>              [   <span class="dv">0</span>, <span class="fl">1.5</span>]]) <span class="co"># 拡大行列</span></span>
+<span id="cb39-11"><a href="#cb39-11"></a>G <span class="op">=</span> P1.mean(axis<span class="op">=</span><span class="dv">0</span>)         <span class="co"># 基準座標</span></span>
+<span id="cb39-12"><a href="#cb39-12"></a></span>
+<span id="cb39-13"><a href="#cb39-13"></a>P2 <span class="op">=</span> (P1<span class="op">-</span>G)<span class="op">@</span>S<span class="op">+</span>G  <span class="co"># 座標Gを基準とした拡大縮小</span></span>
+<span id="cb39-14"><a href="#cb39-14"></a></span>
+<span id="cb39-15"><a href="#cb39-15"></a><span class="bu">print</span>(<span class="ss">f&#39;P1 =</span><span class="ch">\n</span><span class="sc">{</span>P1<span class="sc">}</span><span class="ch">\n</span><span class="ss">&#39;</span>)</span>
+<span id="cb39-16"><a href="#cb39-16"></a><span class="bu">print</span>(<span class="ss">f&#39;G  =</span><span class="ch">\n</span><span class="sc">{</span>G<span class="sc">}</span><span class="ch">\n</span><span class="ss">&#39;</span>)</span>
+<span id="cb39-17"><a href="#cb39-17"></a><span class="bu">print</span>(<span class="ss">f&#39;P2 = (P1-G)@S+G</span><span class="ch">\n</span><span class="sc">{</span>P2<span class="sc">}</span><span class="ch">\n</span><span class="ss">&#39;</span>)</span>
+<span id="cb39-18"><a href="#cb39-18"></a></span>
+<span id="cb39-19"><a href="#cb39-19"></a><span class="co"># 以下、可視化に関する処理</span></span>
+<span id="cb39-20"><a href="#cb39-20"></a>plt.rcParams[<span class="st">&#39;mathtext.fontset&#39;</span>] <span class="op">=</span> <span class="st">&#39;cm&#39;</span></span>
+<span id="cb39-21"><a href="#cb39-21"></a>fig,axis <span class="op">=</span> plt.subplots(dpi<span class="op">=</span><span class="dv">120</span>,figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">3</span>),ncols<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb39-22"><a href="#cb39-22"></a></span>
+<span id="cb39-23"><a href="#cb39-23"></a>x_min,x_max <span class="op">=</span> <span class="op">-</span><span class="dv">2</span>,<span class="dv">8</span><span class="op">;</span> y_min,y_max <span class="op">=</span> <span class="op">-</span><span class="dv">2</span>,<span class="dv">8</span></span>
+<span id="cb39-24"><a href="#cb39-24"></a>ot_prm <span class="op">=</span> (Stroke(linewidth<span class="op">=</span><span class="dv">3</span>,foreground<span class="op">=</span><span class="st">&#39;#fff&#39;</span>),Normal(),)</span>
+<span id="cb39-25"><a href="#cb39-25"></a></span>
+<span id="cb39-26"><a href="#cb39-26"></a><span class="cf">for</span> i,ax <span class="kw">in</span> <span class="bu">enumerate</span>(axis.flatten()):</span>
+<span id="cb39-27"><a href="#cb39-27"></a></span>
+<span id="cb39-28"><a href="#cb39-28"></a>  <span class="cf">if</span> i<span class="op">==</span><span class="dv">1</span>:</span>
+<span id="cb39-29"><a href="#cb39-29"></a>    ax.add_patch(Polygon(P1,ec<span class="op">=</span><span class="st">&#39;tab:gray&#39;</span>,ls<span class="op">=</span><span class="st">&#39;:&#39;</span>,fill<span class="op">=</span><span class="va">False</span>))</span>
+<span id="cb39-30"><a href="#cb39-30"></a></span>
+<span id="cb39-31"><a href="#cb39-31"></a>  P <span class="op">=</span> P1 <span class="cf">if</span> i<span class="op">==</span><span class="dv">0</span> <span class="cf">else</span> P2</span>
+<span id="cb39-32"><a href="#cb39-32"></a>  ax.add_patch(Polygon(P,alpha<span class="op">=</span><span class="fl">0.5</span>))</span>
+<span id="cb39-33"><a href="#cb39-33"></a>  ax.scatter(P.T[<span class="dv">0</span>],P.T[<span class="dv">1</span>], marker<span class="op">=</span><span class="st">&#39;.&#39;</span>)</span>
+<span id="cb39-34"><a href="#cb39-34"></a>  ax.set_aspect(<span class="st">&#39;equal&#39;</span>, adjustable<span class="op">=</span><span class="st">&#39;box&#39;</span>)</span>
+<span id="cb39-35"><a href="#cb39-35"></a></span>
+<span id="cb39-36"><a href="#cb39-36"></a>  <span class="co"># ticks + ticklabels</span></span>
+<span id="cb39-37"><a href="#cb39-37"></a>  ax.spines[<span class="st">&#39;bottom&#39;</span>].set_position(<span class="st">&#39;zero&#39;</span>)</span>
+<span id="cb39-38"><a href="#cb39-38"></a>  ax.spines[<span class="st">&#39;left&#39;</span>].set_position(<span class="st">&#39;zero&#39;</span>)</span>
+<span id="cb39-39"><a href="#cb39-39"></a>  ax.spines[<span class="st">&#39;top&#39;</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb39-40"><a href="#cb39-40"></a>  ax.spines[<span class="st">&#39;right&#39;</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb39-41"><a href="#cb39-41"></a>  ax.tick_params(direction<span class="op">=</span><span class="st">&#39;inout&#39;</span>,which<span class="op">=</span><span class="st">&#39;both&#39;</span>)</span>
+<span id="cb39-42"><a href="#cb39-42"></a></span>
+<span id="cb39-43"><a href="#cb39-43"></a>  ax.set_xlim(x_min,x_max)</span>
+<span id="cb39-44"><a href="#cb39-44"></a>  ax.set_ylim(y_min,y_max)</span>
+<span id="cb39-45"><a href="#cb39-45"></a>  ax.set_xticks(<span class="bu">range</span>(x_min,x_max<span class="op">+</span><span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb39-46"><a href="#cb39-46"></a>  ax.set_yticks(<span class="bu">range</span>(y_min,y_max<span class="op">+</span><span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb39-47"><a href="#cb39-47"></a>  ax.set_xticks(<span class="bu">range</span>(x_min,x_max<span class="op">+</span><span class="dv">1</span>),minor<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb39-48"><a href="#cb39-48"></a>  ax.set_yticks(<span class="bu">range</span>(y_min,y_max<span class="op">+</span><span class="dv">1</span>),minor<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb39-49"><a href="#cb39-49"></a></span>
+<span id="cb39-50"><a href="#cb39-50"></a>  ax.xaxis.set_major_formatter(FuncFormatter(<span class="kw">lambda</span> p,q : <span class="ss">f&#39;</span><span class="sc">{</span>p<span class="sc">:.0f}</span><span class="ss">&#39;</span> <span class="cf">if</span> p<span class="op">!=</span><span class="dv">0</span> <span class="cf">else</span> <span class="st">&#39;&#39;</span>))</span>
+<span id="cb39-51"><a href="#cb39-51"></a>  ax.yaxis.set_major_formatter(FuncFormatter(<span class="kw">lambda</span> p,q : <span class="ss">f&#39;</span><span class="sc">{</span>p<span class="sc">:.0f}</span><span class="ss">&#39;</span> <span class="cf">if</span> p<span class="op">!=</span><span class="dv">0</span> <span class="cf">else</span> <span class="st">&#39;&#39;</span>))</span>
+<span id="cb39-52"><a href="#cb39-52"></a></span>
+<span id="cb39-53"><a href="#cb39-53"></a>  <span class="cf">for</span> t <span class="kw">in</span> ax.get_xticklabels()<span class="op">+</span>ax.get_yticklabels():</span>
+<span id="cb39-54"><a href="#cb39-54"></a>    t.set_path_effects(ot_prm)</span>
+<span id="cb39-55"><a href="#cb39-55"></a></span>
+<span id="cb39-56"><a href="#cb39-56"></a>  ax.scatter(<span class="dv">0</span>,<span class="dv">0</span>,c<span class="op">=</span><span class="st">&#39;#000&#39;</span>,marker<span class="op">=</span><span class="st">&#39;.&#39;</span>)</span>
+<span id="cb39-57"><a href="#cb39-57"></a></span>
+<span id="cb39-58"><a href="#cb39-58"></a>  ax.set_axisbelow(<span class="va">True</span>)</span>
+<span id="cb39-59"><a href="#cb39-59"></a>  ax.grid(lw<span class="op">=</span><span class="fl">0.5</span>,which<span class="op">=</span><span class="st">&#39;both&#39;</span>,clip_on<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb39-60"><a href="#cb39-60"></a></span>
+<span id="cb39-61"><a href="#cb39-61"></a>plt.tight_layout()</span>
+<span id="cb39-62"><a href="#cb39-62"></a>plt.show()</span></code></pre></div>
+      <h2 data-number="4.5" id="回転"><span
+      class="header-section-number">4.5</span> 回転</h2>
+      <p>XY平面上の座標 <span class="math inline">\((x,y)\)</span> を
+      <strong>原点を中心に反時計回り</strong> (=<strong>CCW</strong>:
+      Counter Clock Wise) に <span class="math inline">\(\theta\)</span>
+      回転させたときの座標 <span
+      class="math inline">\((x&#39;,y&#39;)\)</span>
+      は、次式のように2行2列の「<strong>回転行列</strong>」との積で求まることが数学的に知られています。</p>
+      <p><span class="math display">\[ \begin{bmatrix} x&#39; &amp;
+      y&#39; \end{bmatrix} = \begin{bmatrix} x &amp; y \end{bmatrix}
+      \begin{bmatrix} \cos\theta &amp; \sin\theta \\ -\sin\theta &amp;
+      \cos\theta \end{bmatrix} =  \begin{bmatrix}
       x\cdot \cos\theta - y \cdot \sin\theta &amp; x\cdot \sin\theta + y
-      \cdot \cos\theta
-      \end{bmatrix}
-      \]</span></p>
+      \cdot \cos\theta \end{bmatrix}\]</span></p>
+      <p>例えば、 座標 <span class="math inline">\((x,y) =(4.5,
+      2.0)\)</span> を反時計回りに <span
+      class="math inline">\(\theta=45^{\circ}\)</span>
+      回転させたときの座標 <span class="math inline">\((x&#39;, y&#39;)
+      = (1.8, 4.6)\)</span> は、次のように計算できます。</p>
+      <p><span class="math display">\[ \begin{bmatrix} x&#39; &amp;
+      y&#39; \end{bmatrix} = \begin{bmatrix} 4.5 &amp; 2.0 \end{bmatrix}
+      \begin{bmatrix} \frac{\sqrt{2}}{2} &amp; \frac{\sqrt{2}}{2} \\
+      -\frac{\sqrt{2}}{2} &amp; \frac{\sqrt{2}}{2} \end{bmatrix} =
+      \begin{bmatrix}
+      4.5\cdot \frac{\sqrt{2}}{2} - 2.0 \cdot \frac{\sqrt{2}}{2} &amp;
+      4.5\cdot \frac{\sqrt{2}}{2} + 2.0 \cdot \frac{\sqrt{2}}{2}
+      \end{bmatrix} \fallingdotseq \begin{bmatrix} 1.8 &amp; 4.6
+      \end{bmatrix} \]</span></p>
+      <p>これを可視化すると下図のようになります。確かに回転行列との積により、回転後の座標が適切に求められていることが確認できます。なお、この「回転の原理」や「回転行列の導出」については本授業の範疇ではないので
+      (興味・関心があるなら)<a
+      href="https://www.youtube.com/results?search_query=回転行列+2次元">YouTube</a>や<a
+      href="https://www.google.com/search?q=回転行列+2次元+導出">ウェブ検索</a>を利用して学んでみてください
+      。</p>
+      <figure>
+      <img src="figs/20/vec-07.svg" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>これを応用し、行列で表現された図形 <span
+      class="math inline">\(P_{1}\)</span> についても、回転行列 <span
+      class="math inline">\(R\)</span>
+      との積によって<strong>原点中心に回転</strong>させることができます。</p>
+      <p><span class="math display">\[ P_{2} = P_{1} R  =
+      \begin{bmatrix} x_0 &amp; y_0 \\ x_1 &amp; y_1 \\ x_2 &amp; y_2
+      \end{bmatrix} \begin{bmatrix} \cos\theta &amp; \sin\theta \\
+      -\sin\theta &amp; \cos\theta \end{bmatrix} = \begin{bmatrix}
+      x_0\cdot \cos\theta - y_0 \cdot \sin\theta &amp; x_0\cdot
+      \sin\theta + y_0 \cdot \cos\theta \\
+      x_1\cdot \cos\theta - y_1 \cdot \sin\theta &amp; x_1\cdot
+      \sin\theta + y_1 \cdot \cos\theta \\
+      x_2\cdot \cos\theta - y_2 \cdot \sin\theta &amp; x_2\cdot
+      \sin\theta + y_2 \cdot \cos\theta \\
+      \end{bmatrix} \]</span></p>
+      <p>ここで <span class="math inline">\(P_{2}\)</span>
+      は「回転後の図形」を表す行列であり、<span
+      class="math inline">\(R\)</span> は 原点を基準に反時計回りに <span
+      class="math inline">\(\theta\)</span> の回転を与える行列
+      (=<strong>回転行列</strong>) になります。<span
+      class="math inline">\(P_{1}\)</span>
+      は「<strong>n行2列</strong>」の行列で、<span
+      class="math inline">\(R\)</span>
+      は「<strong>2行2列</strong>」の行列であるため、その積である <span
+      class="math inline">\(P_{1}R=P_{2}\)</span>
+      は「<strong>n行2列</strong>」となります 。</p>
+      <figure>
+      <img src="figs/20/vec-08.svg" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <div class="note type-tips">
+      <p><strong>回転行列の成分の値が違う?</strong></p>
+      <p>ウェブで「<strong>回転行列</strong>」について調べると、一般には、次のような解説がされています。</p>
+      <blockquote>
+      <p>２次元平面上の点 <span class="math inline">\((x,y)\)</span>
+      について、それを原点を中心に反時計回りに <span
+      class="math inline">\(\theta\)</span> だけ回転させた点を <span
+      class="math inline">\((x&#39;,y&#39;)\)</span>
+      とすると、これらは次のような関係となる。 <span
+      class="math display">\[ \begin{bmatrix} x&#39; \\ y&#39;
+      \end{bmatrix} = \begin{bmatrix} \cos\theta &amp; -\sin\theta \\
+      \sin\theta &amp; \cos\theta \end{bmatrix} \begin{bmatrix} x \\ y
+      \end{bmatrix}=\begin{bmatrix} x\cdot \cos\theta - y \cdot
+      \sin\theta \\ x\cdot \sin\theta + y \cdot \cos\theta
+      \end{bmatrix}  \ \ \ \ \ \ ...(1)\]</span></p>
+      </blockquote>
+      <p>ここで注目して欲しい点は、上記 (1)
+      の回転行列と、この講義資料内で先ほど示した<strong>回転行列の内容が違っている点</strong>です。具体的には「<span
+      class="math inline">\(\sin\theta\)</span>」と「<span
+      class="math inline">\(-\sin\theta\)</span>」の位置が入れ替わっています。</p>
+      <p>これは、(1) 式では、座標を「<strong>列ベクトル</strong>
+      (<strong>2行1列</strong>)」で扱い、講義資料のなかでは座標を「<strong>行ベクトル</strong>
+      (<strong>1行2列</strong>) 」で扱っていることに起因します。(1)
+      式を次のように考えて、</p>
+      <p><span class="math display">\[ AB = \begin{bmatrix} \cos\theta
+      &amp; -\sin\theta \\ \sin\theta &amp; \cos\theta \end{bmatrix}
+      \begin{bmatrix} x \\ y \end{bmatrix}=\begin{bmatrix} x\cdot
+      \cos\theta - y \cdot \sin\theta \\ x\cdot \sin\theta + y \cdot
+      \cos\theta \end{bmatrix}\]</span></p>
+      <p><span class="math display">\[ (AB)^\top = \begin{bmatrix}
+      x\cdot \cos\theta - y \cdot \sin\theta &amp; x\cdot \sin\theta + y
+      \cdot \cos\theta \end{bmatrix}\]</span></p>
+      <p>ここで、前半に確認した<strong>転置行列の性質</strong>「<span
+      class="masked"><span class="math inline">\((AB)^\top = B^\top
+      A^\top\)</span></span>」を利用すれば、次のように本講義資料内で示す回転行列
+      <span class="math inline">\(R\)</span> が得られます。</p>
+      <p><span class="math display">\[ B^\top A^\top = \begin{bmatrix} x
+      &amp; y \end{bmatrix} \begin{bmatrix} \cos\theta &amp; \sin\theta
+      \\ -\sin\theta &amp; \cos\theta \end{bmatrix} =  \begin{bmatrix}
+      x\cdot \cos\theta - y \cdot \sin\theta &amp; x\cdot \sin\theta + y
+      \cdot \cos\theta \end{bmatrix} = (AB)^\top \]</span></p>
+      </div>
+      <p>以上を踏まえて、原点を基準 (中心)
+      に図形を回転するプログラムは、次のように書くことができます。</p>
+      <div class="sourceCode" id="cb40"
+      data-caption="原点を基準とした回転処理"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb40-2"><a href="#cb40-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb40-3"><a href="#cb40-3"></a>P1 <span class="op">=</span> np.array([[<span class="fl">1.5</span>, <span class="fl">4.0</span>],</span>
+<span id="cb40-4"><a href="#cb40-4"></a>                [<span class="fl">3.5</span>, <span class="fl">5.0</span>],</span>
+<span id="cb40-5"><a href="#cb40-5"></a>                [<span class="fl">4.5</span>, <span class="fl">2.0</span>]],dtype<span class="op">=</span><span class="bu">float</span>)</span>
+<span id="cb40-6"><a href="#cb40-6"></a>theta <span class="op">=</span> np.radians(<span class="dv">45</span>)  <span class="co"># Deg -&gt; Rad</span></span>
+<span id="cb40-7"><a href="#cb40-7"></a>R <span class="op">=</span> np.array([[ np.cos(theta), np.sin(theta)],</span>
+<span id="cb40-8"><a href="#cb40-8"></a>              [<span class="op">-</span>np.sin(theta), np.cos(theta)]]) <span class="co"># 回転行列</span></span>
+<span id="cb40-9"><a href="#cb40-9"></a></span>
+<span id="cb40-10"><a href="#cb40-10"></a>P2 <span class="op">=</span> P1<span class="op">@</span>R  <span class="co"># 原点を中心とした回転</span></span>
+<span id="cb40-11"><a href="#cb40-11"></a></span>
+<span id="cb40-12"><a href="#cb40-12"></a><span class="bu">print</span>(<span class="ss">f&#39;P1=</span><span class="ch">\n</span><span class="sc">{</span>P1<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+<span id="cb40-13"><a href="#cb40-13"></a><span class="bu">print</span>(<span class="ss">f&#39;</span><span class="ch">\n</span><span class="ss">P2=</span><span class="ch">\n</span><span class="sc">{</span>P2<span class="sc">.</span><span class="bu">round</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+      <p>実行結果は次のようになります。</p>
+      <pre><code>P1=
+[[1.5 4. ]
+ [3.5 5. ]
+ [4.5 2. ]]
+
+P2=
+[[-1.8  3.9]
+ [-1.1  6. ]
+ [ 1.8  4.6]]</code></pre>
+      <p>実行結果を可視化すると次のようになります (再掲)。</p>
+      <figure>
+      <img src="figs/20/vec-08.svg" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <h2 data-number="4.6" id="任意点を基準-中心-とする回転"><span
+      class="header-section-number">4.6</span> 任意点を基準 (中心)
+      とする回転</h2>
+      <p>原点ではなく図形の重心などの<strong>任意の点を基準 (中心)
+      とする回転処理</strong>は、<a
+      href="#任意点を基準とする拡大縮小">任意点を基準とする拡大縮小</a>
+      と同じ考え方で行なうことができます。</p>
+      <p>例えば、図形の重心を基準 (中心)
+      とする回転処理は、次のように書くことができます。</p>
+      <div class="sourceCode" id="cb42"
+      data-caption="原点を基準とした回転"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb42-2"><a href="#cb42-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb42-3"><a href="#cb42-3"></a></span>
+<span id="cb42-4"><a href="#cb42-4"></a>P1 <span class="op">=</span> np.array([[<span class="fl">0.0</span>, <span class="fl">4.0</span>],</span>
+<span id="cb42-5"><a href="#cb42-5"></a>               [<span class="fl">3.5</span>, <span class="fl">6.0</span>],</span>
+<span id="cb42-6"><a href="#cb42-6"></a>               [<span class="fl">6.5</span>, <span class="fl">1.0</span>]],dtype<span class="op">=</span><span class="bu">float</span>)</span>
+<span id="cb42-7"><a href="#cb42-7"></a>theta <span class="op">=</span> np.radians(<span class="dv">45</span>)</span>
+<span id="cb42-8"><a href="#cb42-8"></a>R <span class="op">=</span> np.array([[ np.cos(theta), np.sin(theta)],</span>
+<span id="cb42-9"><a href="#cb42-9"></a>              [<span class="op">-</span>np.sin(theta), np.cos(theta)]])</span>
+<span id="cb42-10"><a href="#cb42-10"></a>G <span class="op">=</span> np.mean(P1, axis<span class="op">=</span><span class="dv">0</span>)  <span class="co"># 重心</span></span>
+<span id="cb42-11"><a href="#cb42-11"></a>P2 <span class="op">=</span> (P1<span class="op">-</span>G)<span class="op">@</span>R<span class="op">+</span>G          <span class="co"># 重心を基準にとした回転</span></span>
+<span id="cb42-12"><a href="#cb42-12"></a></span>
+<span id="cb42-13"><a href="#cb42-13"></a><span class="bu">print</span>(<span class="ss">f&#39;P1=</span><span class="ch">\n</span><span class="sc">{</span>P1<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+<span id="cb42-14"><a href="#cb42-14"></a><span class="bu">print</span>(<span class="ss">f&#39;</span><span class="ch">\n</span><span class="ss">P2=</span><span class="ch">\n</span><span class="sc">{</span>P2<span class="sc">.</span><span class="bu">round</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+      <p>行列 (ndarrayオブジェクト) を使用することで
+      <code>P2 = (P1-G)@R+G</code> のように、<span
+      class="masked">極めて簡潔に処理 (プログラム) を記述</span>
+      することができます。また、<span
+      class="masked">図形を構成する頂点数が増え</span>
+      ても、<code>P1</code>
+      の初期化の引数だけ変更すれば全て対応させることができます。実行結果は次のようになります。</p>
+      <pre><code>P1=
+[[0.  4. ]
+ [3.5 6. ]
+ [6.5 1. ]]
+
+P2=
+[[0.7 1.5]
+ [1.8 5.4]
+ [7.5 4. ]]</code></pre>
+      <p>実行結果を可視化すると次のようになります。重心を基準 (中心)
+      とした図形の回転ができていることが確認できます。</p>
+      <figure>
+      <img src="figs/20/vec-09.svg" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <hr />
+      <p><strong>演習</strong>:
+      任意の図形について、図形重心を中心に「1.2倍」に拡大して、さらに「90度」だけ回転させるようなプログラムを作成し、その結果を可視化して確認せよ。</p>
+      <h1 data-number="5" id="ベクトル行列の応用-2"><span
+      class="header-section-number">5</span> ベクトル・行列の応用 2</h1>
+      <p>物体の位置、速度、加速度を「<strong>ベクトル</strong>」として扱うことで
+      <strong>物体の運動を比較的簡単にシミュレートすること</strong>
+      ができます。以降、特に単位を明示しませんが、ここでは位置の単位を
+      mm ではなく <strong>px (ピクセル)</strong>、時間の単位を s
+      ではなく <strong>f (フレーム)</strong> と考えてください。</p>
+      <p>いま、フレーム <span class="math inline">\(f=0\)</span>
+      のときの<strong>位置</strong>が <span class="math inline">\(p_{0}
+      = (x_{0},\ y_{0})\)</span>、<strong>速度</strong>が <span
+      class="math inline">\(v_{0} = (vx_{0},\
+      vy_{0})\)</span>で、それが一定の <strong>加速度</strong> <span
+      class="math inline">\(a = (ax,\ ay)\)</span>
+      を受けながら「<strong>等加速度運動</strong>」するような「点」を考えます。ここで、位置、速度、加速度を、すべて「<strong>ベクトル</strong>」として考えます。</p>
+      <p>例えば、<span class="math inline">\(f=0\)</span>
+      のときの<strong>位置</strong>が <span class="math inline">\(p_{0}
+      = (0,\ 0)\)</span> 、<strong>速度</strong>が <span
+      class="math inline">\(v_{0} =(18,\
+      20)\)</span>で、<strong>加速度</strong>が <span
+      class="math inline">\(a = (-0.8,\ -2.0)\)</span>
+      であるとすれば、<span class="math inline">\(f=1\)</span>
+      の<strong>位置</strong>は <span class="math inline">\(p_{1} =
+      p_{0} + v_{0} = (18,\ 20)\)</span>、<strong>速度</strong>は <span
+      class="math inline">\(v_{1} = v_{0} + a = (17.2,\ 18.0)\)</span>
+      のように、<strong>ベクトルの単純な加算</strong>によって求めることができます。</p>
+      <p>速度の単位が <code>px/f</code>、つまり <span
+      class="masked">1フレームあたりの位置の変化量</span>を意味していることを考えれば
+      <span class="math inline">\(p_{1}=p_{0} + v_{0}\)</span>
+      が理解できると思います。同様に、加速度が <span
+      class="masked">1フレームあたりの速度の変化量</span>を意味していることを考えれば
+      <span class="math inline">\(v_{1}=v_{0} + a\)</span>
+      も理解できると思います。</p>
+      <p>同様に、<span class="math inline">\(f=2\)</span> の位置は <span
+      class="math inline">\(p_{2} = p_{1} + v_{1} = (35.2,\
+      38.0)\)</span>、速度は <span class="math inline">\(v_{2} = v_{1} +
+      a = (16.4,\ 16.0)\)</span>
+      のように逐次計算によって求めることができます。</p>
+      <p>これらは、次のようなプログラムによって計算できます。</p>
+      <div class="sourceCode" id="cb44"
+      data-caption="等加速度運動のシミュレート"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb44-2"><a href="#cb44-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb44-3"><a href="#cb44-3"></a></span>
+<span id="cb44-4"><a href="#cb44-4"></a>p <span class="op">=</span> np.array([ <span class="dv">0</span>, <span class="dv">0</span>],dtype<span class="op">=</span><span class="bu">float</span>)   <span class="co"># 初期位置 </span></span>
+<span id="cb44-5"><a href="#cb44-5"></a>v <span class="op">=</span> np.array([<span class="dv">18</span>,<span class="dv">20</span>],dtype<span class="op">=</span><span class="bu">float</span>)   <span class="co"># 初期速度</span></span>
+<span id="cb44-6"><a href="#cb44-6"></a>a <span class="op">=</span> np.array([<span class="op">-</span><span class="fl">0.8</span>,<span class="op">-</span><span class="dv">2</span>],dtype<span class="op">=</span><span class="bu">float</span>) <span class="co"># 加速度</span></span>
+<span id="cb44-7"><a href="#cb44-7"></a></span>
+<span id="cb44-8"><a href="#cb44-8"></a><span class="co"># f=0 から 10 までをシミュレート</span></span>
+<span id="cb44-9"><a href="#cb44-9"></a><span class="cf">for</span> f <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>,<span class="dv">11</span>): </span>
+<span id="cb44-10"><a href="#cb44-10"></a>  <span class="bu">print</span>(<span class="ss">f&#39;f=</span><span class="sc">{</span>f<span class="sc">:2}</span><span class="ss">  &#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb44-11"><a href="#cb44-11"></a>  <span class="bu">print</span>(<span class="ss">f&#39;p=(</span><span class="sc">{</span>p[<span class="dv">0</span>]<span class="sc">:&gt;5.1f}</span><span class="ss">, </span><span class="sc">{</span>p[<span class="dv">1</span>]<span class="sc">:&gt;5.1f}</span><span class="ss">)  &#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb44-12"><a href="#cb44-12"></a>  <span class="bu">print</span>(<span class="ss">f&#39;v=(</span><span class="sc">{</span>v[<span class="dv">0</span>]<span class="sc">:&gt;4.1f}</span><span class="ss">, </span><span class="sc">{</span>v[<span class="dv">1</span>]<span class="sc">:&gt;5.1f}</span><span class="ss">)  &#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb44-13"><a href="#cb44-13"></a>  <span class="bu">print</span>(<span class="ss">f&#39;a=(</span><span class="sc">{</span>a[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">, </span><span class="sc">{</span>a[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">)&#39;</span>)</span>
+<span id="cb44-14"><a href="#cb44-14"></a>  p <span class="op">=</span> p <span class="op">+</span> v  <span class="co"># 位置の更新 </span></span>
+<span id="cb44-15"><a href="#cb44-15"></a>  v <span class="op">=</span> v <span class="op">+</span> a  <span class="co"># 速度の更新</span></span></code></pre></div>
+      <p>実行結果は次のようになります。</p>
+      <pre><code>f= 0  p=(  0.0,   0.0)  v=(18.0,  20.0)  a=(-0.8, -2.0)
+f= 1  p=( 18.0,  20.0)  v=(17.2,  18.0)  a=(-0.8, -2.0)
+f= 2  p=( 35.2,  38.0)  v=(16.4,  16.0)  a=(-0.8, -2.0)
+f= 3  p=( 51.6,  54.0)  v=(15.6,  14.0)  a=(-0.8, -2.0)
+f= 4  p=( 67.2,  68.0)  v=(14.8,  12.0)  a=(-0.8, -2.0)
+f= 5  p=( 82.0,  80.0)  v=(14.0,  10.0)  a=(-0.8, -2.0)
+f= 6  p=( 96.0,  90.0)  v=(13.2,   8.0)  a=(-0.8, -2.0)
+f= 7  p=(109.2,  98.0)  v=(12.4,   6.0)  a=(-0.8, -2.0)
+f= 8  p=(121.6, 104.0)  v=(11.6,   4.0)  a=(-0.8, -2.0)
+f= 9  p=(133.2, 108.0)  v=(10.8,   2.0)  a=(-0.8, -2.0)
+f=10  p=(144.0, 110.0)  v=(10.0,   0.0)  a=(-0.8, -2.0)</code></pre>
+      <p>Matplotlib を使って可視化してみます。</p>
+      <div class="sourceCode" id="cb46"
+      data-caption="運動のシミュレート・可視化"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb46-2"><a href="#cb46-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb46-3"><a href="#cb46-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb46-4"><a href="#cb46-4"></a></span>
+<span id="cb46-5"><a href="#cb46-5"></a>p <span class="op">=</span> np.array([ <span class="dv">0</span>, <span class="dv">0</span>],dtype<span class="op">=</span><span class="bu">float</span>)   <span class="co"># 初期位置</span></span>
+<span id="cb46-6"><a href="#cb46-6"></a>v <span class="op">=</span> np.array([<span class="dv">18</span>,<span class="dv">20</span>],dtype<span class="op">=</span><span class="bu">float</span>)   <span class="co"># 初期速度</span></span>
+<span id="cb46-7"><a href="#cb46-7"></a>a <span class="op">=</span> np.array([<span class="op">-</span><span class="fl">0.8</span>,<span class="op">-</span><span class="dv">2</span>],dtype<span class="op">=</span><span class="bu">float</span>) <span class="co"># 加速度</span></span>
+<span id="cb46-8"><a href="#cb46-8"></a></span>
+<span id="cb46-9"><a href="#cb46-9"></a>fig,ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="fl">5.5</span>,<span class="dv">3</span>))   <span class="co"># 準備</span></span>
+<span id="cb46-10"><a href="#cb46-10"></a>ax.set_aspect(<span class="st">&#39;equal&#39;</span>, adjustable<span class="op">=</span><span class="st">&#39;box&#39;</span>) <span class="co"># アスペクト比を1:1に設定</span></span>
+<span id="cb46-11"><a href="#cb46-11"></a>ax.set_xlim(<span class="dv">0</span>,<span class="dv">220</span>) <span class="co"># X軸の範囲 最小0 ～ 最大220</span></span>
+<span id="cb46-12"><a href="#cb46-12"></a>ax.set_ylim(<span class="dv">0</span>,<span class="dv">120</span>) <span class="co"># Y軸の範囲 最小0 ～ 最大120</span></span>
+<span id="cb46-13"><a href="#cb46-13"></a></span>
+<span id="cb46-14"><a href="#cb46-14"></a><span class="cf">for</span> f <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>,<span class="dv">20</span>):</span>
+<span id="cb46-15"><a href="#cb46-15"></a>  ax.scatter(p[<span class="dv">0</span>],p[<span class="dv">1</span>],alpha<span class="op">=</span><span class="fl">0.8</span>,c<span class="op">=</span><span class="st">&#39;tab:blue&#39;</span>) <span class="co"># 点を描画</span></span>
+<span id="cb46-16"><a href="#cb46-16"></a>  <span class="co"># print(f&#39;f={f:2}  &#39;,end=&#39;&#39;)</span></span>
+<span id="cb46-17"><a href="#cb46-17"></a>  <span class="co"># print(f&#39;p=({p[0]:&gt;5.1f}, {p[1]:&gt;5.1f})  &#39;,end=&#39;&#39;)</span></span>
+<span id="cb46-18"><a href="#cb46-18"></a>  <span class="co"># print(f&#39;v=({v[0]:&gt;4.1f}, {v[1]:&gt;5.1f})  &#39;,end=&#39;&#39;)</span></span>
+<span id="cb46-19"><a href="#cb46-19"></a>  <span class="co"># print(f&#39;a=({a[0]}, {a[1]})&#39;)</span></span>
+<span id="cb46-20"><a href="#cb46-20"></a>  p <span class="op">=</span> p <span class="op">+</span> v  <span class="co"># 位置の更新</span></span>
+<span id="cb46-21"><a href="#cb46-21"></a>  v <span class="op">=</span> v <span class="op">+</span> a  <span class="co"># 速度の更新</span></span>
+<span id="cb46-22"><a href="#cb46-22"></a></span>
+<span id="cb46-23"><a href="#cb46-23"></a>plt.tight_layout()                <span class="co"># レイアウトの最適化</span></span>
+<span id="cb46-24"><a href="#cb46-24"></a>plt.savefig(<span class="st">&#39;sim-01.png&#39;</span>,dpi<span class="op">=</span><span class="dv">150</span>) <span class="co"># 図の保存</span></span>
+<span id="cb46-25"><a href="#cb46-25"></a>plt.show()  <span class="co"># 図の画面表示</span></span></code></pre></div>
+      <p>実行結果は次のようになります。なお、ベクトルを使用していないバージョンは<a
+      href="lecture11.html#斜方投射のシミュレーションと可視化">第11回講義</a>で扱っているので、比較してみてください。</p>
+      <figure>
+      <img src="figs/20/sim-01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p><strong>第15行目</strong> で点 (図内の青丸)
+      を描画しています。<code>c='tab:blue'</code> は <span
+      class="masked"><code>color='tab:blue'</code></span>
+      の略表記で、<code>tab:blue</code> は Matplotlib
+      で利用できる<strong>既定の色の名前</strong>です(<a
+      href="https://matplotlib.org/stable/gallery/color/named_colors.html#tableau-palette">Matplotlibで利用できる色名の一覧</a>)。既定の色名を指定する以外に
+      <span class="masked"><code>c='#ff00ff'</code> または
+      <code>c='#f0f'</code></span>
+      のような16進数による色指定ができます。</p>
+      <p>また、<code>alpha=0.8</code> は <strong>透過度
+      (アルファチャンネル)</strong> を指定するもので <code>0.0</code>
+      で完全透明、<code>1.0</code>
+      で不透明になります。図内で点が重なるような場合は、<code>alpha=0.3</code>
+      から <code>alpha=0.8</code>
+      にしておくと、体裁の整った図になります。</p>
+      <p>なお、<strong>アンパック (展開)</strong> の機能を利用して
+      <code>ax.scatter(*p,alpha=0.8,c='tab:blue')</code>
+      のようにシンプルに記述することもできます。以降、アンパックが利用できる部分はアンパックを使ってコードを示します。</p>
+      <div class="note type-tips">
+      <p><strong>ndarrayオブジェクトをアンパック (展開)
+      して関数の引数に与える</strong></p>
+      <p><a
+      href="lecture10.html#演習④">第10回講義</a>で解説したように、Python
+      では関数の引数にリストやタプル、ndarrayオブジェクトに
+      <code>*</code> を付けたものを指定すると、それが
+      <strong>展開</strong> (<strong>アンパック</strong>)
+      されて個別の引数として関数に渡されます。</p>
+      <div class="sourceCode" id="cb47"
+      data-caption="運動のシミュレート・可視化"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb47-2"><a href="#cb47-2"></a></span>
+<span id="cb47-3"><a href="#cb47-3"></a><span class="kw">def</span> func(a,b,c) :</span>
+<span id="cb47-4"><a href="#cb47-4"></a>  <span class="cf">return</span> a<span class="op">*</span>b<span class="op">*</span>c</span>
+<span id="cb47-5"><a href="#cb47-5"></a></span>
+<span id="cb47-6"><a href="#cb47-6"></a>arr <span class="op">=</span> [<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>]</span>
+<span id="cb47-7"><a href="#cb47-7"></a>x1 <span class="op">=</span> func(arr[<span class="dv">0</span>],arr[<span class="dv">1</span>],arr[<span class="dv">2</span>])</span>
+<span id="cb47-8"><a href="#cb47-8"></a>x2 <span class="op">=</span> func(<span class="op">*</span>arr) <span class="co"># アンパックを利用</span></span>
+<span id="cb47-9"><a href="#cb47-9"></a></span>
+<span id="cb47-10"><a href="#cb47-10"></a><span class="bu">print</span>(<span class="ss">f&#39;x1=</span><span class="sc">{</span>x1<span class="sc">}</span><span class="ss">, x2=</span><span class="sc">{</span>x2<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+      </div>
+      <p>さらに、速度 <span class="math inline">\(v\)</span> と 加速度
+      <span class="math inline">\(a\)</span> を表す「<strong>ベクトル
+      (矢印)</strong>」も図内に表示してみます。ベクトル (矢印)
+      を表示するには <code>ax</code> の <code>quiver</code>
+      メソッドを使用します (以下の <strong>第16行目</strong> と
+      <strong>第17行目</strong> に注目してください)。</p>
+      <div class="sourceCode" id="cb48"
+      data-caption="運動のシミュレート・可視化2"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb48-2"><a href="#cb48-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb48-3"><a href="#cb48-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb48-4"><a href="#cb48-4"></a></span>
+<span id="cb48-5"><a href="#cb48-5"></a>p <span class="op">=</span> np.array([ <span class="dv">0</span>, <span class="dv">0</span>],dtype<span class="op">=</span><span class="bu">float</span>)   <span class="co"># 初期位置</span></span>
+<span id="cb48-6"><a href="#cb48-6"></a>v <span class="op">=</span> np.array([<span class="dv">18</span>,<span class="dv">20</span>],dtype<span class="op">=</span><span class="bu">float</span>)   <span class="co"># 初期速度</span></span>
+<span id="cb48-7"><a href="#cb48-7"></a>a <span class="op">=</span> np.array([<span class="op">-</span><span class="fl">0.8</span>,<span class="op">-</span><span class="dv">2</span>],dtype<span class="op">=</span><span class="bu">float</span>) <span class="co"># 加速度</span></span>
+<span id="cb48-8"><a href="#cb48-8"></a></span>
+<span id="cb48-9"><a href="#cb48-9"></a>fig,ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="fl">5.5</span>,<span class="dv">3</span>)) <span class="co"># 準備</span></span>
+<span id="cb48-10"><a href="#cb48-10"></a>ax.set_aspect(<span class="st">&#39;equal&#39;</span>, adjustable<span class="op">=</span><span class="st">&#39;box&#39;</span>) <span class="co"># アスペクト比を1:1に設定</span></span>
+<span id="cb48-11"><a href="#cb48-11"></a>ax.set_xlim(<span class="dv">0</span>,<span class="dv">220</span>) <span class="co"># X軸の範囲 最小0 ～ 最大220</span></span>
+<span id="cb48-12"><a href="#cb48-12"></a>ax.set_ylim(<span class="dv">0</span>,<span class="dv">120</span>) <span class="co"># Y軸の範囲 最小0 ～ 最大120</span></span>
+<span id="cb48-13"><a href="#cb48-13"></a></span>
+<span id="cb48-14"><a href="#cb48-14"></a><span class="cf">for</span> f <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>,<span class="dv">20</span>):</span>
+<span id="cb48-15"><a href="#cb48-15"></a>  ax.scatter(<span class="op">*</span>p,alpha<span class="op">=</span><span class="fl">0.8</span>,c<span class="op">=</span><span class="st">&#39;tab:blue&#39;</span>) <span class="co"># 点を描画</span></span>
+<span id="cb48-16"><a href="#cb48-16"></a>  ax.quiver(<span class="op">*</span>p,<span class="op">*</span>v,scale_units<span class="op">=</span><span class="st">&#39;xy&#39;</span>,scale<span class="op">=</span><span class="dv">1</span>,alpha<span class="op">=</span><span class="fl">0.4</span>,color<span class="op">=</span><span class="st">&#39;tab:gray&#39;</span>)    <span class="co"># 速度v</span></span>
+<span id="cb48-17"><a href="#cb48-17"></a>  <span class="co"># ax.quiver(*p,*a,scale_units=&#39;xy&#39;,scale=0.1,alpha=0.4,color=&#39;tab:red&#39;) # 加速度a</span></span>
+<span id="cb48-18"><a href="#cb48-18"></a>  p <span class="op">=</span> p <span class="op">+</span> v  <span class="co"># 位置の更新</span></span>
+<span id="cb48-19"><a href="#cb48-19"></a>  v <span class="op">=</span> v <span class="op">+</span> a  <span class="co"># 速度の更新</span></span>
+<span id="cb48-20"><a href="#cb48-20"></a></span>
+<span id="cb48-21"><a href="#cb48-21"></a>plt.tight_layout()                <span class="co"># レイアウトの最適化</span></span>
+<span id="cb48-22"><a href="#cb48-22"></a>plt.savefig(<span class="st">&#39;sim-02.png&#39;</span>,dpi<span class="op">=</span><span class="dv">150</span>) <span class="co"># 図の保存</span></span>
+<span id="cb48-23"><a href="#cb48-23"></a>plt.show()  <span class="co"># 図の画面表示</span></span></code></pre></div>
+      <p>実行結果は次のようになります。各位置 (各フレーム) における点の
+      <strong>速度</strong> <span class="math inline">\(v\)</span>
+      を表すベクトルが、図内に灰色で示されています。速度の単位は
+      px/frame なので、<span class="masked">矢印の先端 (終点)
+      が、ちょうど1フレーム後の位置</span> を指すようになります。</p>
+      <figure>
+      <img src="figs/20/sim-02.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>また、<strong>第17行目</strong>
+      のコメントアウトを外すと、次のように各位置 (各フレーム)
+      における点の <strong>加速度を表すベクトル</strong> が確認できます
+      (以下の図では「速度ベクトル」を非表示にしています)。なお、加速度は、図に対して値が小さすぎるため、そのまま表示しても
+      (小さすぎて) 見えません。そこで、<code>ax.quiver</code> の
+      <code>scale</code> オプションで大きさを調整 (スケーリング)
+      しています。</p>
+      <figure>
+      <img src="figs/20/sim-02a.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>ここまでは、1個の点の運動について扱いました。行列
+      (ndarrayオブジェクト) を使うことで、複数個の点についても
+      <strong>ほぼ同じように扱うことができます</strong>。ここでは、初期位置、初期速度、加速度を与えて、以下のように放射状に拡散していく粒子の動きをシミュレートして、それを<strong>アニメーション</strong>させてみたいと思います。</p>
+      <figure>
+      <img src="figs/20/sim-03.gif" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>プログラムは次のようになります。アニメーションに関する部分でコードが少し複雑化しますが、各フレームの位置を計算する部分
+      (<strong>第42行目</strong>～<strong>第44行目</strong>)
+      は、粒子数が増えても、先ほどと同じく簡潔に記述できていることが分かると思います。</p>
+      <div class="sourceCode" id="cb49"
+      data-caption="運動のシミュレート・可視化2"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb49-2"><a href="#cb49-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb49-3"><a href="#cb49-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb49-4"><a href="#cb49-4"></a><span class="im">from</span> matplotlib.animation <span class="im">import</span> FuncAnimation</span>
+<span id="cb49-5"><a href="#cb49-5"></a><span class="im">from</span> IPython.display <span class="im">import</span> HTML</span>
+<span id="cb49-6"><a href="#cb49-6"></a></span>
+<span id="cb49-7"><a href="#cb49-7"></a><span class="co"># 行列初期化</span></span>
+<span id="cb49-8"><a href="#cb49-8"></a>n  <span class="op">=</span> <span class="dv">30</span>  <span class="co"># 粒子数</span></span>
+<span id="cb49-9"><a href="#cb49-9"></a>P <span class="op">=</span> np.empty((n,<span class="dv">2</span>))   <span class="co"># n行2列 (30行2列) の空の行列を作成 → 位置行列</span></span>
+<span id="cb49-10"><a href="#cb49-10"></a>V <span class="op">=</span> np.empty_like(P)  <span class="co"># Pと同じサイズの空の行列を作成 → 速度行列</span></span>
+<span id="cb49-11"><a href="#cb49-11"></a>A <span class="op">=</span> np.empty_like(P)  <span class="co"># 〃 → 加速度行列</span></span>
+<span id="cb49-12"><a href="#cb49-12"></a></span>
+<span id="cb49-13"><a href="#cb49-13"></a><span class="co"># 初期値の設定</span></span>
+<span id="cb49-14"><a href="#cb49-14"></a>v0 <span class="op">=</span> <span class="fl">0.9</span>  <span class="co"># 初期速度</span></span>
+<span id="cb49-15"><a href="#cb49-15"></a><span class="cf">for</span> i,d <span class="kw">in</span> <span class="bu">enumerate</span>(np.linspace(<span class="dv">0</span>,<span class="dv">360</span>,n,endpoint<span class="op">=</span><span class="va">False</span>)):</span>
+<span id="cb49-16"><a href="#cb49-16"></a></span>
+<span id="cb49-17"><a href="#cb49-17"></a>  <span class="co"># i番目の各粒子の初期位置(f=0のときの位置)</span></span>
+<span id="cb49-18"><a href="#cb49-18"></a>  P[i] <span class="op">=</span> np.array([<span class="dv">5</span>,<span class="dv">10</span>]) </span>
+<span id="cb49-19"><a href="#cb49-19"></a></span>
+<span id="cb49-20"><a href="#cb49-20"></a>  <span class="co"># i番目の粒子の初期速度(f=0のときの速度)</span></span>
+<span id="cb49-21"><a href="#cb49-21"></a>  V[i] <span class="op">=</span> np.array([v0<span class="op">*</span>np.cos(np.radians(d)),v0<span class="op">*</span>np.sin(np.radians(d))])</span>
+<span id="cb49-22"><a href="#cb49-22"></a></span>
+<span id="cb49-23"><a href="#cb49-23"></a>  <span class="co"># i番目の粒子の加速度</span></span>
+<span id="cb49-24"><a href="#cb49-24"></a>  A[i] <span class="op">=</span> np.array([<span class="op">-</span><span class="fl">0.01</span>,<span class="op">-</span><span class="fl">0.05</span>])</span>
+<span id="cb49-25"><a href="#cb49-25"></a></span>
+<span id="cb49-26"><a href="#cb49-26"></a><span class="co"># 可視化</span></span>
+<span id="cb49-27"><a href="#cb49-27"></a>fig,ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">5</span>,<span class="dv">5</span>))</span>
+<span id="cb49-28"><a href="#cb49-28"></a></span>
+<span id="cb49-29"><a href="#cb49-29"></a><span class="kw">def</span> update(frame):</span>
+<span id="cb49-30"><a href="#cb49-30"></a>  <span class="kw">global</span> P, V, A</span>
+<span id="cb49-31"><a href="#cb49-31"></a>  ax.clear()</span>
+<span id="cb49-32"><a href="#cb49-32"></a>  ax.set_aspect(<span class="st">&#39;equal&#39;</span>, adjustable<span class="op">=</span><span class="st">&#39;box&#39;</span>)</span>
+<span id="cb49-33"><a href="#cb49-33"></a>  ax.set_xlim(<span class="op">-</span><span class="dv">20</span>,<span class="dv">30</span>)</span>
+<span id="cb49-34"><a href="#cb49-34"></a>  ax.set_ylim(<span class="op">-</span><span class="dv">20</span>,<span class="dv">30</span>)</span>
+<span id="cb49-35"><a href="#cb49-35"></a>  alpha <span class="op">=</span> <span class="bu">max</span>(<span class="fl">0.95</span><span class="op">-</span><span class="fl">0.01</span><span class="op">*</span>frame, <span class="dv">0</span>)</span>
+<span id="cb49-36"><a href="#cb49-36"></a>  ax.scatter(<span class="dv">5</span>,<span class="dv">10</span>,marker<span class="op">=</span><span class="st">&#39;x&#39;</span>,c<span class="op">=</span><span class="st">&#39;#000&#39;</span>)</span>
+<span id="cb49-37"><a href="#cb49-37"></a>  ax.scatter(P.T[<span class="dv">0</span>],P.T[<span class="dv">1</span>],alpha<span class="op">=</span>alpha,c<span class="op">=</span><span class="st">&#39;tab:red&#39;</span>)</span>
+<span id="cb49-38"><a href="#cb49-38"></a>  ax.text(<span class="fl">0.01</span>,<span class="fl">0.99</span>,<span class="ss">f&#39;Frame=</span><span class="sc">{</span>frame<span class="sc">}</span><span class="ss">&#39;</span>,va<span class="op">=</span><span class="st">&#39;top&#39;</span>,transform<span class="op">=</span>ax.transAxes)</span>
+<span id="cb49-39"><a href="#cb49-39"></a></span>
+<span id="cb49-40"><a href="#cb49-40"></a>  <span class="co"># 行列の更新処理</span></span>
+<span id="cb49-41"><a href="#cb49-41"></a>  <span class="cf">if</span> frame <span class="op">!=</span><span class="dv">0</span> :</span>
+<span id="cb49-42"><a href="#cb49-42"></a>    P <span class="op">=</span> P <span class="op">+</span> V</span>
+<span id="cb49-43"><a href="#cb49-43"></a>    V <span class="op">=</span> V <span class="op">+</span> A</span>
+<span id="cb49-44"><a href="#cb49-44"></a>    A <span class="op">+=</span> np.random.random(size<span class="op">=</span>(n,<span class="dv">2</span>))<span class="op">*</span><span class="fl">0.01</span><span class="op">-</span><span class="fl">0.005</span></span>
+<span id="cb49-45"><a href="#cb49-45"></a></span>
+<span id="cb49-46"><a href="#cb49-46"></a>ani <span class="op">=</span> FuncAnimation(fig, update, frames<span class="op">=</span><span class="bu">range</span>(<span class="dv">60</span>), interval<span class="op">=</span><span class="dv">50</span>)</span>
+<span id="cb49-47"><a href="#cb49-47"></a>plt.close()</span>
+<span id="cb49-48"><a href="#cb49-48"></a>HTML(ani.to_jshtml())</span></code></pre></div>
+      <hr />
+      <p><strong>演習</strong>
+      上記のプログラムを理解せよ。具体的には、パラメータを変更して結果確認したり、プログラムの途中に
+      <code>print</code>
+      を挿入することで、プログラムの動作や内部処理を正しく理解せよ。また、Matplotlib
+      による可視化・アニメーションの部分については ChatGPT や bing
+      を使って動作解説を受けよ。</p>
+      <ul>
+      <li><strong>第15行目</strong>の <code>enumerate</code> は<a
+      href="/lecture08.html#pythonicなリストとfor文の組み合わせ">第08回講義</a>で学習済みです。</li>
+      <li><strong>第15行目</strong>の <code>np.linspace</code> は<a
+      href="lecture17.html#np.linspace-による初期化">第17回講義</a>で学習済みです。</li>
+      <li><strong><em>要確認</em></strong><a
+      href="https://chat.openai.com/share/7e1fab3b-48f4-4e63-b31c-843a2a93ec94">プログラムの理解に「ChatGPT」を活用する例</a></li>
+      </ul>
+      <div class="note type-senior">
+      <p><strong>おまけ: アニメーションGIFの作成</strong></p>
+      <p>アニメーションGIFは次のように生成することができます。</p>
+      <div class="sourceCode" id="cb50"
+      data-caption="アニメーションGIFの作成"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb50-2"><a href="#cb50-2"></a><span class="im">import</span> os</span>
+<span id="cb50-3"><a href="#cb50-3"></a><span class="im">import</span> glob</span>
+<span id="cb50-4"><a href="#cb50-4"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb50-5"><a href="#cb50-5"></a><span class="im">import</span> IPython.display</span>
+<span id="cb50-6"><a href="#cb50-6"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb50-7"><a href="#cb50-7"></a><span class="im">from</span> matplotlib.animation <span class="im">import</span> FuncAnimation</span>
+<span id="cb50-8"><a href="#cb50-8"></a><span class="im">from</span> PIL <span class="im">import</span> Image</span>
+<span id="cb50-9"><a href="#cb50-9"></a></span>
+<span id="cb50-10"><a href="#cb50-10"></a><span class="co"># 行列の初期化</span></span>
+<span id="cb50-11"><a href="#cb50-11"></a>n <span class="op">=</span> <span class="dv">30</span><span class="op">;</span> v0 <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb50-12"><a href="#cb50-12"></a>P <span class="op">=</span> np.empty((n,<span class="dv">2</span>))</span>
+<span id="cb50-13"><a href="#cb50-13"></a>V <span class="op">=</span> np.empty_like(P)</span>
+<span id="cb50-14"><a href="#cb50-14"></a>A <span class="op">=</span> np.empty_like(P)</span>
+<span id="cb50-15"><a href="#cb50-15"></a><span class="cf">for</span> i,d <span class="kw">in</span> <span class="bu">enumerate</span>(np.linspace(<span class="dv">0</span>,<span class="dv">360</span>,n,endpoint<span class="op">=</span><span class="va">False</span>)):</span>
+<span id="cb50-16"><a href="#cb50-16"></a>  P[i] <span class="op">=</span> np.array([<span class="dv">5</span>,<span class="dv">10</span>])</span>
+<span id="cb50-17"><a href="#cb50-17"></a>  V[i] <span class="op">=</span> np.array([v0<span class="op">*</span>np.cos(np.radians(d)),v0<span class="op">*</span>np.sin(np.radians(d))])</span>
+<span id="cb50-18"><a href="#cb50-18"></a>  A[i] <span class="op">=</span> np.array([<span class="op">-</span><span class="fl">0.01</span>,<span class="op">-</span><span class="fl">0.05</span>])</span>
+<span id="cb50-19"><a href="#cb50-19"></a></span>
+<span id="cb50-20"><a href="#cb50-20"></a><span class="co"># フレーム毎の連番ファイルを作成</span></span>
+<span id="cb50-21"><a href="#cb50-21"></a><span class="cf">for</span> frame <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">60</span>):</span>
+<span id="cb50-22"><a href="#cb50-22"></a>  fig,ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">5</span>,<span class="dv">5</span>))</span>
+<span id="cb50-23"><a href="#cb50-23"></a>  ax.set_aspect(<span class="st">&#39;equal&#39;</span>, adjustable<span class="op">=</span><span class="st">&#39;box&#39;</span>)</span>
+<span id="cb50-24"><a href="#cb50-24"></a>  ax.set_xlim(<span class="op">-</span><span class="dv">20</span>,<span class="dv">30</span>)<span class="op">;</span> ax.set_ylim(<span class="op">-</span><span class="dv">15</span>,<span class="dv">25</span>)</span>
+<span id="cb50-25"><a href="#cb50-25"></a>  ax.set_aspect(<span class="st">&#39;equal&#39;</span>, adjustable<span class="op">=</span><span class="st">&#39;box&#39;</span>)</span>
+<span id="cb50-26"><a href="#cb50-26"></a>  ax.set_xlim(<span class="op">-</span><span class="dv">20</span>,<span class="dv">30</span>)</span>
+<span id="cb50-27"><a href="#cb50-27"></a>  ax.set_ylim(<span class="op">-</span><span class="dv">20</span>,<span class="dv">30</span>)</span>
+<span id="cb50-28"><a href="#cb50-28"></a>  alpha <span class="op">=</span> <span class="bu">max</span>(<span class="fl">0.95</span><span class="op">-</span><span class="fl">0.01</span><span class="op">*</span>frame, <span class="dv">0</span>)</span>
+<span id="cb50-29"><a href="#cb50-29"></a>  ax.scatter(<span class="dv">5</span>,<span class="dv">10</span>,marker<span class="op">=</span><span class="st">&#39;x&#39;</span>,c<span class="op">=</span><span class="st">&#39;#000&#39;</span>)</span>
+<span id="cb50-30"><a href="#cb50-30"></a>  ax.scatter(P.T[<span class="dv">0</span>],P.T[<span class="dv">1</span>],alpha<span class="op">=</span>alpha,c<span class="op">=</span><span class="st">&#39;tab:red&#39;</span>)</span>
+<span id="cb50-31"><a href="#cb50-31"></a>  ax.text(<span class="fl">0.01</span>,<span class="fl">0.99</span>,<span class="ss">f&#39;Frame=</span><span class="sc">{</span>frame<span class="sc">}</span><span class="ss">&#39;</span>,va<span class="op">=</span><span class="st">&#39;top&#39;</span>,transform<span class="op">=</span>ax.transAxes)</span>
+<span id="cb50-32"><a href="#cb50-32"></a>  fn <span class="op">=</span> <span class="ss">f&#39;tmp-</span><span class="sc">{</span>frame<span class="sc">:03}</span><span class="ss">.png&#39;</span></span>
+<span id="cb50-33"><a href="#cb50-33"></a>  plt.tight_layout()</span>
+<span id="cb50-34"><a href="#cb50-34"></a>  plt.savefig(fn,dpi<span class="op">=</span><span class="dv">120</span>)</span>
+<span id="cb50-35"><a href="#cb50-35"></a>  plt.close()</span>
+<span id="cb50-36"><a href="#cb50-36"></a>  P <span class="op">=</span> P <span class="op">+</span> V</span>
+<span id="cb50-37"><a href="#cb50-37"></a>  V <span class="op">=</span> V <span class="op">+</span> A</span>
+<span id="cb50-38"><a href="#cb50-38"></a>  A <span class="op">+=</span> np.random.random(size<span class="op">=</span>(n,<span class="dv">2</span>))<span class="op">*</span><span class="fl">0.01</span><span class="op">-</span><span class="fl">0.005</span></span>
+<span id="cb50-39"><a href="#cb50-39"></a></span>
+<span id="cb50-40"><a href="#cb50-40"></a><span class="co"># アニメーションGIFの作成・保存</span></span>
+<span id="cb50-41"><a href="#cb50-41"></a>files <span class="op">=</span> <span class="bu">sorted</span>(glob.glob(<span class="st">&#39;tmp-*.png&#39;</span>))</span>
+<span id="cb50-42"><a href="#cb50-42"></a>images <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> f: Image.<span class="bu">open</span>(f), files))</span>
+<span id="cb50-43"><a href="#cb50-43"></a>images[<span class="dv">0</span>].save(<span class="st">&#39;animation.gif&#39;</span>,save_all<span class="op">=</span><span class="va">True</span>, </span>
+<span id="cb50-44"><a href="#cb50-44"></a>               append_images<span class="op">=</span>images[<span class="dv">1</span>:], duration<span class="op">=</span><span class="dv">50</span>, loop<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb50-45"><a href="#cb50-45"></a></span>
+<span id="cb50-46"><a href="#cb50-46"></a><span class="co"># tmpファイルの削除</span></span>
+<span id="cb50-47"><a href="#cb50-47"></a><span class="cf">for</span> fn <span class="kw">in</span> glob.glob(<span class="st">&#39;tmp-*.png&#39;</span>):</span>
+<span id="cb50-48"><a href="#cb50-48"></a>  os.remove(fn)</span>
+<span id="cb50-49"><a href="#cb50-49"></a></span>
+<span id="cb50-50"><a href="#cb50-50"></a><span class="co"># アニメーションGIFの表示</span></span>
+<span id="cb50-51"><a href="#cb50-51"></a>IPython.display.Image(<span class="bu">open</span>(<span class="st">&#39;animation.gif&#39;</span>,<span class="st">&#39;rb&#39;</span>).read())</span></code></pre></div>
+      </div>
       <!-- ---------------------------------------- -->
     </main>
 
