@@ -317,7 +317,9 @@ class="toc-section-number">5</span> ベクトル・行列の応用 2</a></li>
  [50 60 70]]</code></pre>
       <p><code>A.dtype</code> により、ndarrayオブジェクトである
       <code>A</code> が持っている「要素の型」が <code>int64</code>
-      であることが確認できます。これは <code>np.array()</code>
+      であることが確認できます (ローカル環境 (Windows環境)
+      で実行している場合は <code>int32</code>
+      になる場合があります)。これは <code>np.array()</code>
       で初期化する際に与える引数 (例えば
       <code>[[20,30,40],[50,40,30]]</code> )
       によって自動的に決定されています。もし、型を明示的に指定したい場合は
