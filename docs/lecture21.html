@@ -140,9 +140,20 @@ class="toc-section-number">4.2</span>
       <h2 data-number="1.1" id="連絡事項"><span
       class="header-section-number">1.1</span> 連絡事項</h2>
       <ul>
-      <li>今回「小テスト」を実施します。鉛筆と消しゴムを準備してください。</li>
+      <li>今回「<strong>小テスト</strong>」を実施します。鉛筆と消しゴムを準備してください。</li>
       <li>12月25日 (月)
       の1-2時限は教員の都合により「<strong>休講</strong>」とさせてください。ただ、いつもと同じようにウェブテキストを用意しておくので、各自、教室や自宅で取り組みをお願いします。</li>
+      <li>高専ロボコン優勝おめでとう<i class="fa-solid fa-otter"></i>
+      <ul>
+      <li>第1回戦 (v.s. 東京)<a
+      href="https://youtu.be/JWpeh7XAK9w?t=7210">https://youtu.be/JWpeh7XAK9w?t=7210</a></li>
+      <li>準々決勝 (v.s. 鈴鹿) <a
+      href="https://youtu.be/JWpeh7XAK9w?t=16676">https://youtu.be/JWpeh7XAK9w?t=16676</a></li>
+      <li>準決勝 (v.s. 高知)<a
+      href="https://youtu.be/JWpeh7XAK9w?t=18462">https://youtu.be/JWpeh7XAK9w?t=18462</a></li>
+      <li>決勝 (v.s. 熊本八代) <a
+      href="https://youtu.be/JWpeh7XAK9w?t=21466">https://youtu.be/JWpeh7XAK9w?t=21466</a></li>
+      </ul></li>
       </ul>
       <h2 data-number="1.2" id="今回講義の達成目標"><span
       class="header-section-number">1.2</span> 今回講義の達成目標</h2>
@@ -276,9 +287,10 @@ class="toc-section-number">4.2</span>
       の整数値にマッピングされます。</li>
       </ul>
       <p><span
-      class="masked">肌色の検出</span>のような画像処理タスクでは、RGBモデルよりも、HSVモデルが特に有効です。肌色は特定の色相
-      (Hue)
-      の範囲にあるため、HSVモデルであれば主に色相の情報を使って比較的容易に肌色を検出することができます。以下は、OpenCVで「肌色抽出」を実行した例です。なお、以下の左側画像は<a
+      class="masked">肌色の検出</span>のような画像処理タスクでは、RGBモデルよりも、HSVモデルが特に有効です。肌色
+      (=<span class="masked">ペールオレンジ、ベージュ</span>)
+      は特定の色相 (Hue)
+      の範囲にあるため、HSVモデルであれば主に色相の情報を使って比較的容易に肌色を検出することができます。以下は、OpenCVでHSVモデルをベースに、HSVの範囲フィルタによって「肌色抽出」を実行した例です。床や机などの似た色が多いなかで、概ね肌色を検出できていることが分かると思います。なお、以下の左側画像は<a
       href="https://www.bing.com/create">Bing Image
       Creator</a>により作成しています。</p>
       <figure>
