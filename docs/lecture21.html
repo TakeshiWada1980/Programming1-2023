@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+
+    <script>
+      MathJax = {
+        chtml: {
+          displayAlign: "left",
+          displayIndent: "1em",
+        },
+      };
+    </script>
+
+     <script
+src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+type="text/javascript"></script> 
+
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>第21回 2I-プログラミング1</title>
+  </head>
+
+  <body>
+    <div class="openbtn"><span></span><span></span><span></span></div>
+    <nav id="g-nav">
+      <div id="g-nav-list">
+        <!-- ---------------------------------------- -->
+         <ul>
+<li><a href="#概要連絡" id="toc-概要連絡"><span
+class="toc-section-number">1</span> 概要・連絡</a>
+<ul>
+<li><a href="#連絡事項" id="toc-連絡事項"><span
+class="toc-section-number">1.1</span> 連絡事項</a></li>
+<li><a href="#今回講義の達成目標" id="toc-今回講義の達成目標"><span
+class="toc-section-number">1.2</span> 今回講義の達成目標</a></li>
+</ul></li>
+<li><a href="#コンピュータにおける画像の扱いについて"
+id="toc-コンピュータにおける画像の扱いについて"><span
+class="toc-section-number">2</span>
+コンピュータにおける画像の扱いについて</a>
+<ul>
+<li><a href="#画像形式-ラスター形式とベクター形式"
+id="toc-画像形式-ラスター形式とベクター形式"><span
+class="toc-section-number">2.1</span> 画像形式
+(ラスター形式とベクター形式)</a></li>
+<li><a href="#ラスター形式における色情報の管理"
+id="toc-ラスター形式における色情報の管理"><span
+class="toc-section-number">2.2</span>
+ラスター形式における色情報の管理</a></li>
+</ul></li>
+<li><a href="#opencvを利用した画像処理"
+id="toc-opencvを利用した画像処理"><span
+class="toc-section-number">3</span> OpenCVを利用した画像処理</a>
+<ul>
+<li><a href="#opencvとは" id="toc-opencvとは"><span
+class="toc-section-number">3.1</span> OpenCVとは</a></li>
+<li><a href="#ライブラリのインストール"
+id="toc-ライブラリのインストール"><span
+class="toc-section-number">3.2</span> ライブラリのインストール</a></li>
+<li><a href="#画像の読込みとデータ型の確認"
+id="toc-画像の読込みとデータ型の確認"><span
+class="toc-section-number">3.3</span>
+画像の読込みとデータ型の確認</a></li>
+<li><a href="#画像の表示" id="toc-画像の表示"><span
+class="toc-section-number">3.4</span> 画像の表示</a>
+<ul>
+<li><a href="#表示方法1" id="toc-表示方法1"><span
+class="toc-section-number">3.4.1</span> 表示方法1</a></li>
+<li><a href="#表示方法2" id="toc-表示方法2"><span
+class="toc-section-number">3.4.2</span> 表示方法2</a></li>
+<li><a href="#表示方法3" id="toc-表示方法3"><span
+class="toc-section-number">3.4.3</span> 表示方法3</a></li>
+<li><a href="#表示方法4" id="toc-表示方法4"><span
+class="toc-section-number">3.4.4</span> 表示方法4</a></li>
+<li><a href="#表示方法5" id="toc-表示方法5"><span
+class="toc-section-number">3.4.5</span> 表示方法5</a></li>
+</ul></li>
+<li><a href="#画像の保存" id="toc-画像の保存"><span
+class="toc-section-number">3.5</span> 画像の保存</a></li>
+<li><a href="#カラー画像の構成と色成分の取得"
+id="toc-カラー画像の構成と色成分の取得"><span
+class="toc-section-number">3.6</span>
+カラー画像の構成と色成分の取得</a></li>
+<li><a href="#画像-ピクセルの色情報-の直接編集"
+id="toc-画像-ピクセルの色情報-の直接編集"><span
+class="toc-section-number">3.7</span> 画像 (ピクセルの色情報)
+の直接編集</a></li>
+<li><a href="#画像の直接編集-グレースケール画像の生成"
+id="toc-画像の直接編集-グレースケール画像の生成"><span
+class="toc-section-number">3.8</span> 画像の直接編集
+(グレースケール画像の生成)</a></li>
+<li><a href="#画像の直接編集-セピアカラー画像の生成"
+id="toc-画像の直接編集-セピアカラー画像の生成"><span
+class="toc-section-number">3.9</span> 画像の直接編集
+(セピアカラー画像の生成)</a></li>
+</ul></li>
+<li><a href="#opencvを利用したカメラ操作"
+id="toc-opencvを利用したカメラ操作"><span
+class="toc-section-number">4</span> OpenCVを利用したカメラ操作</a>
+<ul>
+<li><a href="#カメラから画像を取得" id="toc-カメラから画像を取得"><span
+class="toc-section-number">4.1</span> カメラから画像を取得</a></li>
+<li><a href="#カメラから連続的に画像を取得して処理"
+id="toc-カメラから連続的に画像を取得して処理"><span
+class="toc-section-number">4.2</span>
+カメラから連続的に画像を取得して処理</a></li>
+</ul></li>
+</ul> 
+        <!-- ---------------------------------------- -->
+      </div>
+    </nav>
+
+    <header class="markdown-body">
+      <p>2023-2I プログラミング1 第21回 講義資料</p>
+      <p>2023年11月27日（月）1・2時限</p>
+    </header>
+
+    <main class="markdown-body">
+      <!-- ---------------------------------------- -->
+      <h1 data-number="1" id="概要連絡"><span
+      class="header-section-number">1</span> 概要・連絡</h1>
+      <h2 data-number="1.1" id="連絡事項"><span
+      class="header-section-number">1.1</span> 連絡事項</h2>
+      <ul>
+      <li>今回「小テスト」を実施します。鉛筆と消しゴムを準備してください。</li>
+      <li>12月25日 (月)
+      の1-2時限は教員の都合により「<strong>休講</strong>」とさせてください。ただ、いつもと同じようにウェブテキストを用意しておくので、各自、教室や自宅で取り組みをお願いします。</li>
+      </ul>
+      <h2 data-number="1.2" id="今回講義の達成目標"><span
+      class="header-section-number">1.2</span> 今回講義の達成目標</h2>
+      <p>今回の講義では <a
+      href="https://ja.wikipedia.org/wiki/OpenCV">OpenCV</a>
+      を利用した<strong>画像処理の基礎</strong>について学びます。</p>
+      <ul>
+      <li>OpenCV
+      における画像データの扱いについて理解し、その画像の構成情報を確認できる。</li>
+      <li>スライス機能を利用して画像データに対する初歩的な操作ができる。</li>
+      <li>OpenCV からカメラ画像を取得することができる。</li>
+      </ul>
+      <h1 data-number="2"
+      id="コンピュータにおける画像の扱いについて"><span
+      class="header-section-number">2</span>
+      コンピュータにおける画像の扱いについて</h1>
+      <p>コンピュータにおける画像の表現や扱いについては、1年生の「<strong>情報1</strong>」、2年生の「<strong>情報2</strong>」「<strong>メディアデザイン入門</strong>」で既に学んだ内容ですが、改めて復習しておきます。</p>
+      <h2 data-number="2.1"
+      id="画像形式-ラスター形式とベクター形式"><span
+      class="header-section-number">2.1</span> 画像形式
+      (ラスター形式とベクター形式)</h2>
+      <p>コンピュータで扱う画像の「形式」には、大きく分けて<span
+      class="masked">ラスター形式 (ビットマップ形式)</span> と <span
+      class="masked">ベクター形式</span> があります。</p>
+      <p><strong>ラスター形式 (ビットマップ形式)</strong>
+      は、画像を下図のように<strong>格子状に配置したピクセル (点)
+      の集合として表現した形式</strong>で、各ピクセルの色や透明度の集合として構成されます。写真などの複雑な画像にも適した形式となっています。具体的なフォーマットとしては<a
+      href="https://ja.wikipedia.org/wiki/JPEG">JPEG</a>,<a
+      href="https://ja.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a>,<a
+      href="https://ja.wikipedia.org/wiki/High_Efficiency_Image_File_Format">HEIF/HEIC</a>,<a
+      href="https://ja.wikipedia.org/wiki/Graphics_Interchange_Format">GIF</a>,<a
+      href="https://ja.wikipedia.org/wiki/Windows_bitmap">BMP</a>などがあります。</p>
+      <figure>
+      <img src="figs/21/bitmap-01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p><strong>ベクター形式</strong>
+      は、点、線、図形などを定義した<strong>幾何学的な形状情報</strong>（例えば、図形の頂点座標や線幅、端点の形状などの情報）で構成される形式で、<span
+      class="masked">拡大や縮小などの操作をしても画質が劣化しないこと</span>が特徴となっています。そのため、主に「<strong>CAD図面</strong>」や「<strong>テクニカルイラスト</strong>」などに使われる形式となっています。また、「フォント」もベクター形式のデータと言えます。具体的なフォーマットとしては<a
+      href="https://ja.wikipedia.org/wiki/Scalable_Vector_Graphics">SVG</a>,<a
+      href="https://ja.wikipedia.org/wiki/Portable_Document_Format">PDF</a>,<a
+      href="https://ja.wikipedia.org/wiki/Encapsulated_PostScript">EPS</a>,<a
+      href="https://ja.wikipedia.org/wiki/Adobe_Illustrator">AI</a>などがあります。</p>
+      <p>なお、ベクター形式であっても<strong>実際にディスプレイに表示する際にはコンピュータの内部でラスター画像（ピクセルベース）に変換</strong>
+      されています。この変換のことを <span
+      class="masked">ラスタライゼーション</span> といいます。</p>
+      <div class="note type-tips">
+      <p><strong>代表的なラスター形式の画像フォーマット</strong></p>
+      <ul>
+      <li><strong>JPEG</strong> (<strong>Joint Photographic Experts
+      Group</strong>): 高い圧縮率を持った <span
+      class="masked">不可逆圧縮</span>
+      形式の画像データです。写真などの保存に使用されます。一方で、アルファチャンネル
+      (透明度) をサポートせず、圧縮による <span
+      class="masked">品質劣化</span>
+      も生じることからロゴやアイコン、テクニカルイラスト、スクリーンショットなどの保存形式として向いていません。様々なOSやアプリ、デバイスで広くサポートされており、ウェブでは標準的な画像形式のひとつになっています。</li>
+      <li><strong>PNG</strong> (<strong>Portable Network
+      Graphics</strong>): 高い圧縮率を持った <span
+      class="masked">可逆圧縮</span>
+      形式の画像データです。JPEGとは逆で、アルファチャンネルをサポートして、圧縮による品質劣化がないため、ロゴやアイコン、テクニカルイラスト、スクリーンショットなどの保存形式に適しています。一方で、高画素の写真を
+      PNG 形式にすると <span
+      class="masked">ファイルサイズが非常に大きくなる</span>
+      ので注意が必要です。例えば、縦6000px、横4000px の<a
+      href="figs/21/photo-01.jpg">写真</a> を
+      PNG形式で保存すると、ファイルサイズが 55MB超
+      になりますが、JPEGの場合は高品質・低圧縮の設定で
+      16.5MB、低品質・高圧縮の設定で 2.5MB になります
+      (具体的なファイルサイズは、元の画像が持っている情報量によって大きく変化します)。JPEGと同様にウェブでは標準的な画像形式のひとつになっています。</li>
+      <li><strong>HEIF/HEIC</strong> (<strong>High Efficiency Image File
+      Format / High Efficiency Image Coding</strong>):
+      比較的新しいファイル形式で、高画質を維持した高圧縮（不可逆圧縮）が可能で、ファイルサイズを
+      <span class="masked">同品質の JPEG の半分程度</span>
+      に抑えることができます。iPhone や iPad
+      で写真撮影したときのデフォルトの保存形式となっています。またアルファチャンネルもサポートします。ただし、JPEG
+      や PNG と比較するとサポートしている
+      OS・アプリ、デバイスが少ないという現状です。実際、<span
+      class="masked">OpenCV (4.8.0) も、HEIF/HEIC
+      の読込みには対応していません</span>。また、ウェブの標準的な画像形式ではありません
+      (ウェブページに使用することは避けてください)。</li>
+      </ul>
+      </div>
+      <h2 data-number="2.2" id="ラスター形式における色情報の管理"><span
+      class="header-section-number">2.2</span>
+      ラスター形式における色情報の管理</h2>
+      <p>ラスター形式の画像において「カラー画像」の表現には、<strong>RGB色モデル</strong>
+      (RGBカラーモデル)
+      が一般的に用いられます。このモデルでは「<strong>赤
+      (Red)</strong>」「<strong>緑 (Green)</strong>」「<strong>青
+      (Blue)</strong>」という「<strong>光の三原色</strong>」の輝度
+      (光の強度)
+      の組み合わせで、様々な「色」をつくりだします。一般に「<strong>フルカラー</strong>」と呼ばれる画像では、各色の輝度を
+      <strong>8ビット</strong> (=<strong>1バイト</strong>) 、つまり
+      <code>0</code> から <code>255</code> までの
+      <strong>256諧調</strong> で表現して、その組み合わせとして
+      <strong>約1670万色</strong> を表現 (発色) します。</p>
+      <p><span class="math display">\[ 256\times256\times256 =
+      16,777,216\]</span></p>
+      <p>このようなことから、圧縮せずにカラー画像を扱う場合、<strong>1ピクセルにつき「3バイト」</strong>の情報が必要になります。また、256段階の
+      <span class="masked">グレースケール画像</span>
+      では、<strong>1ピクセルにつき「1バイト」</strong>の情報が必要になります。</p>
+      <p>なお、多くの場合、カラー画像は「<strong>RGB
+      (赤・緑・青)</strong>」の順に輝度を並べて色情報を扱いますが、OpenCV
+      においては<a
+      href="https://www.google.com/search?q=opencv+bgr+なぜ">とある理由</a>
+      から<span class="masked">「BGR (青・緑・赤)」</span> という順
+      (RGBとは<strong>逆順</strong>)
+      に並べて色情報を管理しています。この点には十分に注意してください。</p>
+      <figure>
+      <img src="figs/21/color-RGB-01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <div class="note type-senior">
+      <p><strong>HSV色モデル</strong></p>
+      <p>2年後期の「メディアデザイン入門」でも学んでいるように、色の表現としては「<strong>HSV色モデル</strong>」もあります。HSVは「<strong>色相
+      (Hue)</strong>」「<strong>彩度
+      (Saturation)</strong>」「<strong>明度
+      (Value)</strong>」の3つの要素の組み合わせで色を表現します。</p>
+      <ul>
+      <li><strong>色相</strong>:
+      色の種類を表し、赤、黄、緑、青など色彩の違いを示します。色相は円状に配置され、0度
+      (赤) から 360度 (赤) の範囲で表されます。OpenCV では 0 (赤) から
+      255 (赤) の 1バイト (8ビット) の範囲にマッピングされます。</li>
+      <li><strong>彩度</strong>:
+      色の「<strong>鮮やか</strong>」さを表し、0％（無彩色）から100％（純色）までの範囲で示されます。OpenCV
+      では 0 から 255 にマッピングされます。</li>
+      <li><strong>明度</strong>:
+      色の「<strong>明るさ</strong>」を表し、0％（完全な黒）から100％（完全な白）までの範囲で示されます。OpenCV
+      では 0 から 255 にマッピングされます。</li>
+      </ul>
+      <p><span
+      class="masked">肌色の検出</span>のような画像処理タスクでは、RGBモデルよりも、HSVモデルが特に有効です。肌色は特定の色相
+      (Hue)
+      の範囲にあるため、HSVモデルであれば主に色相の情報を使って比較的容易に肌色を検出することができます。以下は、OpenCVで「肌色抽出」を実行した例です。なお、以下の左側画像は<a
+      href="https://www.bing.com/create">Bing Image
+      Creator</a>により作成しています。</p>
+      <figure>
+      <img src="figs/21/image-processing-01.jpg" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>なお、「HSVモデル」と「RGBモデル」は相互変換可能であり、OpenCVを含めて一般的な画像処理ソフトでは両方のモデルをサポートしています。</p>
+      </div>
+      <h1 data-number="3" id="opencvを利用した画像処理"><span
+      class="header-section-number">3</span>
+      OpenCVを利用した画像処理</h1>
+      <p>OpenCV を利用した「画像処理」の基礎について学んでいきます。</p>
+      <h2 data-number="3.1" id="opencvとは"><span
+      class="header-section-number">3.1</span> OpenCVとは</h2>
+      <p><strong>OpenCV</strong>（<strong>Open Source Computer Vision
+      Library</strong>）は <span class="masked">「画像処理」</span> と
+      <span class="masked">「コンピュータビジョン」</span>
+      に特化したオープンソースの<strong>ライブラリ</strong>です。1999年に
+      <strong>Intel</strong>
+      によって開発され、<strong>リアルタイムでの高速画像処理を可能にするために最適化</strong>されています。また、その「汎用性」と「拡張性」により幅広いプラットフォームで使用できる点にも特徴があります。</p>
+      <p>OpenCVは、本科目で学んでいる Python の他、<strong>C++</strong>
+      や <strong>Java</strong> などの
+      <strong>様々なプログラミング言語</strong>
+      に対応しており、また、Windows、Linux、Mac OSといった主要 OS、<a
+      href="https://ja.wikipedia.org/wiki/Raspberry_Pi">Raspberry
+      Pi</a>や<a href="NVIDIA%20Jetson">NVIDIA Jetson</a>
+      などのアーキテクチャにも対応しています。このため「<strong>組込みシステム</strong>」や「IoTデバイス」でも使用されることがあります。</p>
+      <div class="note type-tips">
+      <p><strong>組込みシステムとは</strong></p>
+      <p><strong>組込みシステム</strong> (<strong>Embedded
+      System</strong>)
+      とは、パソコンやスマートフォンとは異なり、<strong>特定の機能を実行するためだけに設計されたコンピュータシステム</strong>を指します。例えば、家庭で使われる「洗濯機」「テレビのリモコン」「<span
+      class="masked">車のエンジンを制御するコンピュータ</span>」「ゲーム機」などが
+      <strong>組込みシステム</strong>
+      の典型的な例となります。このほか「信号機」や「自動販売機」「産業用加工機械」「エレベータ」なども組込みシステムの一例となります。これらの製品には、センサーやアクチュエータと連動して動作を制御するための
+      <span
+      class="masked">小型コンピュータが組み込まれており</span>、この特徴から「組込みシステム」と呼ばれています。</p>
+      </div>
+      <p>また、OpenCVは <strong>画像の取得
+      (読み込み)</strong>、<strong>処理</strong>、<strong>分析</strong>、顔認識、物体検出などの幅広い機能を提供しており、これらの機能はセキュリティ、自動運転車、ロボティクス、医療画像解析など多岐にわたる分野で応用されています。</p>
+      <p>OpenCV
+      の「基礎」を習得しておくことは、3年生以降に開講される「<strong>マルチメディア情報処理（画像処理）</strong>」や「<strong>人工知能
+      (画像分類や物体認識)</strong>」を学ぶうえでも非常に役立ちます。これらの分野は、<strong>座学として学ぶだけではなく</strong>、<span
+      class="masked">実際に手を動かしてプログラムを実装すること</span>で理解が深まり、また楽しく学ぶことができます。</p>
+      <div class="note type-senior">
+      <p><strong>「画像処理」と「コンピュータビジョン」の違い</strong></p>
+      <p>「<strong>画像処理</strong>」と「<strong>コンピュータビジョン</strong>」は、いずれも画像に関連する分野・技術ですが、その目的や、焦点としているところが違っています。</p>
+      <p>「<strong>画像処理</strong>」は、画像の品質を向上させたり、特定の情報を抽出することに焦点を置いています。具体的には、画像のコントラストを調整したり、ノイズを除去して画像をシャープにしたり、色を補正するなど、画像に対する変更や操作が行われます。画像処理の主な目的は、画像をより分析しやすくしたり、人間やコンピュータに対してより見やすくすることにあります。</p>
+      <p>一方で「<strong>コンピュータビジョン
+      (CV)</strong>」は「画像や動画から情報を理解・解釈すること」に焦点が置かれています。画像から物体を検出・識別・追跡したり、シーンの3D構造を理解するなど、<strong>コンピュータが人間のように視覚情報を「理解」し、それをもとに意思決定・行動をできるようにすること</strong>
+      を目的としています。具体例としては、顔認識、物体検出、自動運転などがあります。</p>
+      <p>なお、実際の応用では、まず「画像処理」によって画像が最適化され、その後、「コンピュータビジョン」によって画像から情報を分析するという関係になっています。</p>
+      </div>
+      <h2 data-number="3.2" id="ライブラリのインストール"><span
+      class="header-section-number">3.2</span>
+      ライブラリのインストール</h2>
+      <p><a
+      href="https://pypi.org/project/opencv-python/">OpenCV</a>は、Pythonの標準ライブラリには含まれていませんが、GoogleColab環境においてはデフォルトでインストールされています。コードセルで以下の
+      Linuxコマンド を実行することで、インストールされている OpenCV
+      のバージョン情報の確認ができます。なお、<code>grep</code> は <span
+      class="masked">指定した文字列を含む行を表示</span> するための
+      Linuxコマンド です。</p>
+      <pre><code>!pip list | grep opencv</code></pre>
+      <p>2023年11月25時点での実行結果は、次のようになります。<code>opencv-python</code>
+      が標準パッケージで、<code>opencv-contrib-python</code>
+      は標準パッケージに加えて各種追加モジュールも含んだパッケージになります。また<code>opencv-python-headless</code>
+      は、GUI関連の機能を含まないパッケージになります。</p>
+      <pre><code>opencv-contrib-python            4.8.0.76
+opencv-python                    4.8.0.76
+opencv-python-headless           4.8.1.78</code></pre>
+      <p>一方で、ローカル環境では <strong>手動で OpenCV
+      をインストールする必要</strong> があります。Python
+      の仮想環境を有効化し、pip を最新版にアップグレードしてから、OpenCV
+      をインストールしてください。<strong>今回の講義ではローカル環境も利用するため、全員がインストールしてください</strong>。環境構築の詳細は<a
+      href="lecture09.html#vs-codeを使った開発の流れ"><strong>第09回講義</strong></a>を参照してください。</p>
+      <pre><code>.venv/Scripts/Activate.ps1
+python -m pip install --upgrade pip
+pip install opencv-python</code></pre>
+      <p>Windows環境 (PowerShell) では、以下のコマンドで特定パッケージ
+      (ライブラリ) のバージョンを確認できます。</p>
+      <pre><code>pip list | Select-String &quot;opencv&quot;</code></pre>
+      <p>正常にインストールできたかどうかは、<code>import cv2</code>
+      を含んだ Python プログラムを実行することで確認できます。実行して
+      <code>ModuleNotFoundError: No module named 'cv2'</code>
+      が発生しなければ、正常にインストールができています。</p>
+      <h2 data-number="3.3" id="画像の読込みとデータ型の確認"><span
+      class="header-section-number">3.3</span>
+      画像の読込みとデータ型の確認</h2>
+      <p>Python から OpenCV
+      を利用する場合の特徴として、<strong>画像データ</strong>が <span
+      class="masked">NumPy の ndarrayオブジェクト</span>
+      として扱われることが挙げられます。</p>
+      <p>具体的には、<strong>横640px</strong>、<strong>縦480px</strong>の「<strong>カラー画像</strong>」は
+      <code>shape</code> が <code>(480,640,3)</code>
+      のndarrayオブジェクト、簡単に言えば <span
+      class="masked">3次元配列</span> となります。ここで、<span
+      class="masked"><code>(640,480,3)</code> ではなく
+      <code>(480,640,3)</code></span> であることに注意してください。</p>
+      <p>また「<strong>グレースケール画像</strong>」は
+      <code>shape</code> が <code>(480,640)</code> の
+      ndarrayオブジェクト、簡単に言えば「<strong>2次元配列</strong>」となります。</p>
+      <p>実際に、<strong>ローカル環境 (非Jupyter環境)</strong>
+      で、これらを確認してみます。次の画像 <a
+      href="figs/21/img-01.jpg">img-01.jpg</a>
+      をダウンロードして、プログラムと同じにフォルダに配置してください。この画像は
+      <strong>横640px</strong>、<strong>縦480px</strong>
+      のJPEG形式のカラー画像になります。</p>
+      <figure>
+      <img src="figs/21/img-01.jpg" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>なお、<a
+      href="lecture19.html#csvファイルの読込み"><strong>第19回講義</strong></a>で学んだように、次のようなプログラムでで
+      <strong>ウェブからファイルをダウンロードしてカレントフォルダに保存すること</strong>
+      もできます (GoogleColab環境では、この方法のほうが便利です)。</p>
+      <div class="sourceCode" id="cb5"
+      data-caption="ファイルのダウンロードと保存"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">import</span> requests </span>
+<span id="cb5-2"><a href="#cb5-2"></a></span>
+<span id="cb5-3"><a href="#cb5-3"></a>fn <span class="op">=</span> <span class="st">&#39;img-01.jpg&#39;</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a>url <span class="op">=</span> <span class="st">&#39;https://takeshiwada1980.github.io/Programming1-2023/figs/21/img-01.jpg&#39;</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a>res <span class="op">=</span> requests.get(url)</span>
+<span id="cb5-6"><a href="#cb5-6"></a></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="cf">if</span> res.status_code <span class="op">!=</span> <span class="dv">200</span>:</span>
+<span id="cb5-8"><a href="#cb5-8"></a>  <span class="cf">raise</span> <span class="pp">Exception</span>(<span class="ss">f&#39;ファイルのDLに失敗。強制終了します。Code:</span><span class="sc">{</span>res<span class="sc">.</span>status_code<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="cf">else</span> :</span>
+<span id="cb5-10"><a href="#cb5-10"></a>  <span class="cf">with</span> <span class="bu">open</span>(fn,<span class="st">&#39;wb&#39;</span>) <span class="im">as</span> <span class="bu">file</span>: </span>
+<span id="cb5-11"><a href="#cb5-11"></a>    <span class="bu">file</span>.write(res.content)</span>
+<span id="cb5-12"><a href="#cb5-12"></a>  <span class="bu">print</span>(<span class="ss">f&#39;カレントフォルダに </span><span class="sc">{</span>fn<span class="sc">}</span><span class="ss"> を保存しました&#39;</span>)</span></code></pre></div>
+      <p>カレントフォルダに配置した <code>img-01.jpg</code>
+      について確認するために、次のプログラムを作成して実行してください。</p>
+      <div class="sourceCode" id="cb6"
+      data-caption="OpenCVにおける画像の扱い"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="im">import</span> cv2</span>
+<span id="cb6-2"><a href="#cb6-2"></a></span>
+<span id="cb6-3"><a href="#cb6-3"></a>fn <span class="op">=</span> <span class="st">&#39;img-01.jpg&#39;</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a>img <span class="op">=</span> cv2.imread(fn)</span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="bu">print</span>(<span class="ss">f&#39;type  =&gt; </span><span class="sc">{</span><span class="bu">type</span>(img)<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="bu">print</span>(<span class="ss">f&#39;ndim  =&gt; </span><span class="sc">{</span>img<span class="sc">.</span>ndim<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="bu">print</span>(<span class="ss">f&#39;dtype =&gt; </span><span class="sc">{</span>img<span class="sc">.</span>dtype<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="bu">print</span>(<span class="ss">f&#39;shape =&gt; </span><span class="sc">{</span>img<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+      <p>実行結果は次のようになります。</p>
+      <pre><code>type  =&gt; &lt;class &#39;numpy.ndarray&#39;&gt;
+ndim  =&gt; 3
+dtype =&gt; uint8
+shape =&gt; (480, 640, 3)</code></pre>
+      <p>ここで <code>dtype</code> の <code>uint8</code>
+      は「<strong>符号なし8ビット整数 (Unsigned 8-bit
+      Integer)</strong>」を意味します。この <code>uint8</code> 型では
+      <strong>0 から 255 までの整数値</strong>
+      を使うことができます。</p>
+      <p>次に「<strong>グレースケール画像</strong>」の場合にどのようになるかを試してみます。OpenCV
+      では <code>cv2.imread</code>
+      関数でファイルからデータを読み込む際に、引数で「カラー形式を指定」できます。ここでは、グレースケール画像として読み込むために、第2引数に
+      <code>cv2.IMREAD_GRAYSCALE</code> を指定します。先のプログラムの
+      <strong>第04行目</strong> を
+      <code>img = cv2.imread(fn,cv2.IMREAD_GRAYSCALE)</code>
+      に書き換えてプログラムを実行してみてください。</p>
+      <p>実行結果は次のようになります。</p>
+      <pre><code>type  =&gt; &lt;class &#39;numpy.ndarray&#39;&gt;
+ndim  =&gt; 2
+dtype =&gt; uint8
+shape =&gt; (480, 640)</code></pre>
+      <p>グレースケール画像として読み込むことで、<code>img</code>
+      が<strong>2次元配列</strong>になっていることが確認できます。</p>
+      <h2 data-number="3.4" id="画像の表示"><span
+      class="header-section-number">3.4</span> 画像の表示</h2>
+      <p>OpenCV では <code>cv2.imshow</code>
+      関数により、以下の画像のように <strong>ウィンドウ</strong>
+      を立ち上げて画像を表示させることができます。しかし、この
+      <code>cv2.imshow</code> は <strong>GUI 関連の処理</strong>
+      を含むため <span class="masked">ローカルに構築した Jupyter環境 や
+      GoogleColab環境 では利用すること</span>
+      ができません。また、プログラム終了とともにウィンドウも消えるため、あとから画像を確認したいような場合にも適しません
+      (画像処理の前後を比較したい場合などに非常に不便です)。</p>
+      <figure>
+      <img src="figs/21/cv-img-show-01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p><code>cv2.imshow</code>
+      には以上のような「使いにくさ」があるため、Jupyter環境 や
+      GoogleColab環境
+      なども含めて画像を表示する方法について解説します。いずれの方法も
+      <span class="masked">一長一短</span>
+      です。<strong>各自で目的や環境・状況にあわせて使い分けられるようになってください</strong>。</p>
+      <h3 data-number="3.4.1" id="表示方法1"><span
+      class="header-section-number">3.4.1</span> 表示方法1</h3>
+      <p><code>cv2.imshow</code>
+      を使ってウィンドウに画像を表示する方法です。<strong>Jupyter環境 や
+      GoogleColab環境
+      では使用できません</strong>。この方法では、ウィンドウが閉じられるまで<strong>プログラムをブロック</strong>します。つまり、<span
+      class="masked">ウィンドウが閉じられるまで <code>my_imshow</code>
+      関数以降のプログラムが実行されません</span>。</p>
+      <p>実際に試してみてください。特に、ウィンドウが閉じられるまで<a
+      href="https://www.google.com/search?q=ほげほげ">ほげほげ</a>という文字列が出力されない
+      (=<strong>プログラムがブロックされること</strong>)
+      を確認してください。</p>
+      <div class="sourceCode" id="cb9" data-caption="方法1"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="im">import</span> cv2</span>
+<span id="cb9-2"><a href="#cb9-2"></a></span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="kw">def</span> my_imshow(img,wn<span class="op">=</span><span class="st">&#39;Image&#39;</span>):</span>
+<span id="cb9-4"><a href="#cb9-4"></a>  cv2.imshow(wn, img)</span>
+<span id="cb9-5"><a href="#cb9-5"></a>  <span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb9-6"><a href="#cb9-6"></a>    <span class="co"># ESCキーが押下されたら閉じる</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a>    <span class="cf">if</span> cv2.waitKey(<span class="dv">10</span>) <span class="op">==</span> <span class="dv">27</span>:</span>
+<span id="cb9-8"><a href="#cb9-8"></a>      <span class="cf">break</span></span>
+<span id="cb9-9"><a href="#cb9-9"></a>    <span class="co"># 閉じるボタンが押されたら閉じる</span></span>
+<span id="cb9-10"><a href="#cb9-10"></a>    <span class="cf">if</span> cv2.getWindowProperty(wn,cv2.WND_PROP_VISIBLE) <span class="op">&lt;</span> <span class="dv">1</span>:</span>
+<span id="cb9-11"><a href="#cb9-11"></a>      <span class="cf">break</span></span>
+<span id="cb9-12"><a href="#cb9-12"></a>  cv2.destroyAllWindows()</span>
+<span id="cb9-13"><a href="#cb9-13"></a></span>
+<span id="cb9-14"><a href="#cb9-14"></a>img <span class="op">=</span> cv2.imread(<span class="st">&#39;img-01.jpg&#39;</span>)</span>
+<span id="cb9-15"><a href="#cb9-15"></a>my_imshow(img) <span class="co"># ■■■ 画像の表示 ■■■</span></span>
+<span id="cb9-16"><a href="#cb9-16"></a><span class="bu">print</span>(<span class="st">&#39;ほげほげ&#39;</span>)</span></code></pre></div>
+      <h3 data-number="3.4.2" id="表示方法2"><span
+      class="header-section-number">3.4.2</span> 表示方法2</h3>
+      <p>この方法も <strong>Jupyter環境 や GoogleColab環境
+      では使用できません</strong>。<strong><em>方法1</em></strong>
+      との違いは「<strong>プログラムがブロックされないこと</strong>」と「<span
+      class="masked">プログラムが終了してもウィンドウが残っていること</span>」です。</p>
+      <div class="sourceCode" id="cb10" data-caption="方法2"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="im">import</span> cv2</span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="im">from</span> PIL <span class="im">import</span> Image  <span class="co"># 要import</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a></span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="kw">def</span> my_imshow(img):</span>
+<span id="cb10-5"><a href="#cb10-5"></a>  <span class="cf">if</span> img.ndim <span class="op">==</span> <span class="dv">2</span>:</span>
+<span id="cb10-6"><a href="#cb10-6"></a>    im_pil <span class="op">=</span> Image.fromarray(img)</span>
+<span id="cb10-7"><a href="#cb10-7"></a>  <span class="cf">else</span>:</span>
+<span id="cb10-8"><a href="#cb10-8"></a>    tmp <span class="op">=</span> cv2.cvtColor(img,cv2.COLOR_BGR2RGB)</span>
+<span id="cb10-9"><a href="#cb10-9"></a>    im_pil <span class="op">=</span> Image.fromarray(tmp)</span>
+<span id="cb10-10"><a href="#cb10-10"></a>  im_pil.show()</span>
+<span id="cb10-11"><a href="#cb10-11"></a></span>
+<span id="cb10-12"><a href="#cb10-12"></a>img <span class="op">=</span> cv2.imread(<span class="st">&#39;img-01.jpg&#39;</span>)</span>
+<span id="cb10-13"><a href="#cb10-13"></a>my_imshow(img) <span class="co"># ■■■ 画像の表示 ■■■</span></span>
+<span id="cb10-14"><a href="#cb10-14"></a><span class="bu">print</span>(<span class="st">&#39;ほげほげ&#39;</span>)</span></code></pre></div>
+      <p>実行結果は次のようになります。</p>
+      <figure>
+      <img src="figs/21/cv-img-show-02.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>この <strong><em>表示方法2</em></strong>
+      では、PNGファイルに関連づいている「<strong>既定のアプリ</strong>」が起動して、そこに画像が表示されます。デフォルトの
+      Windows環境
+      では標準アプリの「<strong>フォト</strong>」が起動します。「既定のアプリ」は、Windowsの「スタートボタン」を右クリックして「設定」-「アプリ」から確認することができます。</p>
+      <figure>
+      <img src="figs/21/cv-img-show-03.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <h3 data-number="3.4.3" id="表示方法3"><span
+      class="header-section-number">3.4.3</span> 表示方法3</h3>
+      <p>この方法は、<strong>可視化ライブラリである Matplotlib</strong>
+      を利用したもので、<strong>環境を問わずに、非Jupyter環境、Jupyter環境、GoogleColab環境
+      のいずれでも使用すること</strong>ができます。この方法のデメリットとしては「<strong>処理が重いこと</strong>」「<span
+      class="masked">Matplotlibによって加工された画像になってしまうこと</span>」などがあります。この方法により表示される画像は、<strong>もともとの画像とは異なる解像度
+      (縦横のピクセル数)</strong> になってしまいます。</p>
+      <div class="sourceCode" id="cb11" data-caption="方法3"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="im">import</span> cv2</span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt  <span class="co"># 要import</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a></span>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="kw">def</span> my_imshow(img):</span>
+<span id="cb11-5"><a href="#cb11-5"></a>  <span class="cf">if</span> img.ndim <span class="op">==</span> <span class="dv">2</span>:</span>
+<span id="cb11-6"><a href="#cb11-6"></a>    plt.imshow(img,cmap<span class="op">=</span><span class="st">&#39;gray&#39;</span>)</span>
+<span id="cb11-7"><a href="#cb11-7"></a>  <span class="cf">else</span>:</span>
+<span id="cb11-8"><a href="#cb11-8"></a>    tmp <span class="op">=</span> cv2.cvtColor(img,cv2.COLOR_BGR2RGB)</span>
+<span id="cb11-9"><a href="#cb11-9"></a>    plt.imshow(tmp)</span>
+<span id="cb11-10"><a href="#cb11-10"></a>  plt.show()</span>
+<span id="cb11-11"><a href="#cb11-11"></a></span>
+<span id="cb11-12"><a href="#cb11-12"></a>img <span class="op">=</span> cv2.imread(<span class="st">&#39;img-01.jpg&#39;</span>)</span>
+<span id="cb11-13"><a href="#cb11-13"></a>my_imshow(img) <span class="co"># ■■■ 画像の表示 ■■■</span></span>
+<span id="cb11-14"><a href="#cb11-14"></a><span class="bu">print</span>(<span class="st">&#39;ほげほげ&#39;</span>)</span></code></pre></div>
+      <p><strong>ローカルの非Jupyter環境</strong>
+      で実行した場合は、次のようなウィンドウが表示され、そこで <span
+      class="masked">拡大縮小などの操作</span>
+      もできます。ただし、このウィンドウを閉じるまではプログラムはブロックされます。一方で、<strong>GoogleColab環境</strong>
+      および <strong>Jupyter環境</strong>
+      で実行しているときは、プログラムはブロックされません。</p>
+      <figure>
+      <img src="figs/21/cv-img-show-04.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>なお、この方法では Matplotlib
+      の知識とスキルがあれば、以下のように <span
+      class="masked">分析や考察に役立つ情報を付与</span>
+      <strong>した画像</strong>を出力することもできます
+      (これは論文や報告書を作成する際に非常に有用です)。</p>
+      <figure>
+      <img src="figs/21/cv-img-show-05.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>上記のようなグリッドは <code>my_imshow</code>
+      関数を次のように書き換えることで表示させることができます。</p>
+      <div class="sourceCode" id="cb12"
+      data-caption="Matplotlib版の my_imshow のカスタマイズ例"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="kw">def</span> my_imshow(img):</span>
+<span id="cb12-2"><a href="#cb12-2"></a>  fig,ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb12-3"><a href="#cb12-3"></a>  <span class="cf">if</span> img.ndim <span class="op">==</span> <span class="dv">2</span>:</span>
+<span id="cb12-4"><a href="#cb12-4"></a>    ax.imshow(img,cmap<span class="op">=</span><span class="st">&#39;gray&#39;</span>)</span>
+<span id="cb12-5"><a href="#cb12-5"></a>  <span class="cf">else</span>:</span>
+<span id="cb12-6"><a href="#cb12-6"></a>    tmp <span class="op">=</span> cv2.cvtColor(img,cv2.COLOR_BGR2RGB)</span>
+<span id="cb12-7"><a href="#cb12-7"></a>    ax.imshow(tmp)</span>
+<span id="cb12-8"><a href="#cb12-8"></a>  ax.set_xticks(<span class="bu">range</span>(<span class="dv">0</span>,img.shape[<span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>,<span class="dv">20</span>),minor<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb12-9"><a href="#cb12-9"></a>  ax.set_yticks(<span class="bu">range</span>(<span class="dv">0</span>,img.shape[<span class="dv">0</span>]<span class="op">+</span><span class="dv">1</span>,<span class="dv">20</span>),minor<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb12-10"><a href="#cb12-10"></a>  ax.grid(which<span class="op">=</span><span class="st">&#39;major&#39;</span>,lw<span class="op">=</span><span class="fl">0.5</span>, c<span class="op">=</span><span class="st">&#39;#333&#39;</span>)</span>
+<span id="cb12-11"><a href="#cb12-11"></a>  ax.grid(which<span class="op">=</span><span class="st">&#39;minor&#39;</span>,lw<span class="op">=</span><span class="fl">0.5</span>, c<span class="op">=</span><span class="st">&#39;#888&#39;</span>)</span>
+<span id="cb12-12"><a href="#cb12-12"></a>  plt.show()</span></code></pre></div>
+      <h3 data-number="3.4.4" id="表示方法4"><span
+      class="header-section-number">3.4.4</span> 表示方法4</h3>
+      <p>この方法は <strong>GoogleColab環境だけ</strong>
+      で利用できる方法です。<strong>第06行目</strong> が
+      <code>cv2.imshow</code> ではなく <code>cv2_imshow</code>
+      となっていること、<strong>第03行目</strong>
+      のようなインポートが必要なことに注意してください。</p>
+      <div class="sourceCode" id="cb13" data-caption="方法4"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="im">import</span> cv2</span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="im">from</span> google.colab.patches <span class="im">import</span> cv2_imshow  <span class="co"># 要import</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a></span>
+<span id="cb13-5"><a href="#cb13-5"></a>img <span class="op">=</span> cv2.imread(<span class="st">&#39;img-01.jpg&#39;</span>)</span>
+<span id="cb13-6"><a href="#cb13-6"></a>cv2_imshow(img)</span></code></pre></div>
+      <h3 data-number="3.4.5" id="表示方法5"><span
+      class="header-section-number">3.4.5</span> 表示方法5</h3>
+      <p>この方法は <strong>GoogleColab環境</strong> および
+      <strong>Jupyter環境</strong>
+      だけで利用できる方法です。画像を一時ファイルに保存して、それを読込み、<code>IPython.display.Image</code>
+      を使って「出力セル」に表示させる方法です。<strong>GoogleColab環境</strong>
+      では、<code>cv2_imshow</code>
+      を使ったほうが処理が高速であり、この方法を使用するメリットはありません。</p>
+      <div class="sourceCode" id="cb14" data-caption="方法5"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="im">import</span> cv2</span>
+<span id="cb14-3"><a href="#cb14-3"></a><span class="im">from</span> IPython.display <span class="im">import</span> Image   <span class="co"># 要import</span></span>
+<span id="cb14-4"><a href="#cb14-4"></a></span>
+<span id="cb14-5"><a href="#cb14-5"></a>img <span class="op">=</span> cv2.imread(<span class="st">&#39;img-01.jpg&#39;</span>)</span>
+<span id="cb14-6"><a href="#cb14-6"></a>cv2.imwrite(<span class="st">&#39;tmp.jpg&#39;</span>,img)          <span class="co"># &#39;tmp.jpg&#39; に保存</span></span>
+<span id="cb14-7"><a href="#cb14-7"></a>Image(<span class="bu">open</span>(<span class="st">&#39;tmp.jpg&#39;</span>,<span class="st">&#39;rb&#39;</span>).read())  <span class="co"># &#39;tmp.jpg&#39; を出力セルに表示</span></span></code></pre></div>
+      <hr />
+      <p><strong>演習</strong>:「<strong>表示方法1</strong>」から「<strong>表示方法5</strong>」について実際に実行して結果を確認せよ。特に
+      <code>img = cv2.imread('img-01.jpg',cv2.IMREAD_GRAYSCALE)</code>
+      のように「グレースケール画像」として読み込んだ場合
+      (<code>img</code> の <code>ndim</code> が <code>2</code> の場合)
+      も問題なく機能することを確認せよ。</p>
+      <h2 data-number="3.5" id="画像の保存"><span
+      class="header-section-number">3.5</span> 画像の保存</h2>
+      <p>画像の保存は <code>cv2.imwrite</code>
+      関数を使用します。第1引数に「ファイル名」、第2引数に「<strong>ndarrayオブジェクト</strong>」を指定します。ファイル形式は、ファイル名に応じて自動的に決定されます。</p>
+      <div class="sourceCode" id="cb15" data-caption="画像の保存"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="im">import</span> cv2</span>
+<span id="cb15-2"><a href="#cb15-2"></a>fn <span class="op">=</span> <span class="st">&#39;img-01.jpg&#39;</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a>img <span class="op">=</span> cv2.imread(fn)</span>
+<span id="cb15-4"><a href="#cb15-4"></a>img <span class="op">=</span> cv2.flip(img,<span class="dv">1</span>)              <span class="co"># 左右反転</span></span>
+<span id="cb15-5"><a href="#cb15-5"></a>cv2.imwrite(<span class="st">&#39;img-01-flip.jpg&#39;</span>,img) <span class="co"># 保存処理</span></span></code></pre></div>
+      <p>このプログラムを実行すると、次のような画像
+      <code>img-01-flip.jpg</code>
+      が出力されます。また、<strong>第05行目</strong>を
+      <code>cv2.imwrite('img-01-flip.png',img)</code> とすれば
+      PNG形式の画像が出力されます。その他、出力可能な画像形式については<a
+      href="https://docs.opencv.org/4.8.0/d4/da8/group__imgcodecs.html#gabbc7ef1aa2edfaa87772f1202d67e0ce">リファレンス</a>を参照してください。</p>
+      <figure>
+      <img src="figs/21/img-01-flip.jpg" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p><strong>演習</strong>: <code>cv2.flip</code> の第2引数を
+      <code>0</code> および <code>-1</code>
+      に変更したときの結果について確認せよ。</p>
+      <h2 data-number="3.6" id="カラー画像の構成と色成分の取得"><span
+      class="header-section-number">3.6</span>
+      カラー画像の構成と色成分の取得</h2>
+      <p>OpenCVにおいて、カラー画像は <code>(*,*,3)</code>
+      という3次元配列となります。実際に詳しくみていきます。まずは、画像の左上座標
+      X=0, Y=0
+      のピクセルの<strong>色を取得</strong>して、その値を出力してみます。</p>
+      <div class="sourceCode" id="cb16"
+      data-caption="特定ピクセルの色を取得"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="im">import</span> cv2</span>
+<span id="cb16-2"><a href="#cb16-2"></a>fn <span class="op">=</span> <span class="st">&#39;img-01.jpg&#39;</span></span>
+<span id="cb16-3"><a href="#cb16-3"></a>img <span class="op">=</span> cv2.imread(fn)</span>
+<span id="cb16-4"><a href="#cb16-4"></a>p <span class="op">=</span> img[<span class="dv">0</span>,<span class="dv">0</span>] </span>
+<span id="cb16-5"><a href="#cb16-5"></a><span class="bu">print</span>(<span class="ss">f&#39;type =&gt; </span><span class="sc">{</span><span class="bu">type</span>(p)<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+<span id="cb16-6"><a href="#cb16-6"></a><span class="bu">print</span>(<span class="ss">f&#39;p    =&gt; </span><span class="sc">{</span>p<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+      <p>実行結果は次のようになります。なお、<strong>第04行目</strong>は、C言語の配列に対するアクセスのように
+      <code>p = img[0][0]</code> と書くこともできますが、Python では
+      <code>p = img[0,0]</code>
+      と書いたほうが<strong>高速にアクセスが可能</strong>です。</p>
+      <pre><code>type =&gt; &lt;class &#39;numpy.ndarray&#39;&gt;
+p    =&gt; [ 44 136  77]</code></pre>
+      <p>既に述べたように、OpenCVでは<span class="masked"> BGR </span>
+      という順番に色情報が格納されるので、画像左上の X=0, Y=0
+      のピクセルは「<strong>青44</strong>」「<strong>緑136</strong>」「<strong>赤77</strong>」という色成分を持っていることがわかります。このことは、画像の左上が「草むら」であり、緑成分が大きいであろうという視覚的な情報からも確認できます。</p>
+      <hr />
+      <p><strong>演習1</strong>: <strong>第04行目</strong> を
+      <code>p = img[0][0]</code>
+      に書き換えても、問題なく実行できることを確認せよ。</p>
+      <p><strong>演習2</strong>:
+      画像の<strong>右端の中央</strong>、つまり、X=639, Y=240
+      の色成分を確認せよ。また、この位置は「濃い茶色の毛の部分」であり、赤の成分が最も大きくなることを確認せよ。ヒント:<span
+      class="masked">配列に対しては数学と同じく、まずは「行」、次に「列」を指定することに注意してください。つまり、X=639,
+      Y=240 の位置には <code>img[639, 240]</code> ではなく
+      <code>img[240,639]</code> でアクセスします。</span></p>
+      <h2 data-number="3.7" id="画像-ピクセルの色情報-の直接編集"><span
+      class="header-section-number">3.7</span> 画像 (ピクセルの色情報)
+      の直接編集</h2>
+      <p>次に、指定範囲のピクセルの色情報を上書きし、次の画像のように「目隠し」を加えてみたいと思います。具体的には、X軸範囲を
+      130～219、Y軸範囲を 210～229 として、これらの範囲 (長方形) を
+      <strong>黒色</strong> に塗りつぶしていきます。</p>
+      <figure>
+      <img src="figs/21/img-01-mask.jpg" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>これは、次のプログラムによって実行することができます。<strong>第12行目</strong>には、実行環境にあわせて
+      <code>img</code> を表示する処理を追加してください (必要に応じて
+      <code>import</code> や 関数の定義が必要になります)。</p>
+      <div class="sourceCode" id="cb18"
+      data-caption="画像の直接編集 (非推奨)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="im">import</span> cv2</span>
+<span id="cb18-2"><a href="#cb18-2"></a></span>
+<span id="cb18-3"><a href="#cb18-3"></a>fn <span class="op">=</span> <span class="st">&#39;img-01.jpg&#39;</span></span>
+<span id="cb18-4"><a href="#cb18-4"></a>img <span class="op">=</span> cv2.imread(fn)</span>
+<span id="cb18-5"><a href="#cb18-5"></a></span>
+<span id="cb18-6"><a href="#cb18-6"></a><span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">130</span>,<span class="dv">219</span>):</span>
+<span id="cb18-7"><a href="#cb18-7"></a>  <span class="cf">for</span> y <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">210</span>,<span class="dv">229</span>):</span>
+<span id="cb18-8"><a href="#cb18-8"></a>    img[y,x,<span class="dv">0</span>] <span class="op">=</span> <span class="dv">0</span>  <span class="co"># B</span></span>
+<span id="cb18-9"><a href="#cb18-9"></a>    img[y,x,<span class="dv">1</span>] <span class="op">=</span> <span class="dv">0</span>  <span class="co"># G</span></span>
+<span id="cb18-10"><a href="#cb18-10"></a>    img[y,x,<span class="dv">2</span>] <span class="op">=</span> <span class="dv">0</span>  <span class="co"># R</span></span>
+<span id="cb18-11"><a href="#cb18-11"></a>      </span>
+<span id="cb18-12"><a href="#cb18-12"></a><span class="co"># ■■ img を表示する処理を追加 ■■</span></span></code></pre></div>
+      <p>上記のプログラムは、二重ループによって指定範囲のピクセルを黒色に書き換えています。しかし、このようなループを使って多数のデータを書き換えるような処理は、Pythonの特性上、<span
+      class="masked">非常に時間がかることが知られています</span>。</p>
+      <p>そこで、次のように NumPy
+      の「<strong>スライス</strong>」と「<strong>ブロードキャスト機能</strong>」を組み合わせる方法が推奨されています。スライスについては<a
+      href="lecture12.html#リストの扱いに関する補足③-スライス">第12回講義</a>を参照、ブロードキャスト機能については<a
+      href="lecture20.html#移動">第20回講義</a>を参照してください。</p>
+      <div class="sourceCode" id="cb19"
+      data-caption="画像の直接編集 (推奨)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="im">import</span> cv2</span>
+<span id="cb19-2"><a href="#cb19-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb19-3"><a href="#cb19-3"></a></span>
+<span id="cb19-4"><a href="#cb19-4"></a>fn <span class="op">=</span> <span class="st">&#39;img-01.jpg&#39;</span></span>
+<span id="cb19-5"><a href="#cb19-5"></a>img <span class="op">=</span> cv2.imread(fn)</span>
+<span id="cb19-6"><a href="#cb19-6"></a></span>
+<span id="cb19-7"><a href="#cb19-7"></a>img[<span class="dv">210</span>:<span class="dv">230</span>,<span class="dv">130</span>:<span class="dv">220</span>] <span class="op">=</span> np.array([<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>],dtype<span class="op">=</span>np.uint8)</span>
+<span id="cb19-8"><a href="#cb19-8"></a>      </span>
+<span id="cb19-9"><a href="#cb19-9"></a><span class="co"># ■■ img を表示する処理を追加 ■■</span></span></code></pre></div>
+      <p>2つの方法の処理時間について <code>timeit</code>
+      を使って比較した結果を示します。方法の違いで、処理時間に <span
+      class="masked">約60倍</span> の差がでることが確認できます。</p>
+      <ul>
+      <li>2重ループを使用した方法
+      <ul>
+      <li><strong>456 µs</strong> ± 2.83 µs per loop (mean ± std. dev.
+      of 7 runs, 1,000 loops each)</li>
+      </ul></li>
+      <li>スライスとブロードキャストを使用した方法
+      <ul>
+      <li><strong>7.42 µs</strong> ± 115 ns per loop (mean ± std. dev.
+      of 7 runs, 100,000 loops each)</li>
+      </ul></li>
+      </ul>
+      <hr />
+      <p><strong>演習</strong>:
+      「紫色」の目隠しになるようにプログラムを修正せよ。</p>
+      <div class="note type-senior">
+      <p><strong>処理時間の計測</strong></p>
+      <p>Jupyter環境 もしくは GoogleColab環境 では、マジックコマンド
+      <code>%timeit</code>
+      を使用することで比較的簡単に<strong>平均処理時間</strong>の計測ができます。<code>%timeit</code>
+      は、特定の1行のプログラムの平均処理時間を計測する機能を持っています。複数行のコードから成る処理を測定したい場合は、それらの処理を関数にまとめて
+      <code>%timeit</code> を使用します。</p>
+      <p>例えば、今回のケースでは次のようにして処理時間の計測をしました。</p>
+      <div class="sourceCode" id="cb20"
+      data-caption="処理時間の計測-1"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="im">import</span> cv2</span>
+<span id="cb20-3"><a href="#cb20-3"></a></span>
+<span id="cb20-4"><a href="#cb20-4"></a><span class="kw">def</span> func(img):</span>
+<span id="cb20-5"><a href="#cb20-5"></a>  <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">130</span>,<span class="dv">220</span>):</span>
+<span id="cb20-6"><a href="#cb20-6"></a>    <span class="cf">for</span> y <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">210</span>,<span class="dv">230</span>):</span>
+<span id="cb20-7"><a href="#cb20-7"></a>      img[y,x,<span class="dv">0</span>] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb20-8"><a href="#cb20-8"></a>      img[y,x,<span class="dv">1</span>] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb20-9"><a href="#cb20-9"></a>      img[y,x,<span class="dv">2</span>] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb20-10"><a href="#cb20-10"></a></span>
+<span id="cb20-11"><a href="#cb20-11"></a>fn <span class="op">=</span> <span class="st">&#39;img-01.jpg&#39;</span></span>
+<span id="cb20-12"><a href="#cb20-12"></a>img <span class="op">=</span> cv2.imread(fn)</span>
+<span id="cb20-13"><a href="#cb20-13"></a></span>
+<span id="cb20-14"><a href="#cb20-14"></a><span class="op">%</span>timeit func(img) <span class="co"># ここに注目</span></span></code></pre></div>
+      <div class="sourceCode" id="cb21"
+      data-caption="処理時間の計測-2"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="im">import</span> cv2</span>
+<span id="cb21-3"><a href="#cb21-3"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb21-4"><a href="#cb21-4"></a></span>
+<span id="cb21-5"><a href="#cb21-5"></a><span class="kw">def</span> func(img):</span>
+<span id="cb21-6"><a href="#cb21-6"></a>  img[<span class="dv">210</span>:<span class="dv">230</span>,<span class="dv">130</span>:<span class="dv">220</span>] <span class="op">=</span> np.array([<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>],dtype<span class="op">=</span>np.uint8)</span>
+<span id="cb21-7"><a href="#cb21-7"></a></span>
+<span id="cb21-8"><a href="#cb21-8"></a>fn <span class="op">=</span> <span class="st">&#39;img-01.jpg&#39;</span></span>
+<span id="cb21-9"><a href="#cb21-9"></a>img <span class="op">=</span> cv2.imread(fn)</span>
+<span id="cb21-10"><a href="#cb21-10"></a></span>
+<span id="cb21-11"><a href="#cb21-11"></a><span class="op">%</span>timeit func(img) <span class="co"># ここに注目</span></span></code></pre></div>
+      </div>
+      <h2 data-number="3.8"
+      id="画像の直接編集-グレースケール画像の生成"><span
+      class="header-section-number">3.8</span> 画像の直接編集
+      (グレースケール画像の生成)</h2>
+      <p>「カラー画像」から「グレースケール画像」を生成するためには
+      <code>cv2.cvtColor</code>
+      関数を利用することができます。具体的には、次のようにして
+      カラー画像 <code>img</code> から、グレースケール画像
+      <code>img2</code> を生成することができます。</p>
+      <div class="sourceCode" id="cb22"
+      data-caption="グレースケール変換"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="im">import</span> cv2</span>
+<span id="cb22-2"><a href="#cb22-2"></a></span>
+<span id="cb22-3"><a href="#cb22-3"></a>fn <span class="op">=</span> <span class="st">&#39;img-01.jpg&#39;</span></span>
+<span id="cb22-4"><a href="#cb22-4"></a>img <span class="op">=</span> cv2.imread(fn)</span>
+<span id="cb22-5"><a href="#cb22-5"></a><span class="cf">assert</span> img.shape <span class="op">==</span> (<span class="dv">480</span>,<span class="dv">640</span>,<span class="dv">3</span>)</span>
+<span id="cb22-6"><a href="#cb22-6"></a></span>
+<span id="cb22-7"><a href="#cb22-7"></a>img2 <span class="op">=</span> cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)  <span class="co"># グレースケール変換 </span></span>
+<span id="cb22-8"><a href="#cb22-8"></a><span class="cf">assert</span> img2.shape <span class="op">==</span> (<span class="dv">480</span>,<span class="dv">640</span>)</span>
+<span id="cb22-9"><a href="#cb22-9"></a></span>
+<span id="cb22-10"><a href="#cb22-10"></a><span class="co"># ■■ img2 を表示する処理を追加 ■■</span></span></code></pre></div>
+      <p>カラー画像では <code>shape</code> が <code>(480,640,3)</code>
+      であり、グレースケール画像では <code>shape</code> が
+      <code>(480,640)</code> となる点に注意してください。</p>
+      <p>ここでは、OpenCV
+      の画像操作について理解を深めるために、<code>cv2.cvtColor</code>
+      関数を使わずに
+      <strong>多次元配列の直接編集によってグレースケール画像を生成すること</strong>も行ないます。「情報2」の<a
+      href="https://classroom.google.com/c/NjAzMjM4NjAzNTQ3/m/NTE4NDg3MTA5MzQx/details">第05回講義</a>の資料
+      p.83
+      で学んだように、グレースケール画像は次のような計算で作成することができます。</p>
+      <p><span class="math display">\[ \mathrm{Gray}
+      =\mathrm{Blue}\cdot0.11 + \mathrm{Green}\cdot0.59 +
+      \mathrm{Red}\cdot 0.3 \]</span></p>
+      <p>ここで青・緑・赤によって<span class="masked">重み (係数)
+      </span> が違っているのは <strong>人間の視覚特性</strong>
+      を考慮しているためです。上記の係数は<a
+      href="https://elaws.e-gov.go.jp/document?lawid=423M60000008087">標準テレビジョン放送等のうちデジタル放送に関する送信の標準方式（平成二十三年総務省令第八十七号）</a>に基づいたものになります。</p>
+      <p>この計算処理について愚直にプログラムを書くとすれば、次のようになります。</p>
+      <div class="sourceCode" id="cb23"
+      data-caption="グレースケール変換 (非推奨)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="im">import</span> cv2</span>
+<span id="cb23-2"><a href="#cb23-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb23-3"><a href="#cb23-3"></a></span>
+<span id="cb23-4"><a href="#cb23-4"></a>fn <span class="op">=</span> <span class="st">&#39;img-01.jpg&#39;</span></span>
+<span id="cb23-5"><a href="#cb23-5"></a>img <span class="op">=</span> cv2.imread(fn)</span>
+<span id="cb23-6"><a href="#cb23-6"></a><span class="cf">assert</span> img.shape <span class="op">==</span> (<span class="dv">480</span>,<span class="dv">640</span>,<span class="dv">3</span>)</span>
+<span id="cb23-7"><a href="#cb23-7"></a></span>
+<span id="cb23-8"><a href="#cb23-8"></a><span class="co"># すべての要素が 0 で大きさが (480,640) の配列 img2 を生成</span></span>
+<span id="cb23-9"><a href="#cb23-9"></a>img2 <span class="op">=</span> np.zeros((<span class="dv">480</span>,<span class="dv">640</span>),dtype<span class="op">=</span>np.uint8)</span>
+<span id="cb23-10"><a href="#cb23-10"></a><span class="cf">assert</span> img2.shape <span class="op">==</span> (<span class="dv">480</span>,<span class="dv">640</span>)</span>
+<span id="cb23-11"><a href="#cb23-11"></a></span>
+<span id="cb23-12"><a href="#cb23-12"></a><span class="co"># グレースケール画像の手動生成</span></span>
+<span id="cb23-13"><a href="#cb23-13"></a><span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(img.shape[<span class="dv">1</span>]):</span>
+<span id="cb23-14"><a href="#cb23-14"></a>  <span class="cf">for</span> y <span class="kw">in</span> <span class="bu">range</span>(img.shape[<span class="dv">0</span>]):</span>
+<span id="cb23-15"><a href="#cb23-15"></a>    img2[y,x] <span class="op">=</span> img[y,x,<span class="dv">0</span>]<span class="op">*</span><span class="fl">0.11</span> <span class="op">+</span> img[y,x,<span class="dv">1</span>]<span class="op">*</span><span class="fl">0.59</span> <span class="op">+</span> img[y,x,<span class="dv">2</span>]<span class="op">*</span><span class="fl">0.3</span> </span>
+<span id="cb23-16"><a href="#cb23-16"></a></span>
+<span id="cb23-17"><a href="#cb23-17"></a><span class="co"># ■■ img2 を表示する処理を追加 ■■</span></span></code></pre></div>
+      <p><strong>第09行目</strong> の <code>np.zeros</code>
+      は、第1引数で<strong>指定する大きさ (形状) の多次元配列
+      (=ndarrayオブジェクト)
+      を生成する関数</strong>です。配列の要素はすべて <code>0</code>
+      で初期化されます。同様の関数に <code>np.ones</code>
+      があり、こちらは要素がすべて <code>1</code>
+      で初期化されます。なお、すべての要素を任意の値、例えば
+      <code>255</code> で初期化したい場合は <span
+      class="masked"><code>np.ones((480,640),dtype=np.uint8)*255</code></span>
+      のようにします。</p>
+      <p>既に解説したように Python
+      の特性上、<strong>多重ループを構成して値を編集するような操作</strong>は
+      <span class="masked">パフォーマンスの重大な低下</span>
+      を引き起こします。そのため、上記のプログラムは、スライスを利用して以下のように記述することが推奨されます。</p>
+      <div class="sourceCode" id="cb24"
+      data-caption="グレースケール変換 (推奨)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="im">import</span> cv2</span>
+<span id="cb24-2"><a href="#cb24-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb24-3"><a href="#cb24-3"></a></span>
+<span id="cb24-4"><a href="#cb24-4"></a>fn <span class="op">=</span> <span class="st">&#39;img-01.jpg&#39;</span></span>
+<span id="cb24-5"><a href="#cb24-5"></a>img <span class="op">=</span> cv2.imread(fn)</span>
+<span id="cb24-6"><a href="#cb24-6"></a><span class="cf">assert</span> img.shape <span class="op">==</span> (<span class="dv">480</span>,<span class="dv">640</span>,<span class="dv">3</span>)</span>
+<span id="cb24-7"><a href="#cb24-7"></a></span>
+<span id="cb24-8"><a href="#cb24-8"></a><span class="co"># すべての要素が 0 で大きさが (480,640) の配列 img2 を生成</span></span>
+<span id="cb24-9"><a href="#cb24-9"></a>img2 <span class="op">=</span> np.zeros((<span class="dv">480</span>,<span class="dv">640</span>),dtype<span class="op">=</span>np.uint8)</span>
+<span id="cb24-10"><a href="#cb24-10"></a><span class="cf">assert</span> img2.shape <span class="op">==</span> (<span class="dv">480</span>,<span class="dv">640</span>)</span>
+<span id="cb24-11"><a href="#cb24-11"></a></span>
+<span id="cb24-12"><a href="#cb24-12"></a><span class="co"># グレースケール画像の手動生成【修正】</span></span>
+<span id="cb24-13"><a href="#cb24-13"></a>img2 <span class="op">=</span> img[:,:,<span class="dv">0</span>]<span class="op">*</span><span class="fl">0.11</span> <span class="op">+</span> img[:,:,<span class="dv">1</span>]<span class="op">*</span><span class="fl">0.59</span> <span class="op">+</span> img[:,:,<span class="dv">2</span>]<span class="op">*</span><span class="fl">0.3</span></span>
+<span id="cb24-14"><a href="#cb24-14"></a></span>
+<span id="cb24-15"><a href="#cb24-15"></a><span class="co"># ■■ img2 を表示する処理を追加 ■■</span></span></code></pre></div>
+      <p>変更されているのは <strong>第13行目</strong> となります。ここで
+      <code>img[:,:,0]</code> は <code>img[0:480,0:640,0]</code>
+      の省略表記になります。スライスについて、いまいち分からないという場合は「<a
+      href="https://www.google.com/search?q=numpy+スライス+解説">numpy
+      スライス 解説</a>」などで検索して解説記事を読んでください。</p>
+      <p><strong>演習1</strong>: <code>img[:,:,0]</code> を
+      <code>img[0:480,0:640,0]</code> ように書き換え、同様に
+      <code>img[:,:,1]</code> と <code>img[:,:,2]</code>
+      も書き換え、問題なく動作することを確認せよ。</p>
+      <p><strong>演習2</strong>: BGRの係数 (重み) を、すべて
+      <code>0.3</code>
+      とした場合の結果と比較せよ。また、係数を適当に変えて、その結果について確認せよ。</p>
+      <p><strong>演習3</strong>: 次のプログラムを実行して
+      <strong>オーバーフロー (桁あふれ)</strong>
+      が生じるかどうかを確認せよ。</p>
+      <div class="sourceCode" id="cb25"
+      data-caption="オーバーフローに関する確認"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb25-2"><a href="#cb25-2"></a></span>
+<span id="cb25-3"><a href="#cb25-3"></a>arr1 <span class="op">=</span> np.ones((<span class="dv">3</span>,<span class="dv">3</span>),dtype<span class="op">=</span>np.uint8)<span class="op">*</span><span class="dv">50</span></span>
+<span id="cb25-4"><a href="#cb25-4"></a>arr1[<span class="dv">1</span>,:] <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb25-5"><a href="#cb25-5"></a>arr1[<span class="dv">2</span>,:] <span class="op">=</span> <span class="dv">200</span></span>
+<span id="cb25-6"><a href="#cb25-6"></a><span class="bu">print</span>(<span class="ss">f&#39;arr1 =</span><span class="ch">\n</span><span class="sc">{</span>arr1<span class="sc">}</span><span class="ss">&#39;</span>,end<span class="op">=</span><span class="st">&#39;</span><span class="ch">\n\n</span><span class="st">&#39;</span>)</span>
+<span id="cb25-7"><a href="#cb25-7"></a></span>
+<span id="cb25-8"><a href="#cb25-8"></a>arr2 <span class="op">=</span> np.ones((<span class="dv">3</span>,<span class="dv">3</span>),dtype<span class="op">=</span>np.uint8)<span class="op">*</span><span class="dv">100</span></span>
+<span id="cb25-9"><a href="#cb25-9"></a><span class="bu">print</span>(<span class="ss">f&#39;arr2 =</span><span class="ch">\n</span><span class="sc">{</span>arr2<span class="sc">}</span><span class="ss">&#39;</span>,end<span class="op">=</span><span class="st">&#39;</span><span class="ch">\n\n</span><span class="st">&#39;</span>)</span>
+<span id="cb25-10"><a href="#cb25-10"></a></span>
+<span id="cb25-11"><a href="#cb25-11"></a>arr3 <span class="op">=</span> arr1 <span class="op">+</span> arr2</span>
+<span id="cb25-12"><a href="#cb25-12"></a><span class="cf">assert</span> arr3.dtype <span class="op">==</span> np.uint8</span>
+<span id="cb25-13"><a href="#cb25-13"></a><span class="bu">print</span>(<span class="ss">f&#39;arr1+ arr2 = arr3 =</span><span class="ch">\n</span><span class="sc">{</span>arr3<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+      <p><strong>演習4</strong>: 上記の <strong>演習3</strong>
+      でオーバーフローが生じると仮定する。このとき、加算結果が 255
+      を越える場合は、その値を <code>uint8</code> の最大値である 255
+      に制限したい。どのようにすればよいかを考え、また、ウェブ検索やChatGPTなどを利用して解決せよ
+      (<strong>調べた方法や提案された方法は、実際に試して確認すること</strong>)。</p>
+      <p><strong>解答例1</strong>: <span
+      class="masked"><code>arr3 = np.where(arr1.astype(int) + arr2.astype(int) &gt; 255, 255, arr1 + arr2)</code></span></p>
+      <p><strong>解答例2</strong>: <span
+      class="masked"><code>arr3 = np.clip(arr1*1.0 + arr2*1.0,0,255).astype(np.uint8)</code></span></p>
+      <h2 data-number="3.9"
+      id="画像の直接編集-セピアカラー画像の生成"><span
+      class="header-section-number">3.9</span> 画像の直接編集
+      (セピアカラー画像の生成)</h2>
+      <p>グレースケール画像の応用として、次のような「セピアカラーの画像」を生成していきます。</p>
+      <figure>
+      <img src="figs/21/img-01-sepia.jpg" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>この画像は、次のようなプログラムで生成することができます。</p>
+      <div class="sourceCode" id="cb26"
+      data-caption="セピアカラーの画像の生成"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="im">import</span> cv2</span>
+<span id="cb26-2"><a href="#cb26-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb26-3"><a href="#cb26-3"></a></span>
+<span id="cb26-4"><a href="#cb26-4"></a>fn <span class="op">=</span> <span class="st">&#39;img-01.jpg&#39;</span></span>
+<span id="cb26-5"><a href="#cb26-5"></a>img <span class="op">=</span> cv2.imread(fn)</span>
+<span id="cb26-6"><a href="#cb26-6"></a></span>
+<span id="cb26-7"><a href="#cb26-7"></a>img2 <span class="op">=</span> img[:,:,<span class="dv">0</span>]<span class="op">*</span><span class="fl">0.33</span> <span class="op">+</span> img[:,:,<span class="dv">1</span>]<span class="op">*</span><span class="fl">0.33</span> <span class="op">+</span> img[:,:,<span class="dv">2</span>]<span class="op">*</span><span class="fl">0.33</span></span>
+<span id="cb26-8"><a href="#cb26-8"></a><span class="cf">assert</span> img2.shape <span class="op">==</span> (<span class="dv">480</span>,<span class="dv">640</span>)</span>
+<span id="cb26-9"><a href="#cb26-9"></a></span>
+<span id="cb26-10"><a href="#cb26-10"></a>img3 <span class="op">=</span> np.zeros_like(img)</span>
+<span id="cb26-11"><a href="#cb26-11"></a><span class="cf">assert</span> img3.shape <span class="op">==</span> (<span class="dv">480</span>,<span class="dv">640</span>,<span class="dv">3</span>)</span>
+<span id="cb26-12"><a href="#cb26-12"></a>img3[:,:,<span class="dv">0</span>] <span class="op">=</span> img2<span class="op">*</span><span class="fl">0.55</span>  <span class="co"># Blue</span></span>
+<span id="cb26-13"><a href="#cb26-13"></a>img3[:,:,<span class="dv">1</span>] <span class="op">=</span> img2<span class="op">*</span><span class="fl">0.8</span>   <span class="co"># Green</span></span>
+<span id="cb26-14"><a href="#cb26-14"></a>img3[:,:,<span class="dv">2</span>] <span class="op">=</span> img2<span class="op">*</span><span class="fl">1.0</span>   <span class="co"># Red</span></span>
+<span id="cb26-15"><a href="#cb26-15"></a></span>
+<span id="cb26-16"><a href="#cb26-16"></a><span class="co"># ■■ img3 を表示する処理を追加 ■■</span></span></code></pre></div>
+      <p><strong>第10行目</strong> の <code>np.zeros_like</code>
+      関数は、引数に指定した多次元配列と<strong>同じ大きさの多次元配列</strong>を作成する関数です。要素はすべて<code>0</code>
+      で初期化されます。</p>
+      <p>また、次のように
+      <strong>ノイズを発生させて加算する処理</strong> を
+      <strong>第08行目</strong> と <strong>第10行目</strong>
+      の間に入れることで、より雰囲気のある画像を生成することもできます。<code>np.random.normal</code>
+      の第2引数の値を変化させることで、ノイズの適用量を変えることができます。</p>
+      <div class="sourceCode" id="cb27"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>tmp <span class="op">=</span> img2 <span class="op">+</span> np.random.normal(<span class="dv">0</span>,<span class="dv">10</span>,img2.shape)</span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="cf">assert</span> tmp.dtype <span class="op">==</span> np.float64</span>
+<span id="cb27-3"><a href="#cb27-3"></a>img2 <span class="op">=</span> np.clip(tmp,<span class="dv">0</span>,<span class="dv">255</span>).astype(np.uint8)</span></code></pre></div>
+      <p>上記の <strong>第01行目</strong> では <strong>正規分布</strong>
+      (「情報1」の<a
+      href="https://classroom.google.com/c/NjAzMjM4NjAzNTQ3/m/NTE4NDg3MTMwMTYx/details">第12回講義</a>の
+      p.196 参照) に従うノイズを発生させて <code>img2</code>
+      に加算しています。<code>np.random.normal</code>
+      で生成される多次元配列は <code>dtype</code> が
+      <code>np.float64</code> です。そのため、<strong>第02行目</strong>
+      でアサート文で確認しているように <code>tmp</code> の
+      <code>dtype</code> も <code>np.float64</code>
+      になります。このままでは<strong>画像として利用できない</strong>ので、<strong>第03行目</strong>で、最小値を0、最大値を255
+      にクリップして、さらに <code>astype</code> メソッドで型を
+      <code>np.uint8</code> に変換しています。</p>
+      <ul>
+      <li>ウェブ検索「<a
+      href="https://www.google.com/search?q=numpy+cllip">NumPy
+      clip</a>」</li>
+      <li>ウェブ検索「<a
+      href="https://www.google.com/search?q=numpy+astype">Numpy
+      astype</a>」</li>
+      </ul>
+      <figure>
+      <img src="figs/21/img-01-noise.jpg" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p><strong>演習1</strong>: <code>np.random.normal</code>
+      について調べよ。また、第2引数の値を変化させて、その結果を確認せよ。</p>
+      <p><strong>演習2</strong>: <code>np.random.normal</code>
+      の第2引数を <code>20</code>
+      程度に設定して、クリップ処理をしない場合、どのような結果になるか確認せよ。つまり、<code>img2 = np.clip(tmp,0,255).astype(np.uint8)</code>
+      を <code>img2 = tmp.astype(np.uint8)</code>
+      にすると、画像に対してどのような影響が生じるかを確認せよ。</p>
+      <h1 data-number="4" id="opencvを利用したカメラ操作"><span
+      class="header-section-number">4</span>
+      OpenCVを利用したカメラ操作</h1>
+      <p>OpenCV
+      では、<strong>PCに内蔵もしくは外部接続したカメラに接続して、そこから画像を得ること</strong>ができます。ここでは、カメラに接続して<strong>静止画像を得る方法</strong>、また、連続的に静止画像を取得することで<strong>実質的に動画を得る方法</strong>
+      について紹介します。</p>
+      <p>なお、この処理には
+      Pythonが実行されるコンピュータに「カメラ」が接続されている必要があるため、<strong>GoogleColab環境</strong>
+      では実行できません (既に説明していますが、GoogleColab環境において
+      Pythonプログラム が実行されているのは <span
+      class="masked">Googleのデータセンタのなかに構築される仮想マシン</span>
+      であり、皆さんの PC ではありません)。</p>
+      <h2 data-number="4.1" id="カメラから画像を取得"><span
+      class="header-section-number">4.1</span> カメラから画像を取得</h2>
+      <p>PCに接続されたカメラから撮影した画像を ndarrayオブジェクト
+      として取得、表示、保存するサンプルプログラムは次のようになります。ファイルから読み込んだ画像も、カメラから読み込んだ画像も、同様に
+      <strong>ndarrayオブジェクト (NumPyの3次元配列)
+      として操作や処理</strong> をすることができます。</p>
+      <div class="sourceCode" id="cb28"
+      data-caption="カメラから画像を取得して表示・保存"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a><span class="im">import</span> cv2</span>
+<span id="cb28-2"><a href="#cb28-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb28-3"><a href="#cb28-3"></a><span class="im">import</span> time</span>
+<span id="cb28-4"><a href="#cb28-4"></a><span class="im">from</span> datetime <span class="im">import</span> datetime <span class="im">as</span> dt</span>
+<span id="cb28-5"><a href="#cb28-5"></a></span>
+<span id="cb28-6"><a href="#cb28-6"></a><span class="co"># 画像表示用関数</span></span>
+<span id="cb28-7"><a href="#cb28-7"></a><span class="kw">def</span> my_imshow(img,wn<span class="op">=</span><span class="st">&#39;Image&#39;</span>):</span>
+<span id="cb28-8"><a href="#cb28-8"></a>  cv2.imshow(wn, img)</span>
+<span id="cb28-9"><a href="#cb28-9"></a>  <span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb28-10"><a href="#cb28-10"></a>    <span class="co"># ESCキーが押下されたら閉じる</span></span>
+<span id="cb28-11"><a href="#cb28-11"></a>    <span class="cf">if</span> cv2.waitKey(<span class="dv">10</span>) <span class="op">==</span> <span class="dv">27</span>:</span>
+<span id="cb28-12"><a href="#cb28-12"></a>      <span class="cf">break</span></span>
+<span id="cb28-13"><a href="#cb28-13"></a>    <span class="co"># 閉じるボタンが押されたら閉じる</span></span>
+<span id="cb28-14"><a href="#cb28-14"></a>    <span class="cf">if</span> cv2.getWindowProperty(wn,cv2.WND_PROP_VISIBLE) <span class="op">&lt;</span> <span class="dv">1</span>:</span>
+<span id="cb28-15"><a href="#cb28-15"></a>      <span class="cf">break</span></span>
+<span id="cb28-16"><a href="#cb28-16"></a>  cv2.destroyAllWindows()</span>
+<span id="cb28-17"><a href="#cb28-17"></a></span>
+<span id="cb28-18"><a href="#cb28-18"></a><span class="co"># PCに接続されているカメラと接続</span></span>
+<span id="cb28-19"><a href="#cb28-19"></a>cap <span class="op">=</span> cv2.VideoCapture(<span class="dv">0</span>)</span>
+<span id="cb28-20"><a href="#cb28-20"></a></span>
+<span id="cb28-21"><a href="#cb28-21"></a><span class="co"># カメラと接続できたかを確認</span></span>
+<span id="cb28-22"><a href="#cb28-22"></a><span class="cf">if</span> <span class="kw">not</span> cap.isOpened():</span>
+<span id="cb28-23"><a href="#cb28-23"></a>  <span class="cf">raise</span> <span class="pp">IOError</span>(<span class="st">&#39;カメラと接続できませんでした。強制終了します。&#39;</span>)</span>
+<span id="cb28-24"><a href="#cb28-24"></a></span>
+<span id="cb28-25"><a href="#cb28-25"></a><span class="co"># カウントダウン</span></span>
+<span id="cb28-26"><a href="#cb28-26"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>,<span class="dv">0</span>,<span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb28-27"><a href="#cb28-27"></a>  ret, img <span class="op">=</span> cap.read() <span class="co"># 調整のための仮撮影。</span></span>
+<span id="cb28-28"><a href="#cb28-28"></a>  <span class="bu">print</span>(<span class="ss">f&#39;撮影</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">秒前...&#39;</span>)</span>
+<span id="cb28-29"><a href="#cb28-29"></a>  time.sleep(<span class="dv">1</span>)</span>
+<span id="cb28-30"><a href="#cb28-30"></a></span>
+<span id="cb28-31"><a href="#cb28-31"></a><span class="co"># カメラ映像を取得して img に格納。成功の可否を ret に格納</span></span>
+<span id="cb28-32"><a href="#cb28-32"></a>ret, img <span class="op">=</span> cap.read()</span>
+<span id="cb28-33"><a href="#cb28-33"></a><span class="cf">assert</span> <span class="bu">type</span>(ret) <span class="op">==</span> <span class="bu">bool</span></span>
+<span id="cb28-34"><a href="#cb28-34"></a><span class="cf">assert</span> <span class="bu">type</span>(img) <span class="op">==</span> np.ndarray</span>
+<span id="cb28-35"><a href="#cb28-35"></a></span>
+<span id="cb28-36"><a href="#cb28-36"></a><span class="co"># キャプチャした画像を表示・保存</span></span>
+<span id="cb28-37"><a href="#cb28-37"></a><span class="cf">if</span> ret:</span>
+<span id="cb28-38"><a href="#cb28-38"></a>  <span class="bu">print</span>(<span class="ss">f&#39;撮影ッ!!&#39;</span>)</span>
+<span id="cb28-39"><a href="#cb28-39"></a>  my_imshow(img)</span>
+<span id="cb28-40"><a href="#cb28-40"></a>  fn <span class="op">=</span> dt.now().strftime(<span class="st">&#39;photo-%Y%m</span><span class="sc">%d</span><span class="st">-%H%M%S.jpg&#39;</span>)</span>
+<span id="cb28-41"><a href="#cb28-41"></a>  cv2.imwrite(fn,img)</span>
+<span id="cb28-42"><a href="#cb28-42"></a>  <span class="bu">print</span>(<span class="ss">f&#39;写真を </span><span class="sc">{</span>fn<span class="sc">}</span><span class="ss"> に保存しました。&#39;</span>)</span>
+<span id="cb28-43"><a href="#cb28-43"></a><span class="cf">else</span>:</span>
+<span id="cb28-44"><a href="#cb28-44"></a>  <span class="bu">print</span>(<span class="st">&#39;カメラから画像を取得できませんでした。&#39;</span>)</span>
+<span id="cb28-45"><a href="#cb28-45"></a></span>
+<span id="cb28-46"><a href="#cb28-46"></a><span class="co"># カメラと接続を解除 (カメラリソースの解放)</span></span>
+<span id="cb28-47"><a href="#cb28-47"></a>cap.release()</span></code></pre></div>
+      <p><strong>第19行目</strong> の <code>cv2.VideoCapture(0)</code>
+      の引数 (この例では <code>0</code>)
+      では、接続するカメラを選択しています。例えば、PCにフロントカメラとリアカメラがあって
+      <code>cv2.VideoCapture(0)</code>
+      では使いたいほうのカメラが利用できない場合は、<code>cv2.VideoCapture(1)</code>
+      を指定します。同様に、USBカメラなどを接続していて、そちらに切り替えたい場合は、引数の数値を変えることで切り替えが可能になります。存在しないカメラを指定した場合は、<strong>第23行目</strong>
+      の例外処理により、プログラムが強制終了します。</p>
+      <p><strong>第27行目</strong>
+      では、カメラ側でのオートフォーカスや、自動明るさ調整をカメラにさせるために仮撮影をしています。カメラの種類によっては、<strong>第27行目</strong>
+      を実行しなくても (コメントアウトしてしまっても)
+      問題ありません。</p>
+      <p>もし、撮影した画像に対して画像処理を行いたい場合は、<strong>第38行目</strong>
+      以降に <code>img</code> に対する処理を記述します。</p>
+      <p><strong>演習</strong>: <strong>第27行目</strong>
+      をコメントアウトした場合の結果について確認せよ。</p>
+      <div class="note type-senior">
+      <p><strong>ローカルPCのJupyter環境で実行</strong></p>
+      <p>先述のように、カメラ関連の処理を GoogleColab環境
+      で実行することはできませんが、ローカルPCに構築した
+      Jupyter環境であれば実行可能です。開発段階では Jupyter環境
+      のほうが便利なことが多いです。</p>
+      <div class="sourceCode" id="cb29"
+      data-caption="カメラから画像を取得して表示・保存 (Jupyter版)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb29-2"><a href="#cb29-2"></a><span class="im">import</span> cv2</span>
+<span id="cb29-3"><a href="#cb29-3"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb29-4"><a href="#cb29-4"></a><span class="im">import</span> time</span>
+<span id="cb29-5"><a href="#cb29-5"></a><span class="im">from</span> datetime <span class="im">import</span> datetime <span class="im">as</span> dt</span>
+<span id="cb29-6"><a href="#cb29-6"></a><span class="im">from</span> IPython.display <span class="im">import</span> Image   <span class="co"># 要import</span></span>
+<span id="cb29-7"><a href="#cb29-7"></a></span>
+<span id="cb29-8"><a href="#cb29-8"></a><span class="co"># PCに接続されているカメラと接続</span></span>
+<span id="cb29-9"><a href="#cb29-9"></a>cap <span class="op">=</span> cv2.VideoCapture(<span class="dv">0</span>)</span>
+<span id="cb29-10"><a href="#cb29-10"></a></span>
+<span id="cb29-11"><a href="#cb29-11"></a><span class="co"># カメラと接続できたかを確認</span></span>
+<span id="cb29-12"><a href="#cb29-12"></a><span class="cf">if</span> <span class="kw">not</span> cap.isOpened():</span>
+<span id="cb29-13"><a href="#cb29-13"></a>  <span class="cf">raise</span> <span class="pp">IOError</span>(<span class="st">&#39;カメラと接続できませんでした。強制終了します。&#39;</span>)</span>
+<span id="cb29-14"><a href="#cb29-14"></a></span>
+<span id="cb29-15"><a href="#cb29-15"></a><span class="co"># カウントダウン</span></span>
+<span id="cb29-16"><a href="#cb29-16"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>,<span class="dv">0</span>,<span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb29-17"><a href="#cb29-17"></a>  ret, img <span class="op">=</span> cap.read() <span class="co"># 調整のための仮撮影。</span></span>
+<span id="cb29-18"><a href="#cb29-18"></a>  <span class="bu">print</span>(<span class="ss">f&#39;撮影</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">秒前...&#39;</span>)</span>
+<span id="cb29-19"><a href="#cb29-19"></a>  time.sleep(<span class="dv">1</span>)</span>
+<span id="cb29-20"><a href="#cb29-20"></a></span>
+<span id="cb29-21"><a href="#cb29-21"></a><span class="co"># カメラ映像を取得して img に格納。成功の可否を ret に格納</span></span>
+<span id="cb29-22"><a href="#cb29-22"></a>ret, img <span class="op">=</span> cap.read()</span>
+<span id="cb29-23"><a href="#cb29-23"></a><span class="cf">assert</span> <span class="bu">type</span>(ret) <span class="op">==</span> <span class="bu">bool</span></span>
+<span id="cb29-24"><a href="#cb29-24"></a><span class="cf">assert</span> <span class="bu">type</span>(img) <span class="op">==</span> np.ndarray</span>
+<span id="cb29-25"><a href="#cb29-25"></a></span>
+<span id="cb29-26"><a href="#cb29-26"></a><span class="co"># キャプチャした画像を表示・保存</span></span>
+<span id="cb29-27"><a href="#cb29-27"></a>fn <span class="op">=</span> <span class="st">&#39;dummy.jpg&#39;</span></span>
+<span id="cb29-28"><a href="#cb29-28"></a><span class="cf">if</span> ret:</span>
+<span id="cb29-29"><a href="#cb29-29"></a>  <span class="bu">print</span>(<span class="ss">f&#39;撮影ッ!!&#39;</span>)</span>
+<span id="cb29-30"><a href="#cb29-30"></a>  fn <span class="op">=</span> dt.now().strftime(<span class="st">&#39;photo-%Y%m</span><span class="sc">%d</span><span class="st">-%H%M%S.jpg&#39;</span>)</span>
+<span id="cb29-31"><a href="#cb29-31"></a>  cv2.imwrite(fn,img)</span>
+<span id="cb29-32"><a href="#cb29-32"></a>  <span class="bu">print</span>(<span class="ss">f&#39;写真を </span><span class="sc">{</span>fn<span class="sc">}</span><span class="ss"> に保存しました。&#39;</span>)</span>
+<span id="cb29-33"><a href="#cb29-33"></a><span class="cf">else</span>:</span>
+<span id="cb29-34"><a href="#cb29-34"></a>  <span class="bu">print</span>(<span class="st">&#39;カメラから画像を取得できませんでした。&#39;</span>)</span>
+<span id="cb29-35"><a href="#cb29-35"></a></span>
+<span id="cb29-36"><a href="#cb29-36"></a><span class="co"># カメラと接続を解除 (カメラリソースの解放)</span></span>
+<span id="cb29-37"><a href="#cb29-37"></a>cap.release()</span>
+<span id="cb29-38"><a href="#cb29-38"></a></span>
+<span id="cb29-39"><a href="#cb29-39"></a>Image(<span class="bu">open</span>(fn,<span class="st">&#39;rb&#39;</span>).read()) <span class="co"># 出力セルに表示</span></span></code></pre></div>
+      </div>
+      <h2 data-number="4.2"
+      id="カメラから連続的に画像を取得して処理"><span
+      class="header-section-number">4.2</span>
+      カメラから連続的に画像を取得して処理</h2>
+      <p>カメラから連続的に画像を取得して処理したい場合は、次のようにプログラムを構成します
+      (このプログラムは Jupyter環境では動作しません)。</p>
+      <div class="sourceCode" id="cb30"
+      data-caption="カメラから連続的に画像を取得して処理"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb30-2"><a href="#cb30-2"></a><span class="im">import</span> cv2</span>
+<span id="cb30-3"><a href="#cb30-3"></a></span>
+<span id="cb30-4"><a href="#cb30-4"></a><span class="co"># PCに接続されているカメラと接続</span></span>
+<span id="cb30-5"><a href="#cb30-5"></a>cap <span class="op">=</span> cv2.VideoCapture(<span class="dv">0</span>)</span>
+<span id="cb30-6"><a href="#cb30-6"></a></span>
+<span id="cb30-7"><a href="#cb30-7"></a><span class="co"># カメラと接続できたかを確認</span></span>
+<span id="cb30-8"><a href="#cb30-8"></a><span class="cf">if</span> <span class="kw">not</span> cap.isOpened():</span>
+<span id="cb30-9"><a href="#cb30-9"></a>  <span class="cf">raise</span> <span class="pp">IOError</span>(<span class="st">&#39;カメラと接続できませんでした。強制終了します。&#39;</span>)</span>
+<span id="cb30-10"><a href="#cb30-10"></a></span>
+<span id="cb30-11"><a href="#cb30-11"></a>wn <span class="op">=</span> <span class="st">&#39;Capture&#39;</span>  <span class="co"># ウィンドウの識別名の設定</span></span>
+<span id="cb30-12"><a href="#cb30-12"></a></span>
+<span id="cb30-13"><a href="#cb30-13"></a><span class="co"># 無限ループ</span></span>
+<span id="cb30-14"><a href="#cb30-14"></a><span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb30-15"><a href="#cb30-15"></a></span>
+<span id="cb30-16"><a href="#cb30-16"></a>  <span class="co"># カメラ映像を取得して img に格納。成功の可否を ret に格納</span></span>
+<span id="cb30-17"><a href="#cb30-17"></a>  ret, img <span class="op">=</span> cap.read()</span>
+<span id="cb30-18"><a href="#cb30-18"></a></span>
+<span id="cb30-19"><a href="#cb30-19"></a>  <span class="cf">if</span> <span class="kw">not</span> ret:</span>
+<span id="cb30-20"><a href="#cb30-20"></a>    <span class="bu">print</span>(<span class="st">&#39;カメラから画像を取得できませんでした。&#39;</span>)</span>
+<span id="cb30-21"><a href="#cb30-21"></a>    <span class="cf">break</span></span>
+<span id="cb30-22"><a href="#cb30-22"></a></span>
+<span id="cb30-23"><a href="#cb30-23"></a>  <span class="co"># 画像処理</span></span>
+<span id="cb30-24"><a href="#cb30-24"></a></span>
+<span id="cb30-25"><a href="#cb30-25"></a></span>
+<span id="cb30-26"><a href="#cb30-26"></a>  <span class="co"># 表示 (ウィンドウの表示内容の更新)</span></span>
+<span id="cb30-27"><a href="#cb30-27"></a>  cv2.imshow(wn,img)</span>
+<span id="cb30-28"><a href="#cb30-28"></a></span>
+<span id="cb30-29"><a href="#cb30-29"></a>  <span class="co"># ESCキーが押下されたらループから離脱</span></span>
+<span id="cb30-30"><a href="#cb30-30"></a>  <span class="cf">if</span> cv2.waitKey(<span class="dv">1</span>) <span class="op">==</span> <span class="dv">27</span>:</span>
+<span id="cb30-31"><a href="#cb30-31"></a>    <span class="bu">print</span>(<span class="st">&#39;[ESC]が押下されました&#39;</span>)</span>
+<span id="cb30-32"><a href="#cb30-32"></a>    <span class="cf">break</span></span>
+<span id="cb30-33"><a href="#cb30-33"></a>  </span>
+<span id="cb30-34"><a href="#cb30-34"></a>  <span class="co"># ウィンドウが閉じられたらループから離脱</span></span>
+<span id="cb30-35"><a href="#cb30-35"></a>  <span class="cf">if</span> cv2.getWindowProperty(wn,cv2.WND_PROP_VISIBLE) <span class="op">&lt;</span> <span class="dv">1</span>:</span>
+<span id="cb30-36"><a href="#cb30-36"></a>    <span class="bu">print</span>(<span class="st">&#39;ウィンドウが閉じられました&#39;</span>)</span>
+<span id="cb30-37"><a href="#cb30-37"></a>    <span class="cf">break</span></span>
+<span id="cb30-38"><a href="#cb30-38"></a></span>
+<span id="cb30-39"><a href="#cb30-39"></a><span class="co"># カメラと接続を解除 (カメラリソースの解放)</span></span>
+<span id="cb30-40"><a href="#cb30-40"></a>cap.release()</span>
+<span id="cb30-41"><a href="#cb30-41"></a>cv2.destroyAllWindows()</span>
+<span id="cb30-42"><a href="#cb30-42"></a><span class="bu">print</span>(<span class="st">&#39;プログラムを正常終了&#39;</span>)</span></code></pre></div>
+      <p>例えば、リアルタイムに画像処理をして、それを反映させたい場合は
+      <strong>第24行目</strong> 以降に <code>img</code>
+      に対する操作を組み込みます。</p>
+      <p><strong>演習</strong>:
+      上記のプログラムに「セピアカラー処理」と「ノイズ追加処理」を追加せよ。</p>
+      <!-- ---------------------------------------- -->
+    </main>
+
+    <footer class="markdown-body">
+      <p><a href="https://takeshiwada1980.github.io/Programming1-2023/">講義資料のIndexに移動</a></p>
+    </footer>
+
+    <script>
+      window.onload = function () {
+        // ナビゲーション関連
+        let openBtn = document.getElementsByClassName("openbtn")[0];
+        let navPnl = document.getElementById("g-nav");
+        openBtn.onclick = () => {
+          openBtn.classList.toggle("active");
+          navPnl.classList.toggle("panelactive");
+        };
+
+        let items = navPnl.getElementsByTagName("a");
+        Array.from(items).forEach((item) => {
+          item.onclick = () => {
+            openBtn.classList.toggle("active");
+            navPnl.classList.toggle("panelactive");
+          };
+        });
+
+        // マスク処理
+        let maskedSpans = document.getElementsByClassName("masked");
+        Array.from(maskedSpans).forEach((span) => {
+          span.onclick = () => {
+            span.classList.toggle("open");
+          };
+        });
+
+        // 画像にリンクを付与
+        let images = document.querySelectorAll("figure img");
+        Array.from(images).forEach((img) => {
+          img.onclick = () => {
+            location.href = img.getAttribute("src");
+          };
+        });
+      };
+    </script>
+  </body>
+</html>
