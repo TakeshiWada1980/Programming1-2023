@@ -877,8 +877,9 @@ p    =&gt; [ 44 136  77]</code></pre>
 <span id="cb24-11"><a href="#cb24-11"></a></span>
 <span id="cb24-12"><a href="#cb24-12"></a><span class="co"># グレースケール画像の手動生成【修正】</span></span>
 <span id="cb24-13"><a href="#cb24-13"></a>img2 <span class="op">=</span> img[:,:,<span class="dv">0</span>]<span class="op">*</span><span class="fl">0.11</span> <span class="op">+</span> img[:,:,<span class="dv">1</span>]<span class="op">*</span><span class="fl">0.59</span> <span class="op">+</span> img[:,:,<span class="dv">2</span>]<span class="op">*</span><span class="fl">0.3</span></span>
-<span id="cb24-14"><a href="#cb24-14"></a></span>
-<span id="cb24-15"><a href="#cb24-15"></a><span class="co"># ■■ img2 を表示する処理を追加 ■■</span></span></code></pre></div>
+<span id="cb24-14"><a href="#cb24-14"></a>img2 <span class="op">=</span> img2.astype(np.uint8)</span>
+<span id="cb24-15"><a href="#cb24-15"></a></span>
+<span id="cb24-16"><a href="#cb24-16"></a><span class="co"># ■■ img2 を表示する処理を追加 ■■</span></span></code></pre></div>
       <p>変更されているのは <strong>第13行目</strong> となります。ここで
       <code>img[:,:,0]</code> は <code>img[0:480,0:640,0]</code>
       の省略表記になります。スライスについて、いまいち分からないという場合は「<a
