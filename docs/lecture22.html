@@ -1,0 +1,1962 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+
+    <script>
+      MathJax = {
+        chtml: {
+          displayAlign: "left",
+          displayIndent: "1em",
+        },
+      };
+    </script>
+
+    
+
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>第22回 2I-プログラミング1</title>
+  </head>
+
+  <body>
+    <div class="openbtn"><span></span><span></span><span></span></div>
+    <nav id="g-nav">
+      <div id="g-nav-list">
+        <!-- ---------------------------------------- -->
+         <ul>
+<li><a href="#概要連絡" id="toc-概要連絡"><span
+class="toc-section-number">1</span> 概要・連絡</a>
+<ul>
+<li><a href="#連絡事項" id="toc-連絡事項"><span
+class="toc-section-number">1.1</span> 連絡事項</a></li>
+<li><a href="#今回講義の達成目標" id="toc-今回講義の達成目標"><span
+class="toc-section-number">1.2</span> 今回講義の達成目標</a></li>
+<li><a href="#プログラミング学習について"
+id="toc-プログラミング学習について"><span
+class="toc-section-number">1.3</span>
+プログラミング学習について</a></li>
+</ul></li>
+<li><a href="#プログラムのファイル分割"
+id="toc-プログラムのファイル分割"><span
+class="toc-section-number">2</span> プログラムのファイル分割</a>
+<ul>
+<li><a href="#if-__name__-__main__-について"
+id="toc-if-__name__-__main__-について"><span
+class="toc-section-number">2.1</span>
+<code>if __name__ == '__main__':</code> について</a></li>
+</ul></li>
+<li><a href="#演習のための環境構築動作確認"
+id="toc-演習のための環境構築動作確認"><span
+class="toc-section-number">3</span> 演習のための環境構築・動作確認</a>
+<ul>
+<li><a href="#環境構築" id="toc-環境構築"><span
+class="toc-section-number">3.1</span> 環境構築</a></li>
+<li><a href="#動作確認1-pygame" id="toc-動作確認1-pygame"><span
+class="toc-section-number">3.2</span> 動作確認1 (PyGame)</a></li>
+<li><a href="#動作確認2-jupyter" id="toc-動作確認2-jupyter"><span
+class="toc-section-number">3.3</span> 動作確認2 (Jupyter)</a></li>
+<li><a href="#jupyterにおけるライブラリ認識の不具合と対処"
+id="toc-jupyterにおけるライブラリ認識の不具合と対処"><span
+class="toc-section-number">3.4</span>
+Jupyterにおけるライブラリ認識の不具合と対処</a></li>
+</ul></li>
+<li><a href="#ゲーム開発の準備-画像データの前処理"
+id="toc-ゲーム開発の準備-画像データの前処理"><span
+class="toc-section-number">4</span> ゲーム開発の準備
+(画像データの前処理)</a>
+<ul>
+<li><a href="#フリー素材の利用について"
+id="toc-フリー素材の利用について"><span
+class="toc-section-number">4.1</span> フリー素材の利用について</a></li>
+<li><a href="#画像データの準備例1" id="toc-画像データの準備例1"><span
+class="toc-section-number">4.2</span> 画像データの準備例1</a>
+<ul>
+<li><a href="#ダウンロード" id="toc-ダウンロード"><span
+class="toc-section-number">4.2.1</span> ダウンロード</a></li>
+<li><a href="#画像と構成情報の表示" id="toc-画像と構成情報の表示"><span
+class="toc-section-number">4.2.2</span> 画像と構成情報の表示</a></li>
+<li><a href="#画像の詳細確認" id="toc-画像の詳細確認"><span
+class="toc-section-number">4.2.3</span> 画像の詳細確認</a></li>
+<li><a href="#前処理した画像の保存" id="toc-前処理した画像の保存"><span
+class="toc-section-number">4.2.4</span> 前処理した画像の保存</a></li>
+<li><a href="#画像の拡大縮小" id="toc-画像の拡大縮小"><span
+class="toc-section-number">4.2.5</span> 画像の拡大縮小</a></li>
+</ul></li>
+<li><a href="#画像データの準備例2" id="toc-画像データの準備例2"><span
+class="toc-section-number">4.3</span> 画像データの準備例2</a></li>
+</ul></li>
+<li><a href="#pygame-の-vector2-オブジェクト"
+id="toc-pygame-の-vector2-オブジェクト"><span
+class="toc-section-number">5</span> PyGame の Vector2
+オブジェクト</a></li>
+<li><a href="#ボールがバウンドするゲーム"
+id="toc-ボールがバウンドするゲーム"><span
+class="toc-section-number">6</span> ボールがバウンドするゲーム</a>
+<ul>
+<li><a href="#フレームカウンタ文字列の描画"
+id="toc-フレームカウンタ文字列の描画"><span
+class="toc-section-number">6.1</span>
+フレームカウンタ・文字列の描画</a></li>
+<li><a href="#ボール位置の計算" id="toc-ボール位置の計算"><span
+class="toc-section-number">6.2</span> ボール位置の計算</a></li>
+<li><a href="#ボールの衝突処理" id="toc-ボールの衝突処理"><span
+class="toc-section-number">6.3</span> ボールの衝突処理</a></li>
+</ul></li>
+<li><a href="#ボールがバウンドするゲーム-改良版"
+id="toc-ボールがバウンドするゲーム-改良版"><span
+class="toc-section-number">7</span> ボールがバウンドするゲーム
+(改良版)</a>
+<ul>
+<li><a href="#空中ジャンプ機能の追加"
+id="toc-空中ジャンプ機能の追加"><span
+class="toc-section-number">7.1</span> 空中ジャンプ機能の追加</a></li>
+<li><a href="#画像を使って地面の描画"
+id="toc-画像を使って地面の描画"><span
+class="toc-section-number">7.2</span> 画像を使って地面の描画</a></li>
+<li><a href="#ボールの動きを改善" id="toc-ボールの動きを改善"><span
+class="toc-section-number">7.3</span> ボールの動きを改善</a></li>
+</ul></li>
+<li><a href="#ボールがバウンドするゲーム-改良版2"
+id="toc-ボールがバウンドするゲーム-改良版2"><span
+class="toc-section-number">8</span> ボールがバウンドするゲーム
+(改良版2)</a></li>
+</ul> 
+        <!-- ---------------------------------------- -->
+      </div>
+    </nav>
+
+    <header class="markdown-body">
+      <p>2023-2I プログラミング1 第22回 講義資料</p>
+      <p>2023年12月11日（月）1・2時限</p>
+    </header>
+
+    <main class="markdown-body">
+      <!-- ---------------------------------------- -->
+      <h1 data-number="1" id="概要連絡"><span
+      class="header-section-number">1</span> 概要・連絡</h1>
+      <h2 data-number="1.1" id="連絡事項"><span
+      class="header-section-number">1.1</span> 連絡事項</h2>
+      <ul>
+      <li>本校の「電子情報コース」のOBである <strong>加賀さん</strong>
+      のポートフォリオです。参考にしてください。
+      <ul>
+      <li><a
+      href="https://kagasan.github.io/">https://kagasan.github.io/</a></li>
+      <li>シーズン2: 関東 の
+      取り組みのなかの「<strong>ラスタ画像からストロークを出力するやつ</strong>
+      (動画)」は要チェック。</li>
+      </ul></li>
+      <li><a
+      href="https://ppg.paiza.jp/isekai">異世界ニートエンジニア英雄になる～異世界ではプログラミングが万能の魔法だった!!～</a>
+      <ul>
+      <li>無料で遊べるブラウザ型の
+      <strong>プログラミング学習ゲーム</strong> で、Python
+      にも対応しています。各種言語のオンラインコンパイラサービスを提供している
+      paiza の運営です。</li>
+      </ul></li>
+      <li>12月25日 (月)
+      の1-2時限は教員の都合により「<strong>休講</strong>」とさせてください。ただ、いつもと同じようにウェブテキストを用意しておくので、各自、教室や自宅で取り組みをお願いします。</li>
+      <li>2024年3月までに <strong>OMUメールのセットアップ
+      (スマホアプリの設定)</strong>、gmail や GoogleDrive
+      のバックアップなどが必要なります。詳しくは GoogleClassroom
+      で案内します。</li>
+      </ul>
+      <h2 data-number="1.2" id="今回講義の達成目標"><span
+      class="header-section-number">1.2</span> 今回講義の達成目標</h2>
+      <p>今回の講義では、主に <a
+      href="https://pypi.org/project/pygame/">PyGame</a>
+      というゲームなどのエンターテインメント系アプリ開発用のライブラリについて扱います。また、<a
+      href="lecture21.html#opencvを利用した画像処理">前回講義</a>で学んだ「<strong>OpenCV</strong>」を利用した画像の加工
+      (拡大縮小やトリミング) についても扱います。</p>
+      <ul>
+      <li>PyGame を使ったゲームのプログラムの基本構造を理解できる。</li>
+      <li>OpenCV を使って画像の拡大縮小、トリミングなどができる。</li>
+      <li>オブジェクト指向プログラミングの基礎的な専門用語
+      (クラス、オブジェクト (インスタンス)、プロパティ、メソッドなど)
+      が指すものの簡単なイメージを持つことができる。</li>
+      </ul>
+      <h2 data-number="1.3" id="プログラミング学習について"><span
+      class="header-section-number">1.3</span>
+      プログラミング学習について</h2>
+      <p><a
+      href="lecture01.html">第01回講義</a>のときから繰り返し強調していますが、週1回90分の授業だけでは<a
+      href="https://careergarden.jp/careerlist/computer-category/">ICTエンジニア</a>としてのキャリア
+      (企業・職種・業界)
+      に関して多数の選択肢を持てる持てるような「スキル」や「経験」は得られません。また、実績が積みあがることもありません。就職先が、SES形態
+      (システムエンジニアリングサービス)だろうが、三次請け・四次請け企業だろうが、客先常駐だろうが、ソフトウェアテスト専門の仕事だろうが、何でもよいというの考えであれば、授業で単位がとれる程度の学びで問題はありませんが…。</p>
+      <p>このことは、週1回90分の英語の授業を受けても「<span
+      class="masked">海外で仕事 (あるいは外国人と仕事)
+      ができるレベルの英語力が身に付かない</span>」という真実と同じです。また、週1回・90分の体育の授業に参加しても「<span
+      class="masked">プロスポーツ選手はおろか、実業団などのアマチュアスポーツ選手になれるレベルの競技技術が身に付かない</span>」という真実とも同じです。</p>
+      <p>週1回90分の「授業」という枠内だけでプログラミングを学んでいては、1年たっても、2年たっても、卒業直前になっても「講義資料に書いてあることは概ね理解できるし、サンプルコードを貼り付けて動かすことはできる。でも、自分ではゼロからプログラムを書ける気がしないし、実際に書けない」という状態のままです。</p>
+      <p>少なくとも「プログラミング」という分野に関して「授業」はあくまで「<span
+      class="masked">チュートリアル</span>」でしかありません。授業の枠を越えて授業で学んだことを土台とした自主的な学習や開発に取り組まなければ、実践的なスキルや、深い理解を得ることはできません。</p>
+      <h1 data-number="2" id="プログラムのファイル分割"><span
+      class="header-section-number">2</span>
+      プログラムのファイル分割</h1>
+      <p>次のような「<strong>挨拶アプリ</strong>」を例に、プログラムを
+      <strong>複数のファイルに分割して記述する方法</strong>
+      を学びます。</p>
+      <div class="sourceCode" id="cb1" data-caption="挨拶アプリ"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> random <span class="im">as</span> r</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="kw">def</span> random_greeting():</span>
+<span id="cb1-3"><a href="#cb1-3"></a>  arr <span class="op">=</span> (<span class="st">&#39;こんにちは&#39;</span>,<span class="st">&#39;お疲れ様です&#39;</span>,<span class="st">&#39;ごきげんよう&#39;</span>)</span>
+<span id="cb1-4"><a href="#cb1-4"></a>  <span class="cf">return</span> r.choice(arr)</span>
+<span id="cb1-5"><a href="#cb1-5"></a></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="co"># メイン処理</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a>name <span class="op">=</span> <span class="st">&#39;高専太郎&#39;</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>random_greeting()<span class="sc">}</span><span class="ss">、</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">さん&#39;</span>)</span></code></pre></div>
+      <p>このプログラムは、大きく分けて「<code>random_greeting</code>
+      関数」と「それを呼び出して使用する<strong>メイン処理</strong>」から構成されています。ここでの
+      <code>random_greeting</code>
+      関数は3行程度の短いものですが、実際の開発においては
+      <strong>関数やクラスの定義は何百行にも及ぶこと</strong> があります
+      (クラスの詳細は後の講義で扱います) 。そのような場合、<span
+      class="masked">プログラムの可読性、保守性、再利用性を高める</span>ために、また
+      <strong>チーム開発を円滑に進めるために</strong> (=<span
+      class="masked">各メンバーの担当範囲・責任を明確にして、コードの編集における衝突を減らす</span>ために)
+      、関数やクラスの単位で
+      <strong>プログラムコードを複数ファイルに分割して記述する必要性</strong>
+      が生じます。</p>
+      <p>例えば、Jupyter や GoogleColab
+      などのノートブック環境では、次のように
+      <strong>複数のセルに処理を分割して記述すること</strong>
+      ができます。具体的には、1個目のコードセルに
+      <code>random_greeting</code>
+      関数の定義を記述し、2個目のコードセルに、それを呼び出しメイン処理を記述します
+      (<span class="masked">2番目のコードセルには <code>%reset -f</code>
+      を記述しない点に注意してください</span>)。これらのセルを順番に実行することで、プログラムが複数のセルに分割されていても、挨拶アプリ全体として機能させることができます。</p>
+      <figure>
+      <img src="figs/22/colab-01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>一方で、<strong>通常のPython環境
+      (ノートブック環境以外)</strong> では、次のようにプログラムを
+      <strong>複数の Pythonファイル</strong> (<code>.py</code>) に
+      <strong>分割して記述すること</strong> ができます。</p>
+      <div class="sourceCode" id="cb2" data-caption="greeting.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> random <span class="im">as</span> r</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="kw">def</span> random_greeting():</span>
+<span id="cb2-3"><a href="#cb2-3"></a>  arr <span class="op">=</span> (<span class="st">&#39;こんにちは&#39;</span>,<span class="st">&#39;お疲れ様です&#39;</span>,<span class="st">&#39;ごきげんよう&#39;</span>)</span>
+<span id="cb2-4"><a href="#cb2-4"></a>  <span class="cf">return</span> r.choice(arr)</span></code></pre></div>
+      <div class="sourceCode" id="cb3" data-caption="app.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> greeting <span class="im">as</span> g</span>
+<span id="cb3-2"><a href="#cb3-2"></a>name <span class="op">=</span> <span class="st">&#39;高専太郎&#39;</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>g<span class="sc">.</span>random_greeting()<span class="sc">}</span><span class="ss">、</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">さん&#39;</span>)</span></code></pre></div>
+      <p>2つのファイル (<code>greeting.py</code> と <code>app.py</code>
+      ) を <strong>同じフォルダに配置</strong> し、シェル
+      (コマンドライン) から次のコマンドを実行することで (=<span
+      class="masked">VSCodeで <code>app.py</code> をアクティブにして
+      <code>F5</code>
+      を押下することで</span>)、挨拶アプリ全体として機能させることができます。</p>
+      <pre><code>python app.py</code></pre>
+      <p>この仕組みは、次のようになります。</p>
+      <p>Python (処理系) は、まず <code>app.py</code>
+      ファイルを読み込みます。そして <strong>第01行目</strong> の
+      <code>import greeting as g</code>
+      という文により、<code>greeting.py</code>
+      というファイルを探し、その内容を読み込みます。その結果、<code>greeting.py</code>
+      のなかの <code>random_greeting</code>
+      関数がメモリに読み込まれます。</p>
+      <p>この関数は、<code>app.py</code> からは
+      <code>greeting.random_greeting()</code> のように <span
+      class="masked"><code>ライブラリ名.関数名()</code></span>
+      という形式で呼び出しが可能になりますが、ここでは <code>as g</code>
+      という <strong>別名 (エイリアス)</strong>
+      をつけているので、<strong>第03行目</strong> では
+      <code>g.random_greeting()</code>
+      のように呼び出しています。同じように、もし
+      <code>greeting.py</code> に <code>morning_greeting</code>
+      という関数が定義されていれば、<code>app.py</code> からは <span
+      class="masked"><code>g.morning_greeting()</code></span>
+      のように呼び出すことができます。</p>
+      <p><strong>演習1</strong>: <code>greeting.py</code> に
+      <code>morning_greeting</code> という関数 (内容は適当に設定せよ)
+      を定義して、それを <code>app.py</code>
+      から呼び出すように書き換え、動作を確認せよ。</p>
+      <p><strong>演習2</strong>: <code>messages.py</code>
+      というファイルを新規作成し、そこに <code>login_message</code>
+      という関数 (内容は適当に設定せよ) を定義して、それを
+      <code>app.py</code>
+      から呼び出すように書き換え、動作を確認せよ。</p>
+      <h2 data-number="2.1" id="if-__name__-__main__-について"><span
+      class="header-section-number">2.1</span>
+      <code>if __name__ == '__main__':</code> について</h2>
+      <p>ウェブで Python について調べているなかで
+      <code>if __name__ == '__main__':</code>
+      という記述を見かけたことがあると思います。これは、先述のように
+      <strong>複数ファイルにプログラムを分割して開発する際に重要な役割を果たすもの</strong>
+      になります。</p>
+      <p>例えば、チーム開発において自分が <code>greeting.py</code>
+      の作成を担当すると想定します。そこでは
+      <code>random_greeting</code>
+      関数を実装するわけですが、当然ながら、<strong>それが適切に機能することを確認する必要があります</strong>。そのための最も簡易な方法は
+      <code>greeting.py</code> に以下のように
+      <strong>テストコード</strong> (動作検証用のプログラム)
+      を記述することです。</p>
+      <div class="sourceCode" id="cb5" data-caption="greeting.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">import</span> random <span class="im">as</span> r</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="kw">def</span> random_greeting():</span>
+<span id="cb5-3"><a href="#cb5-3"></a>  arr <span class="op">=</span> (<span class="st">&#39;こんにちは&#39;</span>,<span class="st">&#39;お疲れ様です&#39;</span>,<span class="st">&#39;ごきげんよう&#39;</span>)</span>
+<span id="cb5-4"><a href="#cb5-4"></a>  <span class="cf">return</span> r.choice(arr)</span>
+<span id="cb5-5"><a href="#cb5-5"></a></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="co"># random_greeting のテストコード</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="cf">assert</span> <span class="bu">type</span>(random_greeting()) <span class="op">==</span> <span class="bu">str</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
+<span id="cb5-9"><a href="#cb5-9"></a>  <span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">. </span><span class="sc">{</span>random_greeting()<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+      <p>しかし、上記のように <code>greeting.py</code>
+      を書いてしまうと、<code>app.py</code>を実行した際、<span
+      class="masked">次のような意図しない結果</span>
+      出力されます。<strong>実際に試してみてください</strong>。</p>
+      <pre><code>0. こんにちは
+1. お疲れ様です
+2. お疲れ様です
+3. こんにちは
+4. ごきげんよう
+こんにちは、高専太郎さん</code></pre>
+      <p>これは、<code>app.py</code> の <strong>第01行目</strong> の
+      <code>import greeting as g</code> という文によって
+      <code>greeting.py</code> が読み込まれた際に、<span
+      class="masked">第07行目から第09行目に記述したテストコードが実行されてしまう</span>
+      ためです。</p>
+      <p>この問題を解決するためには、次のように <code>greeting.py</code>
+      を修正します。</p>
+      <div class="sourceCode" id="cb7" data-caption="greeting.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="im">import</span> random <span class="im">as</span> r</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="kw">def</span> random_greeting():</span>
+<span id="cb7-3"><a href="#cb7-3"></a>  arr <span class="op">=</span> (<span class="st">&#39;こんにちは&#39;</span>,<span class="st">&#39;お疲れ様です&#39;</span>,<span class="st">&#39;ごきげんよう&#39;</span>)</span>
+<span id="cb7-4"><a href="#cb7-4"></a>  <span class="cf">return</span> r.choice(arr)</span>
+<span id="cb7-5"><a href="#cb7-5"></a></span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="co"># random_greeting のテストコード</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&#39;__main__&#39;</span>:</span>
+<span id="cb7-8"><a href="#cb7-8"></a>  <span class="cf">assert</span> <span class="bu">type</span>(random_greeting()) <span class="op">==</span> <span class="bu">str</span></span>
+<span id="cb7-9"><a href="#cb7-9"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
+<span id="cb7-10"><a href="#cb7-10"></a>    <span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">. </span><span class="sc">{</span>random_greeting()<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+      <p>この修正により <code>greeting.py</code>
+      がシェルから直接実行される場合 (=<span class="masked">VSCodeで
+      <code>greeting.py</code> をアクティブにして <code>F5</code>
+      を押下する場合</span>) に限り、<strong>テストコード</strong>
+      が実行されるようになります。逆に言えば <code>app.py</code>
+      からのインポートされた際は <strong>テストコード</strong>
+      (=<code>if __name__ == '__main__':</code> のコードブロック) は
+      <span class="masked">実行されない</span> ようになります。</p>
+      <p>この挙動は、<code>greeting.py</code>
+      の<strong>第07行目</strong> の <code>__name__</code> という <span
+      class="masked">システムによって自動的に定義される「特殊な変数」</span>
+      に関連します。<code>__name__</code>
+      には、プログラムがシェルから直接実行されたときには
+      <code>__main__</code>
+      という文字列が格納されます。一方で、他のファイルから
+      <code>import</code>
+      された場合には、その<strong>ファイル名</strong> (例えば
+      <code>import greeting as g</code> の場合には <code>greeting</code>
+      という文字列) が格納されます。</p>
+      <p>この結果 <code>if __name__ == '__main__':</code>
+      のコードブロックの内容は、<strong>そのプログラムがシェルから直接実行されたときのみ</strong>
+      (=<span class="masked">VSCodeで、そのファイルをアクティブにして
+      <code>F5</code> を押下したときのみ</span>)
+      実行されるようになります。</p>
+      <p>基本的に、当該のファイルを他からインポートする可能性がなければ
+      <code>if __name__ == '__main__':</code>
+      は不要ですが、<strong>御作法</strong>として記述することが推奨されます。</p>
+      <hr />
+      <p><strong>演習</strong>: <code>greeting.py</code>
+      を次のように書き換え、<code>greeting.py</code>
+      をシェルから直接実行する場合と、<code>app.py</code>
+      からインポートする場合の挙動の違いについて確認し、特殊な変数
+      <code>__name__</code> についての理解を深めよ。</p>
+      <div class="sourceCode" id="cb8" data-caption="greeting.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="im">import</span> random <span class="im">as</span> r</span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="kw">def</span> random_greeting():</span>
+<span id="cb8-3"><a href="#cb8-3"></a>  arr <span class="op">=</span> (<span class="st">&#39;こんにちは&#39;</span>,<span class="st">&#39;お疲れ様です&#39;</span>,<span class="st">&#39;ごきげんよう&#39;</span>)</span>
+<span id="cb8-4"><a href="#cb8-4"></a>  <span class="cf">return</span> r.choice(arr)</span>
+<span id="cb8-5"><a href="#cb8-5"></a></span>
+<span id="cb8-6"><a href="#cb8-6"></a><span class="bu">print</span>(<span class="ss">f&#39;greeting.py の __name__ =&gt; </span><span class="sc">{</span><span class="va">__name__</span><span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># 注目</span></span>
+<span id="cb8-7"><a href="#cb8-7"></a></span>
+<span id="cb8-8"><a href="#cb8-8"></a><span class="co"># random_greeting の動作チェック</span></span>
+<span id="cb8-9"><a href="#cb8-9"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&#39;__main__&#39;</span>:</span>
+<span id="cb8-10"><a href="#cb8-10"></a>  <span class="cf">assert</span> <span class="bu">type</span>(random_greeting()) <span class="op">==</span> <span class="bu">str</span></span>
+<span id="cb8-11"><a href="#cb8-11"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
+<span id="cb8-12"><a href="#cb8-12"></a>    <span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">. </span><span class="sc">{</span>random_greeting()<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
+      <div class="note type-caution">
+      <p><strong>Pythonファイルの「命名」に関する注意1</strong></p>
+      <p>上記で説明した通り <code>import greeting</code>
+      と記述すると、Python 処理系は、まずは同じフォルダのなかから
+      <code>greeting.py</code>
+      を探して読み込もうとします。もし、同じフォルダに当該ファイルが存在しない場合は、Python
+      がインストールされた所定のフォルダから <code>greeting.py</code>
+      を探し、それでも見つからない場合は
+      <code>ModuleNotFoundError</code> が発生します。</p>
+      <p>このため、同じフォルダ内に <code>numpy.py</code> や
+      <code>pygmae.py</code>
+      のような既存ライブラリと同名のファイルを作成すると、それらのライブラリが正常に読み込まれなくなります。<strong>初心者がよく犯す間違い</strong>
+      のひとつに NumPy を学ぶために <code>numpy.py</code>
+      というファイルを作成して、そこにプログラムを記述してうまくいかない、ということがあります。この点に、十分に注意してください。</p>
+      </div>
+      <div class="note type-caution">
+      <p><strong>Pythonファイルの「命名」に関する注意2</strong></p>
+      <p><code>00_pygame.py</code> や <code>my-pygame.py</code>
+      のように、先頭が数字から始まるファイル名や、ハイフンを使用するファイル名をつけると、他のプログラムから
+      <code>import</code>
+      を使ってこれらのファイルを読み込むことができなくなります。一般的に、Pythonの<strong>変数名として有効でない文字列</strong>は、(<code>import</code>
+      する可能性がある)
+      Pythonのファイルの名前としては「適切ではない」と考えてください。</p>
+      </div>
+      <h1 data-number="3" id="演習のための環境構築動作確認"><span
+      class="header-section-number">3</span>
+      演習のための環境構築・動作確認</h1>
+      <p>PyGame に関連した演習を行なうために
+      (<strong>既存のプロジェクトフォルダや環境を使いまわしをせずに</strong>)
+      新規にプロジェクトフォルダを作成して、そこに開発環境を構築することを<strong>強く推奨</strong>します。以下、環境構築の手順を示します。</p>
+      <h2 data-number="3.1" id="環境構築"><span
+      class="header-section-number">3.1</span> 環境構築</h2>
+      <p><strong>コマンドプロンプト</strong> または
+      <strong>PowerShell</strong> を起動し、プロジェクトフォルダ
+      <code>Pygame-Playground</code> を作成するフォルダ (例えば
+      <code>C:\Users\xxxx\Documents</code> ) まで移動してください。</p>
+      <pre><code>cd &quot;C:\Users\xxxx\Documents&quot;</code></pre>
+      <p><code>mkdir</code> でプロジェクトフォルダ
+      <code>Pygame-Playground</code> を作成し、そのフォルダ内に移動して
+      VSCode
+      を起動します。プロジェクトフォルダの名前は、必要に応じて変更しても構いません。</p>
+      <pre><code>mkdir Pygame-Playground
+cd Pygame-Playground/
+code . &amp;</code></pre>
+      <p>VSCode が起動したら <code>Ctrl+@</code> で、VSCode のなかで
+      <strong>PowerShell (PS) モードのターミナル</strong>
+      を開きます。正常に起動すれば、次のような入力待ちのプロンプトが表示されるはずです。</p>
+      <pre><code>PS C:\Users\xxxx\Documents\Pygame-Playground&gt; </code></pre>
+      <p>PS のターミナルから、次のコマンドを打ち込んで
+      <strong>Pythonの仮想環境</strong> を構築し、有効化します。</p>
+      <pre><code>python -m venv .venv
+.venv/Scripts/Activate.ps1</code></pre>
+      <p>仮想環境が有効になると、プロンプトの先頭に <code>(.venv)</code>
+      が表示され、次のようになるはずです。</p>
+      <pre><code>(.venv) PS C:\Users\xxxx\Documents\Pygame-Playground&gt;</code></pre>
+      <p>開発に必要なライブラリをインストールする前に、まずは「<strong>pip本体</strong>」を<strong>最新版にアップグレード</strong>します。次のコマンドを実行してください。</p>
+      <pre><code>python -m pip install --upgrade pip</code></pre>
+      <p>開発に必要なライブラリをインストールしていきます。</p>
+      <p>このプロジェクト (ここからの演習) では <code>pygame</code>
+      の他に
+      <code>jupyter</code>、<code>numpy</code>、<code>matplotlib</code>、<code>Pillow</code>
+      など多数のライブラリを使用します。これらは
+      <code>pip install pygame</code>
+      のようなコマンドで個別にインストールすることもできますが、ここでは
+      <code>requirements.txt</code> を使った
+      <strong>一括インストール</strong> をしていきます。この方法は <span
+      class="masked"><code>git clone</code> などで Python
+      プロジェクトをローカル環境にクローンした際など、他のプロジェクトの環境を再現する場合</span>
+      にも使うものなので覚えておいてください。</p>
+      <p>まずは、<strong>インストールするべきライブラリの一覧</strong>
+      が記載された <a
+      href="data/22/requirements.txt">requirements.txt</a>
+      をダウンロードして、プロジェクトフォルダのトップ階層に配置してください。パスは
+      <code>C:\Users\xxxx\Documents\Pygame-Playground\requirements.txt</code>
+      となるはずです。</p>
+      <p>VSCode で <code>requirements.txt</code>
+      の内容を確認してください。ファイルの内容は、次のようになっているはずです。</p>
+      <pre><code>anyio==4.1.0
+argon2-cffi==23.1.0
+argon2-cffi-bindings==21.2.0
+arrow==1.3.0
+asttokens==2.4.1
+async-lru==2.0.4
+attrs==23.1.0
+...(略)...</code></pre>
+      <p>このファイルには、インストールするべきライブラリ
+      (=パッケージやモジュールともいいます) と、その
+      <span>バージョン</span>
+      が記載されています。<strong>これまでに見たこともないようなライブラリも多数含まれていますが</strong>、それらは
+      <code>pygame</code> や <code>numpy</code>、<code>jupyter</code>
+      を利用する際に <span
+      class="masked">間接的に必要となるライブラリ</span> です。これまで
+      <code>pip install numpy</code>
+      のように個別にライブラリをインストールしていた際にも、自動的にインストールされていました。この
+      <code>requirements.txt</code> には、そのようなライブラリも
+      <strong>明示的に記述</strong>
+      されています。なお、このように「あるライブラリの実行に、他のライブラリが必要になる関係」を
+      <span class="masked">依存関係</span> といいます。</p>
+      <p>次のコマンドを使用して、<code>requirements.txt</code>
+      にインストールされているライブラリを
+      <strong>一括インストール</strong> してください。</p>
+      <pre><code>pip install -r requirements.txt</code></pre>
+      <div class="note type-senior">
+      <p><strong>requirements.txt の作成</strong></p>
+      <p><strong>現在のPython環境</strong>
+      (<strong>有効化されている仮想環境</strong>)
+      にインストールされているライブラリについて
+      <code>requirements.txt</code>
+      を作成するためには、以下のコマンドを使用します。ファイル名は
+      <code>requirements.txt</code>
+      である必要はありませんが、慣習的にこの名前が用いられます。</p>
+      <pre><code>pip freeze &gt; requirements.txt</code></pre>
+      <p>このコマンドは、インストールされている「ライブラリ」と「そのバージョン」をリストアップし、それらを
+      <code>requirements.txt</code>
+      ファイルに書き出します。このファイルは <span
+      class="masked">既存のプロジェクトを他の環境に移行</span>する場合や、<span
+      class="masked">同じ環境を他の開発者と共有</span>
+      する場合に役立ちます。</p>
+      </div>
+      <h2 data-number="3.2" id="動作確認1-pygame"><span
+      class="header-section-number">3.2</span> 動作確認1 (PyGame)</h2>
+      <p>PyGame
+      を使ったゲーム開発演習のために構築した環境について、簡単な「<strong>動作確認</strong>」をしていきます。VSCode
+      で <code>00_game.py</code> という Pythonファイル
+      を新規作成して、以下の内容を貼り付けて <strong>保存</strong>
+      してください。</p>
+      <div class="sourceCode" id="cb18" data-caption="00_game.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="im">import</span> random <span class="im">as</span> r</span>
+<span id="cb18-2"><a href="#cb18-2"></a><span class="im">import</span> pygame <span class="im">as</span> pg</span>
+<span id="cb18-3"><a href="#cb18-3"></a></span>
+<span id="cb18-4"><a href="#cb18-4"></a><span class="kw">def</span> main():</span>
+<span id="cb18-5"><a href="#cb18-5"></a></span>
+<span id="cb18-6"><a href="#cb18-6"></a>  <span class="co"># 初期化処理</span></span>
+<span id="cb18-7"><a href="#cb18-7"></a>  pg.init() </span>
+<span id="cb18-8"><a href="#cb18-8"></a>  pg.display.set_caption(<span class="st">&#39;ぼくのかんがえたさいきょうのげーむ&#39;</span>)</span>
+<span id="cb18-9"><a href="#cb18-9"></a>  disp_w, disp_h <span class="op">=</span> <span class="dv">800</span>, <span class="dv">600</span> <span class="co"># DisplaySize(WindowSize)</span></span>
+<span id="cb18-10"><a href="#cb18-10"></a>  screen <span class="op">=</span> pg.display.set_mode((disp_w,disp_h)) </span>
+<span id="cb18-11"><a href="#cb18-11"></a>  clock  <span class="op">=</span> pg.time.Clock()</span>
+<span id="cb18-12"><a href="#cb18-12"></a>  exit_flag <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb18-13"><a href="#cb18-13"></a>  exit_code <span class="op">=</span> <span class="st">&#39;000&#39;</span></span>
+<span id="cb18-14"><a href="#cb18-14"></a>  shape_type <span class="op">=</span> <span class="dv">0</span>  <span class="co"># 描画図形の形状</span></span>
+<span id="cb18-15"><a href="#cb18-15"></a></span>
+<span id="cb18-16"><a href="#cb18-16"></a>  <span class="co"># ゲームループ [ここから]</span></span>
+<span id="cb18-17"><a href="#cb18-17"></a>  <span class="cf">while</span> <span class="kw">not</span> exit_flag:</span>
+<span id="cb18-18"><a href="#cb18-18"></a></span>
+<span id="cb18-19"><a href="#cb18-19"></a>    <span class="co"># システムイベントの検出</span></span>
+<span id="cb18-20"><a href="#cb18-20"></a>    <span class="cf">for</span> event <span class="kw">in</span> pg.event.get():</span>
+<span id="cb18-21"><a href="#cb18-21"></a>      <span class="cf">if</span> event.<span class="bu">type</span> <span class="op">==</span> pg.QUIT: <span class="co"># ウィンドウ[X]の押下</span></span>
+<span id="cb18-22"><a href="#cb18-22"></a>        exit_flag <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb18-23"><a href="#cb18-23"></a>        exit_code <span class="op">=</span> <span class="st">&#39;001&#39;</span></span>
+<span id="cb18-24"><a href="#cb18-24"></a>      <span class="cf">if</span> event.<span class="bu">type</span> <span class="op">==</span> pg.KEYDOWN:  <span class="co"># キーの押下</span></span>
+<span id="cb18-25"><a href="#cb18-25"></a>        <span class="cf">if</span> event.key <span class="op">==</span> pg.K_SPACE: <span class="co"># SpaceKey</span></span>
+<span id="cb18-26"><a href="#cb18-26"></a>          shape_type <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb18-27"><a href="#cb18-27"></a>          <span class="cf">if</span> shape_type <span class="op">==</span> <span class="dv">2</span>:</span>
+<span id="cb18-28"><a href="#cb18-28"></a>            shape_type <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb18-29"><a href="#cb18-29"></a></span>
+<span id="cb18-30"><a href="#cb18-30"></a>    <span class="co"># 指定色で画面を塗りつぶし(fill)。実質的な画面クリア</span></span>
+<span id="cb18-31"><a href="#cb18-31"></a>    screen.fill(pg.Color(<span class="st">&#39;BLACK&#39;</span>))</span>
+<span id="cb18-32"><a href="#cb18-32"></a></span>
+<span id="cb18-33"><a href="#cb18-33"></a>    <span class="co"># 円(circle) or 四角形(rect) を描画</span></span>
+<span id="cb18-34"><a href="#cb18-34"></a>    x <span class="op">=</span> r.randint(<span class="dv">0</span>,disp_w)</span>
+<span id="cb18-35"><a href="#cb18-35"></a>    y <span class="op">=</span> r.randint(<span class="dv">0</span>,disp_h)</span>
+<span id="cb18-36"><a href="#cb18-36"></a>    rr <span class="op">=</span> r.randint(<span class="dv">5</span>,<span class="dv">20</span>)</span>
+<span id="cb18-37"><a href="#cb18-37"></a>    c <span class="op">=</span> pg.Color(<span class="st">&#39;GREEN&#39;</span>)</span>
+<span id="cb18-38"><a href="#cb18-38"></a>    <span class="cf">if</span> shape_type <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb18-39"><a href="#cb18-39"></a>      <span class="co"># 円 (描画先,色,(中心X,中心Y),半径)</span></span>
+<span id="cb18-40"><a href="#cb18-40"></a>      pg.draw.circle(screen,c,(x,y),rr)</span>
+<span id="cb18-41"><a href="#cb18-41"></a>    <span class="cf">elif</span> shape_type <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb18-42"><a href="#cb18-42"></a>      <span class="co"># 四角形 (描画先,色,(左上X,左上Y,幅,高さ))</span></span>
+<span id="cb18-43"><a href="#cb18-43"></a>      pg.draw.rect(screen,c,(x,y,rr,rr))</span>
+<span id="cb18-44"><a href="#cb18-44"></a></span>
+<span id="cb18-45"><a href="#cb18-45"></a>    <span class="co"># 画面出力の更新と同期</span></span>
+<span id="cb18-46"><a href="#cb18-46"></a>    pg.display.update()</span>
+<span id="cb18-47"><a href="#cb18-47"></a>    clock.tick(<span class="dv">30</span>) <span class="co"># 最高速度を 30フレーム/秒 に制限</span></span>
+<span id="cb18-48"><a href="#cb18-48"></a></span>
+<span id="cb18-49"><a href="#cb18-49"></a>  <span class="co"># ゲームループ [ここまで]</span></span>
+<span id="cb18-50"><a href="#cb18-50"></a>  pg.quit()</span>
+<span id="cb18-51"><a href="#cb18-51"></a>  <span class="cf">return</span> exit_code</span>
+<span id="cb18-52"><a href="#cb18-52"></a></span>
+<span id="cb18-53"><a href="#cb18-53"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</span>
+<span id="cb18-54"><a href="#cb18-54"></a>  code <span class="op">=</span> main()</span>
+<span id="cb18-55"><a href="#cb18-55"></a>  <span class="bu">print</span>(<span class="ss">f&#39;プログラムを「コード</span><span class="sc">{</span>code<span class="sc">}</span><span class="ss">」で終了しました。&#39;</span>)</span></code></pre></div>
+      <p>次に <code>00_game.py</code> がアクティブな状態 (=
+      タブが選択されている状態) で、左端の
+      <strong>デバッグアイコン</strong> (再生ボタンに虫のアイコン)
+      を押下し、左パネル内の「<code>launch.json</code>
+      <strong>ファイルを作成します</strong>」という文字列をクリックします。</p>
+      <figure>
+      <img src="figs/22/debug-01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>VSCode
+      の画面上部に「<strong>デバッグ構成を選択する</strong>」というメニューが表示されるので「<strong>Pythonファイル  現在アクティブな
+      Python
+      ファイルをデバッグする</strong>」を選択します。これは、デバッグ操作
+      (<code>F5</code>キーを押下したとき) の
+      <strong>デフォルト動作を設定するもの</strong> になります。</p>
+      <figure>
+      <img src="figs/22/debug-02.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p><code>launch.json</code>
+      というファイルが自動的に作成され、そのファイルタブが開きます。特に変更する内容はないので、<code>launch.json</code>
+      のタブを閉じます。なお、このファイルは
+      <code>.vscode/launch.json</code>
+      に配置されるので、先のステップで「デバッグ構成」を間違って選択した場合や、「デバッグ構成」を変更・カスタマイズしたい場合は、このファイルを削除・編集してください。</p>
+      <p>再び <code>00_game.py</code> をアクティブにしてから
+      <code>F5</code>
+      を押下します。次のようなウィンドウが立ち上がり、黒色の背景に「緑色の円」がランダムに描画される処理ができていれば成功です。また、<span
+      class="masked">スペースキーを押下すると、描画される図形が 円
+      (Circle) から 四角形 (Rectangle) に切り替わること</span>
+      も確認してください。</p>
+      <figure>
+      <img src="figs/22/pygame-00.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>実行結果とプログラム内のコメントを照らしあわせながら、プログラムを解読・理解してください。その際、ウェブ検索やChatGPTなどを積極的に活用してください
+      (<a
+      href="https://chat.openai.com/share/cbcc258f-25ca-482e-840d-f3f347b62e09">ChatGPTの活用例</a>)。また、<strong>PyGame
+      の公式リファレンス</strong><a
+      href="https://www.pygame.org/docs/">https://www.pygame.org/docs/</a>も利用してください
+      (英語で書かれているのでブラウザの翻訳機能を利用してください)
+      。</p>
+      <div class="note type-caution">
+      <p><strong>ウェブ検索における注意事項</strong></p>
+      <p>例えば、上記のプログラムの <strong>第40行目</strong>
+      <code>pg.draw.circle(screen,c,(x,y),rr)</code>
+      について<strong>ウェブで検索する際</strong>、<span
+      class="masked"><code>pg.draw.circle</code></span>
+      というキーワードは最適ではありません。このプログラムでは
+      <code>import pygame as pg</code> のように <strong>略称
+      (エイリアス)</strong> を設定しています。ウェブ検索する際は<span
+      class="masked"><code>pygame.draw.circle</code></span>
+      のように書き換えることが推奨されます
+      (現在の検索エンジンでは、内部的にうまく変換してくれるので
+      <code>pg.draw.circle</code>
+      でも、それなりの検索をしてくれますが…)。</p>
+      </div>
+      <p>プログラムについて、ある程度、理解してから次の演習に取り組んでください。</p>
+      <p><strong>演習1</strong>: プログラムの <strong>第31行目</strong>
+      <code>screen.fill(pg.Color('BLACK'))</code>
+      をコメントアウトすると、プログラムの挙動がどのように変化するか推測し、その後、実際に検証せよ。検証後は元に戻しておくこと。</p>
+      <p><strong>演習2</strong>: プログラムの <strong>第46行目</strong>
+      <code>pg.display.update()</code>
+      をコメントアウトすると、プログラムの挙動がどのように変化するか推測し、その後、実際に検証せよ。検証後は元に戻しておくこと。</p>
+      <p><strong>演習3</strong>: プログラムの <strong>第47行目</strong>
+      <code>clock.tick(30)</code> の引数を <code>10</code> および
+      <code>3</code>
+      に変更すると、プログラムの挙動がどのように変化するか推測し、その後、実際に検証せよ。また、<strong>第47行目</strong>
+      をコメントアウトした場合に、どのようになるかも検証せよ。検証後は元に戻しておくこと。</p>
+      <p><strong>演習4</strong>: プログラムの <strong>第40行目</strong>
+      では <code>pg.draw.circle</code> の<strong>第3引数</strong>を
+      <code>(x,y)</code> のように<a
+      href="lecture17.html#タプル型-tuple">タプル型</a>で与えている。これを
+      <code>[x,y]</code>
+      のように「<strong>リスト型</strong>」で与えることが可能か検証せよ。また、<code>np.array([x,y])</code>
+      のように NumPy
+      の「<strong>ndarray型</strong>」で与えることが可能か検証せよ。検証後は元に戻しておくこと。</p>
+      <p><strong>演習5</strong>: プログラムの <strong>第34行目</strong>
+      から <strong>第36行目</strong>
+      では図形の座標や半径を「<strong>整数値</strong>」として設定し、図形描画の引数として与えている。これら座標や半径に「<strong>浮動小数点数</strong>
+      (<strong>実数値</strong>)」や「<strong>負数</strong>」が使用できるか検証せよ。<code>random</code>
+      ライブラリを使用して <code>-10.5</code> から <code>810.5</code>
+      の範囲の乱数 (浮動小数点数)
+      を得るためには、どのようにすればよいか。</p>
+      <p><strong>演習6</strong>: ウィンドウサイズを 横640px、縦480px
+      に設定せよ。また、ウィンドウタイトルを変更せよ。</p>
+      <p><strong>演習7</strong>: 図形や背景の「色」を
+      <strong>カラーコード</strong> (例えば <code>#ff0000</code> など)
+      で指定することは可能か検証せよ。<br>　・大文字のカラーコード
+      <code>#FF0000</code>
+      でも指定可能か。大文字小文字を混在させても指定可能か。
+      <br>　・3桁のカラーコード、例えば <code>#f00</code>
+      でも指定可能か。</p>
+      <p><strong>演習8</strong>: 図形や背景の「色」を数値
+      (RGBの輝度強度) で指定することは可能か検証せよ。</p>
+      <p><strong>演習9</strong>:
+      描画される図形の「<strong>色</strong>」を描画毎にランダムに変えるように書き換えよ。</p>
+      <p><strong>演習10</strong>: キーボードの <code>C</code>
+      を押下したときに描画図形を「円」に変更するように、<code>R</code>
+      を押下したときに描画図形を「四角形」に変更するように書き換えよ。</p>
+      <p><strong>演習11 (EX)</strong>: キーボードの <code>T</code>
+      を押下したとき、描画図形が「<strong>正三角形</strong>」になるように書き換えよ。<br>　・Google検索「<a
+      href="https://www.google.com/search?q=pygame+draw+三角形">pygame
+      draw 三角形</a>」。</p>
+      <p><strong>(EX)</strong>マークのエクストラ演習は、時間がかかるものなので<strong>基本的には授業時間外</strong>に取り組んでください。</p>
+      <h2 data-number="3.3" id="動作確認2-jupyter"><span
+      class="header-section-number">3.3</span> 動作確認2 (Jupyter)</h2>
+      <p>ゲーム開発においては、ゲーム本体のプログラム開発のほかに <span
+      class="masked">様々なゲームデータの作成、編集、確認</span>
+      が必要となります。<strong>これらの作業にはノートブック環境のほうが便利なことが多いため</strong>、このプロジェクトフォルダには「<strong>Jupyter環境</strong>」も構築しました
+      ( <code>requirements.txt</code> には
+      Jupyter関連のライブラリが含まれています)。以下、Jupyter環境の動作確認をしていきます。</p>
+      <p>VSCode 上から <code>00_jupyter.ipynb</code>
+      というファイルを新規作成してください。なお、拡張子の
+      <code>ipynb</code> は <span class="masked">Interactive Python
+      Notebook (対話的Pythonノートブック)</span> と覚えてください。</p>
+      <p>ノートブック形式として認識されたタブが開くので、コードセルに次のプログラムを記述して保存してください。</p>
+      <div class="sourceCode" id="cb19"
+      data-caption="Jupyter環境の動作確認"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb19-2"><a href="#cb19-2"></a><span class="bu">print</span>(<span class="st">&#39;Hello Python&#39;</span>)</span></code></pre></div>
+      <p>ノートブックを新規作成した際は、手動で<span
+      class="masked">それを実行するための Python環境 (カーネル)
+      を選択する必要</span>
+      があります。ノートブックタブの右上の「<strong>カーネルの選択</strong>」をクリックしてください。</p>
+      <figure>
+      <img src="figs/22/jupyter-01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>VSCode画面上部に、カーネル (Python実行環境)
+      候補が表示されるので、自分で構築した仮想環境 (<code>.venv</code>)
+      を選択します。</p>
+      <figure>
+      <img src="figs/22/jupyter-02.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>コードセルを選択して <code>Ctrl+Enter</code>
+      で実行します。出力セルに <code>Hello Python</code>
+      が表示されれば、問題なく環境が構築されています。この「カーネルの選択」は、新しくノートブックを作成した際、毎回、実行する必要があります。</p>
+      <figure>
+      <img src="figs/22/jupyter-03.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <h2 data-number="3.4"
+      id="jupyterにおけるライブラリ認識の不具合と対処"><span
+      class="header-section-number">3.4</span>
+      Jupyterにおけるライブラリ認識の不具合と対処</h2>
+      <p>Jupyter
+      において適切にカーネルを選択していても、後日、プロジェクトを再開した際、コードセルのなかで以下のように「<strong>ライブラリが見つからない</strong>」という旨の警告が表示されることがあります
+      (コードセルの「実行」は問題なくできるもののの、警告が表示されたり、コード補完が機能しなかったりする症状です)。</p>
+      <figure>
+      <img src="figs/22/jupyter-07.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>このような現象が起きた場合は <code>Ctrl+Shift+P</code>
+      でコマンドパレットを開いて
+      <code>&gt;Developer: Reload Window</code>
+      と入力して「<strong>ウィンドウの再読み込み</strong>(≠ウィンドウの再起動)」を実行することで解決する場合があります。</p>
+      <figure>
+      <img src="figs/22/jupyter-08.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <h1 data-number="4" id="ゲーム開発の準備-画像データの前処理"><span
+      class="header-section-number">4</span> ゲーム開発の準備
+      (画像データの前処理)</h1>
+      <p>ゲーム開発においては、ゲーム本体の制作に先駆けて <span
+      class="masked">様々な素材（画像、音楽、マップや敵キャラのパラメータなどのゲームデータ）の準備</span>
+      が必要となります。通常、<strong>これらの素材の準備や管理にもプログラムが利用され</strong>、場合によっては
+      <strong>専用のツール (アプリ)</strong>
+      が開発されることもあります。無論、手作業で行うことも不可能ではありませんが、素材の作成やゲームデータの作成には
+      <strong>繰返し作業や修正 (微調整) が極めて多いため</strong>
+      現実的とは言えません。</p>
+      <p>ここでは、Jupyter環境を利用して、ゲームの素材となる「<strong>画像データ</strong>」の準備
+      (前処理) をしていきます。</p>
+      <h2 data-number="4.1" id="フリー素材の利用について"><span
+      class="header-section-number">4.1</span>
+      フリー素材の利用について</h2>
+      <p>ゲームを開発する場合、そこに使用する「画像」を予め準備しておく必要があります。自分では絵を描くことができない場合、あるいはチームメンバーに絵師がいない場合は、ウェブから
+      <strong>フリー素材</strong> を入手して利用する必要があります
+      (最近は、画像生成AIを利用するケースも増えています)。</p>
+      <p>一般に <strong>無料のフリー素材</strong> といっても <span
+      class="masked">様々な規約やライセンス、つまり利用条件が設定されている</span>
+      ので十分に注意して使用してください。特に、ポートフォリオをはじめ、<strong>ウェブやSNSなどの媒体でゲームを公開・紹介する場合</strong>
+      には、フリー素材の利用規約を遵守してください
+      (不適切な利用があると、炎上したり、訴訟問題となったりします)。</p>
+      <p>ここでは「<strong>spellyon氏</strong>」が「<strong>点睛集積</strong>
+      (<a
+      href="http://dispell.net/">http://dispell.net/</a>)」において配付している画像素材を利用させてもらいます。この画像素材を使用して以降の演習を行なう場合は、点睛集積の
+      <strong>利用規約</strong> <a
+      href="http://dispell.net/rule_material.html">http://dispell.net/rule_material.html</a>
+      を確認して、承諾のうえ利用してください。</p>
+      <p>また「<strong>管理人nko氏</strong>」が「<strong>DOT
+      ILLUST</strong> (<a
+      href="https://dot-illust.net/">https://dot-illust.net/</a>)」において配付している画像素材も利用させてもらいます。この画像素材を使用して以降の演習を行なう場合は、DOT
+      ILLUST の <strong>利用規約</strong> <a
+      href="https://dot-illust.net/terms/">https://dot-illust.net/terms/</a>
+      を確認して、承諾のうえ利用してください。</p>
+      <h2 data-number="4.2" id="画像データの準備例1"><span
+      class="header-section-number">4.2</span> 画像データの準備例1</h2>
+      <p>ここでは、ウェブから画像をダウンロードして、内容の確認し、トリミング
+      (大きな画像から必要な部分を抜き出すこと)
+      、拡大縮小して、保存するという流れでゲームに使用すための前処理を行ないます。<strong>Jupyter環境</strong>
+      (ノートブック環境) を使用します。</p>
+      <p>VSCode上で <code>01_キャラチップの作成.ipynb</code>
+      というファイルを新規作成してください
+      (カーネルも選択しておいてください)。</p>
+      <h3 data-number="4.2.1" id="ダウンロード"><span
+      class="header-section-number">4.2.1</span> ダウンロード</h3>
+      <p>ウェブで公開・配付されている素材は、ウェブブラウザを使って手作業で1個ずつダウンロードすることができます。しかし、ここではプログラムを使ってダウンロードする方法を紹介します。プログラムを使ってウェブから情報を機械的に一括収集することを
+      <span class="masked">スクレイピング</span>
+      といいます。連続的にスクレイピングを実行するとウェブサーバに対して大きな負荷をかけることになります。使い方によっては
+      <span class="masked">威力業務妨害として訴えられることもある</span>
+      ので十分に注意してください。</p>
+      <ul>
+      <li>ウェブ検索「<a
+      href="https://www.google.com/search?q=スクレイピング+注意点">スクレイピング
+      注意点</a>」</li>
+      </ul>
+      <p>次のプログラムは、指定したURLからファイルをダウンロードして、プロジェクトフォルダ内の
+      <code>data/download/</code>
+      に保存するプログラムになります。このプログラムにはフォルダの有無を確認する処理
+      (<strong>第07行目</strong>)、フォルダを作成する処理
+      (<strong>第08行目</strong>)
+      なども含まれています。なお、ウェブからデータをダウンロードする処理
+      (<code>requests</code>関連) については<a
+      href="lecture19.html#csvファイルの読込み">第19回講義</a>で解説済みです。</p>
+      <p><strong>第11行目</strong>では <strong>点睛集積</strong> で
+      <strong>spellyon氏</strong> が公開している東方キャラの画像素材の
+      URL
+      を設定し、<strong>第10行目</strong>ではローカル環境に保存する際のファイルネームを設定しています。基本的には、この2行を変更すれば、他の素材のダウンロードに再利用ができます。</p>
+      <div class="sourceCode" id="cb20"
+      data-caption="画像のダウンロード"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="im">import</span> os</span>
+<span id="cb20-3"><a href="#cb20-3"></a><span class="im">import</span> requests</span>
+<span id="cb20-4"><a href="#cb20-4"></a></span>
+<span id="cb20-5"><a href="#cb20-5"></a><span class="co"># フォルダが存在しなければ作成</span></span>
+<span id="cb20-6"><a href="#cb20-6"></a><span class="bu">dir</span> <span class="op">=</span> <span class="st">&#39;data/download/&#39;</span></span>
+<span id="cb20-7"><a href="#cb20-7"></a><span class="cf">if</span> <span class="kw">not</span> os.path.isdir(<span class="bu">dir</span>):</span>
+<span id="cb20-8"><a href="#cb20-8"></a>  os.makedirs(<span class="bu">dir</span>)</span>
+<span id="cb20-9"><a href="#cb20-9"></a></span>
+<span id="cb20-10"><a href="#cb20-10"></a>fn <span class="op">=</span> <span class="st">&#39;char-chip-01.png&#39;</span></span>
+<span id="cb20-11"><a href="#cb20-11"></a>url <span class="op">=</span> <span class="st">&#39;http://dispell.net/th/char_th0012.png&#39;</span></span>
+<span id="cb20-12"><a href="#cb20-12"></a>res <span class="op">=</span> requests.get(url)</span>
+<span id="cb20-13"><a href="#cb20-13"></a></span>
+<span id="cb20-14"><a href="#cb20-14"></a><span class="cf">if</span> res.status_code <span class="op">!=</span> <span class="dv">200</span>:</span>
+<span id="cb20-15"><a href="#cb20-15"></a>  <span class="cf">raise</span> <span class="pp">Exception</span>(<span class="ss">f&#39;ファイル </span><span class="sc">{</span>url<span class="sc">}</span><span class="ss"> の取得に失敗。強制終了します。Code:</span><span class="sc">{</span>res<span class="sc">.</span>status_code<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+<span id="cb20-16"><a href="#cb20-16"></a><span class="cf">else</span> :</span>
+<span id="cb20-17"><a href="#cb20-17"></a>  <span class="cf">with</span> <span class="bu">open</span>(<span class="ss">f&#39;</span><span class="sc">{</span><span class="bu">dir</span><span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>fn<span class="sc">}</span><span class="ss">&#39;</span>,<span class="st">&#39;wb&#39;</span>) <span class="im">as</span> <span class="bu">file</span>: </span>
+<span id="cb20-18"><a href="#cb20-18"></a>    <span class="bu">file</span>.write(res.content)</span>
+<span id="cb20-19"><a href="#cb20-19"></a>  <span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span><span class="bu">dir</span><span class="sc">}</span><span class="ss"> に </span><span class="sc">{</span>fn<span class="sc">}</span><span class="ss"> を保存しました&#39;</span>)</span></code></pre></div>
+      <p>プログラムを実行して処理に成功すると「<code>data/download/ に char-chip-01.png を保存しました</code>」という出力が得られます。VSCodeでは画像ファイルの「プレビュー」もできるので、ダウンロードした画像の内容を確認してください。なお、ビュー画面では
+      <code>Ctrl</code> を押下しながらのホイール操作で <span
+      class="masked">拡大縮小</span> ができます。</p>
+      <figure>
+      <img src="figs/22/vscode-01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>この素材画像は、アスキー社の<a
+      href="https://ja.wikipedia.org/wiki/RPGツクール2000">RPGツクール2000</a>
+      の仕様に基づく <strong>歩行キャラの素材</strong>
+      になります。前後左右の向きについて、アニメーションのための3パターンの透過画像が収録された形式になっています。</p>
+      <p><strong>演習</strong>:
+      <code>http://dispell.net/img/v4_yukkuri.png</code> を
+      <code>data/download/</code> フォルダに
+      <code>char-chip-02.png</code> として保存してください。</p>
+      <h3 data-number="4.2.2" id="画像と構成情報の表示"><span
+      class="header-section-number">4.2.2</span>
+      画像と構成情報の表示</h3>
+      <p>Pythonプログラムから「画像」と「その構成情報
+      (画像サイズなど)」を確認してみます。コードセルを追加し、次のプログラムを貼り付けて実行してください。このプログラムでは、OpenCV
+      の <code>imread</code> を使用して画像を読込み、<code>shape</code>
+      プロパティから <strong>画像の横と縦の情報</strong>
+      を取得して表示しています。また画像本体も出力セルに表示しています。これらは、いずれも<a
+      href="lecture21.html#表示方法5"><strong>前回講義で学んだ内容</strong></a>となります。</p>
+      <div class="sourceCode" id="cb21"
+      data-caption="画像と構成情報の表示"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="im">import</span> cv2</span>
+<span id="cb21-3"><a href="#cb21-3"></a><span class="im">from</span> IPython.display <span class="im">import</span> Image</span>
+<span id="cb21-4"><a href="#cb21-4"></a></span>
+<span id="cb21-5"><a href="#cb21-5"></a>path <span class="op">=</span> <span class="st">&#39;data/download/&#39;</span> <span class="op">+</span> <span class="st">&#39;char-chip-01.png&#39;</span></span>
+<span id="cb21-6"><a href="#cb21-6"></a>img <span class="op">=</span> cv2.imread(path)</span>
+<span id="cb21-7"><a href="#cb21-7"></a>height, width, _ <span class="op">=</span> img.shape  <span class="co"># アンパック</span></span>
+<span id="cb21-8"><a href="#cb21-8"></a><span class="bu">print</span>(<span class="ss">f&#39;横 </span><span class="sc">{</span>width<span class="sc">}</span><span class="ss"> px , 縦 </span><span class="sc">{</span>height<span class="sc">}</span><span class="ss"> px&#39;</span>)</span>
+<span id="cb21-9"><a href="#cb21-9"></a>Image(<span class="bu">open</span>(path,<span class="st">&#39;rb&#39;</span>).read())</span></code></pre></div>
+      <p>実行結果は次のようになります。</p>
+      <pre><code>横 288 px , 縦 256 px
+(画像の表示)</code></pre>
+      <p>画像全体のサイズが上記のように 288x256
+      で、<strong>横方向に4キャラ3パターン</strong>
+      (3x4=12)、<strong>縦方向に2キャラ4パターン</strong> (2x4=8)
+      が収録されているので、1キャラの1パターンの画像は <span
+      class="masked">24x32</span> であることが分かります。</p>
+      <h3 data-number="4.2.3" id="画像の詳細確認"><span
+      class="header-section-number">4.2.3</span> 画像の詳細確認</h3>
+      <p>画像データの詳細を確認するために、<strong>1キャラ・1方向・1パターンのみを抜き出し</strong>、拡大表示をしてみたいと思います。ここでは、画像内の余白の大きさも確認できるように「グリッド」や「目盛り」もあわせて表示するために、可視化ライブラリである
+      Matplolib を使用します。</p>
+      <figure>
+      <img src="figs/22/jupyter-04.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>以下に、<code>'char-chip-01.png'</code> の一番左上、つまり<a
+      href="https://dic.pixiv.net/a/博麗霊夢">博麗霊夢</a>の「後向き」「アニメーションパターン1」について拡大出力するプログラムを示します。既に確認したように1キャラの1パターン分の画像サイズは
+      <span class="masked">24x32</span>
+      であり、<strong>第11行目</strong> の <code>raw[0:32,0:24]</code>
+      では、NumPy配列 (ndarrayオブジェクト) に対する
+      <strong>スライス</strong>
+      を使って当該範囲を抜き出しています。スライスについては<a
+      href="lecture12.html#リストの扱いに関する補足③-スライス">第12回講義</a>で学んでいますが、理解が不十分な場合、ウェブの解説記事やYouTube動画、ChatGPTなどを利用して学習してください。</p>
+      <ul>
+      <li><a
+      href="https://chat.openai.com/share/5074f3dd-bf4a-4bdf-9fc2-d75c8f8ddc70">ChatGPTの活用例
+      (スライス操作の解説)</a></li>
+      </ul>
+      <div class="sourceCode" id="cb23"
+      data-caption="画像の詳細確認"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb23-2"><a href="#cb23-2"></a><span class="im">import</span> cv2</span>
+<span id="cb23-3"><a href="#cb23-3"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb23-4"><a href="#cb23-4"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb23-5"><a href="#cb23-5"></a></span>
+<span id="cb23-6"><a href="#cb23-6"></a><span class="bu">dir</span> <span class="op">=</span> <span class="st">&#39;data/download/&#39;</span></span>
+<span id="cb23-7"><a href="#cb23-7"></a>fn <span class="op">=</span> <span class="st">&#39;char-chip-01.png&#39;</span></span>
+<span id="cb23-8"><a href="#cb23-8"></a>path <span class="op">=</span> <span class="bu">dir</span> <span class="op">+</span> fn</span>
+<span id="cb23-9"><a href="#cb23-9"></a>raw <span class="op">=</span> cv2.imread(path) <span class="co"># 生画像 (Raw Image) の読込み</span></span>
+<span id="cb23-10"><a href="#cb23-10"></a></span>
+<span id="cb23-11"><a href="#cb23-11"></a>img <span class="op">=</span> raw[<span class="dv">0</span>:<span class="dv">32</span>,<span class="dv">0</span>:<span class="dv">24</span>] <span class="co"># スライス</span></span>
+<span id="cb23-12"><a href="#cb23-12"></a>height, width, _ <span class="op">=</span> img.shape</span>
+<span id="cb23-13"><a href="#cb23-13"></a></span>
+<span id="cb23-14"><a href="#cb23-14"></a><span class="co"># 可視化に関する処理 (現時点では詳細に理解する必要はない)</span></span>
+<span id="cb23-15"><a href="#cb23-15"></a>fig,ax <span class="op">=</span> plt.subplots(dpi<span class="op">=</span><span class="dv">140</span>)</span>
+<span id="cb23-16"><a href="#cb23-16"></a>ax.imshow(cv2.cvtColor(img,cv2.COLOR_BGR2RGB),interpolation<span class="op">=</span><span class="st">&#39;nearest&#39;</span>)</span>
+<span id="cb23-17"><a href="#cb23-17"></a>ax.set_xlim(<span class="op">-</span><span class="fl">0.5</span>,width<span class="op">-</span><span class="fl">0.5</span>)</span>
+<span id="cb23-18"><a href="#cb23-18"></a>ax.set_ylim(height<span class="op">-</span><span class="fl">0.5</span>,<span class="op">-</span><span class="fl">0.5</span>)</span>
+<span id="cb23-19"><a href="#cb23-19"></a></span>
+<span id="cb23-20"><a href="#cb23-20"></a><span class="co"># 主目盛の設定</span></span>
+<span id="cb23-21"><a href="#cb23-21"></a>plt.tick_params(length<span class="op">=</span><span class="dv">0</span>, labeltop<span class="op">=</span><span class="va">True</span>, labelright<span class="op">=</span><span class="va">True</span> )</span>
+<span id="cb23-22"><a href="#cb23-22"></a>ax.set_xticks(np.arange(<span class="dv">0</span>, width))</span>
+<span id="cb23-23"><a href="#cb23-23"></a>ax.set_xticklabels(np.arange(<span class="dv">0</span>, width),fontsize<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb23-24"><a href="#cb23-24"></a>ax.set_yticks(np.arange(<span class="dv">0</span>, height))</span>
+<span id="cb23-25"><a href="#cb23-25"></a>ax.set_yticklabels(np.arange(<span class="dv">0</span>, height),fontsize<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb23-26"><a href="#cb23-26"></a></span>
+<span id="cb23-27"><a href="#cb23-27"></a><span class="co"># 副主目盛の設定</span></span>
+<span id="cb23-28"><a href="#cb23-28"></a>plt.tick_params(which<span class="op">=</span><span class="st">&#39;minor&#39;</span>, </span>
+<span id="cb23-29"><a href="#cb23-29"></a>                length<span class="op">=</span><span class="dv">0</span>, labeltop<span class="op">=</span><span class="va">True</span>, labelright<span class="op">=</span><span class="va">True</span> )</span>
+<span id="cb23-30"><a href="#cb23-30"></a>ax.set_xticks(np.arange(<span class="fl">0.5</span>, width<span class="op">-</span><span class="fl">0.5</span>,<span class="dv">1</span>), minor<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb23-31"><a href="#cb23-31"></a>ax.set_yticks(np.arange(<span class="fl">0.5</span>, height<span class="op">-</span><span class="fl">0.5</span>,<span class="dv">1</span>), minor<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb23-32"><a href="#cb23-32"></a></span>
+<span id="cb23-33"><a href="#cb23-33"></a><span class="co"># グリッド設定と表示</span></span>
+<span id="cb23-34"><a href="#cb23-34"></a>ax.grid(which<span class="op">=</span><span class="st">&#39;minor&#39;</span>, color<span class="op">=</span><span class="st">&#39;#555&#39;</span>)</span>
+<span id="cb23-35"><a href="#cb23-35"></a>plt.show()</span></code></pre></div>
+      <p><strong>第14行目</strong>以降は、Matplotlib
+      に関するものであり、<strong>今回の講義内容の本質ではないため</strong>、現時点では深く理解する必要はありません
+      (理解して自在に使えるようになるとあらゆる場面で役立ちますが)。</p>
+      <hr />
+      <p><strong>演習</strong>: 上記のプログラムのままでは
+      <strong>博麗霊夢 / 後向き / アニメーションパターン1</strong>
+      しか抜き出すことができない。<strong>任意の「横位置」と「縦位置」をゼロオリジンで与えて、その位置の画像詳細を確認できるように</strong>プログラムを改良せよ。例えば、ゼロオリジンで「横位置<code>4</code>」と「縦位置<code>2</code>」を与えたとき、以下のように
+      <strong>霧雨魔理沙 / 前向き / アニメーションパターン2</strong>
+      が拡大表示されるようにせよ。</p>
+      <figure>
+      <img src="figs/22/jupyter-05.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <h3 data-number="4.2.4" id="前処理した画像の保存"><span
+      class="header-section-number">4.2.4</span>
+      前処理した画像の保存</h3>
+      <p>次回以降の演習で使用するために、霊夢と魔理沙について4方向の3アニメーションパターンの画像範囲を切り出して
+      <code>data/img/</code> というフォルダに <code>reimu.png</code>
+      および <code>marisa.png</code> という名前で出力しておきます。</p>
+      <p><code>reimu.png</code> を出力するプログラムを次に示します。</p>
+      <div class="sourceCode" id="cb24"
+      data-caption="前処理した画像の保存"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb24-2"><a href="#cb24-2"></a><span class="im">import</span> os</span>
+<span id="cb24-3"><a href="#cb24-3"></a><span class="im">import</span> cv2</span>
+<span id="cb24-4"><a href="#cb24-4"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb24-5"><a href="#cb24-5"></a><span class="im">from</span> IPython.display <span class="im">import</span> Image</span>
+<span id="cb24-6"><a href="#cb24-6"></a></span>
+<span id="cb24-7"><a href="#cb24-7"></a><span class="co"># 入力画像のパス設定 (Path設定)</span></span>
+<span id="cb24-8"><a href="#cb24-8"></a>input_path <span class="op">=</span> <span class="st">&#39;data/download/&#39;</span> <span class="op">+</span> <span class="st">&#39;char-chip-01.png&#39;</span></span>
+<span id="cb24-9"><a href="#cb24-9"></a></span>
+<span id="cb24-10"><a href="#cb24-10"></a><span class="co"># 出力画像のパス設定 (Path設定)</span></span>
+<span id="cb24-11"><a href="#cb24-11"></a>output_fn <span class="op">=</span> <span class="st">&#39;reimu.png&#39;</span></span>
+<span id="cb24-12"><a href="#cb24-12"></a>output_dir <span class="op">=</span> <span class="st">&#39;data/img/&#39;</span></span>
+<span id="cb24-13"><a href="#cb24-13"></a>output_path <span class="op">=</span> output_dir <span class="op">+</span> output_fn</span>
+<span id="cb24-14"><a href="#cb24-14"></a></span>
+<span id="cb24-15"><a href="#cb24-15"></a><span class="co"># 出力フォルダが存在しなければ作成</span></span>
+<span id="cb24-16"><a href="#cb24-16"></a><span class="cf">if</span> <span class="kw">not</span> os.path.isdir(output_dir):</span>
+<span id="cb24-17"><a href="#cb24-17"></a>  os.makedirs(output_dir)</span>
+<span id="cb24-18"><a href="#cb24-18"></a></span>
+<span id="cb24-19"><a href="#cb24-19"></a><span class="co"># 画像読込み、切り出し範囲の設定</span></span>
+<span id="cb24-20"><a href="#cb24-20"></a>img <span class="op">=</span> cv2.imread(input_path,cv2.IMREAD_UNCHANGED) <span class="co"># アルファチャンネルも読み込む</span></span>
+<span id="cb24-21"><a href="#cb24-21"></a><span class="bu">print</span>(<span class="ss">f&#39;raw.shape =&gt; </span><span class="sc">{</span>img<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+<span id="cb24-22"><a href="#cb24-22"></a>bw <span class="op">=</span> <span class="dv">24</span>  <span class="co"># BaseWidth </span></span>
+<span id="cb24-23"><a href="#cb24-23"></a>bh <span class="op">=</span> <span class="dv">32</span>  <span class="co"># BaseHeight</span></span>
+<span id="cb24-24"><a href="#cb24-24"></a>offset_w <span class="op">=</span> bw<span class="op">*</span><span class="dv">0</span></span>
+<span id="cb24-25"><a href="#cb24-25"></a>offset_h <span class="op">=</span> bh<span class="op">*</span><span class="dv">0</span></span>
+<span id="cb24-26"><a href="#cb24-26"></a></span>
+<span id="cb24-27"><a href="#cb24-27"></a><span class="co"># 画像の切り出しと保存処理</span></span>
+<span id="cb24-28"><a href="#cb24-28"></a>img <span class="op">=</span> img[offset_h:offset_h<span class="op">+</span>bh<span class="op">*</span><span class="dv">4</span>, offset_w:offset_w<span class="op">+</span>bw<span class="op">*</span><span class="dv">3</span>]</span>
+<span id="cb24-29"><a href="#cb24-29"></a>cv2.imwrite(output_path,img)</span>
+<span id="cb24-30"><a href="#cb24-30"></a><span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>output_path<span class="sc">}</span><span class="ss"> に画像を出力しました。&#39;</span>)</span>
+<span id="cb24-31"><a href="#cb24-31"></a></span>
+<span id="cb24-32"><a href="#cb24-32"></a><span class="co"># 出力画像の確認</span></span>
+<span id="cb24-33"><a href="#cb24-33"></a>Image(<span class="bu">open</span>(output_path,<span class="st">&#39;rb&#39;</span>).read())</span></code></pre></div>
+      <p>このプログラムで特に注意してほしいのが
+      <strong>第20行目</strong> になります。<code>cv2.imread</code>
+      の第2引数に <code>cv2.IMREAD_UNCHANGED</code>
+      を与えることで、RGBのカラー画像ではなく、<span
+      class="masked">RGBAの透明度情報を持ったカラー画像</span>
+      として画像の読込みをしています (A は AlphaChannel
+      (アルファチャンネル) の意味です)。</p>
+      <ul>
+      <li>ウェブ検索「<a
+      href="https://www.google.com/search?q=アルファチャンネルとは">アルファチャンネルとは</a>」</li>
+      </ul>
+      <p>プログラムの実行結果は、次のようになります。アルファチャンネルを含めて読み込んでいるので
+      <strong>第21行目</strong> の <code>.shape</code> の結果が
+      <code>(256, 288, 4)</code> となっている点に注目してください。</p>
+      <figure>
+      <img src="figs/22/vscode-02.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p><strong>演習</strong>: 同様に <code>marisa.png</code>
+      を作成せよ。</p>
+      <h3 data-number="4.2.5" id="画像の拡大縮小"><span
+      class="header-section-number">4.2.5</span> 画像の拡大縮小</h3>
+      <p>ゲーム素材として <code>char-chip-02.png</code>
+      から、次のようなサイズが <strong>48x48</strong> の画像を作成します
+      (正方形の画像である点に注意してください) 。</p>
+      <figure>
+      <img src="figs/22/jupyter-06.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p><code>char-chip-02.png</code> は、既に述べたように
+      RPGツクール2000 の歩行キャラ画像の仕様となっており、1キャラは
+      <strong>24x32</strong> で構成されています。ここから、正方形
+      <strong>24x24</strong> の範囲を抜き出して、さらに <span
+      class="masked">48x48 に拡大すること</span>
+      により目的の画像を作成していきます。</p>
+      <p>要修正 (<strong>第21行目</strong>)
+      の部分を含むプログラムは次のようになります。</p>
+      <div class="sourceCode" id="cb25" data-caption="画像の拡大"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a><span class="co"># 画像の詳細確認</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb25-3"><a href="#cb25-3"></a><span class="im">import</span> cv2</span>
+<span id="cb25-4"><a href="#cb25-4"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb25-5"><a href="#cb25-5"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb25-6"><a href="#cb25-6"></a></span>
+<span id="cb25-7"><a href="#cb25-7"></a><span class="co"># 入力画像のパス設定 (Path設定)</span></span>
+<span id="cb25-8"><a href="#cb25-8"></a>input_dir <span class="op">=</span> <span class="st">&#39;data/download/&#39;</span></span>
+<span id="cb25-9"><a href="#cb25-9"></a>input_fn <span class="op">=</span> <span class="st">&#39;char-chip-02.png&#39;</span></span>
+<span id="cb25-10"><a href="#cb25-10"></a>input_path <span class="op">=</span> input_dir <span class="op">+</span> input_fn</span>
+<span id="cb25-11"><a href="#cb25-11"></a></span>
+<span id="cb25-12"><a href="#cb25-12"></a><span class="co"># 出力画像のパス設定 (Path設定)</span></span>
+<span id="cb25-13"><a href="#cb25-13"></a>output_dir <span class="op">=</span> <span class="st">&#39;data/img/&#39;</span></span>
+<span id="cb25-14"><a href="#cb25-14"></a>output_fn <span class="op">=</span> <span class="st">&#39;marisa-face.png&#39;</span></span>
+<span id="cb25-15"><a href="#cb25-15"></a>output_path <span class="op">=</span> output_dir <span class="op">+</span> output_fn</span>
+<span id="cb25-16"><a href="#cb25-16"></a></span>
+<span id="cb25-17"><a href="#cb25-17"></a><span class="co"># アルファチャンネルを含めて画像読込み</span></span>
+<span id="cb25-18"><a href="#cb25-18"></a>raw <span class="op">=</span> cv2.imread(input_path, cv2.IMREAD_UNCHANGED)</span>
+<span id="cb25-19"><a href="#cb25-19"></a></span>
+<span id="cb25-20"><a href="#cb25-20"></a><span class="co"># 画像の範囲切り出しと拡大</span></span>
+<span id="cb25-21"><a href="#cb25-21"></a>img <span class="op">=</span> raw[<span class="dv">0</span>:<span class="dv">24</span>,<span class="dv">0</span>:<span class="dv">24</span>] <span class="co"># ■■ 要修正</span></span>
+<span id="cb25-22"><a href="#cb25-22"></a>img <span class="op">=</span> cv2.resize(img,(<span class="dv">48</span>,<span class="dv">48</span>),interpolation<span class="op">=</span>cv2.INTER_NEAREST)</span>
+<span id="cb25-23"><a href="#cb25-23"></a>height, width, _ <span class="op">=</span> img.shape</span>
+<span id="cb25-24"><a href="#cb25-24"></a></span>
+<span id="cb25-25"><a href="#cb25-25"></a><span class="co"># 可視化に関する処理</span></span>
+<span id="cb25-26"><a href="#cb25-26"></a>fig,ax <span class="op">=</span> plt.subplots(dpi<span class="op">=</span><span class="dv">140</span>)</span>
+<span id="cb25-27"><a href="#cb25-27"></a>ax.imshow(cv2.cvtColor(img,cv2.COLOR_BGR2RGB),interpolation<span class="op">=</span><span class="st">&#39;nearest&#39;</span>)</span>
+<span id="cb25-28"><a href="#cb25-28"></a>ax.set_xlim(<span class="op">-</span><span class="fl">0.5</span>,width<span class="op">-</span><span class="fl">0.5</span>)</span>
+<span id="cb25-29"><a href="#cb25-29"></a>ax.set_ylim(height<span class="op">-</span><span class="fl">0.5</span>,<span class="op">-</span><span class="fl">0.5</span>)</span>
+<span id="cb25-30"><a href="#cb25-30"></a></span>
+<span id="cb25-31"><a href="#cb25-31"></a><span class="co"># 主目盛の設定</span></span>
+<span id="cb25-32"><a href="#cb25-32"></a>plt.tick_params(length<span class="op">=</span><span class="dv">0</span>, labeltop<span class="op">=</span><span class="va">True</span>, labelright<span class="op">=</span><span class="va">True</span> )</span>
+<span id="cb25-33"><a href="#cb25-33"></a>ax.set_xticks(np.arange(<span class="dv">0</span>, width))</span>
+<span id="cb25-34"><a href="#cb25-34"></a>ax.set_xticklabels(np.arange(<span class="dv">0</span>, width),fontsize<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb25-35"><a href="#cb25-35"></a>ax.set_yticks(np.arange(<span class="dv">0</span>, height))</span>
+<span id="cb25-36"><a href="#cb25-36"></a>ax.set_yticklabels(np.arange(<span class="dv">0</span>, height),fontsize<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb25-37"><a href="#cb25-37"></a></span>
+<span id="cb25-38"><a href="#cb25-38"></a><span class="co"># 副主目盛の設定</span></span>
+<span id="cb25-39"><a href="#cb25-39"></a>plt.tick_params(which<span class="op">=</span><span class="st">&#39;minor&#39;</span>, </span>
+<span id="cb25-40"><a href="#cb25-40"></a>                length<span class="op">=</span><span class="dv">0</span>, labeltop<span class="op">=</span><span class="va">True</span>, labelright<span class="op">=</span><span class="va">True</span> )</span>
+<span id="cb25-41"><a href="#cb25-41"></a>ax.set_xticks(np.arange(<span class="fl">0.5</span>, width<span class="op">-</span><span class="fl">0.5</span>,<span class="dv">1</span>), minor<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb25-42"><a href="#cb25-42"></a>ax.set_yticks(np.arange(<span class="fl">0.5</span>, height<span class="op">-</span><span class="fl">0.5</span>,<span class="dv">1</span>), minor<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb25-43"><a href="#cb25-43"></a></span>
+<span id="cb25-44"><a href="#cb25-44"></a><span class="co"># グリッド設定と表示</span></span>
+<span id="cb25-45"><a href="#cb25-45"></a>ax.grid(which<span class="op">=</span><span class="st">&#39;minor&#39;</span>, color<span class="op">=</span><span class="st">&#39;#999&#39;</span>)</span>
+<span id="cb25-46"><a href="#cb25-46"></a>plt.show()</span>
+<span id="cb25-47"><a href="#cb25-47"></a></span>
+<span id="cb25-48"><a href="#cb25-48"></a><span class="co"># 保存</span></span>
+<span id="cb25-49"><a href="#cb25-49"></a>cv2.imwrite(output_path,img)</span></code></pre></div>
+      <p>プログラムを実行して結果を確認してください。このプログラムの9割以上は解説済みの内容です。新規部分は
+      <strong>第22行目</strong> の <code>cv2.resize</code>
+      関数のみとなります。<code>cv2.resize</code> 関数は <span
+      class="masked">リサイズ (拡大・縮小)</span>
+      のための関数で、第1引数に<strong>元画像</strong>、第2引数に<strong>リサイズ後の画像サイズのタプル</strong>、<code>interpolation</code>
+      オプションに <span
+      class="masked">拡大縮小に使用する補間方法</span>
+      を指定します。</p>
+      <p><strong>第2引数</strong> に与えるタプルは <span
+      class="masked"><code>(width, height)</code> の順番になる点</span>
+      に注意してください。また、ここでは「ドット絵」かつ「2倍拡大」という状況から
+      <code>interpolation</code> オプションを
+      <code>cv2.INTER_NEAREST</code> としています。</p>
+      <ul>
+      <li>ウェブ検索「<a
+      href="https://www.google.com/search?q=opencv+resize+interpolation">opencv
+      resize interpolation</a>」</li>
+      </ul>
+      <hr />
+      <p><strong>演習1</strong>: 目的の画像が得られるように
+      <strong>第21行目</strong>
+      を修正せよ。また、この行の前後に処理を追加し、再利用性のあるプログラム
+      (他のキャラ、他の向きの「顔」の出力にも簡単に対応できるプログラム)
+      にせよ。</p>
+      <p><strong>演習2</strong>: <strong>第22行目</strong> の
+      <code>interpolation</code> オプションを
+      <code>cv2.INTER_LINEAR</code>、<code>cv2.INTER_AREA</code>、<code>cv2.INTER_CUBIC</code>、<code>cv2.INTER_LANCZOS4</code>
+      に変更して、結果がどのように変わるか確認せよ。</p>
+      <h2 data-number="4.3" id="画像データの準備例2"><span
+      class="header-section-number">4.3</span> 画像データの準備例2</h2>
+      <p>ここでは、<a href="https://dot-illust.net/">DOT ILLUST</a>
+      において <strong>管理人nko氏</strong> が公開している <a
+      href="https://dot-illust.net/maptile_jimen_sogen_01_center/">マップタイル
+      (草原01/中央)</a> を <strong>48x48</strong> にリサイズして
+      <code>data/img/</code> フォルダに
+      <code>map-ground-center.png</code>
+      として出力していきます。以下の図は、リサイズしたものを横に20個ならべた画像になります。</p>
+      <figure>
+      <img src="figs/22/pic-01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>DOT ILLUST
+      で配付している画像素材は、<strong>プログラムから直接ダウンロードすることはできないので</strong>
+      (=HTTP GET
+      リクエストに適切なリファラが含まれていないとアクセス拒否されるので)、ブラウザを開いて手作業で画像をダウンロードして
+      <code>data/download/</code> フォルダに
+      <code>map-ground-center.png</code>
+      として保存してください。ダウンロードした画像を確認すると、配付されているオリジナル画像は
+      <strong>500x500</strong> であることが分かります。</p>
+      <ul>
+      <li>ウェブ検索「<a
+      href="https://www.google.com/search?q=リファラ">リファラ</a>」</li>
+      </ul>
+      <p><strong>演習1</strong>:
+      <code>data/download/map-ground-center.png</code> を
+      <strong>48x48</strong> の画像にリサイズ (縮小して) して
+      <code>data/img/map-ground-center.png</code> として出力せよ。</p>
+      <p><strong>演習2</strong>: DOT ILLUST の<a
+      href="https://dot-illust.net/hi_01/">火01</a> を
+      <strong>48x48</strong> にリサイズして <code>data/img/</code>
+      フォルダに <code>effect-fire.png</code> として出力せよ。</p>
+      <p><strong>演習3</strong>: DOT ILLUST の<a
+      href="https://dot-illust.net/character_monster_shinigami_02/">モンスター
+      (死神/鎌あり)</a> を <strong>48x48</strong> にリサイズして
+      <code>data/img/</code> フォルダに <code>shinigami.png</code>
+      として出力せよ。</p>
+      <p><strong>演習4</strong>: DOT ILLUST の<a
+      href="https://dot-illust.net/ocha_ryokucha_yunomi_white_chataku_brown/">緑茶
+      (湯呑み/茶托あり)【ホワイト/ブラウン】</a>を
+      <strong>16x15</strong> にリサイズして <code>data/img/</code>
+      フォルダに <code>ocya.png</code>
+      として出力せよ。<code>cv2.resize</code> の
+      <code>interpolation</code>
+      のオプションを切り替え、ゲーム素材として最適な出力とすること。</p>
+      <p><strong>演習5</strong>: DOT ILLUST の<a
+      href="https://dot-illust.net/kinoko_red/">キノコ【レッド】</a> を
+      <strong>14x12</strong> にリサイズして <code>data/img/</code>
+      フォルダに <code>kinoko.png</code>
+      として出力せよ。<strong>演習4</strong> と同様に最適な
+      <code>interpolation</code> を選択せよ。</p>
+      <h1 data-number="5" id="pygame-の-vector2-オブジェクト"><span
+      class="header-section-number">5</span> PyGame の Vector2
+      オブジェクト</h1>
+      <p>このセクションでは、PyGame
+      で2次元ゲームを開発する際に実質必須となる<a
+      href="https://www.pygame.org/docs/ref/math.html#pygame.math.Vector2">Vector2</a>というクラスについて、(今後、避けては通ることができない「<a
+      href="https://www.google.com/search?q=">オブジェクト指向プログラミング</a>」の初歩の初歩を交えながら)
+      解説していきます。オブジェクト指向プログラミングには <span
+      class="masked">字句からは極めてイメージしずらい専門用語が多数登場</span>
+      しますが、段階的に慣れて、理解を深めていってください。一気に理解することは実質的に不可能です。</p>
+      <p>PyGame
+      には、2次元空間の幾何ベクトルを扱うために便利にな「<strong>Vector2</strong>」というクラスが用意されています
+      (3次元空間用の<a
+      href="https://www.pygame.org/docs/ref/math.html#pygame.math.Vector3">Vector3</a>もあります)
+      。Vector2クラスからは、「<strong>Vector2オブジェクト</strong>」を生成することができます
+      (クラスは「<span
+      class="masked">設計図</span>」、オブジェクトはその設計図に基づいて生成される「<span
+      class="masked">実体/実物</span>」と考えてください。オブジェクトは「<strong>インスタンス</strong>」とも呼ばれます)。</p>
+      <p>Vector2オブジェクトは、ベクトルのX成分とY成分を表す
+      <code>x</code> と <code>y</code> という浮動小数点数型の
+      <strong>プロパティ</strong>（変数のようなもの）を持ちます。</p>
+      <p>例えば、次の <strong>第04行目</strong> のように
+      <code>vec_a = pg.Vector2(31.5, 42.9)</code>
+      で初期化して、その後、<strong>第07行目</strong> のように
+      <code>vec_a.x</code> で <code>31.5</code>
+      を取得し、<strong>第08行目</strong> のように <code>vec_a.y</code>
+      で <code>42.9</code>
+      を取得することができます。また、<strong>第14行目</strong> のように
+      <code>vec_a.x = 77.7</code> とすれば X成分
+      (<code>x</code>プロパティ)
+      のみを個別に変更することもできます。XとYをまとめて1個のオブジェクトとして扱える点が便利です。</p>
+      <div class="sourceCode" id="cb26"
+      data-caption="Vector2の初期化と型確認"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb26-2"><a href="#cb26-2"></a><span class="im">import</span> pygame <span class="im">as</span> pg</span>
+<span id="cb26-3"><a href="#cb26-3"></a></span>
+<span id="cb26-4"><a href="#cb26-4"></a>vec_a <span class="op">=</span> pg.Vector2(<span class="fl">31.5</span>, <span class="fl">42.9</span>) <span class="co"># 初期化</span></span>
+<span id="cb26-5"><a href="#cb26-5"></a></span>
+<span id="cb26-6"><a href="#cb26-6"></a><span class="bu">print</span>(vec_a)         <span class="co"># =&gt; [31.5, 42.9]</span></span>
+<span id="cb26-7"><a href="#cb26-7"></a><span class="bu">print</span>(vec_a.x)       <span class="co"># =&gt; 31.5</span></span>
+<span id="cb26-8"><a href="#cb26-8"></a><span class="bu">print</span>(vec_a.y)       <span class="co"># =&gt; 42.9</span></span>
+<span id="cb26-9"><a href="#cb26-9"></a></span>
+<span id="cb26-10"><a href="#cb26-10"></a><span class="bu">print</span>(<span class="bu">type</span>(vec_a))   <span class="co"># =&gt; &lt;class &#39;pygame.math.Vector2&#39;&gt;</span></span>
+<span id="cb26-11"><a href="#cb26-11"></a><span class="bu">print</span>(<span class="bu">type</span>(vec_a.x)) <span class="co"># =&gt; &lt;class &#39;float&#39;&gt;</span></span>
+<span id="cb26-12"><a href="#cb26-12"></a><span class="bu">print</span>(<span class="bu">type</span>(vec_a.y)) <span class="co"># =&gt; &lt;class &#39;float&#39;&gt;</span></span>
+<span id="cb26-13"><a href="#cb26-13"></a></span>
+<span id="cb26-14"><a href="#cb26-14"></a>vec_a.x <span class="op">=</span> <span class="fl">77.7</span></span>
+<span id="cb26-15"><a href="#cb26-15"></a><span class="bu">print</span>(vec_a)         <span class="co"># =&gt; [77.7, 42.9]</span></span></code></pre></div>
+      <p>Vector2オブジェクト同士では、次のように加減算が可能です。</p>
+      <div class="sourceCode" id="cb27"
+      data-caption="Vector2の加減算"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="im">import</span> pygame <span class="im">as</span> pg</span>
+<span id="cb27-3"><a href="#cb27-3"></a></span>
+<span id="cb27-4"><a href="#cb27-4"></a>vec_a <span class="op">=</span> pg.Vector2(<span class="fl">31.5</span>, <span class="fl">42.9</span>)</span>
+<span id="cb27-5"><a href="#cb27-5"></a>vec_b <span class="op">=</span> pg.Vector2(<span class="dv">10</span>, <span class="op">-</span><span class="dv">20</span>) </span>
+<span id="cb27-6"><a href="#cb27-6"></a></span>
+<span id="cb27-7"><a href="#cb27-7"></a>vec <span class="op">=</span> vec_a <span class="op">+</span> vec_b  <span class="co"># Vector2同士の加算</span></span>
+<span id="cb27-8"><a href="#cb27-8"></a><span class="bu">print</span>(vec) <span class="co"># =&gt; [41.5, 22.9]</span></span>
+<span id="cb27-9"><a href="#cb27-9"></a></span>
+<span id="cb27-10"><a href="#cb27-10"></a>vec <span class="op">=</span> vec_a <span class="op">-</span> vec_b  <span class="co"># Vector2同士の減算</span></span>
+<span id="cb27-11"><a href="#cb27-11"></a><span class="bu">print</span>(vec) <span class="co"># =&gt; [21.5, 62.9]</span></span></code></pre></div>
+      <p>上記のように加減算ができるという点は、<a
+      href="lecture17.html#numpyのインポートとndarray型">第17回講義</a>
+      で学んだように NumPy の ndarray型 の演算に似ています。</p>
+      <div class="sourceCode" id="cb28"
+      data-caption="(参考・復習) NumPyのndarrayの加減算"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb28-2"><a href="#cb28-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb28-3"><a href="#cb28-3"></a>vec_a <span class="op">=</span> np.array([<span class="fl">31.5</span>, <span class="fl">42.9</span>])</span>
+<span id="cb28-4"><a href="#cb28-4"></a>vec_b <span class="op">=</span> np.array([<span class="dv">10</span>, <span class="op">-</span><span class="dv">20</span>])</span>
+<span id="cb28-5"><a href="#cb28-5"></a></span>
+<span id="cb28-6"><a href="#cb28-6"></a><span class="bu">print</span>(<span class="bu">type</span>(vec_a)) <span class="co"># =&gt; &lt;class &#39;numpy.ndarray&#39;&gt;</span></span>
+<span id="cb28-7"><a href="#cb28-7"></a></span>
+<span id="cb28-8"><a href="#cb28-8"></a>vec <span class="op">=</span> vec_a <span class="op">+</span> vec_b  <span class="co"># ndarray同士の減算 </span></span>
+<span id="cb28-9"><a href="#cb28-9"></a><span class="bu">print</span>(vec) <span class="co"># =&gt; [41.5 22.9]</span></span>
+<span id="cb28-10"><a href="#cb28-10"></a></span>
+<span id="cb28-11"><a href="#cb28-11"></a>vec <span class="op">=</span> vec_a <span class="op">-</span> vec_b  <span class="co"># ndarray同士の減算</span></span>
+<span id="cb28-12"><a href="#cb28-12"></a><span class="bu">print</span>(vec) <span class="co"># =&gt; [21.5 62.9]</span></span></code></pre></div>
+      <p>Vector2 が2次元ゲーム開発において ndarray
+      よりも便利な理由のひとつは、<strong>自身の長さ (大きさ)
+      を計算する</strong> <code>length</code> メソッド
+      (関数のようなもの)
+      を含む、さまざまな便利なメソッドを持っている点です。例えば、<span
+      class="masked">単位方向ベクトル</span> を計算する
+      <code>normalize</code> メソッドや、自身を基準にした <span
+      class="masked">他のベクトルとの角度差</span> を計算する
+      <code>angle_to</code> メソッドなどがあります。詳しくは<a
+      href="https://www.pygame.org/docs/ref/math.html#pygame.math.Vector2">公式リファレンス</a>を参照してください。</p>
+      <div class="sourceCode" id="cb29"
+      data-caption="Vector2の各種メソッド"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb29-2"><a href="#cb29-2"></a><span class="im">import</span> pygame <span class="im">as</span> pg</span>
+<span id="cb29-3"><a href="#cb29-3"></a></span>
+<span id="cb29-4"><a href="#cb29-4"></a>vec <span class="op">=</span> pg.Vector2(<span class="dv">10</span>,<span class="dv">10</span>)</span>
+<span id="cb29-5"><a href="#cb29-5"></a></span>
+<span id="cb29-6"><a href="#cb29-6"></a><span class="co"># vecの長さ（大きさ）を計算</span></span>
+<span id="cb29-7"><a href="#cb29-7"></a>length <span class="op">=</span> vec.length() </span>
+<span id="cb29-8"><a href="#cb29-8"></a><span class="bu">print</span>(<span class="ss">f&#39;長さ = </span><span class="sc">{</span>length<span class="sc">}</span><span class="ss">&#39;</span>) </span>
+<span id="cb29-9"><a href="#cb29-9"></a></span>
+<span id="cb29-10"><a href="#cb29-10"></a><span class="co"># vecの単位方向ベクトルを計算</span></span>
+<span id="cb29-11"><a href="#cb29-11"></a>unit_vector <span class="op">=</span> vec.normalize()</span>
+<span id="cb29-12"><a href="#cb29-12"></a><span class="bu">print</span>(<span class="ss">f&#39;単位方向ベクトル = </span><span class="sc">{</span>unit_vector<span class="sc">}</span><span class="ss">&#39;</span>) </span>
+<span id="cb29-13"><a href="#cb29-13"></a></span>
+<span id="cb29-14"><a href="#cb29-14"></a><span class="co"># 別のベクトルとの角度を計算</span></span>
+<span id="cb29-15"><a href="#cb29-15"></a>angle <span class="op">=</span> vec.angle_to(pg.Vector2(<span class="dv">10</span>,<span class="dv">0</span>))</span>
+<span id="cb29-16"><a href="#cb29-16"></a><span class="bu">print</span>(<span class="ss">f&#39;角度 = </span><span class="sc">{</span>angle<span class="sc">}</span><span class="ss">&#39;</span>) </span></code></pre></div>
+      <p>実行結果は次のようになります。</p>
+      <pre><code>長さ = 14.142135623730951
+単位方向ベクトル = [0.707107, 0.707107]
+角度 = -45.0</code></pre>
+      <p><strong>演習1</strong> プロジェクトフォルダに
+      <code>02_vector2.ipynb</code>
+      という名前のノートブックを新規作成し、上記の各プログラムを記述・実行し、その理解を深めよ。GUI関連の処理を含まなければ、ノートブック環境でも
+      PyGame ライブラリを使用することはできます。</p>
+      <p><strong>演習2</strong> <code>vec = pg.Vector2(3,4)</code>
+      に対して、<code>vec/2</code> や <code>vec*2</code>
+      などの演算がどのように作用するか確認せよ。</p>
+      <h1 data-number="6" id="ボールがバウンドするゲーム"><span
+      class="header-section-number">6</span>
+      ボールがバウンドするゲーム</h1>
+      <p><strong>画面内をボールがバウンドしていくだけ</strong>のシンプルなゲームを作成しながら
+      PyGame が提供する様々な機能について学んでいきます。VSCode で
+      <code>03_game_01.py</code> というファイル (≠ノートブック)
+      を作成して、以下のプログラムを貼り付けて、実行してください。</p>
+      <div class="sourceCode" id="cb31"
+      data-caption="03_game_01.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a><span class="im">import</span> pygame <span class="im">as</span> pg</span>
+<span id="cb31-2"><a href="#cb31-2"></a></span>
+<span id="cb31-3"><a href="#cb31-3"></a><span class="kw">def</span> main():</span>
+<span id="cb31-4"><a href="#cb31-4"></a></span>
+<span id="cb31-5"><a href="#cb31-5"></a>  <span class="co"># 初期化処理</span></span>
+<span id="cb31-6"><a href="#cb31-6"></a>  pg.init() </span>
+<span id="cb31-7"><a href="#cb31-7"></a>  pg.display.set_caption(<span class="st">&#39;ぼくのかんがえたさいきょうのげーむ&#39;</span>)</span>
+<span id="cb31-8"><a href="#cb31-8"></a>  disp_w, disp_h <span class="op">=</span> <span class="dv">800</span>, <span class="dv">600</span></span>
+<span id="cb31-9"><a href="#cb31-9"></a>  screen <span class="op">=</span> pg.display.set_mode((disp_w,disp_h)) <span class="co"># WindowSize</span></span>
+<span id="cb31-10"><a href="#cb31-10"></a>  clock  <span class="op">=</span> pg.time.Clock()</span>
+<span id="cb31-11"><a href="#cb31-11"></a>  font   <span class="op">=</span> pg.font.Font(<span class="va">None</span>,<span class="dv">15</span>)</span>
+<span id="cb31-12"><a href="#cb31-12"></a>  frame  <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb31-13"><a href="#cb31-13"></a>  exit_flag <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb31-14"><a href="#cb31-14"></a>  exit_code <span class="op">=</span> <span class="st">&#39;000&#39;</span></span>
+<span id="cb31-15"><a href="#cb31-15"></a></span>
+<span id="cb31-16"><a href="#cb31-16"></a>  <span class="co"># ボールのパラメータ p:位置、v:速度、a:加速度</span></span>
+<span id="cb31-17"><a href="#cb31-17"></a>  ball_p <span class="op">=</span> pg.Vector2(<span class="dv">50</span>, <span class="dv">90</span>)  <span class="co"># x=50, y=90 (px)</span></span>
+<span id="cb31-18"><a href="#cb31-18"></a>  ball_v <span class="op">=</span> pg.Vector2(<span class="dv">2</span>, <span class="dv">0</span>)    <span class="co"># vx=2, vy=0 (px/frm)</span></span>
+<span id="cb31-19"><a href="#cb31-19"></a>  ball_a <span class="op">=</span> pg.Vector2(<span class="dv">0</span>, <span class="fl">0.9</span>)  <span class="co"># ax=0, ay=0.9 (px/frm^2)</span></span>
+<span id="cb31-20"><a href="#cb31-20"></a>  ball_r <span class="op">=</span> <span class="dv">24</span>                  <span class="co"># ボールの半径</span></span>
+<span id="cb31-21"><a href="#cb31-21"></a>  ball_c <span class="op">=</span> pg.Color(<span class="st">&#39;#ff0000&#39;</span>) <span class="co"># ボールの色</span></span>
+<span id="cb31-22"><a href="#cb31-22"></a></span>
+<span id="cb31-23"><a href="#cb31-23"></a>  ground_h <span class="op">=</span> <span class="dv">48</span> <span class="co"># 地面の高さ</span></span>
+<span id="cb31-24"><a href="#cb31-24"></a></span>
+<span id="cb31-25"><a href="#cb31-25"></a>  <span class="co"># ゲームループ</span></span>
+<span id="cb31-26"><a href="#cb31-26"></a>  <span class="cf">while</span> <span class="kw">not</span> exit_flag:</span>
+<span id="cb31-27"><a href="#cb31-27"></a></span>
+<span id="cb31-28"><a href="#cb31-28"></a>    <span class="co"># システムイベントの検出</span></span>
+<span id="cb31-29"><a href="#cb31-29"></a>    <span class="cf">for</span> event <span class="kw">in</span> pg.event.get():</span>
+<span id="cb31-30"><a href="#cb31-30"></a>      <span class="cf">if</span> event.<span class="bu">type</span> <span class="op">==</span> pg.QUIT: <span class="co"># ウィンドウ[X]の押下</span></span>
+<span id="cb31-31"><a href="#cb31-31"></a>        exit_flag <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb31-32"><a href="#cb31-32"></a>        exit_code <span class="op">=</span> <span class="st">&#39;001&#39;</span></span>
+<span id="cb31-33"><a href="#cb31-33"></a></span>
+<span id="cb31-34"><a href="#cb31-34"></a>    <span class="co"># 背景描画</span></span>
+<span id="cb31-35"><a href="#cb31-35"></a>    screen.fill(pg.Color(<span class="st">&#39;WHITE&#39;</span>))</span>
+<span id="cb31-36"><a href="#cb31-36"></a></span>
+<span id="cb31-37"><a href="#cb31-37"></a>    <span class="co"># ボールの描画、位置・速度の更新</span></span>
+<span id="cb31-38"><a href="#cb31-38"></a>    pg.draw.circle(screen,ball_c,ball_p,ball_r,width<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb31-39"><a href="#cb31-39"></a>    ball_p <span class="op">+=</span> ball_v</span>
+<span id="cb31-40"><a href="#cb31-40"></a>    ball_v <span class="op">+=</span> ball_a</span>
+<span id="cb31-41"><a href="#cb31-41"></a></span>
+<span id="cb31-42"><a href="#cb31-42"></a>    <span class="co">## 地面との衝突処理</span></span>
+<span id="cb31-43"><a href="#cb31-43"></a>    <span class="cf">if</span> ball_p.y <span class="op">&gt;=</span> disp_h <span class="op">-</span> ground_h <span class="op">-</span> ball_r :</span>
+<span id="cb31-44"><a href="#cb31-44"></a>      ball_p.y <span class="op">=</span> disp_h <span class="op">-</span> ground_h <span class="op">-</span> ball_r</span>
+<span id="cb31-45"><a href="#cb31-45"></a>      ball_v.y <span class="op">=</span> <span class="op">-</span> <span class="fl">0.8</span> <span class="op">*</span> ( ball_v.y <span class="op">-</span> ball_a.y )</span>
+<span id="cb31-46"><a href="#cb31-46"></a></span>
+<span id="cb31-47"><a href="#cb31-47"></a>    <span class="co">## 右端と左端との衝突処理</span></span>
+<span id="cb31-48"><a href="#cb31-48"></a>    <span class="cf">if</span> ball_p.x <span class="op">+</span> ball_r <span class="op">&gt;</span> disp_w :</span>
+<span id="cb31-49"><a href="#cb31-49"></a>      ball_p.x <span class="op">=</span> disp_w <span class="op">-</span> ball_r</span>
+<span id="cb31-50"><a href="#cb31-50"></a>      ball_v.x <span class="op">=</span> <span class="op">-</span><span class="fl">0.8</span> <span class="op">*</span> ball_v.x </span>
+<span id="cb31-51"><a href="#cb31-51"></a>    <span class="cf">elif</span> ball_p.x <span class="op">-</span> ball_r <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb31-52"><a href="#cb31-52"></a>      ball_p.x <span class="op">=</span> ball_r</span>
+<span id="cb31-53"><a href="#cb31-53"></a>      ball_v.x <span class="op">=</span> <span class="op">-</span><span class="fl">0.8</span> <span class="op">*</span> ball_v.x </span>
+<span id="cb31-54"><a href="#cb31-54"></a></span>
+<span id="cb31-55"><a href="#cb31-55"></a>    <span class="co"># 地面描画 rectの 第3引数は (左上X, 左上Y ,幅 ,高さ)</span></span>
+<span id="cb31-56"><a href="#cb31-56"></a>    pg.draw.rect(screen, pg.Color(<span class="st">&#39;#864A2B&#39;</span>),</span>
+<span id="cb31-57"><a href="#cb31-57"></a>                (<span class="dv">0</span>, disp_h<span class="op">-</span>ground_h, disp_w, disp_h))</span>
+<span id="cb31-58"><a href="#cb31-58"></a></span>
+<span id="cb31-59"><a href="#cb31-59"></a>    <span class="co"># フレームカウンタの描画</span></span>
+<span id="cb31-60"><a href="#cb31-60"></a>    frame <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb31-61"><a href="#cb31-61"></a>    frm_str <span class="op">=</span> <span class="ss">f&#39;</span><span class="sc">{</span>frame<span class="sc">:05}</span><span class="ss">&#39;</span></span>
+<span id="cb31-62"><a href="#cb31-62"></a>    screen.blit(font.render(frm_str,<span class="va">True</span>,<span class="st">&#39;BLACK&#39;</span>),(<span class="dv">10</span>,<span class="dv">10</span>))</span>
+<span id="cb31-63"><a href="#cb31-63"></a></span>
+<span id="cb31-64"><a href="#cb31-64"></a>    <span class="co"># 画面の更新と同期</span></span>
+<span id="cb31-65"><a href="#cb31-65"></a>    pg.display.update()</span>
+<span id="cb31-66"><a href="#cb31-66"></a>    clock.tick(<span class="dv">30</span>)</span>
+<span id="cb31-67"><a href="#cb31-67"></a></span>
+<span id="cb31-68"><a href="#cb31-68"></a>  <span class="co"># ゲームループ [ここまで]</span></span>
+<span id="cb31-69"><a href="#cb31-69"></a>  pg.quit()</span>
+<span id="cb31-70"><a href="#cb31-70"></a>  <span class="cf">return</span> exit_code</span>
+<span id="cb31-71"><a href="#cb31-71"></a></span>
+<span id="cb31-72"><a href="#cb31-72"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</span>
+<span id="cb31-73"><a href="#cb31-73"></a>  code <span class="op">=</span> main()</span>
+<span id="cb31-74"><a href="#cb31-74"></a>  <span class="bu">print</span>(<span class="ss">f&#39;プログラムを「コード</span><span class="sc">{</span>code<span class="sc">}</span><span class="ss">」で終了しました。&#39;</span>)</span></code></pre></div>
+      <p>以下、<a
+      href="lecture22.html#動作確認1-pygame">先述の動作確認1</a>
+      で解説した <code>00_game.py</code>
+      以降の新規要素を中心に解説していきます。また、Vector2
+      の基礎も理解している前提での解説になります。</p>
+      <h2 data-number="6.1" id="フレームカウンタ文字列の描画"><span
+      class="header-section-number">6.1</span>
+      フレームカウンタ・文字列の描画</h2>
+      <p>このプログラムでは画面の左上に フレームカウンタ
+      (現在、何フレーム目が描画されているか) を表示しています。これは
+      <strong>第11行目～第12行目</strong>、<strong>第59行目～第62行目</strong>
+      によって処理されています。</p>
+      <div class="sourceCode" id="cb32" data-startFrom="11"
+      data-caption="03_game_01.py(抜粋)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 10;"><span id="cb32-11"><a href="#cb32-11"></a>font   <span class="op">=</span> pg.font.Font(<span class="va">None</span>,<span class="dv">15</span>)</span>
+<span id="cb32-12"><a href="#cb32-12"></a>frame  <span class="op">=</span> <span class="dv">0</span></span></code></pre></div>
+      <div class="sourceCode" id="cb33" data-startFrom="59"
+      data-caption="03_game_01.py(抜粋)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 58;"><span id="cb33-59"><a href="#cb33-59"></a><span class="co"># フレームカウンタの描画</span></span>
+<span id="cb33-60"><a href="#cb33-60"></a>frame <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb33-61"><a href="#cb33-61"></a>frm_str <span class="op">=</span> <span class="ss">f&#39;</span><span class="sc">{</span>frame<span class="sc">:05}</span><span class="ss">&#39;</span></span>
+<span id="cb33-62"><a href="#cb33-62"></a>screen.blit(font.render(frm_str,<span class="va">True</span>,<span class="st">&#39;BLACK&#39;</span>),(<span class="dv">10</span>,<span class="dv">10</span>))</span></code></pre></div>
+      <p><strong>第11行目</strong>
+      では、画面に文字描画する際のフォントを定義して変数
+      <code>font</code> に格納しています。<code>pg.font.Font</code>
+      の第1引数には「<strong>フォントのファイルパス</strong>」、第2引数には「<strong>フォントのサイズ</strong>」を指定します。第1引数を
+      <code>None</code> にした場合は、デフォルトフォント (<span
+      class="masked">日本語未対応</span>) が使用されます。</p>
+      <p><strong>第61行目</strong> では、<strong>f文字列</strong>
+      を使って、<strong>整数型</strong>の変数 <code>frame</code>
+      から、<span class="masked">ゼロ埋め5桁の文字列</span>
+      を作成して変数 <code>frm_str</code>
+      に格納しています。これまで、<strong>f文字列</strong> は
+      <code>print</code>
+      関数の引数として使用してきましたが、このように独立して使用することもできます。</p>
+      <p><strong>第62行目</strong> の <code>screen.blit</code>
+      の第1引数には、<code>font.render</code>
+      で<strong>レンダリングした文字列</strong>を与え、第2引数にはそれを描画するXY座標をタプルで与えています。<code>font.render</code>
+      の第1引数には
+      <strong>描画したい文字列</strong>、第2引数には<strong>アンチエイリアシングの有無</strong>、第3引数には
+      <strong>文字色</strong> を与えます。</p>
+      <div class="note type-tips">
+      <p><strong>PyGameに日本語フォントを利用する方法</strong></p>
+      <p>PyGameで、最も確実に「日本語フォント」を使用するためには、プログラムと同じフォルダにフォントファイルを配置します。ここでは情報処理推進機構
+      (IPA)
+      が配付している「<strong>IPAフォント</strong>」を使用する例を示します。このフォントは「IPAフォントライセンス」に基づき使用することができます
+      (その他のフォントと比較して、かなり自由に利用できるライセンスとなっています)。</p>
+      <p>PyGameで使用するための手順は以下のようになります。</p>
+      <ol type="1">
+      <li><a
+      href="https://moji.or.jp/ipafont/ipaex00401/">IPAフォントを配付しているサイト</a>にアクセスします。</li>
+      <li>ページに記載されている「<strong>IPAフォントライセンス</strong>」の内容を確認し、同意します。</li>
+      <li>ページ下部のリンク <code>ipaexg00401.zip(4.0MB)</code>
+      をクリックして ZIPファイル をダウンロードして展開します。</li>
+      <li>展開したフォルダから <code>ipaexg.ttf</code>
+      をプロジェクトフォルダのトップ階層にコピーします。作成したゲームを公開・配付する際
+      (フォントファイルも再頒布する場合)
+      は、ライセンスについて書かれたテキストファイルもコピーして適切な位置に配置してください。</li>
+      <li>プログラムのなかで <code>pg.font.Font('ipaexg.ttf',15)</code>
+      のように <strong>IPAフォントのパス</strong> を指定します。</li>
+      </ol>
+      <figure>
+      <img src="figs/22/pic-02.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      </div>
+      <blockquote>
+
+      </blockquote>
+      <p><strong>演習1</strong>:
+      フォントサイズを変更して、その結果について確認せよ。</p>
+      <p><strong>演習2</strong>:
+      アンチエイリアシングの有無、フォントの色を変更して、その結果について確認せよ。</p>
+      <p><strong>演習3 (EX)</strong>:
+      IPAフォントを配置して日本語の文字列をゲーム画面に出力できるようにせよ。</p>
+      <h2 data-number="6.2" id="ボール位置の計算"><span
+      class="header-section-number">6.2</span> ボール位置の計算</h2>
+      <p>画面内をバウンドするボールの<strong>位置計算</strong>
+      (速度と加速度に基づく位置計算) には Vector2
+      を利用しています。<strong>第16行目～第23行目</strong>
+      で初期化し、ゲームループ内の <strong>第37行目～第40行目</strong>
+      で「ボールの描画」とフレーム毎に「位置と速度の更新」をしています。速度と加速度に基づく位置
+      (変位) の計算は、既に<a
+      href="lecture20.html#ベクトル行列の応用-2">第20回講義</a>で解説しています。</p>
+      <div class="sourceCode" id="cb34" data-startFrom="16"
+      data-caption="03_game_01.py(抜粋)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 15;"><span id="cb34-16"><a href="#cb34-16"></a><span class="co"># ボールのパラメータ p:位置、v:速度、a:加速度</span></span>
+<span id="cb34-17"><a href="#cb34-17"></a>ball_p <span class="op">=</span> pg.Vector2(<span class="dv">50</span>, <span class="dv">90</span>)  <span class="co"># x=50, y=90 (px)</span></span>
+<span id="cb34-18"><a href="#cb34-18"></a>ball_v <span class="op">=</span> pg.Vector2(<span class="dv">2</span>, <span class="dv">0</span>)    <span class="co"># vx=2, vy=0 (px/frm)</span></span>
+<span id="cb34-19"><a href="#cb34-19"></a>ball_a <span class="op">=</span> pg.Vector2(<span class="dv">0</span>, <span class="fl">0.9</span>)  <span class="co"># ax=0, ay=0.9 (px/frm^2)</span></span>
+<span id="cb34-20"><a href="#cb34-20"></a>ball_r <span class="op">=</span> <span class="dv">24</span>                  <span class="co"># ボールの半径</span></span>
+<span id="cb34-21"><a href="#cb34-21"></a>ball_c <span class="op">=</span> pg.Color(<span class="st">&#39;#ff0000&#39;</span>) <span class="co"># ボールの色</span></span>
+<span id="cb34-22"><a href="#cb34-22"></a></span>
+<span id="cb34-23"><a href="#cb34-23"></a>ground_h <span class="op">=</span> <span class="dv">48</span> <span class="co"># 地面の高さ</span></span></code></pre></div>
+      <div class="sourceCode" id="cb35" data-startFrom="37"
+      data-caption="03_game_01.py(抜粋)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 36;"><span id="cb35-37"><a href="#cb35-37"></a><span class="co"># ボールの描画、位置・速度の更新</span></span>
+<span id="cb35-38"><a href="#cb35-38"></a>pg.draw.circle(screen, ball_c, ball_p, ball_r, width<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb35-39"><a href="#cb35-39"></a>ball_p <span class="op">+=</span> ball_v</span>
+<span id="cb35-40"><a href="#cb35-40"></a>ball_v <span class="op">+=</span> ball_a</span></code></pre></div>
+      <p><strong>第39行目</strong>
+      では「位置」を更新、<strong>第40行目</strong>
+      では「速度」を更新しています。<code>ball_p += ball_v</code> は
+      <code>ball_p = ball_p + ball_v</code>
+      の略表記です。<code>+=</code> のような演算子を <span
+      class="masked">累算代入演算子</span> といいます。</p>
+      <p><strong>第38行目</strong> では <code>pg.draw.circle</code>
+      で<strong>ボール (円)</strong>
+      を描いています。第1引数には「描画先」、第2引数には「色」、第3引数には「<strong>円の中心座標</strong>」、第4引数には「半径」、<code>width</code>
+      オプションには「<strong>線幅</strong>」を与えます。<code>00_game.py</code>
+      では、第3引数を <code>(x,y)</code>
+      のようにタプルで与えていましたが、ここでは <span
+      class="masked"><code>ball_p</code> という
+      Vector2オブジェクト</span> で与えています。また <code>width</code>
+      オプションを省略すると <span class="masked">円は塗りつぶし</span>
+      されます。</p>
+      <hr />
+      <p><strong>演習1</strong>: ボールの線色を「紫色」に変更せよ。</p>
+      <p><strong>演習2</strong>: ボールを塗りつぶしにせよ。</p>
+      <p><strong>演習3</strong>: <code>pg.draw.circle</code>
+      では円の中心座標ではなく、<span
+      class="masked">円の外接矩形の左上の座標</span>
+      を与えて描画位置を指示するオプションも用意されている。<a
+      href="https://www.pygame.org/docs/ref/draw.html#pygame.draw.circle">公式レファレンス</a>で確認せよ。</p>
+      <h2 data-number="6.3" id="ボールの衝突処理"><span
+      class="header-section-number">6.3</span> ボールの衝突処理</h2>
+      <p>ボールが地面に到達した場合の衝突処理 (反発)
+      は、<strong>第42行目～第45行目</strong> で行なっています。</p>
+      <div class="sourceCode" id="cb36" data-startFrom="42"
+      data-caption="03_game_01.py(抜粋)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 41;"><span id="cb36-42"><a href="#cb36-42"></a><span class="co">## 地面との衝突処理</span></span>
+<span id="cb36-43"><a href="#cb36-43"></a><span class="cf">if</span> ball_p.y <span class="op">&gt;=</span> disp_h <span class="op">-</span> ground_h <span class="op">-</span> ball_r :</span>
+<span id="cb36-44"><a href="#cb36-44"></a>  ball_p.y <span class="op">=</span> disp_h <span class="op">-</span> ground_h <span class="op">-</span> ball_r</span>
+<span id="cb36-45"><a href="#cb36-45"></a>  ball_v.y <span class="op">=</span> <span class="op">-</span> <span class="fl">0.8</span> <span class="op">*</span> ( ball_v.y <span class="op">-</span> ball_a.y )</span></code></pre></div>
+      <p><strong>第43行目</strong> では
+      <code>ball_p.y</code>、つまりボールの中心の「<strong>Y座標の値</strong>」を使って、<span
+      class="masked">ボールが地面に接触していないか、地面に沈み込む位置になっていないか</span>
+      を判定しています。ゲーム座標系では <strong>画面上部が</strong>
+      <code>Y=0</code>
+      で、<strong>画面の下方向にいくほど、Yの値が大きくなっていくこと</strong>
+      に注意してください。</p>
+      <p>if文によって、ボールが「地面に接触している」もしくは「沈み込んでいる」と判定された場合、<strong>第44行目</strong>
+      で <span class="masked">ボールが沈み込まない</span>
+      ように位置を修正し、<strong>第45行目</strong> で
+      <strong>Y方向の速度を反転</strong> させています。<code>0.8</code>
+      は反発係数で、この値が大きいほど <strong>跳ね返り</strong>
+      が大きくなります。</p>
+      <p>なお、このプログラムでは、永遠にボールは低い位置で跳ね続け
+      (振動を続け)
+      静止しません。本来であれば、実世界の現象と同じように静止させたいのですが、離散的かつ簡易計算を行っている関係で誤差が発生して、このような状態になります。これを少しでもマシにするため、<code>ball_v.y = - 0.8 * ball_v.y</code>
+      ではなく <strong>第45行目</strong> のような計算をしています
+      (それでも、跳ね続けますが)。</p>
+      <p>また、左右端に到達した場合の衝突処理 (反発) は
+      <strong>第47行目～第53行目</strong>
+      で行なっています。基本的な考え方は、地面との衝突処理と同じです。</p>
+      <div class="sourceCode" id="cb37" data-startFrom="47"
+      data-caption="03_game_01.py(抜粋)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 46;"><span id="cb37-47"><a href="#cb37-47"></a><span class="co">## 右端と左端との衝突処理</span></span>
+<span id="cb37-48"><a href="#cb37-48"></a><span class="cf">if</span> ball_p.x <span class="op">+</span> ball_r <span class="op">&gt;</span> disp_w :</span>
+<span id="cb37-49"><a href="#cb37-49"></a>  ball_p.x <span class="op">=</span> disp_w <span class="op">-</span> ball_r</span>
+<span id="cb37-50"><a href="#cb37-50"></a>  ball_v.x <span class="op">=</span> <span class="op">-</span><span class="fl">0.8</span> <span class="op">*</span> ball_v.x </span>
+<span id="cb37-51"><a href="#cb37-51"></a><span class="cf">elif</span> ball_p.x <span class="op">-</span> ball_r <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb37-52"><a href="#cb37-52"></a>  ball_p.x <span class="op">=</span> ball_r</span>
+<span id="cb37-53"><a href="#cb37-53"></a>  ball_v.x <span class="op">=</span> <span class="op">-</span><span class="fl">0.8</span> <span class="op">*</span> ball_v.x</span></code></pre></div>
+      <hr />
+      <p><strong>演習1</strong>: <strong>第45行目</strong> を
+      <code>ball_v.y = - 0.8 * ball_v.y</code>
+      に書き換えて、動作がどのように変化するか確認せよ。</p>
+      <p><strong>演習2</strong>:
+      反発係数を変化させて、動作がどのように変化するか確認せよ。</p>
+      <p><strong>演習3 (EX)</strong>:
+      ボールがいつまでも静止しないことの原因について考えよ。<code>ball_p</code>、<code>ball_v</code>、<code>ball_a</code>
+      の値を「PyGameの画面」や「標準出力」に表示すると考えやすい。</p>
+      <h1 data-number="7" id="ボールがバウンドするゲーム-改良版"><span
+      class="header-section-number">7</span> ボールがバウンドするゲーム
+      (改良版)</h1>
+      <p>VSCode で <code>03_game_02.py</code> というファイル
+      (≠ノートブック)
+      を作成して、以下のプログラムを貼り付けて、実行してください。これは、さきほどのプログラムに次のような改良を加えたものになります。</p>
+      <ul>
+      <li>スペースキーを押下をするとボールが「空中ジャンプ」する機能をつけた。</li>
+      <li>ボールを自然な動きに近づけた
+      (最終的に静止するようにした)。</li>
+      <li>画像を使用して地面を描くようにした。</li>
+      </ul>
+      <div class="sourceCode" id="cb38"
+      data-caption="03_game_02.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a><span class="im">import</span> pygame <span class="im">as</span> pg</span>
+<span id="cb38-2"><a href="#cb38-2"></a></span>
+<span id="cb38-3"><a href="#cb38-3"></a><span class="kw">def</span> main():</span>
+<span id="cb38-4"><a href="#cb38-4"></a></span>
+<span id="cb38-5"><a href="#cb38-5"></a>  <span class="co"># 初期化処理</span></span>
+<span id="cb38-6"><a href="#cb38-6"></a>  pg.init() </span>
+<span id="cb38-7"><a href="#cb38-7"></a>  pg.display.set_caption(<span class="st">&#39;ぼくのかんがえたさいきょうのげーむ&#39;</span>)</span>
+<span id="cb38-8"><a href="#cb38-8"></a>  disp_w, disp_h <span class="op">=</span> <span class="dv">800</span>, <span class="dv">600</span></span>
+<span id="cb38-9"><a href="#cb38-9"></a>  screen <span class="op">=</span> pg.display.set_mode((disp_w,disp_h)) <span class="co"># WindowSize</span></span>
+<span id="cb38-10"><a href="#cb38-10"></a>  clock  <span class="op">=</span> pg.time.Clock()</span>
+<span id="cb38-11"><a href="#cb38-11"></a>  font   <span class="op">=</span> pg.font.Font(<span class="va">None</span>,<span class="dv">15</span>)</span>
+<span id="cb38-12"><a href="#cb38-12"></a>  frame  <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb38-13"><a href="#cb38-13"></a>  exit_flag <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb38-14"><a href="#cb38-14"></a>  exit_code <span class="op">=</span> <span class="st">&#39;000&#39;</span></span>
+<span id="cb38-15"><a href="#cb38-15"></a></span>
+<span id="cb38-16"><a href="#cb38-16"></a>  ball_p <span class="op">=</span> pg.Vector2(<span class="dv">50</span>, <span class="dv">90</span>) <span class="co"># x=50, y=90 (px)</span></span>
+<span id="cb38-17"><a href="#cb38-17"></a>  ball_v <span class="op">=</span> pg.Vector2(<span class="dv">2</span>, <span class="dv">0</span>)   <span class="co"># vx=2, vy=0 (px/frm)</span></span>
+<span id="cb38-18"><a href="#cb38-18"></a>  ball_a <span class="op">=</span> pg.Vector2(<span class="dv">0</span>, <span class="fl">0.9</span>) <span class="co"># ax=0, ay=0.9 (px/frm^2)</span></span>
+<span id="cb38-19"><a href="#cb38-19"></a>  ball_r <span class="op">=</span> <span class="dv">24</span> <span class="co"># ボールの半径</span></span>
+<span id="cb38-20"><a href="#cb38-20"></a>  ball_c <span class="op">=</span> pg.Color(<span class="st">&#39;#ff0000&#39;</span>)</span>
+<span id="cb38-21"><a href="#cb38-21"></a></span>
+<span id="cb38-22"><a href="#cb38-22"></a>  ground_img <span class="op">=</span> pg.image.load(<span class="ss">f&#39;data/img/map-ground-center.png&#39;</span>)</span>
+<span id="cb38-23"><a href="#cb38-23"></a>  ground_s <span class="op">=</span> pg.Vector2(<span class="dv">48</span>,<span class="dv">48</span>) <span class="co"># 地面画像サイズ</span></span>
+<span id="cb38-24"><a href="#cb38-24"></a></span>
+<span id="cb38-25"><a href="#cb38-25"></a>  jump <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb38-26"><a href="#cb38-26"></a></span>
+<span id="cb38-27"><a href="#cb38-27"></a>  <span class="co"># ゲームループ</span></span>
+<span id="cb38-28"><a href="#cb38-28"></a>  <span class="cf">while</span> <span class="kw">not</span> exit_flag:</span>
+<span id="cb38-29"><a href="#cb38-29"></a></span>
+<span id="cb38-30"><a href="#cb38-30"></a>    <span class="co"># システムイベントの検出</span></span>
+<span id="cb38-31"><a href="#cb38-31"></a>    <span class="cf">for</span> event <span class="kw">in</span> pg.event.get():</span>
+<span id="cb38-32"><a href="#cb38-32"></a>      <span class="cf">if</span> event.<span class="bu">type</span> <span class="op">==</span> pg.QUIT: <span class="co"># ウィンドウ[X]の押下</span></span>
+<span id="cb38-33"><a href="#cb38-33"></a>        exit_flag <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb38-34"><a href="#cb38-34"></a>        exit_code <span class="op">=</span> <span class="st">&#39;001&#39;</span></span>
+<span id="cb38-35"><a href="#cb38-35"></a>      <span class="cf">if</span> event.<span class="bu">type</span> <span class="op">==</span> pg.KEYDOWN:</span>
+<span id="cb38-36"><a href="#cb38-36"></a>        <span class="co"># スペースキーが押下されたら jump を True に</span></span>
+<span id="cb38-37"><a href="#cb38-37"></a>        <span class="cf">if</span> event.key <span class="op">==</span> pg.K_SPACE:</span>
+<span id="cb38-38"><a href="#cb38-38"></a>          jump <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb38-39"><a href="#cb38-39"></a></span>
+<span id="cb38-40"><a href="#cb38-40"></a>    <span class="co"># 背景描画</span></span>
+<span id="cb38-41"><a href="#cb38-41"></a>    screen.fill(pg.Color(<span class="st">&#39;WHITE&#39;</span>))</span>
+<span id="cb38-42"><a href="#cb38-42"></a></span>
+<span id="cb38-43"><a href="#cb38-43"></a>    <span class="co"># ボールの描画と位置計算</span></span>
+<span id="cb38-44"><a href="#cb38-44"></a>    pg.draw.circle(screen,ball_c,ball_p,ball_r,width<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb38-45"><a href="#cb38-45"></a>    <span class="cf">if</span> jump:</span>
+<span id="cb38-46"><a href="#cb38-46"></a>      pg.draw.circle(screen,ball_c,ball_p,ball_r)</span>
+<span id="cb38-47"><a href="#cb38-47"></a>      ball_v.y <span class="op">=</span> <span class="op">-</span><span class="dv">8</span></span>
+<span id="cb38-48"><a href="#cb38-48"></a>      ball_v.x <span class="op">+=</span> <span class="fl">0.5</span> <span class="cf">if</span> ball_v.x <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">else</span>  <span class="op">-</span><span class="fl">0.5</span></span>
+<span id="cb38-49"><a href="#cb38-49"></a>      jump <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb38-50"><a href="#cb38-50"></a>    ball_p <span class="op">+=</span> ball_v</span>
+<span id="cb38-51"><a href="#cb38-51"></a>    ball_v <span class="op">+=</span> ball_a</span>
+<span id="cb38-52"><a href="#cb38-52"></a></span>
+<span id="cb38-53"><a href="#cb38-53"></a>    <span class="co">## 地面との衝突処理</span></span>
+<span id="cb38-54"><a href="#cb38-54"></a>    <span class="cf">if</span> ball_p.y <span class="op">&gt;=</span> disp_h <span class="op">-</span> ground_s.y <span class="op">-</span> ball_r :</span>
+<span id="cb38-55"><a href="#cb38-55"></a>      ball_p.y <span class="op">=</span> disp_h <span class="op">-</span> ground_s.y <span class="op">-</span> ball_r</span>
+<span id="cb38-56"><a href="#cb38-56"></a>      ball_v.y <span class="op">=</span> <span class="op">-</span> <span class="fl">0.7</span> <span class="op">*</span> ( ball_v.y <span class="op">-</span> ball_a.y )</span>
+<span id="cb38-57"><a href="#cb38-57"></a>      <span class="cf">if</span> <span class="bu">abs</span>(ball_v.y) <span class="op">&lt;</span> <span class="fl">3.5</span> :</span>
+<span id="cb38-58"><a href="#cb38-58"></a>        ball_v.y <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb38-59"><a href="#cb38-59"></a>        ball_v.x <span class="op">*=</span> <span class="fl">0.98</span></span>
+<span id="cb38-60"><a href="#cb38-60"></a></span>
+<span id="cb38-61"><a href="#cb38-61"></a>    <span class="co">## 右端と左端との衝突</span></span>
+<span id="cb38-62"><a href="#cb38-62"></a>    <span class="cf">if</span> ball_p.x <span class="op">+</span> ball_r <span class="op">&gt;</span> disp_w :</span>
+<span id="cb38-63"><a href="#cb38-63"></a>      ball_p.x <span class="op">=</span> disp_w <span class="op">-</span> ball_r</span>
+<span id="cb38-64"><a href="#cb38-64"></a>      ball_v.x <span class="op">=</span> <span class="op">-</span><span class="fl">0.8</span> <span class="op">*</span> ball_v.x </span>
+<span id="cb38-65"><a href="#cb38-65"></a>    <span class="cf">elif</span> ball_p.x <span class="op">-</span> ball_r <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb38-66"><a href="#cb38-66"></a>      ball_p.x <span class="op">=</span> ball_r</span>
+<span id="cb38-67"><a href="#cb38-67"></a>      ball_v.x <span class="op">=</span> <span class="op">-</span><span class="fl">0.8</span> <span class="op">*</span> ball_v.x </span>
+<span id="cb38-68"><a href="#cb38-68"></a></span>
+<span id="cb38-69"><a href="#cb38-69"></a>    <span class="co"># 地面描画</span></span>
+<span id="cb38-70"><a href="#cb38-70"></a>    <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>,disp_w,<span class="bu">int</span>(ground_s.x)):</span>
+<span id="cb38-71"><a href="#cb38-71"></a>      screen.blit(ground_img,(x,disp_h<span class="op">-</span>ground_s.y))</span>
+<span id="cb38-72"><a href="#cb38-72"></a></span>
+<span id="cb38-73"><a href="#cb38-73"></a>    <span class="co"># フレームカウンタの描画</span></span>
+<span id="cb38-74"><a href="#cb38-74"></a>    frame <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb38-75"><a href="#cb38-75"></a>    frm_str <span class="op">=</span> <span class="ss">f&#39;</span><span class="sc">{</span>frame<span class="sc">:05}</span><span class="ss">&#39;</span></span>
+<span id="cb38-76"><a href="#cb38-76"></a>    screen.blit(font.render(frm_str,<span class="va">True</span>,<span class="st">&#39;BLACK&#39;</span>),(<span class="dv">10</span>,<span class="dv">10</span>))</span>
+<span id="cb38-77"><a href="#cb38-77"></a></span>
+<span id="cb38-78"><a href="#cb38-78"></a>    <span class="co"># 画面の更新と同期</span></span>
+<span id="cb38-79"><a href="#cb38-79"></a>    pg.display.update()</span>
+<span id="cb38-80"><a href="#cb38-80"></a>    clock.tick(<span class="dv">30</span>) <span class="co"># 最高速度を 30 フレーム/秒に制限</span></span>
+<span id="cb38-81"><a href="#cb38-81"></a></span>
+<span id="cb38-82"><a href="#cb38-82"></a>  <span class="co"># ゲームループ [ここまで]</span></span>
+<span id="cb38-83"><a href="#cb38-83"></a>  pg.quit()</span>
+<span id="cb38-84"><a href="#cb38-84"></a>  <span class="cf">return</span> exit_code</span>
+<span id="cb38-85"><a href="#cb38-85"></a></span>
+<span id="cb38-86"><a href="#cb38-86"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</span>
+<span id="cb38-87"><a href="#cb38-87"></a>  code <span class="op">=</span> main()</span>
+<span id="cb38-88"><a href="#cb38-88"></a>  <span class="bu">print</span>(<span class="ss">f&#39;プログラムを「コード</span><span class="sc">{</span>code<span class="sc">}</span><span class="ss">」で終了しました。&#39;</span>)</span></code></pre></div>
+      <h2 data-number="7.1" id="空中ジャンプ機能の追加"><span
+      class="header-section-number">7.1</span>
+      空中ジャンプ機能の追加</h2>
+      <p>空中ジャンプの機能は
+      <strong>第25行目</strong>、<strong>第30行目～第38行目</strong>、<strong>第43行目～第51行目</strong>
+      で実装しています。</p>
+      <div class="sourceCode" id="cb39" data-startFrom="25"
+      data-caption="03_game_02.py(抜粋)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 24;"><span id="cb39-25"><a href="#cb39-25"></a>jump <span class="op">=</span> <span class="va">False</span></span></code></pre></div>
+      <div class="sourceCode" id="cb40" data-startFrom="30"
+      data-caption="03_game_02.py(抜粋)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 29;"><span id="cb40-30"><a href="#cb40-30"></a><span class="co"># システムイベントの検出</span></span>
+<span id="cb40-31"><a href="#cb40-31"></a><span class="cf">for</span> event <span class="kw">in</span> pg.event.get():</span>
+<span id="cb40-32"><a href="#cb40-32"></a>  <span class="cf">if</span> event.<span class="bu">type</span> <span class="op">==</span> pg.QUIT: <span class="co"># ウィンドウ[X]の押下</span></span>
+<span id="cb40-33"><a href="#cb40-33"></a>    exit_flag <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb40-34"><a href="#cb40-34"></a>    exit_code <span class="op">=</span> <span class="st">&#39;001&#39;</span></span>
+<span id="cb40-35"><a href="#cb40-35"></a>  <span class="cf">if</span> event.<span class="bu">type</span> <span class="op">==</span> pg.KEYDOWN:</span>
+<span id="cb40-36"><a href="#cb40-36"></a>    <span class="co"># スペースキーが押下されたら jump を True に</span></span>
+<span id="cb40-37"><a href="#cb40-37"></a>    <span class="cf">if</span> event.key <span class="op">==</span> pg.K_SPACE:</span>
+<span id="cb40-38"><a href="#cb40-38"></a>      jump <span class="op">=</span> <span class="va">True</span></span></code></pre></div>
+      <div class="sourceCode" id="cb41" data-startFrom="43"
+      data-caption="03_game_02.py(抜粋)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 42;"><span id="cb41-43"><a href="#cb41-43"></a><span class="co"># ボールの描画と位置計算</span></span>
+<span id="cb41-44"><a href="#cb41-44"></a>pg.draw.circle(screen,ball_c,ball_p,ball_r,width<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb41-45"><a href="#cb41-45"></a><span class="cf">if</span> jump:</span>
+<span id="cb41-46"><a href="#cb41-46"></a>  pg.draw.circle(screen,ball_c,ball_p,ball_r)</span>
+<span id="cb41-47"><a href="#cb41-47"></a>  ball_v.y <span class="op">=</span> <span class="op">-</span><span class="dv">8</span></span>
+<span id="cb41-48"><a href="#cb41-48"></a>  ball_v.x <span class="op">+=</span> <span class="fl">0.5</span> <span class="cf">if</span> ball_v.x <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">else</span>  <span class="op">-</span><span class="fl">0.5</span></span>
+<span id="cb41-49"><a href="#cb41-49"></a>  jump <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb41-50"><a href="#cb41-50"></a>ball_p <span class="op">+=</span> ball_v</span>
+<span id="cb41-51"><a href="#cb41-51"></a>ball_v <span class="op">+=</span> ball_a</span></code></pre></div>
+      <p>まずは、ゲームループの外側の <strong>第25行目</strong> で 変数
+      <code>jump</code>
+      を初期化しています。この変数はゲームループのなかで「フラグ」として使用するもので、ジャンプ操作入力があったときに
+      <code>True</code> に書き換え、<code>True</code>
+      のときにジャンプ用の追加処理をします。</p>
+      <p><strong>第30行目～第38行目</strong>
+      ではプレイヤからのキーボード入力を確認して、スペースキーの押下が検出されたら
+      <code>jump</code> に <code>True</code>
+      を代入しています。<strong>第37行目</strong> の
+      <code>pg.K_SPACE</code>
+      を入れ替えれば、他キーの押下を検出することができます。VSCode
+      環境で <code>pg.K_</code>
+      まで入力すると候補が表示されます。定数の一覧は<a
+      href="https://www.pygame.org/docs/ref/key.html">公式リファレンス</a>を確認してください。なお、スペースキーを押下し続けても
+      <code>event.type == pg.KEYDOWN</code> が <code>True</code>
+      と判定されるのは <span class="masked">1回のみ</span> です。</p>
+      <p><strong>第45行目</strong> では、変数 <code>jump</code>
+      の値を確認して <code>True</code> のとき
+      <strong>第46行目～第49行目</strong>
+      が実行されるようにしています。<strong>第46行目</strong>
+      ではボールを塗りつぶしています。<strong>第47行目</strong>
+      では画面上方に向かってボールがジャンプするように速度を書き換えています。<strong>第48行目</strong>
+      では<a
+      href="lecture19.html#条件式-三項演算子">第19回講義</a>で学んだ
+      <strong>条件式 (三項演算子)</strong> を使って、現在の進行方向
+      (左右)
+      の速度を少しだけ増やしています。また、<strong>第49行目</strong>
+      では <code>jump</code> の値を <code>False</code>
+      に戻しています。この処理を忘れると <span
+      class="masked">1回のスペースキー押下で永遠にジャンプ操作が実行されるようになってしまう</span>
+      ので注意してください。</p>
+      <p><strong>第48行目</strong>
+      を通常の条件分岐で記述すると以下のようになります。</p>
+      <div class="sourceCode" id="cb42"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a><span class="cf">if</span> ball_v.x <span class="op">&gt;</span> <span class="dv">0</span> :</span>
+<span id="cb42-2"><a href="#cb42-2"></a>  ball_v.x <span class="op">+=</span> <span class="fl">0.5</span></span>
+<span id="cb42-3"><a href="#cb42-3"></a><span class="cf">else</span> :</span>
+<span id="cb42-4"><a href="#cb42-4"></a>  ball_v.x <span class="op">+=</span> <span class="op">-</span><span class="fl">0.5</span></span></code></pre></div>
+      <h2 data-number="7.2" id="画像を使って地面の描画"><span
+      class="header-section-number">7.2</span>
+      画像を使って地面の描画</h2>
+      <p>画像を使った地面の描画は
+      <strong>第22行目～第23行目</strong>、<strong>第69行目～第71行目</strong>
+      で行なっています。地面の画像は、<a
+      href="lecture22.html#画像データの準備例2">画像データの準備例2</a>のなかで
+      <code>data/img/</code> フォルダに出力した
+      <code>map-ground-center.png</code>
+      (画像サイズ<strong>48x48</strong>) を使用しています。</p>
+      <div class="sourceCode" id="cb43" data-startFrom="22"
+      data-caption="03_game_02.py(抜粋)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 21;"><span id="cb43-22"><a href="#cb43-22"></a>ground_img <span class="op">=</span> pg.image.load(<span class="ss">f&#39;data/img/map-ground-center.png&#39;</span>)</span>
+<span id="cb43-23"><a href="#cb43-23"></a>ground_s <span class="op">=</span> pg.Vector2(<span class="dv">48</span>,<span class="dv">48</span>)  <span class="co"># 地面画像サイズ</span></span></code></pre></div>
+      <div class="sourceCode" id="cb44" data-startFrom="69"
+      data-caption="03_game_02.py(抜粋)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 68;"><span id="cb44-69"><a href="#cb44-69"></a><span class="co"># 地面描画</span></span>
+<span id="cb44-70"><a href="#cb44-70"></a><span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>,disp_w,<span class="bu">int</span>(ground_s.x)):</span>
+<span id="cb44-71"><a href="#cb44-71"></a>  screen.blit(ground_img,(x,disp_h<span class="op">-</span>ground_s.y))</span></code></pre></div>
+      <p><strong>第70行目</strong>において <code>disp_w</code> は
+      <code>800</code> であり、<code>ground_s.x</code> は
+      <code>48</code>
+      なので、<code>for x in range(0,disp_w,int(ground_s.x)):</code> は
+      <code>for x in range(0,800,48):</code> と等価になります。よって、x
+      は forループのなかで <code>0</code> <code>48</code>
+      <code>96</code> <code>144</code> <code>192</code> …
+      <code>672</code> <code>720</code> <code>768</code>
+      となります。このX座標毎に画像を配置しています。</p>
+      <h2 data-number="7.3" id="ボールの動きを改善"><span
+      class="header-section-number">7.3</span> ボールの動きを改善</h2>
+      <p>ボールの動きの改善は <strong>第53行目～第59行目</strong>
+      でおこなっています。より良い方法も考えられます、各自で工夫してみてください。</p>
+      <div class="sourceCode" id="cb45" data-startFrom="53"
+      data-caption="03_game_02.py(抜粋)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 52;"><span id="cb45-53"><a href="#cb45-53"></a><span class="co">## 地面との衝突処理</span></span>
+<span id="cb45-54"><a href="#cb45-54"></a><span class="cf">if</span> ball_p.y <span class="op">&gt;=</span> disp_h <span class="op">-</span> ground_s.y <span class="op">-</span> ball_r :</span>
+<span id="cb45-55"><a href="#cb45-55"></a>  ball_p.y <span class="op">=</span> disp_h <span class="op">-</span> ground_s.y <span class="op">-</span> ball_r</span>
+<span id="cb45-56"><a href="#cb45-56"></a>  ball_v.y <span class="op">=</span> <span class="op">-</span> <span class="fl">0.7</span> <span class="op">*</span> ( ball_v.y <span class="op">-</span> ball_a.y )</span>
+<span id="cb45-57"><a href="#cb45-57"></a>  <span class="cf">if</span> <span class="bu">abs</span>(ball_v.y) <span class="op">&lt;</span> <span class="fl">3.5</span> :</span>
+<span id="cb45-58"><a href="#cb45-58"></a>    ball_v.y <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb45-59"><a href="#cb45-59"></a>    ball_v.x <span class="op">*=</span> <span class="fl">0.98</span></span></code></pre></div>
+      <p><strong>第57行目</strong> の <code>abs</code> は組込み関数で
+      <span class="masked">絶対値</span> を返す関数です。</p>
+      <p><strong>第59行目</strong> の <code>*=</code> は
+      <strong>累算代入演算子</strong>
+      で、<code>ball_v.x = 0.98 * ball_v.x</code>
+      と同じ意味になります。</p>
+      <h1 data-number="8" id="ボールがバウンドするゲーム-改良版2"><span
+      class="header-section-number">8</span> ボールがバウンドするゲーム
+      (改良版2)</h1>
+      <p>さらに改良したバージョンのプログラムを示します。まずは、<code>04_game.py</code>
+      を新規作成して、プログラムを貼り付けて実行してみてください。</p>
+      <div class="sourceCode" id="cb46" data-caption="04_game.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a><span class="im">import</span> random <span class="im">as</span> r</span>
+<span id="cb46-2"><a href="#cb46-2"></a><span class="im">import</span> pygame <span class="im">as</span> pg</span>
+<span id="cb46-3"><a href="#cb46-3"></a></span>
+<span id="cb46-4"><a href="#cb46-4"></a><span class="kw">def</span> main():</span>
+<span id="cb46-5"><a href="#cb46-5"></a></span>
+<span id="cb46-6"><a href="#cb46-6"></a>  <span class="co"># 初期化処理</span></span>
+<span id="cb46-7"><a href="#cb46-7"></a>  pg.init() </span>
+<span id="cb46-8"><a href="#cb46-8"></a>  pg.display.set_caption(<span class="st">&#39;ぼくのかんがえたさいきょうのげーむ&#39;</span>)</span>
+<span id="cb46-9"><a href="#cb46-9"></a>  disp_w, disp_h <span class="op">=</span> <span class="dv">800</span>, <span class="dv">600</span></span>
+<span id="cb46-10"><a href="#cb46-10"></a>  screen <span class="op">=</span> pg.display.set_mode((disp_w,disp_h))</span>
+<span id="cb46-11"><a href="#cb46-11"></a>  clock  <span class="op">=</span> pg.time.Clock()</span>
+<span id="cb46-12"><a href="#cb46-12"></a>  font   <span class="op">=</span> pg.font.Font(<span class="va">None</span>,<span class="dv">15</span>)</span>
+<span id="cb46-13"><a href="#cb46-13"></a>  frame  <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb46-14"><a href="#cb46-14"></a>  exit_flag <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb46-15"><a href="#cb46-15"></a>  exit_code <span class="op">=</span> <span class="st">&#39;000&#39;</span></span>
+<span id="cb46-16"><a href="#cb46-16"></a></span>
+<span id="cb46-17"><a href="#cb46-17"></a>  face_s <span class="op">=</span> pg.Vector2(<span class="dv">48</span>,<span class="dv">48</span>) <span class="co"># サイズ</span></span>
+<span id="cb46-18"><a href="#cb46-18"></a>  face_r <span class="op">=</span> face_s<span class="op">/</span><span class="dv">2</span>          <span class="co"># 半径</span></span>
+<span id="cb46-19"><a href="#cb46-19"></a>  face_p <span class="op">=</span> pg.Vector2(<span class="dv">50</span>,<span class="dv">90</span>) <span class="co"># 位置</span></span>
+<span id="cb46-20"><a href="#cb46-20"></a>  face_v <span class="op">=</span> pg.Vector2(<span class="dv">2</span>,<span class="dv">0</span>)   <span class="co"># 速度</span></span>
+<span id="cb46-21"><a href="#cb46-21"></a>  face_a <span class="op">=</span> pg.Vector2(<span class="dv">0</span>,<span class="fl">0.2</span>) <span class="co"># 加速度</span></span>
+<span id="cb46-22"><a href="#cb46-22"></a>  face_img <span class="op">=</span> pg.image.load(<span class="ss">f&#39;data/img/marisa-face.png&#39;</span>)</span>
+<span id="cb46-23"><a href="#cb46-23"></a></span>
+<span id="cb46-24"><a href="#cb46-24"></a>  ground_img <span class="op">=</span> pg.image.load(<span class="ss">f&#39;data/img/map-ground-center.png&#39;</span>)</span>
+<span id="cb46-25"><a href="#cb46-25"></a>  ground_s   <span class="op">=</span> pg.Vector2(<span class="dv">48</span>,<span class="dv">48</span>) </span>
+<span id="cb46-26"><a href="#cb46-26"></a></span>
+<span id="cb46-27"><a href="#cb46-27"></a>  jump <span class="op">=</span> <span class="va">False</span>  <span class="co"># ジャンプアクション入力の有無</span></span>
+<span id="cb46-28"><a href="#cb46-28"></a>  theta <span class="op">=</span> <span class="fl">0.0</span>   <span class="co"># 顔の回転角 (deg) を保持する変数</span></span>
+<span id="cb46-29"><a href="#cb46-29"></a></span>
+<span id="cb46-30"><a href="#cb46-30"></a>  <span class="co"># 炎エフェクト</span></span>
+<span id="cb46-31"><a href="#cb46-31"></a>  fire_img <span class="op">=</span> pg.image.load(<span class="ss">f&#39;data/img/effect-fire.png&#39;</span>)</span>
+<span id="cb46-32"><a href="#cb46-32"></a>  fire_img <span class="op">=</span> pg.transform.rotozoom(fire_img,<span class="dv">180</span>,<span class="dv">1</span>) <span class="co"># 180度の回転</span></span>
+<span id="cb46-33"><a href="#cb46-33"></a>  fire <span class="op">=</span> <span class="dv">0</span>   <span class="co"># 炎を表示する残り時間を保持する変数</span></span>
+<span id="cb46-34"><a href="#cb46-34"></a></span>
+<span id="cb46-35"><a href="#cb46-35"></a>  <span class="co"># 敵(死神関係)</span></span>
+<span id="cb46-36"><a href="#cb46-36"></a>  enemy_img <span class="op">=</span> pg.image.load(<span class="ss">f&#39;data/img/shinigami.png&#39;</span>)</span>
+<span id="cb46-37"><a href="#cb46-37"></a>  enemy_s   <span class="op">=</span> pg.Vector2(<span class="dv">48</span>,<span class="dv">48</span>)</span>
+<span id="cb46-38"><a href="#cb46-38"></a>  enemy_p_arr <span class="op">=</span> [</span>
+<span id="cb46-39"><a href="#cb46-39"></a>    pg.Vector2(<span class="dv">200</span>,<span class="dv">150</span>),</span>
+<span id="cb46-40"><a href="#cb46-40"></a>    pg.Vector2(<span class="dv">400</span>,<span class="dv">200</span>),</span>
+<span id="cb46-41"><a href="#cb46-41"></a>    pg.Vector2(<span class="dv">600</span>,<span class="dv">100</span>),</span>
+<span id="cb46-42"><a href="#cb46-42"></a>  ]</span>
+<span id="cb46-43"><a href="#cb46-43"></a>  enemy_rect_arr <span class="op">=</span> []  <span class="co"># 衝突判定用の矩形(くけい)</span></span>
+<span id="cb46-44"><a href="#cb46-44"></a>  <span class="cf">for</span> enemy_p <span class="kw">in</span> enemy_p_arr:</span>
+<span id="cb46-45"><a href="#cb46-45"></a>    enemy_rect_arr.append(pg.Rect(enemy_p,enemy_s)) </span>
+<span id="cb46-46"><a href="#cb46-46"></a></span>
+<span id="cb46-47"><a href="#cb46-47"></a>  damage <span class="op">=</span> <span class="dv">0</span> <span class="co"># 敵に衝突直後の無敵時間の残りを保持する変数</span></span>
+<span id="cb46-48"><a href="#cb46-48"></a></span>
+<span id="cb46-49"><a href="#cb46-49"></a>  <span class="co"># ゲームループ</span></span>
+<span id="cb46-50"><a href="#cb46-50"></a>  <span class="cf">while</span> <span class="kw">not</span> exit_flag:</span>
+<span id="cb46-51"><a href="#cb46-51"></a></span>
+<span id="cb46-52"><a href="#cb46-52"></a>    <span class="co"># システムイベントの検出</span></span>
+<span id="cb46-53"><a href="#cb46-53"></a>    <span class="cf">for</span> event <span class="kw">in</span> pg.event.get():</span>
+<span id="cb46-54"><a href="#cb46-54"></a>      <span class="cf">if</span> event.<span class="bu">type</span> <span class="op">==</span> pg.QUIT:</span>
+<span id="cb46-55"><a href="#cb46-55"></a>        exit_flag <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb46-56"><a href="#cb46-56"></a>        exit_code <span class="op">=</span> <span class="st">&#39;001&#39;</span></span>
+<span id="cb46-57"><a href="#cb46-57"></a>      <span class="cf">if</span> event.<span class="bu">type</span> <span class="op">==</span> pg.KEYDOWN:</span>
+<span id="cb46-58"><a href="#cb46-58"></a>        <span class="cf">if</span> event.key <span class="op">==</span> pg.K_SPACE:</span>
+<span id="cb46-59"><a href="#cb46-59"></a>          jump <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb46-60"><a href="#cb46-60"></a>          fire <span class="op">=</span> <span class="dv">6</span>  <span class="co"># 6フレーム間、炎を表示</span></span>
+<span id="cb46-61"><a href="#cb46-61"></a></span>
+<span id="cb46-62"><a href="#cb46-62"></a>    <span class="co"># 敵との接触判定</span></span>
+<span id="cb46-63"><a href="#cb46-63"></a>    <span class="cf">if</span> damage <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb46-64"><a href="#cb46-64"></a>      <span class="co"># 魔理沙の現在位置をあらわす矩形を設定</span></span>
+<span id="cb46-65"><a href="#cb46-65"></a>      face_rect <span class="op">=</span> pg.Rect((face_p<span class="op">-</span>face_s<span class="op">/</span><span class="dv">2</span>),face_s)</span>
+<span id="cb46-66"><a href="#cb46-66"></a>      <span class="cf">for</span> enemy_rect <span class="kw">in</span> enemy_rect_arr:</span>
+<span id="cb46-67"><a href="#cb46-67"></a>        <span class="cf">if</span> enemy_rect.colliderect(face_rect): <span class="co"># 衝突判定</span></span>
+<span id="cb46-68"><a href="#cb46-68"></a>          damage <span class="op">=</span> <span class="dv">20</span>  <span class="co"># これがゼロになるまで無敵</span></span>
+<span id="cb46-69"><a href="#cb46-69"></a>          <span class="cf">break</span></span>
+<span id="cb46-70"><a href="#cb46-70"></a>    <span class="cf">else</span>:</span>
+<span id="cb46-71"><a href="#cb46-71"></a>      damage <span class="op">-=</span> <span class="dv">1</span>  <span class="co"># 無敵時間の残りをデクリメント</span></span>
+<span id="cb46-72"><a href="#cb46-72"></a></span>
+<span id="cb46-73"><a href="#cb46-73"></a>    <span class="co"># 背景描画</span></span>
+<span id="cb46-74"><a href="#cb46-74"></a>    <span class="cf">if</span> damage <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb46-75"><a href="#cb46-75"></a>      screen.fill(pg.Color(<span class="st">&#39;#48c0f0&#39;</span>))</span>
+<span id="cb46-76"><a href="#cb46-76"></a>    <span class="cf">else</span> :</span>
+<span id="cb46-77"><a href="#cb46-77"></a>      screen.fill(pg.Color(<span class="st">&#39;#ff0000&#39;</span>))</span>
+<span id="cb46-78"><a href="#cb46-78"></a></span>
+<span id="cb46-79"><a href="#cb46-79"></a>    <span class="co"># 敵の描画</span></span>
+<span id="cb46-80"><a href="#cb46-80"></a>    <span class="cf">for</span> enemy_p <span class="kw">in</span> enemy_p_arr:</span>
+<span id="cb46-81"><a href="#cb46-81"></a>      screen.blit(enemy_img,enemy_p)</span>
+<span id="cb46-82"><a href="#cb46-82"></a></span>
+<span id="cb46-83"><a href="#cb46-83"></a>    <span class="co"># 火のエフェクト処理</span></span>
+<span id="cb46-84"><a href="#cb46-84"></a>    <span class="cf">if</span> fire <span class="op">&gt;</span> <span class="dv">0</span> :</span>
+<span id="cb46-85"><a href="#cb46-85"></a>      tmp_p <span class="op">=</span> face_p <span class="op">-</span> pg.Vector2(<span class="dv">24</span>,r.randint(<span class="op">-</span><span class="dv">10</span>,<span class="dv">0</span>))</span>
+<span id="cb46-86"><a href="#cb46-86"></a>      screen.blit(fire_img,tmp_p)</span>
+<span id="cb46-87"><a href="#cb46-87"></a>      fire <span class="op">-=</span> <span class="dv">1</span></span>
+<span id="cb46-88"><a href="#cb46-88"></a></span>
+<span id="cb46-89"><a href="#cb46-89"></a>    <span class="co"># ジャンプアクション処理</span></span>
+<span id="cb46-90"><a href="#cb46-90"></a>    <span class="cf">if</span> jump:</span>
+<span id="cb46-91"><a href="#cb46-91"></a>      face_v.y <span class="op">=</span> <span class="op">-</span><span class="dv">8</span></span>
+<span id="cb46-92"><a href="#cb46-92"></a>      face_v.y <span class="op">=</span> <span class="op">-</span><span class="dv">8</span></span>
+<span id="cb46-93"><a href="#cb46-93"></a>      face_v.x <span class="op">+=</span> <span class="fl">0.5</span> <span class="cf">if</span> face_v.x <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">else</span>  <span class="op">-</span><span class="fl">0.5</span></span>
+<span id="cb46-94"><a href="#cb46-94"></a>      jump <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb46-95"><a href="#cb46-95"></a>    </span>
+<span id="cb46-96"><a href="#cb46-96"></a>    <span class="co"># 魔理沙の回転角度の計算</span></span>
+<span id="cb46-97"><a href="#cb46-97"></a>    <span class="cf">if</span> face_v.x <span class="op">&gt;</span> <span class="dv">0</span> : </span>
+<span id="cb46-98"><a href="#cb46-98"></a>      theta <span class="op">-=</span> <span class="bu">min</span>(<span class="dv">20</span>,face_v.magnitude_squared()<span class="op">*</span><span class="fl">2.4</span>)</span>
+<span id="cb46-99"><a href="#cb46-99"></a>    <span class="cf">else</span> :</span>
+<span id="cb46-100"><a href="#cb46-100"></a>      theta <span class="op">+=</span> <span class="bu">min</span>(<span class="dv">20</span>,face_v.magnitude_squared()<span class="op">*</span><span class="fl">2.4</span>)</span>
+<span id="cb46-101"><a href="#cb46-101"></a></span>
+<span id="cb46-102"><a href="#cb46-102"></a>    <span class="co"># 魔理沙の描画</span></span>
+<span id="cb46-103"><a href="#cb46-103"></a>    img <span class="op">=</span> pg.transform.rotozoom(face_img,theta,<span class="dv">1</span>) <span class="co"># imgを回転</span></span>
+<span id="cb46-104"><a href="#cb46-104"></a>    tmp_p <span class="op">=</span> face_p <span class="op">-</span> (img.get_rect().center) <span class="co"># 描画開始位置(左上)の計算</span></span>
+<span id="cb46-105"><a href="#cb46-105"></a>    screen.blit(img,tmp_p)</span>
+<span id="cb46-106"><a href="#cb46-106"></a></span>
+<span id="cb46-107"><a href="#cb46-107"></a>    <span class="co"># 位置と速度の更新</span></span>
+<span id="cb46-108"><a href="#cb46-108"></a>    face_p <span class="op">+=</span> face_v</span>
+<span id="cb46-109"><a href="#cb46-109"></a>    face_v <span class="op">+=</span> face_a</span>
+<span id="cb46-110"><a href="#cb46-110"></a></span>
+<span id="cb46-111"><a href="#cb46-111"></a>    <span class="co">## 地面との衝突処理</span></span>
+<span id="cb46-112"><a href="#cb46-112"></a>    <span class="cf">if</span> face_p.y <span class="op">&gt;=</span> disp_h <span class="op">-</span> ground_s.y <span class="op">-</span> face_r.y :</span>
+<span id="cb46-113"><a href="#cb46-113"></a>      face_p.y <span class="op">=</span> disp_h <span class="op">-</span> ground_s.y <span class="op">-</span> face_r.y</span>
+<span id="cb46-114"><a href="#cb46-114"></a>      face_v.y <span class="op">=</span> <span class="op">-</span> <span class="fl">0.7</span> <span class="op">*</span> ( face_v.y <span class="op">-</span> face_a.y )</span>
+<span id="cb46-115"><a href="#cb46-115"></a>      <span class="cf">if</span> <span class="bu">abs</span>(face_v.y) <span class="op">&lt;</span> <span class="fl">3.5</span> :</span>
+<span id="cb46-116"><a href="#cb46-116"></a>        face_v.y <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb46-117"><a href="#cb46-117"></a>        face_v.x <span class="op">*=</span> <span class="fl">0.98</span>  </span>
+<span id="cb46-118"><a href="#cb46-118"></a></span>
+<span id="cb46-119"><a href="#cb46-119"></a>    <span class="co">## 右端と左端との衝突</span></span>
+<span id="cb46-120"><a href="#cb46-120"></a>    <span class="cf">if</span> face_p.x <span class="op">+</span> face_r.x <span class="op">&gt;</span> disp_w :</span>
+<span id="cb46-121"><a href="#cb46-121"></a>      face_p.x <span class="op">=</span> disp_w <span class="op">-</span> face_r.x</span>
+<span id="cb46-122"><a href="#cb46-122"></a>      face_v.x <span class="op">=</span> <span class="op">-</span><span class="fl">0.8</span> <span class="op">*</span> face_v.x </span>
+<span id="cb46-123"><a href="#cb46-123"></a>    <span class="cf">elif</span> face_p.x <span class="op">-</span> face_r.x <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb46-124"><a href="#cb46-124"></a>      face_p.x <span class="op">=</span> face_r.x</span>
+<span id="cb46-125"><a href="#cb46-125"></a>      face_v.x <span class="op">=</span> <span class="op">-</span><span class="fl">0.8</span> <span class="op">*</span> face_v.x </span>
+<span id="cb46-126"><a href="#cb46-126"></a></span>
+<span id="cb46-127"><a href="#cb46-127"></a>    <span class="co"># 地面描画</span></span>
+<span id="cb46-128"><a href="#cb46-128"></a>    <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>,disp_w,<span class="bu">int</span>(ground_s.x)):</span>
+<span id="cb46-129"><a href="#cb46-129"></a>      screen.blit(ground_img,(x,disp_h<span class="op">-</span>ground_s.y))</span>
+<span id="cb46-130"><a href="#cb46-130"></a></span>
+<span id="cb46-131"><a href="#cb46-131"></a>    <span class="co"># フレームカウンタの描画</span></span>
+<span id="cb46-132"><a href="#cb46-132"></a>    frame <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb46-133"><a href="#cb46-133"></a>    frm_str <span class="op">=</span> <span class="ss">f&#39;</span><span class="sc">{</span>frame<span class="sc">:05}</span><span class="ss">&#39;</span></span>
+<span id="cb46-134"><a href="#cb46-134"></a>    screen.blit(font.render(frm_str,<span class="va">True</span>,<span class="st">&#39;BLACK&#39;</span>),(<span class="dv">10</span>,<span class="dv">10</span>))</span>
+<span id="cb46-135"><a href="#cb46-135"></a></span>
+<span id="cb46-136"><a href="#cb46-136"></a>    <span class="co"># 画面の更新と同期</span></span>
+<span id="cb46-137"><a href="#cb46-137"></a>    pg.display.update()</span>
+<span id="cb46-138"><a href="#cb46-138"></a>    clock.tick(<span class="dv">30</span>)</span>
+<span id="cb46-139"><a href="#cb46-139"></a></span>
+<span id="cb46-140"><a href="#cb46-140"></a>  <span class="co"># ゲームループ [ここまで]</span></span>
+<span id="cb46-141"><a href="#cb46-141"></a>  pg.quit()</span>
+<span id="cb46-142"><a href="#cb46-142"></a>  <span class="cf">return</span> exit_code</span>
+<span id="cb46-143"><a href="#cb46-143"></a></span>
+<span id="cb46-144"><a href="#cb46-144"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</span>
+<span id="cb46-145"><a href="#cb46-145"></a>  code <span class="op">=</span> main()</span>
+<span id="cb46-146"><a href="#cb46-146"></a>  <span class="bu">print</span>(<span class="ss">f&#39;プログラムを「コード</span><span class="sc">{</span>code<span class="sc">}</span><span class="ss">」で終了しました。&#39;</span>)</span></code></pre></div>
+      <p>実行結果は次のようになります。</p>
+      <figure>
+      <img src="figs/22/pygame-01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>上記のプログラムについて、試行錯誤あるいはウェブ検索・ChatGPTを利用して解読してください(<a
+      href="https://chat.openai.com/share/a27a3957-22d5-4368-846f-9a3519a37203">ChatGPTの活用例</a>)。</p>
+      <p>次回講義では、このプログラムの内容について
+      <strong>ある程度は理解できている前提</strong>
+      で講義を進めます。</p>
+      <hr />
+      <p><strong>演習(EX)</strong>: 上記の <code>04_game.py</code>
+      をベースに、ゲームをデザインして実装せよ。例えば「自キャラのHPを設定して画面上に表示する」「敵キャラが移動する」「敵キャラの種類を増やす」「ゲーム進行とともに敵キャラが追加出現したり、消滅したりする」といったゲームとしてのアイデアを考え、実際に実装せよ。</p>
+      <!-- ---------------------------------------- -->
+    </main>
+
+    <footer class="markdown-body">
+      <p><a href="https://takeshiwada1980.github.io/Programming1-2023/">講義資料のIndexに移動</a></p>
+    </footer>
+
+    <script>
+      window.onload = function () {
+        // ナビゲーション関連
+        let openBtn = document.getElementsByClassName("openbtn")[0];
+        let navPnl = document.getElementById("g-nav");
+        openBtn.onclick = () => {
+          openBtn.classList.toggle("active");
+          navPnl.classList.toggle("panelactive");
+        };
+
+        let items = navPnl.getElementsByTagName("a");
+        Array.from(items).forEach((item) => {
+          item.onclick = () => {
+            openBtn.classList.toggle("active");
+            navPnl.classList.toggle("panelactive");
+          };
+        });
+
+        // マスク処理
+        let maskedSpans = document.getElementsByClassName("masked");
+        Array.from(maskedSpans).forEach((span) => {
+          span.onclick = () => {
+            span.classList.toggle("open");
+          };
+        });
+
+        // data-startfrom 属性の行番号カウンタのリセット
+        document.querySelectorAll("div.sourceCode").forEach(function (div) {
+          var startFrom = div.getAttribute("data-startfrom");
+          if (startFrom != null) {
+            div.style.counterReset = "pg-line " + (startFrom - 1);
+          }
+        });
+
+        // 画像にリンクを付与
+        // let images = document.querySelectorAll("figure img");
+        // Array.from(images).forEach((img) => {
+        //   img.onclick = () => {
+        //     location.href = img.getAttribute("src");
+        //   };
+        // });
+      };
+    </script>
+  </body>
+</html>
