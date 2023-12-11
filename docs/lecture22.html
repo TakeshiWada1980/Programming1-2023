@@ -227,8 +227,7 @@ class="toc-section-number">8</span> ボールがバウンドするゲーム
       <h1 data-number="2" id="プログラムのファイル分割"><span
       class="header-section-number">2</span>
       プログラムのファイル分割</h1>
-      <p>次のような「<strong>挨拶アプリ</strong>」を例に、プログラムを
-      <strong>複数のファイルに分割して記述する方法</strong>
+      <p>次のような「<strong>挨拶アプリ</strong>」を例に、<strong>複数のファイルにプログラムを分割して記述する方法</strong>
       を学びます。</p>
       <div class="sourceCode" id="cb1" data-caption="挨拶アプリ"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> random <span class="im">as</span> r</span>
@@ -245,10 +244,10 @@ class="toc-section-number">8</span> ボールがバウンドするゲーム
       関数は3行程度の短いものですが、実際の開発においては
       <strong>関数やクラスの定義は何百行にも及ぶこと</strong> があります
       (クラスの詳細は後の講義で扱います) 。そのような場合、<span
-      class="masked">プログラムの可読性、保守性、再利用性を高める</span>ために、また
+      class="masked">プログラムの可読性、保守性、再利用性を高める</span>ために、あるいは
       <strong>チーム開発を円滑に進めるために</strong> (=<span
       class="masked">各メンバーの担当範囲・責任を明確にして、コードの編集における衝突を減らす</span>ために)
-      、関数やクラスの単位で
+      、「関数」や「クラス」という単位で
       <strong>プログラムコードを複数ファイルに分割して記述する必要性</strong>
       が生じます。</p>
       <p>例えば、Jupyter や GoogleColab
@@ -497,7 +496,7 @@ async-lru==2.0.4
 attrs==23.1.0
 ...(略)...</code></pre>
       <p>このファイルには、インストールするべきライブラリ
-      (=パッケージやモジュールともいいます) と、その
+      (=パッケージやモジュールとも呼ばれます) と、その
       <span>バージョン</span>
       が記載されています。<strong>これまでに見たこともないようなライブラリも多数含まれていますが</strong>、それらは
       <code>pygame</code> や <code>numpy</code>、<code>jupyter</code>
@@ -517,8 +516,7 @@ attrs==23.1.0
       <p><strong>requirements.txt の作成</strong></p>
       <p><strong>現在のPython環境</strong>
       (<strong>有効化されている仮想環境</strong>)
-      にインストールされているライブラリについて
-      <code>requirements.txt</code>
+      にインストールされているライブラリの <code>requirements.txt</code>
       を作成するためには、以下のコマンドを使用します。ファイル名は
       <code>requirements.txt</code>
       である必要はありませんが、慣習的にこの名前が用いられます。</p>
