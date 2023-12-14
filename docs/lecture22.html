@@ -160,8 +160,7 @@ class="toc-section-number">8</span> ボールがバウンドするゲーム
       <ul>
       <li><a
       href="https://kagasan.github.io/">https://kagasan.github.io/</a></li>
-      <li>シーズン2: 関東 の
-      取り組みのなかの「<strong>ラスタ画像からストロークを出力するやつ</strong>
+      <li>上記ポートフォリオ内の「<strong>シーズン2:関東</strong>」のなかの「<strong>ラスタ画像からストロークを出力するやつ</strong>
       (動画)」は要チェック。</li>
       </ul></li>
       <li><a
@@ -184,11 +183,12 @@ class="toc-section-number">8</span> ボールがバウンドするゲーム
       class="header-section-number">1.2</span> 今回講義の達成目標</h2>
       <p>今回の講義では、主に <a
       href="https://pypi.org/project/pygame/">PyGame</a>
-      というゲームなどのエンターテインメント系アプリ開発用のライブラリについて扱います。また、<a
+      というゲームなどのインタラクティブなエンターテイメント系のアプリに有用なライブラリについて扱います。また、<a
       href="lecture21.html#opencvを利用した画像処理">前回講義</a>で学んだ「<strong>OpenCV</strong>」を利用した画像の加工
       (拡大縮小やトリミング) についても扱います。</p>
+      <p><strong>達成目標</strong>は次の通りです。</p>
       <ul>
-      <li>PyGame を使ったゲームのプログラムの基本構造を理解できる。</li>
+      <li>PyGame を使ったゲームプログラムの基本構造を理解できる。</li>
       <li>OpenCV を使って画像の拡大縮小、トリミングなどができる。</li>
       <li>オブジェクト指向プログラミングの基礎的な専門用語
       (クラス、オブジェクト (インスタンス)、プロパティ、メソッドなど)
@@ -201,28 +201,28 @@ class="toc-section-number">8</span> ボールがバウンドするゲーム
       href="lecture01.html">第01回講義</a>のときから繰り返し強調していますが、週1回90分の授業だけでは<a
       href="https://careergarden.jp/careerlist/computer-category/">ICTエンジニア</a>としてのキャリア
       (企業・職種・業界)
-      に関して多数の選択肢を持てる持てるような「スキル」や「経験」は得られません。また、実績が積みあがることもありません。就職先が、SES形態
-      (システムエンジニアリングサービス)だろうが、三次請け・四次請け企業だろうが、客先常駐だろうが、ソフトウェアテスト専門の仕事だろうが、何でもよいというの考えであれば、授業で単位がとれる程度の学びで問題はありませんが…。</p>
+      に関して多数の選択肢を持てるような「スキル」や「経験」は得られません。また、就活で評価してもらえるような「実績」が積みあがることもありません。就職先が、SES形態
+      (システムエンジニアリングサービス)
+      だろうが、三次請け・四次請け企業だろうが、客先常駐だろうが、ソフトウェアテスト専門の仕事だろうが、何でもよいというの考えであれば、授業で単位がとれる程度の学びで問題はありませんが…。</p>
       <p>このことは、週1回90分の英語の授業を受けても「<span
       class="masked">海外で仕事 (あるいは外国人と仕事)
-      ができるレベルの英語力が身に付かない</span>」という真実と同じです。また、週1回・90分の体育の授業に参加しても「<span
-      class="masked">プロスポーツ選手はおろか、実業団などのアマチュアスポーツ選手になれるレベルの競技技術が身に付かない</span>」という真実とも同じです。</p>
+      ができるレベルの英語力が身に付かない</span>」という現実と同じです。また、週1回・90分の体育の授業に参加しても「<span
+      class="masked">プロスポーツ選手はおろか、実業団などのアマチュアスポーツ選手になれるレベルの競技技術すら身に付かない</span>」という現実とも同じです。</p>
       <p>週1回90分の「授業」という枠内だけでプログラミングを学んでいては、1年たっても、2年たっても、卒業直前になっても「講義資料に書いてあることは概ね理解できるし、サンプルコードを貼り付けて動かすことはできる。でも、自分ではゼロからプログラムを書ける気がしないし、実際に書けない」という状態のまま、つまり「<span
-      class="masked">プログラミングができるという感覚に乏しいまま</span>」です。
-      0
-      少なくとも「プログラミング」という分野に関して「授業」はあくまで「<span
-      class="masked">チュートリアル</span>」でしかありません。授業の枠を越えて授業で学んだことを土台とした自主的な学習や開発に取り組まなければ、実践的なスキルや、深い理解を得ることはできません。</p>
+      class="masked">プログラミングができるという感覚に乏しいまま</span>」です。</p>
+      <p>少なくとも「プログラミング」という分野に関して「授業」はあくまで「<span
+      class="masked">チュートリアル</span>」でしかありません。授業で学んだことを土台に、その枠を越えて自主的な学習や開発に取り組まなければ「実践的なスキル」や「深い理解」を得ることはできません。</p>
       <div class="note type-tips">
       <p><strong>昨日視聴した動画の内容を言えますか?</strong></p>
       <p>昨日視聴した動画の内容を「5つ」あげてみてください。</p>
-      <p>動画で解説されていた知識でも、動画の構成でも、シーンの描写でも、セリアでも何でもよいので
+      <p>動画のなかで解説されていた知識でも、動画の構成でも、シーンの描写でも、セリフでも何でもよいので
       <strong>具体的な内容</strong>
-      を挙げ、それを言葉として表現してみてください。通常、多くの人は、それらを5つも説明することはできません。また、1週間の累積として相当時間・相当数の動画を視聴していても、実際にタイトルや概要だけでも実際に記憶に残っているものは1割以下です。</p>
+      を挙げ、それを言葉として表現してみてください。通常、多くの人は、それらを5つも挙げることはできません。また、1週間のなかで相当時間・相当数の動画を視聴していても、実際に記憶に残るものはほんのわずかです。</p>
       <p>「<strong>動画を視聴している瞬間</strong>」は <span
-      class="masked">分かりやすい説明によって、内容を十分に理解できている感覚、内容が頭に入ってきている感覚であっても</span>、翌日には何も残っていない
+      class="masked">工夫された分かりやすい解説によって、内容を十分に理解できている感覚、内容が頭に入ってきている感覚があっても</span>、翌日には何も残っていない
       (動画から得たものを思い出すことも、活かすこともきない)
-      というのが実際です。これは、授業においても基本的には同じです。</p>
-      <p>小学校から数えて11年以上は、それを実感している毎日だと思うので自覚・認識はあると思いますが、授業を受けるというだけで明確に身に付く内容、記憶に残る内容は極々わずかです。授業の枠を越えて、自主的に「学ぶ」というプロセスがなければ、いつまでも「できる」という状態には至りません。</p>
+      というのが実際です。残念ながら、授業においても基本的には同じことが起きます。</p>
+      <p>小学校から数えて11年以上、皆さんのなかにも自覚や認識はあると思いますが、授業を受けるというだけで定着するスキル、記憶に残る知識というものは極々わずかです。授業の枠を越えて、自主的に「学ぶ」というプロセスがなければ、いつまでも「できる」という状態には到達しません。</p>
       </div>
       <h1 data-number="2" id="プログラムのファイル分割"><span
       class="header-section-number">2</span>
@@ -246,18 +246,18 @@ class="toc-section-number">8</span> ボールがバウンドするゲーム
       (クラスの詳細は後の講義で扱います) 。そのような場合、<span
       class="masked">プログラムの可読性、保守性、再利用性を高める</span>ために、あるいは
       <strong>チーム開発を円滑に進めるために</strong> (=<span
-      class="masked">各メンバーの担当範囲・責任を明確にして、コードの編集における衝突を減らす</span>ために)
+      class="masked">各メンバーの担当範囲・責任を明確にして、コード編集における衝突を減らす</span>ために)
       、「関数」や「クラス」という単位で
       <strong>プログラムコードを複数ファイルに分割して記述する必要性</strong>
       が生じます。</p>
       <p>例えば、Jupyter や GoogleColab
       などのノートブック環境では、次のように
       <strong>複数のセルに処理を分割して記述すること</strong>
-      ができます。具体的には、1個目のコードセルに
+      ができます。具体的には、1個目のコードセルには
       <code>random_greeting</code>
-      関数の定義を記述し、2個目のコードセルに、それを呼び出しメイン処理を記述します
+      関数の定義だけを記述し、2個目には、それを呼び出すメイン処理だけを記述するということができます
       (<span class="masked">2番目のコードセルには <code>%reset -f</code>
-      を記述しない点に注意してください</span>)。これらのセルを順番に実行することで、プログラムが複数のセルに分割されていても、挨拶アプリ全体として機能させることができます。</p>
+      を記述しない点に注意してください</span>)。これらのセルを順番に実行することで、複数のセルにプログラムが分割されていても、挨拶アプリ全体として機能させることができます。</p>
       <figure>
       <img src="figs/22/colab-01.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
@@ -336,10 +336,10 @@ class="toc-section-number">8</span> ボールがバウンドするゲーム
 <span id="cb5-7"><a href="#cb5-7"></a><span class="cf">assert</span> <span class="bu">type</span>(random_greeting()) <span class="op">==</span> <span class="bu">str</span></span>
 <span id="cb5-8"><a href="#cb5-8"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
 <span id="cb5-9"><a href="#cb5-9"></a>  <span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">. </span><span class="sc">{</span>random_greeting()<span class="sc">}</span><span class="ss">&#39;</span>)</span></code></pre></div>
-      <p>しかし、上記のように <code>greeting.py</code>
+      <p>しかし、上記のようなテストコードを <code>greeting.py</code>
       を書いてしまうと、<code>app.py</code>を実行した際、<span
       class="masked">次のような意図しない結果</span>
-      出力されます。<strong>実際に試してみてください</strong>。</p>
+      出力されてしまいます。<strong>実際に試してみてください</strong>。</p>
       <pre><code>0. こんにちは
 1. お疲れ様です
 2. お疲れ様です
@@ -390,12 +390,13 @@ class="toc-section-number">8</span> ボールがバウンドするゲーム
       実行されるようになります。</p>
       <p>基本的に、当該のファイルを他からインポートする可能性がなければ
       <code>if __name__ == '__main__':</code>
-      は不要ですが、<strong>御作法</strong>として記述することが推奨されます。</p>
+      は不要ですが、<strong>御作法</strong>として記述することが推奨されています
+      (授業のなかで提示するサンプルコードでは省略することが多いですが…)。</p>
       <hr />
       <p><strong>演習</strong>: <code>greeting.py</code>
       を次のように書き換え、<code>greeting.py</code>
       をシェルから直接実行する場合と、<code>app.py</code>
-      からインポートする場合の挙動の違いについて確認し、特殊な変数
+      からインポートする場合の挙動の違いについて確認し、特殊変数
       <code>__name__</code> についての理解を深めよ。</p>
       <div class="sourceCode" id="cb8" data-caption="greeting.py"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="im">import</span> random <span class="im">as</span> r</span>
@@ -415,24 +416,24 @@ class="toc-section-number">8</span> ボールがバウンドするゲーム
       <p>上記で説明した通り <code>import greeting</code>
       と記述すると、Python 処理系は、まずは同じフォルダのなかから
       <code>greeting.py</code>
-      を探して読み込もうとします。もし、同じフォルダに当該ファイルが存在しない場合は、Python
-      がインストールされた所定のフォルダから <code>greeting.py</code>
-      を探し、それでも見つからない場合は
+      を探して読み込もうとします。もし、同じフォルダから当該ファイルを見つけられない場合は、Python
+      がインストールされた所定のフォルダ (=
+      ライブラリがインストールされているフォルダ) から
+      <code>greeting.py</code> を探し、それでも見つからない場合は
       <code>ModuleNotFoundError</code> が発生します。</p>
       <p>このため、同じフォルダ内に <code>numpy.py</code> や
-      <code>pygmae.py</code>
-      のような既存ライブラリと同名のファイルを作成すると、それらのライブラリが正常に読み込まれなくなります。<strong>初心者がよく犯す間違い</strong>
+      <code>pygame.py</code> のような
+      <strong>既存ライブラリと同名のファイルが存在すると</strong>、それらのライブラリが正常に読み込まれなくなります。<strong>初心者がよく犯す間違い</strong>
       のひとつに NumPy を学ぶために <code>numpy.py</code>
       というファイルを作成して、そこにプログラムを記述してうまくいかない、ということがあります。この点に、十分に注意してください。</p>
       </div>
       <div class="note type-caution">
       <p><strong>Pythonファイルの「命名」に関する注意2</strong></p>
       <p><code>00_pygame.py</code> や <code>my-pygame.py</code>
-      のように、先頭が数字から始まるファイル名や、ハイフンを使用するファイル名をつけると、他のプログラムから
+      のように、先頭が数字から始まるファイル名や、ハイフンを含むファイル名をつけると、他のプログラムから
       <code>import</code>
-      を使ってこれらのファイルを読み込むことができなくなります。一般的に、Pythonの<strong>変数名として有効でない文字列</strong>は、(<code>import</code>
-      する可能性がある)
-      Pythonのファイルの名前としては「適切ではない」と考えてください。</p>
+      を使ってこれらのファイルを読み込むことができなくなります。一般的に、Pythonの<strong>変数名として有効でない文字列</strong>は、Pythonのファイルの名前としては「適切ではない」と考えてください。</p>
+      <p>ただし、この講義内では解説の関係上、数字から始まるファイル名やハイフンを含むファイル名を使用することがあります。</p>
       </div>
       <h1 data-number="3" id="演習のための環境構築動作確認"><span
       class="header-section-number">3</span>
@@ -440,11 +441,15 @@ class="toc-section-number">8</span> ボールがバウンドするゲーム
       <p>PyGame に関連した演習を行なうために
       (<strong>既存のプロジェクトフォルダや環境を使いまわしをせずに</strong>)
       新規にプロジェクトフォルダを作成して、そこに開発環境を構築することを<strong>強く推奨</strong>します。以下、環境構築の手順を示します。</p>
+      <p>環境構築については<a
+      href="lecture09.html">第09回講義</a>で既に解説していますが、復習も兼ねて改めて解説します。<code>requirements.txt</code>
+      を使ったライブラリの一括インストールなど、<strong>新しい要素も含んでいるので注意</strong>
+      してください。</p>
       <h2 data-number="3.1" id="環境構築"><span
       class="header-section-number">3.1</span> 環境構築</h2>
       <p><strong>コマンドプロンプト</strong> または
       <strong>PowerShell</strong> を起動し、プロジェクトフォルダ
-      <code>Pygame-Playground</code> を作成するフォルダ (例えば
+      <code>Pygame-Playground</code> を作成・配置したいフォルダ (例えば
       <code>C:\Users\xxxx\Documents</code> ) まで移動してください。</p>
       <pre><code>cd &quot;C:\Users\xxxx\Documents&quot;</code></pre>
       <p><code>mkdir</code> でプロジェクトフォルダ
@@ -458,8 +463,8 @@ class="toc-section-number">8</span> ボールがバウンドするゲーム
 cd Pygame-Playground/
 code . &amp;</code></pre>
       <p>VSCode が起動したら <code>Ctrl+@</code> で、VSCode のなかで
-      <strong>PowerShell (PS) モードのターミナル</strong>
-      を開きます。正常に起動すれば、次のような入力待ちのプロンプトが表示されるはずです。</p>
+      <strong>PowerShell (PS)
+      モードの</strong>「<strong>ターミナル</strong>」を開きます。正常に起動すれば、次のような入力待ちのプロンプトが表示されるはずです。</p>
       <pre><code>PS C:\Users\xxxx\Documents\Pygame-Playground&gt; </code></pre>
       <p>PS のターミナルから、次のコマンドを打ち込んで
       <strong>Pythonの仮想環境</strong> を構築し、有効化します。</p>
@@ -468,9 +473,9 @@ code . &amp;</code></pre>
       <p>仮想環境が有効になると、プロンプトの先頭に <code>(.venv)</code>
       が表示され、次のようになるはずです。</p>
       <pre><code>(.venv) PS C:\Users\xxxx\Documents\Pygame-Playground&gt;</code></pre>
-      <p>開発に必要なライブラリをインストールする前に、まずは「<strong>pip本体</strong>」を<strong>最新版にアップグレード</strong>します。次のコマンドを実行してください。</p>
+      <p>ゲーム開発に必要なライブラリをインストールする前に、まずは「<strong>pip本体</strong>」を<strong>最新版にアップグレード</strong>します。次のコマンドを実行してください。</p>
       <pre><code>python -m pip install --upgrade pip</code></pre>
-      <p>開発に必要なライブラリをインストールしていきます。</p>
+      <p>以下、ゲーム開発に必要な各種ライブラリをインストールしていきます。</p>
       <p>このプロジェクト (ここからの演習) では <code>pygame</code>
       の他に
       <code>jupyter</code>、<code>numpy</code>、<code>matplotlib</code>、<code>Pillow</code>
@@ -478,7 +483,8 @@ code . &amp;</code></pre>
       <code>pip install pygame</code>
       のようなコマンドで個別にインストールすることもできますが、ここでは
       <code>requirements.txt</code> を使った
-      <strong>一括インストール</strong> をしていきます。この方法は <span
+      <strong>一括インストール</strong>
+      を試していきたいと思います。この方法は <span
       class="masked"><code>git clone</code> などで Python
       プロジェクトをローカル環境にクローンした際など、他のプロジェクトの環境を再現する場合</span>
       にも使うものなので覚えておいてください。</p>
@@ -507,13 +513,14 @@ attrs==23.1.0
       class="masked">間接的に必要となるライブラリ</span> です。これまで
       <code>pip install numpy</code>
       のように個別にライブラリをインストールしていた際にも、自動的にインストールされていました。この
-      <code>requirements.txt</code> には、そのようなライブラリも
+      <code>requirements.txt</code>
+      には、そのように間接的に必要となるライブラリも
       <strong>明示的に記述</strong>
       されています。なお、このように「あるライブラリの実行に、他のライブラリが必要になる関係」を
       <span class="masked">依存関係</span> といいます。</p>
       <p>次のコマンドを使用して、<code>requirements.txt</code>
-      にインストールされているライブラリを
-      <strong>一括インストール</strong> してください。</p>
+      に記載されているライブラリを <strong>一括インストール</strong>
+      してください。</p>
       <pre><code>pip install -r requirements.txt</code></pre>
       <div class="note type-senior">
       <p><strong>requirements.txt の作成</strong></p>
@@ -524,17 +531,17 @@ attrs==23.1.0
       <code>requirements.txt</code>
       である必要はありませんが、慣習的にこの名前が用いられます。</p>
       <pre><code>pip freeze &gt; requirements.txt</code></pre>
-      <p>このコマンドは、インストールされている「ライブラリ」と「そのバージョン」をリストアップし、それらを
+      <p>このコマンドは、現在環境にインストールされている「ライブラリ」と「そのバージョン」をリストアップし、それらを
       <code>requirements.txt</code>
       ファイルに書き出します。このファイルは <span
-      class="masked">既存のプロジェクトを他の環境に移行</span>する場合や、<span
+      class="masked">既存のプロジェクトを他のPCに移行</span>する場合や、<span
       class="masked">同じ環境を他の開発者と共有</span>
       する場合に役立ちます。</p>
       </div>
       <h2 data-number="3.2" id="動作確認1-pygame"><span
       class="header-section-number">3.2</span> 動作確認1 (PyGame)</h2>
       <p>PyGame
-      を使ったゲーム開発演習のために構築した環境について、簡単な「<strong>動作確認</strong>」をしていきます。VSCode
+      を使ったゲーム開発のために構築した環境について、簡単な「<strong>動作確認</strong>」をしていきます。VSCode
       で <code>00_game.py</code> という Pythonファイル
       を新規作成して、以下の内容を貼り付けて <strong>保存</strong>
       してください。</p>
@@ -595,7 +602,7 @@ attrs==23.1.0
 <span id="cb18-54"><a href="#cb18-54"></a>  code <span class="op">=</span> main()</span>
 <span id="cb18-55"><a href="#cb18-55"></a>  <span class="bu">print</span>(<span class="ss">f&#39;プログラムを「コード</span><span class="sc">{</span>code<span class="sc">}</span><span class="ss">」で終了しました。&#39;</span>)</span></code></pre></div>
       <p>次に <code>00_game.py</code> がアクティブな状態 (=
-      タブが選択されている状態) で、左端の
+      VSCodeでタブが選択されている状態) で、左端の
       <strong>デバッグアイコン</strong> (再生ボタンに虫のアイコン)
       を押下し、左パネル内の「<code>launch.json</code>
       <strong>ファイルを作成します</strong>」という文字列をクリックします。</p>
@@ -613,8 +620,8 @@ attrs==23.1.0
       <img src="figs/22/debug-02.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
       </figure>
-      <p><code>launch.json</code>
-      というファイルがプロジェクトフォルダ内に自動的に作成され、そのファイルタブが開きます。特に変更すべき内容はないので、<code>launch.json</code>
+      <p>上記の操作により <code>launch.json</code>
+      というファイルがプロジェクトフォルダ内に自動的に作成され、そのファイルタブが開きます。このファイルに対して特に変更すべき内容はないので、<code>launch.json</code>
       のタブを閉じます。なお、このファイルは
       <code>.vscode/launch.json</code>
       に配置されるので、先のステップで「デバッグ構成」を間違って選択した場合や、「デバッグ構成」を変更・カスタマイズしたい場合は、このファイルを削除・編集してください。</p>
