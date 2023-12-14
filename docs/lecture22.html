@@ -624,7 +624,7 @@ attrs==23.1.0
       というファイルがプロジェクトフォルダ内に自動的に作成され、そのファイルタブが開きます。このファイルに対して特に変更すべき内容はないので、<code>launch.json</code>
       のタブを閉じます。なお、このファイルは
       <code>.vscode/launch.json</code>
-      に配置されるので、先のステップで「デバッグ構成」を間違って選択した場合や、「デバッグ構成」を変更・カスタマイズしたい場合は、このファイルを削除・編集してください。</p>
+      に配置されるので、先のステップで「デバッグ構成」を間違って選択した場合や、「デバッグ構成」を変更・カスタマイズしたい場合は、このファイルを削除・編集して対応してください。</p>
       <p>再び <code>00_game.py</code> をアクティブにしてから
       <code>F5</code>
       を押下します。次のようなウィンドウが立ち上がり、黒色の背景に「緑色の円」がランダムに描画される処理ができていれば成功です。また、<span
@@ -632,19 +632,21 @@ attrs==23.1.0
       (Circle) から 四角形 (Rectangle) に切り替わること</span>
       も確認してください。</p>
       <p>以降、<code>F5</code>
-      を押下すればデバッグモードでプログラムが実行されます。また、非デバッグ環境で実行したいばあいは、仮想環境が有効化された
+      を押下すればデバッグモードでプログラムが実行されます。また、非デバッグ環境で実行したい場合は、仮想環境が有効化された
       PowerShell で <code>python 00_game.py</code>
-      を実行してください。</p>
+      のようにコマンドを打ち込んでください。</p>
       <figure>
       <img src="figs/22/pygame-00.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
       </figure>
-      <p>実行結果とプログラム内のコメントを照らしあわせながら、プログラムを解読・理解してください。その際、ウェブ検索やChatGPTなどを積極的に活用してください
+      <p>実行結果やプログラムに記載したコメントと照らしあわせながら、プログラム
+      <code>00_game.py</code>
+      を解読・理解してください。その際、ウェブ検索やChatGPTなどを積極的に活用してください
       (<a
       href="https://chat.openai.com/share/cbcc258f-25ca-482e-840d-f3f347b62e09">ChatGPTの活用例</a>)。また、<strong>PyGame
       の公式リファレンス</strong><a
       href="https://www.pygame.org/docs/">https://www.pygame.org/docs/</a>も利用してください
-      (英語で書かれているのでブラウザの翻訳機能を利用してください)
+      (リファレンスは、英語で書かれているので必要に応じてブラウザの翻訳機能を利用してください)
       。</p>
       <div class="note type-caution">
       <p><strong>ウェブ検索における注意事項</strong></p>
@@ -661,7 +663,7 @@ attrs==23.1.0
       <code>pg.draw.circle</code>
       でも、それなりの検索をしてくれますが…)。</p>
       </div>
-      <p>プログラムについて、ある程度、理解してから次の演習に取り組んでください。</p>
+      <p>プログラムについて、ある程度まで理解が進んだら次の演習に取り組んでください。</p>
       <p><strong>演習1</strong>: プログラムの <strong>第31行目</strong>
       <code>screen.fill(pg.Color('BLACK'))</code>
       をコメントアウトすると、プログラムの挙動がどのように変化するか推測し、その後、実際に検証せよ。検証後は元に戻しておくこと。</p>
@@ -683,11 +685,11 @@ attrs==23.1.0
       の「<strong>ndarray型</strong>」で与えることが可能か検証せよ。検証後は元に戻しておくこと。</p>
       <p><strong>演習5</strong>: プログラムの <strong>第34行目</strong>
       から <strong>第36行目</strong>
-      では図形の座標や半径を「<strong>整数値</strong>」として設定し、図形描画の引数として与えている。これら座標や半径に「<strong>浮動小数点数</strong>
-      (<strong>実数値</strong>)」や「<strong>負数</strong>」が使用できるか検証せよ。<code>random</code>
-      ライブラリを使用して <code>-10.5</code> から <code>810.5</code>
-      の範囲の乱数 (浮動小数点数)
-      を得るためには、どのようにすればよいか。</p>
+      では図形の座標や半径を「<strong>整数値</strong>」として設定し、図形描画関数の引数として与えている。これら座標や半径に「<strong>浮動小数点数</strong>
+      (<strong>実数値</strong>)」や「<strong>負数</strong>」が使用できるか検証せよ。また
+      <code>random</code> ライブラリを使用して <code>-10.5</code> から
+      <code>810.5</code> の範囲の乱数 (浮動小数点数)
+      を得るためには、どのようにすればよいか考えよ。</p>
       <p><strong>演習6</strong>: ウィンドウサイズを 横640px、縦480px
       に設定せよ。また、ウィンドウタイトルを変更せよ。</p>
       <p><strong>演習7</strong>: 図形や背景の「色」を
@@ -698,7 +700,7 @@ attrs==23.1.0
       <br>　・3桁のカラーコード、例えば <code>#f00</code>
       でも指定可能か。</p>
       <p><strong>演習8</strong>: 図形や背景の「色」を数値
-      (RGBの輝度強度) で指定することは可能か検証せよ。</p>
+      (RGBの輝度強度) で指定することは可能か調べて検証せよ。</p>
       <p><strong>演習9</strong>:
       描画される図形の「<strong>色</strong>」を描画毎にランダムに変えるように書き換えよ。</p>
       <p><strong>演習10</strong>: キーボードの <code>C</code>
@@ -712,7 +714,7 @@ attrs==23.1.0
       <h2 data-number="3.3" id="動作確認2-jupyter"><span
       class="header-section-number">3.3</span> 動作確認2 (Jupyter)</h2>
       <p>ゲーム開発においては、ゲーム本体のプログラム開発のほかに <span
-      class="masked">様々なゲームデータの作成、編集、確認</span>
+      class="masked">様々なゲームデータの作成、編集、確認など</span>
       が必要となります。<strong>これらの作業にはノートブック環境のほうが便利なことが多いため</strong>、このプロジェクトフォルダには「<strong>Jupyter環境</strong>」も構築しました
       ( <code>requirements.txt</code> には
       Jupyter関連のライブラリが含まれています)。以下、Jupyter環境の動作確認をしていきます。</p>
@@ -720,7 +722,8 @@ attrs==23.1.0
       というファイルを新規作成してください。なお、拡張子の
       <code>ipynb</code> は <span class="masked">Interactive Python
       Notebook (対話的Pythonノートブック)</span> と覚えてください。</p>
-      <p>ノートブック形式として認識されたタブが開くので、コードセルに次のプログラムを記述して保存してください。</p>
+      <p>ノートブック形式として認識されたタブが開くので、コードセルに次のプログラムを記述して保存
+      (<code>Ctrl+S</code>) してください。</p>
       <div class="sourceCode" id="cb19"
       data-caption="Jupyter環境の動作確認"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
@@ -742,7 +745,8 @@ attrs==23.1.0
       </figure>
       <p>コードセルを選択して <code>Ctrl+Enter</code>
       で実行します。出力セルに <code>Hello Python</code>
-      が表示されれば、問題なく環境が構築されています。この「カーネルの選択」は、新しくノートブックを作成した際、毎回、実行する必要があります。</p>
+      が表示されれば、問題なく Jupyter環境
+      が構築されています。この「カーネルの選択」は、新しくノートブックを作成した際、毎回、実行する必要があります。</p>
       <figure>
       <img src="figs/22/jupyter-03.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
@@ -761,7 +765,8 @@ attrs==23.1.0
       <p>このような現象が起きた場合は <code>Ctrl+Shift+P</code>
       でコマンドパレットを開いて
       <code>&gt;Developer: Reload Window</code>
-      と入力して「<strong>ウィンドウの再読み込み</strong>(≠ウィンドウの再起動)」を実行することで解決する場合があります。</p>
+      と入力して「<strong>ウィンドウの再読み込み</strong>
+      (≠ウィンドウの再起動)」を実行することで解決する場合があります。</p>
       <figure>
       <img src="figs/22/jupyter-08.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
@@ -786,8 +791,9 @@ attrs==23.1.0
       (最近は、画像生成AIを利用するケースも増えています)。</p>
       <p>一般に <strong>無料のフリー素材</strong> といっても <span
       class="masked">様々な規約やライセンス、つまり利用条件が設定されている</span>
-      ので十分に注意して使用してください。特に、ポートフォリオをはじめ、<strong>ウェブやSNSなどの媒体でゲームを公開・紹介する場合</strong>
-      には、フリー素材の利用規約を遵守してください
+      ので十分に注意して使用してください。特に、ポートフォリオをはじめ、<strong>ウェブや
+      SNS などの媒体でゲームを公開・紹介する場合</strong>
+      には、フリー素材の「利用規約」を遵守してください
       (不適切な利用があると、炎上したり、訴訟問題となったりします)。</p>
       <p>ここでは「<strong>spellyon氏</strong>」が「<strong>点睛集積</strong>
       (<a
@@ -804,12 +810,12 @@ attrs==23.1.0
       <h2 data-number="4.2" id="画像データの準備例1"><span
       class="header-section-number">4.2</span> 画像データの準備例1</h2>
       <p>ここでは、ウェブから画像をダウンロードして、内容の確認し、トリミング
-      (大きな画像から必要な部分を抜き出すこと)
-      、拡大縮小して、保存するという流れでゲームに使用すための前処理を行ないます。<strong>Jupyter環境</strong>
-      (ノートブック環境) を使用します。</p>
+      (大きな画像から必要な部分を切り出すこと)
+      と拡大縮小をして、保存するという流れでゲームに使用するための前処理を行ないます。この前処理には
+      <strong>Jupyter環境</strong> (ノートブック環境) を使用します。</p>
       <p>VSCode上で <code>01_キャラチップの作成.ipynb</code>
       というファイルを新規作成してください
-      (カーネルも選択しておいてください)。</p>
+      (カーネルも適切に選択しておいてください)。</p>
       <h3 data-number="4.2.1" id="ダウンロード"><span
       class="header-section-number">4.2.1</span> ダウンロード</h3>
       <p>ウェブで公開・配付されている素材は、ウェブブラウザを使って手作業で1個ずつダウンロードすることができます。しかし、ここではプログラムを使ってダウンロードする方法を紹介します。プログラムを使ってウェブから情報を機械的に一括収集することを
@@ -864,7 +870,7 @@ attrs==23.1.0
       </figure>
       <p>この素材画像は、アスキー社の<a
       href="https://ja.wikipedia.org/wiki/RPGツクール2000">RPGツクール2000</a>
-      の仕様に基づく <strong>歩行キャラの素材</strong>
+      の仕様に基づく <strong>歩行キャラ素材</strong>
       になります。前後左右の向きについて、アニメーションのための3パターンの透過画像が収録された形式になっています。</p>
       <p><strong>演習</strong>:
       <code>http://dispell.net/img/v4_yukkuri.png</code> を
@@ -873,8 +879,8 @@ attrs==23.1.0
       <h3 data-number="4.2.2" id="画像と構成情報の表示"><span
       class="header-section-number">4.2.2</span>
       画像と構成情報の表示</h3>
-      <p>Pythonプログラムから「画像」と「その構成情報
-      (画像サイズなど)」を確認してみます。コードセルを追加し、次のプログラムを貼り付けて実行してください。このプログラムでは、OpenCV
+      <p>Pythonプログラムから「画像」と「その基本情報
+      (画像サイズなど)」を確認してみます。ノートブックにコードセルを追加し、次のプログラムを貼り付けて実行してください。このプログラムでは、OpenCV
       の <code>imread</code> を使用して画像を読込み、<code>shape</code>
       プロパティから <strong>画像の横と縦の情報</strong>
       を取得して表示しています。また画像本体も出力セルに表示しています。これらは、いずれも<a
@@ -900,8 +906,8 @@ attrs==23.1.0
       class="masked">24x32</span> であることが分かります。</p>
       <h3 data-number="4.2.3" id="画像の詳細確認"><span
       class="header-section-number">4.2.3</span> 画像の詳細確認</h3>
-      <p>画像データの詳細を確認するために、<strong>1キャラ・1方向・1パターンのみを抜き出し</strong>、拡大表示をしてみたいと思います。ここでは、画像内の余白の大きさも確認できるように「グリッド」や「目盛り」もあわせて表示するために、可視化ライブラリである
-      Matplolib を使用します。</p>
+      <p>画像データの詳細を確認するために、<strong>1キャラ・1方向・1パターンのみを切り出し</strong>、拡大表示をしてみたいと思います。ここでは、画像内の余白の大きさも確認できるように「グリッド」や「目盛り」もあわせて表示します。このために、可視化ライブラリである
+      <strong>Matplolib</strong> を使用します。</p>
       <figure>
       <img src="figs/22/jupyter-04.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
@@ -1023,7 +1029,7 @@ attrs==23.1.0
       href="https://www.google.com/search?q=アルファチャンネルとは">アルファチャンネルとは</a>」</li>
       </ul>
       <p>プログラムの実行結果は、次のようになります。アルファチャンネルを含めて読み込んでいるので
-      <strong>第21行目</strong> の <code>.shape</code> の結果が
+      <strong>第21行目</strong> の <code>.shape</code> の出力結果が
       <code>(256, 288, 4)</code> となっている点に注目してください。</p>
       <figure>
       <img src="figs/22/vscode-02.png" alt="img" />
@@ -1182,21 +1188,21 @@ attrs==23.1.0
       class="header-section-number">5</span> PyGame の Vector2
       オブジェクト</h1>
       <p>このセクションでは、PyGame
-      で2次元ゲームを開発する際に実質必須となる<a
+      で2次元ゲームを開発する際に必須となる<a
       href="https://www.pygame.org/docs/ref/math.html#pygame.math.Vector2">Vector2</a>というクラスについて、(今後、避けては通ることができない「<a
       href="https://www.google.com/search?q=">オブジェクト指向プログラミング</a>」の初歩の初歩を交えながら)
       解説していきます。オブジェクト指向プログラミングには <span
       class="masked">字句からは極めてイメージしずらい専門用語が多数登場</span>
       しますが、段階的に慣れて、理解を深めていってください。一気に理解することは実質的に不可能です。</p>
       <p>PyGame
-      には、2次元空間の幾何ベクトルを扱うために便利にな「<strong>Vector2</strong>」というクラスが用意されています
+      には、2次元空間の幾何ベクトルの扱いに最適化された「<strong>Vector2</strong>」というクラスが用意されています
       (3次元空間用の<a
       href="https://www.pygame.org/docs/ref/math.html#pygame.math.Vector3">Vector3</a>もあります)
       。Vector2クラスからは、「<strong>Vector2オブジェクト</strong>」を生成することができます
       (クラスは「<span
       class="masked">設計図</span>」、オブジェクトはその設計図に基づいて生成される「<span
       class="masked">実体/実物</span>」と考えてください。オブジェクトは「<strong>インスタンス</strong>」とも呼ばれます)。</p>
-      <p>Vector2オブジェクトは、ベクトルのX成分とY成分を表す
+      <p>Vector2オブジェクトは、ベクトルの「X成分」と「Y成分」を表す
       <code>x</code> と <code>y</code> という浮動小数点数型の
       <strong>プロパティ</strong>（変数のようなもの）を持ちます。</p>
       <p>例えば、次の <strong>第04行目</strong> のように
@@ -1208,7 +1214,9 @@ attrs==23.1.0
       を取得することができます。また、<strong>第14行目</strong> のように
       <code>vec_a.x = 77.7</code> とすれば X成分
       (<code>x</code>プロパティ)
-      のみを個別に変更することもできます。XとYをまとめて1個のオブジェクトとして扱える点が便利です。</p>
+      のみを個別に変更することもできます。XとYを <span
+      class="masked">まとめて1個のオブジェクトとして扱える点</span>
+      が便利です。</p>
       <div class="sourceCode" id="cb26"
       data-caption="Vector2の初期化と型確認"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
@@ -1226,7 +1234,7 @@ attrs==23.1.0
 <span id="cb26-13"><a href="#cb26-13"></a></span>
 <span id="cb26-14"><a href="#cb26-14"></a>vec_a.x <span class="op">=</span> <span class="fl">77.7</span></span>
 <span id="cb26-15"><a href="#cb26-15"></a><span class="bu">print</span>(vec_a)         <span class="co"># =&gt; [77.7, 42.9]</span></span></code></pre></div>
-      <p>Vector2オブジェクト同士では、次のように加減算が可能です。</p>
+      <p>Vector2オブジェクト同士は、次のように加減算も可能です。</p>
       <div class="sourceCode" id="cb27"
       data-caption="Vector2の加減算"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
@@ -1242,7 +1250,7 @@ attrs==23.1.0
 <span id="cb27-11"><a href="#cb27-11"></a><span class="bu">print</span>(vec) <span class="co"># =&gt; [21.5, 62.9]</span></span></code></pre></div>
       <p>上記のように加減算ができるという点は、<a
       href="lecture17.html#numpyのインポートとndarray型">第17回講義</a>
-      で学んだように NumPy の ndarray型 の演算に似ています。</p>
+      で学んだ NumPy の ndarray型同士の演算と同じです。</p>
       <div class="sourceCode" id="cb28"
       data-caption="(参考・復習) NumPyのndarrayの加減算"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
@@ -1257,16 +1265,17 @@ attrs==23.1.0
 <span id="cb28-10"><a href="#cb28-10"></a></span>
 <span id="cb28-11"><a href="#cb28-11"></a>vec <span class="op">=</span> vec_a <span class="op">-</span> vec_b  <span class="co"># ndarray同士の減算</span></span>
 <span id="cb28-12"><a href="#cb28-12"></a><span class="bu">print</span>(vec) <span class="co"># =&gt; [21.5 62.9]</span></span></code></pre></div>
-      <p>Vector2 が2次元ゲーム開発において ndarray
-      よりも便利な理由のひとつは、<strong>自身の長さ (大きさ)
+      <p>Vector2 が2次元ゲーム開発において <strong>ndarray
+      よりも便利な理由</strong>のひとつは、<strong>自身の長さ (大きさ)
       を計算する</strong> <code>length</code> メソッド
       (関数のようなもの)
-      を含む、さまざまな便利なメソッドを持っている点です。例えば、<span
+      を含めて様々な<strong>メソッド</strong>を有する点です。例えば、<span
       class="masked">単位方向ベクトル</span> を計算する
       <code>normalize</code> メソッドや、自身を基準にした <span
       class="masked">他のベクトルとの角度差</span> を計算する
       <code>angle_to</code> メソッドなどがあります。詳しくは<a
       href="https://www.pygame.org/docs/ref/math.html#pygame.math.Vector2">公式リファレンス</a>を参照してください。</p>
+      <p>Vector2 の各種メソッドの利用例を次に示します。</p>
       <div class="sourceCode" id="cb29"
       data-caption="Vector2の各種メソッド"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
@@ -1291,8 +1300,9 @@ attrs==23.1.0
 角度 = -45.0</code></pre>
       <p><strong>演習1</strong> プロジェクトフォルダに
       <code>02_vector2.ipynb</code>
-      という名前のノートブックを新規作成し、上記の各プログラムを記述・実行し、その理解を深めよ。GUI関連の処理を含まなければ、ノートブック環境でも
-      PyGame ライブラリを使用することはできます。</p>
+      という名前のノートブックを新規作成し、上記の各プログラムを記述・実行し、その理解を深めよ。<strong>※
+      GUI関連の処理を呼び出さなければ、ノートブック環境でも PyGame
+      ライブラリを使用することはできます。</strong></p>
       <p><strong>演習2</strong> <code>vec = pg.Vector2(3,4)</code>
       に対して、<code>vec/2</code> や <code>vec*2</code>
       などの演算がどのように作用するか確認せよ。</p>
@@ -1302,7 +1312,7 @@ attrs==23.1.0
       <p><strong>画面内をボールがバウンドしていくだけ</strong>のシンプルなゲームを作成しながら
       PyGame が提供する様々な機能について学んでいきます。VSCode で
       <code>03_game_01.py</code> というファイル (≠ノートブック)
-      を作成して、以下のプログラムを貼り付けて、実行してください。</p>
+      を新規作成して、以下のプログラムを貼り付けて、実行してください。</p>
       <div class="sourceCode" id="cb31"
       data-caption="03_game_01.py"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a><span class="im">import</span> pygame <span class="im">as</span> pg</span>
@@ -1419,10 +1429,11 @@ attrs==23.1.0
       で<strong>レンダリングした文字列</strong>を与え、第2引数にはそれを描画するXY座標をタプルで与えています。<code>font.render</code>
       の第1引数には
       <strong>描画したい文字列</strong>、第2引数には<strong>アンチエイリアシングの有無</strong>、第3引数には
-      <strong>文字色</strong> を与えます。</p>
+      <strong>文字色</strong> を与えています。</p>
       <div class="note type-tips">
       <p><strong>PyGameに日本語フォントを利用する方法</strong></p>
-      <p>PyGameで、最も確実に「日本語フォント」を使用するためには、プログラムと同じフォルダにフォントファイルを配置します。ここでは情報処理推進機構
+      <p>PyGameで確実に「日本語フォント」を使用したい場合は、プログラムと同じフォルダにフォントファイルを配置します
+      (OSにインストール済みのフォントパスを指定するという方法もありますが、環境依存性があり確実性は低いです)。ここでは情報処理推進機構
       (IPA)
       が配付している「<strong>IPAフォント</strong>」を使用する例を示します。このフォントは「IPAフォントライセンス」に基づき使用することができます
       (その他のフォントと比較して、かなり自由に利用できるライセンスとなっています)。</p>
@@ -1526,12 +1537,12 @@ attrs==23.1.0
       <strong>Y方向の速度を反転</strong> させています。<code>0.8</code>
       は反発係数で、この値が大きいほど <strong>跳ね返り</strong>
       が大きくなります。</p>
-      <p>なお、このプログラムでは、永遠にボールは低い位置で跳ね続け
-      (振動を続け)
+      <p>なお、このプログラムでは、ボールは永遠に低い位置で跳ね続けて
+      (振動を続けて)
       静止しません。本来であれば、実世界の現象と同じように静止させたいのですが、離散的かつ簡易計算を行っている関係で誤差が発生して、このような状態になります。これを少しでもマシにするため、<code>ball_v.y = - 0.8 * ball_v.y</code>
       ではなく <strong>第45行目</strong> のような計算をしています
       (それでも、跳ね続けますが)。</p>
-      <p>また、左右端に到達した場合の衝突処理 (反発) は
+      <p>また、左右端に到達した場合の衝突処理 (反発) は、次のように
       <strong>第47行目～第53行目</strong>
       で行なっています。基本的な考え方は、地面との衝突処理と同じです。</p>
       <div class="sourceCode" id="cb37" data-startFrom="47"
@@ -1557,7 +1568,9 @@ attrs==23.1.0
       (改良版)</h1>
       <p>VSCode で <code>03_game_02.py</code> というファイル
       (≠ノートブック)
-      を作成して、以下のプログラムを貼り付けて、実行してください。これは、さきほどのプログラムに次のような改良を加えたものになります。</p>
+      を新規作成して、以下のプログラムを貼り付けて、実行してください。これは、さきほどのプログラム
+      <code>03_game_01.py</code> に
+      <strong>次のような改良・機能</strong> を加えたものになります。</p>
       <ul>
       <li>スペースキーを押下をするとボールが「空中ジャンプ」する機能をつけた。</li>
       <li>ボールを自然な動きに近づけた
@@ -1689,7 +1702,7 @@ attrs==23.1.0
       <code>jump</code>
       を初期化しています。この変数はゲームループのなかで「フラグ」として使用するもので、ジャンプ操作入力があったときに
       <code>True</code> に書き換え、<code>True</code>
-      のときにジャンプ用の追加処理をします。</p>
+      のときにジャンプ用の追加処理を実行します。</p>
       <p><strong>第30行目～第38行目</strong>
       ではプレイヤからのキーボード入力を確認して、スペースキーの押下が検出されたら
       <code>jump</code> に <code>True</code>
@@ -1702,7 +1715,7 @@ attrs==23.1.0
       <code>event.type == pg.KEYDOWN</code> が <code>True</code>
       と判定されるのは <span class="masked">1回のみ</span> です。</p>
       <p><strong>第45行目</strong> では、変数 <code>jump</code>
-      の値を確認して <code>True</code> のとき
+      の値を確認して <code>True</code> のときにだけ
       <strong>第46行目～第49行目</strong>
       が実行されるようにしています。<strong>第46行目</strong>
       ではボールを塗りつぶしています。<strong>第47行目</strong>
@@ -1714,10 +1727,12 @@ attrs==23.1.0
       の速度を少しだけ増やしています。また、<strong>第49行目</strong>
       では <code>jump</code> の値を <code>False</code>
       に戻しています。この処理を忘れると <span
-      class="masked">1回のスペースキー押下で永遠にジャンプ操作が実行されるようになってしまう</span>
+      class="masked">1回のスペースキーの押下で永遠にジャンプ操作が実行される
+      (画面外に飛んでいく) ようになってしまう</span>
       ので注意してください。</p>
-      <p><strong>第48行目</strong>
-      を通常の条件分岐で記述すると以下のようになります。</p>
+      <p><strong>第48行目</strong> で <strong>条件式
+      (三項演算子)</strong>
+      により書かれている処理を、通常の条件分岐で記述すると以下のようになります。</p>
       <div class="sourceCode" id="cb42"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a><span class="cf">if</span> ball_v.x <span class="op">&gt;</span> <span class="dv">0</span> :</span>
 <span id="cb42-2"><a href="#cb42-2"></a>  ball_v.x <span class="op">+=</span> <span class="fl">0.5</span></span>
@@ -1746,11 +1761,12 @@ attrs==23.1.0
       <code>800</code> であり、<code>ground_s.x</code> は
       <code>48</code>
       なので、<code>for x in range(0,disp_w,int(ground_s.x)):</code> は
-      <code>for x in range(0,800,48):</code> と等価になります。よって、x
-      は forループのなかで <code>0</code> <code>48</code>
-      <code>96</code> <code>144</code> <code>192</code> …
-      <code>672</code> <code>720</code> <code>768</code>
-      となります。このX座標毎に画像を配置しています。</p>
+      <code>for x in range(0,800,48):</code>
+      と等価になります。よって、<code>x</code> は forループのなかで
+      <code>0</code> <code>48</code> <code>96</code> <code>144</code>
+      <code>192</code> … <code>672</code> <code>720</code>
+      <code>768</code>
+      となります。このX座標毎に地面の画像を配置しています。</p>
       <h2 data-number="7.3" id="ボールの動きを改善"><span
       class="header-section-number">7.3</span> ボールの動きを改善</h2>
       <p>ボールの動きの改善は <strong>第53行目～第59行目</strong>
