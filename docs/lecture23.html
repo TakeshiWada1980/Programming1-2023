@@ -1,0 +1,2029 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+
+    <script>
+      MathJax = {
+        chtml: {
+          displayAlign: "left",
+          displayIndent: "1em",
+        },
+      };
+    </script>
+
+    
+
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>第23回 2I-プログラミング1</title>
+  </head>
+
+  <body>
+    <div class="openbtn"><span></span><span></span><span></span></div>
+    <nav id="g-nav">
+      <div id="g-nav-list">
+        <!-- ---------------------------------------- -->
+         <ul>
+<li><a href="#概要連絡" id="toc-概要連絡"><span
+class="toc-section-number">1</span> 概要・連絡</a>
+<ul>
+<li><a href="#連絡事項" id="toc-連絡事項"><span
+class="toc-section-number">1.1</span> 連絡事項</a></li>
+<li><a href="#今回講義の達成目標" id="toc-今回講義の達成目標"><span
+class="toc-section-number">1.2</span> 今回講義の達成目標</a></li>
+</ul></li>
+<li><a href="#キャラクタの表示-pygameを使った画像処理"
+id="toc-キャラクタの表示-pygameを使った画像処理"><span
+class="toc-section-number">2</span> キャラクタの表示
+(PyGameを使った画像処理)</a>
+<ul>
+<li><a href="#画像の切り出しと拡大の処理"
+id="toc-画像の切り出しと拡大の処理"><span
+class="toc-section-number">2.1</span>
+画像の「切り出し」と「拡大」の処理</a></li>
+<li><a href="#グリッドの描画" id="toc-グリッドの描画"><span
+class="toc-section-number">2.2</span> グリッドの描画</a></li>
+<li><a href="#キャラクタの描画" id="toc-キャラクタの描画"><span
+class="toc-section-number">2.3</span> キャラクタの描画</a></li>
+</ul></li>
+<li><a href="#キーの入力による移動機能の追加"
+id="toc-キーの入力による移動機能の追加"><span
+class="toc-section-number">3</span> キーの入力による移動機能の追加</a>
+<ul>
+<li><a href="#キャラクタ移動関連のパラメータ設定"
+id="toc-キャラクタ移動関連のパラメータ設定"><span
+class="toc-section-number">3.1</span>
+キャラクタ移動関連のパラメータ設定</a></li>
+<li><a href="#移動操作のキー入力の受け取り処理"
+id="toc-移動操作のキー入力の受け取り処理"><span
+class="toc-section-number">3.2</span>
+移動操作の「キー入力」の受け取り処理</a></li>
+<li><a href="#移動コマンドの処理" id="toc-移動コマンドの処理"><span
+class="toc-section-number">3.3</span> 移動コマンドの処理</a></li>
+</ul></li>
+<li><a href="#キャラクタの向きとアニメーションの追加"
+id="toc-キャラクタの向きとアニメーションの追加"><span
+class="toc-section-number">4</span>
+キャラクタの「向き」と「アニメーション」の追加</a>
+<ul>
+<li><a href="#キャラクタの全12ポーズの読込み"
+id="toc-キャラクタの全12ポーズの読込み"><span
+class="toc-section-number">4.1</span>
+キャラクタの全12ポーズの読込み</a></li>
+<li><a href="#キャラクタの向きとアニメーションの切り替え処理"
+id="toc-キャラクタの向きとアニメーションの切り替え処理"><span
+class="toc-section-number">4.2</span>
+キャラクタの「向き」と「アニメーション」の切り替え処理</a></li>
+<li><a href="#次のセクションを読み進める前に"
+id="toc-次のセクションを読み進める前に"><span
+class="toc-section-number">4.3</span>
+次のセクションを読み進める前に…</a></li>
+</ul></li>
+<li><a href="#オブジェクト指向プログラミング-超々入門"
+id="toc-オブジェクト指向プログラミング-超々入門"><span
+class="toc-section-number">5</span> オブジェクト指向プログラミング
+(超々入門)</a>
+<ul>
+<li><a href="#準備-プログラムの構造化"
+id="toc-準備-プログラムの構造化"><span
+class="toc-section-number">5.1</span> 準備: プログラムの構造化</a></li>
+<li><a href="#oop-におけるクラスとは何か"
+id="toc-oop-におけるクラスとは何か"><span
+class="toc-section-number">5.2</span> OOP
+における「クラス」とは何か</a></li>
+<li><a href="#自分でクラスを定義して使用する"
+id="toc-自分でクラスを定義して使用する"><span
+class="toc-section-number">5.3</span> 自分でクラスを定義して使用する</a>
+<ul>
+<li><a href="#コンストラクタの定義" id="toc-コンストラクタの定義"><span
+class="toc-section-number">5.3.1</span> コンストラクタの定義</a></li>
+<li><a href="#オブジェクトの生成" id="toc-オブジェクトの生成"><span
+class="toc-section-number">5.3.2</span> オブジェクトの生成</a></li>
+<li><a href="#メソッドの定義" id="toc-メソッドの定義"><span
+class="toc-section-number">5.3.3</span> メソッドの定義</a></li>
+</ul></li>
+<li><a href="#クラスを使用した構造化"
+id="toc-クラスを使用した構造化"><span
+class="toc-section-number">5.4</span> クラスを使用した構造化</a></li>
+<li><a href="#ダンダーを付けた変数について"
+id="toc-ダンダーを付けた変数について"><span
+class="toc-section-number">5.5</span>
+ダンダーを付けた変数について</a></li>
+<li><a href="#演習" id="toc-演習"><span
+class="toc-section-number">5.6</span> 演習</a></li>
+</ul></li>
+</ul> 
+        <!-- ---------------------------------------- -->
+      </div>
+    </nav>
+
+    <header class="markdown-body">
+      <p>2023-2I プログラミング1 第23回 講義資料</p>
+      <p>2023年12月18日（月）1・2時限</p>
+    </header>
+
+    <main class="markdown-body">
+      <!-- ---------------------------------------- -->
+      <h1 data-number="1" id="概要連絡"><span
+      class="header-section-number">1</span> 概要・連絡</h1>
+      <h2 data-number="1.1" id="連絡事項"><span
+      class="header-section-number">1.1</span> 連絡事項</h2>
+      <ul>
+      <li><strong>Unity 1-Week GAME JAM</strong> の紹介
+      <ul>
+      <li><a
+      href="https://unityroom.com/unity1weeks">https://unityroom.com/unity1weeks</a></li>
+      <li><strong>次回の開催</strong> 12月18日(月) 0時 〜 12月24日(日)
+      20時</li>
+      </ul></li>
+      <li>後期中間の「成績」は <span
+      class="masked">後期開始の10月1日から後期中間試験までの期間</span>
+      の評価になります
+      (前期開始の4月から後期中間試験までの全体評価では「<strong>ありません</strong>」)。この期間に出題した課題は「課題07
+      (10点満点)」の１件、小テストは「小テスト❶
+      (10点満点)」と「小テスト❷
+      (10点満点)」の2件です。また、シラバスに記載しているように評価方法は
+      <span
+      class="masked">課題の提出状況とその内容（80%）ならびに授業中に実施する小テスト（20%）を総合して評価する</span>
+      としています。従って、後期中間の成績は、課題07の評価を8倍して、小テスト❶と❷の点数を合計した100満点で評価しています。
+      <ul>
+      <li>小テスト❶の「再テスト」を含めた評価の方法は<a
+      href="lecture18.html#連絡事項">第18回講義の連絡事項</a>を参照してください。</li>
+      </ul></li>
+      <li>次回、12月25日 (月)
+      の1-2時限は教員の都合により「<strong>休講</strong>
+      (オンデマンド授業)」とさせてください。ただ、いつもと同じようにウェブテキストを用意しておくので、各自、教室や自宅で取り組みをお願いします。不明点などは、LINEやメール、対面で対応します。</li>
+      <li>2024年3月までに <strong>OMUメールのセットアップ
+      (スマホアプリの設定)</strong>、gmail や GoogleDrive
+      のバックアップなどが必要となります。詳しくは <a
+      href="https://classroom.google.com/c/NjAyNDMyMzIwNzg2/m/NjQ1OTk3Nzc5NzAy/details">GoogleClassroom</a>
+      を参照してください。
+      <ul>
+      <li>PCブラウザからは [https://outlook.office365.com]
+      からメールを開くことができます。モバイルアプリのインストールについては
+      <a
+      href="https://classroom.google.com/c/NjAyNDMyMzIwNzg2/m/NjQ1OTk3Nzc5NzAy/details">GoogleClassroom</a>
+      の資料を確認してください。</li>
+      </ul></li>
+      </ul>
+      <hr />
+      <ul>
+      <li>今回の講義では<a
+      href="lecture22.html#演習のための環境構築動作確認">前回に構築した開発環境</a>や<a
+      href="lecture22.html#ゲーム開発の準備-画像データの前処理">前処理した画像</a>を使用します。また、前回の内容について
+      <strong>ある程度は理解していること</strong>
+      を前提とします。また、前回に引き続き「<strong>spellyon氏</strong>」の「<strong>点睛集積</strong>
+      (<a
+      href="http://dispell.net/">http://dispell.net/</a>)」と、「<strong>管理人nko氏</strong>」の「<strong>DOT
+      ILLUST</strong> (<a
+      href="https://dot-illust.net/">https://dot-illust.net/</a>)」で配付されているフリー素材を使用します。必ず、下記を確認し、承諾のうえ利用してください。
+      <ul>
+      <li>点睛集積の <strong>利用規約</strong> <a
+      href="http://dispell.net/rule_material.html">http://dispell.net/rule_material.html</a></li>
+      <li>DOT ILLUST の <strong>利用規約</strong> <a
+      href="https://dot-illust.net/terms/">https://dot-illust.net/terms/</a></li>
+      </ul></li>
+      </ul>
+      <h2 data-number="1.2" id="今回講義の達成目標"><span
+      class="header-section-number">1.2</span> 今回講義の達成目標</h2>
+      <ul>
+      <li>あああ</li>
+      <li>いいいい</li>
+      <li>ううううう</li>
+      </ul>
+      <p>https://github.com/microsoft/vscode-python/wiki/Activate-Environments-in-Terminal-Using-Environment-Variables</p>
+      <p>今回の講義では、以下のように2人のキャラクタが・・・</p>
+      <h1 data-number="2"
+      id="キャラクタの表示-pygameを使った画像処理"><span
+      class="header-section-number">2</span> キャラクタの表示
+      (PyGameを使った画像処理)</h1>
+      <p>前回講義では <strong>OpenCV</strong>
+      を利用して「ゲーム」に使用する画像を <strong>切り出し</strong>
+      たり
+      (=<strong>トリミング</strong>したり)、<strong>拡大縮小</strong>したりしました。同様に
+      <span
+      class="masked">PyGameライブラリを利用して画像の切り出しや拡大縮小、回転処理をすること</span>
+      もできます。ここでは<a
+      href="lecture22.html#前処理した画像の保存">前回講義</a>
+      のなかでダウンロードして、キャラ単位
+      (4方向x3アニメーションパターンの範囲) にトリミングした
+      <code>data/img/reimu.png</code> を、PyGame
+      を使って「<strong>1ポーズごと</strong>」に切り出して、さらに「<strong>縦横2倍</strong>」に拡大して画面に配置する処理を行ないます。</p>
+      <figure>
+      <img src="figs/22/vscode-02.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>具体的には、次のような画面
+      (霊夢の「<strong>前向き</strong>」「(ゼロオリジンで)
+      <strong>1番目</strong>」のアニメーションポーズ)
+      が表示されるようなプログラムを作成していきます。※ゼロオリジンとは、先頭要素を
+      <code>0</code> 番目とするカウント方法です。</p>
+      <figure>
+      <img src="figs/23/pygame_00.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p><a
+      href="lecture22.html#演習のための環境構築動作確認">前回に構築した開発環境</a>のなかで
+      <code>05_game2_00-a.py</code>
+      というファイルを新規作成して、以下のプログラムを貼り付けて実行し、その動作を確認してください
+      (プログラムを読むと分かるように、現段階では<strong>まだキャラクタを操作することはできません</strong>)。</p>
+      <div class="sourceCode" id="cb1"
+      data-caption="05_game2_00-a.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> pygame <span class="im">as</span> pg</span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">def</span> main():</span>
+<span id="cb1-4"><a href="#cb1-4"></a></span>
+<span id="cb1-5"><a href="#cb1-5"></a>  <span class="co"># 初期化処理</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>  chip_s <span class="op">=</span> <span class="dv">48</span> <span class="co"># マップチップの基本サイズ</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a>  map_s  <span class="op">=</span> pg.Vector2(<span class="dv">16</span>,<span class="dv">9</span>) <span class="co"># マップの横・縦の配置数 </span></span>
+<span id="cb1-8"><a href="#cb1-8"></a></span>
+<span id="cb1-9"><a href="#cb1-9"></a>  pg.init() </span>
+<span id="cb1-10"><a href="#cb1-10"></a>  pg.display.set_caption(<span class="st">&#39;ぼくのかんがえたさいきょうのげーむ II&#39;</span>)</span>
+<span id="cb1-11"><a href="#cb1-11"></a>  disp_w <span class="op">=</span> <span class="bu">int</span>(chip_s<span class="op">*</span>map_s.x)</span>
+<span id="cb1-12"><a href="#cb1-12"></a>  disp_h <span class="op">=</span> <span class="bu">int</span>(chip_s<span class="op">*</span>map_s.y)</span>
+<span id="cb1-13"><a href="#cb1-13"></a>  screen <span class="op">=</span> pg.display.set_mode((disp_w,disp_h))</span>
+<span id="cb1-14"><a href="#cb1-14"></a>  clock  <span class="op">=</span> pg.time.Clock()</span>
+<span id="cb1-15"><a href="#cb1-15"></a>  font   <span class="op">=</span> pg.font.Font(<span class="va">None</span>,<span class="dv">15</span>)</span>
+<span id="cb1-16"><a href="#cb1-16"></a>  frame  <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-17"><a href="#cb1-17"></a>  exit_flag <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb1-18"><a href="#cb1-18"></a>  exit_code <span class="op">=</span> <span class="st">&#39;000&#39;</span></span>
+<span id="cb1-19"><a href="#cb1-19"></a></span>
+<span id="cb1-20"><a href="#cb1-20"></a>  <span class="co"># グリッド設定</span></span>
+<span id="cb1-21"><a href="#cb1-21"></a>  grid_c <span class="op">=</span> <span class="st">&#39;#bbbbbb&#39;</span></span>
+<span id="cb1-22"><a href="#cb1-22"></a></span>
+<span id="cb1-23"><a href="#cb1-23"></a>  <span class="co"># 自キャラ移動関連【未実装】</span></span>
+<span id="cb1-24"><a href="#cb1-24"></a>  </span>
+<span id="cb1-25"><a href="#cb1-25"></a>  <span class="co"># 自キャラの画像読込み</span></span>
+<span id="cb1-26"><a href="#cb1-26"></a>  reimu_p <span class="op">=</span> pg.Vector2(<span class="dv">2</span>,<span class="dv">3</span>)   <span class="co"># 自キャラ位置  </span></span>
+<span id="cb1-27"><a href="#cb1-27"></a>  reimu_s <span class="op">=</span> pg.Vector2(<span class="dv">48</span>,<span class="dv">64</span>) <span class="co"># 画面に出力する自キャラサイズ 48x64</span></span>
+<span id="cb1-28"><a href="#cb1-28"></a>  reimu_d <span class="op">=</span> <span class="dv">2</span> <span class="co"># 自キャラの向き</span></span>
+<span id="cb1-29"><a href="#cb1-29"></a>  reimu_img_raw <span class="op">=</span> pg.image.load(<span class="st">&#39;./data/img/reimu.png&#39;</span>)</span>
+<span id="cb1-30"><a href="#cb1-30"></a>  pose_p <span class="op">=</span> pg.Vector2(<span class="dv">24</span>,<span class="dv">64</span>) <span class="co"># 前向き・2番目のポーズの位置　</span></span>
+<span id="cb1-31"><a href="#cb1-31"></a>  pose_s <span class="op">=</span> pg.Vector2(<span class="dv">24</span>,<span class="dv">32</span>) <span class="co"># ポーズのサイズ</span></span>
+<span id="cb1-32"><a href="#cb1-32"></a>  tmp <span class="op">=</span> reimu_img_raw.subsurface(pg.Rect(pose_p,pose_s))</span>
+<span id="cb1-33"><a href="#cb1-33"></a>  reimu_img <span class="op">=</span> pg.transform.scale(tmp,reimu_s) </span>
+<span id="cb1-34"><a href="#cb1-34"></a></span>
+<span id="cb1-35"><a href="#cb1-35"></a>  <span class="co"># ゲームループ</span></span>
+<span id="cb1-36"><a href="#cb1-36"></a>  <span class="cf">while</span> <span class="kw">not</span> exit_flag:</span>
+<span id="cb1-37"><a href="#cb1-37"></a></span>
+<span id="cb1-38"><a href="#cb1-38"></a>    <span class="co"># システムイベントの検出</span></span>
+<span id="cb1-39"><a href="#cb1-39"></a>    cmd_move <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb1-40"><a href="#cb1-40"></a>    <span class="cf">for</span> event <span class="kw">in</span> pg.event.get():</span>
+<span id="cb1-41"><a href="#cb1-41"></a>      <span class="cf">if</span> event.<span class="bu">type</span> <span class="op">==</span> pg.QUIT: <span class="co"># ウィンドウ[X]の押下</span></span>
+<span id="cb1-42"><a href="#cb1-42"></a>        exit_flag <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb1-43"><a href="#cb1-43"></a>        exit_code <span class="op">=</span> <span class="st">&#39;001&#39;</span></span>
+<span id="cb1-44"><a href="#cb1-44"></a>      <span class="co"># 移動用のキー入力の検出【未実装】</span></span>
+<span id="cb1-45"><a href="#cb1-45"></a></span>
+<span id="cb1-46"><a href="#cb1-46"></a>    <span class="co"># 背景描画</span></span>
+<span id="cb1-47"><a href="#cb1-47"></a>    screen.fill(pg.Color(<span class="st">&#39;WHITE&#39;</span>))</span>
+<span id="cb1-48"><a href="#cb1-48"></a></span>
+<span id="cb1-49"><a href="#cb1-49"></a>    <span class="co"># グリッド</span></span>
+<span id="cb1-50"><a href="#cb1-50"></a>    <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, disp_w, chip_s): <span class="co"># 縦線</span></span>
+<span id="cb1-51"><a href="#cb1-51"></a>      pg.draw.line(screen,grid_c,(x,<span class="dv">0</span>),(x,disp_h))</span>
+<span id="cb1-52"><a href="#cb1-52"></a>    <span class="cf">for</span> y <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, disp_h, chip_s): <span class="co"># 横線</span></span>
+<span id="cb1-53"><a href="#cb1-53"></a>      pg.draw.line(screen,grid_c,(<span class="dv">0</span>,y),(disp_w,y))</span>
+<span id="cb1-54"><a href="#cb1-54"></a></span>
+<span id="cb1-55"><a href="#cb1-55"></a>    <span class="co"># 移動コマンドの処理【未実装】</span></span>
+<span id="cb1-56"><a href="#cb1-56"></a></span>
+<span id="cb1-57"><a href="#cb1-57"></a>    <span class="co"># 自キャラの描画 dp:描画基準点（imgの左上座標）</span></span>
+<span id="cb1-58"><a href="#cb1-58"></a>    dp <span class="op">=</span> pg.Vector2(<span class="dv">96</span>,<span class="dv">120</span>)</span>
+<span id="cb1-59"><a href="#cb1-59"></a>    screen.blit(reimu_img,dp)</span>
+<span id="cb1-60"><a href="#cb1-60"></a></span>
+<span id="cb1-61"><a href="#cb1-61"></a>    <span class="co"># フレームカウンタの描画</span></span>
+<span id="cb1-62"><a href="#cb1-62"></a>    frame <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb1-63"><a href="#cb1-63"></a>    frm_str <span class="op">=</span> <span class="ss">f&#39;</span><span class="sc">{</span>frame<span class="sc">:05}</span><span class="ss">&#39;</span></span>
+<span id="cb1-64"><a href="#cb1-64"></a>    screen.blit(font.render(frm_str,<span class="va">True</span>,<span class="st">&#39;BLACK&#39;</span>),(<span class="dv">10</span>,<span class="dv">10</span>))</span>
+<span id="cb1-65"><a href="#cb1-65"></a>    </span>
+<span id="cb1-66"><a href="#cb1-66"></a>    <span class="co"># 画面の更新と同期</span></span>
+<span id="cb1-67"><a href="#cb1-67"></a>    pg.display.update()</span>
+<span id="cb1-68"><a href="#cb1-68"></a>    clock.tick(<span class="dv">30</span>)</span>
+<span id="cb1-69"><a href="#cb1-69"></a></span>
+<span id="cb1-70"><a href="#cb1-70"></a>  <span class="co"># ゲームループ [ここまで]</span></span>
+<span id="cb1-71"><a href="#cb1-71"></a>  pg.quit()</span>
+<span id="cb1-72"><a href="#cb1-72"></a>  <span class="cf">return</span> exit_code</span>
+<span id="cb1-73"><a href="#cb1-73"></a></span>
+<span id="cb1-74"><a href="#cb1-74"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</span>
+<span id="cb1-75"><a href="#cb1-75"></a>  code <span class="op">=</span> main()</span>
+<span id="cb1-76"><a href="#cb1-76"></a>  <span class="bu">print</span>(<span class="ss">f&#39;プログラムを「コード</span><span class="sc">{</span>code<span class="sc">}</span><span class="ss">」で終了しました。&#39;</span>)</span></code></pre></div>
+      <p>このプログラムの
+      <strong>基本構造については前回の講義のなかで解説済み</strong>
+      です。新たな要素 (プログラム内のコメントでいえば
+      <code>#自キャラの画像読込み</code>、<code>#グリッド</code>、<code>#自キャラの描画</code>
+      に関係する部分) について、以下、解説していきます。</p>
+      <h2 data-number="2.1" id="画像の切り出しと拡大の処理"><span
+      class="header-section-number">2.1</span>
+      画像の「切り出し」と「拡大」の処理</h2>
+      <p><code>data/img/reimu.png</code> は 256x288 の画像で
+      <strong>4方向x3アニメーションパターン</strong>
+      が収録されています。つまり、1個の「ポーズ」の画像の大きさは <span
+      class="masked">24x32</span>
+      となります。ここから「<strong>前向き</strong>」の「(ゼロオリジンで)
+      <strong>1番目</strong>のアニメーションポーズ」を切り出して、さらに「2倍」に拡大する処理を
+      <strong>第25行目</strong>から<strong>第33行目</strong>
+      にかけて行なっています。</p>
+      <div class="sourceCode" id="cb2" data-startFrom="25"
+      data-caption="05_game2_00-a.py(抜粋)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 24;"><span id="cb2-25"><a href="#cb2-25"></a><span class="co"># 自キャラの画像読込み</span></span>
+<span id="cb2-26"><a href="#cb2-26"></a>reimu_p <span class="op">=</span> pg.Vector2(<span class="dv">2</span>,<span class="dv">3</span>)   <span class="co"># 自キャラ位置  </span></span>
+<span id="cb2-27"><a href="#cb2-27"></a>reimu_s <span class="op">=</span> pg.Vector2(<span class="dv">48</span>,<span class="dv">64</span>) <span class="co"># 画面に出力する自キャラサイズ 48x64</span></span>
+<span id="cb2-28"><a href="#cb2-28"></a>reimu_d <span class="op">=</span> <span class="dv">2</span> <span class="co"># 自キャラの向き</span></span>
+<span id="cb2-29"><a href="#cb2-29"></a>reimu_img_raw <span class="op">=</span> pg.image.load(<span class="st">&#39;./data/img/reimu.png&#39;</span>)</span>
+<span id="cb2-30"><a href="#cb2-30"></a>pose_p <span class="op">=</span> pg.Vector2(<span class="dv">24</span>,<span class="dv">64</span>) <span class="co"># 前向き・2番目のポーズの位置　</span></span>
+<span id="cb2-31"><a href="#cb2-31"></a>pose_s <span class="op">=</span> pg.Vector2(<span class="dv">24</span>,<span class="dv">32</span>) <span class="co"># ポーズのサイズ</span></span>
+<span id="cb2-32"><a href="#cb2-32"></a>tmp <span class="op">=</span> reimu_img_raw.subsurface(pg.Rect(pose_p,pose_s))</span>
+<span id="cb2-33"><a href="#cb2-33"></a>reimu_img <span class="op">=</span> pg.transform.scale(tmp,reimu_s) </span></code></pre></div>
+      <p><strong>第29行目</strong> では、12個 (=3x4)
+      のポーズが収録された画像を読み込んで、変数
+      <code>reimu_img_raw</code> に格納しています。つづく
+      <strong>第30行目</strong>
+      では、ポーズの<strong>切り出しの開始位置</strong>
+      (左上位置のX,Y座標) を <code>pose_p</code>
+      にセットし、<strong>第31行目</strong>
+      では、ポーズの<strong>切り出しの大きさ</strong> (横幅,縦幅) を
+      <code>pose_s</code> にセットしています。</p>
+      <p><strong>第32行目</strong> では、<code>subsurface</code>
+      メソッドで <strong>矩形</strong> (<code>rect</code>)
+      を引数に与えて切り出しをして、その結果を変数 <code>tmp</code>
+      に格納しています。具体的に言えば <code>reimu.png</code> の
+      (X,Y)=(24,64) を左上として (W,H) = (24,32)
+      の矩形領域を切り取って、変数 <code>tmp</code>
+      に格納しています。※<a
+      href="https://www.google.com/search?q=矩形">矩形</a>は <span
+      class="masked">くけい</span> と読みます。</p>
+      <p>さらに、<strong>第32行目</strong> で
+      <code>pg.transform.scale</code>
+      によって「拡大処理」をしています。<code>scale</code>
+      関数の第1引数には「元画像」、第2引数には <span
+      class="masked">拡大後の画像サイズ</span> を<a
+      href="lecture22.html#pygame-の-vector2-オブジェクト">Vector2
+      オブジェクト</a>や <strong>タプル</strong> で与えます。</p>
+      <p><strong>第30行目</strong>から<strong>第32行目</strong>の処理については、次のように様々な書き方ができます。<strong>いずれのスタイルで記述されていても読解できることが求められます</strong>。文章の表現と同じで
+      <span class="masked">唯一の正解の書き方/表現</span>
+      というものは存在しません。</p>
+      <div class="sourceCode" id="cb3" data-startFrom="30"
+      data-caption="05_game2_00-a.py(抜粋)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 29;"><span id="cb3-30"><a href="#cb3-30"></a>pose_p <span class="op">=</span> pg.Vector2(<span class="dv">24</span>,<span class="dv">64</span>) <span class="co"># 前向き・2番目のポーズの位置　</span></span>
+<span id="cb3-31"><a href="#cb3-31"></a>pose_s <span class="op">=</span> pg.Vector2(<span class="dv">24</span>,<span class="dv">32</span>) <span class="co"># ポーズのサイズ</span></span>
+<span id="cb3-32"><a href="#cb3-32"></a>tmp <span class="op">=</span> reimu_img_raw.subsurface(pg.Rect(pose_p,pose_s))</span></code></pre></div>
+      <div class="sourceCode" id="cb4" data-startFrom="30"
+      data-caption="別の記述1"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 29;"><span id="cb4-30"><a href="#cb4-30"></a>pose_p <span class="op">=</span> pg.Vector2(<span class="dv">24</span>,<span class="dv">64</span>)</span>
+<span id="cb4-31"><a href="#cb4-31"></a>pose_s <span class="op">=</span> pg.Vector2(<span class="dv">24</span>,<span class="dv">32</span>)</span>
+<span id="cb4-32"><a href="#cb4-32"></a>pose_rect <span class="op">=</span> pg.Rect(pose_p,pose_s)</span>
+<span id="cb4-33"><a href="#cb4-33"></a>tmp <span class="op">=</span> reimu_img_raw.subsurface(pose_rect)</span></code></pre></div>
+      <div class="sourceCode" id="cb5" data-startFrom="30"
+      data-caption="別の記述2"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 29;"><span id="cb5-30"><a href="#cb5-30"></a>pose_rect <span class="op">=</span> pg.Rect(pg.Vector2(<span class="dv">24</span>,<span class="dv">64</span>),pg.Vector2(<span class="dv">24</span>,<span class="dv">32</span>))</span>
+<span id="cb5-31"><a href="#cb5-31"></a>tmp <span class="op">=</span> reimu_img_raw.subsurface(pose_rect)</span></code></pre></div>
+      <div class="sourceCode" id="cb6" data-startFrom="30"
+      data-caption="別の記述3"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 29;"><span id="cb6-30"><a href="#cb6-30"></a>tmp <span class="op">=</span> reimu_img_raw.subsurface(pg.Rect(pg.Vector2(<span class="dv">24</span>,<span class="dv">64</span>),pg.Vector2(<span class="dv">24</span>,<span class="dv">32</span>)))</span></code></pre></div>
+      <div class="sourceCode" id="cb7" data-startFrom="30"
+      data-caption="別の記述4"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 29;"><span id="cb7-30"><a href="#cb7-30"></a>tmp <span class="op">=</span> reimu_img_raw.subsurface(pg.Rect((<span class="dv">24</span>,<span class="dv">64</span>),(<span class="dv">24</span>,<span class="dv">32</span>)))</span></code></pre></div>
+      <div class="sourceCode" id="cb8" data-startFrom="30"
+      data-caption="別の記述5"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 29;"><span id="cb8-30"><a href="#cb8-30"></a>pose_x <span class="op">=</span> <span class="dv">24</span></span>
+<span id="cb8-31"><a href="#cb8-31"></a>pose_y <span class="op">=</span> <span class="dv">64</span></span>
+<span id="cb8-32"><a href="#cb8-32"></a>pose_w <span class="op">=</span> <span class="dv">24</span></span>
+<span id="cb8-33"><a href="#cb8-33"></a>pose_h <span class="op">=</span> <span class="dv">32</span></span>
+<span id="cb8-34"><a href="#cb8-34"></a>tmp <span class="op">=</span> reimu_img_raw.subsurface(pg.Rect((<span class="dv">24</span>,<span class="dv">64</span>),(<span class="dv">24</span>,<span class="dv">32</span>)))</span></code></pre></div>
+      <div class="sourceCode" id="cb9" data-startFrom="30"
+      data-caption="別の記述6"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 29;"><span id="cb9-30"><a href="#cb9-30"></a>pose_x, pose_y <span class="op">=</span> <span class="dv">24</span>, <span class="dv">64</span></span>
+<span id="cb9-31"><a href="#cb9-31"></a>pose_w, pase_w <span class="op">=</span> <span class="dv">24</span>, <span class="dv">32</span></span>
+<span id="cb9-32"><a href="#cb9-32"></a>tmp <span class="op">=</span> reimu_img_raw.subsurface(pg.Rect((<span class="dv">24</span>,<span class="dv">64</span>),(<span class="dv">24</span>,<span class="dv">32</span>)))</span></code></pre></div>
+      <hr />
+      <p>また、<strong>第33行目</strong>
+      の「<strong>拡大処理</strong>」には<a
+      href="lecture22.html#ボールがバウンドするゲーム-改良版2">前回講義の最後に示したサンプルコード</a>で使用した
+      <code>pg.transform.rotozoom</code>
+      を使用することもできます。ただし <code>pg.transform.scale</code>
+      と <code>pg.transform.rotozoom</code>
+      では出力に「差異」が生じます。詳しくは、<span
+      class="masked">実際に実行結果 (画面出力の違い) を比較した</span>
+      うえで、ウェブ検索などを利用して理由を探ってみてください。</p>
+      <div class="sourceCode" id="cb10" data-startFrom="33"
+      data-caption="拡大処理に transformtozoom を使用する方法"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 32;"><span id="cb10-33"><a href="#cb10-33"></a>reimu_img <span class="op">=</span> pg.transformtozoom(tmp,<span class="dv">0</span>,<span class="dv">2</span>)</span></code></pre></div>
+      <hr />
+      <p><strong>演習1</strong>:
+      ゲーム画面に表示されるキャラクタが「前向き」「(ゼロオリジンで)
+      <strong>0番目</strong>のアニメーションポーズ」になるようにせよ。また「(ゼロオリジンで)
+      <strong>2番目</strong>のアニメーションポーズ」になるようにせよ。</p>
+      <p><strong>演習2</strong>:
+      ゲーム画面に表示されるキャラクタが「<strong>左向き</strong>」「(ゼロオリジンで)
+      1番目のアニメーションポーズ」になるようにせよ。また「<strong>右向き</strong>」になるようにせよ。</p>
+      <h2 data-number="2.2" id="グリッドの描画"><span
+      class="header-section-number">2.2</span> グリッドの描画</h2>
+      <p>以降の開発において動作確認 (デバッグ)
+      を簡単に行なうために、補助機能として「<strong>グリッド
+      (マス目)</strong>」を表示させています。グリッドの描画は、主に
+      <strong>第49行目</strong>から<strong>第53行目</strong>
+      で行なっています。</p>
+      <div class="sourceCode" id="cb11" data-startFrom="06"
+      data-caption="05_game2_00-a.py(抜粋)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 5;"><span id="cb11-6"><a href="#cb11-6"></a><span class="co"># 初期化処理</span></span>
+<span id="cb11-7"><a href="#cb11-7"></a>chip_s <span class="op">=</span> <span class="dv">48</span> <span class="co"># マップチップの基本サイズ</span></span></code></pre></div>
+      <div class="sourceCode" id="cb12" data-startFrom="20"
+      data-caption="05_game2_00-a.py(抜粋)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 19;"><span id="cb12-20"><a href="#cb12-20"></a><span class="co"># グリッド設定</span></span>
+<span id="cb12-21"><a href="#cb12-21"></a>grid_c <span class="op">=</span> <span class="st">&#39;#bbbbbb&#39;</span></span></code></pre></div>
+      <div class="sourceCode" id="cb13" data-startFrom="53"
+      data-caption="05_game2_00-a.py(抜粋)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 52;"><span id="cb13-53"><a href="#cb13-53"></a><span class="co"># グリッド</span></span>
+<span id="cb13-54"><a href="#cb13-54"></a><span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, disp_w, chip_s): <span class="co"># 縦線</span></span>
+<span id="cb13-55"><a href="#cb13-55"></a>  pg.draw.line(screen,grid_c,(x,<span class="dv">0</span>),(x,disp_h))</span>
+<span id="cb13-56"><a href="#cb13-56"></a><span class="cf">for</span> y <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, disp_h, chip_s): <span class="co"># 横線</span></span>
+<span id="cb13-57"><a href="#cb13-57"></a>  pg.draw.line(screen,grid_c,(<span class="dv">0</span>,y),(disp_w,y))</span></code></pre></div>
+      <p><strong>第55行目</strong> と <strong>第57行目</strong> の
+      <code>pg.draw.line</code>
+      関数の第1引数には「<strong>描画先</strong>」、第2引数には「<strong>線色</strong>」、第3引数には
+      <span
+      class="masked">線分の始点座標のVector2やタプル/リスト</span>、第4引数には
+      <span class="masked">線分の終点座標のVector2やタプル/リスト</span>
+      を与えます。</p>
+      <p><strong>線幅</strong> の設定については<a
+      href="https://www.pygame.org/docs/ref/draw.html#pygame.draw.line">公式リファレンス</a>を参照してください。また、アンチエイリアシングした線を描画する
+      <code>pg.draw.lin.aaline</code> 関数も存在します。</p>
+      <hr />
+      <p><strong>演習</strong>:
+      グリッドの「色」と「<strong>線幅</strong>」を変更せよ。</p>
+      <h2 data-number="2.3" id="キャラクタの描画"><span
+      class="header-section-number">2.3</span> キャラクタの描画</h2>
+      <p>キャラクタ画像の画面描画は
+      <strong>第57行目</strong>から<strong>第59行目</strong>
+      で行っています。</p>
+      <p><strong>第59行目</strong> の <code>screen.blit</code>
+      関数の第1引数には「表示する画像」、第2引数には「<strong>画像の左上を配置するスクリーン座標</strong>」を与えます。具体的には、ここでは
+      スクリーン上 (画面上) の (X,Y) = (96,120) の位置に、48x64
+      のキャラクタ画像の <span class="masked">左上</span>
+      をあわせて配置するようなプログラムになっています。キャラクタを
+      <strong>グリッドの中央にあわせるための調整</strong>を含めて
+      <code>(96,120)</code> という値にしています (
+      なぜこのような値にしているか? を考えてみてください )。</p>
+      <div class="sourceCode" id="cb14" data-startFrom="57"
+      data-caption="05_game2_00-a.py(抜粋)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 56;"><span id="cb14-57"><a href="#cb14-57"></a><span class="co"># 自キャラの描画 dp:描画基準点（imgの左上座標）</span></span>
+<span id="cb14-58"><a href="#cb14-58"></a>dp <span class="op">=</span> pg.Vector2(<span class="dv">96</span>,<span class="dv">120</span>)</span>
+<span id="cb14-59"><a href="#cb14-59"></a>screen.blit(reimu_img,dp)</span></code></pre></div>
+      <hr />
+      <p><strong>演習1</strong>: キャラクタがゼロオリジンの
+      <strong>グリッド座標 (5,3)
+      </strong>に表示されるように変更せよ。ただし、<strong>第26行目</strong>
+      を <code>reimu_p = pg.Vector2(5,3)</code>
+      に変更し、それを参照する計算によってキャラクタの描画位置
+      <code>dp</code> を設定すること (つまり <code>reimu_p</code>
+      の値に対応してキャラクタの表示位置が変化するようにせよ)。解答例:<span
+      class="masked">次のセクションに示す <code>05_game2_00-b.py</code>
+      の第79行目を参照</span></p>
+      <p><strong>演習2</strong>:
+      次のようにフレームカウンタの下にキャラクタを配置している「グリッド座標」が表示されるようにせよ。</p>
+      <figure>
+      <img src="figs/23/pygame_01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <h1 data-number="3" id="キーの入力による移動機能の追加"><span
+      class="header-section-number">3</span>
+      キーの入力による移動機能の追加</h1>
+      <p><code>05_game2_00-b.py</code>
+      というファイルを新規作成して、以下のプログラムを貼り付けて実行し、動作を確認してください。このプログラムは、変数
+      <code>reimu_p</code> の値を参照して
+      <strong>キャラクタの表示位置が変化するようにしたプログラム</strong>
+      (=先の演習の解答例) に <span
+      class="masked">カーソルキーによる移動機能</span>
+      を追加実装したものになります。現状では、1マス単位の離散的な移動、かつ、FC版ドラクエ1のように「カニ歩き」しかできません。</p>
+      <p>追加実装された部分は
+      <strong>第23行目</strong>から<strong>第30行目</strong> の
+      <code>#自キャラ移動関連のパラメータ設定</code>、<strong>第51行目</strong>から<strong>第60行目</strong>
+      の
+      <code>#移動操作の「キー入力」の受け取り処理</code>、<strong>第71行目</strong>から<strong>第76行目</strong>の
+      <code>#移動コマンドの処理</code> になります。</p>
+      <div class="sourceCode" id="cb15"
+      data-caption="05_game2_00-b.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="im">import</span> pygame <span class="im">as</span> pg</span>
+<span id="cb15-2"><a href="#cb15-2"></a></span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="kw">def</span> main():</span>
+<span id="cb15-4"><a href="#cb15-4"></a></span>
+<span id="cb15-5"><a href="#cb15-5"></a>  <span class="co"># 初期化処理</span></span>
+<span id="cb15-6"><a href="#cb15-6"></a>  chip_s <span class="op">=</span> <span class="dv">48</span> <span class="co"># マップチップの基本サイズ</span></span>
+<span id="cb15-7"><a href="#cb15-7"></a>  map_s  <span class="op">=</span> pg.Vector2(<span class="dv">16</span>,<span class="dv">9</span>) <span class="co"># マップの横・縦の配置数 </span></span>
+<span id="cb15-8"><a href="#cb15-8"></a></span>
+<span id="cb15-9"><a href="#cb15-9"></a>  pg.init() </span>
+<span id="cb15-10"><a href="#cb15-10"></a>  pg.display.set_caption(<span class="st">&#39;ぼくのかんがえたさいきょうのげーむ II&#39;</span>)</span>
+<span id="cb15-11"><a href="#cb15-11"></a>  disp_w <span class="op">=</span> <span class="bu">int</span>(chip_s<span class="op">*</span>map_s.x)</span>
+<span id="cb15-12"><a href="#cb15-12"></a>  disp_h <span class="op">=</span> <span class="bu">int</span>(chip_s<span class="op">*</span>map_s.y)</span>
+<span id="cb15-13"><a href="#cb15-13"></a>  screen <span class="op">=</span> pg.display.set_mode((disp_w,disp_h))</span>
+<span id="cb15-14"><a href="#cb15-14"></a>  clock  <span class="op">=</span> pg.time.Clock()</span>
+<span id="cb15-15"><a href="#cb15-15"></a>  font   <span class="op">=</span> pg.font.Font(<span class="va">None</span>,<span class="dv">15</span>)</span>
+<span id="cb15-16"><a href="#cb15-16"></a>  frame  <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb15-17"><a href="#cb15-17"></a>  exit_flag <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb15-18"><a href="#cb15-18"></a>  exit_code <span class="op">=</span> <span class="st">&#39;000&#39;</span></span>
+<span id="cb15-19"><a href="#cb15-19"></a></span>
+<span id="cb15-20"><a href="#cb15-20"></a>  <span class="co"># グリッド設定</span></span>
+<span id="cb15-21"><a href="#cb15-21"></a>  grid_c <span class="op">=</span> <span class="st">&#39;#bbbbbb&#39;</span></span>
+<span id="cb15-22"><a href="#cb15-22"></a></span>
+<span id="cb15-23"><a href="#cb15-23"></a>  <span class="co"># 自キャラ移動関連のパラメータ設定</span></span>
+<span id="cb15-24"><a href="#cb15-24"></a>  cmd_move <span class="op">=</span> <span class="op">-</span><span class="dv">1</span> <span class="co"># 移動コマンドの管理変数</span></span>
+<span id="cb15-25"><a href="#cb15-25"></a>  m_vec <span class="op">=</span> [</span>
+<span id="cb15-26"><a href="#cb15-26"></a>    pg.Vector2(<span class="dv">0</span>,<span class="op">-</span><span class="dv">1</span>),</span>
+<span id="cb15-27"><a href="#cb15-27"></a>    pg.Vector2(<span class="dv">1</span>,<span class="dv">0</span>),</span>
+<span id="cb15-28"><a href="#cb15-28"></a>    pg.Vector2(<span class="dv">0</span>,<span class="dv">1</span>),</span>
+<span id="cb15-29"><a href="#cb15-29"></a>    pg.Vector2(<span class="op">-</span><span class="dv">1</span>,<span class="dv">0</span>)</span>
+<span id="cb15-30"><a href="#cb15-30"></a>  ] <span class="co"># 移動コマンドに対応したXYの移動量</span></span>
+<span id="cb15-31"><a href="#cb15-31"></a>  </span>
+<span id="cb15-32"><a href="#cb15-32"></a>  <span class="co"># 自キャラの画像読込み</span></span>
+<span id="cb15-33"><a href="#cb15-33"></a>  reimu_p <span class="op">=</span> pg.Vector2(<span class="dv">2</span>,<span class="dv">3</span>)   <span class="co"># 自キャラ位置  </span></span>
+<span id="cb15-34"><a href="#cb15-34"></a>  reimu_s <span class="op">=</span> pg.Vector2(<span class="dv">48</span>,<span class="dv">64</span>) <span class="co"># 画面に出力する自キャラサイズ 48x64</span></span>
+<span id="cb15-35"><a href="#cb15-35"></a>  reimu_d <span class="op">=</span> <span class="dv">2</span> <span class="co"># 自キャラの向き</span></span>
+<span id="cb15-36"><a href="#cb15-36"></a>  reimu_img_raw <span class="op">=</span> pg.image.load(<span class="st">&#39;./data/img/reimu.png&#39;</span>)</span>
+<span id="cb15-37"><a href="#cb15-37"></a>  pose_p <span class="op">=</span> pg.Vector2(<span class="dv">24</span>,<span class="dv">64</span>) <span class="co"># 前向き・2番目のポーズの位置　</span></span>
+<span id="cb15-38"><a href="#cb15-38"></a>  pose_s <span class="op">=</span> pg.Vector2(<span class="dv">24</span>,<span class="dv">32</span>) <span class="co"># ポーズのサイズ</span></span>
+<span id="cb15-39"><a href="#cb15-39"></a>  tmp <span class="op">=</span> reimu_img_raw.subsurface(pg.Rect(pose_p,pose_s))</span>
+<span id="cb15-40"><a href="#cb15-40"></a>  reimu_img <span class="op">=</span> pg.transform.scale(tmp,reimu_s) </span>
+<span id="cb15-41"><a href="#cb15-41"></a></span>
+<span id="cb15-42"><a href="#cb15-42"></a>  <span class="co"># ゲームループ</span></span>
+<span id="cb15-43"><a href="#cb15-43"></a>  <span class="cf">while</span> <span class="kw">not</span> exit_flag:</span>
+<span id="cb15-44"><a href="#cb15-44"></a></span>
+<span id="cb15-45"><a href="#cb15-45"></a>    <span class="co"># システムイベントの検出</span></span>
+<span id="cb15-46"><a href="#cb15-46"></a>    cmd_move <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb15-47"><a href="#cb15-47"></a>    <span class="cf">for</span> event <span class="kw">in</span> pg.event.get():</span>
+<span id="cb15-48"><a href="#cb15-48"></a>      <span class="cf">if</span> event.<span class="bu">type</span> <span class="op">==</span> pg.QUIT: <span class="co"># ウィンドウ[X]の押下</span></span>
+<span id="cb15-49"><a href="#cb15-49"></a>        exit_flag <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb15-50"><a href="#cb15-50"></a>        exit_code <span class="op">=</span> <span class="st">&#39;001&#39;</span></span>
+<span id="cb15-51"><a href="#cb15-51"></a>      <span class="co"># 移動操作の「キー入力」の受け取り処理</span></span>
+<span id="cb15-52"><a href="#cb15-52"></a>      <span class="cf">if</span> event.<span class="bu">type</span> <span class="op">==</span> pg.KEYDOWN:</span>
+<span id="cb15-53"><a href="#cb15-53"></a>        <span class="cf">if</span> event.key <span class="op">==</span> pg.K_UP:</span>
+<span id="cb15-54"><a href="#cb15-54"></a>          cmd_move <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb15-55"><a href="#cb15-55"></a>        <span class="cf">elif</span> event.key <span class="op">==</span> pg.K_RIGHT:</span>
+<span id="cb15-56"><a href="#cb15-56"></a>          cmd_move <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb15-57"><a href="#cb15-57"></a>        <span class="cf">elif</span> event.key <span class="op">==</span> pg.K_DOWN:</span>
+<span id="cb15-58"><a href="#cb15-58"></a>          cmd_move <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb15-59"><a href="#cb15-59"></a>        <span class="cf">elif</span> event.key <span class="op">==</span> pg.K_LEFT:</span>
+<span id="cb15-60"><a href="#cb15-60"></a>          cmd_move <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb15-61"><a href="#cb15-61"></a></span>
+<span id="cb15-62"><a href="#cb15-62"></a>    <span class="co"># 背景描画</span></span>
+<span id="cb15-63"><a href="#cb15-63"></a>    screen.fill(pg.Color(<span class="st">&#39;WHITE&#39;</span>))</span>
+<span id="cb15-64"><a href="#cb15-64"></a></span>
+<span id="cb15-65"><a href="#cb15-65"></a>    <span class="co"># グリッド</span></span>
+<span id="cb15-66"><a href="#cb15-66"></a>    <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, disp_w, chip_s): <span class="co"># 縦線</span></span>
+<span id="cb15-67"><a href="#cb15-67"></a>      pg.draw.line(screen,grid_c,(x,<span class="dv">0</span>),(x,disp_h))</span>
+<span id="cb15-68"><a href="#cb15-68"></a>    <span class="cf">for</span> y <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, disp_h, chip_s): <span class="co"># 横線</span></span>
+<span id="cb15-69"><a href="#cb15-69"></a>      pg.draw.line(screen,grid_c,(<span class="dv">0</span>,y),(disp_w,y))</span>
+<span id="cb15-70"><a href="#cb15-70"></a></span>
+<span id="cb15-71"><a href="#cb15-71"></a>    <span class="co"># 移動コマンドの処理</span></span>
+<span id="cb15-72"><a href="#cb15-72"></a>    <span class="cf">if</span> cmd_move <span class="op">!=</span> <span class="op">-</span><span class="dv">1</span>:</span>
+<span id="cb15-73"><a href="#cb15-73"></a>      reimu_d <span class="op">=</span> cmd_move <span class="co"># 現時点では使わない変数 (あとで使用)</span></span>
+<span id="cb15-74"><a href="#cb15-74"></a>      af_pos <span class="op">=</span> reimu_p <span class="op">+</span> m_vec[cmd_move] <span class="co"># 移動後の (仮) 座標</span></span>
+<span id="cb15-75"><a href="#cb15-75"></a>      <span class="cf">if</span> (<span class="dv">0</span> <span class="op">&lt;=</span> af_pos.x <span class="op">&lt;=</span> map_s.x<span class="op">-</span><span class="dv">1</span>) <span class="kw">and</span> (<span class="dv">0</span> <span class="op">&lt;=</span> af_pos.y <span class="op">&lt;=</span> map_s.y<span class="op">-</span><span class="dv">1</span>) :</span>
+<span id="cb15-76"><a href="#cb15-76"></a>        reimu_p <span class="op">+=</span> m_vec[cmd_move] <span class="co"># 画面内に収まるならキャラ座標を実際に更新</span></span>
+<span id="cb15-77"><a href="#cb15-77"></a></span>
+<span id="cb15-78"><a href="#cb15-78"></a>    <span class="co"># 自キャラの描画 dp:描画基準点（imgの左上座標）</span></span>
+<span id="cb15-79"><a href="#cb15-79"></a>    dp <span class="op">=</span> reimu_p<span class="op">*</span>chip_s <span class="op">-</span> pg.Vector2(<span class="dv">0</span>,<span class="dv">24</span>)</span>
+<span id="cb15-80"><a href="#cb15-80"></a>    screen.blit(reimu_img,dp)</span>
+<span id="cb15-81"><a href="#cb15-81"></a></span>
+<span id="cb15-82"><a href="#cb15-82"></a>    <span class="co"># フレームカウンタの描画</span></span>
+<span id="cb15-83"><a href="#cb15-83"></a>    frame <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb15-84"><a href="#cb15-84"></a>    frm_str <span class="op">=</span> <span class="ss">f&#39;</span><span class="sc">{</span>frame<span class="sc">:05}</span><span class="ss">&#39;</span></span>
+<span id="cb15-85"><a href="#cb15-85"></a>    screen.blit(font.render(frm_str,<span class="va">True</span>,<span class="st">&#39;BLACK&#39;</span>),(<span class="dv">10</span>,<span class="dv">10</span>))</span>
+<span id="cb15-86"><a href="#cb15-86"></a>    screen.blit(font.render(<span class="ss">f&#39;</span><span class="sc">{</span>reimu_p<span class="sc">}</span><span class="ss">&#39;</span>,<span class="va">True</span>,<span class="st">&#39;BLACK&#39;</span>),(<span class="dv">10</span>,<span class="dv">20</span>))</span>
+<span id="cb15-87"><a href="#cb15-87"></a>    </span>
+<span id="cb15-88"><a href="#cb15-88"></a>    <span class="co"># 画面の更新と同期</span></span>
+<span id="cb15-89"><a href="#cb15-89"></a>    pg.display.update()</span>
+<span id="cb15-90"><a href="#cb15-90"></a>    clock.tick(<span class="dv">30</span>)</span>
+<span id="cb15-91"><a href="#cb15-91"></a></span>
+<span id="cb15-92"><a href="#cb15-92"></a>  <span class="co"># ゲームループ [ここまで]</span></span>
+<span id="cb15-93"><a href="#cb15-93"></a>  pg.quit()</span>
+<span id="cb15-94"><a href="#cb15-94"></a>  <span class="cf">return</span> exit_code</span>
+<span id="cb15-95"><a href="#cb15-95"></a></span>
+<span id="cb15-96"><a href="#cb15-96"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</span>
+<span id="cb15-97"><a href="#cb15-97"></a>  code <span class="op">=</span> main()</span>
+<span id="cb15-98"><a href="#cb15-98"></a>  <span class="bu">print</span>(<span class="ss">f&#39;プログラムを「コード</span><span class="sc">{</span>code<span class="sc">}</span><span class="ss">」で終了しました。&#39;</span>)</span></code></pre></div>
+      <p><strong>演習</strong>:
+      カーソルキーを押下し続けた場合、どのように処理されるのか
+      (キャラクタが1回だけ (1マスだけ)
+      移動するのか、連続的に移動するのか) を確認せよ。</p>
+      <p>以下、追加実装した部分のみを解説をしていきます。</p>
+      <h2 data-number="3.1"
+      id="キャラクタ移動関連のパラメータ設定"><span
+      class="header-section-number">3.1</span>
+      キャラクタ移動関連のパラメータ設定</h2>
+      <p><strong>第23行目</strong>から<strong>第30行目</strong>に追加したコードについて解説します。</p>
+      <div class="sourceCode" id="cb16" data-startFrom="23"
+      data-caption="05_game2_00-b.py(抜粋)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 22;"><span id="cb16-23"><a href="#cb16-23"></a>  <span class="co"># 自キャラ移動関連のパラメータ設定</span></span>
+<span id="cb16-24"><a href="#cb16-24"></a>  cmd_move <span class="op">=</span> <span class="op">-</span><span class="dv">1</span> <span class="co"># 移動コマンドの管理変数</span></span>
+<span id="cb16-25"><a href="#cb16-25"></a>  m_vec <span class="op">=</span> [</span>
+<span id="cb16-26"><a href="#cb16-26"></a>    pg.Vector2(<span class="dv">0</span>,<span class="op">-</span><span class="dv">1</span>),</span>
+<span id="cb16-27"><a href="#cb16-27"></a>    pg.Vector2(<span class="dv">1</span>,<span class="dv">0</span>),</span>
+<span id="cb16-28"><a href="#cb16-28"></a>    pg.Vector2(<span class="dv">0</span>,<span class="dv">1</span>),</span>
+<span id="cb16-29"><a href="#cb16-29"></a>    pg.Vector2(<span class="op">-</span><span class="dv">1</span>,<span class="dv">0</span>)</span>
+<span id="cb16-30"><a href="#cb16-30"></a>  ] <span class="co"># 移動コマンドに対応したXYの移動量</span></span></code></pre></div>
+      <p><strong>第24行目</strong>
+      では、ユーザーからのキーボードを使った「移動操作入力」の
+      <strong>有無</strong> と <strong>内容</strong>
+      (以降「<strong>移動コマンド</strong>」と称します) を整数値
+      (<code>-1</code>から<code>3</code>) で保持・管理する変数
+      <code>cmd_move</code> を定義し、その初期値を <code>-1</code>
+      としています。</p>
+      <p>移動コマンドの <strong>内容</strong> と <strong>値
+      (整数値)</strong> の対応関係は、次のように定めます。</p>
+      <ul>
+      <li><code>-1</code> : <strong>移動入力なし</strong></li>
+      <li><code>0</code> : 上方向 (<strong>Yが減少</strong>する方向)
+      への移動入力あり</li>
+      <li><code>1</code> : 右方向 (Xが増加する方向)
+      への移動入力あり</li>
+      <li><code>2</code> : 下方向 (<strong>Yが増加</strong>する方向)
+      への移動入力あり</li>
+      <li><code>3</code> : 左方向 (Xが減少する方向)
+      への移動入力あり</li>
+      </ul>
+      <p><strong>第25行目</strong> から <strong>第30行目</strong>
+      では、移動コマンドに対応したXYの移動量を Vector2
+      オブジェクトのリストとして定義しています。例えば、移動コマンド
+      <code>cmd_move</code> が <code>1</code> (=右方向への移動入力)
+      のとき、<code>m_vec[cmd_move]</code> は <span
+      class="masked"><code>pg.Vector2(1,0)</code></span>
+      を返します。なお、Pythonのリストの特性上、<code>cmd_move</code> が
+      <code>-1</code> のとき <code>m_vec[cmd_move]</code> とすると <span
+      class="masked"><code>pg.Vector2(-1,0)</code></span>
+      が返ってくるので注意してください (<a
+      href="lecture08.html#リストのインデックス範囲">第08回講義</a>を参照)。</p>
+      <p>ここで、移動コマンドの 整数値 <code>0,1,2,3</code> を
+      <code>上,右,下,左</code>
+      に対応させているのは、<code>data/img/reimu.png</code>
+      (=RPGツクール2000 の移動キャラのフォーマット) の画像ならびである
+      <code>上,右,下,左</code>
+      とあわせているためです。このようにしておくことで、あとでキャラクタの
+      <span
+      class="masked">「向き」にあわせた画像を2次元リストから参照</span>
+      する際、シンプルにコードが記述できるようになります。</p>
+      <figure>
+      <img src="figs/22/vscode-02.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <h2 data-number="3.2" id="移動操作のキー入力の受け取り処理"><span
+      class="header-section-number">3.2</span>
+      移動操作の「キー入力」の受け取り処理</h2>
+      <p><strong>第51行目</strong>から<strong>第60行目</strong>では、ゲームループのなかで<strong>ユーザーからの移動操作の</strong>「<strong>キーボード入力</strong>」を受け取り、それを
+      整数値 ( <code>-1</code>から<code>3</code> ) に変換して
+      <code>cmd_move</code> に格納しています。</p>
+      <div class="sourceCode" id="cb17" data-startFrom="45"
+      data-caption="05_game2_00-b.py(抜粋)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 44;"><span id="cb17-45"><a href="#cb17-45"></a><span class="co"># システムイベントの検出</span></span>
+<span id="cb17-46"><a href="#cb17-46"></a>cmd_move <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb17-47"><a href="#cb17-47"></a><span class="cf">for</span> event <span class="kw">in</span> pg.event.get():</span>
+<span id="cb17-48"><a href="#cb17-48"></a>  <span class="cf">if</span> event.<span class="bu">type</span> <span class="op">==</span> pg.QUIT: <span class="co"># ウィンドウ[X]の押下</span></span>
+<span id="cb17-49"><a href="#cb17-49"></a>    exit_flag <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb17-50"><a href="#cb17-50"></a>    exit_code <span class="op">=</span> <span class="st">&#39;001&#39;</span></span>
+<span id="cb17-51"><a href="#cb17-51"></a>  <span class="co"># 移動操作の「キー入力」の受け取り処理</span></span>
+<span id="cb17-52"><a href="#cb17-52"></a>  <span class="cf">if</span> event.<span class="bu">type</span> <span class="op">==</span> pg.KEYDOWN:</span>
+<span id="cb17-53"><a href="#cb17-53"></a>    <span class="cf">if</span> event.key <span class="op">==</span> pg.K_UP:</span>
+<span id="cb17-54"><a href="#cb17-54"></a>      cmd_move <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb17-55"><a href="#cb17-55"></a>    <span class="cf">elif</span> event.key <span class="op">==</span> pg.K_RIGHT:</span>
+<span id="cb17-56"><a href="#cb17-56"></a>      cmd_move <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb17-57"><a href="#cb17-57"></a>    <span class="cf">elif</span> event.key <span class="op">==</span> pg.K_DOWN:</span>
+<span id="cb17-58"><a href="#cb17-58"></a>      cmd_move <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb17-59"><a href="#cb17-59"></a>    <span class="cf">elif</span> event.key <span class="op">==</span> pg.K_LEFT:</span>
+<span id="cb17-60"><a href="#cb17-60"></a>      cmd_move <span class="op">=</span> <span class="dv">3</span></span></code></pre></div>
+      <p>まず <strong>第46行目</strong> で、ゲームループごとに
+      <code>cmd_move</code> を <code>-1</code> (=移動入力なし)
+      に初期化しています。つづいて
+      <strong>第52行目</strong>から<strong>第60行目</strong>
+      で、カーソルキーの押下 (Key Down) を検出して <code>cmd_move</code>
+      を更新しています。キー入力の検出については、既に<a
+      href="lecture22.html#動作確認1-pygame">前回講義</a>で学んでいます。</p>
+      <p>なお、<strong>キーの押下を続けているとき</strong>、連続的に
+      <code>cmd_move</code>
+      を更新する方法については次回講義で扱います。現状では、キーの押下を続けていても、押下した瞬間のゲームループのときしか
+      <code>cmd_move</code> の値は更新されません。</p>
+      <h2 data-number="3.3" id="移動コマンドの処理"><span
+      class="header-section-number">3.3</span> 移動コマンドの処理</h2>
+      <p><strong>第71行目</strong>から<strong>第76行目</strong>では、移動コマンド
+      <code>cmd_move</code> に <code>-1</code> (=移動なし)
+      以外の値が入っているときに <code>reimu_p</code>
+      (=キャラクタのグリッド座標位置)
+      を更新する処理をしています。ただし、<strong>第75行目</strong>
+      のif文を使って <span
+      class="masked">キャラクタが画面外には移動しない</span>
+      ように工夫をしています。</p>
+      <div class="sourceCode" id="cb18" data-startFrom="71"
+      data-caption="05_game2_00-b.py(抜粋)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 70;"><span id="cb18-71"><a href="#cb18-71"></a><span class="co"># 移動コマンドの処理</span></span>
+<span id="cb18-72"><a href="#cb18-72"></a><span class="cf">if</span> cmd_move <span class="op">!=</span> <span class="op">-</span><span class="dv">1</span>:</span>
+<span id="cb18-73"><a href="#cb18-73"></a>  reimu_d <span class="op">=</span> cmd_move <span class="co"># 現時点では使わない変数 (あとで使用)</span></span>
+<span id="cb18-74"><a href="#cb18-74"></a>  af_pos <span class="op">=</span> reimu_p <span class="op">+</span> m_vec[cmd_move] <span class="co"># 移動後の (仮) 座標</span></span>
+<span id="cb18-75"><a href="#cb18-75"></a>  <span class="cf">if</span> (<span class="dv">0</span> <span class="op">&lt;=</span> af_pos.x <span class="op">&lt;=</span> map_s.x<span class="op">-</span><span class="dv">1</span>) <span class="kw">and</span> (<span class="dv">0</span> <span class="op">&lt;=</span> af_pos.y <span class="op">&lt;=</span> map_s.y<span class="op">-</span><span class="dv">1</span>) :</span>
+<span id="cb18-76"><a href="#cb18-76"></a>    reimu_p <span class="op">+=</span> m_vec[cmd_move] <span class="co"># 画面内に収まるならキャラ座標を実際に更新</span></span></code></pre></div>
+      <p><strong>第73行目</strong> の <code>reimu_d</code>
+      は、(<strong>現時点では未使用ですが</strong>)
+      キャラクタの「<strong>向き</strong>
+      (Direction)」を保持・管理するための変数です。移動方向と同じで、次のように「値
+      (整数値)」と「キャラクタの向き」を対応させる予定です。</p>
+      <ul>
+      <li><code>0</code> : 上向き (後向き) の画像を表示させる</li>
+      <li><code>1</code> : 右向き の画像を表示させる</li>
+      <li><code>2</code> : 下向き (前向き) の画像を表示させる</li>
+      <li><code>3</code> : 左向き の画像を表示させる</li>
+      </ul>
+      <h1 data-number="4"
+      id="キャラクタの向きとアニメーションの追加"><span
+      class="header-section-number">4</span>
+      キャラクタの「向き」と「アニメーション」の追加</h1>
+      <p><code>05_game2_01.py</code>
+      というファイルを新規作成して、以下のプログラムを貼り付けて実行し、動作を確認してください。このプログラムは、変数
+      <code>reimu_d</code> の値に対応して <span
+      class="masked">キャラクタの向きに応じた画像が表示される</span>
+      ようにして、さらにキャラクタが「<strong>足踏みのアニメーション</strong>」をするように改良したものになります。</p>
+      <p>ついに <strong>100行を超えるプログラム</strong>
+      になってきましたが、先のセクション の
+      <code>05_game2_00-b.py</code> からの変更されている部分は
+      <strong>第36行目</strong>から<strong>第45行目</strong>、<strong>第83行目</strong>から<strong>第86行目</strong>
+      だけになります。恐れる必要はありません。</p>
+      <div class="sourceCode" id="cb19"
+      data-caption="05_game2_01.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="im">import</span> pygame <span class="im">as</span> pg</span>
+<span id="cb19-2"><a href="#cb19-2"></a></span>
+<span id="cb19-3"><a href="#cb19-3"></a><span class="kw">def</span> main():</span>
+<span id="cb19-4"><a href="#cb19-4"></a></span>
+<span id="cb19-5"><a href="#cb19-5"></a>  <span class="co"># 初期化処理</span></span>
+<span id="cb19-6"><a href="#cb19-6"></a>  chip_s <span class="op">=</span> <span class="dv">48</span> <span class="co"># マップチップの基本サイズ</span></span>
+<span id="cb19-7"><a href="#cb19-7"></a>  map_s  <span class="op">=</span> pg.Vector2(<span class="dv">16</span>,<span class="dv">9</span>) <span class="co"># マップの横・縦の配置数 </span></span>
+<span id="cb19-8"><a href="#cb19-8"></a></span>
+<span id="cb19-9"><a href="#cb19-9"></a>  pg.init() </span>
+<span id="cb19-10"><a href="#cb19-10"></a>  pg.display.set_caption(<span class="st">&#39;ぼくのかんがえたさいきょうのげーむ II&#39;</span>)</span>
+<span id="cb19-11"><a href="#cb19-11"></a>  disp_w <span class="op">=</span> <span class="bu">int</span>(chip_s<span class="op">*</span>map_s.x)</span>
+<span id="cb19-12"><a href="#cb19-12"></a>  disp_h <span class="op">=</span> <span class="bu">int</span>(chip_s<span class="op">*</span>map_s.y)</span>
+<span id="cb19-13"><a href="#cb19-13"></a>  screen <span class="op">=</span> pg.display.set_mode((disp_w,disp_h))</span>
+<span id="cb19-14"><a href="#cb19-14"></a>  clock  <span class="op">=</span> pg.time.Clock()</span>
+<span id="cb19-15"><a href="#cb19-15"></a>  font   <span class="op">=</span> pg.font.Font(<span class="va">None</span>,<span class="dv">15</span>)</span>
+<span id="cb19-16"><a href="#cb19-16"></a>  frame  <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb19-17"><a href="#cb19-17"></a>  exit_flag <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb19-18"><a href="#cb19-18"></a>  exit_code <span class="op">=</span> <span class="st">&#39;000&#39;</span></span>
+<span id="cb19-19"><a href="#cb19-19"></a></span>
+<span id="cb19-20"><a href="#cb19-20"></a>  <span class="co"># グリッド設定</span></span>
+<span id="cb19-21"><a href="#cb19-21"></a>  grid_c <span class="op">=</span> <span class="st">&#39;#bbbbbb&#39;</span></span>
+<span id="cb19-22"><a href="#cb19-22"></a></span>
+<span id="cb19-23"><a href="#cb19-23"></a>  <span class="co"># 自キャラ移動関連</span></span>
+<span id="cb19-24"><a href="#cb19-24"></a>  cmd_move <span class="op">=</span> <span class="op">-</span><span class="dv">1</span> <span class="co"># 移動コマンドの管理変数</span></span>
+<span id="cb19-25"><a href="#cb19-25"></a>  m_vec <span class="op">=</span> [</span>
+<span id="cb19-26"><a href="#cb19-26"></a>    pg.Vector2(<span class="dv">0</span>,<span class="op">-</span><span class="dv">1</span>),</span>
+<span id="cb19-27"><a href="#cb19-27"></a>    pg.Vector2(<span class="dv">1</span>,<span class="dv">0</span>),</span>
+<span id="cb19-28"><a href="#cb19-28"></a>    pg.Vector2(<span class="dv">0</span>,<span class="dv">1</span>),</span>
+<span id="cb19-29"><a href="#cb19-29"></a>    pg.Vector2(<span class="op">-</span><span class="dv">1</span>,<span class="dv">0</span>)</span>
+<span id="cb19-30"><a href="#cb19-30"></a>  ] <span class="co"># 移動コマンドに対応したXYの移動量</span></span>
+<span id="cb19-31"><a href="#cb19-31"></a>  </span>
+<span id="cb19-32"><a href="#cb19-32"></a>  <span class="co"># 自キャラの画像読込み</span></span>
+<span id="cb19-33"><a href="#cb19-33"></a>  reimu_p <span class="op">=</span> pg.Vector2(<span class="dv">2</span>,<span class="dv">3</span>)   <span class="co"># 自キャラ位置  </span></span>
+<span id="cb19-34"><a href="#cb19-34"></a>  reimu_s <span class="op">=</span> pg.Vector2(<span class="dv">48</span>,<span class="dv">64</span>) <span class="co"># 画面に出力する自キャラサイズ 48x64</span></span>
+<span id="cb19-35"><a href="#cb19-35"></a>  reimu_d <span class="op">=</span> <span class="dv">2</span> <span class="co"># 自キャラの向き</span></span>
+<span id="cb19-36"><a href="#cb19-36"></a>  reimu_img_raw <span class="op">=</span> pg.image.load(<span class="st">&#39;./data/img/reimu.png&#39;</span>)</span>
+<span id="cb19-37"><a href="#cb19-37"></a>  reimu_img_arr <span class="op">=</span> []</span>
+<span id="cb19-38"><a href="#cb19-38"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">4</span>):   <span class="co"># 上右下左の4方向</span></span>
+<span id="cb19-39"><a href="#cb19-39"></a>    reimu_img_arr.append([])</span>
+<span id="cb19-40"><a href="#cb19-40"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>): <span class="co"># アニメーションパターンx3</span></span>
+<span id="cb19-41"><a href="#cb19-41"></a>      p <span class="op">=</span> pg.Vector2(<span class="dv">24</span><span class="op">*</span>j,<span class="dv">32</span><span class="op">*</span>i) <span class="co"># 切り抜きの開始座標・左上</span></span>
+<span id="cb19-42"><a href="#cb19-42"></a>      tmp<span class="op">=</span>reimu_img_raw.subsurface(pg.Rect(p,(<span class="dv">24</span>,<span class="dv">32</span>))) <span class="co"># 切り出し</span></span>
+<span id="cb19-43"><a href="#cb19-43"></a>      tmp <span class="op">=</span> pg.transform.scale(tmp,reimu_s) <span class="co"># 拡大</span></span>
+<span id="cb19-44"><a href="#cb19-44"></a>      reimu_img_arr[i].append(tmp)</span>
+<span id="cb19-45"><a href="#cb19-45"></a>    reimu_img_arr[i].append(reimu_img_arr[i][<span class="dv">1</span>])</span>
+<span id="cb19-46"><a href="#cb19-46"></a></span>
+<span id="cb19-47"><a href="#cb19-47"></a>  <span class="co"># ゲームループ</span></span>
+<span id="cb19-48"><a href="#cb19-48"></a>  <span class="cf">while</span> <span class="kw">not</span> exit_flag:</span>
+<span id="cb19-49"><a href="#cb19-49"></a></span>
+<span id="cb19-50"><a href="#cb19-50"></a>    <span class="co"># システムイベントの検出</span></span>
+<span id="cb19-51"><a href="#cb19-51"></a>    cmd_move <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb19-52"><a href="#cb19-52"></a>    <span class="cf">for</span> event <span class="kw">in</span> pg.event.get():</span>
+<span id="cb19-53"><a href="#cb19-53"></a>      <span class="cf">if</span> event.<span class="bu">type</span> <span class="op">==</span> pg.QUIT: <span class="co"># ウィンドウ[X]の押下</span></span>
+<span id="cb19-54"><a href="#cb19-54"></a>        exit_flag <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb19-55"><a href="#cb19-55"></a>        exit_code <span class="op">=</span> <span class="st">&#39;001&#39;</span></span>
+<span id="cb19-56"><a href="#cb19-56"></a>      <span class="co"># 移動操作の「キー入力」の受け取り処理</span></span>
+<span id="cb19-57"><a href="#cb19-57"></a>      <span class="cf">if</span> event.<span class="bu">type</span> <span class="op">==</span> pg.KEYDOWN:</span>
+<span id="cb19-58"><a href="#cb19-58"></a>        <span class="cf">if</span> event.key <span class="op">==</span> pg.K_UP:</span>
+<span id="cb19-59"><a href="#cb19-59"></a>          cmd_move <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb19-60"><a href="#cb19-60"></a>        <span class="cf">elif</span> event.key <span class="op">==</span> pg.K_RIGHT:</span>
+<span id="cb19-61"><a href="#cb19-61"></a>          cmd_move <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb19-62"><a href="#cb19-62"></a>        <span class="cf">elif</span> event.key <span class="op">==</span> pg.K_DOWN:</span>
+<span id="cb19-63"><a href="#cb19-63"></a>          cmd_move <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb19-64"><a href="#cb19-64"></a>        <span class="cf">elif</span> event.key <span class="op">==</span> pg.K_LEFT:</span>
+<span id="cb19-65"><a href="#cb19-65"></a>          cmd_move <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb19-66"><a href="#cb19-66"></a></span>
+<span id="cb19-67"><a href="#cb19-67"></a>    <span class="co"># 背景描画</span></span>
+<span id="cb19-68"><a href="#cb19-68"></a>    screen.fill(pg.Color(<span class="st">&#39;WHITE&#39;</span>))</span>
+<span id="cb19-69"><a href="#cb19-69"></a></span>
+<span id="cb19-70"><a href="#cb19-70"></a>    <span class="co"># グリッド</span></span>
+<span id="cb19-71"><a href="#cb19-71"></a>    <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, disp_w, chip_s): <span class="co"># 縦線</span></span>
+<span id="cb19-72"><a href="#cb19-72"></a>      pg.draw.line(screen,grid_c,(x,<span class="dv">0</span>),(x,disp_h))</span>
+<span id="cb19-73"><a href="#cb19-73"></a>    <span class="cf">for</span> y <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, disp_h, chip_s): <span class="co"># 横線</span></span>
+<span id="cb19-74"><a href="#cb19-74"></a>      pg.draw.line(screen,grid_c,(<span class="dv">0</span>,y),(disp_w,y))</span>
+<span id="cb19-75"><a href="#cb19-75"></a></span>
+<span id="cb19-76"><a href="#cb19-76"></a>    <span class="co"># 移動コマンドの処理</span></span>
+<span id="cb19-77"><a href="#cb19-77"></a>    <span class="cf">if</span> cmd_move <span class="op">!=</span> <span class="op">-</span><span class="dv">1</span>:</span>
+<span id="cb19-78"><a href="#cb19-78"></a>      reimu_d <span class="op">=</span> cmd_move <span class="co"># キャラクタの向きを更新</span></span>
+<span id="cb19-79"><a href="#cb19-79"></a>      af_pos <span class="op">=</span> reimu_p <span class="op">+</span> m_vec[cmd_move] <span class="co"># 移動後の (仮) 座標</span></span>
+<span id="cb19-80"><a href="#cb19-80"></a>      <span class="cf">if</span> (<span class="dv">0</span> <span class="op">&lt;=</span> af_pos.x <span class="op">&lt;=</span> map_s.x<span class="op">-</span><span class="dv">1</span>) <span class="kw">and</span> (<span class="dv">0</span> <span class="op">&lt;=</span> af_pos.y <span class="op">&lt;=</span> map_s.y<span class="op">-</span><span class="dv">1</span>) :</span>
+<span id="cb19-81"><a href="#cb19-81"></a>        reimu_p <span class="op">+=</span> m_vec[cmd_move] <span class="co"># 画面外に移動しないなら実際のキャラを移動</span></span>
+<span id="cb19-82"><a href="#cb19-82"></a></span>
+<span id="cb19-83"><a href="#cb19-83"></a>    <span class="co"># 自キャラの描画 dp:描画基準点（imgの左上座標）</span></span>
+<span id="cb19-84"><a href="#cb19-84"></a>    dp <span class="op">=</span> reimu_p<span class="op">*</span>chip_s <span class="op">-</span> pg.Vector2(<span class="dv">0</span>,<span class="dv">24</span>)</span>
+<span id="cb19-85"><a href="#cb19-85"></a>    af <span class="op">=</span> frame<span class="op">//</span><span class="dv">6</span><span class="op">%</span><span class="dv">4</span> <span class="co"># 6フレーム毎にアニメーション</span></span>
+<span id="cb19-86"><a href="#cb19-86"></a>    screen.blit(reimu_img_arr[reimu_d][af],dp)</span>
+<span id="cb19-87"><a href="#cb19-87"></a></span>
+<span id="cb19-88"><a href="#cb19-88"></a>    <span class="co"># フレームカウンタの描画</span></span>
+<span id="cb19-89"><a href="#cb19-89"></a>    frame <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb19-90"><a href="#cb19-90"></a>    frm_str <span class="op">=</span> <span class="ss">f&#39;</span><span class="sc">{</span>frame<span class="sc">:05}</span><span class="ss">&#39;</span></span>
+<span id="cb19-91"><a href="#cb19-91"></a>    screen.blit(font.render(frm_str,<span class="va">True</span>,<span class="st">&#39;BLACK&#39;</span>),(<span class="dv">10</span>,<span class="dv">10</span>))</span>
+<span id="cb19-92"><a href="#cb19-92"></a>    screen.blit(font.render(<span class="ss">f&#39;</span><span class="sc">{</span>reimu_p<span class="sc">}</span><span class="ss">&#39;</span>,<span class="va">True</span>,<span class="st">&#39;BLACK&#39;</span>),(<span class="dv">10</span>,<span class="dv">20</span>))</span>
+<span id="cb19-93"><a href="#cb19-93"></a>    </span>
+<span id="cb19-94"><a href="#cb19-94"></a>    <span class="co"># 画面の更新と同期</span></span>
+<span id="cb19-95"><a href="#cb19-95"></a>    pg.display.update()</span>
+<span id="cb19-96"><a href="#cb19-96"></a>    clock.tick(<span class="dv">30</span>)</span>
+<span id="cb19-97"><a href="#cb19-97"></a></span>
+<span id="cb19-98"><a href="#cb19-98"></a>  <span class="co"># ゲームループ [ここまで]</span></span>
+<span id="cb19-99"><a href="#cb19-99"></a>  pg.quit()</span>
+<span id="cb19-100"><a href="#cb19-100"></a>  <span class="cf">return</span> exit_code</span>
+<span id="cb19-101"><a href="#cb19-101"></a></span>
+<span id="cb19-102"><a href="#cb19-102"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</span>
+<span id="cb19-103"><a href="#cb19-103"></a>  code <span class="op">=</span> main()</span>
+<span id="cb19-104"><a href="#cb19-104"></a>  <span class="bu">print</span>(<span class="ss">f&#39;プログラムを「コード</span><span class="sc">{</span>code<span class="sc">}</span><span class="ss">」で終了しました。&#39;</span>)</span></code></pre></div>
+      <p>以下、変更された部分について解説をしていきます。</p>
+      <h2 data-number="4.1" id="キャラクタの全12ポーズの読込み"><span
+      class="header-section-number">4.1</span>
+      キャラクタの全12ポーズの読込み</h2>
+      <p><strong>第36行目</strong>から<strong>第45行目</strong>では、キャラクタについての「上右下左の4方向・各3ポーズ
+      (=全12ポーズ)」を読込み、<strong>少しだけ拡張したうえで</strong>、それを2次元リスト
+      <code>reimu_img_arr</code>
+      に格納しています。それにより、例えば「<strong>右向き</strong>・<strong>0番目</strong>のポーズ」の画像を
+      <code>reimu_img_arr[1][0]</code> で取得 (参照)
+      できるように、「<strong>右向き</strong>」「<strong>1番目</strong>のポーズ」の画像を
+      <code>reimu_img_arr[1][1]</code> で取得 (参照)
+      できるようにしています。</p>
+      <p>つまり <code>reimu_img_arr[i][j]</code>
+      とすれば、<code>i</code> で<span
+      class="masked">キャラクタの向き</span> を指定し、<code>j</code>
+      で<span class="masked">アニメーションポーズ</span>
+      を指定して、画像 (キャラクタのポーズ) を取得 (参照)
+      できるような<strong>データ構造</strong>にしています。</p>
+      <figure>
+      <img src="figs/22/vscode-02.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p><strong>演習1</strong>:
+      「<strong>前向き</strong>・<strong>1番目</strong>のポーズ」は、<code>reimu_img_arr</code>
+      に対してどのようにインデックス (つまり
+      <code>reimu_img_arr[i][j]</code> の <code>i</code> と
+      <code>j</code> の具体的な値)
+      を与えればアクセスできるか答えよ。<strong>解答</strong>: <span
+      class="masked"><code>reimu_img_arr[2][1]</code></span></p>
+      <p><strong>演習2</strong>:
+      「<strong>左向き</strong>・<strong>3番目</strong>のポーズ」は、<code>reimu_img_arr</code>
+      に対してどのようにインデックスを与えればアクセスできるか答えよ。<strong>解答</strong>:
+      <span class="masked"><code>reimu_img_arr[3][2]</code></span></p>
+      <hr />
+      <p><code>./data/img/reimu.png</code>
+      に収録されているアニメーション用のポーズは、各方向とも「<strong>3パターン</strong>」です。具体的には、<strong>0列目</strong>が「右足が前のポーズ」、<strong>1列目</strong>が「両足が揃ったポーズ」、<strong>2列目</strong>が「左足が揃ったポーズ」が収録されています。</p>
+      <p>これらを使って<strong>自然な歩行のアニメーション</strong>をつくるためには「右足が前のポーズ」→「両足が揃ったポーズ」→「左足が前のポーズ」→「<span
+      class="masked">(再び) 両足が揃ったポーズ</span>」→ …
+      を繰り返す必要があります。<code>reimu_img_arr[i][j]</code>
+      のインデックスでいえば <code>j</code> を <code>0</code> →
+      <code>1</code> → <code>2</code> → <code>1</code> → <code>0</code>
+      → <code>1</code> → <code>2</code> → <code>1</code> → …
+      のように切り替えていく必要があります。</p>
+      <p>しかし、今回はコードをできるだけシンプルに保つために <span
+      class="masked">2次元リストの「列」を1個拡張して、1番目のポーズと同じ画像を「3番目」にも配置</span>
+      して、<code>reimu_img_arr[i][j]</code> の <code>j</code> を
+      <code>0</code> → <code>1</code> → <code>2</code> → <code>3</code>
+      → <code>0</code> → <code>1</code> → <code>2</code> →
+      <code>3</code> …
+      のように切り替えることでアニメーションするようにしました。</p>
+      <p>そのような前提で、<code>reimu_img_arr</code> を以下のように
+      <span class="masked">4</span><strong>行</strong><span
+      class="masked">3</span><strong>列</strong>
+      の「2次元リスト」に初期化しています。なお、リストに<strong>要素を追加</strong>する
+      <code>append</code> メソッドの詳細は<a
+      href="lecture08.html#リストにおける要素の書き換えと追加">第08回講義</a>を参照してください。</p>
+      <div class="sourceCode" id="cb20" data-startFrom="36"
+      data-caption="05_game2_01.py(抜粋)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 35;"><span id="cb20-36"><a href="#cb20-36"></a>reimu_img_raw <span class="op">=</span> pg.image.load(<span class="st">&#39;./data/img/reimu.png&#39;</span>)</span>
+<span id="cb20-37"><a href="#cb20-37"></a>reimu_img_arr <span class="op">=</span> []</span>
+<span id="cb20-38"><a href="#cb20-38"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">4</span>):   <span class="co"># 上右下左の4方向</span></span>
+<span id="cb20-39"><a href="#cb20-39"></a>  reimu_img_arr.append([])</span>
+<span id="cb20-40"><a href="#cb20-40"></a>  <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>): <span class="co"># アニメーションパターンx3</span></span>
+<span id="cb20-41"><a href="#cb20-41"></a>    p <span class="op">=</span> pg.Vector2(<span class="dv">24</span><span class="op">*</span>j,<span class="dv">32</span><span class="op">*</span>i) <span class="co"># 切り抜きの開始座標・左上</span></span>
+<span id="cb20-42"><a href="#cb20-42"></a>    tmp<span class="op">=</span>reimu_img_raw.subsurface(pg.Rect(p,(<span class="dv">24</span>,<span class="dv">32</span>))) <span class="co"># 切り出し</span></span>
+<span id="cb20-43"><a href="#cb20-43"></a>    tmp <span class="op">=</span> pg.transform.scale(tmp,reimu_s) <span class="co"># 拡大</span></span>
+<span id="cb20-44"><a href="#cb20-44"></a>    reimu_img_arr[i].append(tmp)</span>
+<span id="cb20-45"><a href="#cb20-45"></a>  reimu_img_arr[i].append(reimu_img_arr[i][<span class="dv">1</span>])</span></code></pre></div>
+      <p>上記のプログラムについて、自力で解読が難しい場合は ChatGPT
+      などを活用してください。</p>
+      <ul>
+      <li><a
+      href="https://chat.openai.com/share/9603f997-79e6-4e69-b776-4491b04dcd58">ChatGPTの活用例</a></li>
+      </ul>
+      <p>なお、<strong>第45行目</strong>の処理
+      (第1列目の内容を第3列目に複製) は<a
+      href="lecture13.html#リストの浅いコピーと深いコピー">浅いコピー(Shallow
+      Copy)</a>に相当する処理であるため、メモリ使用量をほとんど圧迫しません。</p>
+      <hr />
+      <p><strong>演習</strong>:
+      <strong>第46行目</strong>に、次のコードを追加して
+      <strong>AssertionError</strong>
+      が「発生しないこと」を確認せよ。<code>for i in range(4):</code>
+      <strong>ブロックの外側</strong> (ブロックを抜けたところ)
+      に記述するようにインデントに注意せよ。</p>
+      <div class="sourceCode" id="cb21"
+      data-caption="reimu_img_arr の確認処理"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="cf">assert</span> <span class="bu">len</span>(reimu_img_arr) <span class="op">==</span> <span class="dv">4</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="cf">assert</span> reimu_img_arr[<span class="dv">0</span>][<span class="dv">1</span>] <span class="op">==</span> reimu_img_arr[<span class="dv">0</span>][<span class="dv">3</span>]</span>
+<span id="cb21-3"><a href="#cb21-3"></a><span class="cf">assert</span> reimu_img_arr[<span class="dv">1</span>][<span class="dv">1</span>] <span class="op">==</span> reimu_img_arr[<span class="dv">1</span>][<span class="dv">3</span>]</span>
+<span id="cb21-4"><a href="#cb21-4"></a><span class="cf">assert</span> reimu_img_arr[<span class="dv">2</span>][<span class="dv">1</span>] <span class="op">==</span> reimu_img_arr[<span class="dv">2</span>][<span class="dv">3</span>]</span>
+<span id="cb21-5"><a href="#cb21-5"></a><span class="cf">assert</span> reimu_img_arr[<span class="dv">3</span>][<span class="dv">1</span>] <span class="op">==</span> reimu_img_arr[<span class="dv">3</span>][<span class="dv">3</span>]</span></code></pre></div>
+      <p>上記の assert では、<code>reimu_img_arr</code>
+      の各行の「1列目」と「3列目」に同じ画像 (=前足が揃っているポーズ)
+      が格納されていることを確認しています。</p>
+      <h2 data-number="4.2"
+      id="キャラクタの向きとアニメーションの切り替え処理"><span
+      class="header-section-number">4.2</span>
+      キャラクタの「向き」と「アニメーション」の切り替え処理</h2>
+      <p><strong>第77行目</strong>と<strong>第78行目</strong>では、ユーザーからの移動操作の「キー入力」があったときに、キャラの向きを保持・管理する変数
+      <code>reimu_d</code>
+      を更新しています。例えば、カーソルキーの「<strong>右</strong>
+      (<code>pg.K_RIGHT</code>)」が押下されたとき、<code>cmd_move</code>
+      は <code>1</code> となるので、<strong>第78行目</strong> により
+      @<code>reimu_d</code> も <code>1</code> になります。</p>
+      <p>この変数 <code>reimu_d</code> は <strong>第86行目</strong> で
+      <code>reimu_img_arr[reimu_d][af]</code>
+      のように参照され、これにより
+      <strong>画面に表示されるキャラクタの「向き」が変更される仕組み</strong>
+      になっています。</p>
+      <div class="sourceCode" id="cb22" data-startFrom="77"
+      data-caption="05_game2_01.py(抜粋)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 76;"><span id="cb22-77"><a href="#cb22-77"></a><span class="cf">if</span> cmd_move <span class="op">!=</span> <span class="op">-</span><span class="dv">1</span>:</span>
+<span id="cb22-78"><a href="#cb22-78"></a>  reimu_d <span class="op">=</span> cmd_move <span class="co"># キャラクタの向きを更新</span></span></code></pre></div>
+      <div class="sourceCode" id="cb23" data-startFrom="83"
+      data-caption="05_game2_01.py(抜粋)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 82;"><span id="cb23-83"><a href="#cb23-83"></a><span class="co"># 自キャラの描画 dp:描画基準点（imgの左上座標）</span></span>
+<span id="cb23-84"><a href="#cb23-84"></a>dp <span class="op">=</span> reimu_p<span class="op">*</span>chip_s <span class="op">-</span> pg.Vector2(<span class="dv">0</span>,<span class="dv">24</span>)</span>
+<span id="cb23-85"><a href="#cb23-85"></a>af <span class="op">=</span> frame<span class="op">//</span><span class="dv">6</span><span class="op">%</span><span class="dv">4</span> <span class="co"># 6フレーム毎にアニメーション</span></span>
+<span id="cb23-86"><a href="#cb23-86"></a>screen.blit(reimu_img_arr[reimu_d][af],dp)</span></code></pre></div>
+      <p>キャラクタのアニメーションは、<strong>第85行目</strong> と
+      <strong>第86行目</strong> の処理で実現されています。このコードでは
+      <strong>6フレーム毎 (=現在は 30fps で動かしているので 6/30 = 1/5
+      秒毎)</strong>
+      にキャラのポーズが切り替わってアニメーションするようにしています。このアニメーション制御は、変数
+      <code>af</code> が鍵となっています。</p>
+      <p><strong>第85行目</strong> の <code>af = frame//6%4</code>
+      が分かりずらいと思うので順序立てて説明していきます。適当な Jupyter
+      ノートブックを作成して、そこでコードを試しながら1段階ずつ理解を進めてください。</p>
+      <p>まず、変数 <code>frame</code> は、<code>05_game2_01.py</code>
+      の <strong>第89行目</strong>で <code>frame += 1</code>
+      となっているように <span
+      class="masked">ゲームループ毎にカウントアップ</span>
+      する変数でした。また、ゲームループは <strong>第96行目</strong> の
+      <code>clock.tick(30)</code> によって基本的には
+      <strong>1/30秒</strong> で繰り返されます。つまり
+      <code>frame</code> は 1/30 秒ごとに
+      <strong>カウントアップ</strong> していきます。</p>
+      <p>ここで、疑似的に <code>frame</code>
+      が「1205」から「1224」の範囲のゲームループをつくり、そこで
+      <code>af = frame</code> として、<code>af</code>
+      の値を出力するプログラムを考えます。ここで <code>af</code> は
+      Animation Frame の略です。</p>
+      <div class="sourceCode" id="cb24"
+      data-caption="変数afの値の確認1"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb24-2"><a href="#cb24-2"></a>frame <span class="op">=</span> <span class="dv">1205</span></span>
+<span id="cb24-3"><a href="#cb24-3"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">20</span>):</span>
+<span id="cb24-4"><a href="#cb24-4"></a>  af <span class="op">=</span> frame</span>
+<span id="cb24-5"><a href="#cb24-5"></a>  <span class="bu">print</span>(<span class="ss">f&#39;frame = </span><span class="sc">{</span>frame<span class="sc">}</span><span class="ss">   af = </span><span class="sc">{</span>af<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+<span id="cb24-6"><a href="#cb24-6"></a>  frame <span class="op">+=</span> <span class="dv">1</span></span></code></pre></div>
+      <p>実行結果は次のようになります。</p>
+      <pre><code>frame = 1205   af = 1205
+frame = 1206   af = 1206
+frame = 1207   af = 1207
+frame = 1208   af = 1208
+frame = 1209   af = 1209
+frame = 1210   af = 1210
+frame = 1211   af = 1211
+frame = 1212   af = 1212
+frame = 1213   af = 1213
+frame = 1214   af = 1214
+frame = 1215   af = 1215
+frame = 1216   af = 1216
+frame = 1217   af = 1217
+frame = 1218   af = 1218
+frame = 1219   af = 1219
+frame = 1220   af = 1220
+frame = 1221   af = 1221
+frame = 1222   af = 1222
+frame = 1223   af = 1223
+frame = 1224   af = 1224</code></pre>
+      <p>当然ながら、この <code>af</code> を使って
+      <code>reimu_img_arr[reimu_d][af]</code>
+      のようにすれば、インデックスの範囲
+      (<code>0</code>～<code>3</code>) を突破して
+      <strong>IndexError</strong> が発生します。</p>
+      <hr />
+      <p>そこで、<strong>IndexError</strong> が生じないように
+      <strong>第04行目</strong> を <code>af = frame</code> から
+      <code>af = frame % 4</code> に書き換えます。<code>%</code>
+      演算子は、割り算の <span class="masked">余り (剰余)</span>
+      を求める演算子でした。</p>
+      <div class="sourceCode" id="cb26"
+      data-caption="変数afの値の確認2"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb26-2"><a href="#cb26-2"></a>frame <span class="op">=</span> <span class="dv">1205</span></span>
+<span id="cb26-3"><a href="#cb26-3"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">20</span>):</span>
+<span id="cb26-4"><a href="#cb26-4"></a>  af <span class="op">=</span> frame <span class="op">%</span> <span class="dv">4</span>  <span class="co"># ここを変更した</span></span>
+<span id="cb26-5"><a href="#cb26-5"></a>  <span class="bu">print</span>(<span class="ss">f&#39;frame = </span><span class="sc">{</span>frame<span class="sc">}</span><span class="ss">   af = </span><span class="sc">{</span>af<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+<span id="cb26-6"><a href="#cb26-6"></a>  frame <span class="op">+=</span> <span class="dv">1</span></span></code></pre></div>
+      <p>実行結果は次のようになります。例えば 1205 を 4
+      で割ると、商が「301」で余りが「1」となるので <code>af</code> は
+      <code>1</code> となります。</p>
+      <pre><code>frame = 1205   af = 1
+frame = 1206   af = 2
+frame = 1207   af = 3
+frame = 1208   af = 0
+frame = 1209   af = 1
+frame = 1210   af = 2
+frame = 1211   af = 3
+frame = 1212   af = 0
+frame = 1213   af = 1
+frame = 1214   af = 2
+frame = 1215   af = 3
+frame = 1216   af = 0
+frame = 1217   af = 1
+frame = 1218   af = 2
+frame = 1219   af = 3
+frame = 1220   af = 0
+frame = 1221   af = 1
+frame = 1222   af = 2
+frame = 1223   af = 3
+frame = 1224   af = 0</code></pre>
+      <p>これで <code>reimu_img_arr[reimu_d][af]</code> において
+      <strong>IndexError</strong> は発生しません。実際に
+      <code>05_game2_01.py</code> の <strong>第85行目</strong> を
+      <code>af = frame % 4</code>
+      に書き換えてみてください。確かに、エラーは発生しませんが、一方で
+      <span class="masked">アニメーションが高速すぎる</span>
+      という問題があります。</p>
+      <hr />
+      <p>そこで、<code>af = frame % 4</code> を
+      <code>af = frame // 6 % 4</code> に書き換えます。<code>//</code>
+      演算子は、割り算の「商
+      (整数値)」を求める演算子でした。例えば、<code>10//3</code> は
+      <code>3</code> となります。<code>frame // 6 % 4</code>
+      は、<code>frame</code> を 6 で割った「商」を計算し、それをさらに 4
+      で割った「余り」を求める計算式になります。</p>
+      <div class="sourceCode" id="cb28"
+      data-caption="変数afの値の確認3"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb28-2"><a href="#cb28-2"></a>frame <span class="op">=</span> <span class="dv">1205</span></span>
+<span id="cb28-3"><a href="#cb28-3"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">20</span>):</span>
+<span id="cb28-4"><a href="#cb28-4"></a>  af <span class="op">=</span> frame <span class="op">//</span> <span class="dv">6</span> <span class="op">%</span> <span class="dv">4</span>  <span class="co"># ここを変更した</span></span>
+<span id="cb28-5"><a href="#cb28-5"></a>  <span class="bu">print</span>(<span class="ss">f&#39;frame = </span><span class="sc">{</span>frame<span class="sc">}</span><span class="ss">   af = </span><span class="sc">{</span>af<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+<span id="cb28-6"><a href="#cb28-6"></a>  frame <span class="op">+=</span> <span class="dv">1</span></span></code></pre></div>
+      <p>実行結果は次のようになります。<code>af</code>
+      の値は6フレームの期間、同じ値をとることが分かります。30fps
+      おいて、1フレームは 1/30 秒、6フレームは 1/5 秒
+      になります。よって、1/5
+      秒毎にポーズが切り替わるように調整されたアニメーションとすることができます。</p>
+      <pre><code>frame = 1205   af = 0
+frame = 1206   af = 1
+frame = 1207   af = 1
+frame = 1208   af = 1
+frame = 1209   af = 1
+frame = 1210   af = 1
+frame = 1211   af = 1
+frame = 1212   af = 2
+frame = 1213   af = 2
+frame = 1214   af = 2
+frame = 1215   af = 2
+frame = 1216   af = 2
+frame = 1217   af = 2
+frame = 1218   af = 3
+frame = 1219   af = 3
+frame = 1220   af = 3
+frame = 1221   af = 3
+frame = 1222   af = 3
+frame = 1223   af = 3
+frame = 1224   af = 0</code></pre>
+      <p><br></p>
+      <p><strong>演習1</strong>: <code>05_game2_01.py</code> の
+      <strong>第85行目</strong> を <code>af = frame // 6 % 3</code>
+      とすると
+      (「右足が前のポーズ」→「両足が揃ったポーズ」→「左足が揃ったポーズ」→「右足が前のポーズ」→
+      「両足が揃ったポーズ」→「左足が揃ったポーズ」→ …
+      の繰り返しパターンにすると)
+      ぎこちないアニメーションになることを確認せよ。</p>
+      <p><strong>演習2</strong>: <code>05_game2_01.py</code>
+      では「<strong>48px</strong>」を基準にゲーム画面が構成、描画されている。これを「24px」あるいは「72px」を基準にゲームが画面が構成、描画されるように変更せよ
+      (つまり、<strong>ゲーム画面の表示倍率変更</strong> をせよ)。例えば
+      <code>scale_factor</code> という定数を設け、それが <code>1</code>
+      のときは「24px」を基準に、また <code>2</code>
+      のときは「48px」を基準に、また <code>3</code>
+      のときは「72px」を基準にゲームが画面が構成、描画されるように変更せよ。実装例は<a
+      href="https://github.com/TakeshiWada1980/Programming1-2023/blob/main/docs/code/23/05_game2_01-a.py">こちら</a>。</p>
+      <h2 data-number="4.3" id="次のセクションを読み進める前に"><span
+      class="header-section-number">4.3</span>
+      次のセクションを読み進める前に…</h2>
+      <p>次のセクションは <code>05_game2_02.py</code>
+      の「<strong>構造</strong>」や「<strong>流れ</strong>」を理解していることが前提となります。つまり
+      <span
+      class="masked">各変数や各定数に格納される値の役割と、それらの依存関係、それに基づき決定される処理の順序関係</span>について、(プログラムコードを参照しなくとも)
+      頭のなかで大まかに整理・理解し、<strong>他者に説明できるレベル</strong>
+      になっていることが前提となります。</p>
+      <p>例えば、以下の「問い」に答えることができれば、次のセクションを読み進めることに問題はありません。</p>
+      <ul>
+      <li><strong>問い</strong>: キャラクタを任意のグリッド座標 (例えば
+      (9,8) など) に配置するための
+      <strong>具体的なスクリーン座標</strong> (=プログラムでは
+      <code>dp</code> と表現していたもの)
+      を計算したい。この計算に必要な変数や定数は、何の情報を保持している何型の値
+      (float? int? Vector2? list? tuple?)
+      で、どの段階で初期化や更新がされるものか答えよ。</li>
+      <li><strong>問い</strong>:
+      現在、キャラクタは画面外には移動できないようになっている。移動可否を判定するために参照する変数・定数は、何の情報を保持している何型の値で、どの段階で初期化や更新がされるものか答えよ。具体的に、どのような判定式を用いているか答えよ。</li>
+      <li><strong>問い</strong>:
+      ユーザーからキーボード入力があると「移動コマンド」を管理する変数
+      <code>cmd_move</code> の値が更新される。この <code>cmd_move</code>
+      の更新によって影響を受ける可能性がある全ての変数を答えよ。</li>
+      </ul>
+      <p>上記の「問い」は、変数や定数の名前を正確に答えることを意図しているわけでありません、変数同士の
+      <span
+      class="masked">依存関係</span>について整理できているか、また依存関係に基づく
+      <span class="masked">処理順序</span>
+      が整理できているかについて確認するものです。</p>
+      <p>これらが不十分なまま、次のセクションを読み進めても余計に混乱するだけなので、無理せずに、再度、<code>05_game2_02.py</code>
+      の理解に努めてください。</p>
+      <h1 data-number="5"
+      id="オブジェクト指向プログラミング-超々入門"><span
+      class="header-section-number">5</span>
+      オブジェクト指向プログラミング (超々入門)</h1>
+      <p><strong><em>オブジェクト指向プログラミング</em></strong>（<strong>OOP</strong>
+      : <strong>Object Oriented Programming</strong>）とは <span
+      class="masked">ソフトウェアの設計と実装に関する概念</span>
+      のひとつであり、また、それを具現化するために<strong>プログラミング言語が提供する各種機能や構文を使用した実装</strong>を指します。</p>
+      <ul>
+      <li>ウェブ検索:<a
+      href="https://www.google.com/search?q=オブジェクト指向プログラミングとは">オブジェクト指向プログラミングとは</a></li>
+      <li>ChatGPT:<a
+      href="https://chat.openai.com/share/87aa1eeb-aa5a-4d6c-9fea-8f749fd91ea9">オブジェクト指向プログラミングについて教えてください</a></li>
+      </ul>
+      <p>OOPは <strong>極めて「抽象度」が高い概念</strong>
+      であり、また、それがカバーする範囲も広く奥深いものとなっています。それゆえ、OOPの「定義」さえ
+      <span class="masked">いまだに論争が尽きない</span>
+      ほどです（実際に、丸々1冊が「OOPとは何か」について書かれている<a
+      href="https://www.amazon.co.jp/dp/B092HDFJKK/">書籍</a>も多数あります）。</p>
+      <p>本講義では、これまでも「<strong>ソフトウェアの設計と実装に関する概念</strong>」として<a
+      href="lecture11.html#関数-fuction-初級">関数</a>や<a
+      href="ecture08.html#pythonにおけるリストとは">リスト
+      (配列)</a>、<a
+      href="lecture07.html#繰り返し構文におけるループ変数の参照">繰り返し構文</a>などを学んできましたが、OOPでは単純に
+      <strong>関連用語の数だけ</strong>
+      をみても、それらとは比較にならないほど多いです。例えば、基本的な用語だけでも「クラス」「オブジェクト
+      (インスタンス)」「コンストラクタ」「メソッド」「プロパティ」「カプセル化」「継承」「多態性
+      (ポリモーフィズム)」などがあります。そして、それら1語1語に対応した概念・機能があり、OOPの学習では、それについても理解していくことが求められます。</p>
+      <div class="note type-tips">
+      <p><strong>オブジェクト指向プログラミングを習得するには、どれぐらいの時間がかかるのか</strong></p>
+      <p>(無論、個人差は大きいですが)
+      朝から晩まで、プログラミングだけを学べる環境にはない学生では、半年から1年、場合によっては2年ぐらいの時間をかけて「実装」と「理論」の両輪をまわすことを通じて
+      <strong>OOPについて腑に落ちる</strong>
+      という状態に到達すると思います。実際、Hカリの電子情報コースでは4年生に「オブジェクト指向プログラミング」という授業が「半期」で設定されています。</p>
+      </div>
+      <p>以上のように説明され<strong>だいぶ身構えてしまったかと思いますが</strong>、既に皆さんは
+      オブジェクト指向プログラミングの一端に触れ、それを利用した実装にも多数取り組んできてもらっています。どういうことか言うと、<strong>大多数の
+      Pythonライブラリ（モジュール）は OOP
+      で設計・実装されており</strong>、それを利用するという形で、皆さんは、既に
+      OOP を何度となく体験しています。</p>
+      <p>たとえば、<a
+      href="lecture22.html#pygame-の-vector2-オブジェクト">前回講義</a>
+      から登場している <strong>PyGameライブラリ</strong> の
+      <code>Vector2</code> は OOP における <span
+      class="masked">クラス</span>
+      という存在であり、<code>p = Vector2(2,3)</code>
+      のように初期化（=クラスから生成した）<code>p</code> は、OOP
+      における「<strong>オブジェクト（インスタンス）</strong>」という存在になります。同様に、<code>p</code>
+      の持つX成分にアクセスする <code>p.x</code> は <span
+      class="masked">プロパティ</span>、ベクトルの長さ (大きさ)
+      を計算した戻り値を得る <code>p.length()</code> は <span
+      class="masked">メソッド</span> と呼ばれるものになります。</p>
+      <p>同様に、<span class="masked">NumPy の「ndarray」も、Pandas
+      の「DataFrame」</span>も「<strong>クラス</strong>」であり、皆さんは、これまでにそれらを使用してきています。</p>
+      <p>このように、誰かが設計したクラスを <span
+      class="masked">シンプルに利用する</span> という観点で言えば
+      <strong>OOP
+      は決して難しいというものではなく</strong>、むしろ、<strong>煩雑なコーディングを減らして生産性を高めてくれる存在</strong>
+      となります。例えば <code>Vector2</code> を使わずに
+      <code>[2,3]</code> のようなリストだけで
+      <code>05_game2_02.py</code>
+      を実装することを想像してみてください。可読性は大幅に低下しますし、各種計算も非常に面倒になっていたはずです。</p>
+      <p>ここからは、「他者が設計した既存のクラスを利用する」のではなく「<strong>自分自身でクラスを設計する</strong>」というステージの
+      OOP の学習もしていきます。</p>
+      <h2 data-number="5.1" id="準備-プログラムの構造化"><span
+      class="header-section-number">5.1</span> 準備:
+      プログラムの構造化</h2>
+      <p>プログラムにおける「<strong>構造化</strong>」とは、<strong>プログラムの可読性、保守性、拡張性、再利用性を「高い水準で維持する」ために</strong>プログラムの構造を検討・設計・実装することを指します。これまでに学んだ範囲で言えば、次のようなことが
+      <strong>広義の構造化</strong> になります。</p>
+      <ul>
+      <li>変数には意味のある名前をつける。</li>
+      <li>数値や文字列は、使用前に変数に格納する。</li>
+      <li>関連する処理はコード上でちかくにまとめて記述する。</li>
+      <li>同じ種類のデータを大量に扱うときは、リストや辞書などのデータ構造を使用する。</li>
+      <li>同じような処理を連続的に実行するときは、ループなどの制御構造を使用する。</li>
+      <li>重複するコードは関数としてまとめる。</li>
+      <li>機能や目的、理由を説明する適切なコメントを記述する。</li>
+      <li>適切な単位で複数のファイルにプログラムを分割する。</li>
+      </ul>
+      <p>この観点で言えば <code>05_game2_01.py</code>
+      は、ある程度の構造化が実現されており、その結果として <span
+      class="masked">比較的容易に「拡張」や「修正」に取り組むこと</span>
+      ができます。実際、先に取り組んだ
+      <strong>演習2</strong>「ゲーム画面の表示倍率変更」は、わずかなコード修正で対応ができました。</p>
+      <p>一方で、構造化されていないプログラムは、その「拡張」や「修正」が
+      <strong>絶望的に困難</strong> となります。例えば、以下の
+      <code>05_game2_01-ng.py</code> は、<strong>(あえて)
+      構造化せずにコーディングしたもの</strong> です。</p>
+      <p>このプログラムは、元々の <code>05_game2_01.py</code> と
+      <strong>完全に同じ動作</strong>
+      をしますが、倍率変更は無論のこと、マップサイズの変更 (例えば
+      (16,9) から (12,9) への変更)
+      でさえ、<strong>極めて煩雑になること</strong>が分かると思います。さらに、今後も修正や機能拡張があることを考えれば
+      <span
+      class="masked">いっそのことゼロから作り直したほうがよい</span>
+      と判断できます。</p>
+      <div class="sourceCode" id="cb30"
+      data-caption="05_game2_01-ng.py (構造化されていないコード)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="im">import</span> pygame <span class="im">as</span> pg</span>
+<span id="cb30-2"><a href="#cb30-2"></a></span>
+<span id="cb30-3"><a href="#cb30-3"></a>pg.init() </span>
+<span id="cb30-4"><a href="#cb30-4"></a>pg.display.set_caption(<span class="st">&#39;ぼくのかんがえたさいきょうのげーむ II&#39;</span>)</span>
+<span id="cb30-5"><a href="#cb30-5"></a>screen <span class="op">=</span> pg.display.set_mode((<span class="dv">768</span>,<span class="dv">432</span>))</span>
+<span id="cb30-6"><a href="#cb30-6"></a>clock  <span class="op">=</span> pg.time.Clock()</span>
+<span id="cb30-7"><a href="#cb30-7"></a>frame  <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb30-8"><a href="#cb30-8"></a>exit_flag <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb30-9"><a href="#cb30-9"></a>exit_code <span class="op">=</span> <span class="st">&#39;000&#39;</span></span>
+<span id="cb30-10"><a href="#cb30-10"></a></span>
+<span id="cb30-11"><a href="#cb30-11"></a><span class="co"># 自キャラ移動関連</span></span>
+<span id="cb30-12"><a href="#cb30-12"></a>cmd_move <span class="op">=</span> <span class="op">-</span><span class="dv">1</span> <span class="co"># 移動コマンドの管理変数</span></span>
+<span id="cb30-13"><a href="#cb30-13"></a></span>
+<span id="cb30-14"><a href="#cb30-14"></a><span class="co"># 自キャラの画像読込み</span></span>
+<span id="cb30-15"><a href="#cb30-15"></a>reimu_p_x <span class="op">=</span> <span class="dv">2</span>  <span class="co"># 自キャラのグリッド座標 X</span></span>
+<span id="cb30-16"><a href="#cb30-16"></a>reimu_p_y <span class="op">=</span> <span class="dv">3</span>  <span class="co"># 自キャラのグリッド座標 Y</span></span>
+<span id="cb30-17"><a href="#cb30-17"></a>reimu_d <span class="op">=</span> <span class="dv">2</span>    <span class="co"># 自キャラの向き</span></span>
+<span id="cb30-18"><a href="#cb30-18"></a>reimu_img_raw <span class="op">=</span> pg.image.load(<span class="st">&#39;./data/img/reimu.png&#39;</span>)</span>
+<span id="cb30-19"><a href="#cb30-19"></a></span>
+<span id="cb30-20"><a href="#cb30-20"></a>reimu_img_arr <span class="op">=</span> []</span>
+<span id="cb30-21"><a href="#cb30-21"></a></span>
+<span id="cb30-22"><a href="#cb30-22"></a><span class="co"># 上方向のキャラクタアニメーション</span></span>
+<span id="cb30-23"><a href="#cb30-23"></a>reimu_img_arr.append([])</span>
+<span id="cb30-24"><a href="#cb30-24"></a>img <span class="op">=</span> reimu_img_raw.subsurface(pg.Rect((<span class="dv">0</span>,<span class="dv">0</span>), (<span class="dv">24</span>, <span class="dv">32</span>)))</span>
+<span id="cb30-25"><a href="#cb30-25"></a>reimu_img_arr[<span class="dv">0</span>].append(pg.transform.scale(img, (<span class="dv">48</span>, <span class="dv">64</span>)))</span>
+<span id="cb30-26"><a href="#cb30-26"></a>img <span class="op">=</span> reimu_img_raw.subsurface(pg.Rect((<span class="dv">24</span>,<span class="dv">0</span>), (<span class="dv">24</span>, <span class="dv">32</span>)))</span>
+<span id="cb30-27"><a href="#cb30-27"></a>reimu_img_arr[<span class="dv">0</span>].append(pg.transform.scale(img, (<span class="dv">48</span>, <span class="dv">64</span>)))</span>
+<span id="cb30-28"><a href="#cb30-28"></a>img <span class="op">=</span> reimu_img_raw.subsurface(pg.Rect((<span class="dv">48</span>,<span class="dv">0</span>), (<span class="dv">24</span>, <span class="dv">32</span>)))</span>
+<span id="cb30-29"><a href="#cb30-29"></a>reimu_img_arr[<span class="dv">0</span>].append(pg.transform.scale(img, (<span class="dv">48</span>, <span class="dv">64</span>)))</span>
+<span id="cb30-30"><a href="#cb30-30"></a>img <span class="op">=</span> reimu_img_raw.subsurface(pg.Rect((<span class="dv">24</span>,<span class="dv">0</span>), (<span class="dv">24</span>, <span class="dv">32</span>)))</span>
+<span id="cb30-31"><a href="#cb30-31"></a>reimu_img_arr[<span class="dv">0</span>].append(pg.transform.scale(img, (<span class="dv">48</span>, <span class="dv">64</span>)))</span>
+<span id="cb30-32"><a href="#cb30-32"></a></span>
+<span id="cb30-33"><a href="#cb30-33"></a><span class="co"># 右方向のキャラクタアニメーション</span></span>
+<span id="cb30-34"><a href="#cb30-34"></a>reimu_img_arr.append([])</span>
+<span id="cb30-35"><a href="#cb30-35"></a>img <span class="op">=</span> reimu_img_raw.subsurface(pg.Rect((<span class="dv">0</span>,<span class="dv">32</span>), (<span class="dv">24</span>, <span class="dv">32</span>)))</span>
+<span id="cb30-36"><a href="#cb30-36"></a>reimu_img_arr[<span class="dv">1</span>].append(pg.transform.scale(img, (<span class="dv">48</span>, <span class="dv">64</span>)))</span>
+<span id="cb30-37"><a href="#cb30-37"></a>img <span class="op">=</span> reimu_img_raw.subsurface(pg.Rect((<span class="dv">24</span>,<span class="dv">32</span>), (<span class="dv">24</span>, <span class="dv">32</span>)))</span>
+<span id="cb30-38"><a href="#cb30-38"></a>reimu_img_arr[<span class="dv">1</span>].append(pg.transform.scale(img, (<span class="dv">48</span>, <span class="dv">64</span>)))</span>
+<span id="cb30-39"><a href="#cb30-39"></a>img <span class="op">=</span> reimu_img_raw.subsurface(pg.Rect((<span class="dv">48</span>,<span class="dv">32</span>), (<span class="dv">24</span>, <span class="dv">32</span>)))</span>
+<span id="cb30-40"><a href="#cb30-40"></a>reimu_img_arr[<span class="dv">1</span>].append(pg.transform.scale(img, (<span class="dv">48</span>, <span class="dv">64</span>)))</span>
+<span id="cb30-41"><a href="#cb30-41"></a>img <span class="op">=</span> reimu_img_raw.subsurface(pg.Rect((<span class="dv">24</span>,<span class="dv">32</span>), (<span class="dv">24</span>, <span class="dv">32</span>)))</span>
+<span id="cb30-42"><a href="#cb30-42"></a>reimu_img_arr[<span class="dv">1</span>].append(pg.transform.scale(img, (<span class="dv">48</span>, <span class="dv">64</span>)))</span>
+<span id="cb30-43"><a href="#cb30-43"></a></span>
+<span id="cb30-44"><a href="#cb30-44"></a><span class="co"># 下方向のキャラクタアニメーション</span></span>
+<span id="cb30-45"><a href="#cb30-45"></a>reimu_img_arr.append([])</span>
+<span id="cb30-46"><a href="#cb30-46"></a>img <span class="op">=</span> reimu_img_raw.subsurface(pg.Rect((<span class="dv">0</span>,<span class="dv">64</span>), (<span class="dv">24</span>, <span class="dv">32</span>)))</span>
+<span id="cb30-47"><a href="#cb30-47"></a>reimu_img_arr[<span class="dv">2</span>].append(pg.transform.scale(img, (<span class="dv">48</span>, <span class="dv">64</span>)))</span>
+<span id="cb30-48"><a href="#cb30-48"></a>img <span class="op">=</span> reimu_img_raw.subsurface(pg.Rect((<span class="dv">24</span>,<span class="dv">64</span>), (<span class="dv">24</span>, <span class="dv">32</span>)))</span>
+<span id="cb30-49"><a href="#cb30-49"></a>reimu_img_arr[<span class="dv">2</span>].append(pg.transform.scale(img, (<span class="dv">48</span>, <span class="dv">64</span>)))</span>
+<span id="cb30-50"><a href="#cb30-50"></a>img <span class="op">=</span> reimu_img_raw.subsurface(pg.Rect((<span class="dv">48</span>,<span class="dv">64</span>), (<span class="dv">24</span>, <span class="dv">32</span>)))</span>
+<span id="cb30-51"><a href="#cb30-51"></a>reimu_img_arr[<span class="dv">2</span>].append(pg.transform.scale(img, (<span class="dv">48</span>, <span class="dv">64</span>)))</span>
+<span id="cb30-52"><a href="#cb30-52"></a>img <span class="op">=</span> reimu_img_raw.subsurface(pg.Rect((<span class="dv">24</span>,<span class="dv">64</span>), (<span class="dv">24</span>, <span class="dv">32</span>)))</span>
+<span id="cb30-53"><a href="#cb30-53"></a>reimu_img_arr[<span class="dv">2</span>].append(pg.transform.scale(img, (<span class="dv">48</span>, <span class="dv">64</span>)))</span>
+<span id="cb30-54"><a href="#cb30-54"></a></span>
+<span id="cb30-55"><a href="#cb30-55"></a><span class="co"># 左方向のキャラクタアニメーション</span></span>
+<span id="cb30-56"><a href="#cb30-56"></a>reimu_img_arr.append([])</span>
+<span id="cb30-57"><a href="#cb30-57"></a>img <span class="op">=</span> reimu_img_raw.subsurface(pg.Rect((<span class="dv">0</span>,<span class="dv">96</span>), (<span class="dv">24</span>, <span class="dv">32</span>)))</span>
+<span id="cb30-58"><a href="#cb30-58"></a>reimu_img_arr[<span class="dv">3</span>].append(pg.transform.scale(img, (<span class="dv">48</span>, <span class="dv">64</span>)))</span>
+<span id="cb30-59"><a href="#cb30-59"></a>img <span class="op">=</span> reimu_img_raw.subsurface(pg.Rect((<span class="dv">24</span>,<span class="dv">96</span>), (<span class="dv">24</span>, <span class="dv">32</span>)))</span>
+<span id="cb30-60"><a href="#cb30-60"></a>reimu_img_arr[<span class="dv">3</span>].append(pg.transform.scale(img, (<span class="dv">48</span>, <span class="dv">64</span>)))</span>
+<span id="cb30-61"><a href="#cb30-61"></a>img <span class="op">=</span> reimu_img_raw.subsurface(pg.Rect((<span class="dv">48</span>,<span class="dv">96</span>), (<span class="dv">24</span>, <span class="dv">32</span>)))</span>
+<span id="cb30-62"><a href="#cb30-62"></a>reimu_img_arr[<span class="dv">3</span>].append(pg.transform.scale(img, (<span class="dv">48</span>, <span class="dv">64</span>)))</span>
+<span id="cb30-63"><a href="#cb30-63"></a>img <span class="op">=</span> reimu_img_raw.subsurface(pg.Rect((<span class="dv">24</span>,<span class="dv">96</span>), (<span class="dv">24</span>, <span class="dv">32</span>)))</span>
+<span id="cb30-64"><a href="#cb30-64"></a>reimu_img_arr[<span class="dv">3</span>].append(pg.transform.scale(img, (<span class="dv">48</span>, <span class="dv">64</span>)))</span>
+<span id="cb30-65"><a href="#cb30-65"></a></span>
+<span id="cb30-66"><a href="#cb30-66"></a><span class="co"># ゲームループ</span></span>
+<span id="cb30-67"><a href="#cb30-67"></a><span class="cf">while</span> <span class="kw">not</span> exit_flag:</span>
+<span id="cb30-68"><a href="#cb30-68"></a></span>
+<span id="cb30-69"><a href="#cb30-69"></a>  <span class="co"># システムイベントの検出</span></span>
+<span id="cb30-70"><a href="#cb30-70"></a>  cmd_move <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb30-71"><a href="#cb30-71"></a>  <span class="cf">for</span> event <span class="kw">in</span> pg.event.get():</span>
+<span id="cb30-72"><a href="#cb30-72"></a>    <span class="cf">if</span> event.<span class="bu">type</span> <span class="op">==</span> pg.QUIT: <span class="co"># ウィンドウ[X]の押下</span></span>
+<span id="cb30-73"><a href="#cb30-73"></a>      exit_flag <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb30-74"><a href="#cb30-74"></a>      exit_code <span class="op">=</span> <span class="st">&#39;001&#39;</span></span>
+<span id="cb30-75"><a href="#cb30-75"></a>    <span class="co"># 移動操作の「キー入力」の受け取り処理</span></span>
+<span id="cb30-76"><a href="#cb30-76"></a>    <span class="cf">if</span> event.<span class="bu">type</span> <span class="op">==</span> pg.KEYDOWN:</span>
+<span id="cb30-77"><a href="#cb30-77"></a>      <span class="cf">if</span> event.key <span class="op">==</span> pg.K_UP:</span>
+<span id="cb30-78"><a href="#cb30-78"></a>        cmd_move <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb30-79"><a href="#cb30-79"></a>      <span class="cf">elif</span> event.key <span class="op">==</span> pg.K_RIGHT:</span>
+<span id="cb30-80"><a href="#cb30-80"></a>        cmd_move <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb30-81"><a href="#cb30-81"></a>      <span class="cf">elif</span> event.key <span class="op">==</span> pg.K_DOWN:</span>
+<span id="cb30-82"><a href="#cb30-82"></a>        cmd_move <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb30-83"><a href="#cb30-83"></a>      <span class="cf">elif</span> event.key <span class="op">==</span> pg.K_LEFT:</span>
+<span id="cb30-84"><a href="#cb30-84"></a>        cmd_move <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb30-85"><a href="#cb30-85"></a></span>
+<span id="cb30-86"><a href="#cb30-86"></a>  <span class="co"># 背景描画</span></span>
+<span id="cb30-87"><a href="#cb30-87"></a>  screen.fill(pg.Color(<span class="st">&#39;WHITE&#39;</span>))</span>
+<span id="cb30-88"><a href="#cb30-88"></a></span>
+<span id="cb30-89"><a href="#cb30-89"></a>  <span class="co"># グリッド</span></span>
+<span id="cb30-90"><a href="#cb30-90"></a>  pg.draw.line(screen,<span class="st">&#39;#bbbbbb&#39;</span>,(<span class="dv">0</span>,<span class="dv">0</span>),(<span class="dv">0</span>,<span class="dv">432</span>))</span>
+<span id="cb30-91"><a href="#cb30-91"></a>  pg.draw.line(screen,<span class="st">&#39;#bbbbbb&#39;</span>,(<span class="dv">48</span>,<span class="dv">0</span>),(<span class="dv">48</span>,<span class="dv">432</span>))</span>
+<span id="cb30-92"><a href="#cb30-92"></a>  pg.draw.line(screen,<span class="st">&#39;#bbbbbb&#39;</span>,(<span class="dv">96</span>,<span class="dv">0</span>),(<span class="dv">96</span>,<span class="dv">432</span>))</span>
+<span id="cb30-93"><a href="#cb30-93"></a>  pg.draw.line(screen,<span class="st">&#39;#bbbbbb&#39;</span>,(<span class="dv">144</span>,<span class="dv">0</span>),(<span class="dv">144</span>,<span class="dv">432</span>))</span>
+<span id="cb30-94"><a href="#cb30-94"></a>  pg.draw.line(screen,<span class="st">&#39;#bbbbbb&#39;</span>,(<span class="dv">192</span>,<span class="dv">0</span>),(<span class="dv">192</span>,<span class="dv">432</span>))</span>
+<span id="cb30-95"><a href="#cb30-95"></a>  pg.draw.line(screen,<span class="st">&#39;#bbbbbb&#39;</span>,(<span class="dv">240</span>,<span class="dv">0</span>),(<span class="dv">240</span>,<span class="dv">432</span>))</span>
+<span id="cb30-96"><a href="#cb30-96"></a>  pg.draw.line(screen,<span class="st">&#39;#bbbbbb&#39;</span>,(<span class="dv">288</span>,<span class="dv">0</span>),(<span class="dv">288</span>,<span class="dv">432</span>))</span>
+<span id="cb30-97"><a href="#cb30-97"></a>  pg.draw.line(screen,<span class="st">&#39;#bbbbbb&#39;</span>,(<span class="dv">336</span>,<span class="dv">0</span>),(<span class="dv">336</span>,<span class="dv">432</span>))</span>
+<span id="cb30-98"><a href="#cb30-98"></a>  pg.draw.line(screen,<span class="st">&#39;#bbbbbb&#39;</span>,(<span class="dv">384</span>,<span class="dv">0</span>),(<span class="dv">384</span>,<span class="dv">432</span>))</span>
+<span id="cb30-99"><a href="#cb30-99"></a>  pg.draw.line(screen,<span class="st">&#39;#bbbbbb&#39;</span>,(<span class="dv">432</span>,<span class="dv">0</span>),(<span class="dv">432</span>,<span class="dv">432</span>))</span>
+<span id="cb30-100"><a href="#cb30-100"></a>  pg.draw.line(screen,<span class="st">&#39;#bbbbbb&#39;</span>,(<span class="dv">480</span>,<span class="dv">0</span>),(<span class="dv">480</span>,<span class="dv">432</span>))</span>
+<span id="cb30-101"><a href="#cb30-101"></a>  pg.draw.line(screen,<span class="st">&#39;#bbbbbb&#39;</span>,(<span class="dv">528</span>,<span class="dv">0</span>),(<span class="dv">528</span>,<span class="dv">432</span>))</span>
+<span id="cb30-102"><a href="#cb30-102"></a>  pg.draw.line(screen,<span class="st">&#39;#bbbbbb&#39;</span>,(<span class="dv">576</span>,<span class="dv">0</span>),(<span class="dv">576</span>,<span class="dv">432</span>))</span>
+<span id="cb30-103"><a href="#cb30-103"></a>  pg.draw.line(screen,<span class="st">&#39;#bbbbbb&#39;</span>,(<span class="dv">624</span>,<span class="dv">0</span>),(<span class="dv">624</span>,<span class="dv">432</span>))</span>
+<span id="cb30-104"><a href="#cb30-104"></a>  pg.draw.line(screen,<span class="st">&#39;#bbbbbb&#39;</span>,(<span class="dv">672</span>,<span class="dv">0</span>),(<span class="dv">672</span>,<span class="dv">432</span>))</span>
+<span id="cb30-105"><a href="#cb30-105"></a>  pg.draw.line(screen,<span class="st">&#39;#bbbbbb&#39;</span>,(<span class="dv">720</span>,<span class="dv">0</span>),(<span class="dv">720</span>,<span class="dv">432</span>))</span>
+<span id="cb30-106"><a href="#cb30-106"></a></span>
+<span id="cb30-107"><a href="#cb30-107"></a>  pg.draw.line(screen,<span class="st">&#39;#bbbbbb&#39;</span>,(<span class="dv">0</span>,<span class="dv">0</span>),(<span class="dv">768</span>,<span class="dv">0</span>))</span>
+<span id="cb30-108"><a href="#cb30-108"></a>  pg.draw.line(screen,<span class="st">&#39;#bbbbbb&#39;</span>,(<span class="dv">0</span>,<span class="dv">48</span>),(<span class="dv">768</span>,<span class="dv">48</span>))</span>
+<span id="cb30-109"><a href="#cb30-109"></a>  pg.draw.line(screen,<span class="st">&#39;#bbbbbb&#39;</span>,(<span class="dv">0</span>,<span class="dv">96</span>),(<span class="dv">768</span>,<span class="dv">96</span>))</span>
+<span id="cb30-110"><a href="#cb30-110"></a>  pg.draw.line(screen,<span class="st">&#39;#bbbbbb&#39;</span>,(<span class="dv">0</span>,<span class="dv">144</span>),(<span class="dv">768</span>,<span class="dv">144</span>))</span>
+<span id="cb30-111"><a href="#cb30-111"></a>  pg.draw.line(screen,<span class="st">&#39;#bbbbbb&#39;</span>,(<span class="dv">0</span>,<span class="dv">192</span>),(<span class="dv">768</span>,<span class="dv">192</span>))</span>
+<span id="cb30-112"><a href="#cb30-112"></a>  pg.draw.line(screen,<span class="st">&#39;#bbbbbb&#39;</span>,(<span class="dv">0</span>,<span class="dv">240</span>),(<span class="dv">768</span>,<span class="dv">240</span>))</span>
+<span id="cb30-113"><a href="#cb30-113"></a>  pg.draw.line(screen,<span class="st">&#39;#bbbbbb&#39;</span>,(<span class="dv">0</span>,<span class="dv">288</span>),(<span class="dv">768</span>,<span class="dv">288</span>))</span>
+<span id="cb30-114"><a href="#cb30-114"></a>  pg.draw.line(screen,<span class="st">&#39;#bbbbbb&#39;</span>,(<span class="dv">0</span>,<span class="dv">336</span>),(<span class="dv">768</span>,<span class="dv">336</span>))</span>
+<span id="cb30-115"><a href="#cb30-115"></a>  pg.draw.line(screen,<span class="st">&#39;#bbbbbb&#39;</span>,(<span class="dv">0</span>,<span class="dv">384</span>),(<span class="dv">768</span>,<span class="dv">384</span>))</span>
+<span id="cb30-116"><a href="#cb30-116"></a></span>
+<span id="cb30-117"><a href="#cb30-117"></a>  <span class="co"># 移動コマンドの処理</span></span>
+<span id="cb30-118"><a href="#cb30-118"></a>  <span class="cf">if</span> cmd_move <span class="op">!=</span> <span class="op">-</span><span class="dv">1</span>:</span>
+<span id="cb30-119"><a href="#cb30-119"></a>    reimu_d <span class="op">=</span> cmd_move</span>
+<span id="cb30-120"><a href="#cb30-120"></a>    af_pos_x <span class="op">=</span> reimu_p_x</span>
+<span id="cb30-121"><a href="#cb30-121"></a>    af_pos_y <span class="op">=</span> reimu_p_y</span>
+<span id="cb30-122"><a href="#cb30-122"></a>    <span class="cf">if</span> cmd_move <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb30-123"><a href="#cb30-123"></a>      af_pos_y <span class="op">=</span> reimu_p_y <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb30-124"><a href="#cb30-124"></a>    <span class="cf">elif</span> cmd_move <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb30-125"><a href="#cb30-125"></a>      af_pos_x <span class="op">=</span> reimu_p_x <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb30-126"><a href="#cb30-126"></a>    <span class="cf">elif</span> cmd_move <span class="op">==</span> <span class="dv">2</span>:</span>
+<span id="cb30-127"><a href="#cb30-127"></a>      af_pos_y <span class="op">=</span> reimu_p_y <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb30-128"><a href="#cb30-128"></a>    <span class="cf">elif</span> cmd_move <span class="op">==</span> <span class="dv">3</span>:</span>
+<span id="cb30-129"><a href="#cb30-129"></a>      af_pos_x <span class="op">=</span> reimu_p_x <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb30-130"><a href="#cb30-130"></a>      </span>
+<span id="cb30-131"><a href="#cb30-131"></a>    <span class="cf">if</span> <span class="dv">0</span> <span class="op">&lt;=</span> af_pos_x :</span>
+<span id="cb30-132"><a href="#cb30-132"></a>      <span class="cf">if</span> af_pos_x <span class="op">&lt;=</span> <span class="dv">15</span>:</span>
+<span id="cb30-133"><a href="#cb30-133"></a>        <span class="cf">if</span> <span class="dv">0</span> <span class="op">&lt;=</span> af_pos_y : </span>
+<span id="cb30-134"><a href="#cb30-134"></a>          <span class="cf">if</span> af_pos_y <span class="op">&lt;=</span> <span class="dv">8</span> :</span>
+<span id="cb30-135"><a href="#cb30-135"></a>            <span class="cf">if</span> cmd_move <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb30-136"><a href="#cb30-136"></a>              reimu_p_y <span class="op">=</span> reimu_p_y <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb30-137"><a href="#cb30-137"></a>            <span class="cf">elif</span> cmd_move <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb30-138"><a href="#cb30-138"></a>              reimu_p_x <span class="op">=</span> reimu_p_x <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb30-139"><a href="#cb30-139"></a>            <span class="cf">elif</span> cmd_move <span class="op">==</span> <span class="dv">2</span>:</span>
+<span id="cb30-140"><a href="#cb30-140"></a>              reimu_p_y <span class="op">=</span> reimu_p_y <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb30-141"><a href="#cb30-141"></a>            <span class="cf">elif</span> cmd_move <span class="op">==</span> <span class="dv">3</span>:</span>
+<span id="cb30-142"><a href="#cb30-142"></a>              reimu_p_x <span class="op">=</span> reimu_p_x <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb30-143"><a href="#cb30-143"></a></span>
+<span id="cb30-144"><a href="#cb30-144"></a>  <span class="co"># 自キャラの描画</span></span>
+<span id="cb30-145"><a href="#cb30-145"></a>  af <span class="op">=</span> frame<span class="op">//</span><span class="dv">6</span><span class="op">%</span><span class="dv">4</span></span>
+<span id="cb30-146"><a href="#cb30-146"></a>  screen.blit(reimu_img_arr[reimu_d][af],(reimu_p_x<span class="op">*</span><span class="dv">48</span>,reimu_p_y<span class="op">*</span><span class="dv">48</span><span class="op">-</span><span class="dv">24</span>))</span>
+<span id="cb30-147"><a href="#cb30-147"></a></span>
+<span id="cb30-148"><a href="#cb30-148"></a>  <span class="co"># フレームカウンタの描画</span></span>
+<span id="cb30-149"><a href="#cb30-149"></a>  frame <span class="op">=</span> frame <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb30-150"><a href="#cb30-150"></a>  screen.blit(pg.font.Font(<span class="va">None</span>,<span class="dv">15</span>).render(<span class="ss">f&#39;</span><span class="sc">{</span>frame<span class="sc">:05}</span><span class="ss">&#39;</span>,<span class="va">True</span>,<span class="st">&#39;BLACK&#39;</span>),(<span class="dv">10</span>,<span class="dv">10</span>))</span>
+<span id="cb30-151"><a href="#cb30-151"></a>  screen.blit(pg.font.Font(<span class="va">None</span>,<span class="dv">15</span>).render(<span class="ss">f&#39;[</span><span class="sc">{</span>reimu_p_x<span class="sc">}</span><span class="ss">,</span><span class="sc">{</span>reimu_p_y<span class="sc">}</span><span class="ss">]&#39;</span>,<span class="va">True</span>,<span class="st">&#39;BLACK&#39;</span>),(<span class="dv">10</span>,<span class="dv">20</span>))</span>
+<span id="cb30-152"><a href="#cb30-152"></a>  </span>
+<span id="cb30-153"><a href="#cb30-153"></a>  <span class="co"># 画面の更新と同期</span></span>
+<span id="cb30-154"><a href="#cb30-154"></a>  pg.display.update()</span>
+<span id="cb30-155"><a href="#cb30-155"></a>  clock.tick(<span class="dv">30</span>)</span>
+<span id="cb30-156"><a href="#cb30-156"></a><span class="co"># ゲームループ [ここまで]</span></span>
+<span id="cb30-157"><a href="#cb30-157"></a></span>
+<span id="cb30-158"><a href="#cb30-158"></a>pg.quit()</span>
+<span id="cb30-159"><a href="#cb30-159"></a><span class="bu">print</span>(<span class="ss">f&#39;プログラムを「コード</span><span class="sc">{</span>exit_code<span class="sc">}</span><span class="ss">」で終了しました。&#39;</span>)</span></code></pre></div>
+      <p>上記のプログラムは論外として、ここまで作成してきた
+      <code>05_game2_01.py</code> については
+      <strong>ある程度の構造化</strong>
+      ができています。しかし、引き続き「<strong>キャラクタの移動アニメーションを追加する</strong>」「<strong>画面に登場するキャラクタを増やす</strong>」「<strong>画面にアイテムを配置する</strong>」「<strong>壁や通路などのマップ構造を導入する</strong>」といった拡張を進めることを考えると、現状レベルの構造化では
+      <span class="masked">いずれ破綻すること
+      (コードの複雑さに頭がついていけなくなること)</span>
+      は、ほぼ確実となります (あとで取り組む <strong>演習 (EX)</strong>
+      で実感できると思います)。</p>
+      <p>このため、ここからは <strong>OOP の主要な要素である</strong>
+      <strong><em>クラス</em></strong> (<strong>Class</strong>)
+      を導入することで、<code>05_game2_01.py</code> の
+      <strong>構造化のレベルをもう1段階高めていこう</strong>
+      と思います。</p>
+      <h2 data-number="5.2" id="oop-におけるクラスとは何か"><span
+      class="header-section-number">5.2</span> OOP
+      における「クラス」とは何か</h2>
+      <p>オブジェクト指向プログラミングにおける
+      <strong><em>クラス</em></strong> (<strong>Class</strong>)
+      とは、<strong>オブジェクト</strong>
+      (<strong>インスタンス/実体</strong>) を生成するための <span
+      class="masked">設計図やテンプレート (ひな形)</span>
+      の役割を担う存在、つまり <span class="masked">型 (Type) </span>
+      について定義する存在となります。</p>
+      <p>一方、<strong>オブジェクト</strong>
+      (<strong>インスタンス</strong>) とは、クラスに基づき初期化 (生成)
+      されるもので「<strong>数値や文字列などのデータを格納した変数と、主にそれらのデータを操作・処理するための関数
+      (機能)を「ひとまとめ」にして持っているモノ</strong>」となります。</p>
+      <p>クラス と オブジェクト (インスタンス)
+      の「<strong>違い</strong>」は「クラスはあくまで
+      <strong>オリジナルの型</strong> を定義した存在
+      (テンプレートのようなもの) であり (基本的には)
+      データを持っていない」、一方で「オブジェクト (インスタンス)
+      は、型に従って生成された<strong>実体</strong>であり、具体的なデータを持っている」ということです。</p>
+      <div class="note type-tips">
+      <p><strong>情報を整理</strong></p>
+      <ul>
+      <li><strong>整理1</strong>:「<strong>クラス</strong>」は「<strong>オブジェクト</strong>」を定義する
+      <strong>型</strong> のこと。オブジェクトを生成するために使用する
+      <strong>設計図やテンプレート</strong> のような存在と言える。</li>
+      <li><strong>整理2</strong>:「オブジェクト」は「<strong>インスタンス</strong>」ともよばれ、クラスに基づき生成される。オブジェクトが持っている変数のなかには具体的な
+      <strong>データ (値・内容)</strong> が存在する。</li>
+      <li><strong>整理3</strong>:「<strong>クラス</strong>」は、「どのような名前の変数を持つか」また「どのような名前のどのような処理をする関数を持つか」という情報を「型」として定義する。「オブジェクト」では「クラス」で定義された名前の変数についての具体的なデータを持つ。</li>
+      </ul>
+      </div>
+      <p>具体例として PyGame の <code>Vector2</code> (=クラス)
+      を題材に、上記についてイメージを深めていきます (以下の解説は
+      Vector2 の<a
+      href="lecture22.html#pygame-の-vector2-オブジェクト">概要</a>を理解している前提です)。実際にコードを書いたほうが分かりやすいので、前回講義で作成した
+      <code>02_vector2.ipynb</code> も VScode
+      で開いて、コードセルに以下のプログラムをコピペしてください
+      (もし、ノートブックで「ライブラリの認識」に関するエラーがでているときは<a
+      href="lecture22.html#jupyterにおけるライブラリ認識の不具合と対処">こちら</a>を確認してください)。</p>
+      <div class="sourceCode" id="cb31"
+      data-caption="クラスとオブジェクト (インスタンス) の関係を確認"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb31-2"><a href="#cb31-2"></a><span class="im">import</span> pygame <span class="im">as</span> pg</span>
+<span id="cb31-3"><a href="#cb31-3"></a></span>
+<span id="cb31-4"><a href="#cb31-4"></a><span class="co"># pg.Vector2 は `type(型)` である</span></span>
+<span id="cb31-5"><a href="#cb31-5"></a><span class="bu">print</span>(<span class="bu">type</span>(pg.Vector2)) <span class="co"># =&gt; &lt;class &#39;type&#39;&gt;</span></span>
+<span id="cb31-6"><a href="#cb31-6"></a></span>
+<span id="cb31-7"><a href="#cb31-7"></a><span class="co"># pg.Vector2 からオブジェクト (インスタンス・実体) を生成して vec に格納</span></span>
+<span id="cb31-8"><a href="#cb31-8"></a>vec <span class="op">=</span> pg.Vector2(<span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb31-9"><a href="#cb31-9"></a></span>
+<span id="cb31-10"><a href="#cb31-10"></a><span class="co"># vec は &#39;pygame.math.Vector2&#39;型のオブジェクトであることを確認</span></span>
+<span id="cb31-11"><a href="#cb31-11"></a><span class="bu">print</span>(<span class="bu">type</span>(vec)) <span class="co"># =&gt; &lt;class &#39;pygame.math.Vector2&#39;&gt;</span></span>
+<span id="cb31-12"><a href="#cb31-12"></a></span>
+<span id="cb31-13"><a href="#cb31-13"></a><span class="co"># vec は pg.Vector2 のオブジェクト(インスタンス) であることを確認</span></span>
+<span id="cb31-14"><a href="#cb31-14"></a><span class="bu">print</span>(<span class="bu">isinstance</span>(vec,pg.Vector2)) <span class="co"># =&gt; True</span></span>
+<span id="cb31-15"><a href="#cb31-15"></a></span>
+<span id="cb31-16"><a href="#cb31-16"></a><span class="bu">print</span>(vec.x)           <span class="co"># オブジェクトに x という変数があり、データが格納されている</span></span>
+<span id="cb31-17"><a href="#cb31-17"></a><span class="bu">print</span>(vec.length())    <span class="co"># オブジェクトに length という関数があり、実行できる</span></span>
+<span id="cb31-18"><a href="#cb31-18"></a><span class="bu">print</span>(vec.normalize()) <span class="co"># </span></span></code></pre></div>
+      <p>実行結果は次のようになります。</p>
+      <pre><code>&lt;class &#39;type&#39;&gt;
+&lt;class &#39;pygame.math.Vector2&#39;&gt;
+True
+2.0
+3.605551275463989
+[0.5547, 0.83205]</code></pre>
+      <p><strong>第05行目</strong> では、「型」を確認する組み込み関数の
+      <code>type</code> で <code>pg.Vector2</code>
+      が何者であるかを調べています。結果は
+      <code>&lt;class 'type'&gt;</code> が返ってきます。ここで大事なのは
+      <code>class</code> はなく <code>'type'</code>
+      の部分です。<code>pg.Vector2</code> は <code>type'</code>
+      、つまり「型」であることが確認できます。</p>
+      <p><strong>第08行目</strong> では、<code>Vector2</code>型
+      のオブジェクトを生成して変数に格納しています。一見すると
+      <strong>引数を与えて関数を実行して、その戻り値を変数に格納している</strong>
+      ように見えます。しかし、<strong>第05行目</strong> で確認したように
+      <code>pg.Vector2</code>
+      は「<strong>関数</strong>」ではなく「<strong>型
+      (クラス)</strong>」なので、ここでされている処理は <span
+      class="masked">オブジェクトを初期化 (生成) して <code>vec</code>
+      に代入する</span> というものになります。</p>
+      <p><strong>第11行目</strong> では <code>vec</code>
+      が何者であるかを調べており、結果として
+      <code>&lt;class 'pygame.math.Vector2'&gt;</code>
+      が返ってきています。先ほどと同様に、ここで大事なのは
+      <code>class</code> はなく <code>'pygame.math.Vector2'</code>
+      の部分です。これより、<code>vec</code> が <code>Vector2</code>
+      オブジェクト
+      (=「<code>pygame.math.Vector2</code>型のオブジェクト」= <span
+      class="masked"><code>pygame.math.Vector2</code>
+      クラスから生成されたオブジェクト</span>)
+      であることが確認できます。</p>
+      <p><strong>第14行目</strong> では <code>isinstance</code>
+      関数を使って「<code>vec_a</code> は <code>pg.Vector2</code> クラス
+      (型) の <span class="masked">インスタンス</span>
+      であるか?」を判定しています。結果は <code>True</code>
+      を返します。<code>isinstance</code> 関数の詳細は<a
+      href="lecture11.html#どうやって型を確認するのか">第11回講義</a>を参照してください。</p>
+      <p><strong>第16行目</strong>
+      では、オブジェクトが「データ」を持っていることを確認しています。このように
+      <span class="masked">オブジェクトが持っているデータ
+      (オブジェクトに属するデータ)</span> のことを OPP では
+      <strong><em>プロパティ</em></strong> (property)
+      や、<strong>属性</strong>
+      (attribute)、<strong>メンバー変数</strong>と呼びます。なお、正確には「<strong>プロパティ</strong>」と「<strong>属性</strong>」は違うものなのですが、しばらくは同じようなもの
+      (オブジェクトが持つデータを指すもの) として扱います。</p>
+      <ul>
+      <li>GhatGPT: <a
+      href="https://chat.openai.com/share/480204a4-b7c7-457c-9202-5f42a23fe6ed">クラスにおけるプロパティと属性の違い</a></li>
+      </ul>
+      <p><strong>第17行目</strong> と <strong>第18行目</strong>
+      では、オブジェクトが「関数」を持っていることを確認しています
+      (<code>length</code> のあとに <code>()</code>
+      がついていることで「データ」ではなく「関数」であることが分かると思います)。このように
+      <span class="masked">オブジェクトが持っている関数</span> のことを
+      OPP では <strong><em>メソッド</em></strong> (method) や
+      <strong>メンバー関数</strong> と呼びます。</p>
+      <div class="note type-tips">
+      <p><strong>情報を整理</strong></p>
+      <ul>
+      <li><strong>整理4</strong>:
+      クラス/オブジェクトに属する「変数」を「<strong>プロパティ</strong>」や「<strong>属性</strong>」「<strong>メンバー変数</strong>」という。クラスでは、プロパティ/属性の「名前」を型として定義し、そこから生成されるオブジェクトでは
+      プロパティ/属性 の具体的なデータ(内容) を持つ。</li>
+      <li><strong>整理5</strong>:
+      クラス/オブジェクトに属する「関数」を「<strong>メソッド</strong>」や「<strong>メンバー関数</strong>」という。</li>
+      </ul>
+      </div>
+      <hr />
+      <p><strong>演習1</strong>: 上記の <strong>第18行目</strong>
+      につづけて <code>print(pg.Vector2.x)</code>
+      を記述して実行せよ。つまり「オブジェクト」ではなく「クラス」である
+      <code>pg.Vector2</code> からは プロパティ <code>x</code>
+      について具体的なデータを参照できないことを確認せよ。</p>
+      <p><strong>演習2</strong>: 上記の <strong>演習1</strong>
+      につづけて <code>print(pg.Vector2.length())</code>
+      を記述して実行せよ。つまり「オブジェクト」ではなく「クラス」である
+      <code>pg.Vector2</code> からは メソッド <code>length</code>
+      を実行できない (呼び出せない) ことを確認せよ。</p>
+      <h2 data-number="5.3" id="自分でクラスを定義して使用する"><span
+      class="header-section-number">5.3</span>
+      自分でクラスを定義して使用する</h2>
+      <p>関数と同じように、<strong>自分でクラスを定義して使用すること</strong>
+      ができます。つまり、<span
+      class="masked">クラス/オブジェクトに持たせたい「変数」と「関数」</span>
+      を設計・定義し、そのクラスからオブジェクトを生成してプログラムに使用することができます。ここでは、練習として
+      Vector2 を真似た MyVector2 というクラスを作成していきます。</p>
+      <p>新しいコードセルを追加し、以下のプログラムを貼り付けて実行してみてください。なお、型のチェックに関連して
+      <strong>assert文</strong> を使用していますが、実際の開発では <span
+      class="masked">例外処理</span>
+      というものを利用することが一般的です
+      (この「<strong>例外処理</strong>」については、今後の授業のなかで扱います)。</p>
+      <div class="sourceCode" id="cb33"
+      data-caption="自作クラス「MyVector2」の定義とテスト"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a><span class="op">%</span>reset <span class="op">-</span>f</span>
+<span id="cb33-2"><a href="#cb33-2"></a><span class="kw">class</span> MyVector2 :</span>
+<span id="cb33-3"><a href="#cb33-3"></a></span>
+<span id="cb33-4"><a href="#cb33-4"></a>  <span class="co"># コンストラクタの定義</span></span>
+<span id="cb33-5"><a href="#cb33-5"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>,init_x,init_y):</span>
+<span id="cb33-6"><a href="#cb33-6"></a>    <span class="cf">assert</span> <span class="bu">type</span>(init_x) <span class="op">==</span> <span class="bu">int</span> <span class="kw">or</span> <span class="bu">type</span>(init_x) <span class="op">==</span> <span class="bu">float</span></span>
+<span id="cb33-7"><a href="#cb33-7"></a>    <span class="cf">assert</span> <span class="bu">type</span>(init_y) <span class="op">==</span> <span class="bu">int</span> <span class="kw">or</span> <span class="bu">type</span>(init_y) <span class="op">==</span> <span class="bu">float</span></span>
+<span id="cb33-8"><a href="#cb33-8"></a>    <span class="va">self</span>.x <span class="op">=</span> <span class="bu">float</span>(init_x)</span>
+<span id="cb33-9"><a href="#cb33-9"></a>    <span class="va">self</span>.y <span class="op">=</span> <span class="bu">float</span>(init_y)</span>
+<span id="cb33-10"><a href="#cb33-10"></a>  </span>
+<span id="cb33-11"><a href="#cb33-11"></a>  <span class="co"># メソッド length の定義</span></span>
+<span id="cb33-12"><a href="#cb33-12"></a>  <span class="kw">def</span> length(<span class="va">self</span>):</span>
+<span id="cb33-13"><a href="#cb33-13"></a>    <span class="cf">return</span> (<span class="va">self</span>.x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> <span class="va">self</span>.y<span class="op">**</span><span class="dv">2</span>)<span class="op">**</span><span class="fl">0.5</span></span>
+<span id="cb33-14"><a href="#cb33-14"></a>  </span>
+<span id="cb33-15"><a href="#cb33-15"></a>  <span class="co"># メソッド normalize の定義</span></span>
+<span id="cb33-16"><a href="#cb33-16"></a>  <span class="kw">def</span> normalize(<span class="va">self</span>):</span>
+<span id="cb33-17"><a href="#cb33-17"></a>    t <span class="op">=</span> <span class="va">self</span>.length()</span>
+<span id="cb33-18"><a href="#cb33-18"></a>    <span class="cf">assert</span> t <span class="op">!=</span> <span class="dv">0</span>  <span class="co"># 大きさゼロの単位ベクトルはNG</span></span>
+<span id="cb33-19"><a href="#cb33-19"></a>    <span class="cf">return</span> [<span class="va">self</span>.x<span class="op">/</span>t,<span class="va">self</span>.y<span class="op">/</span>t]</span>
+<span id="cb33-20"><a href="#cb33-20"></a></span>
+<span id="cb33-21"><a href="#cb33-21"></a><span class="co"># ここから MyVector をテストするコード</span></span>
+<span id="cb33-22"><a href="#cb33-22"></a>vec <span class="op">=</span> MyVector2(<span class="dv">2</span>,<span class="dv">3</span>) <span class="co"># オブジェクト(インスタンス)の生成</span></span>
+<span id="cb33-23"><a href="#cb33-23"></a><span class="bu">print</span>(<span class="bu">type</span>(vec))</span>
+<span id="cb33-24"><a href="#cb33-24"></a><span class="bu">print</span>(vec.x)</span>
+<span id="cb33-25"><a href="#cb33-25"></a><span class="bu">print</span>(vec.length())</span>
+<span id="cb33-26"><a href="#cb33-26"></a><span class="bu">print</span>(vec.normalize())</span></code></pre></div>
+      <p>実行結果は、次のようになります。</p>
+      <pre><code>&lt;class &#39;__main__.MyVector2&#39;&gt;
+2.0
+3.605551275463989
+[0.5547001962252291, 0.8320502943378437]</code></pre>
+      <h3 data-number="5.3.1" id="コンストラクタの定義"><span
+      class="header-section-number">5.3.1</span>
+      コンストラクタの定義</h3>
+      <p>クラスの定義は、<strong>第02行目</strong>から<strong>第19行目</strong>にかけて記述されています。</p>
+      <p>まず、<strong>第22行目</strong> の <code>MyVector2(2,3)</code>
+      のように <code>クラス名()</code> が実行されると、クラス定義の内の
+      <code>__init__</code> という名前を付けた関数が呼び出されす。この
+      <code>__init__</code> 関数は <span
+      class="masked">オブジェクトの初期化</span>
+      に使用されるもので、<strong><em>コンストラクタ</em></strong>
+      (<strong>constructor</strong>)
+      と呼ばれます。<strong>コンストラクタ</strong>とは<span
+      class="masked">「組み立てる」「構成する」</span> を意味する英語
+      “Construct” が語源です。</p>
+      <p><strong>コンストラクタ</strong> (=クラス定義に記述される
+      <code>__init__</code> 関数) の第1引数である <code>self</code>
+      は、<strong>そのオブジェクト自身を参照するため</strong>に用いられるもので、<span
+      class="masked">第1引数として必ず設定する必要</span> があります
+      (名前については <code>self</code>
+      でなくても問題ありませんが、慣例的に <code>self</code>
+      が使われます)。そして、<strong>第08行目</strong>や<strong>第09行目</strong>のように
+      <code>self.x = ...</code> のように設定された変数 <code>x</code>
+      が、<strong>第24行目</strong>の <code>vec.x</code>
+      ようにオブジェクト (インスタンス) から利用できます。</p>
+      <p>もし、次のように
+      <strong>第08行目</strong>や<strong>第09行目</strong> を
+      <code>self</code> を付けずに記述すると <strong>第24行目</strong>
+      の <code>vec.x</code>
+      ようにオブジェクトから<strong>参照することができません</strong>。また、<strong>第13行目</strong>のように、クラス定義のなかで、メソッド
+      (メンバー関数) の処理を記述する際にも、<code>x</code> や
+      <code>y</code>
+      が利用できなくなります。逆に言えば、コンストラクタのなかで一時的に使用する変数には
+      <code>self.</code> を付けません。</p>
+      <div class="sourceCode" id="cb35" data-startFrom="8"
+      data-caption="&#39;self.&#39; をつけないNG例"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 7;"><span id="cb35-8"><a href="#cb35-8"></a>x <span class="op">=</span> <span class="bu">float</span>(init_x)</span>
+<span id="cb35-9"><a href="#cb35-9"></a>y <span class="op">=</span> <span class="bu">float</span>(init_y)</span></code></pre></div>
+      <div class="note type-tips">
+      <p><strong>情報を整理</strong></p>
+      <ul>
+      <li><strong>整理6</strong>: オブジェクトの生成 (初期化)
+      を行なう関数を <strong>コンストラクタ</strong> という。Python
+      では、クラス定義のなかで <code>__init__</code> と命名した関数が
+      <strong>コンストラクタ</strong> となる。</li>
+      <li><strong>整理7</strong>: コンストラクタの第1引数には、必ず
+      <code>self</code> を設定する。</li>
+      <li><strong>整理8</strong>:
+      コンストラクタのなかで、<code>self.</code> に続けて設定した変数は
+      <strong>属性</strong> (<strong>プロパティのようなもの</strong>)
+      という扱いになる。属性となった変数は、そのクラスから生成したオブジェクトを経由して、データの書き込みや、読込みができる。また、同様にメソッドの処理を記述する際に利用できる。</li>
+      </ul>
+      </div>
+      <h3 data-number="5.3.2" id="オブジェクトの生成"><span
+      class="header-section-number">5.3.2</span> オブジェクトの生成</h3>
+      <p><strong>第22行目</strong> のように
+      <code>vec = MyVector2(2,3)</code>
+      という文を実行すると、MyVector2クラスのコンストラクタである
+      <code>__init__(self,init_x,init_y)</code>
+      で呼び出され、コンストラクタの第2引数 <code>init_x</code> には
+      <code>2</code>、第3引数 <code>init_y</code> には <code>3</code>
+      が格納され、初期化処理がされます。</p>
+      <figure>
+      <img src="figs/23/class_01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>そして、コンストラクタで初期化された
+      <strong>オブジェクト</strong> (<strong>インスタンス</strong>)
+      が戻り値となり、<strong>第22行目</strong> の変数 <code>vec</code>
+      に格納されます。</p>
+      <p>なお、<code>MyVector2(2,3)</code>
+      で呼び出されるコンストラクタの「戻り値」は、自動的に設定されるため、<code>__init__</code>
+      関数のなかに <code>return</code>
+      を記述することはできません。コンストラクタのなかで
+      <code>return</code> を記述すると
+      <code>TypeError: __init__() should return None</code>
+      が発生します。</p>
+      <div class="note type-tips">
+      <p><strong>情報を整理</strong></p>
+      <ul>
+      <li><strong>整理9</strong>: コンストラクタの内部では
+      <code>return</code> を設定してはいけない。</li>
+      </ul>
+      </div>
+      <h3 data-number="5.3.3" id="メソッドの定義"><span
+      class="header-section-number">5.3.3</span> メソッドの定義</h3>
+      <p>クラス定義内の
+      <strong>第11行目</strong>から<strong>第19行目</strong>
+      では、メソッド (メンバー関数)
+      を定義してします。クラスに定義したメソッドは
+      <strong>第25行目</strong> の <code>print(vec.length())</code>
+      のようにオブジェクトから呼び出すことができます。</p>
+      <p>コンストラクタ <code>__init__</code>
+      と、同様にメソッドにおいても、<strong>第1引数に必ず</strong>
+      <code>self</code>
+      <strong>を設定</strong>します。<strong>第25行目</strong> の
+      <code>vec.length()</code> のように <span
+      class="masked">オブジェクトから「引数なし」でメソッドを実行する場合</span>
+      であっても、<code>self</code> は必ず設定しなければなりません。</p>
+      <div class="sourceCode" id="cb36" data-startFrom="11"
+      data-caption="MyVector2 (メソッド定義の抜粋)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 10;"><span id="cb36-11"><a href="#cb36-11"></a><span class="co"># メソッド length の定義</span></span>
+<span id="cb36-12"><a href="#cb36-12"></a><span class="kw">def</span> length(<span class="va">self</span>):</span>
+<span id="cb36-13"><a href="#cb36-13"></a>  <span class="cf">return</span> (<span class="va">self</span>.x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> <span class="va">self</span>.y<span class="op">**</span><span class="dv">2</span>)<span class="op">**</span><span class="fl">0.5</span></span>
+<span id="cb36-14"><a href="#cb36-14"></a></span>
+<span id="cb36-15"><a href="#cb36-15"></a><span class="co"># メソッド normalize の定義</span></span>
+<span id="cb36-16"><a href="#cb36-16"></a><span class="kw">def</span> normalize(<span class="va">self</span>):</span>
+<span id="cb36-17"><a href="#cb36-17"></a>  t <span class="op">=</span> <span class="va">self</span>.length()</span>
+<span id="cb36-18"><a href="#cb36-18"></a>  <span class="cf">assert</span> t <span class="op">!=</span> <span class="dv">0</span>  <span class="co"># 大きさゼロの単位ベクトルはNG</span></span>
+<span id="cb36-19"><a href="#cb36-19"></a>  <span class="cf">return</span> [<span class="va">self</span>.x<span class="op">/</span>t,<span class="va">self</span>.y<span class="op">/</span>t]</span></code></pre></div>
+      <p>メソッドでは <code>self.</code>
+      で、そのオブジェクトの<strong>プロパティ</strong>
+      (<strong>属性</strong>)
+      を読み取ったり、書き換えたりすることができます。なお、メソッドのなかで<strong>一時的に使用する変数</strong>は
+      <strong>第17行目</strong> の <code>t</code> ように
+      <code>self.</code> を付けずに設定します。</p>
+      <div class="note type-tips">
+      <p><strong>情報を整理</strong></p>
+      <ul>
+      <li><strong>整理10</strong>: メソッド定義の第1引数には、必ず
+      <code>self</code> を設定する。メソッドの定義のなかでは
+      <code>self.</code> につづけて 属性 (プロパティ)
+      を参照し、値を読み取ったり、書き込んだりすることができる。</li>
+      </ul>
+      </div>
+      <hr />
+      <p><strong>演習</strong>:
+      クラスの定義に「ベクトルの大きさを「n倍」にするようなメソッド
+      <code>scale_by</code>」を追加せよ。具体的には、<strong>第26行目</strong>
+      に続けて次のようなコードを書いたとき <code>[6.0,9.0]</code>
+      のような標準出力を得たい。</p>
+      <div class="sourceCode" id="cb37" data-startFrom="11"
+      data-caption="演習"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 10;"><span id="cb37-11"><a href="#cb37-11"></a>vec.scale_by(<span class="dv">3</span>)</span>
+<span id="cb37-12"><a href="#cb37-12"></a><span class="bu">print</span>(<span class="ss">f&#39;[</span><span class="sc">{</span>vec<span class="sc">.</span>x<span class="sc">}</span><span class="ss">,</span><span class="sc">{</span>vec<span class="sc">.</span>y<span class="sc">}</span><span class="ss">]&#39;</span>) <span class="co"># =&gt; [6.0,9.0]</span></span></code></pre></div>
+      <ul>
+      <li>ヒント: <code>normalize</code> は正規化したベクトル
+      (単位ベクトル)
+      を「<strong>戻り値</strong>」として、オブジェクトの属性
+      <code>x</code> や <code>y</code>
+      には<strong>変更を加えていません</strong>でした。一方、この
+      <code>scale_by</code>
+      メソッドは、<strong>オブジェクトの属性そのものを変更すること</strong>を意図しています
+      (戻り値については不要です)。</li>
+      <li>ヒント: メソッドのヘッダとして <span
+      class="masked"><code>def scale_by(self,factor):</code></span>
+      のようなものを考える。</li>
+      <li>実装例 (解答例) は<a
+      href="https://github.com/TakeshiWada1980/Programming1-2023/blob/main/docs/code/23/MyVector2.py">こちら</a>。</li>
+      </ul>
+      <div class="note type-senior">
+      <p><strong>オブジェクトをprint関数に与えたときに出力する文字列を設定</strong></p>
+      <p>現状では、MyVector2オブジェクトを <code>print(vec)</code>
+      のように <code>print</code> 関数の「引数」に与えたときの出力は
+      <code>&lt;__main__.MyVector2 object at 0x0000018BE27D4890&gt;</code>
+      のようになってしまいます。ここで <code>at</code> 以降の数値
+      (16進数) は環境によって変わります。</p>
+      <p>このままでは不便です。これを修正するためには、クラスの定義のなかに
+      <code>__str__</code>
+      という名前のメソッドを定義し、<code>print</code> や
+      <code>str</code>
+      関数で与えた得たい<strong>文字列</strong>を「戻り値」に設定します。例えば、次のように
+      <code>__str__</code> メソッドを定義します。</p>
+      <div class="sourceCode" id="cb38"
+      data-caption="__str__メソッドの例"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a><span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
+<span id="cb38-2"><a href="#cb38-2"></a>  <span class="cf">return</span> <span class="ss">f&#39;[</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>x<span class="sc">}</span><span class="ss">,</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>y<span class="sc">}</span><span class="ss">]&#39;</span></span></code></pre></div>
+      <p>このように <code>__str__</code> メソッドが定義されていると
+      <code>print(vec)</code> としたときに <code>[2.0,3.0]</code>
+      のような標準出力を得ることができます。</p>
+      </div>
+      <h2 data-number="5.4" id="クラスを使用した構造化"><span
+      class="header-section-number">5.4</span>
+      クラスを使用した構造化</h2>
+      <p>クラスを使用して <code>05_game2_01.py</code>
+      を構造化したものが、次の <code>05_game2_02.py</code>
+      となります。まずは、プログラムを実行しみて、先と「まったく同じ動作をすること」を確認してください。</p>
+      <p>ここでは <code>PlayerCharacter</code>
+      というクラスを定義して、キャラクタ (霊夢) に関連する位置
+      (<strong>グリッド座標</strong>)
+      やサイズ、向きなどをクラスにまとめ、クラス外からは
+      <strong>属性</strong> (プロパティ)
+      として参照できるようにしました。また、<strong>メソッド</strong>
+      によって「指定の向きへの変更
+      (<code>turn_to</code>)」や「指定のグリッド座標への移動
+      (<code>move_to</code>)」をできるようにしたり、同じく
+      <strong>メソッド</strong>
+      によって「<strong>現在の向きやフレームカウントに応じた画像の取得</strong>
+      (<code>get_img</code>)」や「<strong>現在のグリッド座標にあわせた画像の位置の取得</strong>
+      (<code>get_dp</code>)」ができるようにしました。</p>
+      <div class="sourceCode" id="cb39"
+      data-caption="05_game2_02.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a><span class="im">import</span> pygame <span class="im">as</span> pg</span>
+<span id="cb39-2"><a href="#cb39-2"></a></span>
+<span id="cb39-3"><a href="#cb39-3"></a><span class="kw">class</span> PlayerCharacter:</span>
+<span id="cb39-4"><a href="#cb39-4"></a></span>
+<span id="cb39-5"><a href="#cb39-5"></a>  <span class="co"># コンストラクタ</span></span>
+<span id="cb39-6"><a href="#cb39-6"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>,init_pos,img_path):</span>
+<span id="cb39-7"><a href="#cb39-7"></a>    <span class="va">self</span>.pos  <span class="op">=</span> pg.Vector2(init_pos)</span>
+<span id="cb39-8"><a href="#cb39-8"></a>    <span class="va">self</span>.size <span class="op">=</span> pg.Vector2(<span class="dv">48</span>,<span class="dv">64</span>) </span>
+<span id="cb39-9"><a href="#cb39-9"></a>    <span class="va">self</span>.<span class="bu">dir</span>  <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb39-10"><a href="#cb39-10"></a>    img_raw <span class="op">=</span> pg.image.load(img_path)</span>
+<span id="cb39-11"><a href="#cb39-11"></a>    <span class="va">self</span>.__img_arr <span class="op">=</span> []</span>
+<span id="cb39-12"><a href="#cb39-12"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">4</span>):</span>
+<span id="cb39-13"><a href="#cb39-13"></a>      <span class="va">self</span>.__img_arr.append([])</span>
+<span id="cb39-14"><a href="#cb39-14"></a>      <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
+<span id="cb39-15"><a href="#cb39-15"></a>        p <span class="op">=</span> pg.Vector2(<span class="dv">24</span><span class="op">*</span>j,<span class="dv">32</span><span class="op">*</span>i)</span>
+<span id="cb39-16"><a href="#cb39-16"></a>        tmp <span class="op">=</span> img_raw.subsurface(pg.Rect(p,(<span class="dv">24</span>,<span class="dv">32</span>)))</span>
+<span id="cb39-17"><a href="#cb39-17"></a>        tmp <span class="op">=</span> pg.transform.scale(tmp, <span class="va">self</span>.size)</span>
+<span id="cb39-18"><a href="#cb39-18"></a>        <span class="va">self</span>.__img_arr[i].append(tmp)</span>
+<span id="cb39-19"><a href="#cb39-19"></a>      <span class="va">self</span>.__img_arr[i].append(<span class="va">self</span>.__img_arr[i][<span class="dv">1</span>])</span>
+<span id="cb39-20"><a href="#cb39-20"></a></span>
+<span id="cb39-21"><a href="#cb39-21"></a>  <span class="kw">def</span> turn_to(<span class="va">self</span>,<span class="bu">dir</span>):</span>
+<span id="cb39-22"><a href="#cb39-22"></a>    <span class="va">self</span>.<span class="bu">dir</span> <span class="op">=</span> <span class="bu">dir</span></span>
+<span id="cb39-23"><a href="#cb39-23"></a></span>
+<span id="cb39-24"><a href="#cb39-24"></a>  <span class="kw">def</span> move_to(<span class="va">self</span>,vec):</span>
+<span id="cb39-25"><a href="#cb39-25"></a>    <span class="va">self</span>.pos <span class="op">+=</span> vec </span>
+<span id="cb39-26"><a href="#cb39-26"></a>  </span>
+<span id="cb39-27"><a href="#cb39-27"></a>  <span class="kw">def</span> get_dp(<span class="va">self</span>):</span>
+<span id="cb39-28"><a href="#cb39-28"></a>    <span class="cf">return</span> <span class="va">self</span>.pos <span class="op">*</span> <span class="dv">48</span> <span class="op">-</span> pg.Vector2(<span class="dv">0</span>,<span class="dv">24</span>)</span>
+<span id="cb39-29"><a href="#cb39-29"></a>  </span>
+<span id="cb39-30"><a href="#cb39-30"></a>  <span class="kw">def</span> get_img(<span class="va">self</span>,frame):</span>
+<span id="cb39-31"><a href="#cb39-31"></a>    <span class="cf">return</span> <span class="va">self</span>.__img_arr[<span class="va">self</span>.<span class="bu">dir</span>][frame<span class="op">//</span><span class="dv">6</span><span class="op">%</span><span class="dv">4</span>]</span>
+<span id="cb39-32"><a href="#cb39-32"></a></span>
+<span id="cb39-33"><a href="#cb39-33"></a><span class="kw">def</span> main():</span>
+<span id="cb39-34"><a href="#cb39-34"></a></span>
+<span id="cb39-35"><a href="#cb39-35"></a>  <span class="co"># 初期化処理</span></span>
+<span id="cb39-36"><a href="#cb39-36"></a>  chip_s <span class="op">=</span> <span class="dv">48</span> <span class="co"># マップチップの基本サイズ</span></span>
+<span id="cb39-37"><a href="#cb39-37"></a>  map_s  <span class="op">=</span> pg.Vector2(<span class="dv">16</span>,<span class="dv">9</span>) <span class="co"># マップの横・縦の配置数 </span></span>
+<span id="cb39-38"><a href="#cb39-38"></a></span>
+<span id="cb39-39"><a href="#cb39-39"></a>  pg.init() </span>
+<span id="cb39-40"><a href="#cb39-40"></a>  pg.display.set_caption(<span class="st">&#39;ぼくのかんがえたさいきょうのげーむ II&#39;</span>)</span>
+<span id="cb39-41"><a href="#cb39-41"></a>  disp_w <span class="op">=</span> <span class="bu">int</span>(chip_s<span class="op">*</span>map_s.x)</span>
+<span id="cb39-42"><a href="#cb39-42"></a>  disp_h <span class="op">=</span> <span class="bu">int</span>(chip_s<span class="op">*</span>map_s.y)</span>
+<span id="cb39-43"><a href="#cb39-43"></a>  screen <span class="op">=</span> pg.display.set_mode((disp_w,disp_h))</span>
+<span id="cb39-44"><a href="#cb39-44"></a>  clock  <span class="op">=</span> pg.time.Clock()</span>
+<span id="cb39-45"><a href="#cb39-45"></a>  font   <span class="op">=</span> pg.font.Font(<span class="va">None</span>,<span class="dv">15</span>)</span>
+<span id="cb39-46"><a href="#cb39-46"></a>  frame  <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb39-47"><a href="#cb39-47"></a>  exit_flag <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb39-48"><a href="#cb39-48"></a>  exit_code <span class="op">=</span> <span class="st">&#39;000&#39;</span></span>
+<span id="cb39-49"><a href="#cb39-49"></a></span>
+<span id="cb39-50"><a href="#cb39-50"></a>  <span class="co"># グリッド設定</span></span>
+<span id="cb39-51"><a href="#cb39-51"></a>  grid_c <span class="op">=</span> <span class="st">&#39;#bbbbbb&#39;</span></span>
+<span id="cb39-52"><a href="#cb39-52"></a></span>
+<span id="cb39-53"><a href="#cb39-53"></a>  <span class="co"># 自キャラ移動関連</span></span>
+<span id="cb39-54"><a href="#cb39-54"></a>  cmd_move <span class="op">=</span> <span class="op">-</span><span class="dv">1</span> <span class="co"># 移動コマンドの管理変数</span></span>
+<span id="cb39-55"><a href="#cb39-55"></a>  m_vec <span class="op">=</span> [</span>
+<span id="cb39-56"><a href="#cb39-56"></a>    pg.Vector2(<span class="dv">0</span>,<span class="op">-</span><span class="dv">1</span>),</span>
+<span id="cb39-57"><a href="#cb39-57"></a>    pg.Vector2(<span class="dv">1</span>,<span class="dv">0</span>),</span>
+<span id="cb39-58"><a href="#cb39-58"></a>    pg.Vector2(<span class="dv">0</span>,<span class="dv">1</span>),</span>
+<span id="cb39-59"><a href="#cb39-59"></a>    pg.Vector2(<span class="op">-</span><span class="dv">1</span>,<span class="dv">0</span>)</span>
+<span id="cb39-60"><a href="#cb39-60"></a>  ] <span class="co"># 移動コマンドに対応したXYの移動量</span></span>
+<span id="cb39-61"><a href="#cb39-61"></a></span>
+<span id="cb39-62"><a href="#cb39-62"></a>  <span class="co"># 自キャラの生成・初期化</span></span>
+<span id="cb39-63"><a href="#cb39-63"></a>  reimu <span class="op">=</span> PlayerCharacter((<span class="dv">2</span>,<span class="dv">3</span>),<span class="st">&#39;./data/img/reimu.png&#39;</span>)</span>
+<span id="cb39-64"><a href="#cb39-64"></a></span>
+<span id="cb39-65"><a href="#cb39-65"></a>  <span class="co"># ゲームループ</span></span>
+<span id="cb39-66"><a href="#cb39-66"></a>  <span class="cf">while</span> <span class="kw">not</span> exit_flag:</span>
+<span id="cb39-67"><a href="#cb39-67"></a></span>
+<span id="cb39-68"><a href="#cb39-68"></a>    <span class="co"># システムイベントの検出</span></span>
+<span id="cb39-69"><a href="#cb39-69"></a>    cmd_move <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb39-70"><a href="#cb39-70"></a>    <span class="cf">for</span> event <span class="kw">in</span> pg.event.get():</span>
+<span id="cb39-71"><a href="#cb39-71"></a>      <span class="cf">if</span> event.<span class="bu">type</span> <span class="op">==</span> pg.QUIT: <span class="co"># ウィンドウ[X]の押下</span></span>
+<span id="cb39-72"><a href="#cb39-72"></a>        exit_flag <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb39-73"><a href="#cb39-73"></a>        exit_code <span class="op">=</span> <span class="st">&#39;001&#39;</span></span>
+<span id="cb39-74"><a href="#cb39-74"></a>      <span class="co"># 移動操作の「キー入力」の受け取り処理</span></span>
+<span id="cb39-75"><a href="#cb39-75"></a>      <span class="cf">if</span> event.<span class="bu">type</span> <span class="op">==</span> pg.KEYDOWN:</span>
+<span id="cb39-76"><a href="#cb39-76"></a>        <span class="cf">if</span> event.key <span class="op">==</span> pg.K_UP:</span>
+<span id="cb39-77"><a href="#cb39-77"></a>          cmd_move <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb39-78"><a href="#cb39-78"></a>        <span class="cf">elif</span> event.key <span class="op">==</span> pg.K_RIGHT:</span>
+<span id="cb39-79"><a href="#cb39-79"></a>          cmd_move <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb39-80"><a href="#cb39-80"></a>        <span class="cf">elif</span> event.key <span class="op">==</span> pg.K_DOWN:</span>
+<span id="cb39-81"><a href="#cb39-81"></a>          cmd_move <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb39-82"><a href="#cb39-82"></a>        <span class="cf">elif</span> event.key <span class="op">==</span> pg.K_LEFT:</span>
+<span id="cb39-83"><a href="#cb39-83"></a>          cmd_move <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb39-84"><a href="#cb39-84"></a></span>
+<span id="cb39-85"><a href="#cb39-85"></a>    <span class="co"># 背景描画</span></span>
+<span id="cb39-86"><a href="#cb39-86"></a>    screen.fill(pg.Color(<span class="st">&#39;WHITE&#39;</span>))</span>
+<span id="cb39-87"><a href="#cb39-87"></a></span>
+<span id="cb39-88"><a href="#cb39-88"></a>    <span class="co"># グリッド</span></span>
+<span id="cb39-89"><a href="#cb39-89"></a>    <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, disp_w, chip_s): <span class="co"># 縦線</span></span>
+<span id="cb39-90"><a href="#cb39-90"></a>      pg.draw.line(screen,grid_c,(x,<span class="dv">0</span>),(x,disp_h))</span>
+<span id="cb39-91"><a href="#cb39-91"></a>    <span class="cf">for</span> y <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, disp_h, chip_s): <span class="co"># 横線</span></span>
+<span id="cb39-92"><a href="#cb39-92"></a>      pg.draw.line(screen,grid_c,(<span class="dv">0</span>,y),(disp_w,y))</span>
+<span id="cb39-93"><a href="#cb39-93"></a></span>
+<span id="cb39-94"><a href="#cb39-94"></a>    <span class="co"># 移動コマンドの処理</span></span>
+<span id="cb39-95"><a href="#cb39-95"></a>    <span class="cf">if</span> cmd_move <span class="op">!=</span> <span class="op">-</span><span class="dv">1</span>:</span>
+<span id="cb39-96"><a href="#cb39-96"></a>      reimu.turn_to(cmd_move)</span>
+<span id="cb39-97"><a href="#cb39-97"></a>      af_pos <span class="op">=</span> reimu.pos <span class="op">+</span> m_vec[cmd_move] <span class="co"># 移動(仮)した座標</span></span>
+<span id="cb39-98"><a href="#cb39-98"></a>      <span class="cf">if</span> (<span class="dv">0</span> <span class="op">&lt;=</span> af_pos.x <span class="op">&lt;=</span> map_s.x<span class="op">-</span><span class="dv">1</span>) <span class="kw">and</span> (<span class="dv">0</span> <span class="op">&lt;=</span> af_pos.y <span class="op">&lt;=</span> map_s.y<span class="op">-</span><span class="dv">1</span>) :</span>
+<span id="cb39-99"><a href="#cb39-99"></a>        reimu.move_to(m_vec[cmd_move]) <span class="co"># 画面範囲内なら実際に移動</span></span>
+<span id="cb39-100"><a href="#cb39-100"></a></span>
+<span id="cb39-101"><a href="#cb39-101"></a>    <span class="co"># 自キャラの描画</span></span>
+<span id="cb39-102"><a href="#cb39-102"></a>    screen.blit(reimu.get_img(frame),reimu.get_dp())</span>
+<span id="cb39-103"><a href="#cb39-103"></a></span>
+<span id="cb39-104"><a href="#cb39-104"></a>    <span class="co"># フレームカウンタの描画</span></span>
+<span id="cb39-105"><a href="#cb39-105"></a>    frame <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb39-106"><a href="#cb39-106"></a>    frm_str <span class="op">=</span> <span class="ss">f&#39;</span><span class="sc">{</span>frame<span class="sc">:05}</span><span class="ss">&#39;</span></span>
+<span id="cb39-107"><a href="#cb39-107"></a>    screen.blit(font.render(frm_str,<span class="va">True</span>,<span class="st">&#39;BLACK&#39;</span>),(<span class="dv">10</span>,<span class="dv">10</span>))</span>
+<span id="cb39-108"><a href="#cb39-108"></a>    screen.blit(font.render(<span class="ss">f&#39;</span><span class="sc">{</span>reimu<span class="sc">.</span>pos<span class="sc">}</span><span class="ss">&#39;</span>,<span class="va">True</span>,<span class="st">&#39;BLACK&#39;</span>),(<span class="dv">10</span>,<span class="dv">20</span>))</span>
+<span id="cb39-109"><a href="#cb39-109"></a>    </span>
+<span id="cb39-110"><a href="#cb39-110"></a>    <span class="co"># 画面の更新と同期</span></span>
+<span id="cb39-111"><a href="#cb39-111"></a>    pg.display.update()</span>
+<span id="cb39-112"><a href="#cb39-112"></a>    clock.tick(<span class="dv">30</span>)</span>
+<span id="cb39-113"><a href="#cb39-113"></a></span>
+<span id="cb39-114"><a href="#cb39-114"></a>  <span class="co"># ゲームループ [ここまで]</span></span>
+<span id="cb39-115"><a href="#cb39-115"></a>  pg.quit()</span>
+<span id="cb39-116"><a href="#cb39-116"></a>  <span class="cf">return</span> exit_code</span>
+<span id="cb39-117"><a href="#cb39-117"></a></span>
+<span id="cb39-118"><a href="#cb39-118"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</span>
+<span id="cb39-119"><a href="#cb39-119"></a>  code <span class="op">=</span> main()</span>
+<span id="cb39-120"><a href="#cb39-120"></a>  <span class="bu">print</span>(<span class="ss">f&#39;プログラムを「コード</span><span class="sc">{</span>code<span class="sc">}</span><span class="ss">」で終了しました。&#39;</span>)</span></code></pre></div>
+      <p>キャラクタに関するデータや処理をクラスに分離したとことで
+      <strong>プログラムの見通し</strong>
+      が良くなりました。また、ここでは
+      1個のファイルの記述していますが、クラスだけを
+      <strong>別ファイルに分離して記述すること</strong>
+      もできます。また、このようにクラス化することで <span
+      class="masked">画面に2人目、3人目のキャラクタを登場させるとき</span>
+      の処理が極めて簡単になります。これらについて、詳しくは次回の講義のなかで扱います。</p>
+      <h2 data-number="5.5" id="ダンダーを付けた変数について"><span
+      class="header-section-number">5.5</span>
+      ダンダーを付けた変数について</h2>
+      <p>Python
+      では、<strong>2連続のアンダーバー/アンダースコア</strong> のことを
+      <strong><em>ダンダー</em></strong> (<strong>dunder</strong>,
+      <strong>double underscore の略</strong>)
+      と称します。クラス定義のなかで <code>self.__img_arr</code>
+      のようにダンダーから開始する変数名をつけると、(基本的には)
+      クラスの外部から参照できないようになります
+      (<strong>その属性の存在を存在を隠蔽することができます</strong>)。実際にクラス外部から
+      <code>self.__img_arr</code> を参照すると
+      <code>AttributeError</code> が発生します。</p>
+      <p>クラスの外部から読み取られたり、書き換えられたりすると都合の悪い
+      プロパティ/属性
+      に対しては、ダンダーからはじまる名前を設定することが推奨されます。また、メソッドについても同様に作用します。</p>
+      <h2 data-number="5.6" id="演習"><span
+      class="header-section-number">5.6</span> 演習</h2>
+      <p><strong>演習1 (EX)</strong>: <code>05_game2_02.py</code>
+      を読解せよ。また、ある程度理解できたら <code>05_game2_01.py</code>
+      をクラス化するプログラムを作成せよ。</p>
+      <hr />
+      <p>誰かがクラス設計したクラスを読解・理解することと、自分でクラスを設計・実装することは<strong>難易度は全然違います</strong>。また、難易度が高い分だけ
+      <strong>学習効果も段違いに高い</strong>
+      です。ぜひ、頑張ってみてください。また、クラス設計について「このようにすればよい」という正解はありません。ここで示した
+      <code>05_game2_02.py</code> も参考程度と考えてください。</p>
+      <!-- ---------------------------------------- -->
+    </main>
+
+    <footer class="markdown-body">
+      <p><a href="https://takeshiwada1980.github.io/Programming1-2023/">講義資料のIndexに移動</a></p>
+    </footer>
+
+    <script>
+      window.onload = function () {
+        // ナビゲーション関連
+        let openBtn = document.getElementsByClassName("openbtn")[0];
+        let navPnl = document.getElementById("g-nav");
+        openBtn.onclick = () => {
+          openBtn.classList.toggle("active");
+          navPnl.classList.toggle("panelactive");
+        };
+
+        let items = navPnl.getElementsByTagName("a");
+        Array.from(items).forEach((item) => {
+          item.onclick = () => {
+            openBtn.classList.toggle("active");
+            navPnl.classList.toggle("panelactive");
+          };
+        });
+
+        // マスク処理
+        let maskedSpans = document.getElementsByClassName("masked");
+        Array.from(maskedSpans).forEach((span) => {
+          span.onclick = () => {
+            span.classList.toggle("open");
+          };
+        });
+
+        // data-startfrom 属性の行番号カウンタのリセット
+        document.querySelectorAll("div.sourceCode").forEach(function (div) {
+          var startFrom = div.getAttribute("data-startfrom");
+          if (startFrom != null) {
+            div.style.counterReset = "pg-line " + (startFrom - 1);
+          }
+        });
+
+        // 画像にリンクを付与
+        // let images = document.querySelectorAll("figure img");
+        // Array.from(images).forEach((img) => {
+        //   img.onclick = () => {
+        //     location.href = img.getAttribute("src");
+        //   };
+        // });
+      };
+    </script>
+  </body>
+</html>

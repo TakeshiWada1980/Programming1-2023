@@ -697,13 +697,21 @@ class="toc-section-number">6.6</span> 演習③-5</a></li>
           };
         });
 
-        // 画像にリンクを付与
-        let images = document.querySelectorAll("figure img");
-        Array.from(images).forEach((img) => {
-          img.onclick = () => {
-            location.href = img.getAttribute("src");
-          };
+        // data-startfrom 属性の行番号カウンタのリセット
+        document.querySelectorAll("div.sourceCode").forEach(function (div) {
+          var startFrom = div.getAttribute("data-startfrom");
+          if (startFrom != null) {
+            div.style.counterReset = "pg-line " + (startFrom - 1);
+          }
         });
+
+        // 画像にリンクを付与
+        // let images = document.querySelectorAll("figure img");
+        // Array.from(images).forEach((img) => {
+        //   img.onclick = () => {
+        //     location.href = img.getAttribute("src");
+        //   };
+        // });
       };
     </script>
   </body>
