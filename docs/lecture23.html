@@ -1943,14 +1943,12 @@ True
 <span id="cb39-118"><a href="#cb39-118"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</span>
 <span id="cb39-119"><a href="#cb39-119"></a>  code <span class="op">=</span> main()</span>
 <span id="cb39-120"><a href="#cb39-120"></a>  <span class="bu">print</span>(<span class="ss">f&#39;プログラムを「コード</span><span class="sc">{</span>code<span class="sc">}</span><span class="ss">」で終了しました。&#39;</span>)</span></code></pre></div>
-      <p>キャラクタに関するデータや処理をクラスに分離したとことで
+      <p>キャラクタに関するデータや処理をクラスに分離したことで
       <strong>プログラムの見通し</strong>
-      が良くなりました。また、ここでは
-      1個のファイルの記述していますが、クラスだけを
-      <strong>別ファイルに分離して記述すること</strong>
-      もできます。また、このようにクラス化することで <span
-      class="masked">画面に2人目、3人目のキャラクタを登場させるとき</span>
-      の処理が極めて簡単になります。これらについて、詳しくは次回の講義のなかで扱います。</p>
+      が良くなりました。また、ここでは1個のファイルに全てのプログラムを記述していますが、クラスだけを<strong>別ファイルに分離して記述すること</strong>もできるようになります。また、このようにクラス化することで
+      <span
+      class="masked">画面に2人目、3人目のキャラクタを登場させる</span>
+      ような拡張が処理が極めて簡単になります。これらについて、詳しくは次回の講義のなかで扱います。</p>
       <h2 data-number="5.5" id="ダンダーを付けた変数について"><span
       class="header-section-number">5.5</span>
       ダンダーを付けた変数について</h2>
@@ -1961,8 +1959,8 @@ True
       と称します。クラス定義のなかで <code>self.__img_arr</code>
       のようにダンダーから開始する変数名をつけると、(基本的には)
       クラスの外部から参照できないようになります
-      (<strong>その属性の存在を存在を隠蔽することができます</strong>)。実際にクラス外部から
-      <code>self.__img_arr</code> を参照すると
+      (<strong>特定の属性の存在を隠蔽することができます</strong>)。実際にクラス外部から
+      <code>reimu.__img_arr</code> を参照しようとすると
       <code>AttributeError</code> が発生します。</p>
       <p>クラスの外部から読み取られたり、書き換えられたりすると都合の悪い
       プロパティ/属性
