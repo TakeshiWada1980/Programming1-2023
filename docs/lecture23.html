@@ -1690,9 +1690,9 @@ True
       <code>vec = MyVector2(2,3)</code>
       という文を実行すると、MyVector2クラスのコンストラクタである
       <code>__init__(self,init_x,init_y)</code>
-      で呼び出され、コンストラクタの第2引数 <code>init_x</code> には
+      が呼び出され、コンストラクタの第2引数 <code>init_x</code> には
       <code>2</code>、第3引数 <code>init_y</code> には <code>3</code>
-      が格納され、初期化処理がされます。</p>
+      が格納され、初期化の処理がされます。</p>
       <figure>
       <img src="figs/23/class_01.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
@@ -1704,7 +1704,7 @@ True
       <p>なお、<code>MyVector2(2,3)</code>
       で呼び出されるコンストラクタの「戻り値」は、自動的に設定されるため、<code>__init__</code>
       関数のなかに <code>return</code>
-      を記述することはできません。コンストラクタのなかで
+      を記述することは<strong>できません</strong>。コンストラクタのなかで
       <code>return</code> を記述すると
       <code>TypeError: __init__() should return None</code>
       が発生します。</p>
@@ -1720,16 +1720,17 @@ True
       <p>クラス定義内の
       <strong>第11行目</strong>から<strong>第19行目</strong>
       では、メソッド (メンバー関数)
-      を定義してします。クラスに定義したメソッドは
+      を定義しています。クラスに定義したメソッドは
       <strong>第25行目</strong> の <code>print(vec.length())</code>
       のようにオブジェクトから呼び出すことができます。</p>
-      <p>コンストラクタ <code>__init__</code>
-      と、同様にメソッドにおいても、<strong>第1引数に必ず</strong>
+      <p>コンストラクタである <code>__init__</code>
+      関数と同様に「メソッド」においても、<strong>第1引数には必ず</strong>
       <code>self</code>
       <strong>を設定</strong>します。<strong>第25行目</strong> の
       <code>vec.length()</code> のように <span
-      class="masked">オブジェクトから「引数なし」でメソッドを実行する場合</span>
-      であっても、<code>self</code> は必ず設定しなければなりません。</p>
+      class="masked">オブジェクトから「引数なし」でメソッドを呼び出す場合</span>
+      であっても、<code>self</code>
+      は必ず設定しなければならない点に注意してください。</p>
       <div class="sourceCode" id="cb36" data-startFrom="11"
       data-caption="MyVector2 (メソッド定義の抜粋)"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 10;"><span id="cb36-11"><a href="#cb36-11"></a><span class="co"># メソッド length の定義</span></span>
@@ -1741,35 +1742,35 @@ True
 <span id="cb36-17"><a href="#cb36-17"></a>  t <span class="op">=</span> <span class="va">self</span>.length()</span>
 <span id="cb36-18"><a href="#cb36-18"></a>  <span class="cf">assert</span> t <span class="op">!=</span> <span class="dv">0</span>  <span class="co"># 大きさゼロの単位ベクトルはNG</span></span>
 <span id="cb36-19"><a href="#cb36-19"></a>  <span class="cf">return</span> [<span class="va">self</span>.x<span class="op">/</span>t,<span class="va">self</span>.y<span class="op">/</span>t]</span></code></pre></div>
-      <p>メソッドでは <code>self.</code>
+      <p>メソッドの定義では <code>self.</code>
       で、そのオブジェクトの<strong>プロパティ</strong>
       (<strong>属性</strong>)
       を読み取ったり、書き換えたりすることができます。なお、メソッドのなかで<strong>一時的に使用する変数</strong>は
       <strong>第17行目</strong> の <code>t</code> ように
-      <code>self.</code> を付けずに設定します。</p>
+      <code>self.</code> を付けずに用います。</p>
       <div class="note type-tips">
       <p><strong>情報を整理</strong></p>
       <ul>
       <li><strong>整理10</strong>: メソッド定義の第1引数には、必ず
       <code>self</code> を設定する。メソッドの定義のなかでは
-      <code>self.</code> につづけて 属性 (プロパティ)
-      を参照し、値を読み取ったり、書き込んだりすることができる。</li>
+      <code>self.</code> につづけて<strong>属性
+      (プロパティ)</strong>にアクセスして、値を読み取ったり、書き込んだりすることができる。</li>
       </ul>
       </div>
       <hr />
-      <p><strong>演習</strong>:
-      クラスの定義に「ベクトルの大きさを「n倍」にするようなメソッド
+      <p><strong>演習</strong>: クラスの定義に「ベクトルの大きさを
+      <strong>n倍</strong> にするようなメソッド
       <code>scale_by</code>」を追加せよ。具体的には、<strong>第26行目</strong>
-      に続けて次のようなコードを書いたとき <code>[6.0,9.0]</code>
+      に続けて次のようなコードを書いて実行したとき、<code>[6.0,9.0]</code>
       のような標準出力を得たい。</p>
-      <div class="sourceCode" id="cb37" data-startFrom="11"
+      <div class="sourceCode" id="cb37" data-startFrom="27"
       data-caption="演習"><pre
-      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 10;"><span id="cb37-11"><a href="#cb37-11"></a>vec.scale_by(<span class="dv">3</span>)</span>
-<span id="cb37-12"><a href="#cb37-12"></a><span class="bu">print</span>(<span class="ss">f&#39;[</span><span class="sc">{</span>vec<span class="sc">.</span>x<span class="sc">}</span><span class="ss">,</span><span class="sc">{</span>vec<span class="sc">.</span>y<span class="sc">}</span><span class="ss">]&#39;</span>) <span class="co"># =&gt; [6.0,9.0]</span></span></code></pre></div>
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 26;"><span id="cb37-27"><a href="#cb37-27"></a>vec.scale_by(<span class="dv">3</span>)</span>
+<span id="cb37-28"><a href="#cb37-28"></a><span class="bu">print</span>(<span class="ss">f&#39;[</span><span class="sc">{</span>vec<span class="sc">.</span>x<span class="sc">}</span><span class="ss">,</span><span class="sc">{</span>vec<span class="sc">.</span>y<span class="sc">}</span><span class="ss">]&#39;</span>) <span class="co"># =&gt; [6.0,9.0]</span></span></code></pre></div>
       <ul>
       <li>ヒント: <code>normalize</code> は正規化したベクトル
       (単位ベクトル)
-      を「<strong>戻り値</strong>」として、オブジェクトの属性
+      を「<strong>戻り値</strong>」とするだけで、オブジェクトの属性
       <code>x</code> や <code>y</code>
       には<strong>変更を加えていません</strong>でした。一方、この
       <code>scale_by</code>
@@ -1777,22 +1778,22 @@ True
       (戻り値については不要です)。</li>
       <li>ヒント: メソッドのヘッダとして <span
       class="masked"><code>def scale_by(self,factor):</code></span>
-      のようなものを考える。</li>
+      のようなものを考え、処理を考えてみてください。</li>
       <li>実装例 (解答例) は<a
       href="https://github.com/TakeshiWada1980/Programming1-2023/blob/main/docs/code/23/MyVector2.py">こちら</a>。</li>
       </ul>
       <div class="note type-senior">
-      <p><strong>オブジェクトをprint関数に与えたときに出力する文字列を設定</strong></p>
+      <p><strong>オブジェクトをprint関数に与えたときに出力する文字列のカスタマイズ</strong></p>
       <p>現状では、MyVector2オブジェクトを <code>print(vec)</code>
       のように <code>print</code> 関数の「引数」に与えたときの出力は
       <code>&lt;__main__.MyVector2 object at 0x0000018BE27D4890&gt;</code>
-      のようになってしまいます。ここで <code>at</code> 以降の数値
-      (16進数) は環境によって変わります。</p>
+      のようになってしまいます。ここで <code>at</code>
+      以降の16進数表記は環境によって変わります。</p>
       <p>このままでは不便です。これを修正するためには、クラスの定義のなかに
       <code>__str__</code>
-      という名前のメソッドを定義し、<code>print</code> や
+      という名前の特殊メソッドを定義し、<code>print</code> や
       <code>str</code>
-      関数で与えた得たい<strong>文字列</strong>を「戻り値」に設定します。例えば、次のように
+      関数が呼び出された際に返すべき「<strong>文字列</strong>」をこのメソッドの<strong>戻り値</strong>として設定します。例えば、次のように
       <code>__str__</code> メソッドを定義します。</p>
       <div class="sourceCode" id="cb38"
       data-caption="__str__メソッドの例"><pre
@@ -1800,27 +1801,27 @@ True
 <span id="cb38-2"><a href="#cb38-2"></a>  <span class="cf">return</span> <span class="ss">f&#39;[</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>x<span class="sc">}</span><span class="ss">,</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>y<span class="sc">}</span><span class="ss">]&#39;</span></span></code></pre></div>
       <p>このように <code>__str__</code> メソッドが定義されていると
       <code>print(vec)</code> としたときに <code>[2.0,3.0]</code>
-      のような標準出力を得ることができます。</p>
+      のような視覚的に分かりやすい出力を得ることができます。</p>
       </div>
       <h2 data-number="5.4" id="クラスを使用した構造化"><span
       class="header-section-number">5.4</span>
       クラスを使用した構造化</h2>
       <p>クラスを使用して <code>05_game2_01.py</code>
-      を構造化したものが、次の <code>05_game2_02.py</code>
-      となります。まずは、プログラムを実行しみて、先と「まったく同じ動作をすること」を確認してください。</p>
-      <p>ここでは <code>PlayerCharacter</code>
-      というクラスを定義して、キャラクタ (霊夢) に関連する位置
-      (<strong>グリッド座標</strong>)
-      やサイズ、向きなどをクラスにまとめ、クラス外からは
+      を構造化した一例が、次の <code>05_game2_02.py</code>
+      となります。まず、このプログラムを実行し、元のバージョンと「完全に同じ動作をすること」を確認してください。</p>
+      <p>この例では <code>PlayerCharacter</code>
+      というクラスを定義しています。このクラスは、キャラクタ (霊夢)
+      に関連する位置 (<strong>グリッド座標</strong>)
+      やサイズ、向きなどをまとめ、クラスの外部からは
       <strong>属性</strong> (プロパティ)
-      として参照できるようにしました。また、<strong>メソッド</strong>
-      によって「指定の向きへの変更
-      (<code>turn_to</code>)」や「指定のグリッド座標への移動
+      として参照できるようにしています。また、<strong>メソッド</strong>
+      を用いて「指定した向きへの変更
+      (<code>turn_to</code>)」や「指定したグリッド座標への移動
       (<code>move_to</code>)」をできるようにしたり、同じく
       <strong>メソッド</strong>
-      によって「<strong>現在の向きやフレームカウントに応じた画像の取得</strong>
-      (<code>get_img</code>)」や「<strong>現在のグリッド座標にあわせた画像の位置の取得</strong>
-      (<code>get_dp</code>)」ができるようにしました。</p>
+      に用いて「<strong>現在の向きやフレームカウントに応じて画像を取得</strong>
+      (<code>get_img</code>)」や「<strong>現在のグリッド座標にあわせた画像の位置を取得</strong>
+      (<code>get_dp</code>)」する機能も実装しています。</p>
       <div class="sourceCode" id="cb39"
       data-caption="05_game2_02.py"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a><span class="im">import</span> pygame <span class="im">as</span> pg</span>
@@ -1956,15 +1957,13 @@ True
       では、<strong>2連続のアンダーバー/アンダースコア</strong> のことを
       <strong><em>ダンダー</em></strong> (<strong>dunder</strong>,
       <strong>double underscore の略</strong>)
-      と称します。クラス定義のなかで <code>self.__img_arr</code>
-      のようにダンダーから開始する変数名をつけると、(基本的には)
-      クラスの外部から参照できないようになります
-      (<strong>特定の属性の存在を隠蔽することができます</strong>)。実際にクラス外部から
-      <code>reimu.__img_arr</code> を参照しようとすると
-      <code>AttributeError</code> が発生します。</p>
-      <p>クラスの外部から読み取られたり、書き換えられたりすると都合の悪い
-      プロパティ/属性
-      に対しては、ダンダーからはじまる名前を設定することが推奨されます。また、メソッドについても同様に作用します。</p>
+      と呼びます。クラス定義内で <code>self.__img_arr</code>
+      のようにダンダーで始まる変数名を使用すると、その変数は (基本的に)
+      クラスの外部からはアクセス不可能になります。これは、特定の属性の存在を隠蔽する「カプセル化」というオブジェクト指向プログラミングの概念を実現するのに役立ちます。もし、クラス外部から
+      <code>reimu.__img_arr</code> のように <code>.__img_arr</code>
+      にアクセスしようとすると <code>AttributeError</code>
+      が発生します。</p>
+      <p>クラスの外部から変数の内容を読み取られたり、書き換えられたりすると都合の悪い場合は、ダンダーで始まる名前を設定することが推奨されます。また、この原則はメソッドに対しても同様に適用されます。</p>
       <h2 data-number="5.6" id="演習"><span
       class="header-section-number">5.6</span> 演習</h2>
       <p><strong>演習1 (EX)</strong>: <code>05_game2_02.py</code>
