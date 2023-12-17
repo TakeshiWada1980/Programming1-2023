@@ -168,22 +168,29 @@ class="toc-section-number">5.6</span> 演習</a></li>
       <li>小テスト❶の「再テスト」を含めた評価の方法は<a
       href="lecture18.html#連絡事項">第18回講義の連絡事項</a>を参照してください。</li>
       </ul></li>
+      </ul>
+      <blockquote>
+      <p>【成績評価の方法】<br> 1.
+      課題の提出状況とその内容（80%）ならびに授業中に実施する小テスト（20%）を総合して評価する。<br>
+      2. 100点法により評価し、60点以上を合格とする。</p>
+      </blockquote>
+      <ul>
       <li>次回、12月25日 (月)
       の1-2時限は教員の都合により「<strong>休講</strong>
-      (オンデマンド授業)」とさせてください。いつもと同じようにウェブテキストを用意しておくので、各自、教室や自宅で取り組みをお願いします。不明点などは、LINEやメール、対面で対応します。</li>
-      <li>2024年3月までに <strong>OMUメールのセットアップ
-      (スマホアプリの設定)</strong>、gmail や GoogleDrive
-      のバックアップなどが必要となります。詳しくは <a
+      (オンデマンド授業)」とさせてください。いつもと同じようにウェブテキストを用意しておくので、各自、教室や自宅で取り組みをお願いします。不明点などはLINEやメール、対面で対応します。</li>
+      <li>2024年3月までに
+      <strong>OMUメールのセットアップ</strong>して、また、現行の gmail
+      や GoogleDrive をバックアップする必要があります。詳しくは <a
       href="https://classroom.google.com/c/NjAyNDMyMzIwNzg2/m/NjQ1OTk3Nzc5NzAy/details">GoogleClassroom</a>
       を参照してください。
       <ul>
-      <li>PCブラウザからは <a
+      <li>PCからは <a
       href="https://outlook.office365.com">https://outlook.office365.com</a>
-      からメールを開くことができます
-      (ブックマークしておいてください)。モバイルアプリのインストールについては
-      <a
+      にアクセスするとウェブメールとして開くことができます
+      (URLをブックマークしておいてください)。</li>
+      <li>モバイルアプリのインストールについては <a
       href="https://classroom.google.com/c/NjAyNDMyMzIwNzg2/m/NjQ1OTk3Nzc5NzAy/details">GoogleClassroom</a>
-      の資料を確認してください。</li>
+      の添付資料を確認してください。</li>
       </ul></li>
       </ul>
       <hr />
@@ -207,12 +214,10 @@ class="toc-section-number">5.6</span> 演習</a></li>
       <h2 data-number="1.2" id="今回講義の達成目標"><span
       class="header-section-number">1.2</span> 今回講義の達成目標</h2>
       <ul>
-      <li>あああ</li>
-      <li>いいいい</li>
-      <li>ううううう</li>
+      <li><strong>オブジェクト指向プログラミング</strong>における基本的な用語（クラス、オブジェクト（インスタンス）、プロパティ、メソッド、コンストラクタなど）について理解し、具体的なイメージを持つことができる。</li>
+      <li><strong>クラス</strong>を定義するコードを記述できる。</li>
+      <li>既存のプログラムにクラスを導入して<strong>構造化</strong>することができる。</li>
       </ul>
-      <p>https://github.com/microsoft/vscode-python/wiki/Activate-Environments-in-Terminal-Using-Environment-Variables</p>
-      <p>今回の講義では、以下のように2人のキャラクタが・・・</p>
       <h1 data-number="2"
       id="キャラクタの表示-pygameを使った画像処理"><span
       class="header-section-number">2</span> キャラクタの表示
@@ -227,7 +232,7 @@ class="toc-section-number">5.6</span> 演習</a></li>
       href="lecture22.html#前処理した画像の保存">前回講義</a>
       のなかでダウンロードして、キャラ単位
       (4方向x3アニメーションパターンの範囲) にトリミングした
-      <code>data/img/reimu.png</code> を、PyGame
+      <code>data/img/reimu.png</code> を読込み、PyGame
       を使って「<strong>1ポーズごと</strong>」に切り出して、さらに「<strong>縦横2倍</strong>」に拡大して画面に配置する処理を行ないます。</p>
       <figure>
       <img src="figs/22/vscode-02.png" alt="img" />
@@ -246,7 +251,7 @@ class="toc-section-number">5.6</span> 演習</a></li>
       href="lecture22.html#演習のための環境構築動作確認">前回に構築した開発環境</a>のなかで
       <code>05_game2_00-a.py</code>
       というファイルを新規作成して、以下のプログラムを貼り付けて実行し、その動作を確認してください
-      (プログラムを読むと分かるように、現段階では<strong>まだキャラクタを操作することはできません</strong>)。</p>
+      (プログラムを読むと分かるように、現段階では<strong>まだキャラクタを「操作すること」はできません</strong>)。</p>
       <div class="sourceCode" id="cb1"
       data-caption="05_game2_00-a.py"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> pygame <span class="im">as</span> pg</span>
@@ -325,11 +330,10 @@ class="toc-section-number">5.6</span> 演習</a></li>
 <span id="cb1-74"><a href="#cb1-74"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</span>
 <span id="cb1-75"><a href="#cb1-75"></a>  code <span class="op">=</span> main()</span>
 <span id="cb1-76"><a href="#cb1-76"></a>  <span class="bu">print</span>(<span class="ss">f&#39;プログラムを「コード</span><span class="sc">{</span>code<span class="sc">}</span><span class="ss">」で終了しました。&#39;</span>)</span></code></pre></div>
-      <p>このプログラムの
-      <strong>基本構造については前回の講義のなかで解説済み</strong>
-      です。新たな要素 (プログラム内のコメントでいえば
+      <p>このプログラムの<strong>基本構造については前回の講義のなかで「解説済み」</strong>です。新たな要素
+      (プログラム内に記載したコメントでいえば
       <code>#自キャラの画像読込み</code>、<code>#グリッド</code>、<code>#自キャラの描画</code>
-      に関係する部分) について、以下、解説していきます。</p>
+      に関係する部分) について、以降、解説していきます。</p>
       <h2 data-number="2.1" id="画像の切り出しと拡大の処理"><span
       class="header-section-number">2.1</span>
       画像の「切り出し」と「拡大」の処理</h2>
@@ -366,11 +370,11 @@ class="toc-section-number">5.6</span> 演習</a></li>
       を引数に与えて切り出しをして、その結果を変数 <code>tmp</code>
       に格納しています。具体的に言えば <code>reimu.png</code> の
       (X,Y)=(24,64) を左上として (W,H) = (24,32)
-      の矩形領域を切り取って、変数 <code>tmp</code>
+      の矩形領域を切り取った画像を、変数 <code>tmp</code>
       に格納しています。※<a
       href="https://www.google.com/search?q=矩形">矩形</a>は <span
       class="masked">くけい</span> と読みます。</p>
-      <p>さらに、<strong>第32行目</strong> で
+      <p>さらに、<strong>第33行目</strong> で
       <code>pg.transform.scale</code>
       によって「拡大処理」をしています。<code>scale</code>
       関数の第1引数には「元画像」、第2引数には <span
@@ -381,7 +385,7 @@ class="toc-section-number">5.6</span> 演習</a></li>
       <span class="masked">唯一の正解の書き方/表現</span>
       というものは存在しません。</p>
       <div class="sourceCode" id="cb3" data-startFrom="30"
-      data-caption="05_game2_00-a.py(抜粋)"><pre
+      data-caption="05_game2_00-a.py(抜粋)・オリジナル"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 29;"><span id="cb3-30"><a href="#cb3-30"></a>pose_p <span class="op">=</span> pg.Vector2(<span class="dv">24</span>,<span class="dv">64</span>) <span class="co"># 前向き・2番目のポーズの位置　</span></span>
 <span id="cb3-31"><a href="#cb3-31"></a>pose_s <span class="op">=</span> pg.Vector2(<span class="dv">24</span>,<span class="dv">32</span>) <span class="co"># ポーズのサイズ</span></span>
 <span id="cb3-32"><a href="#cb3-32"></a>tmp <span class="op">=</span> reimu_img_raw.subsurface(pg.Rect(pose_p,pose_s))</span></code></pre></div>
@@ -422,23 +426,24 @@ class="toc-section-number">5.6</span> 演習</a></li>
       と <code>pg.transform.rotozoom</code>
       では出力に「差異」が生じます。詳しくは、<span
       class="masked">実際に実行結果 (画面出力の違い) を比較した</span>
-      うえで、ウェブ検索などを利用して理由を探ってみてください。</p>
+      うえで、ウェブ検索などを利用して<strong>内部処理の違い</strong>を探ってみてください。</p>
       <div class="sourceCode" id="cb10" data-startFrom="33"
       data-caption="拡大処理に transformtozoom を使用する方法"><pre
-      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 32;"><span id="cb10-33"><a href="#cb10-33"></a>reimu_img <span class="op">=</span> pg.transformtozoom(tmp,<span class="dv">0</span>,<span class="dv">2</span>)</span></code></pre></div>
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 32;"><span id="cb10-33"><a href="#cb10-33"></a>reimu_img <span class="op">=</span> pg.transformtozoom(tmp,<span class="dv">0</span>,<span class="dv">2</span>) <span class="co"># 0度回転・2倍拡大</span></span></code></pre></div>
       <hr />
       <p><strong>演習1</strong>:
       ゲーム画面に表示されるキャラクタが「前向き」「(ゼロオリジンで)
       <strong>0番目</strong>のアニメーションポーズ」になるようにせよ。また「(ゼロオリジンで)
-      <strong>2番目</strong>のアニメーションポーズ」になるようにせよ。</p>
+      <strong>2番目</strong>のアニメーションポーズ」になるようにせよ。ヒント:
+      <strong>第30行目</strong> の <code>pose_p</code>。</p>
       <p><strong>演習2</strong>:
       ゲーム画面に表示されるキャラクタが「<strong>左向き</strong>」「(ゼロオリジンで)
       1番目のアニメーションポーズ」になるようにせよ。また「<strong>右向き</strong>」になるようにせよ。</p>
       <h2 data-number="2.2" id="グリッドの描画"><span
       class="header-section-number">2.2</span> グリッドの描画</h2>
-      <p>以降の開発において動作確認 (デバッグ)
-      を簡単に行なうために、補助機能として「<strong>グリッド
-      (マス目)</strong>」を表示させています。グリッドの描画は、主に
+      <p>以降の開発における動作確認 (デバッグ)
+      を簡単にするために、画面に「<strong>グリッド
+      (マス目)</strong>」を表示しています。グリッドの描画は、主に
       <strong>第49行目</strong>から<strong>第53行目</strong>
       で行なっています。</p>
       <div class="sourceCode" id="cb11" data-startFrom="06"
@@ -464,7 +469,8 @@ class="toc-section-number">5.6</span> 演習</a></li>
       <span class="masked">線分の終点座標のVector2やタプル/リスト</span>
       を与えます。</p>
       <p><strong>線幅</strong> の設定については<a
-      href="https://www.pygame.org/docs/ref/draw.html#pygame.draw.line">公式リファレンス</a>を参照してください。また、アンチエイリアシングした線を描画する
+      href="https://www.pygame.org/docs/ref/draw.html#pygame.draw.line">公式リファレンス</a>を参照してください。また、<span
+      class="masked">アンチエイリアシングした線分</span> を描画する
       <code>pg.draw.lin.aaline</code> 関数も存在します。</p>
       <hr />
       <p><strong>演習</strong>:
@@ -479,8 +485,8 @@ class="toc-section-number">5.6</span> 演習</a></li>
       スクリーン上 (画面上) の (X,Y) = (96,120) の位置に、48x64
       のキャラクタ画像の <span class="masked">左上</span>
       をあわせて配置するようなプログラムになっています。キャラクタを
-      <strong>グリッドの中央にあわせるための調整</strong>を含めて
-      <code>(96,120)</code> という値にしています (
+      <span class="masked">グリッドの中央にあわせる</span> ための調整
+      を含めて <code>(96,120)</code> という値にしています (
       なぜこのような値にしているか? を考えてみてください )。</p>
       <div class="sourceCode" id="cb14" data-startFrom="57"
       data-caption="05_game2_00-a.py(抜粋)"><pre
@@ -488,10 +494,10 @@ class="toc-section-number">5.6</span> 演習</a></li>
 <span id="cb14-58"><a href="#cb14-58"></a>dp <span class="op">=</span> pg.Vector2(<span class="dv">96</span>,<span class="dv">120</span>)</span>
 <span id="cb14-59"><a href="#cb14-59"></a>screen.blit(reimu_img,dp)</span></code></pre></div>
       <hr />
-      <p><strong>演習1</strong>: キャラクタがゼロオリジンの
-      <strong>グリッド座標 (5,3)
-      </strong>に表示されるように変更せよ。ただし、<strong>第26行目</strong>
-      を <code>reimu_p = pg.Vector2(5,3)</code>
+      <p><strong>演習1</strong>: キャラクタが(ゼロオリジンの)
+      <strong>グリッド座標 (5,3)</strong>
+      に表示されるように変更せよ。ただし、<strong>第26行目</strong> を
+      <code>reimu_p = pg.Vector2(5,3)</code>
       に変更し、それを参照する計算によってキャラクタの描画位置
       <code>dp</code> を設定すること (つまり <code>reimu_p</code>
       の値に対応してキャラクタの表示位置が変化するようにせよ)。解答例:<span
@@ -512,7 +518,9 @@ class="toc-section-number">5.6</span> 演習</a></li>
       <strong>キャラクタの表示位置が変化するようにしたプログラム</strong>
       (=先の演習の解答例) に <span
       class="masked">カーソルキーによる移動機能</span>
-      を追加実装したものになります。現状では、1マス単位の離散的な移動、かつ、FC版ドラクエ1のように「カニ歩き」しかできません。</p>
+      を追加実装したものになります。現状では
+      <strong>1マス単位の離散的な移動</strong> かつ
+      <strong>FC版ドラクエ1のように「カニ歩き」</strong>しかできません。</p>
       <p>追加実装された部分は
       <strong>第23行目</strong>から<strong>第30行目</strong> の
       <code>#自キャラ移動関連のパラメータ設定</code>、<strong>第51行目</strong>から<strong>第60行目</strong>
@@ -623,7 +631,7 @@ class="toc-section-number">5.6</span> 演習</a></li>
       カーソルキーを押下し続けた場合、どのように処理されるのか
       (キャラクタが1回だけ (1マスだけ)
       移動するのか、連続的に移動するのか) を確認せよ。</p>
-      <p>以下、追加実装した部分のみを解説をしていきます。</p>
+      <p>以下、「<strong>追加実装した部分のみ</strong>」を解説をしていきます。</p>
       <h2 data-number="3.1"
       id="キャラクタ移動関連のパラメータ設定"><span
       class="header-section-number">3.1</span>
@@ -660,8 +668,9 @@ class="toc-section-number">5.6</span> 演習</a></li>
       への移動入力あり</li>
       </ul>
       <p><strong>第25行目</strong> から <strong>第30行目</strong>
-      では、移動コマンドに対応したXYの移動量を Vector2
-      オブジェクトのリストとして定義しています。例えば、移動コマンド
+      では、移動コマンドに対応したXYの移動量を
+      <strong>Vector2オブジェクトのリスト</strong>
+      として定義しています。例えば、<strong>移動コマンド</strong>
       <code>cmd_move</code> が <code>1</code> (=右方向への移動入力)
       のとき、<code>m_vec[cmd_move]</code> は <span
       class="masked"><code>pg.Vector2(1,0)</code></span>
@@ -673,9 +682,9 @@ class="toc-section-number">5.6</span> 演習</a></li>
       <p>ここで、移動コマンドの 整数値 <code>0,1,2,3</code> を
       <code>上,右,下,左</code>
       に対応させているのは、<code>data/img/reimu.png</code>
-      (=RPGツクール2000 の移動キャラのフォーマット) の画像ならびである
-      <code>上,右,下,左</code>
-      とあわせているためです。このようにしておくことで、あとでキャラクタの
+      (=RPGツクール2000 の移動キャラのフォーマット)
+      の画像ならびが、上から順に <code>上,右,下,左</code>
+      となっているためです。このようにしておくことで、あとでキャラクタの
       <span
       class="masked">「向き」にあわせた画像を2次元リストから参照</span>
       する際、シンプルにコードが記述できるようになります。</p>
@@ -686,8 +695,8 @@ class="toc-section-number">5.6</span> 演習</a></li>
       <h2 data-number="3.2" id="移動操作のキー入力の受け取り処理"><span
       class="header-section-number">3.2</span>
       移動操作の「キー入力」の受け取り処理</h2>
-      <p><strong>第51行目</strong>から<strong>第60行目</strong>では、ゲームループのなかで<strong>ユーザーからの移動操作の</strong>「<strong>キーボード入力</strong>」を受け取り、それを
-      整数値 ( <code>-1</code>から<code>3</code> ) に変換して
+      <p><strong>第51行目</strong>から<strong>第60行目</strong>では、ゲームループのなかで<strong>ユーザーからの移動操作の</strong>「<strong>キーボード入力</strong>」を受け取り、それ<strong>整数値</strong>
+      ( <code>-1</code>から<code>3</code> ) に変換して
       <code>cmd_move</code> に格納しています。</p>
       <div class="sourceCode" id="cb17" data-startFrom="45"
       data-caption="05_game2_00-b.py(抜粋)"><pre
@@ -725,7 +734,7 @@ class="toc-section-number">5.6</span> 演習</a></li>
       以外の値が入っているときに <code>reimu_p</code>
       (=キャラクタのグリッド座標位置)
       を更新する処理をしています。ただし、<strong>第75行目</strong>
-      のif文を使って <span
+      の「if文」を使って <span
       class="masked">キャラクタが画面外には移動しない</span>
       ように工夫をしています。</p>
       <div class="sourceCode" id="cb18" data-startFrom="71"
@@ -754,7 +763,7 @@ class="toc-section-number">5.6</span> 演習</a></li>
       <p><code>05_game2_01.py</code>
       というファイルを新規作成して、以下のプログラムを貼り付けて実行し、動作を確認してください。このプログラムは、変数
       <code>reimu_d</code> の値に対応して <span
-      class="masked">キャラクタの向きに応じた画像が表示される</span>
+      class="masked">キャラクタの「向き」に応じた画像が表示される</span>
       ようにして、さらにキャラクタが「<strong>足踏みのアニメーション</strong>」をするように改良したものになります。</p>
       <p>ついに <strong>100行を超えるプログラム</strong>
       になってきましたが、先のセクション の
@@ -897,7 +906,7 @@ class="toc-section-number">5.6</span> 演習</a></li>
       を与えればアクセスできるか答えよ。<strong>解答</strong>: <span
       class="masked"><code>reimu_img_arr[2][1]</code></span></p>
       <p><strong>演習2</strong>:
-      「<strong>左向き</strong>・<strong>3番目</strong>のポーズ」は、<code>reimu_img_arr</code>
+      「<strong>左向き</strong>・<strong>2番目</strong>のポーズ」は、<code>reimu_img_arr</code>
       に対してどのようにインデックスを与えればアクセスできるか答えよ。<strong>解答</strong>:
       <span class="masked"><code>reimu_img_arr[3][2]</code></span></p>
       <hr />
@@ -944,7 +953,8 @@ class="toc-section-number">5.6</span> 演習</a></li>
       <p>なお、<strong>第45行目</strong>の処理
       (第1列目の内容を第3列目に複製) は<a
       href="lecture13.html#リストの浅いコピーと深いコピー">浅いコピー(Shallow
-      Copy)</a>に相当する処理であるため、メモリ使用量をほとんど圧迫しません。</p>
+      Copy)</a>に相当する処理であるため、<span
+      class="masked">メモリ使用量をほとんど圧迫</span> しません。</p>
       <hr />
       <p><strong>演習</strong>:
       <strong>第46行目</strong>に、次のコードを追加して
@@ -960,7 +970,8 @@ class="toc-section-number">5.6</span> 演習</a></li>
 <span id="cb21-4"><a href="#cb21-4"></a><span class="cf">assert</span> reimu_img_arr[<span class="dv">2</span>][<span class="dv">1</span>] <span class="op">==</span> reimu_img_arr[<span class="dv">2</span>][<span class="dv">3</span>]</span>
 <span id="cb21-5"><a href="#cb21-5"></a><span class="cf">assert</span> reimu_img_arr[<span class="dv">3</span>][<span class="dv">1</span>] <span class="op">==</span> reimu_img_arr[<span class="dv">3</span>][<span class="dv">3</span>]</span></code></pre></div>
       <p>上記の assert では、<code>reimu_img_arr</code>
-      の各行の「1列目」と「3列目」に同じ画像 (=前足が揃っているポーズ)
+      の各行の<strong>「1列目」と「3列目」に同じ画像</strong>
+      (=前足が揃っているポーズ)
       が格納されていることを確認しています。</p>
       <h2 data-number="4.2"
       id="キャラクタの向きとアニメーションの切り替え処理"><span
@@ -1132,9 +1143,11 @@ frame = 1224   af = 0</code></pre>
       <p><br></p>
       <p><strong>演習1</strong>: <code>05_game2_01.py</code> の
       <strong>第85行目</strong> を <code>af = frame // 6 % 3</code>
-      とすると
-      (「右足が前のポーズ」→「両足が揃ったポーズ」→「左足が揃ったポーズ」→「右足が前のポーズ」→
-      「両足が揃ったポーズ」→「左足が揃ったポーズ」→ …
+      とすると (「右足が前のポーズ <code>0</code>」→「両足が揃ったポーズ
+      <code>1</code>」→「左足が揃ったポーズ
+      <code>2</code>」→「<strong>右足が前のポーズ</strong>
+      <code>0</code>」→ 「両足が揃ったポーズ
+      <code>1</code>」→「左足が揃ったポーズ <code>2</code>」→ …
       の繰り返しパターンにすると)
       ぎこちないアニメーションになることを確認せよ。</p>
       <p><strong>演習2</strong>: <code>05_game2_01.py</code>
@@ -1148,7 +1161,7 @@ frame = 1224   af = 0</code></pre>
       <h2 data-number="4.3" id="次のセクションを読み進める前に"><span
       class="header-section-number">4.3</span>
       次のセクションを読み進める前に…</h2>
-      <p>次のセクションは <code>05_game2_02.py</code>
+      <p>次のセクションは <code>05_game2_1.py</code>
       の「<strong>構造</strong>」や「<strong>流れ</strong>」を理解していることが前提となります。つまり
       <span
       class="masked">各変数や各定数に格納される値の役割と、それらの依存関係、それに基づき決定される処理の順序関係</span>について、(プログラムコードを参照しなくとも)
@@ -1175,7 +1188,7 @@ frame = 1224   af = 0</code></pre>
       class="masked">依存関係</span>について整理できているか、また依存関係に基づく
       <span class="masked">処理順序</span>
       が整理できているかについて確認するものです。</p>
-      <p>これらが不十分なまま、次のセクションを読み進めても余計に混乱するだけなので、無理せずに、再度、<code>05_game2_02.py</code>
+      <p>これらが不十分なまま、次のセクションを読み進めても余計に混乱するだけなので、無理せずに、再度、<code>05_game2_01.py</code>
       の理解に努めてください。</p>
       <h1 data-number="5"
       id="オブジェクト指向プログラミング-超々入門"><span
@@ -1237,7 +1250,7 @@ frame = 1224   af = 0</code></pre>
       は決して難しいというものではなく</strong>、むしろ、<strong>煩雑なコーディングを減らして生産性を高めてくれる存在</strong>
       となります。例えば <code>Vector2</code> を使わずに
       <code>[2,3]</code> のようなリストだけで
-      <code>05_game2_02.py</code>
+      <code>05_game2_01.py</code>
       を実装することを想像してみてください。可読性は大幅に低下しますし、各種計算も非常に面倒になっていたはずです。</p>
       <p>ここからは、「他者が設計した既存のクラスを利用する」のではなく「<strong>自分自身でクラスを設計する</strong>」というステージの
       OOP の学習もしていきます。</p>
@@ -1958,12 +1971,14 @@ True
       <strong><em>ダンダー</em></strong> (<strong>dunder</strong>,
       <strong>double underscore の略</strong>)
       と呼びます。クラス定義内で <code>self.__img_arr</code>
-      のようにダンダーで始まる変数名を使用すると、その変数は (基本的に)
-      クラスの外部からはアクセス不可能になります。これは、特定の属性の存在を隠蔽する「カプセル化」というオブジェクト指向プログラミングの概念を実現するのに役立ちます。もし、クラス外部から
+      のようにダンダーで始まる変数名を使用すると、その変数は<span
+      class="masked"> (基本的に) クラスの外部からはアクセス不可能</span>
+      になります。これは、特定の属性の存在を隠蔽する「カプセル化」というオブジェクト指向プログラミングの概念を実現するのに役立ちます。もし、クラス外部から
       <code>reimu.__img_arr</code> のように <code>.__img_arr</code>
       にアクセスしようとすると <code>AttributeError</code>
       が発生します。</p>
-      <p>クラスの外部から変数の内容を読み取られたり、書き換えられたりすると都合の悪い場合は、ダンダーで始まる名前を設定することが推奨されます。また、この原則はメソッドに対しても同様に適用されます。</p>
+      <p>クラスの外部から変数の内容を読み取られたり、書き換えられたりすると都合の悪い場合は、<code>__img_arr</code>
+      のように<strong>ダンダーで始まる名前にすること</strong>が推奨されます。また、この原則はメソッドに対しても同様に適用されます。</p>
       <h2 data-number="5.6" id="演習"><span
       class="header-section-number">5.6</span> 演習</h2>
       <p><strong>演習1 (EX)</strong>: <code>05_game2_02.py</code>
