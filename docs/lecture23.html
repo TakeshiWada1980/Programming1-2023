@@ -429,8 +429,8 @@ class="toc-section-number">5.6</span> 演習</a></li>
       class="masked">実際に実行結果 (画面出力の違い) を比較した</span>
       うえで、ウェブ検索などを利用して<strong>内部処理の違い</strong>を探ってみてください。</p>
       <div class="sourceCode" id="cb10" data-startFrom="33"
-      data-caption="拡大処理に transformtozoom を使用する方法"><pre
-      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 32;"><span id="cb10-33"><a href="#cb10-33"></a>reimu_img <span class="op">=</span> pg.transformtozoom(tmp,<span class="dv">0</span>,<span class="dv">2</span>) <span class="co"># 0度回転・2倍拡大</span></span></code></pre></div>
+      data-caption="拡大処理に pg.transform.rotozoom を使用する方法"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 32;"><span id="cb10-33"><a href="#cb10-33"></a>reimu_img <span class="op">=</span> pg.transform.rotozoom(tmp,<span class="dv">0</span>,<span class="dv">2</span>) <span class="co"># 0度回転・2倍拡大</span></span></code></pre></div>
       <hr />
       <p><strong>演習1</strong>:
       ゲーム画面に表示されるキャラクタが「前向き」「(ゼロオリジンで)
