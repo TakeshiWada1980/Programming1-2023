@@ -416,8 +416,8 @@ class="toc-section-number">5.6</span> 演習</a></li>
       <div class="sourceCode" id="cb9" data-startFrom="30"
       data-caption="別の記述6"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 29;"><span id="cb9-30"><a href="#cb9-30"></a>pose_x, pose_y <span class="op">=</span> <span class="dv">24</span>, <span class="dv">64</span></span>
-<span id="cb9-31"><a href="#cb9-31"></a>pose_w, pase_w <span class="op">=</span> <span class="dv">24</span>, <span class="dv">32</span></span>
-<span id="cb9-32"><a href="#cb9-32"></a>tmp <span class="op">=</span> reimu_img_raw.subsurface(pg.Rect((<span class="dv">24</span>,<span class="dv">64</span>),(<span class="dv">24</span>,<span class="dv">32</span>)))</span></code></pre></div>
+<span id="cb9-31"><a href="#cb9-31"></a>pose_w, pose_w <span class="op">=</span> <span class="dv">24</span>, <span class="dv">32</span></span>
+<span id="cb9-32"><a href="#cb9-32"></a>tmp <span class="op">=</span> reimu_img_raw.subsurface(pg.Rect((pose_x,pose_y),(pose_w,pose_w)))</span></code></pre></div>
       <hr />
       <p>また、<strong>第33行目</strong>
       の「<strong>拡大処理</strong>」には<a
