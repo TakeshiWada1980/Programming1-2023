@@ -77,11 +77,11 @@ def main():
   cmd_move = -1 # 移動コマンドの管理変数
   cmd_move_km = [pg.K_w, pg.K_d, pg.K_s, pg.K_a]
   m_vec = [
-    pg.Vector2(0,-1),
-    pg.Vector2(1,0),
-    pg.Vector2(0,1),
-    pg.Vector2(-1,0)
-  ] # 移動コマンドに対応したXYの移動量
+    pg.Vector2(0,-1),  # 0: 上移動 
+    pg.Vector2(1,0),   # 1: 右移動
+    pg.Vector2(0,1),   # 2: 下移動
+    pg.Vector2(-1,0)   # 3: 左移動
+  ] 
 
   # 自キャラの生成・初期化
   reimu = PlayerCharacter((2,3),'./data/img/reimu.png')
