@@ -90,7 +90,6 @@ def main():
   while not exit_flag:
 
     # システムイベントの検出
-    cmd_move = -1
     for event in pg.event.get():
       if event.type == pg.QUIT: # ウィンドウ[X]の押下
         exit_flag = True
