@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+
+    <script>
+      MathJax = {
+        chtml: {
+          displayAlign: "left",
+          displayIndent: "1em",
+        },
+      };
+    </script>
+
+    
+
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>第25回 2I-プログラミング1</title>
+  </head>
+
+  <body>
+    <div class="openbtn"><span></span><span></span><span></span></div>
+    <nav id="g-nav">
+      <div id="g-nav-list">
+        <!-- ---------------------------------------- -->
+         <ul>
+<li><a href="#連絡事項と講義概要" id="toc-連絡事項と講義概要"><span
+class="toc-section-number">1</span> 連絡事項と講義概要</a>
+<ul>
+<li><a href="#連絡" id="toc-連絡"><span
+class="toc-section-number">1.1</span> 連絡</a></li>
+<li><a href="#講義概要" id="toc-講義概要"><span
+class="toc-section-number">1.2</span> 講義概要</a></li>
+</ul></li>
+<li><a href="#gui-graphical-user-interface"
+id="toc-gui-graphical-user-interface"><span
+class="toc-section-number">2</span> GUI (Graphical User
+Interface)</a></li>
+<li><a href="#pythonにおけるguiアプリ開発"
+id="toc-pythonにおけるguiアプリ開発"><span
+class="toc-section-number">3</span> PythonにおけるGUIアプリ開発</a>
+<ul>
+<li><a href="#tkinter" id="toc-tkinter"><span
+class="toc-section-number">3.1</span> Tkinter</a></li>
+<li><a href="#pyqt" id="toc-pyqt"><span
+class="toc-section-number">3.2</span> PyQt</a></li>
+<li><a href="#pyside" id="toc-pyside"><span
+class="toc-section-number">3.3</span> PySide</a></li>
+</ul></li>
+<li><a href="#環境構築" id="toc-環境構築"><span
+class="toc-section-number">4</span> 環境構築</a></li>
+<li><a href="#画面の設計" id="toc-画面の設計"><span
+class="toc-section-number">5</span> 画面の設計</a>
+<ul>
+<li><a href="#メイン処理" id="toc-メイン処理"><span
+class="toc-section-number">5.1</span> メイン処理</a></li>
+<li><a href="#クラス定義" id="toc-クラス定義"><span
+class="toc-section-number">5.2</span> クラス定義</a>
+<ul>
+<li><a href="#ボタンの生成と配置" id="toc-ボタンの生成と配置"><span
+class="toc-section-number">5.2.1</span> ボタンの生成と配置</a></li>
+<li><a href="#テキストボックスの生成と配置"
+id="toc-テキストボックスの生成と配置"><span
+class="toc-section-number">5.2.2</span>
+テキストボックスの生成と配置</a></li>
+<li><a href="#ステータスバーの生成と配置"
+id="toc-ステータスバーの生成と配置"><span
+class="toc-section-number">5.2.3</span>
+ステータスバーの生成と配置</a></li>
+</ul></li>
+<li><a href="#レスポンシブデザイン" id="toc-レスポンシブデザイン"><span
+class="toc-section-number">5.3</span> レスポンシブデザイン</a></li>
+</ul></li>
+<li><a href="#イベント処理" id="toc-イベント処理"><span
+class="toc-section-number">6</span> イベント処理</a>
+<ul>
+<li><a href="#guiアプリのアーキテクチャ"
+id="toc-guiアプリのアーキテクチャ"><span
+class="toc-section-number">6.1</span> GUIアプリのアーキテクチャ</a></li>
+<li><a href="#pysideにおけるイベント処理"
+id="toc-pysideにおけるイベント処理"><span
+class="toc-section-number">6.2</span>
+PySideにおけるイベント処理</a></li>
+<li><a href="#ボタン押下のイベント処理"
+id="toc-ボタン押下のイベント処理"><span
+class="toc-section-number">6.3</span> ボタン押下のイベント処理</a></li>
+<li><a href="#現在時刻と整形文字列の取得"
+id="toc-現在時刻と整形文字列の取得"><span
+class="toc-section-number">6.4</span>
+現在時刻と整形文字列の取得</a></li>
+<li><a href="#ガチャ抽選のシミュレーション"
+id="toc-ガチャ抽選のシミュレーション"><span
+class="toc-section-number">6.5</span>
+ガチャ抽選のシミュレーション</a></li>
+</ul></li>
+<li><a href="#演出効果の追加" id="toc-演出効果の追加"><span
+class="toc-section-number">7</span> 演出効果の追加</a></li>
+<li><a href="#自動セーブとロード機能の追加"
+id="toc-自動セーブとロード機能の追加"><span
+class="toc-section-number">8</span> 自動セーブとロード機能の追加</a>
+<ul>
+<li><a href="#ライブラリのインポート"
+id="toc-ライブラリのインポート"><span
+class="toc-section-number">8.1</span> ライブラリのインポート</a></li>
+<li><a href="#データのロード" id="toc-データのロード"><span
+class="toc-section-number">8.2</span> データのロード</a></li>
+<li><a href="#データのセーブ" id="toc-データのセーブ"><span
+class="toc-section-number">8.3</span> データのセーブ</a></li>
+</ul></li>
+</ul> 
+        <!-- ---------------------------------------- -->
+      </div>
+    </nav>
+
+    <header class="markdown-body">
+      <p>2023-2I プログラミング1 第25回 講義資料</p>
+      <p>2024年01月15日（月）1・2時限</p>
+    </header>
+
+    <main class="markdown-body">
+      <!-- ---------------------------------------- -->
+      <h1 data-number="1" id="連絡事項と講義概要"><span
+      class="header-section-number">1</span> 連絡事項と講義概要</h1>
+      <h2 data-number="1.1" id="連絡"><span
+      class="header-section-number">1.1</span> 連絡</h2>
+      <ul>
+      <li>今回「小テスト❸」を実施します。鉛筆と消しゴムを準備してください。</li>
+      <li><a
+      href="lecture24.html#課題08-自由作品">課題08</a>の注意事項や内容について、再度、確認してください。特にポートフォリオの
+      URL
+      が変更になっている場合は、必ず個別にLINEで連絡してください。</li>
+      </ul>
+      <h2 data-number="1.2" id="講義概要"><span
+      class="header-section-number">1.2</span> 講義概要</h2>
+      <p>今回の講義では <strong><em>PySide</em></strong>
+      (<strong>PyQt</strong>)
+      というライブラリを使用した「<strong>GUIアプリ</strong>」の開発について学んでいきます。<strong>Qt</strong>
+      は <span class="masked">キュート</span> と読みます。</p>
+      <figure>
+      <img src="figs/25/qt-01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>今回講義の「達成目標」は、次のようになります。なお、<strong>PySide</strong>
+      についてある程度理解して利用するためには、「<strong>オブジェクト指向プログラミング
+      (特にクラス定義関連)
+      の基礎的な理解と知識</strong>」が必要となります。オブジェクト指向プログラミング
+      (OOP) については<a
+      href="lecture23.html#オブジェクト指向プログラミング-超々入門">第23回講義</a>で学習済みです。</p>
+      <ul>
+      <li>PySide (PyQt)
+      を利用してシンプルなGUIアプリを開発することができる。</li>
+      <li>GPLライセンス と LGPLライセンス
+      について遵守しなけれならない基本的な事項を理解できる。</li>
+      <li>pickle を使ったデータの永続化 (シリアライズ/デシリアライズ)
+      とGUIアプリを組み合わせることができる。</li>
+      </ul>
+      <h1 data-number="2" id="gui-graphical-user-interface"><span
+      class="header-section-number">2</span> GUI (Graphical User
+      Interface)</h1>
+      <p><strong>GUI</strong> (＝<span class="masked">Graphical User
+      Interface</span>) とは、<strong>CLI</strong> (＝Command Line
+      Interface) あるいは <strong>CUI</strong> (＝Character User
+      Interface) と「対」になる言葉です。</p>
+      <p>CLIアプリは、コンソール画面での
+      <strong>テキストベースのインタラクション</strong>
+      を通じて人間とコンピュータが対話します。これに対して、GUIアプリでは、いわゆる「ウィンドウ」に配置した「ボタン」「テキストボックス」「チェックボックス」「<span
+      class="masked">ラジオボタン</span>」「<span
+      class="masked">コンボボックス
+      (プルダウンメニュー/ドロップダウンリスト)</span>」などのグラフィカルな要素を通して人間とコンピュータが対話します。GUIでは、キーボードに加えて「マウス」や「タッチパネル」などの
+      <span class="masked">ポインティングデバイス</span>
+      を入力に活用することが特徴となります。</p>
+      <p>人間にとって、特に「<strong>非技術者</strong>」や「<strong>初心者</strong>」にとっては
+      GUI
+      のほうが「直感的」かつ「分かりやすい」インターフェイスとなります。このため、PCやスマートフォンの一般向けアプリのほとんどは「GUIアプリ」として設計・実装されています。また、<span
+      class="masked">ATM や 無人レジ </span>などの画面なども GUI
+      で構成されています。</p>
+      <div class="note type-tips">
+      <p><strong>インタラクションとは</strong></p>
+      <p>インタラクション (Interaction) とは「<strong>Inter
+      (相互に)</strong>」と「<strong>Action
+      (活動・行為・作用)</strong>」をあわせた語で<strong>要素間の相互作用</strong>
+      (<strong>アクションに対応したリアクション</strong>)
+      や交流を意味します。コンピュータの分野においては<span
+      class="masked">「ユーザーがコンピュータに命令を与え、コンピュータがそれに応答する」</span>というプロセスがインタラクションに含まれます。例えば、ユーザーがマウスやキーボードを使って入力することで、コンピュータは入力に応じたタスクを実行して結果を画面上に出力しますが、これが「インタラクション」となります。</p>
+      <p>このようにインタラクションは、ユーザーとコンピュータの間で行われる<strong>双方向のコミュニケーション</strong>を意味し、コンピュータシステムやアプリの<strong>使用体験</strong>
+      (＝<span class="masked">ユーザーエクスペリエンス (UX: User
+      Experience)</span>) において非常に重要な要素となります。</p>
+      </div>
+      <p>最近では「Googleアシスタント」や「Siri」、「Amazon
+      Alexa」などの <span class="masked">VUI: Voice User
+      Interface</span> を採用するアプリも登場しています。</p>
+      <h1 data-number="3" id="pythonにおけるguiアプリ開発"><span
+      class="header-section-number">3</span>
+      PythonにおけるGUIアプリ開発</h1>
+      <p>Pythonによって <strong>GUIアプリ</strong> (=<span
+      class="masked">いわゆる「ウィンドウ」を持ったアプリ</span>)
+      を開発するときは、<strong>何らかのGUIライブラリを使用すること</strong>が一般的となります。ライブラリを使わずにゼロからGUIアプリを開発することも技術的には可能ですが、単純なウィンドウにボタンをひとつを表示するだけでも大変な手間がかかるため、<strong>ライブラリを使わない開発は一般的とは言えません</strong>。</p>
+      <p>GUIアプリを開発するためのPython用の「ライブラリ」や「フレームワーク」としては、第22～24回講義で学んだ<a
+      href="https://pypi.org/project/pygame/">Pygame</a>の他、<strong>Tkinter</strong>、<a
+      href="https://pypi.org/project/PyQt6/">PyQt</a>、<a
+      href="https://pypi.org/project/PySide6/">PySide</a>、<a
+      href="https://pypi.org/project/Kivy/">Kivy</a>、<a
+      href="https://pypi.org/project/wxPython/">wxPython</a>、<a
+      href="https://pypi.org/project/PySimpleGUI/">PySimpleGUI</a>など<strong>様々なものが存在</strong>します。各ライブラリは、<strong>得意分野</strong>、<strong>機能</strong>、<strong>外観</strong>、<strong>実行速度</strong>、<span
+      class="masked">ライセンス</span>
+      の面で<strong>一長一短</strong>があり、開発しようとするアプリの目的や特性、規模に応じて適切なライブラリを選択する必要があります。</p>
+      <p>例えば、「<strong>Pygame</strong>」は<strong>2Dゲームの開発に特化したGUIライブラリ</strong>であり、<span
+      class="masked">一般業務に使用するようなビジネスアプリの開発</span>には適していません。</p>
+      <div class="note type-tips">
+      <p><strong>「ライブラリ」と「フレームワーク」の違い</strong></p>
+      <p>「<strong>ライブラリ</strong>」とは、特定の機能を提供するプログラムの集合を指します。プログラマはこれらの機能を必要に応じて自分のコードに組み込み活用します。例えば、数学計算をサポートするライブラリ
+      ( <code>math.sin</code>、<code>math.degrees</code> など)
+      や、多次元配列の操作を容易にする NumPy
+      のようなライブラリが存在します。ライブラリを利用する際、プログラムの「流れ」や「構造」は、あくまで
+      <span class="masked">プログラマが自ら設計</span> します。</p>
+      <p>一方、「<strong>フレームワーク</strong>」とは、アプリケーションの基本的な「流れ」や「構造」、「規則」などをプログラマに提供するものです。プログラマは、フレームワークが定める「<strong>枠組み</strong>」のなかで、目的に応じたコードを記述します。例えば、Arduino
+      開発においては <code>setup</code> や <code>loop</code>
+      という決められた名前の関数にコードを記述することで開発を行ないますが、これもフレームワークに基づく開発といえます。特にウェブサービスの開発では、フレームワークを使用することが多いです
+      (3年生の「プログラミング3」では、実際にフレームワークを使ったバックエンド、フロントエンドの開発について学びます)。</p>
+      <p>簡単に言えば、ライブラリは「<strong>自分のプログラムのなかで使用するツール(便利な道具)</strong>」であり、フレームワークは「<strong>コードを記述するための枠組み</strong>」となります。ライブラリは自分で選んで利用するものであり、フレームワークは自分が従うべきルールや構造を提供してくれるものと考えてください。</p>
+      </div>
+      <h2 data-number="3.1" id="tkinter"><span
+      class="header-section-number">3.1</span> Tkinter</h2>
+      <p>PythonにおけるGUIライブラリとしては
+      <strong><em>Tkinter</em></strong> が良く知られています。Tkinter
+      は「<span
+      class="masked">ティーケイ・インター</span>」あるいは「<span
+      class="masked">ティーキンター</span>」と読みます。Tkinter
+      は、Pythonの開発環境に<strong>標準で組み込まれているGUIライブラリ</strong>であり、<code>pip</code>
+      を使って追加インストールすることなく利用することができます。</p>
+      <p>標準ライブラリであることから、比較的利用者が多く、インターネット上にも解説情報が多く存在します。また、雑誌やネットの
+      <span class="masked">初心者に向けたGUIアプリ開発の解説記事</span>
+      では、たいてい <strong>Tkinter</strong>
+      を使った内容になっています。ただ、Tkinterの残念な面としては、他のGUIライブラリと比較して
+      <span class="masked">外観 (デザイン)
+      がしょぼい</span>、<strong>機能が貧弱</strong>ということが挙げられます。</p>
+      <p><strong>Tkinter を使った GUIアプリの外観</strong></p>
+      <figure>
+      <img src="figs/25/tk-01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p><strong>PyQt / PySide を使った GUIアプリの外観</strong></p>
+      <figure>
+      <img src="figs/25/qt-01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <h2 data-number="3.2" id="pyqt"><span
+      class="header-section-number">3.2</span> PyQt</h2>
+      <p><a
+      href="https://pypi.org/project/PyQt6/">PyQt</a>(読み方は<span
+      class="masked">パイキュート</span>)
+      は、C++で実装されたクロスプラットフォーム対応のGUIツールキットである「Qt」のPythonバインディングです。これにより、<strong>高機能でモダンでスタイリッシュなデザインのGUIアプリ</strong>を開発することが可能となっています。ここで「Pythonバインディング」とは「Pythonのコードを使用してバックグラウンドでQtの機能を動作させる仕組み」を意味します。</p>
+      <p>PyQtを用いる場合、シンプルなGUIアプリケーション
+      (例えば、単一のボタンを持つもの)
+      の開発であっても、前々回の講義で学んだような<a
+      href="lecture23.html#自分でクラスを定義して使用する">クラスの定義</a>
+      が求められます。これに対して、Tkinterではクラス定義なしでGUIアプリの開発が可能であるため、PyQTは
+      <strong>初心者にとっては学習のハードルが高い</strong>
+      と言えます。しかしながら、GUIアプリの開発ではコードが複雑化・肥大化しがちであるため、実際にはオブジェクト指向プログラミング（OOP）の採用が必須となります。従って「OOPが必要となるから」という理由で
+      PyQt を避けるのは適切ではありません。</p>
+      <p>また、Tkinter と比較しての PyQt
+      の短所としては、高機能が故に覚えるべき内容が多く、また、ウェブに情報が少ないということが挙げられます。また、PyQt
+      のライセンスが、いわゆる<strong>コピーレフト</strong> にあたる
+      <span class="masked">GPL v3</span>
+      であるという点に注意が必要となります。</p>
+      <div class="note type-tips">
+      <p><strong>GPL v3 : GNU General Public License version
+      3.0</strong></p>
+      <p><strong>GPL v3 ライセンスのライブラリ</strong> (例えば<a
+      href="https://pypi.org/project/PyQt6/">PyQt</a>が該当)
+      を利用するアプリを開発して<strong>(有償・無償に関わらず)
+      配布する際</strong>には、以下のルールに従う必要があります。</p>
+      <p><strong>ソースコードの公開</strong> :
+      開発したアプリのソースコードは、「GPL
+      v3ライセンス」で公開する必要があります。つまり、<span
+      class="masked">アプリのソースコードを公開し、誰でも自由に使ったり改良したりできるようにすること</span>
+      が求められます。</p>
+      <p><strong>ライセンス関連のドキュメントの同梱</strong> :
+      アプリを配布する際は、「GPL
+      v3ライセンスのコピー」と「ライセンスの条項に従っていることを示すドキュメント」を同梱する必要があります。</p>
+      <p><strong>ライセンスの継承</strong> :
+      アプリにGPLライセンスのコードが含まれる場合、そのアプリ全体もGPLライセンスで提供される必要があります。これは「コピーレフト」と呼ばれる特性となります。</p>
+      <p>この他にも、様々なルールがあります。詳しくは「<a
+      href="https://www.google.com/search?q=GPL+v3+解説">GPL v3
+      解説</a>」などでウェブ検索してください。</p>
+      </div>
+      <h2 data-number="3.3" id="pyside"><span
+      class="header-section-number">3.3</span> PySide</h2>
+      <p><strong>PySide</strong> は PyQt
+      と同様に「<strong>Qt</strong>」のPythonバインディングとなります。PySide
+      は PyQt
+      とほぼ同じように使用できるように設計されており、比較的単純なプログラムであれば、ライブラリの
+      <code>import</code> 文を <code>PyQt6</code> から
+      <code>PySide6</code>
+      に変更するだけで、そのまま動作させることができます。一方で、PyQt
+      との大きな違いは、PySide のライセンスが <span class="masked">LGPL
+      (Lesser GPL)</span> となっている点にあります。</p>
+      <p>LGPLライセンスは、GPLライセンスに比べて、特に「<strong>ソースコードの公開</strong>」と「<strong>ライセンスの継承</strong>」に関して柔軟性があります。具体的には、LGPLライセンスのライブラリを使用しても、<span
+      class="masked">そのライブラリを改変しない限り、アプリのソースコードを公開する必要</span>
+      はありません。また、LGPLライセンスのライブラリをリンクしているアプリは、そのアプリ自体に異なるライセンスを適用できます。詳しくは「<a
+      href="https://www.google.com/search?q=LGPL+解説">LGPL
+      解説</a>」などでウェブ検索してください。</p>
+      <p>この講義のなかでは <strong>PySide</strong>
+      を使用していきます。</p>
+      <h1 data-number="4" id="環境構築"><span
+      class="header-section-number">4</span> 環境構築</h1>
+      <p>PySideを利用したGUIアプリ開発のための環境構築をしていきます。</p>
+      <p>プロジェクトフォルダ <code>Qt-Playground</code>
+      を作成して、VSCodeでオープンして
+      <strong>仮想環境の構築と有効化</strong> をしてください。</p>
+      <pre><code>python -m venv .venv
+.venv/Scripts/Activate.ps1</code></pre>
+      <div class="note type-tips">
+      <p><strong>仮想環境の有効化</strong></p>
+      <p>最近の VSCode
+      のバージョンアップによって、<strong>仮想環境を有効化していてもターミナルのプロンプトに</strong>
+      <code>(.venv)</code>
+      <strong>という文字列が表示されないこと</strong>が起こるようになりました。特に、環境構築後、再度
+      VSCode を開いた場合、VSCode が <code>.venv</code>
+      フォルダの存在を認識して仮想環境を自動有効化した場合、プロンプトに
+      <code>(.venv)</code> が表示されないようになりました。</p>
+      <figure>
+      <img src="figs/25/vscode-01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>この場合、現在のターミナルにおいて「<strong>仮想環境が有効化されているかどうか</strong>」の確認は、以下のように「ターミナルのタブ」にマウスカーソルを合わせることで確認ができます。ここで、以下のように「<strong>Pythonのアクティブ化された環境</strong>」が
+      <code>.venv/Scripts/python.exe</code>
+      となっていれば、仮想環境が有効化されていると考えてください。</p>
+      <figure>
+      <img src="figs/25/vscode-02.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>「<strong>Pythonのアクティブ化された環境</strong>」という項目が表示されない場合は、明示的に
+      <code>.venv/Scripts/Activate.ps1</code>
+      のコマンドを実行してください。</p>
+      <p>詳しくは <a
+      href="https://github.com/microsoft/vscode-python/wiki/Activate-Environments-in-Terminal-Using-Environment-Variables">Activate
+      Environments in Terminal Using Environment
+      Variables</a>を参照してください。</p>
+      </div>
+      <p>仮想環境を有効化したら、念のために <code>pip</code>
+      を最新版にアップグレードしてから<a
+      href="https://pypi.org/project/PySide6/">PySide6</a>をインストールしてください。</p>
+      <p>PySide6 は <span
+      class="masked">「Qt6」に基づいており、「PyQt6」と互換性</span>
+      があります。PySide および PyQt
+      はどちらも頻繁にバージョンアップされるため、インターネットやChatGPTで問題解決を試みる際には<span
+      class="masked">「PySide」ではなく、バージョンを含んだ「PySide6」</span>というキーワードを使って調べるようにしてください。また、多くの場合、<strong>「PyQt6」に関する記事はそのまま「PySide6」に適用可能</strong>なので、「PySide6」で情報が見つからないときは、「PyQt6」で情報を探してみてください。</p>
+      <pre><code>python -m pip install --upgrade pip
+pip install PySide6</code></pre>
+      <h1 data-number="5" id="画面の設計"><span
+      class="header-section-number">5</span> 画面の設計</h1>
+      <p>GUIアプリでは、まずはじめに、大まかな「<strong>ウィンドウ</strong>」の画面構成（＝要素の配置・レイアウト）から作成していきます。ここでは、次に示すような「<strong>ボタン</strong>」「<strong>テキストボックス</strong>」「<strong>ステータスバー</strong>」という要素を画面を作成してきます。</p>
+      <p>なお、「<strong>ボタン</strong>」「<strong>テキストボックス</strong>」「<strong>ステータスバー</strong>」のような要素を総称して、<span
+      class="masked">「ウェジェット」</span>、「<strong>UIコンポーネント</strong>」、「<strong>コントロール</strong>」、「<strong>フォーム要素</strong>」、「UI要素」、「パーツ」のように言います。Qt
+      (PySide/PyQt)
+      では、主に「<strong>ウェジェット</strong>(Widget)」という呼び名が使用されます。</p>
+      <figure>
+      <img src="figs/25/qt-01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>上記のような画面を持ったアプリは、次のプログラム
+      (<code>qt-01.py</code>) で作成することができます。</p>
+      <p>先ほど構築したプロジェクトに <code>qt-01.py</code>
+      というファイルを新規作成して、以下のプログラムを貼り付け、実行して動作を確認してください。ただし、現在の段階では、<strong>ボタンを押下してもアプリからの反応はありません</strong>
+      (テキストボックスに文字を書き込むことなどは可能です、試してみてください)。</p>
+      <div class="sourceCode" id="cb3" data-caption="qt-01.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> sys</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="im">import</span> PySide6.QtWidgets <span class="im">as</span> Qw</span>
+<span id="cb3-3"><a href="#cb3-3"></a></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="co"># PySide6.QtWidgets.MainWindow を継承した MainWindow クラスの定義</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="kw">class</span> MainWindow(Qw.QMainWindow):</span>
+<span id="cb3-6"><a href="#cb3-6"></a>  </span>
+<span id="cb3-7"><a href="#cb3-7"></a>  <span class="co"># コンストラクタ(初期化)</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb3-9"><a href="#cb3-9"></a></span>
+<span id="cb3-10"><a href="#cb3-10"></a>    <span class="co"># 親クラスのコンストラクタの呼び出し</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a>    <span class="bu">super</span>().<span class="fu">__init__</span>() </span>
+<span id="cb3-12"><a href="#cb3-12"></a></span>
+<span id="cb3-13"><a href="#cb3-13"></a>    <span class="co"># ウィンドウタイトル設定</span></span>
+<span id="cb3-14"><a href="#cb3-14"></a>    <span class="va">self</span>.setWindowTitle(<span class="st">&#39;MainWindow&#39;</span>) </span>
+<span id="cb3-15"><a href="#cb3-15"></a></span>
+<span id="cb3-16"><a href="#cb3-16"></a>    <span class="co"># ウィンドウのサイズ(640x240)と位置(X=100,Y=50)の設定</span></span>
+<span id="cb3-17"><a href="#cb3-17"></a>    <span class="va">self</span>.setGeometry(<span class="dv">100</span>, <span class="dv">50</span>, <span class="dv">640</span>, <span class="dv">240</span>) </span>
+<span id="cb3-18"><a href="#cb3-18"></a></span>
+<span id="cb3-19"><a href="#cb3-19"></a>    <span class="co">#「実行」ボタンの生成と設定</span></span>
+<span id="cb3-20"><a href="#cb3-20"></a>    <span class="va">self</span>.btn_run <span class="op">=</span> Qw.QPushButton(<span class="st">&#39;実行&#39;</span>,<span class="va">self</span>)</span>
+<span id="cb3-21"><a href="#cb3-21"></a>    <span class="va">self</span>.btn_run.setGeometry(<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">100</span>,<span class="dv">20</span>)</span>
+<span id="cb3-22"><a href="#cb3-22"></a></span>
+<span id="cb3-23"><a href="#cb3-23"></a>    <span class="co">#「クリア」ボタンの生成と設定</span></span>
+<span id="cb3-24"><a href="#cb3-24"></a>    <span class="va">self</span>.btn_clear <span class="op">=</span> Qw.QPushButton(<span class="st">&#39;クリア&#39;</span>,<span class="va">self</span>)</span>
+<span id="cb3-25"><a href="#cb3-25"></a>    <span class="va">self</span>.btn_clear.setGeometry(<span class="dv">120</span>,<span class="dv">10</span>,<span class="dv">100</span>,<span class="dv">20</span>)</span>
+<span id="cb3-26"><a href="#cb3-26"></a></span>
+<span id="cb3-27"><a href="#cb3-27"></a>    <span class="co"># テキストボックス</span></span>
+<span id="cb3-28"><a href="#cb3-28"></a>    <span class="va">self</span>.tb_log <span class="op">=</span> Qw.QTextEdit(<span class="st">&#39;&#39;</span>,<span class="va">self</span>)</span>
+<span id="cb3-29"><a href="#cb3-29"></a>    <span class="va">self</span>.tb_log.setGeometry(<span class="dv">10</span>,<span class="dv">40</span>,<span class="dv">620</span>,<span class="dv">170</span>)</span>
+<span id="cb3-30"><a href="#cb3-30"></a>    <span class="va">self</span>.tb_log.setPlaceholderText(<span class="st">&#39;(ここに実行ログを表示します)&#39;</span>)</span>
+<span id="cb3-31"><a href="#cb3-31"></a></span>
+<span id="cb3-32"><a href="#cb3-32"></a>    <span class="co"># ステータスバー</span></span>
+<span id="cb3-33"><a href="#cb3-33"></a>    <span class="va">self</span>.sb_status <span class="op">=</span> Qw.QStatusBar()</span>
+<span id="cb3-34"><a href="#cb3-34"></a>    <span class="va">self</span>.setStatusBar(<span class="va">self</span>.sb_status)</span>
+<span id="cb3-35"><a href="#cb3-35"></a>    <span class="va">self</span>.sb_status.setSizeGripEnabled(<span class="va">False</span>)</span>
+<span id="cb3-36"><a href="#cb3-36"></a>    <span class="va">self</span>.sb_status.showMessage(<span class="st">&#39;プログラムを起動しました。&#39;</span>)</span>
+<span id="cb3-37"><a href="#cb3-37"></a></span>
+<span id="cb3-38"><a href="#cb3-38"></a><span class="co"># 本体</span></span>
+<span id="cb3-39"><a href="#cb3-39"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&#39;__main__&#39;</span>:</span>
+<span id="cb3-40"><a href="#cb3-40"></a>  app <span class="op">=</span> Qw.QApplication(sys.argv)</span>
+<span id="cb3-41"><a href="#cb3-41"></a>  main_window <span class="op">=</span> MainWindow()</span>
+<span id="cb3-42"><a href="#cb3-42"></a>  main_window.show()</span>
+<span id="cb3-43"><a href="#cb3-43"></a>  sys.exit(app.<span class="bu">exec</span>())</span></code></pre></div>
+      <p><strong>第02行目</strong>では <code>PySide6.QtWidgets</code>
+      をインポートとして、これを <code>Qw</code> という省略名
+      (<strong>別名</strong>、<strong>エイリアス</strong>)
+      で使用できるようにしています。もし、<code>as Qw</code>
+      を付けずにインポートした場合、例えば、<strong>第40行目</strong> の
+      <code>app = Qw.QApplication(sys.argv)</code> は、<span
+      class="masked"><code>app = PySide6.QtWidgets.QApplication(sys.argv)</code></span>
+      のように書き換える必要があります。その他、プログラム内の
+      <code>Qw.</code> となっている部分は、すべて
+      <code>PySide6.QtWidgets.</code>
+      のように記述する必要があります。</p>
+      <p>なお、講義資料上の可読性を優先して、ここでは <code>Qw</code>
+      という<strong>省略名</strong>を採用していますが、これは NumPy の
+      <code>np</code> や、Pandas の <code>pd</code>
+      のように<strong>一般的な省略命ではない</strong>ので注意してください。特にウェブ検索したり、調べた情報を自分のプログラムに適用する際には、<span
+      class="masked">適切に読み替え</span>
+      をするように注意してください。</p>
+      <h2 data-number="5.1" id="メイン処理"><span
+      class="header-section-number">5.1</span> メイン処理</h2>
+      <p><strong>第39行目</strong>から<strong>第43行目</strong>がプログラムの本体となります。<strong>第39行目</strong>の
+      <code>if __name__ == '__main__':</code> については、<a
+      href="lecture22.html#if-__name__-__main__-について">第25回講義</a>で解説しました。</p>
+      <div class="sourceCode" id="cb4"
+      data-caption="qt-01.py (抜粋:38行目～)" data-startFrom="38"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 37;"><span id="cb4-38"><a href="#cb4-38"></a><span class="co"># 本体</span></span>
+<span id="cb4-39"><a href="#cb4-39"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&#39;__main__&#39;</span>:</span>
+<span id="cb4-40"><a href="#cb4-40"></a>  app <span class="op">=</span> Qw.QApplication(sys.argv)</span>
+<span id="cb4-41"><a href="#cb4-41"></a>  main_window <span class="op">=</span> MainWindow()</span>
+<span id="cb4-42"><a href="#cb4-42"></a>  main_window.show()</span>
+<span id="cb4-43"><a href="#cb4-43"></a>  sys.exit(app.<span class="bu">exec</span>())</span></code></pre></div>
+      <p><strong>第40行目</strong>では「<strong>QApplicationオブジェクト</strong>」を作成して変数
+      <code>app</code>
+      に格納しています。このオブジェクトは、すべてのQtアプリケーションに不可欠な基本オブジェクトであり、アプリケーション全体の「設定」や「管理」を担います。例えば、<code>app.setDoubleClickInterval</code>
+      や <code>app.app.setApplicationVersion</code>
+      などの設定系のメソッドを持っています。また、引数として与えている
+      <code>sys.argv</code>
+      は「<strong>コマンドライン引数</strong>」を格納した特殊な変数であり、これを通じてコマンドラインから
+      QApplication
+      に対して各種設定・実行時オプションを与えることができるようになっています。</p>
+      <div class="note type-tips">
+      <p><strong>コマンドライン引数</strong></p>
+      <p>コマンドライン引数とは、プログラムを実行する際に「<strong>コマンドラインを通じて与えるオプション</strong>」のことです。Qt
+      では、いくつかの引数が予め定義されており、<span
+      class="masked">アプリケーションの動作や外観を設定するために使用すること</span>
+      ができます。</p>
+      <p>例えば、<code>qt-01.py</code>
+      は、通常、コマンドラインから次のように実行することができます。</p>
+      <pre><code>python qt-01.py</code></pre>
+      <p>ここで、<code>--style=fusion</code> や
+      <code>--style=windows</code> のように<strong>オプション
+      (コマンドライン引数)</strong>
+      を与えることで、アプリの外観を制御することができます
+      (<code>qt-01.py</code> の <strong>第40行目</strong>
+      では、この仕組みを実現しています)。</p>
+      <pre><code>python qt-01.py --style=fusion</code></pre>
+      <hr />
+      <ul>
+      <li>コマンドライン引数として <code>--style=fusion</code>
+      を与えた場合</li>
+      </ul>
+      <figure>
+      <img src="figs/25/qt-st-fusion.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <hr />
+      <ul>
+      <li>コマンドライン引数として <code>--style=windows</code>
+      を与えた場合</li>
+      </ul>
+      <figure>
+      <img src="figs/25/qt-st-windows.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p><strong>演習</strong>: コマンドライン引数
+      <code>--style=fusion</code> および <code>--style=windows</code>
+      を指定して <code>qt-01.py</code> を実行せよ。</p>
+      <figure>
+      <img src="figs/25/vscode-03.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      </div>
+      <p><strong>第41行目</strong>では、<strong>第05行目</strong>から<strong>第36行目</strong>にかけて定義された「MainWindowクラス」の
+      <strong>オブジェクト</strong>
+      (＝<strong>インスタンス</strong>、<strong>実体</strong>)
+      を作成しています。これにより、<strong>第08行目</strong>
+      から定義されている <span>コンストラクタ</span>
+      (<code>__init__</code>関数)
+      が呼び出され、<strong>ウィンドウの初期化</strong>が行われます
+      (ただし、<span
+      class="masked">この時点ではまだ画面には表示されません</span>)。また、初期化した
+      MainWindowオブジェクト の参照を変数 <code>main_window</code>
+      に格納し、以降、この変数 <code>main_window</code>
+      を通じてウィンドウの操作ができるようにしています。</p>
+      <p><strong>第42行目</strong>では、デスクトップ画面に実際にウィンドウを表示するための
+      <code>show</code>メソッド
+      を実行しています。<code>show</code>メソッドを呼び出すまでは、ウィンドウは内部的に作成されているものの、画面上には表示されません。ここで注目すべきは、MainWindowクラスの定義
+      (＝<strong>第05行目</strong>～<strong>第36行目</strong>)
+      に「<code>show</code>メソッド」が明示的に記述されていないにも関わらず、<span
+      class="masked">「showメソッド」が機能していること</span>
+      です。これは、<strong>第05行目</strong>のクラス定義の開始行で「<code>class MainWindow:</code>」ではなく「
+      <code>class MainWindow(Qw.QMainWindow):</code>」のように
+      <strong><em>継承</em></strong> という仕組みを用いて MainWindow
+      を定義しているためです。</p>
+      <div class="note type-tips">
+      <p><strong>オブジェクト指向プログラミングにおける「継承」とは</strong></p>
+      <p>「<strong>継承</strong>」とは、あるクラス（この場合は
+      <code>Qw.QMainWindow</code>）が持つ特性、つまり「メソッド」や「プロパティ」を、別のクラス（この場合は自作クラス
+      <code>MainWindow</code>）に <span class="masked">引き継ぐ</span>
+      ための仕組みです。</p>
+      <p>この「<strong>継承</strong>」という仕組みにより、<code>Qw.QMainWindow</code>
+      に定義されている <code>show</code> メソッドや、その他の機能を
+      <code>MainWindow</code>
+      でも利用することが可能になります。つまり、<code>MainWindow</code>
+      では <code>QMainWindow</code>
+      の機能を拡張し、更に独自の機能を追加することが可能になります。</p>
+      <p>このような関係にあるとき</p>
+      <ul>
+      <li><code>MainWindow</code> を <code>Qw.QMainWindow</code>
+      の「<strong>子クラス</strong> (sub class)」といいます。</li>
+      <li><code>Qw.QMainWindow</code> を <code>MainWindow</code>
+      の「<strong>親クラス</strong> (super class)」といいます。</li>
+      </ul>
+      </div>
+      <p><strong>第43行目</strong>では、<code>app.exec()</code>
+      により、GUIアプリとしての<span class="masked">イベントループ
+      (メインループ)</span> を開始します。これにより、イベント処理
+      (＝ユーザからのマウス操作やキーボード操作、OSからのイベントの受信など)
+      が開始されます。ウィンドウのタイトルバーにある<i class="fa-solid fa-rectangle-xmark"></i>ボタンが押下されるなどしてGUIの終了処理がされると
+      <code>app.exec()</code> は終了コード (数値) を返し、それが
+      <code>sys.exit()</code> に渡されます。<code>sys.exit()</code>
+      は、この終了コードを OS に伝えます。</p>
+      <div class="note type-senior">
+      <p><strong>「終了コード」とは</strong></p>
+      <p><strong>終了コード</strong>（または<strong>終了ステータス</strong>）は、アプリが
+      OS に対して返す数値で、プログラムの実行が成功したかどうか
+      (正常終了したか) を示します。慣例的に、<code>0</code>
+      は「成功」を意味し、<code>0</code>
+      以外の値は何らかの「<strong>異常終了 (エラー発生などによる終了)
+      </strong>」など表します。</p>
+      <p>例えば、Pythonプログラムであれば、<strong>プログラムが問題なく実行されて最後まで到達した場合</strong>、通常
+      <code>sys.exit(0)</code> が呼び出され、終了コード <code>0</code>
+      が OS
+      に返されます。一方で、プログラムのなかでエラーが発生した場合や、ユーザーによる強制終了が行われた場合など、異常な状況下では
+      <code>0</code>
+      以外の終了コードが返されることが一般的となっています。</p>
+      </div>
+      <p><strong>演習1</strong>: <strong>第42行目</strong>
+      (＝<code>show</code>メソッドによるウィンドウの表示)
+      をコメントアウトとするとウィンドウが表示されないことを確認せよ。確認後はVSCodeからプログラムを強制停止しすること。また、コメントアウトを元に戻しておくこと。</p>
+      <p><strong>演習2</strong>: <strong>第43行目</strong>
+      (＝イベントループの開始)
+      をコメントアウトとするとウィンドウが一瞬だけ表示され、そのままプログラムが終了してしまうことを確認せよ。確認後はコメントアウトを元に戻しておくこと。</p>
+      <h2 data-number="5.2" id="クラス定義"><span
+      class="header-section-number">5.2</span> クラス定義</h2>
+      <p><code>PySide6.QtWidgets.QMainWindow</code> を継承する
+      <code>MainWindow</code>
+      クラスの定義について確認していきます。現段階において、このクラスには
+      <strong>コンストラクタのみ</strong> が定義されています。</p>
+      <div class="sourceCode" id="cb7"
+      data-caption="qt-01.py (抜粋:04行目～)" data-startFrom="4"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 3;"><span id="cb7-4"><a href="#cb7-4"></a><span class="co"># PySide6.QtWidgets.QMainWindow を継承した MainWindow クラスの定義</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="kw">class</span> MainWindow(Qw.QMainWindow):</span>
+<span id="cb7-6"><a href="#cb7-6"></a>  </span>
+<span id="cb7-7"><a href="#cb7-7"></a>  <span class="co"># コンストラクタ(初期化)</span></span>
+<span id="cb7-8"><a href="#cb7-8"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb7-9"><a href="#cb7-9"></a></span>
+<span id="cb7-10"><a href="#cb7-10"></a>    <span class="co"># 親クラスのコンストラクタの呼び出し</span></span>
+<span id="cb7-11"><a href="#cb7-11"></a>    <span class="bu">super</span>().<span class="fu">__init__</span>() </span>
+<span id="cb7-12"><a href="#cb7-12"></a></span>
+<span id="cb7-13"><a href="#cb7-13"></a>    <span class="co"># ウィンドウタイトル設定</span></span>
+<span id="cb7-14"><a href="#cb7-14"></a>    <span class="va">self</span>.setWindowTitle(<span class="st">&#39;MainWindow&#39;</span>) </span>
+<span id="cb7-15"><a href="#cb7-15"></a></span>
+<span id="cb7-16"><a href="#cb7-16"></a>    <span class="co"># ウィンドウのサイズ(640x240)と位置(X=100,Y=50)の設定</span></span>
+<span id="cb7-17"><a href="#cb7-17"></a>    <span class="va">self</span>.setGeometry(<span class="dv">100</span>, <span class="dv">50</span>, <span class="dv">640</span>, <span class="dv">240</span>) </span>
+<span id="cb7-18"><a href="#cb7-18"></a></span>
+<span id="cb7-19"><a href="#cb7-19"></a>    <span class="co">#「実行」ボタンの生成と設定</span></span>
+<span id="cb7-20"><a href="#cb7-20"></a>    <span class="va">self</span>.btn_run <span class="op">=</span> Qw.QPushButton(<span class="st">&#39;実行&#39;</span>,<span class="va">self</span>)</span>
+<span id="cb7-21"><a href="#cb7-21"></a>    <span class="va">self</span>.btn_run.setGeometry(<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">100</span>,<span class="dv">20</span>)</span>
+<span id="cb7-22"><a href="#cb7-22"></a></span>
+<span id="cb7-23"><a href="#cb7-23"></a>    <span class="co">#「クリア」ボタンの生成と設定</span></span>
+<span id="cb7-24"><a href="#cb7-24"></a>    <span class="va">self</span>.btn_clear <span class="op">=</span> Qw.QPushButton(<span class="st">&#39;クリア&#39;</span>,<span class="va">self</span>)</span>
+<span id="cb7-25"><a href="#cb7-25"></a>    <span class="va">self</span>.btn_clear.setGeometry(<span class="dv">120</span>,<span class="dv">10</span>,<span class="dv">100</span>,<span class="dv">20</span>)</span>
+<span id="cb7-26"><a href="#cb7-26"></a></span>
+<span id="cb7-27"><a href="#cb7-27"></a>    <span class="co"># テキストボックス</span></span>
+<span id="cb7-28"><a href="#cb7-28"></a>    <span class="va">self</span>.tb_log <span class="op">=</span> Qw.QTextEdit(<span class="st">&#39;&#39;</span>,<span class="va">self</span>)</span>
+<span id="cb7-29"><a href="#cb7-29"></a>    <span class="va">self</span>.tb_log.setGeometry(<span class="dv">10</span>,<span class="dv">40</span>,<span class="dv">620</span>,<span class="dv">170</span>)</span>
+<span id="cb7-30"><a href="#cb7-30"></a>    <span class="va">self</span>.tb_log.setPlaceholderText(<span class="st">&#39;(ここに実行ログを表示します)&#39;</span>)</span>
+<span id="cb7-31"><a href="#cb7-31"></a></span>
+<span id="cb7-32"><a href="#cb7-32"></a>    <span class="co"># ステータスバー</span></span>
+<span id="cb7-33"><a href="#cb7-33"></a>    <span class="va">self</span>.sb_status <span class="op">=</span> Qw.QStatusBar()</span>
+<span id="cb7-34"><a href="#cb7-34"></a>    <span class="va">self</span>.setStatusBar(<span class="va">self</span>.sb_status)</span>
+<span id="cb7-35"><a href="#cb7-35"></a>    <span class="va">self</span>.sb_status.setSizeGripEnabled(<span class="va">False</span>)</span>
+<span id="cb7-36"><a href="#cb7-36"></a>    <span class="va">self</span>.sb_status.showMessage(<span class="st">&#39;プログラムを起動しました。&#39;</span>)</span></code></pre></div>
+      <p><strong>第05行目</strong> の
+      <code>class MainWindow(Qw.QMainWindow):</code> により、自作クラス
+      <code>MainWindow</code> が <code>Qw.QMainWindow</code>
+      を<strong>継承 (Inheritance)</strong>
+      するクラスを定義することを明示しています。何も継承せずにゼロからクラスを定義するときは、<span
+      class="masked"><code>class MainWindow:</code></span>
+      のようにクラス定義を書き出します。</p>
+      <p><strong>第11行目</strong> の <code>super().__init__()</code>
+      では <span class="masked">親クラス (super class)
+      のコンストラクタ</span>
+      を明示的に呼び出しています。基本的に、何らかのクラスを継承してクラスを定義した場合、そのクラスのコンストラクタのなかで「親クラスのコンストラクタを呼び出す処理」が必要になります。</p>
+      <p><strong>第14行目</strong>
+      では、ウィンドウの「タイトル」を設定しています。また、<strong>第17行目</strong>
+      では、ウィンドウの「<strong>サイズ</strong>」と「<strong>デスクトップ画面上の初期位置
+      (ウィンドウ右上をあわせる座標)</strong>」を設定しています。</p>
+      <hr />
+      <p><strong>演習1</strong>:
+      <strong>第11行目</strong>をコメントアウトして、親クラスのコンストラクタを呼びださないと「プログラムが正常動作しないこ」とを確認せよ。確認後は、コメントアウトを元に戻しておくこと。</p>
+      <p><strong>演習2</strong>:
+      ウィンドウタイトルに「日本語」が使用可能かどうかを確認せよ。</p>
+      <p><strong>演習3</strong>: <strong>第17行目</strong> の
+      <code>setGeometry</code>
+      メソッドの引数を変更して、ウィンドウの「サイズ」と「位置」を変更せよ。また、位置に「負数」を設定可能かどうか確認せよ。さらに、引数に「実数」が使用可能かどうかを確認せよ。</p>
+      <h3 data-number="5.2.1" id="ボタンの生成と配置"><span
+      class="header-section-number">5.2.1</span> ボタンの生成と配置</h3>
+      <p><strong>第20行目</strong> では、<code>Qw.QPushButton</code>
+      クラスから、いわゆる「<strong>ボタン</strong>」のオブジェクトを生成し、変数
+      <code>self.btn_run</code> に格納しています。ここでは、後から
+      <code>btn_run</code> を参照する必要があるために
+      <code>self.btn_run</code>
+      としています。もし、コンストラクタ以外で参照する必要がなければ、次のようにすることもできます。</p>
+      <div class="sourceCode" id="cb8" data-startFrom="20"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 19;"><span id="cb8-20"><a href="#cb8-20"></a>btn_run <span class="op">=</span> Qw.QPushButton(<span class="st">&#39;実行&#39;</span>,<span class="va">self</span>)</span>
+<span id="cb8-21"><a href="#cb8-21"></a>btn_run.setGeometry(<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">100</span>,<span class="dv">20</span>)</span></code></pre></div>
+      <p>なお、<code>QPushButton</code>
+      のコンストラクタの第2引数を省略すると
+      (つまり、<code>Qw.QPushButton('実行')</code>
+      のようにすると)、内部的にはボタンが生成されますが、<span
+      class="masked">ウィンドウには配置されません</span>。</p>
+      <p><strong>第21行目</strong> はボタンオブジェクトが持っている
+      <code>setGeometry</code>メソッドで「ウィンドウ内の配置位置
+      (左上基準)」と「サイズ」を設定しています。この他、<strong>ボタンの外観や動作に関する設定やカスタマイズ</strong>は
+      <code>setXxxxxx</code>
+      メソッドで行ないます。例えば、<code>setEnabled</code>
+      メソッドでは、<code>bool</code>型を引数に与えて<span
+      class="masked">ボタンの有効化と無効化
+      (グレーアウトされた状態)</span> を設定することができます。</p>
+      <p><code>QPushButton</code> についての詳細は、<a
+      href="https://doc.qt.io/qtforpython-6/PySide6/QtWidgets/QPushButton.html">公式リファレンス</a>を参照してください。</p>
+      <p>同様に、<strong>第24行目</strong> と <strong>第25行目</strong>
+      で「クリア」ボタンの作成と設定をしています。</p>
+      <div class="note type-senior">
+      <p><strong>ウィジェット外観のカスタマイズ</strong></p>
+      <p>Qt (PySide/PyQt) の各種ウィジェットは
+      <code>setStyleSheet</code> メソッドを使用して <strong>CSS
+      (スタイルシート)</strong>
+      の要領で「<strong>外観をカスタマイズすること</strong>」ができます
+      (CSSについては、<a
+      href="lecture15.html#css">第15回講義</a>で簡単に解説しました)。</p>
+      <p>例えば、以下のコードは「実行」ボタンの文字を「<strong>太字</strong>」「<strong>赤色</strong>
+      <code>#DE5065</code>」にカスタマイズしています。</p>
+      <div class="sourceCode" id="cb9"
+      data-caption="外観のカスタマイズ"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="va">self</span>.btn_run.setStyleSheet(<span class="st">&#39;QPushButton {color: #DE5065; font-weight: bold;}&#39;</span>)</span></code></pre></div>
+      <figure>
+      <img src="figs/25/qt-04.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>詳しくは「<a
+      href="https://www.google.com/search?q=setStyleSheet+pyside6">setStyleSheet
+      pyside6</a>」などでウェブ検索してください。</p>
+      </div>
+      <hr />
+      <p><strong>演習1</strong>:「クリア」ボタンの
+      <code>setGeometry</code> メソッドのあとに
+      <code>self.btn_clear.setEnabled(False)</code>
+      を追記して、<strong>「クリア」ボタンが「グレーアウトすること」</strong>を確認せよ。</p>
+      <figure>
+      <img src="figs/25/qt-03.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p><strong>演習2</strong>:
+      次のように「<strong>設定</strong>」ボタンを追加せよ。ボタンの位置やサイズも見本と同じようにすること。</p>
+      <figure>
+      <img src="figs/25/qt-02.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <h3 data-number="5.2.2" id="テキストボックスの生成と配置"><span
+      class="header-section-number">5.2.2</span>
+      テキストボックスの生成と配置</h3>
+      <p><strong>第28行目</strong> から <strong>第30行目</strong> で
+      <code>QTextEdit</code> オブジェクト
+      (いわゆる「<strong>テキストボックス</strong>」)
+      を生成してウィンドウに配置しています。</p>
+      <p><strong>第30行目</strong> の <code>setPlaceholderText</code>
+      では、<strong>テキストボックスに文字が未入力のときに表示される文字列</strong>
+      を設定しています。プレースホルダ文字とは、ウォーターマークとも呼ばれ
+      <span
+      class="masked">「あとから入力される文字の代わりに表示する文字」</span>
+      で、ユーザーに対して「入力例」や「ヒント」を提示するために使用されます。プログラムを実行し、実際にテキストボックスに文字を入力すると、このプレースホルダ文字は消えます。</p>
+      <p>プレースホルダ文字ではなく、通常の文字列をセットする場合は、テキストボックスオブジェクト
+      (QTextEditオブジェクト) の <code>setPlainText</code>
+      メソッドを使用します。また、逆にテキストボックスから文字列を取得するためには
+      <span class="masked"><code>toPlainText</code>メソッド</span>
+      を使用します。</p>
+      <p>なお、<span
+      class="masked">1行だけのテキスト(文字列)</span>の入出力を扱う場合は、<code>QTextEdit</code>
+      ではなく <code>QLineEdit</code> を使用します。</p>
+      <hr />
+      <p><strong>演習1</strong>:
+      <code>self.tb_log = Qw.QTextEdit('',self)</code> の第1引数を
+      <code>'あいうえお'</code>
+      に書き換えると、初期値が与えられること確認せよ。。確認後は元に戻しておくこと。</p>
+      <p><strong>演習2</strong>:
+      <code>self.tb_log = Qw.QTextEdit('',self)</code> を
+      <code>self.tb_log = Qw.QLineEdit('',self)</code>
+      に書き換えると、テキストボックス内で「<strong>改行が不可になること</strong>」を確認せよ。確認後は元に戻しておくこと。</p>
+      <p><strong>演習3</strong>:
+      <code>self.tb_log.setReadOnly(True)</code>
+      とするとテキストボックスが「<strong>読み取り専用になること</strong>」を確認せよ。確認後は元に戻しておくこと。</p>
+      <h3 data-number="5.2.3" id="ステータスバーの生成と配置"><span
+      class="header-section-number">5.2.3</span>
+      ステータスバーの生成と配置</h3>
+      <p><strong>第33行目</strong> から <strong>第36行目</strong>
+      では、ウィンドウ下部に配置する「<strong>ステータスバー</strong>」を作成しています。<strong>ステータスバー</strong>については、ボタンやテキストボックスとは生成と配置方法が異なる点に注意してください。</p>
+      <p><strong>演習1</strong>: <strong>第35行目</strong> の
+      <code>self.sb_status.setSizeGripEnabled(False)</code> の引数を
+      <code>True</code>
+      に変更するとどのようになるか確認せよ。<strong>ヒント</strong>:
+      <span class="masked">ウィンドウの右下</span></p>
+      <h2 data-number="5.3" id="レスポンシブデザイン"><span
+      class="header-section-number">5.3</span> レスポンシブデザイン</h2>
+      <p><code>qt-1.py</code>
+      では、ウィジェットのサイズや配置が全て数値リテラルで固定的に設定されていました。この方法で画面レイアウトを作成すると、<span
+      class="masked">ウィジェットを追加や削除するとき</span>
+      や、<strong>コンテナ (＝ウィジェットの格納領域)
+      であるウィンドウのサイズを変更するとき</strong>に、プログラム内で多くの修正が必要になります。</p>
+      <p>このようなことから、一般的には
+      <strong>レスポンシブデザイン</strong> (＝<span
+      class="masked">ウィンドウ (画面)
+      のサイズに合わせてレイアウトが自動的に調整される設計</span>)
+      が推奨されます。詳細な解説は中級以上の話題となるため、ここでは詳細な解説は省きますが、先の
+      <code>qt-1.py</code> は、次のような
+      <strong>レスポンシブデザイン</strong> を採用した別のプログラム
+      <code>qt-02.py</code> に書き換えることができます。</p>
+      <div class="sourceCode" id="cb10" data-caption="qt-02.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="im">import</span> sys</span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="im">import</span> PySide6.QtWidgets <span class="im">as</span> Qw</span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="im">import</span> PySide6.QtCore <span class="im">as</span> Qc</span>
+<span id="cb10-4"><a href="#cb10-4"></a></span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="co"># レイアウト設定用変数</span></span>
+<span id="cb10-6"><a href="#cb10-6"></a>sp_exp <span class="op">=</span> Qw.QSizePolicy.Policy.Expanding</span>
+<span id="cb10-7"><a href="#cb10-7"></a></span>
+<span id="cb10-8"><a href="#cb10-8"></a><span class="kw">class</span> MainWindow(Qw.QMainWindow):</span>
+<span id="cb10-9"><a href="#cb10-9"></a>  </span>
+<span id="cb10-10"><a href="#cb10-10"></a>  <span class="co"># コンストラクタ(初期化)</span></span>
+<span id="cb10-11"><a href="#cb10-11"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb10-12"><a href="#cb10-12"></a></span>
+<span id="cb10-13"><a href="#cb10-13"></a>    <span class="bu">super</span>().<span class="fu">__init__</span>() </span>
+<span id="cb10-14"><a href="#cb10-14"></a>    <span class="va">self</span>.setWindowTitle(<span class="st">&#39;MainWindow&#39;</span>) </span>
+<span id="cb10-15"><a href="#cb10-15"></a>    <span class="va">self</span>.setGeometry(<span class="dv">100</span>, <span class="dv">50</span>, <span class="dv">640</span>, <span class="dv">240</span>) </span>
+<span id="cb10-16"><a href="#cb10-16"></a></span>
+<span id="cb10-17"><a href="#cb10-17"></a>    <span class="co"># メインレイアウトの設定</span></span>
+<span id="cb10-18"><a href="#cb10-18"></a>    central_widget <span class="op">=</span> Qw.QWidget(<span class="va">self</span>)</span>
+<span id="cb10-19"><a href="#cb10-19"></a>    <span class="va">self</span>.setCentralWidget(central_widget)</span>
+<span id="cb10-20"><a href="#cb10-20"></a>    main_layout <span class="op">=</span> Qw.QVBoxLayout(central_widget) <span class="co"># 垂直レイアウト</span></span>
+<span id="cb10-21"><a href="#cb10-21"></a></span>
+<span id="cb10-22"><a href="#cb10-22"></a>    <span class="co"># ボタン配置の水平レイアウトを作成します。</span></span>
+<span id="cb10-23"><a href="#cb10-23"></a>    button_layout <span class="op">=</span> Qw.QHBoxLayout()</span>
+<span id="cb10-24"><a href="#cb10-24"></a>    button_layout.setAlignment(Qc.Qt.AlignmentFlag.AlignLeft) <span class="co"># 左寄せ</span></span>
+<span id="cb10-25"><a href="#cb10-25"></a>    main_layout.addLayout(button_layout) <span class="co"># メインレイアウトにボタンレイアウトを追加</span></span>
+<span id="cb10-26"><a href="#cb10-26"></a></span>
+<span id="cb10-27"><a href="#cb10-27"></a>    <span class="co">#「実行」ボタンの生成と設定</span></span>
+<span id="cb10-28"><a href="#cb10-28"></a>    <span class="va">self</span>.btn_run <span class="op">=</span> Qw.QPushButton(<span class="st">&#39;実行&#39;</span>)</span>
+<span id="cb10-29"><a href="#cb10-29"></a>    <span class="va">self</span>.btn_run.setMinimumSize(<span class="dv">50</span>,<span class="dv">20</span>)</span>
+<span id="cb10-30"><a href="#cb10-30"></a>    <span class="va">self</span>.btn_run.setMaximumSize(<span class="dv">100</span>,<span class="dv">20</span>)</span>
+<span id="cb10-31"><a href="#cb10-31"></a>    <span class="va">self</span>.btn_run.setSizePolicy(sp_exp,sp_exp)</span>
+<span id="cb10-32"><a href="#cb10-32"></a>    button_layout.addWidget(<span class="va">self</span>.btn_run)</span>
+<span id="cb10-33"><a href="#cb10-33"></a></span>
+<span id="cb10-34"><a href="#cb10-34"></a>    <span class="co">#「クリア」ボタンの生成と設定</span></span>
+<span id="cb10-35"><a href="#cb10-35"></a>    <span class="va">self</span>.btn_clear <span class="op">=</span> Qw.QPushButton(<span class="st">&#39;クリア&#39;</span>)</span>
+<span id="cb10-36"><a href="#cb10-36"></a>    <span class="va">self</span>.btn_clear.setMinimumSize(<span class="dv">50</span>,<span class="dv">20</span>)</span>
+<span id="cb10-37"><a href="#cb10-37"></a>    <span class="va">self</span>.btn_clear.setMaximumSize(<span class="dv">100</span>,<span class="dv">20</span>)</span>
+<span id="cb10-38"><a href="#cb10-38"></a>    <span class="va">self</span>.btn_clear.setSizePolicy(sp_exp,sp_exp)</span>
+<span id="cb10-39"><a href="#cb10-39"></a>    button_layout.addWidget(<span class="va">self</span>.btn_clear)</span>
+<span id="cb10-40"><a href="#cb10-40"></a>    </span>
+<span id="cb10-41"><a href="#cb10-41"></a>    <span class="co"># テキストボックス</span></span>
+<span id="cb10-42"><a href="#cb10-42"></a>    <span class="va">self</span>.tb_log <span class="op">=</span> Qw.QTextEdit(<span class="st">&#39;&#39;</span>)</span>
+<span id="cb10-43"><a href="#cb10-43"></a>    <span class="va">self</span>.tb_log.setPlaceholderText(<span class="st">&#39;(ここに実行ログを表示します)&#39;</span>)</span>
+<span id="cb10-44"><a href="#cb10-44"></a>    <span class="va">self</span>.tb_log.setMinimumSize(<span class="dv">20</span>,<span class="dv">100</span>)</span>
+<span id="cb10-45"><a href="#cb10-45"></a>    <span class="va">self</span>.tb_log.setSizePolicy(sp_exp,sp_exp)</span>
+<span id="cb10-46"><a href="#cb10-46"></a>    main_layout.addWidget(<span class="va">self</span>.tb_log) <span class="co"># メインレイアウトにテキストボックスを追加</span></span>
+<span id="cb10-47"><a href="#cb10-47"></a> </span>
+<span id="cb10-48"><a href="#cb10-48"></a>    <span class="co"># ステータスバー</span></span>
+<span id="cb10-49"><a href="#cb10-49"></a>    <span class="va">self</span>.sb_status <span class="op">=</span> Qw.QStatusBar()</span>
+<span id="cb10-50"><a href="#cb10-50"></a>    <span class="va">self</span>.setStatusBar(<span class="va">self</span>.sb_status)</span>
+<span id="cb10-51"><a href="#cb10-51"></a>    <span class="va">self</span>.sb_status.setSizeGripEnabled(<span class="va">False</span>)</span>
+<span id="cb10-52"><a href="#cb10-52"></a>    <span class="va">self</span>.sb_status.showMessage(<span class="st">&#39;プログラムを起動しました。&#39;</span>)</span>
+<span id="cb10-53"><a href="#cb10-53"></a></span>
+<span id="cb10-54"><a href="#cb10-54"></a><span class="co"># 本体</span></span>
+<span id="cb10-55"><a href="#cb10-55"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&#39;__main__&#39;</span>:</span>
+<span id="cb10-56"><a href="#cb10-56"></a>  app <span class="op">=</span> Qw.QApplication(sys.argv)</span>
+<span id="cb10-57"><a href="#cb10-57"></a>  main_window <span class="op">=</span> MainWindow()</span>
+<span id="cb10-58"><a href="#cb10-58"></a>  main_window.show()</span>
+<span id="cb10-59"><a href="#cb10-59"></a>  sys.exit(app.<span class="bu">exec</span>())</span></code></pre></div>
+      <p>レスポンシブデザインを採用したプログラムは、固定レイアウトのものと比較して行数が増え、コードもやや複雑になる傾向があります。しかし、ウィジェットの追加や削除が
+      <strong>柔軟かつ最小限のコード修正</strong>
+      で行なうことができるという大きな利点があります。特に、動的にウィジェットの追加・削除を行なうプログラム
+      (＝<span
+      class="masked">プログラムの起動後に、処理やユーザー設定に応じてウィジェットの追加や削除をするプログラム</span>)
+      では、レスポンシブデザインの利点が顕著に現れます。</p>
+      <p>このプログラムの詳細について知りたい場合は、ChatGPTなどを利用してください
+      (<a
+      href="https://chat.openai.com/share/8fee7fed-f0fd-4288-a1f4-03b640a65ffd">ChatGPT：質問と回答例</a>)。</p>
+      <hr />
+      <p><strong>演習1</strong> <code>qt-02.py</code>
+      を実行し、マウスでウィンドウサイズを変更してレスポンシブデザインになっていることを確認せよ
+      (一方で、<code>qt-01.py</code>
+      はレスポンシブデザインになっていないことを確認せよ)。</p>
+      <figure>
+      <img src="figs/25/qt-05.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <h1 data-number="6" id="イベント処理"><span
+      class="header-section-number">6</span> イベント処理</h1>
+      <p><code>qt-01.py</code> および <code>qt-02.py</code>
+      は、画面上のボタンを押下しても何も起きないプログラムでした。ここでは「マウスによるボタンの押下」や「キーボード入力」のような「<strong>イベント</strong>」に対して、何らかの「応答」をするようにプログラムに改良していきます。</p>
+      <h2 data-number="6.1" id="guiアプリのアーキテクチャ"><span
+      class="header-section-number">6.1</span>
+      GUIアプリのアーキテクチャ</h2>
+      <p>GUIアプリ開発では、主に「<strong>イベントループ型</strong>」と「<strong>イベント駆動型</strong>」の2つの<strong>アーキテクチャ</strong>
+      (＝ソフトウェアの基本的な構造) が存在します。</p>
+      <p>「<strong>イベントループ型</strong>」のアーキテクチャでは、プログラムのなかに「<strong>イベントループ</strong>」という無限ループを構成し、このループのなかで定期的に「ユーザーからのマウスやキーボード入力イベント」や「OSからのイベント」などを監視・検出する構成をとります
+      (このような監視・検出のプロセスを「<strong>ポーリング</strong>」といいます)。そして、検出したイベント
+      (＝<span
+      class="masked">マウスクリック、キー入力、<i class="fa-solid fa-rectangle-xmark"></i>の押下</span>)
+      について、条件分岐を使って振り分け、そのイベントに応じた処理を実行するようにプログラムを記述します。</p>
+      <p>例えば <span class="masked">Pygameを使ったゲーム開発</span> や
+      <span class="masked">Arduinoによるマイコン開発</span>
+      などは、基本的にはイベントループ型アーキテクチャに従ってプログラムを設計・記述することになります。具体例として
+      Pygame のプログラムの例を以下に示します。<strong>第15行目</strong>
+      から <strong>第34行目</strong>
+      にかけてイベントループを構成し、そのなかの
+      <strong>第18行目</strong> の <code>pg.event.get()</code>
+      でイベントを監視・検出をし、それを条件分岐で振り分け、イベントに応じた各種処理をするような構成となっています。</p>
+      <p>なお、イベントループは、ゲーム系の開発では「ゲームループ」、マイコン系の開発では「メインループ」のようによぶことがあります。</p>
+      <div class="sourceCode" id="cb11"
+      data-caption="pygame-sample.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="im">import</span> sys</span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="im">import</span> pygame <span class="im">as</span> pg</span>
+<span id="cb11-3"><a href="#cb11-3"></a></span>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="kw">def</span> main():</span>
+<span id="cb11-5"><a href="#cb11-5"></a></span>
+<span id="cb11-6"><a href="#cb11-6"></a>  <span class="co"># 初期化処理</span></span>
+<span id="cb11-7"><a href="#cb11-7"></a>  pg.init()</span>
+<span id="cb11-8"><a href="#cb11-8"></a>  pg.display.set_caption(<span class="st">&#39;PyGame&#39;</span>)</span>
+<span id="cb11-9"><a href="#cb11-9"></a>  screen <span class="op">=</span> pg.display.set_mode((<span class="dv">640</span>,<span class="dv">240</span>)) </span>
+<span id="cb11-10"><a href="#cb11-10"></a>  clock  <span class="op">=</span> pg.time.Clock()</span>
+<span id="cb11-11"><a href="#cb11-11"></a>  exit_flag <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb11-12"><a href="#cb11-12"></a>  screen.fill(pg.Color(<span class="st">&#39;Black&#39;</span>))</span>
+<span id="cb11-13"><a href="#cb11-13"></a></span>
+<span id="cb11-14"><a href="#cb11-14"></a>  <span class="co"># イベントループを構成</span></span>
+<span id="cb11-15"><a href="#cb11-15"></a>  <span class="cf">while</span> <span class="kw">not</span> exit_flag:</span>
+<span id="cb11-16"><a href="#cb11-16"></a></span>
+<span id="cb11-17"><a href="#cb11-17"></a>    <span class="co"># システムイベントの監視 (ポーリング)</span></span>
+<span id="cb11-18"><a href="#cb11-18"></a>    <span class="cf">for</span> event <span class="kw">in</span> pg.event.get():</span>
+<span id="cb11-19"><a href="#cb11-19"></a></span>
+<span id="cb11-20"><a href="#cb11-20"></a>      <span class="co"># タイトルバー[X]の押下イベントに対する処理</span></span>
+<span id="cb11-21"><a href="#cb11-21"></a>      <span class="cf">if</span> event.<span class="bu">type</span> <span class="op">==</span> pg.QUIT: </span>
+<span id="cb11-22"><a href="#cb11-22"></a>        exit_flag <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb11-23"><a href="#cb11-23"></a></span>
+<span id="cb11-24"><a href="#cb11-24"></a>      <span class="co"># スペースキーの押下イベントに対する処理</span></span>
+<span id="cb11-25"><a href="#cb11-25"></a>      <span class="cf">if</span> event.<span class="bu">type</span> <span class="op">==</span> pg.KEYDOWN:</span>
+<span id="cb11-26"><a href="#cb11-26"></a>        <span class="cf">if</span> event.key <span class="op">==</span> pg.K_SPACE:</span>
+<span id="cb11-27"><a href="#cb11-27"></a>          screen.fill(pg.Color(<span class="st">&#39;Black&#39;</span>)) </span>
+<span id="cb11-28"><a href="#cb11-28"></a>      </span>
+<span id="cb11-29"><a href="#cb11-29"></a>      <span class="co"># マウスの押下イベントに対する処理</span></span>
+<span id="cb11-30"><a href="#cb11-30"></a>      <span class="cf">if</span> event.<span class="bu">type</span> <span class="op">==</span> pg.MOUSEBUTTONDOWN:</span>
+<span id="cb11-31"><a href="#cb11-31"></a>        pg.draw.circle(screen,<span class="st">&#39;Green&#39;</span>,event.pos,<span class="dv">10</span>)</span>
+<span id="cb11-32"><a href="#cb11-32"></a>        </span>
+<span id="cb11-33"><a href="#cb11-33"></a>    pg.display.update() <span class="co"># 画面の描画更新</span></span>
+<span id="cb11-34"><a href="#cb11-34"></a>    clock.tick(<span class="dv">30</span>)      <span class="co"># 同期</span></span>
+<span id="cb11-35"><a href="#cb11-35"></a></span>
+<span id="cb11-36"><a href="#cb11-36"></a>  pg.quit()</span>
+<span id="cb11-37"><a href="#cb11-37"></a>  sys.exit()</span>
+<span id="cb11-38"><a href="#cb11-38"></a></span>
+<span id="cb11-39"><a href="#cb11-39"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&#39;__main__&#39;</span>:</span>
+<span id="cb11-40"><a href="#cb11-40"></a>  main()</span></code></pre></div>
+      <hr />
+      <p>一方で「<strong>イベント駆動型</strong>」アーキテクチャでは、プログラマはコードのなかに<span
+      class="masked">明示的なイベントループを構成、記述</span>しません。その代わりに<span
+      class="masked">各種イベント発生時に実行する処理を記述した自作関数を定義</span>して、それをウィジェットに「<strong>登録</strong>」するような構成のプログラムを記述します
+      (このように、事前に登録しておいて、あとから適切なタイミングで自動的に呼び出される関数を「<strong>コールバック関数</strong>」といいます)。</p>
+      <p>そして、プログラム実行時には、GUIライブラリ・フレームワークによってイベントループが回され、「<strong>イベントを検出すると事前登録しておいたコールバック関数が、GUIライブラリ・フレームワークによって自動的に呼び出される</strong>」という仕組みでプログラムが機能します。</p>
+      <p>例えば、Qt (PyQt/PySide) や TKinter
+      などを利用するGUIプログラムは、このイベント駆動型アーキテクチャに従って設計・記述することになります。イベント駆動型アーキテクチャについては、文章で読んでもイメージがつかめないと思うので、次のセクションに示す具体例で理解に努めてください。</p>
+      <h2 data-number="6.2" id="pysideにおけるイベント処理"><span
+      class="header-section-number">6.2</span>
+      PySideにおけるイベント処理</h2>
+      <p><code>qt-03.py</code>
+      というファイルを新規作成して、以下のプログラムを貼り付けて実行し、その動作を確認してください。このプログラムは「実行」ボタンと「クリア」ボタンを押下したときの処理を追加したものとなります。実行ボタンを押下すると、<strong>ステータスバーのメッセージが変化</strong>することにも注意してください。</p>
+      <div class="sourceCode" id="cb12" data-caption="qt-3.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="im">import</span> sys</span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="im">import</span> random <span class="im">as</span> r</span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="im">import</span> datetime <span class="im">as</span> dt</span>
+<span id="cb12-4"><a href="#cb12-4"></a><span class="im">import</span> PySide6.QtWidgets <span class="im">as</span> Qw</span>
+<span id="cb12-5"><a href="#cb12-5"></a></span>
+<span id="cb12-6"><a href="#cb12-6"></a><span class="co"># カードガチャ関連 ####</span></span>
+<span id="cb12-7"><a href="#cb12-7"></a>card_t <span class="op">=</span> (<span class="st">&#39;SSR&#39;</span>,<span class="st">&#39;SR&#39;</span>,<span class="st">&#39;R&#39;</span>,<span class="st">&#39;N&#39;</span>) <span class="co"># タイプ</span></span>
+<span id="cb12-8"><a href="#cb12-8"></a>card_p <span class="op">=</span> (<span class="dv">1</span>,<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">25</span>)         <span class="co"># 排出比</span></span>
+<span id="cb12-9"><a href="#cb12-9"></a>card_i <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="bu">len</span>(card_t))) <span class="co"># インデックス</span></span>
+<span id="cb12-10"><a href="#cb12-10"></a><span class="kw">def</span> gacha():</span>
+<span id="cb12-11"><a href="#cb12-11"></a>  x <span class="op">=</span> r.choices(card_i, k<span class="op">=</span><span class="dv">1</span>, weights<span class="op">=</span>card_p)</span>
+<span id="cb12-12"><a href="#cb12-12"></a>  <span class="cf">return</span> x[<span class="dv">0</span>]</span>
+<span id="cb12-13"><a href="#cb12-13"></a></span>
+<span id="cb12-14"><a href="#cb12-14"></a><span class="co"># 時刻関連 ####</span></span>
+<span id="cb12-15"><a href="#cb12-15"></a><span class="kw">def</span> get_datatime():</span>
+<span id="cb12-16"><a href="#cb12-16"></a>  t <span class="op">=</span> dt.datetime.now() <span class="co"># 現在時刻の取得</span></span>
+<span id="cb12-17"><a href="#cb12-17"></a>  <span class="cf">return</span> t.strftime(<span class="st">&#39;%Y/%m/</span><span class="sc">%d</span><span class="st"> %H:%M:%S&#39;</span>)</span>
+<span id="cb12-18"><a href="#cb12-18"></a></span>
+<span id="cb12-19"><a href="#cb12-19"></a><span class="co"># MainWindowクラス定義 ####</span></span>
+<span id="cb12-20"><a href="#cb12-20"></a><span class="kw">class</span> MainWindow(Qw.QMainWindow):</span>
+<span id="cb12-21"><a href="#cb12-21"></a>  </span>
+<span id="cb12-22"><a href="#cb12-22"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb12-23"><a href="#cb12-23"></a>    <span class="bu">super</span>().<span class="fu">__init__</span>() </span>
+<span id="cb12-24"><a href="#cb12-24"></a>    <span class="va">self</span>.setWindowTitle(<span class="st">&#39;MainWindow&#39;</span>) </span>
+<span id="cb12-25"><a href="#cb12-25"></a>    <span class="va">self</span>.setGeometry(<span class="dv">100</span>, <span class="dv">50</span>, <span class="dv">640</span>, <span class="dv">240</span>) </span>
+<span id="cb12-26"><a href="#cb12-26"></a></span>
+<span id="cb12-27"><a href="#cb12-27"></a>    <span class="co"># ランクごとのカード所持数と総課金額の初期化</span></span>
+<span id="cb12-28"><a href="#cb12-28"></a>    <span class="va">self</span>.card_counts <span class="op">=</span> [<span class="dv">0</span>] <span class="op">*</span> <span class="bu">len</span>(card_p)</span>
+<span id="cb12-29"><a href="#cb12-29"></a>    <span class="va">self</span>.charges <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb12-30"><a href="#cb12-30"></a></span>
+<span id="cb12-31"><a href="#cb12-31"></a>    <span class="co">#「実行」ボタンの生成と設定</span></span>
+<span id="cb12-32"><a href="#cb12-32"></a>    <span class="va">self</span>.btn_run <span class="op">=</span> Qw.QPushButton(<span class="st">&#39;実行&#39;</span>,<span class="va">self</span>)</span>
+<span id="cb12-33"><a href="#cb12-33"></a>    <span class="va">self</span>.btn_run.setGeometry(<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">100</span>,<span class="dv">20</span>)</span>
+<span id="cb12-34"><a href="#cb12-34"></a>    <span class="va">self</span>.btn_run.clicked.<span class="ex">connect</span>(<span class="va">self</span>.btn_run_clicked) <span class="co"># ■■注目■■</span></span>
+<span id="cb12-35"><a href="#cb12-35"></a></span>
+<span id="cb12-36"><a href="#cb12-36"></a>    <span class="co">#「クリア」ボタンの生成と設定</span></span>
+<span id="cb12-37"><a href="#cb12-37"></a>    <span class="va">self</span>.btn_clear <span class="op">=</span> Qw.QPushButton(<span class="st">&#39;クリア&#39;</span>,<span class="va">self</span>)</span>
+<span id="cb12-38"><a href="#cb12-38"></a>    <span class="va">self</span>.btn_clear.setGeometry(<span class="dv">120</span>,<span class="dv">10</span>,<span class="dv">100</span>,<span class="dv">20</span>)</span>
+<span id="cb12-39"><a href="#cb12-39"></a>    <span class="va">self</span>.btn_clear.clicked.<span class="ex">connect</span>(<span class="va">self</span>.btn_clear_clicked) <span class="co"># ■■注目■■</span></span>
+<span id="cb12-40"><a href="#cb12-40"></a></span>
+<span id="cb12-41"><a href="#cb12-41"></a>    <span class="co"># テキストボックス</span></span>
+<span id="cb12-42"><a href="#cb12-42"></a>    <span class="va">self</span>.tb_log <span class="op">=</span> Qw.QTextEdit(<span class="st">&#39;&#39;</span>,<span class="va">self</span>)</span>
+<span id="cb12-43"><a href="#cb12-43"></a>    <span class="va">self</span>.tb_log.setGeometry(<span class="dv">10</span>,<span class="dv">40</span>,<span class="dv">620</span>,<span class="dv">170</span>)</span>
+<span id="cb12-44"><a href="#cb12-44"></a>    <span class="va">self</span>.tb_log.setReadOnly(<span class="va">True</span>)</span>
+<span id="cb12-45"><a href="#cb12-45"></a>    <span class="va">self</span>.tb_log.setPlaceholderText(<span class="st">&#39;(ここに実行ログを表示します)&#39;</span>)</span>
+<span id="cb12-46"><a href="#cb12-46"></a></span>
+<span id="cb12-47"><a href="#cb12-47"></a>    <span class="co"># ステータスバー</span></span>
+<span id="cb12-48"><a href="#cb12-48"></a>    <span class="va">self</span>.sb_status <span class="op">=</span> Qw.QStatusBar()</span>
+<span id="cb12-49"><a href="#cb12-49"></a>    <span class="va">self</span>.setStatusBar(<span class="va">self</span>.sb_status)</span>
+<span id="cb12-50"><a href="#cb12-50"></a>    <span class="va">self</span>.sb_status.setSizeGripEnabled(<span class="va">False</span>)</span>
+<span id="cb12-51"><a href="#cb12-51"></a>    <span class="va">self</span>.sb_status.showMessage(<span class="st">&#39;プログラムを起動しました。&#39;</span>)</span>
+<span id="cb12-52"><a href="#cb12-52"></a></span>
+<span id="cb12-53"><a href="#cb12-53"></a>  <span class="co">#「実行」ボタンの押下処理</span></span>
+<span id="cb12-54"><a href="#cb12-54"></a>  <span class="kw">def</span> btn_run_clicked(<span class="va">self</span>):</span>
+<span id="cb12-55"><a href="#cb12-55"></a>    idx <span class="op">=</span> gacha()</span>
+<span id="cb12-56"><a href="#cb12-56"></a>    <span class="va">self</span>.card_counts[idx]<span class="op">+=</span><span class="dv">1</span>  <span class="co"># カード所持数の更新</span></span>
+<span id="cb12-57"><a href="#cb12-57"></a>    <span class="va">self</span>.charges <span class="op">+=</span> <span class="dv">300</span>       <span class="co"># 課金総額の更新</span></span>
+<span id="cb12-58"><a href="#cb12-58"></a></span>
+<span id="cb12-59"><a href="#cb12-59"></a>    <span class="co"># テキストボックスの表示を更新</span></span>
+<span id="cb12-60"><a href="#cb12-60"></a>    log <span class="op">=</span> <span class="ss">f&#39;(</span><span class="sc">{</span>get_datatime()<span class="sc">}</span><span class="ss">)</span><span class="ch">\n</span><span class="ss">&#39;</span></span>
+<span id="cb12-61"><a href="#cb12-61"></a>    log <span class="op">+=</span> <span class="ss">f&#39;【</span><span class="sc">{</span>card_t[idx]<span class="sc">}</span><span class="ss">】ランクのカードを1枚取得しました !! </span><span class="ch">\n\n</span><span class="ss">&#39;</span></span>
+<span id="cb12-62"><a href="#cb12-62"></a>    log <span class="op">+=</span> <span class="va">self</span>.tb_log.toPlainText()</span>
+<span id="cb12-63"><a href="#cb12-63"></a>    <span class="va">self</span>.tb_log.setPlainText(log)</span>
+<span id="cb12-64"><a href="#cb12-64"></a></span>
+<span id="cb12-65"><a href="#cb12-65"></a>    <span class="co"># ステータスバーの表示を更新</span></span>
+<span id="cb12-66"><a href="#cb12-66"></a>    <span class="va">self</span>.update_status()</span>
+<span id="cb12-67"><a href="#cb12-67"></a></span>
+<span id="cb12-68"><a href="#cb12-68"></a>  <span class="co">#「クリア」ボタンの押下処理</span></span>
+<span id="cb12-69"><a href="#cb12-69"></a>  <span class="kw">def</span> btn_clear_clicked(<span class="va">self</span>):</span>
+<span id="cb12-70"><a href="#cb12-70"></a>    <span class="va">self</span>.tb_log.setPlainText(<span class="st">&#39;&#39;</span>)</span>
+<span id="cb12-71"><a href="#cb12-71"></a></span>
+<span id="cb12-72"><a href="#cb12-72"></a>  <span class="co"># ステータスバーの表示を更新</span></span>
+<span id="cb12-73"><a href="#cb12-73"></a>  <span class="kw">def</span> update_status(<span class="va">self</span>):</span>
+<span id="cb12-74"><a href="#cb12-74"></a>    msg <span class="op">=</span> <span class="st">&#39;&#39;</span></span>
+<span id="cb12-75"><a href="#cb12-75"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(card_t)):</span>
+<span id="cb12-76"><a href="#cb12-76"></a>      msg <span class="op">+=</span> <span class="ss">f&#39;</span><span class="sc">{</span>card_t[i]<span class="sc">}</span><span class="ss"> : </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>card_counts[i]<span class="sc">}</span><span class="ss">枚   &#39;</span></span>
+<span id="cb12-77"><a href="#cb12-77"></a>    msg <span class="op">+=</span> <span class="ss">f&#39;課金総額 </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>charges<span class="sc">:,}</span><span class="ss"> 円&#39;</span></span>
+<span id="cb12-78"><a href="#cb12-78"></a>    <span class="va">self</span>.sb_status.showMessage(msg)</span>
+<span id="cb12-79"><a href="#cb12-79"></a></span>
+<span id="cb12-80"><a href="#cb12-80"></a><span class="co"># 本体</span></span>
+<span id="cb12-81"><a href="#cb12-81"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&#39;__main__&#39;</span>:</span>
+<span id="cb12-82"><a href="#cb12-82"></a>  app <span class="op">=</span> Qw.QApplication(sys.argv)</span>
+<span id="cb12-83"><a href="#cb12-83"></a>  main_window <span class="op">=</span> MainWindow()</span>
+<span id="cb12-84"><a href="#cb12-84"></a>  main_window.show()</span>
+<span id="cb12-85"><a href="#cb12-85"></a>  sys.exit(app.<span class="bu">exec</span>())</span></code></pre></div>
+      <h2 data-number="6.3" id="ボタン押下のイベント処理"><span
+      class="header-section-number">6.3</span>
+      ボタン押下のイベント処理</h2>
+      <p>このプログラム (<code>qt-03.py</code>)
+      では、<strong>第54行目</strong> から <strong>第66行目</strong>
+      にかけて <code>btn_run_clicked</code> という関数 (メソッド)
+      を定義しています。この関数は、<span
+      class="masked">「実行」ボタンを押下したときに実行したい処理を定義したもの</span>
+      となります。この関数は、<strong>第34行目</strong> において
+      <code>self.btn_run.clicked.connect(self.btn_run_clicked)</code>
+      のようにコールバック関数として登録しています。このようにすることで、プログラムの実行時に「実行」ボタンが押下されると
+      <code>btn_run_clicked</code> メソッドが呼び出されるようになります
+      (PySide6によって、この仕組みが提供されます)。</p>
+      <p>同様に、「クリア」ボタンを押下したときに実行したい処理を記述した関数
+      (メソッド) を <strong>第69行目</strong>を取得して「 から
+      <strong>第70行目</strong> に定義し、それを
+      <strong>第39行目</strong> において「クリア」ボタンのオブジェクト
+      (<code>btn_clear</code>) に登録しています。</p>
+      <h2 data-number="6.4" id="現在時刻と整形文字列の取得"><span
+      class="header-section-number">6.4</span>
+      現在時刻と整形文字列の取得</h2>
+      <p><strong>第14行目</strong> から <strong>第17行目</strong>
+      にかけて定義される <code>get_datatime</code>
+      関数は、<strong>現在時刻</strong>を取得して「<strong>yyyy/mm/dd
+      hh:mm:ss</strong>」形式にフォーマット (整形)
+      した「<strong>文字列</strong>」を返す関数になります。例えば「<strong>yyyy年mm月dd日
+      hh時mm分ss秒</strong>」形式にフォーマットしたい場合は
+      <code>strftime</code> メソッドの引数を
+      <code>'%Y年%m月%d日 %H時%M分%S秒'</code> のように変更します
+      (大文字・小文字に注意してください)。詳しくは「<a
+      href="https://www.google.com/search?q=python+strftime+フォーマット">python
+      strftime フォーマット</a>」で検索してください。</p>
+      <p>なお、時刻を扱うために <strong>第03行目</strong> で
+      <code>datetime</code>
+      ライブラリをインポートしています。<code>datetime</code>
+      は標準ライブラリであるため、pip によるインストールは不要です。</p>
+      <p><strong>演習1</strong>:
+      ログに表示される時刻の形式を「2024-01-15
+      09:45」のように変更せよ。</p>
+      <p><strong>演習2 (Ex)</strong>:
+      ログに表示される時刻の形式を「2024年01月15日(月)
+      09時45分20秒」のように変更せよ。ヒント:
+      <span>「Mon」ではなく「月」を出力するためには、ロケールの設定が必要になります。</span></p>
+      <p><strong>(Ex)</strong>
+      の演習は、授業時間外に取り組んでください。</p>
+      <h2 data-number="6.5" id="ガチャ抽選のシミュレーション"><span
+      class="header-section-number">6.5</span>
+      ガチャ抽選のシミュレーション</h2>
+      <p><strong>第07行目</strong> から <strong>第12行目</strong>
+      では、ガチャ抽選シミュレーションに関連した関数や変数を記述しています。</p>
+      <p><strong>第07行目</strong> から <strong>第09行目</strong>
+      では、ガチャ要素であるカードのタイプ (ランク)
+      の文字列、排出比、インデックを設定しています。変数
+      <code>card_i</code> の内容は <code>[0,1,2,3]</code>
+      となります。これらの変数 <code>card_t</code> <code>card_p</code>
+      <code>card_i</code>
+      は、関数内部ではなく、クラス内部でもない位置で宣言 (初期化)
+      されているため「<strong>グローバル変数</strong>」となります。つまり、<strong>プログラムのどこからでも参照できる変数</strong>となります。グローバル変数については、<a
+      href="lecture24.html#前回プログラムのリファクタリングとグローバル変数">第24回講義</a>において、既に学習済みです。</p>
+      <p><strong>第11行目</strong> の <code>choices</code>
+      は、リストから「<strong>重み付きのランダム抽出</strong>」を行なう関数で、これは既に<a
+      href="lecture08.html#ランダム処理とリストの組み合わせ">第08回講義</a>のなかで学習しました。</p>
+      <p>自作関数 <code>gacha()</code> を実行すると、整数値で
+      <code>0</code> から <code>3</code>
+      までの数値が取得でき、この値をインデックス <code>idx</code> として
+      <code>card_t[idx]</code>
+      とすれば、そのカードのランクを表す文字列が取得できるようになっています。抽選で得られたカードについて、そのランクを表す文字列ではなく、インデックスを返しているのは、<strong>第28行目</strong>
+      で定義している <code>self.card_counts</code>
+      (ランクごとのカード所持数) を更新しやすいためです。</p>
+      <p><strong>演習</strong>:
+      新たにカードランク「UR」を追加し、それが適切に反映されるようにプログラムを書き換えよ。UR:
+      Ultimate Rare。</p>
+      <h1 data-number="7" id="演出効果の追加"><span
+      class="header-section-number">7</span> 演出効果の追加</h1>
+      <p>先ほどのプログラムに簡単な「<strong>演出効果
+      (ガチャ抽選のエフェクト)</strong>
+      」を追加します。<code>qt-04.py</code>
+      というファイルを新規作成して<a
+      href="https://github.com/TakeshiWada1980/Programming1-2023/blob/main/docs/code/25/qt-04.py">演出効果を追加したプログラム</a>からコードをコピーして、貼り付けて実行してください。</p>
+      <div class="note type-tips">
+      <p><strong>プログラムコードのコピー方法</strong></p>
+      <p>リンクから GitHub
+      にアクセスして、<i class="fa-regular fa-clone"></i>アイコンをクリックすれば、コードをクリップボードにコピーすることができます。</p>
+      <figure>
+      <img src="figs/25/github-01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      </div>
+      <p>先のプログラム <code>qt-03.py</code>
+      からの主な変更箇所は、以下に抜粋するように
+      <strong>第05行目</strong> と <strong>第06行目</strong>
+      のライブラリのインポート、<strong>第61行目</strong> から
+      <strong>第73行目</strong>
+      の「プログレスバーダイアログ」の表示処理になります。</p>
+      <div class="sourceCode" id="cb13" data-startFrom="5"
+      data-caption="qt-04.py (抜粋・ライブラリのインポート)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 4;"><span id="cb13-5"><a href="#cb13-5"></a><span class="im">import</span> PySide6.QtCore <span class="im">as</span> Qc</span>
+<span id="cb13-6"><a href="#cb13-6"></a><span class="im">import</span> PySide6.QtTest <span class="im">as</span> Qt</span></code></pre></div>
+      <div class="sourceCode" id="cb14" data-startFrom="55"
+      data-caption="qt-04.py (抜粋・演出効果の処理の追加)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 54;"><span id="cb14-55"><a href="#cb14-55"></a>  <span class="co">#「実行」ボタンの押下処理</span></span>
+<span id="cb14-56"><a href="#cb14-56"></a>  <span class="kw">def</span> btn_run_clicked(<span class="va">self</span>):</span>
+<span id="cb14-57"><a href="#cb14-57"></a>    idx <span class="op">=</span> gacha()</span>
+<span id="cb14-58"><a href="#cb14-58"></a>    <span class="va">self</span>.card_counts[idx]<span class="op">+=</span><span class="dv">1</span>  <span class="co"># カード所持数の更新</span></span>
+<span id="cb14-59"><a href="#cb14-59"></a>    <span class="va">self</span>.charges <span class="op">+=</span> <span class="dv">300</span>       <span class="co"># 課金総額の更新</span></span>
+<span id="cb14-60"><a href="#cb14-60"></a></span>
+<span id="cb14-61"><a href="#cb14-61"></a>    <span class="co"># プログレスバーダイアログ (演出効果) の表示</span></span>
+<span id="cb14-62"><a href="#cb14-62"></a>    gacha_msg <span class="op">=</span> [<span class="st">&#39;  ++++++  ガチャ抽選中  ++++++  &#39;</span>,</span>
+<span id="cb14-63"><a href="#cb14-63"></a>                 <span class="st">&#39;  ------  ガチャ抽選中  ------  &#39;</span> ]</span>
+<span id="cb14-64"><a href="#cb14-64"></a>    p_bar <span class="op">=</span> Qw.QProgressDialog(gacha_msg[<span class="dv">0</span>],<span class="va">None</span>,<span class="dv">0</span>,<span class="dv">100</span>,<span class="va">self</span>)</span>
+<span id="cb14-65"><a href="#cb14-65"></a>    p_bar.setWindowModality(Qc.Qt.WindowModality.WindowModal)</span>
+<span id="cb14-66"><a href="#cb14-66"></a>    p_bar.setWindowTitle(<span class="st">&#39;ガチャ抽選&#39;</span>)</span>
+<span id="cb14-67"><a href="#cb14-67"></a>    p_bar.show()</span>
+<span id="cb14-68"><a href="#cb14-68"></a>    <span class="cf">for</span> p <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">101</span>):</span>
+<span id="cb14-69"><a href="#cb14-69"></a>      p_bar.setValue(p)</span>
+<span id="cb14-70"><a href="#cb14-70"></a>      <span class="cf">if</span> p <span class="op">%</span> <span class="dv">10</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb14-71"><a href="#cb14-71"></a>        p_bar.setLabelText(gacha_msg[p<span class="op">//</span><span class="dv">10</span><span class="op">%</span><span class="dv">2</span>])</span>
+<span id="cb14-72"><a href="#cb14-72"></a>      Qt.QTest.qWait(<span class="dv">20</span>)</span>
+<span id="cb14-73"><a href="#cb14-73"></a>    p_bar.close()</span>
+<span id="cb14-74"><a href="#cb14-74"></a></span>
+<span id="cb14-75"><a href="#cb14-75"></a>    <span class="co"># テキストボックスの表示を更新</span></span>
+<span id="cb14-76"><a href="#cb14-76"></a>    log <span class="op">=</span> <span class="ss">f&#39;(</span><span class="sc">{</span>get_datatime()<span class="sc">}</span><span class="ss">)</span><span class="ch">\n</span><span class="ss">&#39;</span></span>
+<span id="cb14-77"><a href="#cb14-77"></a>    log <span class="op">+=</span> <span class="ss">f&#39;【</span><span class="sc">{</span>card_t[idx]<span class="sc">}</span><span class="ss">】ランクのカードを1枚取得しました !! </span><span class="ch">\n\n</span><span class="ss">&#39;</span></span>
+<span id="cb14-78"><a href="#cb14-78"></a>    log <span class="op">+=</span> <span class="va">self</span>.tb_log.toPlainText()</span>
+<span id="cb14-79"><a href="#cb14-79"></a>    <span class="va">self</span>.tb_log.setPlainText(log)</span>
+<span id="cb14-80"><a href="#cb14-80"></a></span>
+<span id="cb14-81"><a href="#cb14-81"></a>    <span class="co"># ステータスバーの表示を更新</span></span>
+<span id="cb14-82"><a href="#cb14-82"></a>    <span class="va">self</span>.update_status()</span></code></pre></div>
+      <p>なお、VSCodeの環境設定 (拡張機能) によっては
+      <strong>第64行目</strong>
+      において、次のような警告が表示されますが、ここでは無視して問題ありません
+      (プログラムは正常に機能します)。</p>
+      <blockquote>
+      <p>型 “None” の引数を、関数 “<strong>init</strong>” の型 “str”
+      のパラメーター “cancelButtonText” に割り当てることはできません
+      <br>“None” は “str”
+      と互換性がありませんPylancereportGeneralTypeIssues</p>
+      </blockquote>
+      <p>これについて、詳しく知りたい場合は、ChatGPTなどを利用してください
+      (<a
+      href="https://chat.openai.com/share/cb4292af-eeda-4f48-8eec-848c54cda29a">ChatGPT：質問と回答例</a>)。</p>
+      <p><strong>演習</strong>:
+      演出効果のプログラムについて読解せよ。また、パラメータを調整したり、プログラムを書き替えて演出効果を改良せよ
+      (例えば、カードランクに応じて演出効果を調整するなど)。プログラムの読解に際しては、ChatGPT
+      などを適切に活用すること (<a
+      href="https://chat.openai.com/share/b344ae07-1864-4687-a402-84b83fe9d6ea">ChatGPT：質問と回答例</a>)。</p>
+      <h1 data-number="8" id="自動セーブとロード機能の追加"><span
+      class="header-section-number">8</span>
+      自動セーブとロード機能の追加</h1>
+      <p>先ほどのプログラム (<code>qt-04.py</code>)
+      に「課金総額とカード取得枚数のデータを <span
+      class="masked">自動セーブ・ロード</span>
+      する機能」を追加実装します。具体的には、<a
+      href="lecture18.html#pickle形式のシリアライズとデシリアライズ">第18回講義</a>で学んだ
+      pickle
+      ライブラリを利用して、プログラムの起動時にデータファイルを自動ロードし、また、プログラム終了時に自動セーブするような機能を実装します
+      (つまり、課金総額とカード取得枚数の<strong>データを「永続化」</strong>します)。</p>
+      <p><code>qt-05.py</code> というファイルを新規作成して<a
+      href="https://github.com/TakeshiWada1980/Programming1-2023/blob/main/docs/code/25/qt-05.py">自動セーブとロード機能を実装したプログラム</a>を貼り付け、実行して動作を確認してください。初回起動後、プログラムを終了する際に
+      <code>qt-05.dat</code> というデータファイル (バイナリファイル) が
+      <code>qt-05.py</code> と同じフォルダ内に新規作成されます。</p>
+      <p>以下、主な変更箇所を抜粋して示します。</p>
+      <h2 data-number="8.1" id="ライブラリのインポート"><span
+      class="header-section-number">8.1</span>
+      ライブラリのインポート</h2>
+      <div class="sourceCode" id="cb15"
+      data-caption="qt-05.py (抜粋：インポート)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="im">import</span> os</span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="im">import</span> pickle</span></code></pre></div>
+      <p><strong>第01行目</strong>では、データファイルの有無をチェックするために
+      <code>os</code> ライブラリをインポートしています。ファイル
+      (フォルダ) の有無を確認する <code>os.path.isfile</code>
+      (<code>os.path.isdir</code>) については<a
+      href="lecture22.html#画像データの準備例1">第22回講義</a>
+      のなかで学習しました。</p>
+      <p>また、<strong>第02行目</strong>では、データを<a
+      href="lecture18.html#シリアライズ-1">シリアライズ</a>および<a
+      href="lecture18.html#デシリアライズ-1">デシリアライズ</a>するために利用する
+      <code>pickle</code> ライブラリを読み込んでいます。<code>os</code>
+      も <code>pickle</code> も標準ライブラリ
+      (Pythonインストール時に自動的に組み込まれるライブラリ)
+      であるため、<code>pip</code> によるインストールは不要です。</p>
+      <h2 data-number="8.2" id="データのロード"><span
+      class="header-section-number">8.2</span> データのロード</h2>
+      <p>MainWindowクラスのコンストラクタの最後に、データの<strong>ロード
+      (読込み) 処理</strong>を追加しています。ここでは
+      <code>qt-05.dat</code> という名前でデータファイルを扱います。</p>
+      <p><strong>第58行目</strong>
+      では、データファイルの有無を確認して、データファイルが存在すればロードして、変数
+      <code>self.card_counts</code> と <code>self.charges</code>
+      に上書きし、<strong>第63行目</strong>
+      でステータスバーの表示を更新しています。データファイルが存在しない場合は、<strong>第32行目</strong>
+      と <strong>第33行目</strong> で初期化した値
+      (つまり、課金総額もカード取得枚数も「0」)
+      をそのまま使用します。</p>
+      <div class="sourceCode" id="cb16" data-startFrom="56"
+      data-caption="qt-05.py (抜粋：コンストラクタの末尾から抜粋)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 55;"><span id="cb16-56"><a href="#cb16-56"></a><span class="co"># データファイルが存在すれば読み込む</span></span>
+<span id="cb16-57"><a href="#cb16-57"></a><span class="va">self</span>.data_file <span class="op">=</span> <span class="st">&#39;./qt-05.dat&#39;</span></span>
+<span id="cb16-58"><a href="#cb16-58"></a><span class="cf">if</span> os.path.isfile(<span class="va">self</span>.data_file):</span>
+<span id="cb16-59"><a href="#cb16-59"></a>  <span class="cf">with</span> <span class="bu">open</span>(<span class="va">self</span>.data_file,<span class="st">&#39;rb&#39;</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb16-60"><a href="#cb16-60"></a>    data <span class="op">=</span> pickle.load(<span class="bu">file</span>)</span>
+<span id="cb16-61"><a href="#cb16-61"></a>    <span class="va">self</span>.card_counts <span class="op">=</span> data[<span class="st">&#39;card_counts&#39;</span>]</span>
+<span id="cb16-62"><a href="#cb16-62"></a>    <span class="va">self</span>.charges <span class="op">=</span> data[<span class="st">&#39;charges&#39;</span>]</span>
+<span id="cb16-63"><a href="#cb16-63"></a>    <span class="va">self</span>.update_status()</span>
+<span id="cb16-64"><a href="#cb16-64"></a><span class="cf">else</span> :</span>
+<span id="cb16-65"><a href="#cb16-65"></a>  <span class="va">self</span>.sb_status.showMessage(<span class="st">&#39;プログラムを起動しました。&#39;</span>)</span></code></pre></div>
+      <h2 data-number="8.3" id="データのセーブ"><span
+      class="header-section-number">8.3</span> データのセーブ</h2>
+      <p>プログラムが終了するタイミグでデータを保存するように設計しています。</p>
+      <p>PySide6.QtWidgets.Qw.QMainWindowクラスでは、ウィンドウが閉じられる直前に、クラス内に定義される
+      <code>closeEvent</code>
+      というメソッドが呼び出されるようになっています。そのため「PySide6.QtWidgets.Qw.QMainWindow」を<strong>継承</strong>した「MainWindowクラス」においても
+      <code>closeEvent</code>
+      という名前のメソッドを定義しておけば、ウィンドウが閉じられる直前に、そのメソッドが呼び出されるようになります
+      (この仕組みを <strong><em>オーバーライド</em></strong>
+      といい、オブジェクト指向プログラミングの重要な概念のひとつとなっています)。</p>
+      <p>なお、<code>closeEvent</code> メソッドは、<code>self</code>
+      に加えて <code>event</code>
+      という引数を持ちます。<code>closeEvent</code> メソッドのなかで
+      <code>event.ignore()</code> として <span
+      class="masked">関数を抜けると終了処理がキャンセル</span>
+      されます。この機能は「本当に終了してよろしいでしょうか？」のような
+      Yes と No のダイアログと組み合わせて使用します。</p>
+      <div class="sourceCode" id="cb17" data-startFrom="67"
+      data-caption="qt-05.py (抜粋：プログラムの終了処理)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 66;"><span id="cb17-67"><a href="#cb17-67"></a><span class="co"># 終了処理</span></span>
+<span id="cb17-68"><a href="#cb17-68"></a><span class="kw">def</span> closeEvent(<span class="va">self</span>, event):</span>
+<span id="cb17-69"><a href="#cb17-69"></a>  <span class="cf">with</span> <span class="bu">open</span>(<span class="va">self</span>.data_file,<span class="st">&#39;wb&#39;</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb17-70"><a href="#cb17-70"></a>    data <span class="op">=</span> {}</span>
+<span id="cb17-71"><a href="#cb17-71"></a>    data[<span class="st">&#39;card_counts&#39;</span>] <span class="op">=</span> <span class="va">self</span>.card_counts</span>
+<span id="cb17-72"><a href="#cb17-72"></a>    data[<span class="st">&#39;charges&#39;</span>] <span class="op">=</span> <span class="va">self</span>.charges</span>
+<span id="cb17-73"><a href="#cb17-73"></a>    pickle.dump(data, <span class="bu">file</span>)</span>
+<span id="cb17-74"><a href="#cb17-74"></a>    <span class="bu">print</span>(<span class="st">&#39;データファイルを更新セーブしました。&#39;</span>)</span>
+<span id="cb17-75"><a href="#cb17-75"></a>  event.accept()</span></code></pre></div>
+      <p><strong>演習1</strong>: <strong>第75行目</strong> の
+      <code>event.accept()</code> を <code>event.ignore()</code>
+      に書き替えると、ウィンドウ右上の
+      <i class="fa-solid fa-rectangle-xmark"></i>
+      ボタンを押下しても機能しなくなることを確認せよ。</p>
+      <p><strong>演習2 (Ex)</strong> : <code>closeEvent</code>
+      メソッドはプログラムを外部から強制終了するような場合には呼び出されない。例えば、次の図のようにVSCodeのデバッガから強制停止したような場合は
+      <code>closeEvent</code>
+      メソッドが呼ばれず、データが保存されない。これを回避するように「ガチャをまわした直後」にデータが保存されるようにプログラムを書き替えよ。</p>
+      <figure>
+      <img src="figs/25/vscode-04.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p><strong>演習3 (Ex)</strong> : <code>QMessageBox</code>
+      を利用して、アプリの終了確認の機能 (終了確認ダイアログ)
+      を実装せよ。</p>
+      <figure>
+      <img src="figs/25/qt-06.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <!-- ---------------------------------------- -->
+    </main>
+
+    <footer class="markdown-body">
+      <p><a href="https://takeshiwada1980.github.io/Programming1-2023/">講義資料のIndexに移動</a></p>
+    </footer>
+
+    <script>
+      window.onload = function () {
+        // ナビゲーション関連
+        let openBtn = document.getElementsByClassName("openbtn")[0];
+        let navPnl = document.getElementById("g-nav");
+        openBtn.onclick = () => {
+          openBtn.classList.toggle("active");
+          navPnl.classList.toggle("panelactive");
+        };
+
+        let items = navPnl.getElementsByTagName("a");
+        Array.from(items).forEach((item) => {
+          item.onclick = () => {
+            openBtn.classList.toggle("active");
+            navPnl.classList.toggle("panelactive");
+          };
+        });
+
+        // マスク処理
+        let maskedSpans = document.getElementsByClassName("masked");
+        Array.from(maskedSpans).forEach((span) => {
+          span.onclick = () => {
+            span.classList.toggle("open");
+          };
+        });
+
+        // data-startfrom 属性の行番号カウンタのリセット
+        document.querySelectorAll("div.sourceCode").forEach(function (div) {
+          var startFrom = div.getAttribute("data-startfrom");
+          if (startFrom != null) {
+            div.style.counterReset = "pg-line " + (startFrom - 1);
+          }
+        });
+
+        // 画像にリンクを付与
+        // let images = document.querySelectorAll("figure img");
+        // Array.from(images).forEach((img) => {
+        //   img.onclick = () => {
+        //     location.href = img.getAttribute("src");
+        //   };
+        // });
+      };
+    </script>
+  </body>
+</html>
