@@ -58,7 +58,7 @@ class MainWindow(Qw.QMainWindow):
     self.card_counts[idx]+=1  # カード所持数の更新
     self.charges += 300       # 課金総額の更新
 
-    # プログレスバーダイアログの表示
+    # プログレスバーダイアログ (演出効果) の表示
     gacha_msg = ['  ++++++  ガチャ抽選中  ++++++  ',
                  '  ------  ガチャ抽選中  ------  ' ]
     p_bar = Qw.QProgressDialog(gacha_msg[0],None,0,100,self) # type: ignore
