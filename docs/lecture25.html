@@ -145,21 +145,21 @@ class="toc-section-number">8.3</span> データのセーブ</a></li>
       <li>今回「小テスト❸」を実施します。鉛筆と消しゴムを準備してください。</li>
       <li><a
       href="lecture24.html#課題08-自由作品">課題08</a>の注意事項や内容について、再度、確認してください。特にポートフォリオの
-      URL
-      が変更になっている場合は、必ず個別にLINEで連絡してください。</li>
+      URL が変更になっている場合は、必ず個別にLINEで連絡ください。</li>
       </ul>
       <h2 data-number="1.2" id="講義概要"><span
       class="header-section-number">1.2</span> 講義概要</h2>
       <p>今回の講義では <strong><em>PySide</em></strong>
       (<strong>PyQt</strong>)
       というライブラリを使用した「<strong>GUIアプリ</strong>」の開発について学んでいきます。<strong>Qt</strong>
-      は <span class="masked">キュート</span> と読みます。</p>
+      は <span class="masked">「キューティ」ではなく「キュート」</span>
+      と読みます。</p>
       <figure>
       <img src="figs/25/qt-01.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
       </figure>
       <p>今回講義の「達成目標」は、次のようになります。なお、<strong>PySide</strong>
-      についてある程度理解して利用するためには、「<strong>オブジェクト指向プログラミング
+      をある程度理解して利用するためには「<strong>オブジェクト指向プログラミング
       (特にクラス定義関連)
       の基礎的な理解と知識</strong>」が必要となります。オブジェクト指向プログラミング
       (OOP) については<a
@@ -186,11 +186,11 @@ class="toc-section-number">8.3</span> データのセーブ</a></li>
       class="masked">コンボボックス
       (プルダウンメニュー/ドロップダウンリスト)</span>」などのグラフィカルな要素を通して人間とコンピュータが対話します。GUIでは、キーボードに加えて「マウス」や「タッチパネル」などの
       <span class="masked">ポインティングデバイス</span>
-      を入力に活用することが特徴となります。</p>
+      がユーザー入力に使用されることが特徴となります。</p>
       <p>人間にとって、特に「<strong>非技術者</strong>」や「<strong>初心者</strong>」にとっては
       GUI
-      のほうが「直感的」かつ「分かりやすい」インターフェイスとなります。このため、PCやスマートフォンの一般向けアプリのほとんどは「GUIアプリ」として設計・実装されています。また、<span
-      class="masked">ATM や 無人レジ </span>などの画面なども GUI
+      のほうが「直感的」かつ「分かりやすい」インターフェイスとなります。このため、PCやスマートフォンにおける一般向けアプリのほとんどは「GUIアプリ」として設計・実装されています。また、<span
+      class="masked">ATM や 無人レジ </span>などの画面も GUI
       で構成されています。</p>
       <div class="note type-tips">
       <p><strong>インタラクションとは</strong></p>
@@ -199,7 +199,7 @@ class="toc-section-number">8.3</span> データのセーブ</a></li>
       (活動・行為・作用)</strong>」をあわせた語で<strong>要素間の相互作用</strong>
       (<strong>アクションに対応したリアクション</strong>)
       や交流を意味します。コンピュータの分野においては<span
-      class="masked">「ユーザーがコンピュータに命令を与え、コンピュータがそれに応答する」</span>というプロセスがインタラクションに含まれます。例えば、ユーザーがマウスやキーボードを使って入力することで、コンピュータは入力に応じたタスクを実行して結果を画面上に出力しますが、これが「インタラクション」となります。</p>
+      class="masked">「ユーザーがコンピュータに命令を与え、コンピュータがそれに応答する」</span>というプロセスがインタラクションに含まれます。例えば、ユーザーがマウスやキーボードを使って入力を与えることで、コンピュータはそれに応じたタスクを実行して結果を画面に出力しますが、これが「インタラクション」となります。</p>
       <p>このようにインタラクションは、ユーザーとコンピュータの間で行われる<strong>双方向のコミュニケーション</strong>を意味し、コンピュータシステムやアプリの<strong>使用体験</strong>
       (＝<span class="masked">ユーザーエクスペリエンス (UX: User
       Experience)</span>) において非常に重要な要素となります。</p>
@@ -210,30 +210,31 @@ class="toc-section-number">8.3</span> データのセーブ</a></li>
       <h1 data-number="3" id="pythonにおけるguiアプリ開発"><span
       class="header-section-number">3</span>
       PythonにおけるGUIアプリ開発</h1>
-      <p>Pythonによって <strong>GUIアプリ</strong> (=<span
+      <p>Pythonで <strong>GUIアプリ</strong> (=<span
       class="masked">いわゆる「ウィンドウ」を持ったアプリ</span>)
-      を開発するときは、<strong>何らかのGUIライブラリを使用すること</strong>が一般的となります。ライブラリを使わずにゼロからGUIアプリを開発することも技術的には可能ですが、単純なウィンドウにボタンをひとつを表示するだけでも大変な手間がかかるため、<strong>ライブラリを使わない開発は一般的とは言えません</strong>。</p>
-      <p>GUIアプリを開発するためのPython用の「ライブラリ」や「フレームワーク」としては、第22～24回講義で学んだ<a
+      を開発するときは、<strong>何らかの「GUIライブラリ」を使用すること</strong>が一般的となります。ライブラリを使わずにゼロからGUIアプリを開発することも技術的には可能ですが、単純なウィンドウにボタンをひとつを表示するだけでも大変な手間がかかるため、<strong>「GUIライブラリ」を使わないGUIアプリ開発は一般的とは言えません</strong>。</p>
+      <p>GUIアプリを開発するためのPython用の「ライブラリ」あるいは「フレームワーク」としては、第22～24回講義で学んだ<a
       href="https://pypi.org/project/pygame/">Pygame</a>の他、<strong>Tkinter</strong>、<a
       href="https://pypi.org/project/PyQt6/">PyQt</a>、<a
       href="https://pypi.org/project/PySide6/">PySide</a>、<a
       href="https://pypi.org/project/Kivy/">Kivy</a>、<a
       href="https://pypi.org/project/wxPython/">wxPython</a>、<a
-      href="https://pypi.org/project/PySimpleGUI/">PySimpleGUI</a>など<strong>様々なものが存在</strong>します。各ライブラリは、<strong>得意分野</strong>、<strong>機能</strong>、<strong>外観</strong>、<strong>実行速度</strong>、<span
-      class="masked">ライセンス</span>
-      の面で<strong>一長一短</strong>があり、開発しようとするアプリの目的や特性、規模に応じて適切なライブラリを選択する必要があります。</p>
+      href="https://pypi.org/project/PySimpleGUI/">PySimpleGUI</a>など<strong>様々なものが存在します</strong>。各ライブラリは、<strong>得意分野</strong>、<strong>機能</strong>、<strong>外観</strong>、<strong>実行速度</strong>、<span
+      class="masked">ライセンス</span> の面で <span
+      class="masked">一長一短</span>
+      があり、開発しようとするアプリの目的や特性、規模に応じて適切なライブラリを選択することが求められます。</p>
       <p>例えば、「<strong>Pygame</strong>」は<strong>2Dゲームの開発に特化したGUIライブラリ</strong>であり、<span
-      class="masked">一般業務に使用するようなビジネスアプリの開発</span>には適していません。</p>
+      class="masked">一般業務に使用するようなビジネス用GUIアプリの開発</span>には適していません。</p>
       <div class="note type-tips">
       <p><strong>「ライブラリ」と「フレームワーク」の違い</strong></p>
-      <p>「<strong>ライブラリ</strong>」とは、特定の機能を提供するプログラムの集合を指します。プログラマはこれらの機能を必要に応じて自分のコードに組み込み活用します。例えば、数学計算をサポートするライブラリ
+      <p>「<strong>ライブラリ</strong>」とは、特定の機能を提供するプログラムの集合を指します。プログラマは、これらのライブラリの機能を必要に応じて自分のコードに組み込み活用します。例えば、数学計算をサポートするライブラリ
       ( <code>math.sin</code>、<code>math.degrees</code> など)
       や、多次元配列の操作を容易にする NumPy
       のようなライブラリが存在します。ライブラリを利用する際、プログラムの「流れ」や「構造」は、あくまで
-      <span class="masked">プログラマが自ら設計</span> します。</p>
-      <p>一方、「<strong>フレームワーク</strong>」とは、アプリケーションの基本的な「流れ」や「構造」、「規則」などをプログラマに提供するものです。プログラマは、フレームワークが定める「<strong>枠組み</strong>」のなかで、目的に応じたコードを記述します。例えば、Arduino
+      <span class="masked">プログラマ自身が設計</span> します。</p>
+      <p>一方、「<strong>フレームワーク</strong>」とは、アプリケーションの基本的な「流れ」や「構造」、「規則」などをプログラマに提供するものとなっています。プログラマは、フレームワークが定める「<strong>枠組み</strong>」のなかで、目的に応じたコードを記述します。例えば、Arduino
       開発においては <code>setup</code> や <code>loop</code>
-      という決められた名前の関数にコードを記述することで開発を行ないますが、これもフレームワークに基づく開発といえます。特にウェブサービスの開発では、フレームワークを使用することが多いです
+      という決められた名前の関数にコードを記述することで開発をしますが、これはフレームワークに基づく開発といえます。特にウェブサービスの開発では、フレームワークを使用することが多いです
       (3年生の「プログラミング3」では、実際にフレームワークを使ったバックエンド、フロントエンドの開発について学びます)。</p>
       <p>簡単に言えば、ライブラリは「<strong>自分のプログラムのなかで使用するツール(便利な道具)</strong>」であり、フレームワークは「<strong>コードを記述するための枠組み</strong>」となります。ライブラリは自分で選んで利用するものであり、フレームワークは自分が従うべきルールや構造を提供してくれるものと考えてください。</p>
       </div>
@@ -247,17 +248,19 @@ class="toc-section-number">8.3</span> データのセーブ</a></li>
       は、Pythonの開発環境に<strong>標準で組み込まれているGUIライブラリ</strong>であり、<code>pip</code>
       を使って追加インストールすることなく利用することができます。</p>
       <p>標準ライブラリであることから、比較的利用者が多く、インターネット上にも解説情報が多く存在します。また、雑誌やネットの
-      <span class="masked">初心者に向けたGUIアプリ開発の解説記事</span>
+      <span class="masked">初心者向けGUIアプリ開発の解説記事</span>
       では、たいてい <strong>Tkinter</strong>
-      を使った内容になっています。ただ、Tkinterの残念な面としては、他のGUIライブラリと比較して
-      <span class="masked">外観 (デザイン)
+      を取り上げたものになっています。ただ、Tkinter
+      の残念な面としては、他のGUIライブラリと比較して <span
+      class="masked">外観 (デザイン)
       がしょぼい</span>、<strong>機能が貧弱</strong>ということが挙げられます。</p>
-      <p><strong>Tkinter を使った GUIアプリの外観</strong></p>
+      <p><strong>Tkinter を使った GUIアプリの外観</strong>
+      (スケーリングに対応していないため、環境によっては文字が滲む)</p>
       <figure>
       <img src="figs/25/tk-01.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
       </figure>
-      <p><strong>PyQt / PySide を使った GUIアプリの外観</strong></p>
+      <p><strong>PySide / PyQt を使った GUIアプリの外観</strong></p>
       <figure>
       <img src="figs/25/qt-01.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
@@ -267,36 +270,39 @@ class="toc-section-number">8.3</span> データのセーブ</a></li>
       <p><a
       href="https://pypi.org/project/PyQt6/">PyQt</a>(読み方は<span
       class="masked">パイキュート</span>)
-      は、C++で実装されたクロスプラットフォーム対応のGUIツールキットである「Qt」のPythonバインディングです。これにより、<strong>高機能でモダンでスタイリッシュなデザインのGUIアプリ</strong>を開発することが可能となっています。ここで「Pythonバインディング」とは「Pythonのコードを使用してバックグラウンドでQtの機能を動作させる仕組み」を意味します。</p>
-      <p>PyQtを用いる場合、シンプルなGUIアプリケーション
+      は、C++で実装されたクロスプラットフォーム対応のGUIツールキットである「Qt」のPythonバインディングとなります。これにより、<strong>高機能かつモダンでスタイリッシュなデザインのGUIアプリ</strong>を開発することが可能となっています。ここで「Pythonバインディング」とは「Pythonのコードを使用してバックグラウンドでQtの機能を動作させる仕組み」を意味します。</p>
+      <p>PyQtを用いる場合、シンプルなGUIアプリ
       (例えば、単一のボタンを持つもの)
       の開発であっても、前々回の講義で学んだような<a
       href="lecture23.html#自分でクラスを定義して使用する">クラスの定義</a>
       が求められます。これに対して、Tkinterではクラス定義なしでGUIアプリの開発が可能であるため、PyQTは
       <strong>初心者にとっては学習のハードルが高い</strong>
-      と言えます。しかしながら、GUIアプリの開発ではコードが複雑化・肥大化しがちであるため、実際にはオブジェクト指向プログラミング（OOP）の採用が必須となります。従って「OOPが必要となるから」という理由で
+      と言えます。しかしながら、GUIアプリの開発では <span
+      class="masked">コードが複雑化・肥大化しがち</span>
+      であるため、現実的にはオブジェクト指向プログラミング（OOP）の採用が必須となります。従って「OOPが必要となるから」という理由で
       PyQt を避けるのは適切ではありません。</p>
-      <p>また、Tkinter と比較しての PyQt
-      の短所としては、高機能が故に覚えるべき内容が多く、また、ウェブに情報が少ないということが挙げられます。また、PyQt
-      のライセンスが、いわゆる<strong>コピーレフト</strong> にあたる
+      <p>また、Tkinter と比較しての「PyQt
+      の短所」としては、高機能であるが故に覚えるべき内容が多く、また、ウェブに情報が少ないということが挙げられます。また、PyQt
+      のライセンスが、いわゆる「<strong>コピーレフト</strong>」にあたる
       <span class="masked">GPL v3</span>
-      であるという点に注意が必要となります。</p>
+      であるということが「使いにくさ」となっています。</p>
       <div class="note type-tips">
       <p><strong>GPL v3 : GNU General Public License version
       3.0</strong></p>
       <p><strong>GPL v3 ライセンスのライブラリ</strong> (例えば<a
       href="https://pypi.org/project/PyQt6/">PyQt</a>が該当)
-      を利用するアプリを開発して<strong>(有償・無償に関わらず)
-      配布する際</strong>には、以下のルールに従う必要があります。</p>
-      <p><strong>ソースコードの公開</strong> :
-      開発したアプリのソースコードは、「GPL
+      を利用するアプリを開発し、<strong>有償・無償に関わらず配布する際</strong>には、以下のルールに従う必要があります。</p>
+      <p><strong><i class="fa-solid fa-triangle-exclamation"></i>
+      ソースコードの公開</strong> : 開発したアプリのソースコードは「GPL
       v3ライセンス」で公開する必要があります。つまり、<span
-      class="masked">アプリのソースコードを公開し、誰でも自由に使ったり改良したりできるようにすること</span>
+      class="masked">開発したアプリのソースコードを全公開し、誰でも自由に使ったり改良したりできるようにすること</span>
       が求められます。</p>
-      <p><strong>ライセンス関連のドキュメントの同梱</strong> :
-      アプリを配布する際は、「GPL
+      <p><strong><i class="fa-solid fa-triangle-exclamation"></i>
+      ライセンス関連のドキュメントの同梱</strong> :
+      アプリを配布する際は「GPL
       v3ライセンスのコピー」と「ライセンスの条項に従っていることを示すドキュメント」を同梱する必要があります。</p>
-      <p><strong>ライセンスの継承</strong> :
+      <p><strong><i class="fa-solid fa-triangle-exclamation"></i>
+      ライセンスの継承</strong> :
       アプリにGPLライセンスのコードが含まれる場合、そのアプリ全体もGPLライセンスで提供される必要があります。これは「コピーレフト」と呼ばれる特性となります。</p>
       <p>この他にも、様々なルールがあります。詳しくは「<a
       href="https://www.google.com/search?q=GPL+v3+解説">GPL v3
@@ -341,7 +347,7 @@ class="toc-section-number">8.3</span> データのセーブ</a></li>
       <img src="figs/25/vscode-01.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
       </figure>
-      <p>この場合、現在のターミナルにおいて「<strong>仮想環境が有効化されているかどうか</strong>」の確認は、以下のように「ターミナルのタブ」にマウスカーソルを合わせることで確認ができます。ここで、以下のように「<strong>Pythonのアクティブ化された環境</strong>」が
+      <p>この場合、現在のターミナルにおいて「<strong>仮想環境が有効化されているかどうか</strong>」の確認は、以下のように「ターミナルのタブ」にマウスカーソルを合わせることで確認します。ここで、以下のように「<strong>Pythonのアクティブ化された環境</strong>」の項目が
       <code>.venv/Scripts/python.exe</code>
       となっていれば、仮想環境が有効化されていると考えてください。</p>
       <figure>
@@ -359,27 +365,28 @@ class="toc-section-number">8.3</span> データのセーブ</a></li>
       <p>仮想環境を有効化したら、念のために <code>pip</code>
       を最新版にアップグレードしてから<a
       href="https://pypi.org/project/PySide6/">PySide6</a>をインストールしてください。</p>
+      <pre><code>python -m pip install --upgrade pip
+pip install PySide6</code></pre>
       <p>PySide6 は <span
       class="masked">「Qt6」に基づいており、「PyQt6」と互換性</span>
       があります。PySide および PyQt
       はどちらも頻繁にバージョンアップされるため、インターネットやChatGPTで問題解決を試みる際には<span
       class="masked">「PySide」ではなく、バージョンを含んだ「PySide6」</span>というキーワードを使って調べるようにしてください。また、多くの場合、<strong>「PyQt6」に関する記事はそのまま「PySide6」に適用可能</strong>なので、「PySide6」で情報が見つからないときは、「PyQt6」で情報を探してみてください。</p>
-      <pre><code>python -m pip install --upgrade pip
-pip install PySide6</code></pre>
       <h1 data-number="5" id="画面の設計"><span
       class="header-section-number">5</span> 画面の設計</h1>
-      <p>GUIアプリでは、まずはじめに、大まかな「<strong>ウィンドウ</strong>」の画面構成（＝要素の配置・レイアウト）から作成していきます。ここでは、次に示すような「<strong>ボタン</strong>」「<strong>テキストボックス</strong>」「<strong>ステータスバー</strong>」という要素を画面を作成してきます。</p>
-      <p>なお、「<strong>ボタン</strong>」「<strong>テキストボックス</strong>」「<strong>ステータスバー</strong>」のような要素を総称して、<span
-      class="masked">「ウェジェット」</span>、「<strong>UIコンポーネント</strong>」、「<strong>コントロール</strong>」、「<strong>フォーム要素</strong>」、「UI要素」、「パーツ」のように言います。Qt
-      (PySide/PyQt)
-      では、主に「<strong>ウェジェット</strong>(Widget)」という呼び名が使用されます。</p>
+      <p>GUIアプリでは、まずはじめに大まかな「<strong>ウィンドウ</strong>」の構成（＝要素の配置・レイアウト）から設計していきます。ここでは、次に示すような「<strong>ボタン</strong>」「<strong>テキストボックス</strong>」「<strong>ステータスバー</strong>」という要素を持った画面を作成してきます。</p>
+      <p>なお、「<strong>ボタン</strong>」「<strong>テキストボックス</strong>」「<strong>ステータスバー</strong>」のような要素を総称して
+      <span
+      class="masked">「ウェジェット」</span>あるいは「<strong>UIコンポーネント</strong>」、「<strong>コントロール</strong>」、「<strong>フォーム要素</strong>」、「UI要素」、「パーツ」のように言います。Qt
+      (PySide/PyQt) では、主に「<strong>ウェジェット</strong>
+      (Widget)」という呼び名が使用されます。</p>
       <figure>
       <img src="figs/25/qt-01.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
       </figure>
       <p>上記のような画面を持ったアプリは、次のプログラム
       (<code>qt-01.py</code>) で作成することができます。</p>
-      <p>先ほど構築したプロジェクトに <code>qt-01.py</code>
+      <p>先ほど構築したプロジェクトフォルダに <code>qt-01.py</code>
       というファイルを新規作成して、以下のプログラムを貼り付け、実行して動作を確認してください。ただし、現在の段階では、<strong>ボタンを押下してもアプリからの反応はありません</strong>
       (テキストボックスに文字を書き込むことなどは可能です、試してみてください)。</p>
       <div class="sourceCode" id="cb3" data-caption="qt-01.py"><pre
@@ -434,15 +441,14 @@ pip install PySide6</code></pre>
       <code>app = Qw.QApplication(sys.argv)</code> は、<span
       class="masked"><code>app = PySide6.QtWidgets.QApplication(sys.argv)</code></span>
       のように書き換える必要があります。その他、プログラム内の
-      <code>Qw.</code> となっている部分は、すべて
-      <code>PySide6.QtWidgets.</code>
-      のように記述する必要があります。</p>
-      <p>なお、講義資料上の可読性を優先して、ここでは <code>Qw</code>
-      という<strong>省略名</strong>を採用していますが、これは NumPy の
-      <code>np</code> や、Pandas の <code>pd</code>
+      <code>Qw.</code> となっている部分を、すべて
+      <code>PySide6.QtWidgets.</code> に置換する必要があります。</p>
+      <p>なお、講義資料としての可読性を優先して、ここでは
+      <code>Qw</code> という<strong>省略名</strong>を使いますが、これは
+      NumPy の <code>np</code> や、Pandas の <code>pd</code>
       のように<strong>一般的な省略命ではない</strong>ので注意してください。特にウェブ検索したり、調べた情報を自分のプログラムに適用する際には、<span
       class="masked">適切に読み替え</span>
-      をするように注意してください。</p>
+      をするようにしてください。</p>
       <h2 data-number="5.1" id="メイン処理"><span
       class="header-section-number">5.1</span> メイン処理</h2>
       <p><strong>第39行目</strong>から<strong>第43行目</strong>がプログラムの本体となります。<strong>第39行目</strong>の
@@ -460,11 +466,11 @@ pip install PySide6</code></pre>
       <code>app</code>
       に格納しています。このオブジェクトは、すべてのQtアプリケーションに不可欠な基本オブジェクトであり、アプリケーション全体の「設定」や「管理」を担います。例えば、<code>app.setDoubleClickInterval</code>
       や <code>app.app.setApplicationVersion</code>
-      などの設定系のメソッドを持っています。また、引数として与えている
+      のような設定系のメソッドを持っています。また、引数に与えている
       <code>sys.argv</code>
       は「<strong>コマンドライン引数</strong>」を格納した特殊な変数であり、これを通じてコマンドラインから
       QApplication
-      に対して各種設定・実行時オプションを与えることができるようになっています。</p>
+      に対して各種設定や実行時オプションを与えることができるようになっています。</p>
       <div class="note type-tips">
       <p><strong>コマンドライン引数</strong></p>
       <p>コマンドライン引数とは、プログラムを実行する際に「<strong>コマンドラインを通じて与えるオプション</strong>」のことです。Qt
@@ -479,7 +485,7 @@ pip install PySide6</code></pre>
       (コマンドライン引数)</strong>
       を与えることで、アプリの外観を制御することができます
       (<code>qt-01.py</code> の <strong>第40行目</strong>
-      では、この仕組みを実現しています)。</p>
+      で、この仕組みを実現しています)。</p>
       <pre><code>python qt-01.py --style=fusion</code></pre>
       <hr />
       <ul>
@@ -510,20 +516,19 @@ pip install PySide6</code></pre>
       <p><strong>第41行目</strong>では、<strong>第05行目</strong>から<strong>第36行目</strong>にかけて定義された「MainWindowクラス」の
       <strong>オブジェクト</strong>
       (＝<strong>インスタンス</strong>、<strong>実体</strong>)
-      を作成しています。これにより、<strong>第08行目</strong>
+      を生成しています。これにより、<strong>第08行目</strong>
       から定義されている <span>コンストラクタ</span>
       (<code>__init__</code>関数)
       が呼び出され、<strong>ウィンドウの初期化</strong>が行われます
       (ただし、<span
-      class="masked">この時点ではまだ画面には表示されません</span>)。また、初期化した
+      class="masked">この時点ではまだ画面にウィンドウは表示されません</span>)。また、生成した
       MainWindowオブジェクト の参照を変数 <code>main_window</code>
       に格納し、以降、この変数 <code>main_window</code>
       を通じてウィンドウの操作ができるようにしています。</p>
       <p><strong>第42行目</strong>では、デスクトップ画面に実際にウィンドウを表示するための
-      <code>show</code>メソッド
-      を実行しています。<code>show</code>メソッドを呼び出すまでは、ウィンドウは内部的に作成されているものの、画面上には表示されません。ここで注目すべきは、MainWindowクラスの定義
+      <code>show</code>メソッドを実行しています。<code>show</code>メソッドを呼び出すまでは、ウィンドウは内部的に作成されているものの、画面上には表示されません。ここで注目すべきは、MainWindowクラスの定義
       (＝<strong>第05行目</strong>～<strong>第36行目</strong>)
-      に「<code>show</code>メソッド」が明示的に記述されていないにも関わらず、<span
+      のなかに「<code>show</code>メソッド」が明示的に記述されていないにも関わらず、<span
       class="masked">「showメソッド」が機能していること</span>
       です。これは、<strong>第05行目</strong>のクラス定義の開始行で「<code>class MainWindow:</code>」ではなく「
       <code>class MainWindow(Qw.QMainWindow):</code>」のように
@@ -540,8 +545,8 @@ pip install PySide6</code></pre>
       <code>MainWindow</code>
       でも利用することが可能になります。つまり、<code>MainWindow</code>
       では <code>QMainWindow</code>
-      の機能を拡張し、更に独自の機能を追加することが可能になります。</p>
-      <p>このような関係にあるとき</p>
+      の機能を拡張し、さらに独自の機能を追加することが可能になります。</p>
+      <p>このような関係にあるとき・・・</p>
       <ul>
       <li><code>MainWindow</code> を <code>Qw.QMainWindow</code>
       の「<strong>子クラス</strong> (sub class)」といいます。</li>
@@ -551,9 +556,10 @@ pip install PySide6</code></pre>
       </div>
       <p><strong>第43行目</strong>では、<code>app.exec()</code>
       により、GUIアプリとしての<span class="masked">イベントループ
-      (メインループ)</span> を開始します。これにより、イベント処理
+      (メインループ)</span> を開始しています。これにより、イベント処理
       (＝ユーザからのマウス操作やキーボード操作、OSからのイベントの受信など)
-      が開始されます。ウィンドウのタイトルバーにある<i class="fa-solid fa-rectangle-xmark"></i>ボタンが押下されるなどしてGUIの終了処理がされると
+      が開始されます。また、ウィンドウのタイトルバーにある「<i class="fa-solid fa-rectangle-xmark"></i>
+      ボタン」が押下されるなどしてGUIの終了処理がされると
       <code>app.exec()</code> は終了コード (数値) を返し、それが
       <code>sys.exit()</code> に渡されます。<code>sys.exit()</code>
       は、この終了コードを OS に伝えます。</p>
@@ -561,9 +567,10 @@ pip install PySide6</code></pre>
       <p><strong>「終了コード」とは</strong></p>
       <p><strong>終了コード</strong>（または<strong>終了ステータス</strong>）は、アプリが
       OS に対して返す数値で、プログラムの実行が成功したかどうか
-      (正常終了したか) を示します。慣例的に、<code>0</code>
+      (正常終了したか) を OS
+      に伝える役割をします。慣例的に、<code>0</code>
       は「成功」を意味し、<code>0</code>
-      以外の値は何らかの「<strong>異常終了 (エラー発生などによる終了)
+      以外の数値は何らかの「<strong>異常終了 (エラー発生などによる終了)
       </strong>」など表します。</p>
       <p>例えば、Pythonプログラムであれば、<strong>プログラムが問題なく実行されて最後まで到達した場合</strong>、通常
       <code>sys.exit(0)</code> が呼び出され、終了コード <code>0</code>
@@ -574,7 +581,7 @@ pip install PySide6</code></pre>
       </div>
       <p><strong>演習1</strong>: <strong>第42行目</strong>
       (＝<code>show</code>メソッドによるウィンドウの表示)
-      をコメントアウトとするとウィンドウが表示されないことを確認せよ。確認後はVSCodeからプログラムを強制停止しすること。また、コメントアウトを元に戻しておくこと。</p>
+      をコメントアウトとするとウィンドウが表示されないことを確認せよ。確認後はVSCodeからプログラムを強制停止すること。また、コメントアウトを元に戻しておくこと。</p>
       <p><strong>演習2</strong>: <strong>第43行目</strong>
       (＝イベントループの開始)
       をコメントアウトとするとウィンドウが一瞬だけ表示され、そのままプログラムが終了してしまうことを確認せよ。確認後はコメントアウトを元に戻しておくこと。</p>
@@ -919,7 +926,7 @@ pip install PySide6</code></pre>
       class="header-section-number">6.2</span>
       PySideにおけるイベント処理</h2>
       <p><code>qt-03.py</code>
-      というファイルを新規作成して、以下のプログラムを貼り付けて実行し、その動作を確認してください。このプログラムは「実行」ボタンと「クリア」ボタンを押下したときの処理を追加したものとなります。実行ボタンを押下すると、<strong>ステータスバーのメッセージが変化</strong>することにも注意してください。</p>
+      というファイルを新規作成して、以下のプログラムを貼り付けて実行し、その動作を確認してください。このプログラムは「実行」ボタンと「クリア」ボタンを押下したときの処理を追加したものとなります。実行ボタンを押下すると、ウィンドウ下部の<strong>ステータスバーのメッセージが変化</strong>することにも注意してください。</p>
       <div class="sourceCode" id="cb12" data-caption="qt-3.py"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="im">import</span> sys</span>
 <span id="cb12-2"><a href="#cb12-2"></a><span class="im">import</span> random <span class="im">as</span> r</span>
@@ -1016,13 +1023,13 @@ pip install PySide6</code></pre>
       class="masked">「実行」ボタンを押下したときに実行したい処理を定義したもの</span>
       となります。この関数は、<strong>第34行目</strong> において
       <code>self.btn_run.clicked.connect(self.btn_run_clicked)</code>
-      のようにコールバック関数として登録しています。このようにすることで、プログラムの実行時に「実行」ボタンが押下されると
+      のようにコールバック関数として登録されます。このように登録することで、プログラムの実行時に「実行」ボタンが押下されると
       <code>btn_run_clicked</code> メソッドが呼び出されるようになります
       (PySide6によって、この仕組みが提供されます)。</p>
       <p>同様に、「クリア」ボタンを押下したときに実行したい処理を記述した関数
-      (メソッド) を <strong>第69行目</strong>を取得して「 から
+      (メソッド) を <strong>第69行目</strong> から
       <strong>第70行目</strong> に定義し、それを
-      <strong>第39行目</strong> において「クリア」ボタンのオブジェクト
+      <strong>第39行目</strong> で「クリア」ボタンのオブジェクト
       (<code>btn_clear</code>) に登録しています。</p>
       <h2 data-number="6.4" id="現在時刻と整形文字列の取得"><span
       class="header-section-number">6.4</span>
@@ -1042,13 +1049,12 @@ pip install PySide6</code></pre>
       <code>datetime</code>
       ライブラリをインポートしています。<code>datetime</code>
       は標準ライブラリであるため、pip によるインストールは不要です。</p>
-      <p><strong>演習1</strong>:
-      ログに表示される時刻の形式を「2024-01-15
-      09:45」のように変更せよ。</p>
-      <p><strong>演習2 (Ex)</strong>:
-      ログに表示される時刻の形式を「2024年01月15日(月)
-      09時45分20秒」のように変更せよ。ヒント:
-      <span>「Mon」ではなく「月」を出力するためには、ロケールの設定が必要になります。</span></p>
+      <p><strong>演習1</strong>: テキストボックス (ログ)
+      に表示される時刻の形式を「2024-01-15 09:45」のように変更せよ。</p>
+      <p><strong>演習2 (Ex)</strong>: テキストボックス (ログ)
+      に表示される時刻の形式を「2024年01月15日(月)
+      09時45分20秒」のように変更せよ。ヒント: <span
+      class="masked">「Mon」ではなく「月」を出力するためには、ロケールの設定が必要になります。</span></p>
       <p><strong>(Ex)</strong>
       の演習は、授業時間外に取り組んでください。</p>
       <h2 data-number="6.5" id="ガチャ抽選のシミュレーション"><span
@@ -1058,13 +1064,13 @@ pip install PySide6</code></pre>
       では、ガチャ抽選シミュレーションに関連した関数や変数を記述しています。</p>
       <p><strong>第07行目</strong> から <strong>第09行目</strong>
       では、ガチャ要素であるカードのタイプ (ランク)
-      の文字列、排出比、インデックを設定しています。変数
+      の文字列、排出比、インデックスを設定しています。変数
       <code>card_i</code> の内容は <code>[0,1,2,3]</code>
       となります。これらの変数 <code>card_t</code> <code>card_p</code>
-      <code>card_i</code>
-      は、関数内部ではなく、クラス内部でもない位置で宣言 (初期化)
+      <code>card_i</code> は、関数内部でもクラス内部でもない位置で宣言
+      (初期化)
       されているため「<strong>グローバル変数</strong>」となります。つまり、<strong>プログラムのどこからでも参照できる変数</strong>となります。グローバル変数については、<a
-      href="lecture24.html#前回プログラムのリファクタリングとグローバル変数">第24回講義</a>において、既に学習済みです。</p>
+      href="lecture24.html#前回プログラムのリファクタリングとグローバル変数">第24回講義</a>において既に学習済みです。</p>
       <p><strong>第11行目</strong> の <code>choices</code>
       は、リストから「<strong>重み付きのランダム抽出</strong>」を行なう関数で、これは既に<a
       href="lecture08.html#ランダム処理とリストの組み合わせ">第08回講義</a>のなかで学習しました。</p>
@@ -1074,7 +1080,7 @@ pip install PySide6</code></pre>
       <code>card_t[idx]</code>
       とすれば、そのカードのランクを表す文字列が取得できるようになっています。抽選で得られたカードについて、そのランクを表す文字列ではなく、インデックスを返しているのは、<strong>第28行目</strong>
       で定義している <code>self.card_counts</code>
-      (ランクごとのカード所持数) を更新しやすいためです。</p>
+      (ランクごとのカード所持数) を更新しやすくするためです。</p>
       <p><strong>演習</strong>:
       新たにカードランク「UR」を追加し、それが適切に反映されるようにプログラムを書き換えよ。UR:
       Ultimate Rare。</p>
@@ -1157,8 +1163,8 @@ pip install PySide6</code></pre>
       自動セーブとロード機能の追加</h1>
       <p>先ほどのプログラム (<code>qt-04.py</code>)
       に「課金総額とカード取得枚数のデータを <span
-      class="masked">自動セーブ・ロード</span>
-      する機能」を追加実装します。具体的には、<a
+      class="masked">自動セーブ＆ロード</span>
+      <strong>する機能</strong>」を追加実装します。具体的には、<a
       href="lecture18.html#pickle形式のシリアライズとデシリアライズ">第18回講義</a>で学んだ
       pickle
       ライブラリを利用して、プログラムの起動時にデータファイルを自動ロードし、また、プログラム終了時に自動セーブするような機能を実装します
@@ -1186,7 +1192,7 @@ pip install PySide6</code></pre>
       href="lecture18.html#デシリアライズ-1">デシリアライズ</a>するために利用する
       <code>pickle</code> ライブラリを読み込んでいます。<code>os</code>
       も <code>pickle</code> も標準ライブラリ
-      (Pythonインストール時に自動的に組み込まれるライブラリ)
+      (Pythonインストール時に自動的に導入されるライブラリ)
       であるため、<code>pip</code> によるインストールは不要です。</p>
       <h2 data-number="8.2" id="データのロード"><span
       class="header-section-number">8.2</span> データのロード</h2>
@@ -1215,7 +1221,7 @@ pip install PySide6</code></pre>
 <span id="cb16-65"><a href="#cb16-65"></a>  <span class="va">self</span>.sb_status.showMessage(<span class="st">&#39;プログラムを起動しました。&#39;</span>)</span></code></pre></div>
       <h2 data-number="8.3" id="データのセーブ"><span
       class="header-section-number">8.3</span> データのセーブ</h2>
-      <p>プログラムが終了するタイミグでデータを保存するように設計しています。</p>
+      <p>このプログラムでは、アプリが終了するタイミグでデータを保存するように設計しています。</p>
       <p>PySide6.QtWidgets.Qw.QMainWindowクラスでは、ウィンドウが閉じられる直前に、クラス内に定義される
       <code>closeEvent</code>
       というメソッドが呼び出されるようになっています。そのため「PySide6.QtWidgets.Qw.QMainWindow」を<strong>継承</strong>した「MainWindowクラス」においても
