@@ -83,7 +83,7 @@ class MainWindow(Qw.QMainWindow):
     # プログレスバーダイアログの表示
     gacha_msg = ['  ++++++  ガチャ抽選中  ++++++  ',
                  '  ------  ガチャ抽選中  ------  ' ]
-    p_bar = Qw.QProgressDialog(gacha_msg[0],None,0,100,self) # type: ignore
+    p_bar = Qw.QProgressDialog(gacha_msg[0],None,0,100,self)
     p_bar.setWindowModality(Qc.Qt.WindowModality.WindowModal)
     p_bar.setWindowTitle('ガチャ抽選')
     p_bar.show()
