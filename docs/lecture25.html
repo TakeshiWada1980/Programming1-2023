@@ -142,10 +142,15 @@ class="toc-section-number">8.3</span> データのセーブ</a></li>
       <h2 data-number="1.1" id="連絡"><span
       class="header-section-number">1.1</span> 連絡</h2>
       <ul>
-      <li>今回「小テスト❸」を実施します。鉛筆と消しゴムを準備してください。</li>
-      <li><a
+      <li><p>今回「小テスト❸」を実施します。鉛筆と消しゴムを準備してください。</p></li>
+      <li><p><a
       href="lecture24.html#課題08-自由作品">課題08</a>の注意事項や内容について、再度、確認してください。特にポートフォリオの
-      URL が変更になっている場合は、必ず個別にLINEで連絡ください。</li>
+      URL
+      が変更になっている場合は、必ず個別にLINEで連絡ください。</p></li>
+      <li><p>19日 (金)
+      は入試準備日のため、登校禁止です。また、2I教室は入試に使用するため、<strong>18日
+      (金) の6時限後に教室整備</strong>をします
+      (掲示物を全てはがし、机の荷物を全て教室から外に出し、机配置を変更します。また、カサ立ても空にします。)。短時間で整備を終えるために、あらかじめ荷物などは移動しておいてください。</p></li>
       </ul>
       <h2 data-number="1.2" id="講義概要"><span
       class="header-section-number">1.2</span> 講義概要</h2>
@@ -630,7 +635,7 @@ pip install PySide6</code></pre>
       <code>class MainWindow(Qw.QMainWindow):</code> により、自作クラス
       <code>MainWindow</code> が <code>Qw.QMainWindow</code>
       を<strong>継承 (Inheritance)</strong>
-      するクラスを定義することを明示しています。何も継承せずにゼロからクラスを定義するときは、<span
+      するクラスを定義することを示しています。何も継承せずにゼロからクラスを定義するときは、<span
       class="masked"><code>class MainWindow:</code></span>
       のようにクラス定義を書き出します。</p>
       <p><strong>第11行目</strong> の <code>super().__init__()</code>
@@ -643,7 +648,7 @@ pip install PySide6</code></pre>
       (ウィンドウ右上をあわせる座標)</strong>」を設定しています。</p>
       <hr />
       <p><strong>演習1</strong>:
-      <strong>第11行目</strong>をコメントアウトして、親クラスのコンストラクタを呼びださないと「プログラムが正常動作しないこ」とを確認せよ。確認後は、コメントアウトを元に戻しておくこと。</p>
+      <strong>第11行目</strong>をコメントアウトして、親クラスのコンストラクタを呼びださないと「プログラムが正常動作しないこと」を確認せよ。確認後は、コメントアウトを元に戻しておくこと。</p>
       <p><strong>演習2</strong>:
       ウィンドウタイトルに「日本語」が使用可能かどうかを確認せよ。</p>
       <p><strong>演習3</strong>: <strong>第17行目</strong> の
@@ -653,9 +658,9 @@ pip install PySide6</code></pre>
       class="header-section-number">5.2.1</span> ボタンの生成と配置</h3>
       <p><strong>第20行目</strong> では、<code>Qw.QPushButton</code>
       クラスから、いわゆる「<strong>ボタン</strong>」のオブジェクトを生成し、変数
-      <code>self.btn_run</code> に格納しています。ここでは、後から
-      <code>btn_run</code> を参照する必要があるために
-      <code>self.btn_run</code>
+      (クラス属性) <code>self.btn_run</code>
+      に格納しています。ここでは、後から <code>btn_run</code>
+      を参照する必要があるために <code>self.btn_run</code>
       としています。もし、コンストラクタ以外で参照する必要がなければ、次のようにすることもできます。</p>
       <div class="sourceCode" id="cb8" data-startFrom="20"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 19;"><span id="cb8-20"><a href="#cb8-20"></a>btn_run <span class="op">=</span> Qw.QPushButton(<span class="st">&#39;実行&#39;</span>,<span class="va">self</span>)</span>
@@ -676,7 +681,7 @@ pip install PySide6</code></pre>
       <p><code>QPushButton</code> についての詳細は、<a
       href="https://doc.qt.io/qtforpython-6/PySide6/QtWidgets/QPushButton.html">公式リファレンス</a>を参照してください。</p>
       <p>同様に、<strong>第24行目</strong> と <strong>第25行目</strong>
-      で「クリア」ボタンの作成と設定をしています。</p>
+      で「クリア」ボタンの生成と設定をしています。</p>
       <div class="note type-senior">
       <p><strong>ウィジェット外観のカスタマイズ</strong></p>
       <p>Qt (PySide/PyQt) の各種ウィジェットは
@@ -721,7 +726,7 @@ pip install PySide6</code></pre>
       (いわゆる「<strong>テキストボックス</strong>」)
       を生成してウィンドウに配置しています。</p>
       <p><strong>第30行目</strong> の <code>setPlaceholderText</code>
-      では、<strong>テキストボックスに文字が未入力のときに表示される文字列</strong>
+      では、<strong>テキストボックスに文字が未入力のときに表示されるプレースホルダ文字列</strong>
       を設定しています。プレースホルダ文字とは、ウォーターマークとも呼ばれ
       <span
       class="masked">「あとから入力される文字の代わりに表示する文字」</span>
@@ -731,26 +736,26 @@ pip install PySide6</code></pre>
       メソッドを使用します。また、逆にテキストボックスから文字列を取得するためには
       <span class="masked"><code>toPlainText</code>メソッド</span>
       を使用します。</p>
-      <p>なお、<span
-      class="masked">1行だけのテキスト(文字列)</span>の入出力を扱う場合は、<code>QTextEdit</code>
+      <p>なお、<span class="masked">1行だけのテキスト
+      (文字列)</span>の入出力を扱う場合は、<code>QTextEdit</code>
       ではなく <code>QLineEdit</code> を使用します。</p>
       <hr />
       <p><strong>演習1</strong>:
       <code>self.tb_log = Qw.QTextEdit('',self)</code> の第1引数を
       <code>'あいうえお'</code>
-      に書き換えると、初期値が与えられること確認せよ。。確認後は元に戻しておくこと。</p>
+      に書き替えると、初期値が与えられることを確認せよ。確認後は元に戻しておくこと。</p>
       <p><strong>演習2</strong>:
       <code>self.tb_log = Qw.QTextEdit('',self)</code> を
       <code>self.tb_log = Qw.QLineEdit('',self)</code>
       に書き換えると、テキストボックス内で「<strong>改行が不可になること</strong>」を確認せよ。確認後は元に戻しておくこと。</p>
       <p><strong>演習3</strong>:
       <code>self.tb_log.setReadOnly(True)</code>
-      とするとテキストボックスが「<strong>読み取り専用になること</strong>」を確認せよ。確認後は元に戻しておくこと。</p>
+      とするとテキストボックスが「<strong>読み取り専用になること</strong>」を確認せよ。</p>
       <h3 data-number="5.2.3" id="ステータスバーの生成と配置"><span
       class="header-section-number">5.2.3</span>
       ステータスバーの生成と配置</h3>
       <p><strong>第33行目</strong> から <strong>第36行目</strong>
-      では、ウィンドウ下部に配置する「<strong>ステータスバー</strong>」を作成しています。<strong>ステータスバー</strong>については、ボタンやテキストボックスとは生成と配置方法が異なる点に注意してください。</p>
+      では、ウィンドウ下部に配置する「<strong>ステータスバー</strong>」を作成しています。<strong>ステータスバー</strong>については、ボタンやテキストボックスとは生成方法および配置方法が異なる点に注意してください。</p>
       <p><strong>演習1</strong>: <strong>第35行目</strong> の
       <code>self.sb_status.setSizeGripEnabled(False)</code> の引数を
       <code>True</code>
@@ -759,14 +764,13 @@ pip install PySide6</code></pre>
       <h2 data-number="5.3" id="レスポンシブデザイン"><span
       class="header-section-number">5.3</span> レスポンシブデザイン</h2>
       <p><code>qt-1.py</code>
-      では、ウィジェットのサイズや配置が全て数値リテラルで固定的に設定されていました。この方法で画面レイアウトを作成すると、<span
-      class="masked">ウィジェットを追加や削除するとき</span>
-      や、<strong>コンテナ (＝ウィジェットの格納領域)
-      であるウィンドウのサイズを変更するとき</strong>に、プログラム内で多くの修正が必要になります。</p>
+      では、ウィジェットのサイズや配置が全て数値リテラルで固定的に設定されていました。この方法で画面レイアウトを作成すると「<span
+      class="masked">ウィジェットを追加や削除するとき</span>」や「<strong>コンテナ
+      (＝ウィジェットの格納領域)
+      であるウィンドウのサイズを変更するとき</strong>」にプログラム内で多くの修正が必要となります。</p>
       <p>このようなことから、一般的には
       <strong>レスポンシブデザイン</strong> (＝<span
-      class="masked">ウィンドウ (画面)
-      のサイズに合わせてレイアウトが自動的に調整される設計</span>)
+      class="masked">コンテナのサイズに合わせてレイアウトが自動的に調整される画面設計</span>)
       が推奨されます。詳細な解説は中級以上の話題となるため、ここでは詳細な解説は省きますが、先の
       <code>qt-1.py</code> は、次のような
       <strong>レスポンシブデザイン</strong> を採用した別のプログラム
@@ -833,7 +837,8 @@ pip install PySide6</code></pre>
 <span id="cb10-59"><a href="#cb10-59"></a>  sys.exit(app.<span class="bu">exec</span>())</span></code></pre></div>
       <p>レスポンシブデザインを採用したプログラムは、固定レイアウトのものと比較して行数が増え、コードもやや複雑になる傾向があります。しかし、ウィジェットの追加や削除が
       <strong>柔軟かつ最小限のコード修正</strong>
-      で行なうことができるという大きな利点があります。特に、動的にウィジェットの追加・削除を行なうプログラム
+      で行なうことができるという大きな利点があります
+      (仕様変更に強い設計になります)。特に、動的にウィジェットの追加・削除を行なうプログラム
       (＝<span
       class="masked">プログラムの起動後に、処理やユーザー設定に応じてウィジェットの追加や削除をするプログラム</span>)
       では、レスポンシブデザインの利点が顕著に現れます。</p>
@@ -843,8 +848,8 @@ pip install PySide6</code></pre>
       <hr />
       <p><strong>演習1</strong> <code>qt-02.py</code>
       を実行し、マウスでウィンドウサイズを変更してレスポンシブデザインになっていることを確認せよ
-      (一方で、<code>qt-01.py</code>
-      はレスポンシブデザインになっていないことを確認せよ)。</p>
+      (一方で 元の <code>qt-01.py</code>
+      はレスポンシブデザインではないことを確認せよ)。</p>
       <figure>
       <img src="figs/25/qt-05.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
@@ -858,20 +863,21 @@ pip install PySide6</code></pre>
       GUIアプリのアーキテクチャ</h2>
       <p>GUIアプリ開発では、主に「<strong>イベントループ型</strong>」と「<strong>イベント駆動型</strong>」の2つの<strong>アーキテクチャ</strong>
       (＝ソフトウェアの基本的な構造) が存在します。</p>
-      <p>「<strong>イベントループ型</strong>」のアーキテクチャでは、プログラムのなかに「<strong>イベントループ</strong>」という無限ループを構成し、このループのなかで定期的に「ユーザーからのマウスやキーボード入力イベント」や「OSからのイベント」などを監視・検出する構成をとります
-      (このような監視・検出のプロセスを「<strong>ポーリング</strong>」といいます)。そして、検出したイベント
-      (＝<span
+      <p>「<strong>イベントループ型</strong>」のアーキテクチャでは、プログラムのなかに「<strong>イベントループ</strong>」という無限ループを構成し、このループのなかで定期的に
+      (非常に短い時間間隔で)「ユーザーからのマウスやキーボード入力イベント」や「OSからのイベント」などを監視・検出する構成をとります
+      (このような監視・検出のプロセスを「<strong>ポーリング</strong>」といいます)
+      。そして、検出したイベント (＝<span
       class="masked">マウスクリック、キー入力、<i class="fa-solid fa-rectangle-xmark"></i>の押下</span>)
       について、条件分岐を使って振り分け、そのイベントに応じた処理を実行するようにプログラムを記述します。</p>
-      <p>例えば <span class="masked">Pygameを使ったゲーム開発</span> や
-      <span class="masked">Arduinoによるマイコン開発</span>
+      <p>例えば <span class="masked">Pygame を使ったゲーム開発</span> や
+      <span class="masked">Arduino による組込み開発</span>
       などは、基本的にはイベントループ型アーキテクチャに従ってプログラムを設計・記述することになります。具体例として
       Pygame のプログラムの例を以下に示します。<strong>第15行目</strong>
-      から <strong>第34行目</strong>
-      にかけてイベントループを構成し、そのなかの
-      <strong>第18行目</strong> の <code>pg.event.get()</code>
-      でイベントを監視・検出をし、それを条件分岐で振り分け、イベントに応じた各種処理をするような構成となっています。</p>
-      <p>なお、イベントループは、ゲーム系の開発では「ゲームループ」、マイコン系の開発では「メインループ」のようによぶことがあります。</p>
+      から <strong>第34行目</strong> にかけてイベントループ (無限ループ)
+      を構成し、そのなかの <strong>第18行目</strong>
+      において、<code>pg.event.get()</code>
+      によりイベントを監視・検出し、それを条件分岐で振り分け、イベントに応じた処理をするような構成となっています。</p>
+      <p>なお、イベントループは、ゲーム系の開発では「<strong>ゲームループ</strong>」、マイコン系の開発では「<strong>メインループ</strong>」のようによぶことがあります。</p>
       <div class="sourceCode" id="cb11"
       data-caption="pygame-sample.py"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="im">import</span> sys</span>
@@ -915,18 +921,18 @@ pip install PySide6</code></pre>
 <span id="cb11-39"><a href="#cb11-39"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&#39;__main__&#39;</span>:</span>
 <span id="cb11-40"><a href="#cb11-40"></a>  main()</span></code></pre></div>
       <hr />
-      <p>一方で「<strong>イベント駆動型</strong>」アーキテクチャでは、プログラマはコードのなかに<span
+      <p>一方で「<strong>イベント駆動型</strong>」アーキテクチャにおいては、プログラマはコードのなかに<span
       class="masked">明示的なイベントループを構成、記述</span>しません。その代わりに<span
-      class="masked">各種イベント発生時に実行する処理を記述した自作関数を定義</span>して、それをウィジェットに「<strong>登録</strong>」するような構成のプログラムを記述します
-      (このように、事前に登録しておいて、あとから適切なタイミングで自動的に呼び出される関数を「<strong>コールバック関数</strong>」といいます)。</p>
+      class="masked">各種イベント発生時に実行する処理を記述した自作関数を定義</span>して、それを「<strong>ウィジェットに登録</strong>」するような構成のプログラムを記述します
+      (このように、事前に登録だけしておいて、あとから適切なタイミングで呼び出してもらうような関数を「<strong>コールバック関数</strong>」といいます)。</p>
       <p>そして、プログラム実行時には、GUIライブラリ・フレームワークによってイベントループが回され、「<strong>イベントを検出すると事前登録しておいたコールバック関数が、GUIライブラリ・フレームワークによって自動的に呼び出される</strong>」という仕組みでプログラムが機能します。</p>
       <p>例えば、Qt (PyQt/PySide) や TKinter
-      などを利用するGUIプログラムは、このイベント駆動型アーキテクチャに従って設計・記述することになります。イベント駆動型アーキテクチャについては、文章で読んでもイメージがつかめないと思うので、次のセクションに示す具体例で理解に努めてください。</p>
+      などを利用するGUIプログラムは、このイベント駆動型アーキテクチャに従って設計・記述することになります。イベント駆動型アーキテクチャについては、説明を読んでもイメージがつかめないと思うので、次のセクションに示す具体的なプログラムを読みながら理解に努めてください。</p>
       <h2 data-number="6.2" id="pysideにおけるイベント処理"><span
       class="header-section-number">6.2</span>
       PySideにおけるイベント処理</h2>
       <p><code>qt-03.py</code>
-      というファイルを新規作成して、以下のプログラムを貼り付けて実行し、その動作を確認してください。このプログラムは「実行」ボタンと「クリア」ボタンを押下したときの処理を追加したものとなります。実行ボタンを押下すると、ウィンドウ下部の<strong>ステータスバーのメッセージが変化</strong>することにも注意してください。</p>
+      というファイルを新規作成して、以下のプログラムを貼り付けて実行し、その動作を確認してください。このプログラムは「実行」ボタンと「クリア」ボタンを押下したときの処理を追加したものとなります。「実行」ボタンを押下すると、ウィンドウ下部の<strong>ステータスバーのメッセージが変化</strong>することにも注意してください。</p>
       <div class="sourceCode" id="cb12" data-caption="qt-3.py"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="im">import</span> sys</span>
 <span id="cb12-2"><a href="#cb12-2"></a><span class="im">import</span> random <span class="im">as</span> r</span>
@@ -1024,7 +1030,8 @@ pip install PySide6</code></pre>
       となります。この関数は、<strong>第34行目</strong> において
       <code>self.btn_run.clicked.connect(self.btn_run_clicked)</code>
       のようにコールバック関数として登録されます。このように登録することで、プログラムの実行時に「実行」ボタンが押下されると
-      <code>btn_run_clicked</code> メソッドが呼び出されるようになります
+      (PySideのフレームワークによって) <code>btn_run_clicked</code>
+      メソッドが自動的に呼び出されるようになります
       (PySide6によって、この仕組みが提供されます)。</p>
       <p>同様に、「クリア」ボタンを押下したときに実行したい処理を記述した関数
       (メソッド) を <strong>第69行目</strong> から
@@ -1049,6 +1056,7 @@ pip install PySide6</code></pre>
       <code>datetime</code>
       ライブラリをインポートしています。<code>datetime</code>
       は標準ライブラリであるため、pip によるインストールは不要です。</p>
+      <hr />
       <p><strong>演習1</strong>: テキストボックス (ログ)
       に表示される時刻の形式を「2024-01-15 09:45」のように変更せよ。</p>
       <p><strong>演習2 (Ex)</strong>: テキストボックス (ログ)
@@ -1081,6 +1089,7 @@ pip install PySide6</code></pre>
       とすれば、そのカードのランクを表す文字列が取得できるようになっています。抽選で得られたカードについて、そのランクを表す文字列ではなく、インデックスを返しているのは、<strong>第28行目</strong>
       で定義している <code>self.card_counts</code>
       (ランクごとのカード所持数) を更新しやすくするためです。</p>
+      <hr />
       <p><strong>演習</strong>:
       新たにカードランク「UR」を追加し、それが適切に反映されるようにプログラムを書き換えよ。UR:
       Ultimate Rare。</p>
@@ -1267,6 +1276,9 @@ pip install PySide6</code></pre>
       <img src="figs/25/qt-06.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
       </figure>
+      <hr />
+      <p>次回の講義では、引き続き PySide
+      を扱います。ここまでの内容を十分に理解しておいてください。解決しない疑問などは、個別に質問してください。</p>
       <!-- ---------------------------------------- -->
     </main>
 
