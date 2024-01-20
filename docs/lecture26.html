@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+
+    <script>
+      MathJax = {
+        chtml: {
+          displayAlign: "left",
+          displayIndent: "1em",
+        },
+      };
+    </script>
+
+    
+
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>第26回 2I-プログラミング1</title>
+  </head>
+
+  <body>
+    <div class="openbtn"><span></span><span></span><span></span></div>
+    <nav id="g-nav">
+      <div id="g-nav-list">
+        <!-- ---------------------------------------- -->
+         <ul>
+<li><a href="#シンボルの名前変更-vscode"
+id="toc-シンボルの名前変更-vscode"><span
+class="toc-section-number">1</span> シンボルの名前変更 (VSCode)</a></li>
+<li><a href="#ウィンドウの初期位置" id="toc-ウィンドウの初期位置"><span
+class="toc-section-number">2</span> ウィンドウの初期位置</a>
+<ul>
+<li><a href="#準備" id="toc-準備"><span
+class="toc-section-number">2.1</span> 準備</a></li>
+<li><a href="#ウィンドウ初期位置をスクリーン中央に設定"
+id="toc-ウィンドウ初期位置をスクリーン中央に設定"><span
+class="toc-section-number">2.2</span>
+ウィンドウ初期位置をスクリーン中央に設定</a></li>
+<li><a href="#型ヒント" id="toc-型ヒント"><span
+class="toc-section-number">2.3</span> 型ヒント</a></li>
+</ul></li>
+<li><a href="#メッセージボックス-メッセージダイアログ"
+id="toc-メッセージボックス-メッセージダイアログ"><span
+class="toc-section-number">3</span> メッセージボックス
+(メッセージダイアログ)</a>
+<ul>
+<li><a href="#メッセージボックスの表示"
+id="toc-メッセージボックスの表示"><span
+class="toc-section-number">3.1</span> メッセージボックスの表示</a></li>
+<li><a href="#静的メソッドを使用する方法"
+id="toc-静的メソッドを使用する方法"><span
+class="toc-section-number">3.2</span>
+静的メソッドを使用する方法</a></li>
+<li><a href="#インスタンスを生成して使用する方法"
+id="toc-インスタンスを生成して使用する方法"><span
+class="toc-section-number">3.3</span>
+インスタンスを生成して使用する方法</a></li>
+</ul></li>
+<li><a href="#ファイル関連ダイアログ"
+id="toc-ファイル関連ダイアログ"><span
+class="toc-section-number">4</span> ファイル関連ダイアログ</a>
+<ul>
+<li><a href="#ファイルオープンダイアログ"
+id="toc-ファイルオープンダイアログ"><span
+class="toc-section-number">4.1</span> ファイルオープンダイアログ</a>
+<ul>
+<li><a href="#複数ファイルの選択" id="toc-複数ファイルの選択"><span
+class="toc-section-number">4.1.1</span> 複数ファイルの選択</a></li>
+</ul></li>
+<li><a href="#ファイルセーブダイアログ"
+id="toc-ファイルセーブダイアログ"><span
+class="toc-section-number">4.2</span> ファイルセーブダイアログ</a>
+<ul>
+<li><a href="#カレンダ文字列の作成" id="toc-カレンダ文字列の作成"><span
+class="toc-section-number">4.2.1</span> カレンダ文字列の作成</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#ラジオボタン" id="toc-ラジオボタン"><span
+class="toc-section-number">5</span> ラジオボタン</a>
+<ul>
+<li><a href="#ラジオボタンのサンプルプログラム1"
+id="toc-ラジオボタンのサンプルプログラム1"><span
+class="toc-section-number">5.1</span>
+ラジオボタンのサンプルプログラム1</a></li>
+<li><a href="#ラジオボタンのサンプルプログラム2"
+id="toc-ラジオボタンのサンプルプログラム2"><span
+class="toc-section-number">5.2</span>
+ラジオボタンのサンプルプログラム2</a></li>
+</ul></li>
+<li><a href="#チェックボックス" id="toc-チェックボックス"><span
+class="toc-section-number">6</span> チェックボックス</a>
+<ul>
+<li><a href="#チェックボックスのサンプルプログラム1"
+id="toc-チェックボックスのサンプルプログラム1"><span
+class="toc-section-number">6.1</span>
+チェックボックスのサンプルプログラム1</a></li>
+<li><a href="#チェックボックスのサンプルプログラム2"
+id="toc-チェックボックスのサンプルプログラム2"><span
+class="toc-section-number">6.2</span>
+チェックボックスのサンプルプログラム2</a></li>
+</ul></li>
+</ul> 
+        <!-- ---------------------------------------- -->
+      </div>
+    </nav>
+
+    <header class="markdown-body">
+      <p>2023-2I プログラミング1 第26回 講義資料</p>
+      <p>2024年01月22日（月）1・2時限</p>
+    </header>
+
+    <main class="markdown-body">
+      <!-- ---------------------------------------- -->
+      <h1 data-number="1" id="シンボルの名前変更-vscode"><span
+      class="header-section-number">1</span> シンボルの名前変更
+      (VSCode)</h1>
+      <p>VSCodeには「<strong>シンボルの名前変更</strong>」という機能があります。これは、簡単に言うと
+      <span>変数や関数などの名前をファイルを全体で一括して変更</span>
+      する機能です。変数名や関数名の上で「右クリック」で呼び出すことができます
+      (あるいは <code>F2</code> でも呼び出すことができます)。</p>
+      <p>例えば、プログラム内で使用している変数 <code>a</code>
+      の名前をより意味のあるものに変更したい場合、通常はその変数が使われているすべての場所を探して手作業で変更する必要があります。しかし「シンボルの名前変更」を使用すれば、1回の操作で、その変数が使われている全ての場所の名前が自動的に更新されます。</p>
+      <h1 data-number="2" id="ウィンドウの初期位置"><span
+      class="header-section-number">2</span> ウィンドウの初期位置</h1>
+      <p>ここでは、ウィンドウの初期位置を「<strong>スクリーン中央</strong>」に設定する方法について学びます。</p>
+      <h2 data-number="2.1" id="準備"><span
+      class="header-section-number">2.1</span> 準備</h2>
+      <p>前回の講義において、ウィンドウの「初期位置」と「サイズ」は、次のように4つの引数
+      (整数値) を与えて設定しました。</p>
+      <div class="sourceCode" id="cb1"
+      data-caption="ウィンドウのジオメトリ設定 (方法1)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="va">self</span>.setGeometry(<span class="dv">100</span>, <span class="dv">50</span>, <span class="dv">640</span>, <span class="dv">240</span>)</span></code></pre></div>
+      <p>これとは別に <code>Qc.QRect</code>
+      オブジェクトを使って、次のように<strong>ウィンドウのジオメトリ
+      (位置とサイズ)</strong>
+      を設定することもできます。ウィンドウの初期位置を「<strong>スクリーン中央</strong>」に設定するためには、こちらの方法を使用します。</p>
+      <div class="sourceCode" id="cb2"
+      data-caption="ウィンドウのジオメトリ設定 (方法2)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>rect <span class="op">=</span> Qc.QRect()</span>
+<span id="cb2-2"><a href="#cb2-2"></a>rect.setSize(Qc.QSize(<span class="dv">640</span>,<span class="dv">480</span>))      <span class="co"># サイズ設定</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>rect.moveTopLeft(Qc.QPoint(<span class="dv">100</span>,<span class="dv">50</span>))  <span class="co"># 位置設定</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="va">self</span>.setGeometry(rect) </span></code></pre></div>
+      <p>ここで、<code>moveTopLeft</code>
+      メソッドの代わりに、<code>moveBottomRight</code> を使用すれば
+      <span
+      class="masked">ウィンドウの「右下を基準に位置設定」をすること</span>
+      ができます。また <code>rect.moveCenter</code>
+      を使用すればウィンドウの「中央を基準に位置設定」をすることができます。</p>
+      <h2 data-number="2.2"
+      id="ウィンドウ初期位置をスクリーン中央に設定"><span
+      class="header-section-number">2.2</span>
+      ウィンドウ初期位置をスクリーン中央に設定</h2>
+      <p><strong>ウィンドウの初期位置</strong>が「スクリーンの中央」となるようなプログラム
+      (<code>qt-06.py</code>) を次に示します。ここ言う「スクリーン」とは
+      <span class="masked">PC画面 (デスクトップ画面)</span>
+      を指します。</p>
+      <p>プログラムを実際に実行して動作を確認してください。</p>
+      <div class="sourceCode" id="cb3"
+      data-caption="qt-06.py (ウィンドウをスクリーン中央に表示するプログラム)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> sys</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="im">import</span> PySide6.QtWidgets <span class="im">as</span> Qw</span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="im">import</span> PySide6.QtCore <span class="im">as</span> Qc</span>
+<span id="cb3-4"><a href="#cb3-4"></a></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="kw">class</span> MainWindow(Qw.QMainWindow):</span>
+<span id="cb3-6"><a href="#cb3-6"></a>  </span>
+<span id="cb3-7"><a href="#cb3-7"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, app:Qw.QApplication):</span>
+<span id="cb3-8"><a href="#cb3-8"></a></span>
+<span id="cb3-9"><a href="#cb3-9"></a>    <span class="bu">super</span>().<span class="fu">__init__</span>() </span>
+<span id="cb3-10"><a href="#cb3-10"></a></span>
+<span id="cb3-11"><a href="#cb3-11"></a>    <span class="va">self</span>.setWindowTitle(<span class="st">&#39;MainWindow&#39;</span>) </span>
+<span id="cb3-12"><a href="#cb3-12"></a></span>
+<span id="cb3-13"><a href="#cb3-13"></a>    <span class="co"># ウィンドウの位置をスクリーン中央に設定</span></span>
+<span id="cb3-14"><a href="#cb3-14"></a>    rect <span class="op">=</span> Qc.QRect()</span>
+<span id="cb3-15"><a href="#cb3-15"></a>    rect.setSize(Qc.QSize(<span class="dv">640</span>,<span class="dv">480</span>))</span>
+<span id="cb3-16"><a href="#cb3-16"></a>    rect.moveCenter(app.primaryScreen().availableGeometry().center())</span>
+<span id="cb3-17"><a href="#cb3-17"></a>    <span class="va">self</span>.setGeometry(rect) </span>
+<span id="cb3-18"><a href="#cb3-18"></a></span>
+<span id="cb3-19"><a href="#cb3-19"></a><span class="co">## main ##</span></span>
+<span id="cb3-20"><a href="#cb3-20"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&#39;__main__&#39;</span>:</span>
+<span id="cb3-21"><a href="#cb3-21"></a>  app <span class="op">=</span> Qw.QApplication(sys.argv)</span>
+<span id="cb3-22"><a href="#cb3-22"></a>  main_window <span class="op">=</span> MainWindow(app) <span class="co"># appを引数に与えてインスタンスを生成</span></span>
+<span id="cb3-23"><a href="#cb3-23"></a>  main_window.show()</span>
+<span id="cb3-24"><a href="#cb3-24"></a>  sys.exit(app.<span class="bu">exec</span>())</span></code></pre></div>
+      <p>ウィンドウをスクリーン中央に表示するためには <span
+      class="masked">スクリーン (PC画面) の Geometry
+      (形状・ジオメトリ)</span>
+      に関する情報が必要となります。この情報は、<strong>第21行目</strong>
+      で生成される <code>app</code>
+      (PySide6.QtWidgets.Applicationクラスのインスタンス) の
+      <code>.primaryScreen().availableGeometry()</code>
+      メソッドで取得ができます。</p>
+      <p>ただし、このスクリーン の Geometry
+      が必要になるのは、MainWindowクラスの「コンストラクタのなか」であるため、<strong>第07行目</strong>
+      のコンストラクタの定義開始部 (シグネチャ) で、Qw.Application
+      を引数として受け取れるようにしています。そして、<strong>第21行目</strong>
+      では、<code>main_window = MainWindow(app)</code> のように
+      <code>app</code> を引数に渡しています。</p>
+      <p>なお、コンストラクタの定義開始部 (シグネチャ) を</p>
+      <div class="sourceCode" id="cb4" data-startFrom="7"
+      data-caption="コンストラクタのヘッダ"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 6;"><span id="cb4-7"><a href="#cb4-7"></a><span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, app):</span></code></pre></div>
+      <p>ではなく</p>
+      <div class="sourceCode" id="cb5" data-startFrom="7"
+      data-caption="コンストラクタのヘッダ"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 6;"><span id="cb5-7"><a href="#cb5-7"></a><span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, app:Qw.QApplication):</span></code></pre></div>
+      <p>としていることには理由があり、それについては次に説明します。</p>
+      <h2 data-number="2.3" id="型ヒント"><span
+      class="header-section-number">2.3</span> 型ヒント</h2>
+      <p>Python開発環境が適切に設定された VSCode では <a
+      href="https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance">Pylance</a>
+      という拡張機能によって、コーディングの際に「<strong>入力補完</strong>」や「<strong>エラーチェック</strong>」が機能します。</p>
+      <p>Pylance
+      の支援機能は、バックグラウンドで<strong>プログラムコードをリアルタイムに解析して動作</strong>します。この際、Pylance
+      の内部では「<strong>型の推論</strong> (Type Inference)
+      」が行われます。例えば、次のようなプログラムを書きかけているとき、つまり、<strong>第02行目</strong>の
+      <code>.</code> までコードを打ち込んだとき・・・</p>
+      <div class="sourceCode" id="cb6"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>x <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>x.</span></code></pre></div>
+      <p>Pylance は <strong>第01行目</strong> の <code>x=10</code>
+      から「変数 <code>x</code> の 型 (Type)
+      は「整数値」である」と<strong>推論</strong>し、次の図に示すように整数値オブジェクトが有する
+      <strong>プロパティ (属性)</strong> や <strong>メソッド</strong>
+      を入力候補として表示してくれます。</p>
+      <figure>
+      <img src="figs/26/type-hints-01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>一方で、変数 <code>x</code>
+      が「<strong>文字列</strong>」と推論できるときは、文字列オブジェクトに対する適切な入力候補を表示してくれます。</p>
+      <div class="sourceCode" id="cb7"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>x <span class="op">=</span> <span class="st">&#39;10&#39;</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>x.</span></code></pre></div>
+      <figure>
+      <img src="figs/26/type-hints-02.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>上図において、入力候補として表示されるメソッドが <span
+      class="masked">先の例とは違うこと</span>に注目してください。例えば
+      <code>startsWith</code> メソッドは「<span
+      class="masked">その文字列が引数で指定した文字から開始するか</span>」をブール値
+      (True/False)
+      で返すもので、これは「整数値オブジェクト」には無いメソッドです。</p>
+      <p>以上のように、Pylance の型推論は非常に強力で優秀ですが、<span
+      class="masked">関数の引数として値を受け取る変数など</span>
+      に対しては推論ができず、結果として「<strong>入力補完</strong>」や「<strong>エラーチェック</strong>」が提供されません。</p>
+      <p>例えば、次のプログラムでは、<strong>第02行目</strong> で
+      <code>xx.</code> まで文字を打ち込んでも入力候補は表示されません
+      (実際に試して確認してください)。これは、Pylance が、変数
+      <code>xx</code> の「型の推論」に失敗しているためです (関数
+      <code>func</code> は、<strong>第05行目</strong>
+      以外にも、別のところから別の引数を伴って呼び出される可能性があり、仮引数
+      <code>xx</code> の型を一意に決定できないためです)。</p>
+      <div class="sourceCode" id="cb8"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">def</span> func(xx):</span>
+<span id="cb8-2"><a href="#cb8-2"></a>  xx.</span>
+<span id="cb8-3"><a href="#cb8-3"></a></span>
+<span id="cb8-4"><a href="#cb8-4"></a>x <span class="op">=</span> <span class="st">&#39;10&#39;</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a>func(x)</span></code></pre></div>
+      <figure>
+      <img src="figs/26/type-hints-03.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>このような状況において、Python 3.5
+      以降では、<strong><em>型ヒント</em></strong> という機能を用いて
+      <span class="masked">型を推論するための補助情報</span>
+      を提供することができます。具体的には、関数のシグネチャ（定義の開始部分）において、引数の名前の後にコロン
+      <code>:</code> に続けて変数の型を指定します。例えば
+      <code>func(xx:int):</code> や <code>func(xx:str):</code>
+      のように記述することができます。これにより、<strong>関数の引数に期待される型が明確</strong>になり、Pylance
+      の「入力補完」や「エラーチェック」が機能するようになります。また、コードの可読性と保守性も向上し、チーム開発においても非常に役立ちます。</p>
+      <p>実際に、先のプログラムを以下のように書き替えると、<code>xx.</code>
+      まで文字を打ち込んだ段階で入力候補が表示されるようになります。</p>
+      <div class="sourceCode" id="cb9"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="kw">def</span> func(xx:<span class="bu">str</span>): <span class="co"># 型ヒントつき</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a>  xx.</span>
+<span id="cb9-3"><a href="#cb9-3"></a></span>
+<span id="cb9-4"><a href="#cb9-4"></a>x <span class="op">=</span> <span class="st">&#39;10&#39;</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a>func(x)</span></code></pre></div>
+      <figure>
+      <img src="figs/26/type-hints-04.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>また、関数のシグネチャに型ヒントを与えることで、関数を呼び出す側において、不適切な引数を与えたとき、警告が表示されるようになります。</p>
+      <p>例えば、以下の <strong>第01行目</strong> では、関数
+      <code>func</code>
+      が文字列型の引数を受け取るように型ヒントが設定されています。しかし、<strong>第05行目</strong>
+      で整数値を持つ変数 <code>x</code>
+      が引数として渡されているため、Pylance から警告
+      (PylancereportGeneralTypeIssues) が通知されます。</p>
+      <div class="sourceCode" id="cb10"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="kw">def</span> func(xx:<span class="bu">str</span>):</span>
+<span id="cb10-2"><a href="#cb10-2"></a>  <span class="cf">return</span> <span class="ss">f&#39;「</span><span class="sc">{</span>xx<span class="sc">}</span><span class="ss">」&#39;</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a></span>
+<span id="cb10-4"><a href="#cb10-4"></a>x <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a>y <span class="op">=</span> func(x)</span></code></pre></div>
+      <figure>
+      <img src="figs/26/type-hints-05.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <blockquote>
+      <p>型 “Literal[10]” の引数を、関数 “func” の型 “str”
+      のパラメーター “xx” に割り当てることはできません “Literal[10]” は
+      “str” と互換性がありません PylancereportGeneralTypeIssues</p>
+      </blockquote>
+      <p>さらに、型ヒントは関数の <span class="masked">戻り値</span>
+      に対しても設定可能です。例えば、第1引数が「数値型」、第2引数が「辞書型もしくは
+      <code>None</code>」、第3引数が「ブール型」で、戻り値が「リスト型」を期待する関数のシグネチャは次のように記述できます。</p>
+      <div class="sourceCode" id="cb11"><pre
+      class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> func(a1: <span class="bu">float</span>, a2: Optional[Dict], a3: <span class="bu">bool</span>) <span class="op">-&gt;</span> List:</span></code></pre></div>
+      <p>なお、<strong>型ヒント付きの関数のシグネチャの記述</strong>は初心者には、やや難しくなります。そのため
+      ChatGPT
+      などを使用することを推奨します。例えば「<strong>文字列リストを受け取り、それぞれの文字列の長さのリストを返す関数の型ヒントをどのように記述すればよいですか？</strong>」のように質問することで、適切なシグネチャを記述することができます。</p>
+      <h1 data-number="3"
+      id="メッセージボックス-メッセージダイアログ"><span
+      class="header-section-number">3</span> メッセージボックス
+      (メッセージダイアログ)</h1>
+      <p>PySide では、<strong>各種メッセージボックス</strong>
+      (「メッセージダイアログ」とも言います)
+      を表示してユーザに「情報を通知」したり、「意思確認をすること」ができます。</p>
+      <figure>
+      <img src="figs/26/qt-02.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>通常、メッセージボックスは「<strong>モーダルウィンドウ</strong>」として表示されます。モーダルウィンドウとは、そのウィンドウでの操作を完了するまでは
+      <span
+      class="masked">他の操作を行うことができないタイプの画面</span>
+      です。また、PCの設定によってはメッセージボックスの表示に際して「<strong>通知音</strong>」が鳴ることもあるため、適切に使用しないと
+      <strong>UX (ユーザーエクスペリエンス)</strong>
+      が大きく損なわれることになります
+      (いわゆる「いちいち鬱陶しいプログラム」になってしまいます)。十分に注意してください。</p>
+      <p>以下、PySideで「メッセージボックス」を使用する方法について説明していきます。</p>
+      <h2 data-number="3.1" id="メッセージボックスの表示"><span
+      class="header-section-number">3.1</span>
+      メッセージボックスの表示</h2>
+      <p>プロジェクトフォルダに <code>qt-07.py</code>
+      というファイルを新規作成し、次のプログラムを貼り付けて実行し、その動作を確認してください。</p>
+      <div class="sourceCode" id="cb12"
+      data-caption="qt-07.py (メッセージボックス)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="im">import</span> sys</span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="im">import</span> PySide6.QtWidgets <span class="im">as</span> Qw</span>
+<span id="cb12-3"><a href="#cb12-3"></a></span>
+<span id="cb12-4"><a href="#cb12-4"></a><span class="co"># エイリアス (省略名) の設定</span></span>
+<span id="cb12-5"><a href="#cb12-5"></a>btn_type <span class="op">=</span> Qw.QMessageBox.StandardButton</span>
+<span id="cb12-6"><a href="#cb12-6"></a></span>
+<span id="cb12-7"><a href="#cb12-7"></a><span class="co"># MainWindow の 定義</span></span>
+<span id="cb12-8"><a href="#cb12-8"></a><span class="kw">class</span> MainWindow(Qw.QMainWindow):</span>
+<span id="cb12-9"><a href="#cb12-9"></a>  </span>
+<span id="cb12-10"><a href="#cb12-10"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb12-11"><a href="#cb12-11"></a>    <span class="bu">super</span>().<span class="fu">__init__</span>() </span>
+<span id="cb12-12"><a href="#cb12-12"></a>    <span class="va">self</span>.setWindowTitle(<span class="st">&#39;メッセージボックスの利用&#39;</span>)     </span>
+<span id="cb12-13"><a href="#cb12-13"></a>    <span class="va">self</span>.setGeometry(<span class="dv">100</span>, <span class="dv">50</span>, <span class="dv">640</span>, <span class="dv">100</span>) </span>
+<span id="cb12-14"><a href="#cb12-14"></a></span>
+<span id="cb12-15"><a href="#cb12-15"></a>    <span class="co">#「Show MessageBox 1」ボタンの生成と設定</span></span>
+<span id="cb12-16"><a href="#cb12-16"></a>    <span class="va">self</span>.btn_1 <span class="op">=</span> Qw.QPushButton(<span class="st">&#39;Show MessageBox 1&#39;</span>,<span class="va">self</span>)</span>
+<span id="cb12-17"><a href="#cb12-17"></a>    <span class="va">self</span>.btn_1.setGeometry(<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">150</span>,<span class="dv">25</span>)</span>
+<span id="cb12-18"><a href="#cb12-18"></a>    <span class="va">self</span>.btn_1.clicked.<span class="ex">connect</span>(<span class="va">self</span>.btn_1_clicked)</span>
+<span id="cb12-19"><a href="#cb12-19"></a></span>
+<span id="cb12-20"><a href="#cb12-20"></a>    <span class="co">#「Show MessageBox 2」ボタンの生成と設定</span></span>
+<span id="cb12-21"><a href="#cb12-21"></a>    <span class="va">self</span>.btn_2 <span class="op">=</span> Qw.QPushButton(<span class="st">&#39;Show MessageBox 2&#39;</span>,<span class="va">self</span>)</span>
+<span id="cb12-22"><a href="#cb12-22"></a>    <span class="va">self</span>.btn_2.setGeometry(<span class="dv">170</span>,<span class="dv">10</span>,<span class="dv">150</span>,<span class="dv">25</span>)</span>
+<span id="cb12-23"><a href="#cb12-23"></a>    <span class="va">self</span>.btn_2.clicked.<span class="ex">connect</span>(<span class="va">self</span>.btn_2_clicked)</span>
+<span id="cb12-24"><a href="#cb12-24"></a>    </span>
+<span id="cb12-25"><a href="#cb12-25"></a>    <span class="co"># 結果表示のためのラベル</span></span>
+<span id="cb12-26"><a href="#cb12-26"></a>    <span class="va">self</span>.lb_msg <span class="op">=</span> Qw.QLabel(<span class="st">&#39;ボタンを押下してください。&#39;</span>,<span class="va">self</span>)</span>
+<span id="cb12-27"><a href="#cb12-27"></a>    <span class="va">self</span>.lb_msg.setGeometry(<span class="dv">15</span>,<span class="dv">35</span>,<span class="dv">500</span>,<span class="dv">30</span>)</span>
+<span id="cb12-28"><a href="#cb12-28"></a></span>
+<span id="cb12-29"><a href="#cb12-29"></a>  <span class="co"># MessageBoxの表示関数1 (簡易版・静的メソッドの利用)</span></span>
+<span id="cb12-30"><a href="#cb12-30"></a>  <span class="kw">def</span> btn_1_clicked(<span class="va">self</span>):</span>
+<span id="cb12-31"><a href="#cb12-31"></a></span>
+<span id="cb12-32"><a href="#cb12-32"></a>    msgbox_title <span class="op">=</span> <span class="st">&#39;メッセージボックスのタイトル&#39;</span></span>
+<span id="cb12-33"><a href="#cb12-33"></a>    msgbox_text <span class="op">=</span> <span class="st">&#39;ダイアログに表示するメッセージは</span><span class="ch">\n</span><span class="st">内部で改行することもできます。</span><span class="ch">\n</span><span class="st">&#39;</span></span>
+<span id="cb12-34"><a href="#cb12-34"></a>    msgbox_text <span class="op">+=</span> <span class="st">&#39;[ESC]キーを押すと [Cancel] 押下と同等の挙動をします。&#39;</span></span>
+<span id="cb12-35"><a href="#cb12-35"></a>    </span>
+<span id="cb12-36"><a href="#cb12-36"></a>    <span class="co"># メッセージボックスの生成、表示、応答(戻値)の取得 </span></span>
+<span id="cb12-37"><a href="#cb12-37"></a>    ret <span class="op">=</span> Qw.QMessageBox.question(</span>
+<span id="cb12-38"><a href="#cb12-38"></a>            <span class="va">self</span>,          <span class="co"># 親ウィンドウ</span></span>
+<span id="cb12-39"><a href="#cb12-39"></a>            msgbox_title,  <span class="co"># タイトル</span></span>
+<span id="cb12-40"><a href="#cb12-40"></a>            msgbox_text,   <span class="co"># メッセージ本体</span></span>
+<span id="cb12-41"><a href="#cb12-41"></a>            btn_type.Yes <span class="op">|</span> btn_type.No <span class="op">|</span> btn_type.Cancel, <span class="co"># 表示ボタン</span></span>
+<span id="cb12-42"><a href="#cb12-42"></a>            btn_type.No    <span class="co"># デフォルトボタン</span></span>
+<span id="cb12-43"><a href="#cb12-43"></a>          )</span>
+<span id="cb12-44"><a href="#cb12-44"></a>    </span>
+<span id="cb12-45"><a href="#cb12-45"></a>    <span class="co"># 戻値に応じた処理</span></span>
+<span id="cb12-46"><a href="#cb12-46"></a>    <span class="cf">if</span> ret <span class="op">==</span> btn_type.Yes:</span>
+<span id="cb12-47"><a href="#cb12-47"></a>      msg <span class="op">=</span> <span class="st">&#39;[Yes] ボタン が押下されました。&#39;</span></span>
+<span id="cb12-48"><a href="#cb12-48"></a>    <span class="cf">elif</span> ret <span class="op">==</span> btn_type.No : </span>
+<span id="cb12-49"><a href="#cb12-49"></a>      msg <span class="op">=</span> <span class="st">&#39;[No] ボタン が押下されました。&#39;</span></span>
+<span id="cb12-50"><a href="#cb12-50"></a>    <span class="cf">elif</span> ret <span class="op">==</span> btn_type.Cancel :</span>
+<span id="cb12-51"><a href="#cb12-51"></a>      msg <span class="op">=</span> <span class="st">&#39;[Cancel] ボタン または [X] ボタン が押下されました。&#39;</span></span>
+<span id="cb12-52"><a href="#cb12-52"></a>    <span class="cf">else</span> :</span>
+<span id="cb12-53"><a href="#cb12-53"></a>      msg <span class="op">=</span> <span class="st">&#39;予期せぬ応答が返ってきました。&#39;</span></span>
+<span id="cb12-54"><a href="#cb12-54"></a>    <span class="va">self</span>.lb_msg.setText(msg)</span>
+<span id="cb12-55"><a href="#cb12-55"></a></span>
+<span id="cb12-56"><a href="#cb12-56"></a>  <span class="co"># MessageBoxの表示関数2 (メッセージボックスの「インスタンス」を生成する方法)</span></span>
+<span id="cb12-57"><a href="#cb12-57"></a>  <span class="kw">def</span> btn_2_clicked(<span class="va">self</span>):</span>
+<span id="cb12-58"><a href="#cb12-58"></a></span>
+<span id="cb12-59"><a href="#cb12-59"></a>    <span class="co"># インスタンスの生成と設定</span></span>
+<span id="cb12-60"><a href="#cb12-60"></a>    msgBox <span class="op">=</span> Qw.QMessageBox(<span class="va">self</span>) <span class="co"># インスタンスの生成</span></span>
+<span id="cb12-61"><a href="#cb12-61"></a>    msgBox.setWindowTitle(<span class="st">&#39;メッセージボックスのタイトル&#39;</span>)</span>
+<span id="cb12-62"><a href="#cb12-62"></a>    msgBox.setText(<span class="st">&#39;ダイアログに表示するメッセージは</span><span class="ch">\n</span><span class="st">内部で改行することもできます。&#39;</span>)</span>
+<span id="cb12-63"><a href="#cb12-63"></a>    msgBox.setIcon(Qw.QMessageBox.Icon.<span class="pp">Warning</span>)</span>
+<span id="cb12-64"><a href="#cb12-64"></a>    msgBox.setStandardButtons(btn_type.Yes <span class="op">|</span> btn_type.No)</span>
+<span id="cb12-65"><a href="#cb12-65"></a></span>
+<span id="cb12-66"><a href="#cb12-66"></a>    <span class="co"># 表示と応答の取得・処理</span></span>
+<span id="cb12-67"><a href="#cb12-67"></a>    ret <span class="op">=</span> msgBox.<span class="bu">exec</span>() <span class="co"># 表示と応答の取得</span></span>
+<span id="cb12-68"><a href="#cb12-68"></a>    <span class="cf">if</span> ret <span class="op">==</span> btn_type.Yes:</span>
+<span id="cb12-69"><a href="#cb12-69"></a>      msg <span class="op">=</span> <span class="st">&#39;[Yes] ボタン が押下されました。&#39;</span></span>
+<span id="cb12-70"><a href="#cb12-70"></a>    <span class="cf">elif</span> ret <span class="op">==</span> btn_type.No:</span>
+<span id="cb12-71"><a href="#cb12-71"></a>      msg <span class="op">=</span> <span class="st">&#39;[No] ボタン もしくは [X] ボタンが押下されました。&#39;</span></span>
+<span id="cb12-72"><a href="#cb12-72"></a>    <span class="cf">else</span> :</span>
+<span id="cb12-73"><a href="#cb12-73"></a>      msg <span class="op">=</span> <span class="st">&#39;予期せぬ応答が返ってきました。&#39;</span></span>
+<span id="cb12-74"><a href="#cb12-74"></a>    <span class="va">self</span>.lb_msg.setText(msg)</span>
+<span id="cb12-75"><a href="#cb12-75"></a></span>
+<span id="cb12-76"><a href="#cb12-76"></a><span class="co">## main ##</span></span>
+<span id="cb12-77"><a href="#cb12-77"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&#39;__main__&#39;</span>:</span>
+<span id="cb12-78"><a href="#cb12-78"></a>  app <span class="op">=</span> Qw.QApplication(sys.argv)</span>
+<span id="cb12-79"><a href="#cb12-79"></a>  main_window <span class="op">=</span> MainWindow()</span>
+<span id="cb12-80"><a href="#cb12-80"></a>  main_window.show()</span>
+<span id="cb12-81"><a href="#cb12-81"></a>  sys.exit(app.<span class="bu">exec</span>())</span></code></pre></div>
+      <p>このプログラムは、ボタンを押下するとメッセージボックスが表示され、その結果をラベル
+      (QLabel)
+      に表示します。メッセージボックスを表示すると、それ閉じられるまで親ウィンドが操作できないモーダルウィンドウとして機能します。</p>
+      <p>なお、ラベル (QLabel) は、テキストボックス (QTextEdit や
+      QLineEdit)
+      とは異なり、ユーザーがマウスで範囲選択することはできません。</p>
+      <figure>
+      <img src="figs/26/qt-03.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>PySideでメッセージボックスを表示するときは「<strong>メッセージボックスのインスタンスを生成せずに静的メソッドを使用する方法</strong>」と「<strong>メッセージボックスのインスタンスを生成して使用する方法</strong>」の2つがあります。</p>
+      <h2 data-number="3.2" id="静的メソッドを使用する方法"><span
+      class="header-section-number">3.2</span>
+      静的メソッドを使用する方法</h2>
+      <p>静的メソッドとは、オブジェクト (インスタンス)
+      を生成せずに利用可能なメソッドです。PySide6.QtWidgetsw.QMessageBox
+      クラスの静的メソッド <code>question</code>
+      を使用したメッセージボックス関連の処理は<strong>第32行目</strong>
+      から <strong>第54行目</strong> までの範囲になります。</p>
+      <div class="sourceCode" id="cb13" data-startFrom="32"
+      data-caption="メッセージボックス関連処理 1"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 31;"><span id="cb13-32"><a href="#cb13-32"></a>msgbox_title <span class="op">=</span> <span class="st">&#39;メッセージボックスのタイトル&#39;</span></span>
+<span id="cb13-33"><a href="#cb13-33"></a>msgbox_text <span class="op">=</span> <span class="st">&#39;ダイアログに表示するメッセージは</span><span class="ch">\n</span><span class="st">内部で改行することもできます。</span><span class="ch">\n</span><span class="st">&#39;</span></span>
+<span id="cb13-34"><a href="#cb13-34"></a>msgbox_text <span class="op">+=</span> <span class="st">&#39;[ESC]キーを押すと [Cancel] 押下と同等の挙動をします。&#39;</span></span>
+<span id="cb13-35"><a href="#cb13-35"></a></span>
+<span id="cb13-36"><a href="#cb13-36"></a><span class="co"># メッセージボックスの生成、表示、応答(戻値)の取得 </span></span>
+<span id="cb13-37"><a href="#cb13-37"></a>ret <span class="op">=</span> Qw.QMessageBox.question(</span>
+<span id="cb13-38"><a href="#cb13-38"></a>        <span class="va">self</span>,          <span class="co"># 親ウィンドウ</span></span>
+<span id="cb13-39"><a href="#cb13-39"></a>        msgbox_title,  <span class="co"># タイトル</span></span>
+<span id="cb13-40"><a href="#cb13-40"></a>        msgbox_text,   <span class="co"># メッセージ本体</span></span>
+<span id="cb13-41"><a href="#cb13-41"></a>        btn_type.Yes <span class="op">|</span> btn_type.No <span class="op">|</span> btn_type.Cancel, <span class="co"># 表示ボタン</span></span>
+<span id="cb13-42"><a href="#cb13-42"></a>        btn_type.No    <span class="co"># デフォルトボタン</span></span>
+<span id="cb13-43"><a href="#cb13-43"></a>      )</span>
+<span id="cb13-44"><a href="#cb13-44"></a></span>
+<span id="cb13-45"><a href="#cb13-45"></a><span class="co"># 戻値に応じた処理</span></span>
+<span id="cb13-46"><a href="#cb13-46"></a><span class="cf">if</span> ret <span class="op">==</span> btn_type.Yes:</span>
+<span id="cb13-47"><a href="#cb13-47"></a>  msg <span class="op">=</span> <span class="st">&#39;[Yes] ボタン が押下されました。&#39;</span></span>
+<span id="cb13-48"><a href="#cb13-48"></a><span class="cf">elif</span> ret <span class="op">==</span> btn_type.No : </span>
+<span id="cb13-49"><a href="#cb13-49"></a>  msg <span class="op">=</span> <span class="st">&#39;[No] ボタン が押下されました。&#39;</span></span>
+<span id="cb13-50"><a href="#cb13-50"></a><span class="cf">elif</span> ret <span class="op">==</span> btn_type.Cancel :</span>
+<span id="cb13-51"><a href="#cb13-51"></a>  msg <span class="op">=</span> <span class="st">&#39;[Cancel] ボタン または [X] ボタン が押下されました。&#39;</span></span>
+<span id="cb13-52"><a href="#cb13-52"></a><span class="cf">else</span> :</span>
+<span id="cb13-53"><a href="#cb13-53"></a>  msg <span class="op">=</span> <span class="st">&#39;予期せぬ応答が返ってきました。&#39;</span></span>
+<span id="cb13-54"><a href="#cb13-54"></a><span class="va">self</span>.lb_msg.setText(msg)</span></code></pre></div>
+      <p>処理のメインとなる部分は <strong>第37行目</strong> の
+      <code>Qw.QMessageBox.question</code>
+      であり、この静的メソッドに次の引数を与えることで、メッセージボックスを表示し、それに対するユーザーの応答を変数
+      <code>ret</code> に得ることができます。</p>
+      <ul>
+      <li><strong>第1引数</strong> : 親ウィンドウ (親ウィジェット)
+      を渡します。<strong>38行目</strong> の <code>self</code> は
+      MainWindow を意味します。</li>
+      <li><strong>第2引数</strong> : メッセージボックスの
+      <strong>タイトルバーに表示する文字列</strong> を渡します。</li>
+      <li><strong>第3引数</strong> : メッセージボックスの
+      <strong>内部に表示する文字列</strong>
+      を渡します。<code>\n</code>で改行することができます。</li>
+      <li><strong>第4引数</strong> :
+      メッセージボックスに表示するボタンを <strong>パイプ</strong>
+      <code>|</code> <strong>で区切って設定</strong>します。具体的には
+      <code>QMessageBox.StandardButton.Yes</code>
+      のように指定しますが、このプログラムでは <strong>第05行目</strong>
+      で <code>btn_type = Qw.QMessageBox.StandardButton</code>
+      としているので、ここでは <code>btn_type.Yes</code>
+      となっています。</li>
+      <li><strong>第5引数</strong> : デフォルトボタン
+      (＝メッセージボックスが開いた時点でフォーカスされているボタン)
+      を設定します。ここでは <code>btn_type.No</code>
+      を設定しているため、[No]
+      のボタンにフォーカスされています。キーボードから Enter
+      を入力するとフォーカスされているボタンが押下された挙動となります。</li>
+      </ul>
+      <figure>
+      <img src="figs/26/qt-04.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p><code>ret = Qw.QMessageBox.question(...)</code>
+      を実行するとメッセージボックスが表示され、その応答が戻り値となり、変数
+      <code>ret</code> に格納されます。なお、タイトルバーの
+      <i class="fa-solid 
+      fa-rectangle-xmark"></i> ボタンを押下したときの戻り値は、<span
+      class="masked">第4引数に [Cancel]
+      ボタンを含んでいるときは、[Cancel] ボタンの押下と同じ</span>
+      になります。また、第4引数に [Cancel] ボタンを含まず [No]
+      ボタンを含むときは、[No]
+      ボタンと同じになります。その他については、実際に確認してください。</p>
+      <p>なお、<code>QMessageBox.question</code> 以外に
+      <code>information</code>、<code>warning</code>、<code>critical</code>
+      などのメソッドがあり、内部に表示されるアイコンが変化します。</p>
+      <figure>
+      <img src="figs/26/qt-01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <h2 data-number="3.3"
+      id="インスタンスを生成して使用する方法"><span
+      class="header-section-number">3.3</span>
+      インスタンスを生成して使用する方法</h2>
+      <p>メッセージボックスのインスタンスを生成して使用する場合の処理は
+      <strong>第59行目</strong> から <strong>第74行目</strong>
+      までの範囲になります。こちらの方法のほうが、より細かな設定をすることができます。</p>
+      <div class="sourceCode" id="cb14" data-startFrom="32"
+      data-caption="メッセージボックス関連処理 2"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 31;"><span id="cb14-32"><a href="#cb14-32"></a><span class="co"># インスタンスの生成と設定</span></span>
+<span id="cb14-33"><a href="#cb14-33"></a>msgBox <span class="op">=</span> Qw.QMessageBox(<span class="va">self</span>) <span class="co"># インスタンスの生成</span></span>
+<span id="cb14-34"><a href="#cb14-34"></a>msgBox.setWindowTitle(<span class="st">&#39;メッセージボックスのタイトル&#39;</span>)</span>
+<span id="cb14-35"><a href="#cb14-35"></a>msgBox.setText(<span class="st">&#39;ダイアログに表示するメッセージは</span><span class="ch">\n</span><span class="st">内部で改行することもできます。&#39;</span>)</span>
+<span id="cb14-36"><a href="#cb14-36"></a>msgBox.setIcon(Qw.QMessageBox.Icon.<span class="pp">Warning</span>)</span>
+<span id="cb14-37"><a href="#cb14-37"></a>msgBox.setStandardButtons(btn_type.Yes <span class="op">|</span> btn_type.No)</span>
+<span id="cb14-38"><a href="#cb14-38"></a></span>
+<span id="cb14-39"><a href="#cb14-39"></a><span class="co"># 表示と応答の取得・処理</span></span>
+<span id="cb14-40"><a href="#cb14-40"></a>ret <span class="op">=</span> msgBox.<span class="bu">exec</span>() <span class="co"># 表示と応答の取得</span></span>
+<span id="cb14-41"><a href="#cb14-41"></a><span class="cf">if</span> ret <span class="op">==</span> btn_type.Yes:</span>
+<span id="cb14-42"><a href="#cb14-42"></a>  msg <span class="op">=</span> <span class="st">&#39;[Yes] ボタン が押下されました。&#39;</span></span>
+<span id="cb14-43"><a href="#cb14-43"></a><span class="cf">elif</span> ret <span class="op">==</span> btn_type.No:</span>
+<span id="cb14-44"><a href="#cb14-44"></a>  msg <span class="op">=</span> <span class="st">&#39;[No] ボタン もしくは [X] ボタンが押下されました。&#39;</span></span>
+<span id="cb14-45"><a href="#cb14-45"></a><span class="cf">else</span> :</span>
+<span id="cb14-46"><a href="#cb14-46"></a>  msg <span class="op">=</span> <span class="st">&#39;予期せぬ応答が返ってきました。&#39;</span></span>
+<span id="cb14-47"><a href="#cb14-47"></a><span class="va">self</span>.lb_msg.setText(msg)</span></code></pre></div>
+      <p><strong>第60行目</strong> で QMessageBox
+      のインスタンスを生成して、変数 <code>msgBox</code>
+      に格納しています。メッセージボックスのタイトルや表示するボタンなどの設定は、<code>.setXxxxx</code>
+      などのメソッドを通して行います。詳細については<a
+      href="https://doc.qt.io/qtforpython-6/PySide6/QtWidgets/QMessageBox.html">公式リファレンス</a>を参照してください。</p>
+      <h1 data-number="4" id="ファイル関連ダイアログ"><span
+      class="header-section-number">4</span> ファイル関連ダイアログ</h1>
+      <h2 data-number="4.1" id="ファイルオープンダイアログ"><span
+      class="header-section-number">4.1</span>
+      ファイルオープンダイアログ</h2>
+      <p>「<strong>ファイルオープンダイアログ</strong>」は、読み込み対象の「ファイル選択」に使用する汎用ダイアログになります。サンプルプログラムを次に示します。プロジェクトフォルダに
+      <code>qt-08-open.py</code>
+      というファイルを作成して、プログラムを貼り付けて実行し、その動作を確認してください。このプログラムは
+      <span
+      class="masked">ファイルオープンダイアログを使ってファイルを選択し、その内容をテキストボックスに表示</span>
+      するものです。</p>
+      <figure>
+      <img src="figs/26/qt-05.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>なお、<strong>第61行目</strong>から<strong>第67行目</strong>にかけての「<strong>テキストファイルの読み込み
+      (テキストモードでのファイルの読み込み)</strong>」については<a
+      href="lecture18.html#テキストファイルの読み込み">第18回講義</a>で学習済みです。このプログラムでは
+      <span
+      class="masked">文字コードが「UTF-8」以外の場合は読み込みに失敗する</span>
+      ので注意してください。</p>
+      <div class="sourceCode" id="cb15"
+      data-caption="qt-08-open.py (ファイルオープンダイアログの利用)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="im">import</span> os</span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="im">import</span> sys</span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="im">import</span> PySide6.QtWidgets <span class="im">as</span> Qw</span>
+<span id="cb15-4"><a href="#cb15-4"></a></span>
+<span id="cb15-5"><a href="#cb15-5"></a><span class="co"># PySide6.QtWidgets.MainWindow を継承した MainWindow クラスの定義</span></span>
+<span id="cb15-6"><a href="#cb15-6"></a><span class="kw">class</span> MainWindow(Qw.QMainWindow):</span>
+<span id="cb15-7"><a href="#cb15-7"></a>  </span>
+<span id="cb15-8"><a href="#cb15-8"></a>  <span class="co"># コンストラクタ(初期化)</span></span>
+<span id="cb15-9"><a href="#cb15-9"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb15-10"><a href="#cb15-10"></a></span>
+<span id="cb15-11"><a href="#cb15-11"></a>    <span class="co"># 親クラスのコンストラクタの呼び出し</span></span>
+<span id="cb15-12"><a href="#cb15-12"></a>    <span class="bu">super</span>().<span class="fu">__init__</span>() </span>
+<span id="cb15-13"><a href="#cb15-13"></a></span>
+<span id="cb15-14"><a href="#cb15-14"></a>    <span class="co"># ウィンドウタイトル設定</span></span>
+<span id="cb15-15"><a href="#cb15-15"></a>    <span class="va">self</span>.setWindowTitle(<span class="st">&#39;MainWindow&#39;</span>) </span>
+<span id="cb15-16"><a href="#cb15-16"></a></span>
+<span id="cb15-17"><a href="#cb15-17"></a>    <span class="co"># ウィンドウのサイズ(640x240)と位置(X=100,Y=50)の設定</span></span>
+<span id="cb15-18"><a href="#cb15-18"></a>    <span class="va">self</span>.setGeometry(<span class="dv">100</span>, <span class="dv">50</span>, <span class="dv">640</span>, <span class="dv">240</span>) </span>
+<span id="cb15-19"><a href="#cb15-19"></a></span>
+<span id="cb15-20"><a href="#cb15-20"></a>    <span class="co">#「Open」ボタンの生成と設定</span></span>
+<span id="cb15-21"><a href="#cb15-21"></a>    <span class="va">self</span>.btn_open <span class="op">=</span> Qw.QPushButton(<span class="st">&#39;Open&#39;</span>,<span class="va">self</span>)</span>
+<span id="cb15-22"><a href="#cb15-22"></a>    <span class="va">self</span>.btn_open.setGeometry(<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">100</span>,<span class="dv">25</span>)</span>
+<span id="cb15-23"><a href="#cb15-23"></a>    <span class="va">self</span>.btn_open.clicked.<span class="ex">connect</span>(<span class="va">self</span>.btn_open_clicked)</span>
+<span id="cb15-24"><a href="#cb15-24"></a></span>
+<span id="cb15-25"><a href="#cb15-25"></a>    <span class="co"># ナビゲーション情報を表示するラベル</span></span>
+<span id="cb15-26"><a href="#cb15-26"></a>    <span class="va">self</span>.init_navi_msg <span class="op">=</span> <span class="op">\</span></span>
+<span id="cb15-27"><a href="#cb15-27"></a>      <span class="st">&#39;[Open] ボタンを押下して ファイル ( *.txt または *.csv ) を選択してください。&#39;</span></span>
+<span id="cb15-28"><a href="#cb15-28"></a>    <span class="va">self</span>.lb_navi <span class="op">=</span> Qw.QLabel(<span class="va">self</span>.init_navi_msg,<span class="va">self</span>)</span>
+<span id="cb15-29"><a href="#cb15-29"></a>    <span class="va">self</span>.lb_navi.setGeometry(<span class="dv">15</span>,<span class="dv">35</span>,<span class="dv">620</span>,<span class="dv">30</span>)</span>
+<span id="cb15-30"><a href="#cb15-30"></a></span>
+<span id="cb15-31"><a href="#cb15-31"></a>    <span class="co"># テキストボックス</span></span>
+<span id="cb15-32"><a href="#cb15-32"></a>    <span class="va">self</span>.tb_viwer <span class="op">=</span> Qw.QTextEdit(<span class="st">&#39;&#39;</span>,<span class="va">self</span>)</span>
+<span id="cb15-33"><a href="#cb15-33"></a>    <span class="va">self</span>.tb_viwer.setGeometry(<span class="dv">10</span>,<span class="dv">65</span>,<span class="dv">620</span>,<span class="dv">160</span>)</span>
+<span id="cb15-34"><a href="#cb15-34"></a>    <span class="va">self</span>.tb_viwer.setPlaceholderText(<span class="st">&#39;(読み込んだファイルの内容が表示されます)&#39;</span>)</span>
+<span id="cb15-35"><a href="#cb15-35"></a>    <span class="va">self</span>.tb_viwer.setReadOnly(<span class="va">True</span>)</span>
+<span id="cb15-36"><a href="#cb15-36"></a></span>
+<span id="cb15-37"><a href="#cb15-37"></a>  <span class="co">#「Open」ボタンの押下処理</span></span>
+<span id="cb15-38"><a href="#cb15-38"></a>  <span class="kw">def</span> btn_open_clicked(<span class="va">self</span>):</span>
+<span id="cb15-39"><a href="#cb15-39"></a>    title <span class="op">=</span> <span class="st">&#39;テキストファイル または CSVファイル を開く&#39;</span> </span>
+<span id="cb15-40"><a href="#cb15-40"></a>    init_path <span class="op">=</span> os.path.expanduser(<span class="st">&#39;~/Desktop&#39;</span>)</span>
+<span id="cb15-41"><a href="#cb15-41"></a>    <span class="bu">filter</span> <span class="op">=</span> <span class="st">&#39;Text / CSV file (*.txt *.csv)&#39;</span></span>
+<span id="cb15-42"><a href="#cb15-42"></a>    path <span class="op">=</span> Qw.QFileDialog.getOpenFileName(</span>
+<span id="cb15-43"><a href="#cb15-43"></a>            <span class="va">self</span>,      <span class="co"># 親ウィンドウ</span></span>
+<span id="cb15-44"><a href="#cb15-44"></a>            title,     <span class="co"># ダイアログタイトル</span></span>
+<span id="cb15-45"><a href="#cb15-45"></a>            init_path, <span class="co"># 初期位置（フォルダパス）</span></span>
+<span id="cb15-46"><a href="#cb15-46"></a>            <span class="bu">filter</span>)    <span class="co"># 拡張子によるフィルタ</span></span>
+<span id="cb15-47"><a href="#cb15-47"></a>    <span class="bu">print</span>(<span class="ss">f&#39;path =&gt; &quot;</span><span class="sc">{</span>path<span class="sc">}</span><span class="ss">&quot;&#39;</span>)  <span class="co"># 確認</span></span>
+<span id="cb15-48"><a href="#cb15-48"></a></span>
+<span id="cb15-49"><a href="#cb15-49"></a>    <span class="cf">if</span> path[<span class="dv">0</span>] <span class="op">==</span> <span class="st">&#39;&#39;</span> :</span>
+<span id="cb15-50"><a href="#cb15-50"></a>      <span class="bu">print</span>(<span class="st">&#39;ファイル選択がキャンセルされました。&#39;</span>)</span>
+<span id="cb15-51"><a href="#cb15-51"></a>      <span class="va">self</span>.lb_navi.setText(<span class="va">self</span>.init_navi_msg)</span>
+<span id="cb15-52"><a href="#cb15-52"></a>      <span class="cf">return</span></span>
+<span id="cb15-53"><a href="#cb15-53"></a></span>
+<span id="cb15-54"><a href="#cb15-54"></a>    ret <span class="op">=</span> <span class="va">self</span>.read_text(path[<span class="dv">0</span>])</span>
+<span id="cb15-55"><a href="#cb15-55"></a>    <span class="va">self</span>.tb_viwer.setPlainText(ret)</span>
+<span id="cb15-56"><a href="#cb15-56"></a>    <span class="va">self</span>.lb_navi.setText(<span class="ss">f&quot;ファイル &#39;</span><span class="sc">{</span>path[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">&#39; を読み込みました。&quot;</span>)</span>
+<span id="cb15-57"><a href="#cb15-57"></a></span>
+<span id="cb15-58"><a href="#cb15-58"></a>    <span class="cf">if</span> <span class="bu">len</span>(ret) <span class="op">==</span> <span class="dv">0</span> :</span>
+<span id="cb15-59"><a href="#cb15-59"></a>      <span class="va">self</span>.tb_viwer.setPlaceholderText(<span class="st">&#39;(空ファイルです)&#39;</span>)</span>
+<span id="cb15-60"><a href="#cb15-60"></a></span>
+<span id="cb15-61"><a href="#cb15-61"></a>  <span class="co"># テキストモードでファイルの読込み</span></span>
+<span id="cb15-62"><a href="#cb15-62"></a>  <span class="kw">def</span> read_text(<span class="va">self</span>,path):</span>
+<span id="cb15-63"><a href="#cb15-63"></a>    <span class="co"># 念のためファイルの存在をチェック</span></span>
+<span id="cb15-64"><a href="#cb15-64"></a>    <span class="cf">assert</span> os.path.isfile(path) <span class="op">==</span> <span class="va">True</span> </span>
+<span id="cb15-65"><a href="#cb15-65"></a>    <span class="cf">with</span> <span class="bu">open</span>(path, encoding<span class="op">=</span><span class="st">&#39;utf_8&#39;</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb15-66"><a href="#cb15-66"></a>      text <span class="op">=</span> <span class="bu">file</span>.read()</span>
+<span id="cb15-67"><a href="#cb15-67"></a>    <span class="cf">return</span> text</span>
+<span id="cb15-68"><a href="#cb15-68"></a></span>
+<span id="cb15-69"><a href="#cb15-69"></a><span class="co"># 本体</span></span>
+<span id="cb15-70"><a href="#cb15-70"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&#39;__main__&#39;</span>:</span>
+<span id="cb15-71"><a href="#cb15-71"></a>  app <span class="op">=</span> Qw.QApplication(sys.argv)</span>
+<span id="cb15-72"><a href="#cb15-72"></a>  main_window <span class="op">=</span> MainWindow()</span>
+<span id="cb15-73"><a href="#cb15-73"></a>  main_window.show()</span>
+<span id="cb15-74"><a href="#cb15-74"></a>  sys.exit(app.<span class="bu">exec</span>())</span></code></pre></div>
+      <p><strong>第42行目</strong> の
+      <code>QFileDialog.getOpenFileName</code>
+      (QFileDialogクラスの静的メソッド) が
+      <strong>ファイルオープンダイアログを表示し、ユーザーによって選択されたファイルパスを返す関数</strong>
+      になります。各引数は次のようになります。</p>
+      <ul>
+      <li><strong>第1引数</strong> : 親ウィンドウ (親ウィジェット)
+      を渡します。</li>
+      <li><strong>第2引数</strong> : ダイアログの
+      <strong>タイトルバーに表示する文字列</strong> を渡します。</li>
+      <li><strong>第3引数</strong> : ダイアログを開いたときの初期位置
+      (フォルダのパス) を渡します。<strong>第40行目</strong>
+      では「デスクトップ」が初期位置になるようにパスを取得しています。「デスクトップ」のパスは固定されたものではなく、環境やユーザーによって変わるため
+      <code>os.path.expanduser</code>
+      を使用して取得しています。そのほかの特殊フォルダは次のように取得できます。
+      <ul>
+      <li>ドキュメント
+      <code>os.path.expanduser('~/Documents')</code></li>
+      <li>ダウンロード
+      <code>os.path.expanduser('~/Downloads')</code></li>
+      <li>ピクチャ <code>os.path.expanduser('~/Pictures')</code></li>
+      </ul></li>
+      <li><strong>第4引数</strong> :
+      選択可能なファイルのフィルタする文字列で設定します。例えば、フィルタ文字列を
+      <code>Text file (*.txt);;CSV file (*.csv)</code> のように
+      <code>;;</code>
+      で区切るとダイアログの右下部のドロップダウンメニューで切り替えができるようになります
+      (<strong>第41行目</strong>のように設定した場合との違いを確認してください)。フィルタ文字についての詳細は「<a
+      href="https://www.google.com/search?q=Qt+QFileDialog+filter">Qt
+      QFileDialog filter</a>」などのでファイル検索してください。</li>
+      </ul>
+      <figure>
+      <img src="figs/26/qt-06.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p><code>QFileDialog.getOpenFileName</code>
+      の戻り値は、要素数が「2」のタプルとなります。0番目の要素には <span
+      class="masked">ファイルパス</span>、1番目の要素には <span
+      class="masked">ファイルタイプ
+      (フィルタ文字列で与えた文字列)</span>
+      が格納されます。<strong>第47行目</strong>において、内容をコンソールに出力しているので確認してみてください。なお、ダイアログの
+      [キャンセル] ボタンが押下されたり、タイトルバーの
+      <i class="fa-solid fa-rectangle-xmark"></i>
+      ボタンが押下された場合は、<span
+      class="masked">2要素とも空文字列のタプル <code>('','')</code>
+      </span> が戻値になります。</p>
+      <h3 data-number="4.1.1" id="複数ファイルの選択"><span
+      class="header-section-number">4.1.1</span> 複数ファイルの選択</h3>
+      <p>複数のファイルが選択可能な
+      <code>QFileDialog.getOpenFileNames</code> も存在します
+      (メソッド名の末尾が<strong>複数形 (Names)
+      </strong>になっている点に注意してください)。</p>
+      <p>こちらについての詳細は、各自でウェブ検索してください。</p>
+      <figure>
+      <img src="figs/26/qt-07.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <hr />
+      <p><strong>演習1</strong>
+      ファイルオープンダイアログがオープンしたときの初期位置が「ドキュメント」となるようにプログラムを書き替えよ。</p>
+      <p><strong>演習2</strong> フィルタ文字列を
+      <code>Text file (*.txt);;CSV file (*.csv)</code>
+      に書き換えて、その動作を確認せよ。</p>
+      <p><strong>演習3 (Ex)</strong> 複数のファイルが選択可能な
+      <code>QFileDialog.getOpenFileNames</code>
+      の使い方について調べて、実際に動作を確認せよ。</p>
+      <p><strong>(Ex)</strong>
+      の演習は、授業時間外に取り組んでください。</p>
+      <h2 data-number="4.2" id="ファイルセーブダイアログ"><span
+      class="header-section-number">4.2</span>
+      ファイルセーブダイアログ</h2>
+      <p>「<strong>ファイルセーブダイアログ</strong>」は、<strong>ファイルの保存先の設定</strong>に使用する汎用ダイアログになります。ファイルオープンダイアログとの違いは、ダイアログ内のボタンが
+      [<strong>開く</strong>] ではなく [<strong>保存</strong>]
+      である点、さらに <span
+      class="masked">ファイルの上書きに関する確認など</span>
+      の機能が提供される点となります。</p>
+      <figure>
+      <img src="figs/26/qt-08.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>プロジェクトフォルダに <code>qt-08-save.py</code>
+      というファイルを作成して、プログラムを貼り付けて実行し、その動作を確認してください。このプログラムは
+      <span
+      class="masked">2024年2月のカレンダを生成して、ファイルセーブダイアログにより保存先を選択し、テキストファイルとして出力</span>
+      するものです。</p>
+      <figure>
+      <img src="figs/26/qt-09.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>なお、<strong>第75行目</strong> から <strong>第78行目</strong>
+      にかけての「<strong>テキストファイルの書き込み</strong>」については<a
+      href="lecture18.html#テキストファイルの書き込み">第18回講義</a>で学習済みです。</p>
+      <div class="sourceCode" id="cb16"
+      data-caption="qt-08-save.py (ファイルセーブダイアログの利用)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="im">import</span> os</span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="im">import</span> sys</span>
+<span id="cb16-3"><a href="#cb16-3"></a><span class="im">import</span> PySide6.QtWidgets <span class="im">as</span> Qw</span>
+<span id="cb16-4"><a href="#cb16-4"></a><span class="im">import</span> datetime <span class="im">as</span> dt</span>
+<span id="cb16-5"><a href="#cb16-5"></a><span class="im">import</span> locale</span>
+<span id="cb16-6"><a href="#cb16-6"></a></span>
+<span id="cb16-7"><a href="#cb16-7"></a><span class="co"># ロケールの設定</span></span>
+<span id="cb16-8"><a href="#cb16-8"></a>locale.setlocale(locale.LC_TIME, <span class="st">&#39;Japanese_Japan&#39;</span>) <span class="co"># Windows環境</span></span>
+<span id="cb16-9"><a href="#cb16-9"></a></span>
+<span id="cb16-10"><a href="#cb16-10"></a><span class="co"># 指定した月のカレンダを文字を得る関数</span></span>
+<span id="cb16-11"><a href="#cb16-11"></a><span class="kw">def</span> get_month_calendar(year:<span class="bu">int</span>, month:<span class="bu">int</span>)<span class="op">-&gt;</span><span class="bu">str</span>:</span>
+<span id="cb16-12"><a href="#cb16-12"></a></span>
+<span id="cb16-13"><a href="#cb16-13"></a>  dt_start <span class="op">=</span> dt.datetime(year,month,<span class="dv">1</span>)</span>
+<span id="cb16-14"><a href="#cb16-14"></a>  dt_end <span class="op">=</span> dt.datetime(year,month<span class="op">+</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="op">-</span> dt.timedelta(days<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb16-15"><a href="#cb16-15"></a>  </span>
+<span id="cb16-16"><a href="#cb16-16"></a>  calendar <span class="op">=</span> <span class="st">&#39;&#39;</span></span>
+<span id="cb16-17"><a href="#cb16-17"></a>  d <span class="op">=</span> dt_start</span>
+<span id="cb16-18"><a href="#cb16-18"></a>  <span class="cf">while</span> d <span class="op">&lt;=</span> dt_end:</span>
+<span id="cb16-19"><a href="#cb16-19"></a>    calendar <span class="op">+=</span> d.strftime(<span class="st">&#39;%m月</span><span class="sc">%d</span><span class="st">日(%a) </span><span class="ch">\n</span><span class="st">&#39;</span>)</span>
+<span id="cb16-20"><a href="#cb16-20"></a>    d <span class="op">+=</span> dt.timedelta(days<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb16-21"><a href="#cb16-21"></a></span>
+<span id="cb16-22"><a href="#cb16-22"></a>  <span class="cf">return</span> calendar.strip() <span class="co"># stripメソッドで末尾の改行を削除</span></span>
+<span id="cb16-23"><a href="#cb16-23"></a></span>
+<span id="cb16-24"><a href="#cb16-24"></a><span class="co"># PySide6.QtWidgets.MainWindow を継承した MainWindow クラスの定義</span></span>
+<span id="cb16-25"><a href="#cb16-25"></a><span class="kw">class</span> MainWindow(Qw.QMainWindow):</span>
+<span id="cb16-26"><a href="#cb16-26"></a>  </span>
+<span id="cb16-27"><a href="#cb16-27"></a>  <span class="co"># コンストラクタ(初期化)</span></span>
+<span id="cb16-28"><a href="#cb16-28"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb16-29"><a href="#cb16-29"></a></span>
+<span id="cb16-30"><a href="#cb16-30"></a>    <span class="co"># 親クラスのコンストラクタの呼び出し</span></span>
+<span id="cb16-31"><a href="#cb16-31"></a>    <span class="bu">super</span>().<span class="fu">__init__</span>() </span>
+<span id="cb16-32"><a href="#cb16-32"></a></span>
+<span id="cb16-33"><a href="#cb16-33"></a>    <span class="co"># ウィンドウタイトル設定</span></span>
+<span id="cb16-34"><a href="#cb16-34"></a>    <span class="va">self</span>.setWindowTitle(<span class="st">&#39;MainWindow&#39;</span>) </span>
+<span id="cb16-35"><a href="#cb16-35"></a></span>
+<span id="cb16-36"><a href="#cb16-36"></a>    <span class="co"># ウィンドウのサイズ(640x240)と位置(X=100,Y=50)の設定</span></span>
+<span id="cb16-37"><a href="#cb16-37"></a>    <span class="va">self</span>.setGeometry(<span class="dv">100</span>, <span class="dv">50</span>, <span class="dv">640</span>, <span class="dv">240</span>) </span>
+<span id="cb16-38"><a href="#cb16-38"></a></span>
+<span id="cb16-39"><a href="#cb16-39"></a>    <span class="co">#「Save」ボタンの生成と設定</span></span>
+<span id="cb16-40"><a href="#cb16-40"></a>    <span class="va">self</span>.btn_open <span class="op">=</span> Qw.QPushButton(<span class="st">&#39;Save&#39;</span>,<span class="va">self</span>)</span>
+<span id="cb16-41"><a href="#cb16-41"></a>    <span class="va">self</span>.btn_open.setGeometry(<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">100</span>,<span class="dv">25</span>)</span>
+<span id="cb16-42"><a href="#cb16-42"></a>    <span class="va">self</span>.btn_open.clicked.<span class="ex">connect</span>(<span class="va">self</span>.btn_open_clicked)</span>
+<span id="cb16-43"><a href="#cb16-43"></a></span>
+<span id="cb16-44"><a href="#cb16-44"></a>    <span class="co"># ナビゲーション情報を表示するラベル</span></span>
+<span id="cb16-45"><a href="#cb16-45"></a>    <span class="va">self</span>.init_navi_msg <span class="op">=</span> <span class="op">\</span></span>
+<span id="cb16-46"><a href="#cb16-46"></a>      <span class="st">&#39;[Save] ボタンを押下して保存先を選択してください。&#39;</span></span>
+<span id="cb16-47"><a href="#cb16-47"></a>    <span class="va">self</span>.lb_navi <span class="op">=</span> Qw.QLabel(<span class="va">self</span>.init_navi_msg,<span class="va">self</span>)</span>
+<span id="cb16-48"><a href="#cb16-48"></a>    <span class="va">self</span>.lb_navi.setGeometry(<span class="dv">15</span>,<span class="dv">35</span>,<span class="dv">620</span>,<span class="dv">30</span>)</span>
+<span id="cb16-49"><a href="#cb16-49"></a></span>
+<span id="cb16-50"><a href="#cb16-50"></a>    <span class="co"># テキストボックス</span></span>
+<span id="cb16-51"><a href="#cb16-51"></a>    <span class="va">self</span>.tb_calendar <span class="op">=</span> Qw.QTextEdit(<span class="st">&#39;&#39;</span>,<span class="va">self</span>)</span>
+<span id="cb16-52"><a href="#cb16-52"></a>    <span class="va">self</span>.tb_calendar.setGeometry(<span class="dv">10</span>,<span class="dv">65</span>,<span class="dv">620</span>,<span class="dv">160</span>)</span>
+<span id="cb16-53"><a href="#cb16-53"></a>    <span class="va">self</span>.tb_calendar.setReadOnly(<span class="va">True</span>)</span>
+<span id="cb16-54"><a href="#cb16-54"></a>    <span class="va">self</span>.tb_calendar.setPlainText(get_month_calendar(<span class="dv">2024</span>,<span class="dv">2</span>))</span>
+<span id="cb16-55"><a href="#cb16-55"></a></span>
+<span id="cb16-56"><a href="#cb16-56"></a>  <span class="co">#「Save」ボタンの押下処理</span></span>
+<span id="cb16-57"><a href="#cb16-57"></a>  <span class="kw">def</span> btn_open_clicked(<span class="va">self</span>):</span>
+<span id="cb16-58"><a href="#cb16-58"></a>    title <span class="op">=</span> <span class="st">&#39;カレンダー (テキストファイル) の保存&#39;</span> </span>
+<span id="cb16-59"><a href="#cb16-59"></a>    default_path <span class="op">=</span> os.path.expanduser(<span class="st">&#39;~/Desktop/カレンダー.txt&#39;</span>)</span>
+<span id="cb16-60"><a href="#cb16-60"></a>    <span class="bu">filter</span> <span class="op">=</span> <span class="st">&#39;Text file (*.txt)&#39;</span></span>
+<span id="cb16-61"><a href="#cb16-61"></a>    path <span class="op">=</span> Qw.QFileDialog.getSaveFileName(</span>
+<span id="cb16-62"><a href="#cb16-62"></a>            <span class="va">self</span>,         <span class="co"># 親ウィンドウ</span></span>
+<span id="cb16-63"><a href="#cb16-63"></a>            title,        <span class="co"># ダイアログタイトル</span></span>
+<span id="cb16-64"><a href="#cb16-64"></a>            default_path, <span class="co"># デフォルトファイル名</span></span>
+<span id="cb16-65"><a href="#cb16-65"></a>            <span class="bu">filter</span>)       <span class="co"># 拡張子によるフィルタ</span></span>
+<span id="cb16-66"><a href="#cb16-66"></a>    <span class="bu">print</span>(<span class="ss">f&#39;path =&gt; &quot;</span><span class="sc">{</span>path<span class="sc">}</span><span class="ss">&quot;&#39;</span>)  <span class="co"># 確認</span></span>
+<span id="cb16-67"><a href="#cb16-67"></a></span>
+<span id="cb16-68"><a href="#cb16-68"></a>    <span class="cf">if</span> path[<span class="dv">0</span>] <span class="op">==</span> <span class="st">&#39;&#39;</span> :</span>
+<span id="cb16-69"><a href="#cb16-69"></a>      <span class="va">self</span>.lb_navi.setText(<span class="st">&#39;保存をキャンセルしました。&#39;</span>)</span>
+<span id="cb16-70"><a href="#cb16-70"></a>      <span class="cf">return</span></span>
+<span id="cb16-71"><a href="#cb16-71"></a></span>
+<span id="cb16-72"><a href="#cb16-72"></a>    <span class="va">self</span>.save_text(path[<span class="dv">0</span>],<span class="va">self</span>.tb_calendar.toPlainText())</span>
+<span id="cb16-73"><a href="#cb16-73"></a>    <span class="va">self</span>.lb_navi.setText(<span class="ss">f&quot;カレンダを &#39;</span><span class="sc">{</span>path[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">&#39; に保存しました。&quot;</span>)</span>
+<span id="cb16-74"><a href="#cb16-74"></a></span>
+<span id="cb16-75"><a href="#cb16-75"></a>  <span class="co"># テキストモードでファイルの書き込み</span></span>
+<span id="cb16-76"><a href="#cb16-76"></a>  <span class="kw">def</span> save_text(<span class="va">self</span>,path,text):</span>
+<span id="cb16-77"><a href="#cb16-77"></a>    <span class="cf">with</span> <span class="bu">open</span>(path, mode<span class="op">=</span><span class="st">&#39;w&#39;</span>, encoding<span class="op">=</span><span class="st">&#39;utf_8&#39;</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb16-78"><a href="#cb16-78"></a>      text <span class="op">=</span> <span class="bu">file</span>.write(text)</span>
+<span id="cb16-79"><a href="#cb16-79"></a></span>
+<span id="cb16-80"><a href="#cb16-80"></a><span class="co"># 本体</span></span>
+<span id="cb16-81"><a href="#cb16-81"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&#39;__main__&#39;</span>:</span>
+<span id="cb16-82"><a href="#cb16-82"></a>  app <span class="op">=</span> Qw.QApplication(sys.argv)</span>
+<span id="cb16-83"><a href="#cb16-83"></a>  main_window <span class="op">=</span> MainWindow()</span>
+<span id="cb16-84"><a href="#cb16-84"></a>  main_window.show()</span>
+<span id="cb16-85"><a href="#cb16-85"></a>  sys.exit(app.<span class="bu">exec</span>())</span></code></pre></div>
+      <p>ファイルセーブダイアログを表示するためには、<strong>第61行目</strong>
+      に示すように <code>QFileDialog.getSaveFileName</code>
+      を使用します。引数や戻り値などは、基本的には
+      <code>getOpenFileName</code>
+      メソッドとほぼ同じとなります。ただし、第3引数だけは少し意味合いが異なり「<strong>保存ファイルのデフォルトのファイル名</strong>」を設定します。</p>
+      <p>先に説明したように、既存のファイルを選ぶと「確認ダイアログ」を自動表示する機能を持っています。</p>
+      <figure>
+      <img src="figs/26/qt-08.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <h3 data-number="4.2.1" id="カレンダ文字列の作成"><span
+      class="header-section-number">4.2.1</span>
+      カレンダ文字列の作成</h3>
+      <p><strong>第07行目</strong> から <strong>第22行目</strong>
+      では、引数で指定した月のカレンダ文字列を得る関数を定義しています。ここで使用している<code>datetime</code>
+      の基礎についは<a
+      href="lecture25.html#現在時刻と整形文字列の取得">前回講義</a>で学習済みです。</p>
+      <div class="sourceCode" id="cb17" data-startFrom="7"
+      data-caption="qt-08-save.py (抜粋)"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 6;"><span id="cb17-7"><a href="#cb17-7"></a><span class="co"># ロケールの設定</span></span>
+<span id="cb17-8"><a href="#cb17-8"></a>locale.setlocale(locale.LC_TIME, <span class="st">&#39;Japanese_Japan&#39;</span>) <span class="co"># Windows環境</span></span>
+<span id="cb17-9"><a href="#cb17-9"></a></span>
+<span id="cb17-10"><a href="#cb17-10"></a><span class="co"># 指定した月のカレンダを文字を得る関数</span></span>
+<span id="cb17-11"><a href="#cb17-11"></a><span class="kw">def</span> get_month_calendar(year:<span class="bu">int</span>, month:<span class="bu">int</span>)<span class="op">-&gt;</span><span class="bu">str</span>:</span>
+<span id="cb17-12"><a href="#cb17-12"></a></span>
+<span id="cb17-13"><a href="#cb17-13"></a>  dt_start <span class="op">=</span> dt.datetime(year,month,<span class="dv">1</span>)</span>
+<span id="cb17-14"><a href="#cb17-14"></a>  dt_end <span class="op">=</span> dt.datetime(year,month<span class="op">+</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="op">-</span> dt.timedelta(days<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb17-15"><a href="#cb17-15"></a>  </span>
+<span id="cb17-16"><a href="#cb17-16"></a>  calendar <span class="op">=</span> <span class="st">&#39;&#39;</span></span>
+<span id="cb17-17"><a href="#cb17-17"></a>  d <span class="op">=</span> dt_start</span>
+<span id="cb17-18"><a href="#cb17-18"></a>  <span class="cf">while</span> d <span class="op">&lt;=</span> dt_end:</span>
+<span id="cb17-19"><a href="#cb17-19"></a>    calendar <span class="op">+=</span> d.strftime(<span class="st">&#39;%m月</span><span class="sc">%d</span><span class="st">日(%a) </span><span class="ch">\n</span><span class="st">&#39;</span>)</span>
+<span id="cb17-20"><a href="#cb17-20"></a>    d <span class="op">+=</span> dt.timedelta(days<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb17-21"><a href="#cb17-21"></a></span>
+<span id="cb17-22"><a href="#cb17-22"></a>  <span class="cf">return</span> calendar.strip() <span class="co"># stripメソッドで末尾の改行を削除</span></span></code></pre></div>
+      <p>ここでは、曜日文字列を日本語にするために
+      <strong>第08行目</strong> で「<strong>ロケール
+      (Locale)</strong>」の設定をしています。ロケールとは、<strong>特定の地域や言語に適したソフトウェアの動作や表示を定義するための設定</strong>
+      であり、具体的には「言語」「文字コード」「<strong>日付と時間のフォーマット
+      (書式)</strong>」「<span
+      class="masked">数値のフォーマット(書式)</span>」、「<span
+      class="masked">通貨のフォーマット(書式)</span>」などの<strong>地域や文化に依存する様々な要素の設定</strong>を含みます。</p>
+      <p>ロケールを設定するための文字列 (ここでは
+      <code>'Japanese_Japan'</code>) は、OS
+      によって異なるので注意してください。Mac OS 環境では
+      <code>ja_JP'</code>、Linux環境では <code>ja_JP.UTF-8</code>
+      のように設定するそうです (未検証)。Mac OS および Linux
+      で利用可能なロケールの一覧は <code>locale -a</code>
+      コマンドで確認することができます。</p>
+      <hr />
+      <p><strong>演習1</strong>: <strong>第08行目</strong>
+      をコメントアウトすると (ロケール設定を無効化すると)
+      どうなるか確認せよ。</p>
+      <p><strong>演習2 (Ex)</strong>
+      このプログラムは「2024年2月」のカレンダを固定的に出力するものとなっている。これを
+      、任意の年月のカレンダが出力できるプログラムに拡張せよ
+      (後述の各種ウィジェットを利用すること)。</p>
+      <p><strong>(Ex)</strong>
+      の演習は、授業時間外に取り組んでください。</p>
+      <h1 data-number="5" id="ラジオボタン"><span
+      class="header-section-number">5</span> ラジオボタン</h1>
+      <p>「<strong>ラジオボタン (Radio Button)</strong>
+      」は、複数の選択肢から「1個だけ」を選択させたいときに使用するウィジェットとなります。やや難しい言葉で表現すると
+      <span class="masked">相互排他性</span>
+      を持ったウィジェットと言えますす。</p>
+      <p>個々のラジオボタンは「PySide6.QtWidgets.QRadioButtonクラス」から生成しますが、それに加えて、相互排他性を持たせるために
+      <span class="masked">論理的なグループ</span>
+      を構成する必要があります。つまり、そのグループに属するラジオボタンは「同時に1個だけ」しか選択できないような仕組みを与える必要があります。これには「PySide6.QButtonGroupクラス」を使用します。</p>
+      <h2 data-number="5.1" id="ラジオボタンのサンプルプログラム1"><span
+      class="header-section-number">5.1</span>
+      ラジオボタンのサンプルプログラム1</h2>
+      <p>ラジオボタンのサンプルプログラムを次に示します。プロジェクトフォルダに
+      <code>qt-09-radio-button-1.py</code>
+      というファイルを作成して、プログラムを貼り付けて実行し、その動作を確認してください。</p>
+      <figure>
+      <img src="figs/26/qt-10.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>このプログラムでは、初期値としてゼロオリジンで2番目の「良」にチェックが付けられています。他の評語
+      (例えば「秀」)
+      をクリックすると「良」からチェックが外れ、その評価にチェックが付きます
+      (相互排他性が実現されています)。</p>
+      <div class="sourceCode" id="cb18"
+      data-caption="qt-09-radio-button-1.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="im">import</span> sys</span>
+<span id="cb18-2"><a href="#cb18-2"></a><span class="im">import</span> PySide6.QtWidgets <span class="im">as</span> Qw</span>
+<span id="cb18-3"><a href="#cb18-3"></a></span>
+<span id="cb18-4"><a href="#cb18-4"></a><span class="kw">class</span> MainWindow(Qw.QMainWindow):</span>
+<span id="cb18-5"><a href="#cb18-5"></a>  </span>
+<span id="cb18-6"><a href="#cb18-6"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb18-7"><a href="#cb18-7"></a></span>
+<span id="cb18-8"><a href="#cb18-8"></a>    <span class="bu">super</span>().<span class="fu">__init__</span>() </span>
+<span id="cb18-9"><a href="#cb18-9"></a>    <span class="va">self</span>.setWindowTitle(<span class="st">&#39;MainWindow&#39;</span>) </span>
+<span id="cb18-10"><a href="#cb18-10"></a>    <span class="va">self</span>.setGeometry(<span class="dv">100</span>, <span class="dv">50</span>, <span class="dv">640</span>, <span class="dv">100</span>) </span>
+<span id="cb18-11"><a href="#cb18-11"></a></span>
+<span id="cb18-12"><a href="#cb18-12"></a>    <span class="co"># ラジオボタンを格納する論理的なグループ (論理的なコンテナ)</span></span>
+<span id="cb18-13"><a href="#cb18-13"></a>    <span class="va">self</span>.rb_group <span class="op">=</span> Qw.QButtonGroup(<span class="va">self</span>)</span>
+<span id="cb18-14"><a href="#cb18-14"></a>    </span>
+<span id="cb18-15"><a href="#cb18-15"></a>    x, dx <span class="op">=</span> <span class="dv">15</span>, <span class="dv">45</span></span>
+<span id="cb18-16"><a href="#cb18-16"></a>    rb1 <span class="op">=</span> Qw.QRadioButton(<span class="va">self</span>)</span>
+<span id="cb18-17"><a href="#cb18-17"></a>    rb1.setText(<span class="st">&#39;秀&#39;</span>)</span>
+<span id="cb18-18"><a href="#cb18-18"></a>    rb1.setGeometry(x, <span class="dv">10</span>, <span class="dv">50</span>, <span class="dv">25</span>) </span>
+<span id="cb18-19"><a href="#cb18-19"></a>    <span class="va">self</span>.rb_group.addButton(rb1, <span class="dv">1</span>) <span class="co"># 第2引数は任意ID(整数)</span></span>
+<span id="cb18-20"><a href="#cb18-20"></a></span>
+<span id="cb18-21"><a href="#cb18-21"></a>    x <span class="op">+=</span> dx</span>
+<span id="cb18-22"><a href="#cb18-22"></a>    rb2 <span class="op">=</span> Qw.QRadioButton(<span class="va">self</span>)</span>
+<span id="cb18-23"><a href="#cb18-23"></a>    rb2.setText(<span class="st">&#39;優&#39;</span>)</span>
+<span id="cb18-24"><a href="#cb18-24"></a>    rb2.setGeometry(x, <span class="dv">10</span>, <span class="dv">50</span>, <span class="dv">25</span>) </span>
+<span id="cb18-25"><a href="#cb18-25"></a>    <span class="va">self</span>.rb_group.addButton(rb2, <span class="dv">2</span>)</span>
+<span id="cb18-26"><a href="#cb18-26"></a></span>
+<span id="cb18-27"><a href="#cb18-27"></a>    x <span class="op">+=</span> dx</span>
+<span id="cb18-28"><a href="#cb18-28"></a>    rb3 <span class="op">=</span> Qw.QRadioButton(<span class="va">self</span>)</span>
+<span id="cb18-29"><a href="#cb18-29"></a>    rb3.setText(<span class="st">&#39;良&#39;</span>)</span>
+<span id="cb18-30"><a href="#cb18-30"></a>    rb3.setGeometry(x, <span class="dv">10</span>, <span class="dv">50</span>, <span class="dv">25</span>) </span>
+<span id="cb18-31"><a href="#cb18-31"></a>    <span class="va">self</span>.rb_group.addButton(rb3, <span class="dv">3</span>)</span>
+<span id="cb18-32"><a href="#cb18-32"></a></span>
+<span id="cb18-33"><a href="#cb18-33"></a>    x <span class="op">+=</span> dx</span>
+<span id="cb18-34"><a href="#cb18-34"></a>    rb4 <span class="op">=</span> Qw.QRadioButton(<span class="va">self</span>)</span>
+<span id="cb18-35"><a href="#cb18-35"></a>    rb4.setText(<span class="st">&#39;可&#39;</span>)</span>
+<span id="cb18-36"><a href="#cb18-36"></a>    rb4.setGeometry(x, <span class="dv">10</span>, <span class="dv">50</span>, <span class="dv">25</span>) </span>
+<span id="cb18-37"><a href="#cb18-37"></a>    <span class="va">self</span>.rb_group.addButton(rb4, <span class="dv">4</span>)</span>
+<span id="cb18-38"><a href="#cb18-38"></a></span>
+<span id="cb18-39"><a href="#cb18-39"></a>    x <span class="op">+=</span> dx</span>
+<span id="cb18-40"><a href="#cb18-40"></a>    rb5 <span class="op">=</span> Qw.QRadioButton(<span class="va">self</span>)</span>
+<span id="cb18-41"><a href="#cb18-41"></a>    rb5.setText(<span class="st">&#39;不可&#39;</span>)</span>
+<span id="cb18-42"><a href="#cb18-42"></a>    rb5.setGeometry(x, <span class="dv">10</span>, <span class="dv">50</span>, <span class="dv">25</span>) </span>
+<span id="cb18-43"><a href="#cb18-43"></a>    <span class="va">self</span>.rb_group.addButton(rb5, <span class="dv">5</span>)</span>
+<span id="cb18-44"><a href="#cb18-44"></a></span>
+<span id="cb18-45"><a href="#cb18-45"></a>    <span class="co"># ラベル</span></span>
+<span id="cb18-46"><a href="#cb18-46"></a>    <span class="va">self</span>.lb_navi <span class="op">=</span> Qw.QLabel(<span class="st">&#39;&#39;</span>,<span class="va">self</span>)</span>
+<span id="cb18-47"><a href="#cb18-47"></a>    <span class="va">self</span>.lb_navi.setGeometry(<span class="dv">15</span>,<span class="dv">35</span>,<span class="dv">620</span>,<span class="dv">30</span>)</span>
+<span id="cb18-48"><a href="#cb18-48"></a></span>
+<span id="cb18-49"><a href="#cb18-49"></a>    <span class="co"># イベント処理</span></span>
+<span id="cb18-50"><a href="#cb18-50"></a>    <span class="va">self</span>.rb_group.buttonClicked.<span class="ex">connect</span>(<span class="va">self</span>.rb_state_changed)</span>
+<span id="cb18-51"><a href="#cb18-51"></a></span>
+<span id="cb18-52"><a href="#cb18-52"></a>    <span class="co"># 初期値設定</span></span>
+<span id="cb18-53"><a href="#cb18-53"></a>    rb3.setChecked(<span class="va">True</span>)    <span class="co">#「良」を初期選択</span></span>
+<span id="cb18-54"><a href="#cb18-54"></a>    <span class="co"># self.rb_group.button(3).setChecked(True) # こちらの方法でもOK</span></span>
+<span id="cb18-55"><a href="#cb18-55"></a>    <span class="va">self</span>.rb_state_changed() <span class="co"># プログラムでチェックを変更したときは明示的に実行</span></span>
+<span id="cb18-56"><a href="#cb18-56"></a></span>
+<span id="cb18-57"><a href="#cb18-57"></a>  <span class="kw">def</span> rb_state_changed(<span class="va">self</span>):</span>
+<span id="cb18-58"><a href="#cb18-58"></a>    checked_rb_id <span class="op">=</span> <span class="va">self</span>.rb_group.checkedId()</span>
+<span id="cb18-59"><a href="#cb18-59"></a>    <span class="cf">if</span> checked_rb_id <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb18-60"><a href="#cb18-60"></a>      <span class="va">self</span>.lb_navi.setText(<span class="st">&#39;評点 : 90点以上&#39;</span>)</span>
+<span id="cb18-61"><a href="#cb18-61"></a>    <span class="cf">elif</span> checked_rb_id <span class="op">==</span> <span class="dv">2</span>:</span>
+<span id="cb18-62"><a href="#cb18-62"></a>      <span class="va">self</span>.lb_navi.setText(<span class="st">&#39;評点 : 80点以上90点未満&#39;</span>)</span>
+<span id="cb18-63"><a href="#cb18-63"></a>    <span class="cf">elif</span> checked_rb_id <span class="op">==</span> <span class="dv">3</span>:</span>
+<span id="cb18-64"><a href="#cb18-64"></a>      <span class="va">self</span>.lb_navi.setText(<span class="st">&#39;評点 : 70点以上80点未満&#39;</span>)</span>
+<span id="cb18-65"><a href="#cb18-65"></a>    <span class="cf">elif</span> checked_rb_id <span class="op">==</span> <span class="dv">4</span>:</span>
+<span id="cb18-66"><a href="#cb18-66"></a>      <span class="va">self</span>.lb_navi.setText(<span class="st">&#39;評点 : 60点以上70点未満&#39;</span>)</span>
+<span id="cb18-67"><a href="#cb18-67"></a>    <span class="cf">elif</span> checked_rb_id <span class="op">==</span> <span class="dv">5</span>:</span>
+<span id="cb18-68"><a href="#cb18-68"></a>      <span class="va">self</span>.lb_navi.setText(<span class="st">&#39;評点 : 60点未満 (不合格)&#39;</span>)</span>
+<span id="cb18-69"><a href="#cb18-69"></a>    <span class="cf">else</span> :</span>
+<span id="cb18-70"><a href="#cb18-70"></a>      <span class="va">self</span>.lb_navi.setText(<span class="st">&#39;想定外の処理がされました。&#39;</span>)</span>
+<span id="cb18-71"><a href="#cb18-71"></a></span>
+<span id="cb18-72"><a href="#cb18-72"></a><span class="co"># 本体</span></span>
+<span id="cb18-73"><a href="#cb18-73"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&#39;__main__&#39;</span>:</span>
+<span id="cb18-74"><a href="#cb18-74"></a>  app <span class="op">=</span> Qw.QApplication(sys.argv)</span>
+<span id="cb18-75"><a href="#cb18-75"></a>  main_window <span class="op">=</span> MainWindow()</span>
+<span id="cb18-76"><a href="#cb18-76"></a>  main_window.show()</span>
+<span id="cb18-77"><a href="#cb18-77"></a>  sys.exit(app.<span class="bu">exec</span>())</span></code></pre></div>
+      <p>「秀」というラベルを持ったラジオボタンの生成とジオメトリの設定は
+      <strong>第16行目</strong> から <strong>第18行目</strong>
+      で行っています。以下、同様に「優」「良」「可」「不可」のラジオボタンの生成と設定を行なっています。</p>
+      <p>相互排他性を持たせるための論理的なグループについては
+      <strong>第13行目</strong>
+      で作成して、その後、<strong>第19行目</strong>、<strong>第25行目</strong>、<strong>第31行目</strong>、<strong>第37行目</strong>、<strong>第47行目</strong>
+      で <code>self.rb_group.addButton(rb0, 0)</code>
+      のようにして論理グループの要素として各ラジオボタン (
+      <code>rb1</code> から <code>rb4</code> )
+      を追加しています。<code>addButton</code> メソッドの
+      <strong>第1引数</strong>
+      には「グループに追加するラジオボタンのインスタンス」を与え、<strong>第2引数</strong>
+      には「<strong>そのラジオボタンを識別するためのID</strong>」を与えます。ID
+      には<span class="masked">重複しない 1
+      以上の任意の整数値</span>を使用します。</p>
+      <p>また、ラジオボタンのチェックが変わったとき
+      (＝クリックされたとき) に呼び出す関数
+      (<strong>コールバック関数</strong>)
+      は、各ラジオボタンで設定するのではなく、<strong>第50行目</strong>
+      のように論理的なグループに対して設定します。コールバック関数のなかで
+      <span
+      class="masked">どのラジオボタンボタンがチェックされたのかの情報</span>
+      は、<strong>第58行目</strong> のように論理グループの
+      <code>checkedId()</code>
+      を利用して判定します。このメソッドは、<code>addButton</code>
+      の第2引数で与えた ID (整数値) を返します。</p>
+      <p>なお、ラジオボタンの初期値
+      (初期状態で、どのラジオボタンにチェックを入れるか)
+      は、<strong>第53行目</strong>
+      で設定しています。<strong>第50行目</strong> が
+      <code>self.rb_group.buttonClicked.connect(self.rb_state_changed)</code>
+      であることから分かるように、関数 <code>rb_state_changed</code>
+      が自動的に呼び出されるのは、あくまで <span class="masked">GUI
+      を通して <code>buttonClicked</code> </span>
+      されたときです。そのため、プログラムからチェックを変更したときは、<strong>第50行目</strong>
+      のように 関数 <code>rb_state_changed</code>
+      を明示的に呼び出す必要があります。</p>
+      <hr />
+      <p><strong>演習1</strong> : <strong>第55行目</strong>
+      をコメントアウトするとどうなるか、実際に確認せよ。</p>
+      <p><strong>演習2</strong> : <code>addButton</code>
+      メソッドで、重複した ID
+      を設定するとどうなるか、実際に確認せよ。例えば、<strong>第25行目</strong>の
+      <code>addButton</code> メソッドの <strong>第2引数</strong> を
+      <code>1</code> に設定するとどうなるか確認せよ。</p>
+      <h2 data-number="5.2" id="ラジオボタンのサンプルプログラム2"><span
+      class="header-section-number">5.2</span>
+      ラジオボタンのサンプルプログラム2</h2>
+      <p>先に示した <code>qt-09-radio-button-1.py</code>
+      は、プログラムの内部で<span
+      class="masked">「データ」と「ロジック」</span>が入り乱れており、非常に保守性や拡張性が悪くなっています。これを修正し、さらに<a
+      href="lecture25.html#レスポンシブデザイン">レスポンシブデザイン</a>にしたプログラムを次に示します。実際に実行して、先ほどと同じ動作をすることを確認してください。</p>
+      <div class="sourceCode" id="cb19"
+      data-caption="qt-09-radio-button-2.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="im">import</span> sys</span>
+<span id="cb19-2"><a href="#cb19-2"></a><span class="im">import</span> PySide6.QtCore <span class="im">as</span> Qc</span>
+<span id="cb19-3"><a href="#cb19-3"></a><span class="im">import</span> PySide6.QtWidgets <span class="im">as</span> Qw</span>
+<span id="cb19-4"><a href="#cb19-4"></a></span>
+<span id="cb19-5"><a href="#cb19-5"></a><span class="co"># クラスの定義</span></span>
+<span id="cb19-6"><a href="#cb19-6"></a><span class="kw">class</span> Grade():</span>
+<span id="cb19-7"><a href="#cb19-7"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>,label:<span class="bu">str</span>,msg:<span class="bu">str</span>):</span>
+<span id="cb19-8"><a href="#cb19-8"></a>    <span class="va">self</span>.label <span class="op">=</span> label</span>
+<span id="cb19-9"><a href="#cb19-9"></a>    <span class="va">self</span>.msg <span class="op">=</span> msg</span>
+<span id="cb19-10"><a href="#cb19-10"></a></span>
+<span id="cb19-11"><a href="#cb19-11"></a>grades <span class="op">=</span> [Grade(<span class="st">&#39;秀&#39;</span>,<span class="st">&#39;90点以上&#39;</span>),</span>
+<span id="cb19-12"><a href="#cb19-12"></a>          Grade(<span class="st">&#39;優&#39;</span>,<span class="st">&#39;80点以上90点未満&#39;</span>),</span>
+<span id="cb19-13"><a href="#cb19-13"></a>          Grade(<span class="st">&#39;良&#39;</span>,<span class="st">&#39;70点以上80点未満&#39;</span>),</span>
+<span id="cb19-14"><a href="#cb19-14"></a>          Grade(<span class="st">&#39;可&#39;</span>,<span class="st">&#39;60点以上70点未満&#39;</span>),</span>
+<span id="cb19-15"><a href="#cb19-15"></a>          Grade(<span class="st">&#39;不可&#39;</span>,<span class="st">&#39;60点未満 (不合格)&#39;</span>)]</span>
+<span id="cb19-16"><a href="#cb19-16"></a></span>
+<span id="cb19-17"><a href="#cb19-17"></a><span class="kw">class</span> MainWindow(Qw.QMainWindow):</span>
+<span id="cb19-18"><a href="#cb19-18"></a>  </span>
+<span id="cb19-19"><a href="#cb19-19"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb19-20"><a href="#cb19-20"></a></span>
+<span id="cb19-21"><a href="#cb19-21"></a>    <span class="bu">super</span>().<span class="fu">__init__</span>() </span>
+<span id="cb19-22"><a href="#cb19-22"></a>    <span class="va">self</span>.setWindowTitle(<span class="st">&#39;MainWindow&#39;</span>) </span>
+<span id="cb19-23"><a href="#cb19-23"></a>    <span class="va">self</span>.setGeometry(<span class="dv">100</span>, <span class="dv">50</span>, <span class="dv">640</span>, <span class="dv">100</span>) </span>
+<span id="cb19-24"><a href="#cb19-24"></a></span>
+<span id="cb19-25"><a href="#cb19-25"></a>    <span class="co"># メインレイアウトの設定</span></span>
+<span id="cb19-26"><a href="#cb19-26"></a>    central_widget <span class="op">=</span> Qw.QWidget(<span class="va">self</span>)</span>
+<span id="cb19-27"><a href="#cb19-27"></a>    <span class="va">self</span>.setCentralWidget(central_widget)</span>
+<span id="cb19-28"><a href="#cb19-28"></a>    main_layout <span class="op">=</span> Qw.QVBoxLayout(central_widget) <span class="co"># 要素を垂直配置</span></span>
+<span id="cb19-29"><a href="#cb19-29"></a>    main_layout.setAlignment(Qc.Qt.AlignmentFlag.AlignTop) <span class="co"># 上寄せ</span></span>
+<span id="cb19-30"><a href="#cb19-30"></a>    main_layout.setContentsMargins(<span class="dv">15</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>)</span>
+<span id="cb19-31"><a href="#cb19-31"></a></span>
+<span id="cb19-32"><a href="#cb19-32"></a>    <span class="co"># ラジオボタンを格納する画面表示上のコンテナ</span></span>
+<span id="cb19-33"><a href="#cb19-33"></a>    rb_layout <span class="op">=</span> Qw.QHBoxLayout() <span class="co"># 要素を水平配置</span></span>
+<span id="cb19-34"><a href="#cb19-34"></a>    rb_layout.setAlignment(Qc.Qt.AlignmentFlag.AlignLeft) <span class="co"># 左寄せ</span></span>
+<span id="cb19-35"><a href="#cb19-35"></a>    main_layout.addLayout(rb_layout)</span>
+<span id="cb19-36"><a href="#cb19-36"></a></span>
+<span id="cb19-37"><a href="#cb19-37"></a>    <span class="co"># ラジオボタンを格納する論理的なグループ (論理的なコンテナ)</span></span>
+<span id="cb19-38"><a href="#cb19-38"></a>    <span class="va">self</span>.rb_group <span class="op">=</span> Qw.QButtonGroup(<span class="va">self</span>) </span>
+<span id="cb19-39"><a href="#cb19-39"></a></span>
+<span id="cb19-40"><a href="#cb19-40"></a>    <span class="co"># ラジオボタンの生成と設定</span></span>
+<span id="cb19-41"><a href="#cb19-41"></a>    <span class="cf">for</span> i, grade <span class="kw">in</span> <span class="bu">enumerate</span>(grades,<span class="dv">1</span>):</span>
+<span id="cb19-42"><a href="#cb19-42"></a>      rb <span class="op">=</span> Qw.QRadioButton(<span class="va">self</span>)</span>
+<span id="cb19-43"><a href="#cb19-43"></a>      rb.setText(grade.label)</span>
+<span id="cb19-44"><a href="#cb19-44"></a>      rb.setFixedSize(<span class="dv">50</span>,<span class="dv">25</span>)</span>
+<span id="cb19-45"><a href="#cb19-45"></a>      rb_layout.addWidget(rb)</span>
+<span id="cb19-46"><a href="#cb19-46"></a>      <span class="va">self</span>.rb_group.addButton(rb,i)</span>
+<span id="cb19-47"><a href="#cb19-47"></a></span>
+<span id="cb19-48"><a href="#cb19-48"></a>    <span class="co"># ラベル</span></span>
+<span id="cb19-49"><a href="#cb19-49"></a>    <span class="va">self</span>.lb_navi <span class="op">=</span> Qw.QLabel(<span class="st">&#39;&#39;</span>,<span class="va">self</span>)</span>
+<span id="cb19-50"><a href="#cb19-50"></a>    main_layout.addWidget(<span class="va">self</span>.lb_navi)</span>
+<span id="cb19-51"><a href="#cb19-51"></a></span>
+<span id="cb19-52"><a href="#cb19-52"></a>    <span class="co"># イベント処理</span></span>
+<span id="cb19-53"><a href="#cb19-53"></a>    <span class="va">self</span>.rb_group.buttonClicked.<span class="ex">connect</span>(<span class="va">self</span>.rb_state_changed)</span>
+<span id="cb19-54"><a href="#cb19-54"></a></span>
+<span id="cb19-55"><a href="#cb19-55"></a>    <span class="co"># 初期値設定</span></span>
+<span id="cb19-56"><a href="#cb19-56"></a>    <span class="va">self</span>.rb_group.button(<span class="dv">3</span>).setChecked(<span class="va">True</span>)</span>
+<span id="cb19-57"><a href="#cb19-57"></a>    <span class="va">self</span>.rb_state_changed()</span>
+<span id="cb19-58"><a href="#cb19-58"></a></span>
+<span id="cb19-59"><a href="#cb19-59"></a>  <span class="kw">def</span> rb_state_changed(<span class="va">self</span>):</span>
+<span id="cb19-60"><a href="#cb19-60"></a>    rb_id <span class="op">=</span> <span class="va">self</span>.rb_group.checkedId() <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb19-61"><a href="#cb19-61"></a>    <span class="cf">if</span> <span class="dv">0</span> <span class="op">&lt;=</span> rb_id <span class="op">&lt;</span> <span class="bu">len</span>(grades) :</span>
+<span id="cb19-62"><a href="#cb19-62"></a>      <span class="va">self</span>.lb_navi.setText(<span class="ss">f&#39;評点 : </span><span class="sc">{</span>grades[rb_id]<span class="sc">.</span>msg<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+<span id="cb19-63"><a href="#cb19-63"></a>    <span class="cf">else</span>:</span>
+<span id="cb19-64"><a href="#cb19-64"></a>      <span class="va">self</span>.lb_navi.setText(<span class="st">&#39;想定外の処理がされました。&#39;</span>)</span>
+<span id="cb19-65"><a href="#cb19-65"></a></span>
+<span id="cb19-66"><a href="#cb19-66"></a><span class="co"># 本体</span></span>
+<span id="cb19-67"><a href="#cb19-67"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&#39;__main__&#39;</span>:</span>
+<span id="cb19-68"><a href="#cb19-68"></a>  app <span class="op">=</span> Qw.QApplication(sys.argv)</span>
+<span id="cb19-69"><a href="#cb19-69"></a>  main_window <span class="op">=</span> MainWindow()</span>
+<span id="cb19-70"><a href="#cb19-70"></a>  main_window.show()</span>
+<span id="cb19-71"><a href="#cb19-71"></a>  sys.exit(app.<span class="bu">exec</span>())</span></code></pre></div>
+      <p>このプログラムでは、データが <strong>第13行目</strong> から
+      <strong>第17行目</strong>
+      に集約されており、成績評価に関する変更があったときにも、わずかな修正で対応することができます。</p>
+      <p><strong>演習1</strong> :
+      2021年度以前のカリキュラムにおいては「優 :
+      80点以上」「良：65点以上70点未満」「良：65点以上70点未満」「可：60点以上64点未満」「不可：60点未満
+      (不合格)」であった。これに対応するように
+      <code>qt-09-radio-button-2.py</code> を書き替えよ。</p>
+      <p><strong>演習2 (Ex)</strong> : プログラム
+      <code>qt-09-radio-button-2.py</code> を読解せよ。</p>
+      <h1 data-number="6" id="チェックボックス"><span
+      class="header-section-number">6</span> チェックボックス</h1>
+      <p>チェックボックスは、ラジオボタンと違い相互排他性のないウィジェットとなります。基本的には「チェック済み」と「未チェック」の2値を扱いますが、ウィジェットとしては次の3つの状態を持てることに注意してください。</p>
+      <ul>
+      <li>PySide6.QtCore.Qt.CheckState.Checked (チェック済み)</li>
+      <li>PySide6.QtCore.Qt.CheckState.Unchecked (未チェック)</li>
+      <li>PySide6.QtCore.Qt.CheckState.<strong>PartiallyChecked</strong>
+      (<span class="masked">部分的にチェックされた状態</span>)</li>
+      </ul>
+      <h2 data-number="6.1"
+      id="チェックボックスのサンプルプログラム1"><span
+      class="header-section-number">6.1</span>
+      チェックボックスのサンプルプログラム1</h2>
+      <p>チェックボックスのサンプルプログラムを次に示します。</p>
+      <figure>
+      <img src="figs/26/qt-11.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>プロジェクトフォルダに <code>qt-10-check-box-1.py</code>
+      というファイルを作成して、プログラムを貼り付けて実行し、その動作を確してください。</p>
+      <div class="sourceCode" id="cb20"
+      data-caption="qt-10-check-box-1.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="im">import</span> sys</span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="im">import</span> PySide6.QtCore <span class="im">as</span> Qc</span>
+<span id="cb20-3"><a href="#cb20-3"></a><span class="im">import</span> PySide6.QtWidgets <span class="im">as</span> Qw</span>
+<span id="cb20-4"><a href="#cb20-4"></a></span>
+<span id="cb20-5"><a href="#cb20-5"></a><span class="kw">class</span> MainWindow(Qw.QMainWindow):</span>
+<span id="cb20-6"><a href="#cb20-6"></a>  </span>
+<span id="cb20-7"><a href="#cb20-7"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb20-8"><a href="#cb20-8"></a></span>
+<span id="cb20-9"><a href="#cb20-9"></a>    <span class="bu">super</span>().<span class="fu">__init__</span>() </span>
+<span id="cb20-10"><a href="#cb20-10"></a>    <span class="va">self</span>.setWindowTitle(<span class="st">&#39;MainWindow&#39;</span>) </span>
+<span id="cb20-11"><a href="#cb20-11"></a>    <span class="va">self</span>.setGeometry(<span class="dv">100</span>, <span class="dv">50</span>, <span class="dv">640</span>, <span class="dv">100</span>) </span>
+<span id="cb20-12"><a href="#cb20-12"></a></span>
+<span id="cb20-13"><a href="#cb20-13"></a>    <span class="va">self</span>.cb <span class="op">=</span> Qw.QCheckBox(<span class="va">self</span>)</span>
+<span id="cb20-14"><a href="#cb20-14"></a>    <span class="va">self</span>.cb.setText(<span class="ss">f&#39;利用規約に同意します。&#39;</span>)</span>
+<span id="cb20-15"><a href="#cb20-15"></a>    <span class="va">self</span>.cb.setGeometry(<span class="dv">15</span>,<span class="dv">10</span>,<span class="dv">150</span>,<span class="dv">25</span>)</span>
+<span id="cb20-16"><a href="#cb20-16"></a>    <span class="va">self</span>.cb.setCheckState(Qc.Qt.CheckState.Unchecked)</span>
+<span id="cb20-17"><a href="#cb20-17"></a>    <span class="va">self</span>.cb.stateChanged.<span class="ex">connect</span>(<span class="va">self</span>.cb_state_changed)</span>
+<span id="cb20-18"><a href="#cb20-18"></a></span>
+<span id="cb20-19"><a href="#cb20-19"></a>    <span class="co"># ボタン</span></span>
+<span id="cb20-20"><a href="#cb20-20"></a>    <span class="va">self</span>.btn <span class="op">=</span> Qw.QPushButton(<span class="st">&#39;インストール&#39;</span>,<span class="va">self</span>)</span>
+<span id="cb20-21"><a href="#cb20-21"></a>    <span class="va">self</span>.btn.setGeometry(<span class="dv">15</span>,<span class="dv">40</span>,<span class="dv">100</span>,<span class="dv">25</span>)</span>
+<span id="cb20-22"><a href="#cb20-22"></a></span>
+<span id="cb20-23"><a href="#cb20-23"></a>    <span class="co"># ラベル</span></span>
+<span id="cb20-24"><a href="#cb20-24"></a>    <span class="va">self</span>.lb <span class="op">=</span> Qw.QLabel(<span class="st">&#39;※ 操作を続けるために利用規約に同意してください。&#39;</span>,<span class="va">self</span>)</span>
+<span id="cb20-25"><a href="#cb20-25"></a>    <span class="va">self</span>.lb.setStyleSheet(<span class="st">&#39;QLabel { color: red; }&#39;</span>)</span>
+<span id="cb20-26"><a href="#cb20-26"></a>    <span class="va">self</span>.lb.setGeometry(<span class="dv">125</span>,<span class="dv">40</span>,<span class="dv">300</span>,<span class="dv">25</span>)</span>
+<span id="cb20-27"><a href="#cb20-27"></a></span>
+<span id="cb20-28"><a href="#cb20-28"></a>    <span class="co"># 初期化</span></span>
+<span id="cb20-29"><a href="#cb20-29"></a>    <span class="va">self</span>.cb_state_changed()</span>
+<span id="cb20-30"><a href="#cb20-30"></a></span>
+<span id="cb20-31"><a href="#cb20-31"></a>  <span class="kw">def</span> cb_state_changed(<span class="va">self</span>):</span>
+<span id="cb20-32"><a href="#cb20-32"></a>    <span class="cf">if</span> <span class="va">self</span>.cb.checkState() <span class="op">==</span> Qc.Qt.CheckState.Checked :</span>
+<span id="cb20-33"><a href="#cb20-33"></a>      <span class="va">self</span>.btn.setEnabled(<span class="va">True</span>)</span>
+<span id="cb20-34"><a href="#cb20-34"></a>      <span class="va">self</span>.lb.setVisible(<span class="va">False</span>)</span>
+<span id="cb20-35"><a href="#cb20-35"></a>    <span class="cf">else</span> :</span>
+<span id="cb20-36"><a href="#cb20-36"></a>      <span class="va">self</span>.btn.setEnabled(<span class="va">False</span>)</span>
+<span id="cb20-37"><a href="#cb20-37"></a>      <span class="va">self</span>.lb.setVisible(<span class="va">True</span>)</span>
+<span id="cb20-38"><a href="#cb20-38"></a>      </span>
+<span id="cb20-39"><a href="#cb20-39"></a><span class="co"># 本体</span></span>
+<span id="cb20-40"><a href="#cb20-40"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&#39;__main__&#39;</span>:</span>
+<span id="cb20-41"><a href="#cb20-41"></a>  app <span class="op">=</span> Qw.QApplication(sys.argv)</span>
+<span id="cb20-42"><a href="#cb20-42"></a>  main_window <span class="op">=</span> MainWindow()</span>
+<span id="cb20-43"><a href="#cb20-43"></a>  main_window.show()</span>
+<span id="cb20-44"><a href="#cb20-44"></a>  sys.exit(app.<span class="bu">exec</span>())</span></code></pre></div>
+      <h2 data-number="6.2"
+      id="チェックボックスのサンプルプログラム2"><span
+      class="header-section-number">6.2</span>
+      チェックボックスのサンプルプログラム2</h2>
+      <p>チェックボックスを利用したプログラム例を示します。</p>
+      <figure>
+      <img src="figs/26/qt-12.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>このプログラムは、レスポンシブデザインに加えて、QCheckBoxオブジェクトに動的に属性
+      (<code>subject</code>)
+      を追加するなど応用的な内容を含みます。プログラムの詳細については
+      ChatGPT などを活用して理解して努めてください (<a
+      href="https://chat.openai.com/share/5d7e615d-06b2-4ea4-9829-e5ae7258b315">質問例と回答例</a>)。</p>
+      <div class="sourceCode" id="cb21"
+      data-caption="qt-10-check-box-2.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="im">import</span> sys</span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="im">import</span> PySide6.QtCore <span class="im">as</span> Qc</span>
+<span id="cb21-3"><a href="#cb21-3"></a><span class="im">import</span> PySide6.QtWidgets <span class="im">as</span> Qw</span>
+<span id="cb21-4"><a href="#cb21-4"></a></span>
+<span id="cb21-5"><a href="#cb21-5"></a><span class="co"># 科目情報を扱うクラスの定義</span></span>
+<span id="cb21-6"><a href="#cb21-6"></a><span class="kw">class</span> Subject():</span>
+<span id="cb21-7"><a href="#cb21-7"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name:<span class="bu">str</span>, credits:<span class="bu">int</span>, term:<span class="bu">str</span>):</span>
+<span id="cb21-8"><a href="#cb21-8"></a>    <span class="va">self</span>.name <span class="op">=</span> name        <span class="co"># 科目名</span></span>
+<span id="cb21-9"><a href="#cb21-9"></a>    <span class="va">self</span>.credits <span class="op">=</span> credits  <span class="co"># 単位数</span></span>
+<span id="cb21-10"><a href="#cb21-10"></a>    <span class="va">self</span>.term <span class="op">=</span> term        <span class="co"># 開講期</span></span>
+<span id="cb21-11"><a href="#cb21-11"></a></span>
+<span id="cb21-12"><a href="#cb21-12"></a><span class="co"># 科目情報のインスタンスの生成</span></span>
+<span id="cb21-13"><a href="#cb21-13"></a>subjects <span class="op">=</span> [Subject(<span class="st">&#39;国語2&#39;</span>,<span class="dv">2</span>,<span class="st">&#39;通年&#39;</span>),</span>
+<span id="cb21-14"><a href="#cb21-14"></a>            Subject(<span class="st">&#39;微分積分1&#39;</span>,<span class="dv">2</span>,<span class="st">&#39;前期&#39;</span>),</span>
+<span id="cb21-15"><a href="#cb21-15"></a>            Subject(<span class="st">&#39;論理回路1&#39;</span>,<span class="dv">1</span>,<span class="st">&#39;後期&#39;</span>),</span>
+<span id="cb21-16"><a href="#cb21-16"></a>            Subject(<span class="st">&#39;メディアデザイン入門&#39;</span>,<span class="dv">2</span>,<span class="st">&#39;後期&#39;</span>),</span>
+<span id="cb21-17"><a href="#cb21-17"></a>            Subject(<span class="st">&#39;プログラミング1&#39;</span>,<span class="dv">2</span>,<span class="st">&#39;後期&#39;</span>),</span>
+<span id="cb21-18"><a href="#cb21-18"></a>            Subject(<span class="st">&#39;工学基礎実習&#39;</span>,<span class="dv">4</span>,<span class="st">&#39;通年&#39;</span>)]</span>
+<span id="cb21-19"><a href="#cb21-19"></a></span>
+<span id="cb21-20"><a href="#cb21-20"></a><span class="co"># レイアウト設定用のエイリアス</span></span>
+<span id="cb21-21"><a href="#cb21-21"></a>sp <span class="op">=</span> Qw.QSizePolicy.Policy</span>
+<span id="cb21-22"><a href="#cb21-22"></a></span>
+<span id="cb21-23"><a href="#cb21-23"></a><span class="co"># GUI MainWindow クラス</span></span>
+<span id="cb21-24"><a href="#cb21-24"></a><span class="kw">class</span> MainWindow(Qw.QMainWindow):</span>
+<span id="cb21-25"><a href="#cb21-25"></a>  </span>
+<span id="cb21-26"><a href="#cb21-26"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb21-27"><a href="#cb21-27"></a></span>
+<span id="cb21-28"><a href="#cb21-28"></a>    <span class="bu">super</span>().<span class="fu">__init__</span>() </span>
+<span id="cb21-29"><a href="#cb21-29"></a>    <span class="va">self</span>.setWindowTitle(<span class="st">&#39;MainWindow&#39;</span>) </span>
+<span id="cb21-30"><a href="#cb21-30"></a>    <span class="va">self</span>.setGeometry(<span class="dv">100</span>, <span class="dv">50</span>, <span class="dv">640</span>, <span class="dv">100</span>)</span>
+<span id="cb21-31"><a href="#cb21-31"></a></span>
+<span id="cb21-32"><a href="#cb21-32"></a>    <span class="co"># メインレイアウトの設定</span></span>
+<span id="cb21-33"><a href="#cb21-33"></a>    central_widget <span class="op">=</span> Qw.QWidget(<span class="va">self</span>)</span>
+<span id="cb21-34"><a href="#cb21-34"></a>    <span class="va">self</span>.setCentralWidget(central_widget)</span>
+<span id="cb21-35"><a href="#cb21-35"></a>    main_layout <span class="op">=</span> Qw.QVBoxLayout(central_widget) <span class="co"># 要素を垂直配置</span></span>
+<span id="cb21-36"><a href="#cb21-36"></a>    main_layout.setAlignment(Qc.Qt.AlignmentFlag.AlignTop) <span class="co"># 上寄せ</span></span>
+<span id="cb21-37"><a href="#cb21-37"></a>    main_layout.setContentsMargins(<span class="dv">15</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>)</span>
+<span id="cb21-38"><a href="#cb21-38"></a></span>
+<span id="cb21-39"><a href="#cb21-39"></a>    <span class="co"># チェックボックスの生成と設定</span></span>
+<span id="cb21-40"><a href="#cb21-40"></a>    <span class="va">self</span>.checkboxes : <span class="bu">list</span>[Qw.QCheckBox] <span class="op">=</span> []</span>
+<span id="cb21-41"><a href="#cb21-41"></a>    <span class="cf">for</span> sub <span class="kw">in</span> subjects:</span>
+<span id="cb21-42"><a href="#cb21-42"></a>      cb <span class="op">=</span> Qw.QCheckBox(<span class="va">self</span>)</span>
+<span id="cb21-43"><a href="#cb21-43"></a>      cb.setText(<span class="ss">f&#39;【</span><span class="sc">{</span>sub<span class="sc">.</span>term<span class="sc">}</span><span class="ss">】 </span><span class="sc">{</span>sub<span class="sc">.</span>name<span class="sc">}</span><span class="ss"> ( </span><span class="sc">{</span>sub<span class="sc">.</span>credits<span class="sc">}</span><span class="ss">単位 )&#39;</span>)</span>
+<span id="cb21-44"><a href="#cb21-44"></a>      cb.setCheckState(Qc.Qt.CheckState.Checked)</span>
+<span id="cb21-45"><a href="#cb21-45"></a>      cb.setCursor(Qc.Qt.CursorShape.PointingHandCursor) <span class="co"># カーソル形状</span></span>
+<span id="cb21-46"><a href="#cb21-46"></a>      <span class="co"># QCheckBox に 動的に subject属性 を追加。</span></span>
+<span id="cb21-47"><a href="#cb21-47"></a>      <span class="co"># VSCode からの型チェック警告を非表示にするため「type: ignore」を記述</span></span>
+<span id="cb21-48"><a href="#cb21-48"></a>      cb.subject <span class="op">=</span> sub <span class="co"># type: ignore </span></span>
+<span id="cb21-49"><a href="#cb21-49"></a>      cb.stateChanged.<span class="ex">connect</span>(<span class="va">self</span>.cb_state_changed)</span>
+<span id="cb21-50"><a href="#cb21-50"></a>      <span class="va">self</span>.checkboxes.append(cb)</span>
+<span id="cb21-51"><a href="#cb21-51"></a>      main_layout.addWidget(cb)</span>
+<span id="cb21-52"><a href="#cb21-52"></a></span>
+<span id="cb21-53"><a href="#cb21-53"></a>    <span class="co"># チェックボックス群とラベルの間に 20px スペーサを追加</span></span>
+<span id="cb21-54"><a href="#cb21-54"></a>    spacer <span class="op">=</span> Qw.QSpacerItem(<span class="dv">0</span>, <span class="dv">10</span>, sp.Fixed, sp.Fixed)</span>
+<span id="cb21-55"><a href="#cb21-55"></a>    main_layout.addSpacerItem(spacer)</span>
+<span id="cb21-56"><a href="#cb21-56"></a></span>
+<span id="cb21-57"><a href="#cb21-57"></a>    <span class="co"># ラベル</span></span>
+<span id="cb21-58"><a href="#cb21-58"></a>    <span class="va">self</span>.lb_info <span class="op">=</span> Qw.QLabel(<span class="st">&#39;&#39;</span>,<span class="va">self</span>)</span>
+<span id="cb21-59"><a href="#cb21-59"></a>    main_layout.addWidget(<span class="va">self</span>.lb_info)</span>
+<span id="cb21-60"><a href="#cb21-60"></a></span>
+<span id="cb21-61"><a href="#cb21-61"></a>    <span class="co"># ラベルの表示を更新</span></span>
+<span id="cb21-62"><a href="#cb21-62"></a>    <span class="va">self</span>.cb_state_changed()</span>
+<span id="cb21-63"><a href="#cb21-63"></a></span>
+<span id="cb21-64"><a href="#cb21-64"></a>  <span class="co"># チェックボックスの状態が変化したときのコールバック関数</span></span>
+<span id="cb21-65"><a href="#cb21-65"></a>  <span class="kw">def</span> cb_state_changed(<span class="va">self</span>):</span>
+<span id="cb21-66"><a href="#cb21-66"></a>    sum_credits <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb21-67"><a href="#cb21-67"></a>    <span class="cf">for</span> cb <span class="kw">in</span> <span class="va">self</span>.checkboxes:</span>
+<span id="cb21-68"><a href="#cb21-68"></a>      <span class="cf">if</span> cb.isChecked() :</span>
+<span id="cb21-69"><a href="#cb21-69"></a>        sum_credits <span class="op">+=</span> cb.subject.credits <span class="co"># type: ignore</span></span>
+<span id="cb21-70"><a href="#cb21-70"></a>        cb.setStyleSheet(<span class="st">&#39;QCheckBox { color: black; }&#39;</span>)</span>
+<span id="cb21-71"><a href="#cb21-71"></a>      <span class="cf">else</span> :</span>
+<span id="cb21-72"><a href="#cb21-72"></a>        cb.setStyleSheet(<span class="st">&#39;QCheckBox { color: red; }&#39;</span>)</span>
+<span id="cb21-73"><a href="#cb21-73"></a>    <span class="va">self</span>.lb_info.setText(<span class="ss">f&#39;合計の取得単位数は「</span><span class="sc">{</span>sum_credits<span class="sc">}</span><span class="ss">単位」です。&#39;</span>)</span>
+<span id="cb21-74"><a href="#cb21-74"></a></span>
+<span id="cb21-75"><a href="#cb21-75"></a><span class="co"># 本体</span></span>
+<span id="cb21-76"><a href="#cb21-76"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&#39;__main__&#39;</span>:</span>
+<span id="cb21-77"><a href="#cb21-77"></a>  app <span class="op">=</span> Qw.QApplication(sys.argv)</span>
+<span id="cb21-78"><a href="#cb21-78"></a>  main_window <span class="op">=</span> MainWindow()</span>
+<span id="cb21-79"><a href="#cb21-79"></a>  main_window.show()</span>
+<span id="cb21-80"><a href="#cb21-80"></a>  sys.exit(app.<span class="bu">exec</span>())</span></code></pre></div>
+      <!-- ---------------------------------------- -->
+    </main>
+
+    <footer class="markdown-body">
+      <p><a href="https://takeshiwada1980.github.io/Programming1-2023/">講義資料のIndexに移動</a></p>
+    </footer>
+
+    <script>
+      window.onload = function () {
+        // ナビゲーション関連
+        let openBtn = document.getElementsByClassName("openbtn")[0];
+        let navPnl = document.getElementById("g-nav");
+        openBtn.onclick = () => {
+          openBtn.classList.toggle("active");
+          navPnl.classList.toggle("panelactive");
+        };
+
+        let items = navPnl.getElementsByTagName("a");
+        Array.from(items).forEach((item) => {
+          item.onclick = () => {
+            openBtn.classList.toggle("active");
+            navPnl.classList.toggle("panelactive");
+          };
+        });
+
+        // マスク処理
+        let maskedSpans = document.getElementsByClassName("masked");
+        Array.from(maskedSpans).forEach((span) => {
+          span.onclick = () => {
+            span.classList.toggle("open");
+          };
+        });
+
+        // data-startfrom 属性の行番号カウンタのリセット
+        document.querySelectorAll("div.sourceCode").forEach(function (div) {
+          var startFrom = div.getAttribute("data-startfrom");
+          if (startFrom != null) {
+            div.style.counterReset = "pg-line " + (startFrom - 1);
+          }
+        });
+
+        // 画像にリンクを付与
+        // let images = document.querySelectorAll("figure img");
+        // Array.from(images).forEach((img) => {
+        //   img.onclick = () => {
+        //     location.href = img.getAttribute("src");
+        //   };
+        // });
+      };
+    </script>
+  </body>
+</html>
