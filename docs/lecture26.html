@@ -142,9 +142,9 @@ class="toc-section-number">6.2</span>
       <img src="figs/26/vscode-01.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
       </figure>
-      <p>エディタの「<strong>置換</strong>」を使用すると意図せず <span
-      class="masked">プログラムが破壊されること</span> があります
-      (置換前には実行可能だったプログラムが、置換後に実行できなくなることなどが多々あります)。一方で、VSCodeの「<strong>シンボルの名前変更</strong>」の機能を使用すると単純な置換とは異なり、プログラムの構造を解析し、プログラムを破壊することなく適切な名前変更を行なってくれます。</p>
+      <p>通常のエディタの「<strong>置換</strong>」を使用すると意図せず
+      <span class="masked">プログラムが破壊されること</span> があります
+      (置換前には実行可能だったプログラムが、置換後に実行できなくなることなどがよくあります)。一方で、VSCodeの「<strong>シンボルの名前変更</strong>」の機能を使用すると単純な置換とは異なり、プログラムの構造を解析し、プログラムを破壊することなく適切な名前変更を行なってくれます。</p>
       <p>例えば、以下のプログラムにおいて、<strong>第13行目</strong> の
       変数 <code>f</code> を <code>f1</code>
       という名前に変更したいとします。</p>
@@ -161,17 +161,20 @@ class="toc-section-number">6.2</span>
 <span id="cb1-10"><a href="#cb1-10"></a>  <span class="cf">for</span> f <span class="kw">in</span> fs:</span>
 <span id="cb1-11"><a href="#cb1-11"></a>    <span class="bu">print</span>(f, end<span class="op">=</span><span class="st">&#39; &#39;</span>)</span>
 <span id="cb1-12"><a href="#cb1-12"></a></span>
-<span id="cb1-13"><a href="#cb1-13"></a>f <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a>f <span class="op">=</span> <span class="dv">5</span> <span class="co"># この変数の名前を変更したい</span></span>
 <span id="cb1-14"><a href="#cb1-14"></a>f2 <span class="op">=</span> func_1(f)</span>
 <span id="cb1-15"><a href="#cb1-15"></a><span class="bu">print</span>(<span class="ss">f&#39;first step  -&gt; func_1 result : </span><span class="sc">{</span>f2<span class="sc">}</span><span class="ss">&#39;</span>)</span>
 <span id="cb1-16"><a href="#cb1-16"></a><span class="bu">print</span>(<span class="ss">f&#39;second step -&gt; func_2 result : &#39;</span>, end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
 <span id="cb1-17"><a href="#cb1-17"></a>func_2([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>])</span></code></pre></div>
       <p>このとき「置換」の機能を使って変数の名前変更すると、次のように<strong>意図していない箇所</strong>、例えば
-      <code>for</code>、<code>def</code>、<code>if</code>
-      などの予約語、<code>func_1</code> や <code>func_2</code>
-      などの関数名、文字列リテラル
-      <code>'first step ...'</code>、コメントにおいても影響を受けてしまいます。例えば
-      <code>for</code> が <code>f1or</code> になってしまいます。</p>
+      <code>for</code>、<code>def</code>、<code>if</code> などの
+      <strong>予約語</strong>、<code>func_1</code> や
+      <code>func_2</code> などの
+      <strong>関数名</strong>、<code>'first step ...'</code>などの
+      <strong>文字列リテラル</strong>、コメントなども影響を受けてしまいます。</p>
+      <p>例えば、繰り返し構文のための <code>for</code> が
+      <code>f1or</code> になってしまいます
+      (プログラムは実行不可能になります)。</p>
       <div class="sourceCode" id="cb2" data-caption="置換後"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>def1 f1unc_1(f1):</span>
 <span id="cb2-2"><a href="#cb2-2"></a>  <span class="cf">assert</span> <span class="bu">type</span>(f1) <span class="op">==</span> <span class="bu">int</span></span>
@@ -192,25 +195,26 @@ class="toc-section-number">6.2</span>
 <span id="cb2-17"><a href="#cb2-17"></a>f1unc_2([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>])</span></code></pre></div>
       <p>一方で「<strong>シンボルの名前変更</strong>」を使用すると、プログラム全体として不整合が生じないように適切な範囲
       (適切な変数のスコープ内)
-      の変数や関数について、安全に名前変更が可能となります。</p>
+      の変数や関数に対して安全に名前変更が可能となります。便利な機能なので、積極的に利用してください
+      (特に PySide などのGUIアプリの開発では威力を発揮します)。</p>
       <h1 data-number="2" id="ウィンドウの初期位置"><span
       class="header-section-number">2</span> ウィンドウの初期位置</h1>
       <p>ここでは、PySideを利用したGUIアプリのウィンドウの初期位置を「<strong>スクリーン中央</strong>」に設定する方法について学びます。</p>
       <h2 data-number="2.1" id="準備"><span
       class="header-section-number">2.1</span> 準備</h2>
-      <p>前回の講義において、ウィンドウの「初期位置」と「サイズ」は、次のように4つの引数
-      (整数値) を与えて設定しました。</p>
+      <p>前回の講義において、ウィンドウの「<strong>初期位置</strong>」と「<strong>サイズ</strong>」は
+      <code>setGeometry</code> メソッドに次のような4つの引数
+      (<strong>整数値</strong>) を与えることで設定しました。</p>
       <div class="sourceCode" id="cb3"
       data-caption="ウィンドウのジオメトリ設定 (方法1)"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="va">self</span>.setGeometry(<span class="dv">100</span>, <span class="dv">50</span>, <span class="dv">640</span>, <span class="dv">240</span>)</span></code></pre></div>
-      <p>これとは別に <code>Qc.QRect</code>
-      オブジェクトを使って、次のように<strong>ウィンドウのジオメトリ
+      <p>これとは別に「<strong>QRectオブジェクト</strong>」を使って、次のように<strong>ウィンドウのジオメトリ
       (位置とサイズ)</strong>
       を設定することもできます。ウィンドウの初期位置を「<strong>スクリーン中央</strong>」に設定するためには、こちらの
-      <code>Qc.QRect</code> を使う方法を使用します。</p>
+      <code>PySide6.QtCore.QRect</code> を使う方法を利用します。</p>
       <div class="sourceCode" id="cb4"
       data-caption="ウィンドウのジオメトリ設定 (方法2)"><pre
-      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>rect <span class="op">=</span> Qc.QRect()</span>
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>rect <span class="op">=</span> Qc.QRect() <span class="co"># Rect: Rectangle (長方形・矩形)</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a>rect.setSize(Qc.QSize(<span class="dv">640</span>,<span class="dv">480</span>))      <span class="co"># サイズ設定</span></span>
 <span id="cb4-3"><a href="#cb4-3"></a>rect.moveTopLeft(Qc.QPoint(<span class="dv">100</span>,<span class="dv">50</span>))  <span class="co"># 位置設定</span></span>
 <span id="cb4-4"><a href="#cb4-4"></a><span class="va">self</span>.setGeometry(rect) </span></code></pre></div>
@@ -218,9 +222,10 @@ class="toc-section-number">6.2</span>
       <code>moveTopLeft</code>
       メソッドの代わりに、<code>moveBottomRight</code> を使用すれば
       <span
-      class="masked">ウィンドウの「右下を基準に位置設定」をすること</span>、つまり、ウィンドウ右下が、スクリーン座標の
-      (100,50) にくるようにウィンドウを配置できます。また
-      <code>rect.moveCenter</code>
+      class="masked">ウィンドウの「右下を基準に位置設定」をすること</span>、つまり、ウィンドウの「<strong>右下
+      (BottomRight)</strong>」がスクリーン座標の <code>(100,50)</code>
+      にくるようにウィンドウを配置できます。</p>
+      <p>また <code>rect.moveCenter</code>
       を使用すればウィンドウの「中央を基準に位置設定」をすることができます。</p>
       <h2 data-number="2.2"
       id="ウィンドウ初期位置をスクリーン中央に設定"><span
@@ -266,9 +271,9 @@ class="toc-section-number">6.2</span>
       <code>.primaryScreen().availableGeometry()</code>
       メソッドで取得ができます。</p>
       <p>ただし、このスクリーン の Geometry
-      が必要になるのは、MainWindowクラスの「コンストラクタ
-      (<code>__init__</code> 関数)
-      のなか」であるため、<strong>第07行目</strong>
+      が必要になるのは、MainWindowクラスの「<strong>コンストラクタ
+      (</strong><code>__init__</code> <strong>関数)
+      のなか</strong>」であるため、<strong>第07行目</strong>
       のコンストラクタの定義開始部 (シグネチャ) で、Qw.Application
       を引数として受け取れるようにしています。そして、<strong>第22行目</strong>
       では、<code>main_window = MainWindow(app)</code>
@@ -292,14 +297,14 @@ class="toc-section-number">6.2</span>
       <p>Pylance
       による開発支援機能は、バックグラウンドで<strong>プログラムコードをリアルタイムに解析して動作</strong>します。この際、Pylance
       の内部では「<strong>型の推論</strong> (Type Inference)
-      」が行われます。例えば、次のようなプログラムを書きかけているとき、つまり、<strong>第02行目</strong>の
+      」が行われます。例えば、次のようなプログラムを書いている途中、つまり、<strong>第02行目</strong>の
       <code>.</code> までコードを打ち込んだとき・・・</p>
       <div class="sourceCode" id="cb8"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>x <span class="op">=</span> <span class="dv">10</span></span>
 <span id="cb8-2"><a href="#cb8-2"></a>x.</span></code></pre></div>
       <p>Pylance は <strong>第01行目</strong> の <code>x=10</code>
-      から「変数 <code>x</code> の 型 (Type)
-      は「整数値」である」と<strong>推論</strong>し、次の図に示すように整数値オブジェクトが持っている
+      から、変数 <code>x</code> の 型 (Type)
+      は「<strong>整数値である</strong>」と<strong>推論</strong>し、次の図に示すように整数値オブジェクトが持っている
       <strong>プロパティ (属性)</strong> や <strong>メソッド</strong>
       を入力候補として表示してくれます。</p>
       <figure>
@@ -307,7 +312,10 @@ class="toc-section-number">6.2</span>
       <figcaption aria-hidden="true">img</figcaption>
       </figure>
       <p>一方で、変数 <code>x</code>
-      が「<strong>文字列</strong>」と推論できるときは、文字列オブジェクトに対する適切な入力候補を表示してくれます。</p>
+      が「<strong>文字列である</strong>」と推論できるときは、文字列オブジェクトとして適切な入力候補を表示してくれます
+      (文字列オブジェクトが持っている <strong>プロパティ (属性)</strong>
+      や <strong>メソッド</strong>
+      を入力候補として表示してくれます)。</p>
       <div class="sourceCode" id="cb9"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>x <span class="op">=</span> <span class="st">&#39;10&#39;</span></span>
 <span id="cb9-2"><a href="#cb9-2"></a>x.</span></code></pre></div>
@@ -317,20 +325,21 @@ class="toc-section-number">6.2</span>
       </figure>
       <p>上図において、入力候補として表示されるメソッドが <span
       class="masked">先の例とは違うこと</span>に注目してください。例えば
-      <code>startsWith</code> メソッドは「<span
-      class="masked">その文字列が引数で指定した文字から開始するか</span>」をブール値
-      (True/False)
-      で返すもので、これは「整数値オブジェクト」には無いメソッドです。</p>
+      <code>startsWith</code>
+      メソッドは「その文字列が引数で指定した文字から開始するか」をブール値
+      (True/False) で返すもので、これは <span
+      class="masked">整数値オブジェクトには存在しないメソッド</span>です。</p>
       <p>以上のように、Pylance の型推論は非常に強力で優秀ですが、<span
       class="masked">関数の引数として値を受け取る変数など</span>
-      に対しては推論ができず、結果として「<strong>入力補完</strong>」や「<strong>エラーチェック</strong>」が提供されません。</p>
-      <p>例えば、次のプログラムでは、<strong>第02行目</strong> で
-      <code>xx.</code> まで文字を打ち込んでも入力候補は表示されません
+      に対しては十分な推論ができず、結果として「<strong>入力補完</strong>」や「<strong>エラーチェック</strong>」などの機能が提供されません。</p>
+      <p>例えば、次のプログラムでは <strong>第02行目</strong> において
+      <code>xx.</code>
+      まで文字を打ち込んでも<strong>入力候補は表示されません</strong>
       (実際に試して確認してください)。これは、Pylance が、変数
-      <code>xx</code> の「型の推論」に失敗しているためです (関数
+      <code>xx</code> の「型の推論」に失敗しているためです。関数
       <code>func</code> は、<strong>第05行目</strong>
-      以外にも、別のところから別の引数を伴って呼び出される可能性があり、仮引数
-      <code>xx</code> の型を一意に決定できないためです)。</p>
+      以外にも、プログラム内の別のところから、別の引数を伴って呼び出される可能性があり、仮引数
+      <code>xx</code> の型を一意に決定 (推論) できないためです。</p>
       <div class="sourceCode" id="cb10"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="kw">def</span> func(xx):</span>
 <span id="cb10-2"><a href="#cb10-2"></a>  xx.</span>
@@ -344,7 +353,7 @@ class="toc-section-number">6.2</span>
       <p>このような状況において、Python 3.5
       以降では、<strong><em>型ヒント</em></strong> という機能を用いて
       <span class="masked">型を推論するための補助情報</span>
-      を提供することができます。具体的には、関数のシグネチャ（定義の開始部分）において、引数の名前の後にコロン
+      をプログラマから提供することができます。具体的には、関数のシグネチャ（定義の開始部分）において、引数の名前の後にコロン
       <code>:</code> に続けて変数の型を指定します。例えば
       <code>func(xx:int):</code> や <code>func(xx:str):</code>
       のように記述することができます。これにより、<strong>関数の引数に期待される型が明確</strong>になり、Pylance
@@ -352,7 +361,7 @@ class="toc-section-number">6.2</span>
       <p>実際に、先のプログラムを以下のように書き替えると、<code>xx.</code>
       まで文字を打ち込んだ段階で入力候補が表示されるようになります。</p>
       <div class="sourceCode" id="cb11"><pre
-      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">def</span> func(xx:<span class="bu">str</span>): <span class="co"># 型ヒントつき</span></span>
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">def</span> func(xx:<span class="bu">str</span>): <span class="co"># xxは文字列型であるという「型ヒント」つき</span></span>
 <span id="cb11-2"><a href="#cb11-2"></a>  xx.</span>
 <span id="cb11-3"><a href="#cb11-3"></a></span>
 <span id="cb11-4"><a href="#cb11-4"></a>x <span class="op">=</span> <span class="st">&#39;10&#39;</span></span>
@@ -361,10 +370,10 @@ class="toc-section-number">6.2</span>
       <img src="figs/26/type-hints-04.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
       </figure>
-      <p>また、関数のシグネチャに型ヒントを与えることで、関数を呼び出す側において、不適切な引数を与えたとき、警告が表示されるようになります。</p>
+      <p>また、関数のシグネチャに型ヒントを与えることで、関数を呼び出す側において、不適切な引数を与えたときに警告が表示されるようになります。</p>
       <p>例えば、以下の <strong>第01行目</strong> では、関数
-      <code>func</code>
-      が文字列型の引数を受け取るように型ヒントが設定されています。しかし、<strong>第05行目</strong>
+      <code>func</code> が文字列型の引数 <code>xx</code>
+      を受け取るように型ヒントが設定されています。しかし、<strong>第05行目</strong>
       で整数値を持つ変数 <code>x</code>
       が引数として渡されているため、Pylance から警告
       (PylancereportGeneralTypeIssues) が通知されます。</p>
@@ -388,9 +397,9 @@ class="toc-section-number">6.2</span>
       <code>None</code>」、第3引数が「ブール型」で、戻り値が「リスト型」を期待する関数のシグネチャは次のように記述できます。</p>
       <div class="sourceCode" id="cb13"><pre
       class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> func(a1: <span class="bu">float</span>, a2: Optional[Dict], a3: <span class="bu">bool</span>) <span class="op">-&gt;</span> List:</span></code></pre></div>
-      <p>なお、<strong>型ヒント付きの関数のシグネチャの記述</strong>は初心者には、やや難しくなります。そのため
-      ChatGPT
-      などを使用することを推奨します。例えば「<strong>文字列リストを受け取り、それぞれの文字列の長さのリストを返す関数の型ヒントをどのように記述すればよいですか？</strong>」のように質問することで、適切なシグネチャを記述することができます。</p>
+      <p>なお、<strong>型ヒント付きの関数のシグネチャの設定
+      (記述)</strong>は初心者には、やや難しくなります。そのため ChatGPT
+      などを使用することを推奨します。例えば「<strong>Pythonにおいて、文字列リストを引数として受け取り、それぞれの文字列の長さのリストを戻り値とする関数の「型ヒント」は、どのように記述すればよいですか？</strong>」のように質問することで、適切なシグネチャを得ることができます。</p>
       <h1 data-number="3"
       id="メッセージボックス-メッセージダイアログ"><span
       class="header-section-number">3</span> メッセージボックス
@@ -500,10 +509,11 @@ class="toc-section-number">6.2</span>
 <span id="cb14-81"><a href="#cb14-81"></a>  sys.exit(app.<span class="bu">exec</span>())</span></code></pre></div>
       <p>このプログラムは、ボタンを押下するとメッセージボックスが表示され、その結果をラベル
       (QLabel)
-      に表示します。メッセージボックスを表示すると、それ閉じられるまで親ウィンドが操作できないモーダルウィンドウとして機能します。</p>
+      に表示します。メッセージボックスを表示すると、<strong>それが閉じられるまで親ウィンドが操作できないモーダルウィンドウ</strong>として機能します。</p>
       <p>なお、ラベル (QLabel) は、テキストボックス (QTextEdit や
-      QLineEdit)
-      とは異なり、ユーザーがマウスで範囲選択することはできません。</p>
+      QLineEdit) とは異なり、<span
+      class="masked">ユーザーがマウスで範囲選択すること</span>
+      はできません。</p>
       <figure>
       <img src="figs/26/qt-03.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
@@ -512,11 +522,12 @@ class="toc-section-number">6.2</span>
       <h2 data-number="3.2" id="静的メソッドを使用する方法"><span
       class="header-section-number">3.2</span>
       静的メソッドを使用する方法</h2>
-      <p>静的メソッドとは、オブジェクト (インスタンス)
+      <p><strong>静的メソッド</strong>とは、オブジェクト (インスタンス)
       を生成せずに利用可能なメソッドです。PySide6.QtWidgetsw.QMessageBox
       クラスの静的メソッド <code>question</code>
-      を使用したメッセージボックス関連の処理は<strong>第32行目</strong>
-      から <strong>第54行目</strong> までの範囲になります。</p>
+      を使用したメッセージボックスの表示と応答処理は
+      <strong>第32行目</strong> から <strong>第54行目</strong>
+      までの範囲になります。</p>
       <div class="sourceCode" id="cb15" data-startFrom="32"
       data-caption="メッセージボックス関連処理 1"><pre
       class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 31;"><span id="cb15-32"><a href="#cb15-32"></a>msgbox_title <span class="op">=</span> <span class="st">&#39;メッセージボックスのタイトル&#39;</span></span>
@@ -567,8 +578,9 @@ class="toc-section-number">6.2</span>
       (＝メッセージボックスが開いた時点でフォーカスされているボタン)
       を設定します。ここでは <code>btn_type.No</code>
       を設定しているため、[No]
-      のボタンにフォーカスされています。キーボードから Enter
-      を入力するとフォーカスされているボタンが押下された挙動となります。</li>
+      のボタンに<strong>フォーカス</strong>されています。つまり、キーボードから
+      [Enter] を入力するとフォーカスされている [No]
+      ボタンが押下された挙動となります。</li>
       </ul>
       <figure>
       <img src="figs/26/qt-04.png" alt="img" />
@@ -582,11 +594,13 @@ class="toc-section-number">6.2</span>
       class="masked">第4引数に [Cancel]
       ボタンを含んでいるときは、[Cancel] ボタンの押下と同じ</span>
       になります。また、第4引数に [Cancel] ボタンを含まず [No]
-      ボタンを含むときは、[No]
-      ボタンと同じになります。その他については、実際に確認してください。</p>
+      ボタンを含むときは、<i class="fa-solid 
+      fa-rectangle-xmark"></i> ボタンの押下は [No]
+      ボタンと同じになります
+      (ややこしいです)。その他については、実際に確認してください。</p>
       <p>なお、<code>QMessageBox.question</code> 以外に
       <code>information</code>、<code>warning</code>、<code>critical</code>
-      などのメソッドがあり、内部に表示されるアイコンが変化します。</p>
+      などのメソッドがあり、ダイアログの内部に表示されるアイコンが変化します。</p>
       <figure>
       <img src="figs/26/qt-01.png" alt="img" />
       <figcaption aria-hidden="true">img</figcaption>
