@@ -561,8 +561,8 @@ class="toc-section-number">6.2</span>
       の省略形としてよく良く使用される変数名です。</p>
       <ul>
       <li><strong>第1引数</strong> : 親ウィンドウ (親ウィジェット)
-      を渡します。<strong>38行目</strong> の <code>self</code> は
-      MainWindow を意味します。</li>
+      を渡します。<strong>第38行目</strong> において <code>self</code>
+      は MainWindowオブジェクト を意味します。</li>
       <li><strong>第2引数</strong> : メッセージボックスの
       <strong>タイトルバーに表示する文字列</strong> を渡します。</li>
       <li><strong>第3引数</strong> : メッセージボックスの
@@ -614,24 +614,24 @@ class="toc-section-number">6.2</span>
       <p>メッセージボックスのインスタンスを生成して使用する場合の処理は
       <strong>第59行目</strong> から <strong>第74行目</strong>
       までの範囲になります。こちらの方法のほうが、より細かな設定をすることができます。</p>
-      <div class="sourceCode" id="cb16" data-startFrom="32"
+      <div class="sourceCode" id="cb16" data-startFrom="59"
       data-caption="メッセージボックス関連処理 2"><pre
-      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 31;"><span id="cb16-32"><a href="#cb16-32"></a><span class="co"># インスタンスの生成と設定</span></span>
-<span id="cb16-33"><a href="#cb16-33"></a>msgBox <span class="op">=</span> Qw.QMessageBox(<span class="va">self</span>) <span class="co"># インスタンスの生成</span></span>
-<span id="cb16-34"><a href="#cb16-34"></a>msgBox.setWindowTitle(<span class="st">&#39;メッセージボックスのタイトル&#39;</span>)</span>
-<span id="cb16-35"><a href="#cb16-35"></a>msgBox.setText(<span class="st">&#39;ダイアログに表示するメッセージは</span><span class="ch">\n</span><span class="st">内部で改行することもできます。&#39;</span>)</span>
-<span id="cb16-36"><a href="#cb16-36"></a>msgBox.setIcon(Qw.QMessageBox.Icon.<span class="pp">Warning</span>)</span>
-<span id="cb16-37"><a href="#cb16-37"></a>msgBox.setStandardButtons(btn_type.Yes <span class="op">|</span> btn_type.No)</span>
-<span id="cb16-38"><a href="#cb16-38"></a></span>
-<span id="cb16-39"><a href="#cb16-39"></a><span class="co"># 表示と応答の取得・処理</span></span>
-<span id="cb16-40"><a href="#cb16-40"></a>ret <span class="op">=</span> msgBox.<span class="bu">exec</span>() <span class="co"># 表示と応答の取得</span></span>
-<span id="cb16-41"><a href="#cb16-41"></a><span class="cf">if</span> ret <span class="op">==</span> btn_type.Yes:</span>
-<span id="cb16-42"><a href="#cb16-42"></a>  msg <span class="op">=</span> <span class="st">&#39;[Yes] ボタン が押下されました。&#39;</span></span>
-<span id="cb16-43"><a href="#cb16-43"></a><span class="cf">elif</span> ret <span class="op">==</span> btn_type.No:</span>
-<span id="cb16-44"><a href="#cb16-44"></a>  msg <span class="op">=</span> <span class="st">&#39;[No] ボタン もしくは [X] ボタンが押下されました。&#39;</span></span>
-<span id="cb16-45"><a href="#cb16-45"></a><span class="cf">else</span> :</span>
-<span id="cb16-46"><a href="#cb16-46"></a>  msg <span class="op">=</span> <span class="st">&#39;予期せぬ応答が返ってきました。&#39;</span></span>
-<span id="cb16-47"><a href="#cb16-47"></a><span class="va">self</span>.lb_msg.setText(msg)</span></code></pre></div>
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 58;"><span id="cb16-59"><a href="#cb16-59"></a><span class="co"># インスタンスの生成と設定</span></span>
+<span id="cb16-60"><a href="#cb16-60"></a>msgBox <span class="op">=</span> Qw.QMessageBox(<span class="va">self</span>) <span class="co"># インスタンスの生成</span></span>
+<span id="cb16-61"><a href="#cb16-61"></a>msgBox.setWindowTitle(<span class="st">&#39;メッセージボックスのタイトル&#39;</span>)</span>
+<span id="cb16-62"><a href="#cb16-62"></a>msgBox.setText(<span class="st">&#39;ダイアログに表示するメッセージは</span><span class="ch">\n</span><span class="st">内部で改行することもできます。&#39;</span>)</span>
+<span id="cb16-63"><a href="#cb16-63"></a>msgBox.setIcon(Qw.QMessageBox.Icon.<span class="pp">Warning</span>)</span>
+<span id="cb16-64"><a href="#cb16-64"></a>msgBox.setStandardButtons(btn_type.Yes <span class="op">|</span> btn_type.No)</span>
+<span id="cb16-65"><a href="#cb16-65"></a></span>
+<span id="cb16-66"><a href="#cb16-66"></a><span class="co"># 表示と応答の取得・処理</span></span>
+<span id="cb16-67"><a href="#cb16-67"></a>ret <span class="op">=</span> msgBox.<span class="bu">exec</span>() <span class="co"># 表示と応答の取得</span></span>
+<span id="cb16-68"><a href="#cb16-68"></a><span class="cf">if</span> ret <span class="op">==</span> btn_type.Yes:</span>
+<span id="cb16-69"><a href="#cb16-69"></a>  msg <span class="op">=</span> <span class="st">&#39;[Yes] ボタン が押下されました。&#39;</span></span>
+<span id="cb16-70"><a href="#cb16-70"></a><span class="cf">elif</span> ret <span class="op">==</span> btn_type.No:</span>
+<span id="cb16-71"><a href="#cb16-71"></a>  msg <span class="op">=</span> <span class="st">&#39;[No] ボタン もしくは [X] ボタンが押下されました。&#39;</span></span>
+<span id="cb16-72"><a href="#cb16-72"></a><span class="cf">else</span> :</span>
+<span id="cb16-73"><a href="#cb16-73"></a>  msg <span class="op">=</span> <span class="st">&#39;予期せぬ応答が返ってきました。&#39;</span></span>
+<span id="cb16-74"><a href="#cb16-74"></a><span class="va">self</span>.lb_msg.setText(msg)</span></code></pre></div>
       <p><strong>第60行目</strong> で QMessageBox
       のインスタンスを生成して、変数 <code>msgBox</code>
       に格納しています。メッセージボックスのタイトルや表示するボタンなどの設定は、<code>.setXxxxx</code>
