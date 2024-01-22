@@ -750,7 +750,7 @@ class="toc-section-number">6.2</span>
       (フォルダのパス) を渡します。<strong>第40行目</strong>
       では「デスクトップ」が初期位置になるようにパスを取得しています。「デスクトップ」のパスは固定されたものではなく、環境やユーザーによって変わるため
       <code>os.path.expanduser</code>
-      を使用して取得しています。そのほかの特殊フォルダは次のように取得できます。
+      を使用して取得しています。そのほかの「<strong>特殊フォルダ</strong>」は次のように取得できます。
       <ul>
       <li>ドキュメント
       <code>os.path.expanduser('~/Documents')</code></li>
@@ -762,10 +762,10 @@ class="toc-section-number">6.2</span>
       選択可能なファイルのフィルタする文字列で設定します。例えば、フィルタ文字列を
       <code>Text file (*.txt);;CSV file (*.csv)</code> のように
       <code>;;</code>
-      で区切るとダイアログの右下部のドロップダウンメニューで切り替えができるようになります
+      で区切るとダイアログの右下部のドロップダウンメニューでファイルタイプの切り替えができるようになります
       (<strong>第41行目</strong>のように設定した場合との違いを確認してください)。フィルタ文字についての詳細は「<a
       href="https://www.google.com/search?q=Qt+QFileDialog+filter">Qt
-      QFileDialog filter</a>」などのでファイル検索してください。</li>
+      QFileDialog filter</a>」などで検索してください。</li>
       </ul>
       <figure>
       <img src="figs/26/qt-06.png" alt="img" />
