@@ -78,8 +78,15 @@ class="toc-section-number">5.2</span> 正規表現</a></li>
 <li><a href="#コンボボックス" id="toc-コンボボックス"><span
 class="toc-section-number">5.3</span> コンボボックス</a></li>
 </ul></li>
+<li><a href="#opencv-と-pyside6-の組合せ"
+id="toc-opencv-と-pyside6-の組合せ"><span
+class="toc-section-number">6</span> OpenCV と PySide6 の組合せ</a>
+<ul>
+<li><a href="#単純な画像表示" id="toc-単純な画像表示"><span
+class="toc-section-number">6.1</span> 単純な画像表示</a></li>
+</ul></li>
 <li><a href="#exeファイル化" id="toc-exeファイル化"><span
-class="toc-section-number">6</span> EXEファイル化</a></li>
+class="toc-section-number">7</span> EXEファイル化</a></li>
 </ul> 
         <!-- ---------------------------------------- -->
       </div>
@@ -160,24 +167,24 @@ cd Classmates-Dev-Hub/</code></pre>
       <code>38-Yamada</code> のように変更しています
       (クローンの手順については<a
       href="lecture15.html#git-clone-コマンドの実行">第15回講義</a>のなかで学習しました)。</p>
-      <pre><code>git clone https://github.com/Xxxx/Yyyy.git` 38-Yamada
+      <pre><code>git clone https://github.com/Xxxx/Yyyy.git 38-Yamada
 cd 38-Yamada</code></pre>
       <p><code>ls</code>
       コマンドなどでフォルダの内容を確認してください。</p>
       <p>次に、これらのプログラムを実行するため、pip
       を最新版にしてから仮想環境を構築して有効化します。ただし、現在使用中のターミナル
       (シェル) は <span class="masked">VSCode
-      のなかで使用している「PowerShell」</span>
+      でデフォルト使用している「PowerShell」</span>
       ではなく、「<strong>Bash</strong>」であるため、いつものように
       <code>.venv/Scripts/Activate.ps1</code>
       を実行しても、仮想環境は有効化されません( 拡張子 <code>.ps1</code>
       はPowerShellスクリプトの拡張子です)。</p>
       <p><strong>Bash 環境において仮想環境を有効化</strong>するためには
       <code>source .venv/Scripts/activate</code>
-      ようにコマンドを実行してください (sourceコマンドは <span
+      ようにコマンドを実行してください。sourceコマンドは <span
       class="masked">引数に与えたファイルに記述されたシェルスクリプトを実行</span>
       するためのコマンドで、主に Linuxで使用される Bash、tcsh、zsh
-      などのシェル環境で利用ができます)。</p>
+      などのシェル環境で利用ができます。</p>
       <pre><code>python -m pip install --upgrade pip
 python -m venv .venv
 source .venv/Scripts/activate</code></pre>
@@ -209,15 +216,15 @@ source .venv/Scripts/activate</code></pre>
       <strong><em>課題09</em></strong> を含む)、原則として
       <code>requirements.txt</code>
       を含めるようにしてください。<code>requirements.txt</code>
-      の作成の方法は<a
+      の作成方法は<a
       href="lecture22.html#環境構築">第22回講義</a>を参照してください。</p>
       <h2 data-number="2.3" id="プロジェクトの実行"><span
       class="header-section-number">2.3</span> プロジェクトの実行</h2>
-      <p>プログラムの <strong>エントリポイント</strong> (開始点) となる
-      Pythonファイル
-      を対象に、次のコマンドを実行します。プログラムが複数のファイルから構成される場合、エントリーポイントとなるPythonファイルには慣例的に
-      <code>main.py</code> や <code>app.py</code>
-      のような名前をつけます。</p>
+      <p>プログラムの <strong>エントリポイント</strong> (＝開始点)
+      となる Pythonファイル
+      を対象に、次のコマンドを実行します。プログラムが複数のファイルから構成される場合、エントリーポイントとなる
+      Pythonファイル には慣例的に <code>main.py</code> や
+      <code>app.py</code> のような名前をつけます。</p>
       <pre><code>python main.py</code></pre>
       <p>基本的には、以上の手順でプログラムが起動するはずです。うまく動作しない場合は
       <span class="masked">制作者に、直接、質問や相談</span>
@@ -234,7 +241,7 @@ source .venv/Scripts/activate</code></pre>
       を作成していない場合は、それプロジェクトフォルダのトップ階層
       (ルート) に作成して GitHub にプッシュせよ。</p>
       <p><strong>演習3</strong>:
-      実際に誰かのプロジェクトローカルPCにクローンして、プログラムを実行せよ。</p>
+      実際に誰かのプロジェクトをローカルPCにクローンして、プログラムを実行せよ。</p>
       <p><strong>(Ex)</strong>
       の演習は、授業時間外に取り組んでください</p>
       <h1 data-number="3" id="ライセンス"><span
@@ -571,8 +578,129 @@ source .venv/Scripts/activate</code></pre>
       では、新規のウィジェットとして「コンボボックス」を組み込んでいます。ラジオボタンと同じように1個の選択肢を得るものですが、選択候補が多数の場合に有効なウィジェットになります。</p>
       <p>この他、PySide6 (Qt6) で使用可能なウィジェットの一覧は<a
       href="https://doc.qt.io/qt-6/gallery.html">公式リファレンス</a>から確認することができます。どのようなウィジェットがあるか必ず確認してください。</p>
-      <h1 data-number="6" id="exeファイル化"><span
-      class="header-section-number">6</span> EXEファイル化</h1>
+      <h1 data-number="6" id="opencv-と-pyside6-の組合せ"><span
+      class="header-section-number">6</span> OpenCV と PySide6
+      の組合せ</h1>
+      <p><a href="lecture21.html#opencvを利用した画像処理">OpenCV</a>と
+      PySide6
+      を組み合わせた例を以下に示します。これらを組み合わせると簡単な画像処理アプリ(GUI)を作成することができます。</p>
+      <figure>
+      <img src="figs/27/app-03.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>OpenCV では画像を <code>numpy.ndarray</code>
+      オブジェクトとして扱いました。この <code>numpy.ndarray</code>
+      オブジェクトを PySide6 で表示するためには
+      <strong>第29行目</strong> の手順で
+      <code>PySide6.QtGui.QImage'</code>
+      に変換して、<strong>第37行目</strong>
+      のようにQLabelウィジェットに貼り付けて表示します。</p>
+      <p>実行するためには <code>pip install opencv-python</code>
+      でライブラリをインストール後、<code>qt-12.py</code>
+      と同じフォルダにに<a
+      href="figs/21/img-01.jpg">img-01.jpg</a>を配置してください。</p>
+      <div class="sourceCode" id="cb8" data-caption="qt-12.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="im">import</span> sys</span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="im">import</span> PySide6.QtWidgets <span class="im">as</span> Qw</span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="im">import</span> PySide6.QtGui <span class="im">as</span> Qg</span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="im">import</span> cv2</span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb8-6"><a href="#cb8-6"></a></span>
+<span id="cb8-7"><a href="#cb8-7"></a><span class="kw">class</span> MainWindow(Qw.QMainWindow):</span>
+<span id="cb8-8"><a href="#cb8-8"></a>  </span>
+<span id="cb8-9"><a href="#cb8-9"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb8-10"><a href="#cb8-10"></a></span>
+<span id="cb8-11"><a href="#cb8-11"></a>    <span class="bu">super</span>().<span class="fu">__init__</span>() </span>
+<span id="cb8-12"><a href="#cb8-12"></a>    <span class="va">self</span>.setWindowTitle(<span class="st">&#39;MainWindow&#39;</span>) </span>
+<span id="cb8-13"><a href="#cb8-13"></a>    <span class="va">self</span>.setGeometry(<span class="dv">100</span>, <span class="dv">50</span>, <span class="dv">685</span>, <span class="dv">280</span>) </span>
+<span id="cb8-14"><a href="#cb8-14"></a></span>
+<span id="cb8-15"><a href="#cb8-15"></a>    <span class="co"># OpenCVで画像ファイルを読込み</span></span>
+<span id="cb8-16"><a href="#cb8-16"></a>    img1 <span class="op">=</span> cv2.imread(<span class="st">&#39;img-01.jpg&#39;</span>)</span>
+<span id="cb8-17"><a href="#cb8-17"></a>    <span class="bu">print</span>(<span class="bu">type</span>(img1)) <span class="co"># =&gt; &lt;class &#39;numpy.ndarray&#39;&gt;</span></span>
+<span id="cb8-18"><a href="#cb8-18"></a></span>
+<span id="cb8-19"><a href="#cb8-19"></a>    <span class="co"># img1を320x240にリサイズ</span></span>
+<span id="cb8-20"><a href="#cb8-20"></a>    img1 <span class="op">=</span> cv2.resize(img1,(<span class="dv">320</span>,<span class="dv">240</span>),interpolation<span class="op">=</span>cv2.INTER_LANCZOS4)</span>
+<span id="cb8-21"><a href="#cb8-21"></a>    height, width, ch <span class="op">=</span> img1.shape</span>
+<span id="cb8-22"><a href="#cb8-22"></a></span>
+<span id="cb8-23"><a href="#cb8-23"></a>    <span class="co"># img1をimg2に複製。加工。</span></span>
+<span id="cb8-24"><a href="#cb8-24"></a>    img2 <span class="op">=</span> img1.copy()</span>
+<span id="cb8-25"><a href="#cb8-25"></a>    img2[<span class="dv">105</span>:<span class="dv">115</span>,<span class="dv">65</span>:<span class="dv">110</span>] <span class="op">=</span> np.array([<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>],dtype<span class="op">=</span>np.uint8)</span>
+<span id="cb8-26"><a href="#cb8-26"></a></span>
+<span id="cb8-27"><a href="#cb8-27"></a>    <span class="co"># np.ndarray オブジェクトを QImageオブジェクトに変換</span></span>
+<span id="cb8-28"><a href="#cb8-28"></a>    bpl <span class="op">=</span> ch <span class="op">*</span> width <span class="co"># bpl : bytes_per_line</span></span>
+<span id="cb8-29"><a href="#cb8-29"></a>    qimg1 <span class="op">=</span>Qg.QImage(img1.data, width, height, </span>
+<span id="cb8-30"><a href="#cb8-30"></a>                      bpl, Qg.QImage.Format.Format_BGR888)</span>
+<span id="cb8-31"><a href="#cb8-31"></a>    qimg2 <span class="op">=</span>Qg.QImage(img2.data, width, height, </span>
+<span id="cb8-32"><a href="#cb8-32"></a>                      bpl, Qg.QImage.Format.Format_BGR888)</span>
+<span id="cb8-33"><a href="#cb8-33"></a>    <span class="bu">print</span>(<span class="bu">type</span>(qimg1)) <span class="co"># =&gt; &lt;class &#39;PySide6.QtGui.QImage&#39;&gt;</span></span>
+<span id="cb8-34"><a href="#cb8-34"></a></span>
+<span id="cb8-35"><a href="#cb8-35"></a>    <span class="co"># QLabelに画像 qimg_1 を設定する</span></span>
+<span id="cb8-36"><a href="#cb8-36"></a>    <span class="va">self</span>.lb_img1 <span class="op">=</span> Qw.QLabel(<span class="va">self</span>)</span>
+<span id="cb8-37"><a href="#cb8-37"></a>    <span class="va">self</span>.lb_img1.setPixmap(Qg.QPixmap.fromImage(qimg1))</span>
+<span id="cb8-38"><a href="#cb8-38"></a>    <span class="va">self</span>.lb_img1.setGeometry(<span class="dv">15</span>,<span class="dv">10</span>,width,height)</span>
+<span id="cb8-39"><a href="#cb8-39"></a></span>
+<span id="cb8-40"><a href="#cb8-40"></a>    <span class="co"># QLabelに画像 qimg_2 を設定する</span></span>
+<span id="cb8-41"><a href="#cb8-41"></a>    <span class="va">self</span>.lb_img2 <span class="op">=</span> Qw.QLabel(<span class="va">self</span>)</span>
+<span id="cb8-42"><a href="#cb8-42"></a>    <span class="va">self</span>.lb_img2.setPixmap(Qg.QPixmap.fromImage(qimg2))</span>
+<span id="cb8-43"><a href="#cb8-43"></a>    <span class="va">self</span>.lb_img2.setGeometry(<span class="dv">350</span>,<span class="dv">10</span>,width,height)</span>
+<span id="cb8-44"><a href="#cb8-44"></a></span>
+<span id="cb8-45"><a href="#cb8-45"></a>    <span class="co"># ラベル1</span></span>
+<span id="cb8-46"><a href="#cb8-46"></a>    <span class="va">self</span>.lb_title1 <span class="op">=</span> Qw.QLabel(<span class="va">self</span>)</span>
+<span id="cb8-47"><a href="#cb8-47"></a>    <span class="va">self</span>.lb_title1.setText(<span class="st">&#39;加工前&#39;</span>)</span>
+<span id="cb8-48"><a href="#cb8-48"></a>    <span class="va">self</span>.lb_title1.setGeometry(<span class="dv">15</span>,<span class="dv">250</span>,<span class="dv">100</span>,<span class="dv">25</span>)</span>
+<span id="cb8-49"><a href="#cb8-49"></a></span>
+<span id="cb8-50"><a href="#cb8-50"></a>    <span class="co"># ラベル1</span></span>
+<span id="cb8-51"><a href="#cb8-51"></a>    <span class="va">self</span>.lb_title2 <span class="op">=</span> Qw.QLabel(<span class="va">self</span>)</span>
+<span id="cb8-52"><a href="#cb8-52"></a>    <span class="va">self</span>.lb_title2.setText(<span class="st">&#39;加工後&#39;</span>)</span>
+<span id="cb8-53"><a href="#cb8-53"></a>    <span class="va">self</span>.lb_title2.setGeometry(<span class="dv">350</span>,<span class="dv">250</span>,<span class="dv">100</span>,<span class="dv">25</span>)</span>
+<span id="cb8-54"><a href="#cb8-54"></a></span>
+<span id="cb8-55"><a href="#cb8-55"></a><span class="co"># 本体</span></span>
+<span id="cb8-56"><a href="#cb8-56"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&#39;__main__&#39;</span>:</span>
+<span id="cb8-57"><a href="#cb8-57"></a>  app <span class="op">=</span> Qw.QApplication(sys.argv)</span>
+<span id="cb8-58"><a href="#cb8-58"></a>  main_window <span class="op">=</span> MainWindow()</span>
+<span id="cb8-59"><a href="#cb8-59"></a>  main_window.show()</span>
+<span id="cb8-60"><a href="#cb8-60"></a>  sys.exit(app.<span class="bu">exec</span>())</span></code></pre></div>
+      <h2 data-number="6.1" id="単純な画像表示"><span
+      class="header-section-number">6.1</span> 単純な画像表示</h2>
+      <p>プログラムのなかで複雑な画像処理をせず、<strong>画像を表示するだけ</strong>であれば、以下のようにシンプルに記述することができます。</p>
+      <div class="sourceCode" id="cb9" data-caption="qt-13.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="im">import</span> sys</span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="im">import</span> PySide6.QtCore <span class="im">as</span> Qc</span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="im">import</span> PySide6.QtWidgets <span class="im">as</span> Qw</span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="im">import</span> PySide6.QtGui <span class="im">as</span> Qg</span>
+<span id="cb9-5"><a href="#cb9-5"></a></span>
+<span id="cb9-6"><a href="#cb9-6"></a><span class="kw">class</span> MainWindow(Qw.QMainWindow):</span>
+<span id="cb9-7"><a href="#cb9-7"></a>  </span>
+<span id="cb9-8"><a href="#cb9-8"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb9-9"><a href="#cb9-9"></a></span>
+<span id="cb9-10"><a href="#cb9-10"></a>    <span class="bu">super</span>().<span class="fu">__init__</span>() </span>
+<span id="cb9-11"><a href="#cb9-11"></a>    <span class="va">self</span>.setWindowTitle(<span class="st">&#39;MainWindow&#39;</span>) </span>
+<span id="cb9-12"><a href="#cb9-12"></a>    <span class="va">self</span>.setGeometry(<span class="dv">100</span>, <span class="dv">50</span>, <span class="dv">350</span>, <span class="dv">280</span>) </span>
+<span id="cb9-13"><a href="#cb9-13"></a></span>
+<span id="cb9-14"><a href="#cb9-14"></a>    <span class="co"># PySideの機能で画像の読込みとリサイズ</span></span>
+<span id="cb9-15"><a href="#cb9-15"></a>    width, height <span class="op">=</span> <span class="dv">320</span>, <span class="dv">240</span></span>
+<span id="cb9-16"><a href="#cb9-16"></a>    pm1 <span class="op">=</span> Qg.QPixmap(<span class="st">&#39;img-01.jpg&#39;</span>)</span>
+<span id="cb9-17"><a href="#cb9-17"></a>    pm1 <span class="op">=</span> pm1.scaled( width, height, </span>
+<span id="cb9-18"><a href="#cb9-18"></a>                      Qc.Qt.AspectRatioMode.KeepAspectRatio)</span>
+<span id="cb9-19"><a href="#cb9-19"></a></span>
+<span id="cb9-20"><a href="#cb9-20"></a>    <span class="co"># QLabelに「画像」をセット</span></span>
+<span id="cb9-21"><a href="#cb9-21"></a>    <span class="va">self</span>.lb_img1 <span class="op">=</span> Qw.QLabel(<span class="va">self</span>)</span>
+<span id="cb9-22"><a href="#cb9-22"></a>    <span class="va">self</span>.lb_img1.setPixmap(pm1)</span>
+<span id="cb9-23"><a href="#cb9-23"></a>    <span class="va">self</span>.lb_img1.setGeometry(<span class="dv">15</span>,<span class="dv">10</span>,width,height)</span>
+<span id="cb9-24"><a href="#cb9-24"></a></span>
+<span id="cb9-25"><a href="#cb9-25"></a>    <span class="co"># QLabelに「文字列」をセット</span></span>
+<span id="cb9-26"><a href="#cb9-26"></a>    <span class="va">self</span>.lb_title1 <span class="op">=</span> Qw.QLabel(<span class="va">self</span>)</span>
+<span id="cb9-27"><a href="#cb9-27"></a>    <span class="va">self</span>.lb_title1.setText(<span class="st">&#39;加工前&#39;</span>)</span>
+<span id="cb9-28"><a href="#cb9-28"></a>    <span class="va">self</span>.lb_title1.setGeometry(<span class="dv">15</span>,<span class="dv">250</span>,<span class="dv">100</span>,<span class="dv">25</span>)</span>
+<span id="cb9-29"><a href="#cb9-29"></a></span>
+<span id="cb9-30"><a href="#cb9-30"></a><span class="co"># 本体</span></span>
+<span id="cb9-31"><a href="#cb9-31"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&#39;__main__&#39;</span>:</span>
+<span id="cb9-32"><a href="#cb9-32"></a>  app <span class="op">=</span> Qw.QApplication(sys.argv)</span>
+<span id="cb9-33"><a href="#cb9-33"></a>  main_window <span class="op">=</span> MainWindow()</span>
+<span id="cb9-34"><a href="#cb9-34"></a>  main_window.show()</span>
+<span id="cb9-35"><a href="#cb9-35"></a>  sys.exit(app.<span class="bu">exec</span>())</span></code></pre></div>
+      <h1 data-number="7" id="exeファイル化"><span
+      class="header-section-number">7</span> EXEファイル化</h1>
       <p>Python で開発されたアプリを実行するには、実行環境に Python や
       ライブラリ がインストールされている必要があります。しかし、Python
       環境をセットアップすることは、<strong>一般のPCユーザーにとってはかなりハードルが高い作業</strong>
