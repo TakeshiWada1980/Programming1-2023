@@ -704,9 +704,11 @@ source .venv/Scripts/activate</code></pre>
       <p>Python で開発されたアプリを実行するには、実行環境に Python や
       ライブラリ がインストールされている必要があります。しかし、Python
       環境をセットアップすることは、<strong>一般のPCユーザーにとってはかなりハードルが高い作業</strong>
-      になります。この問題を解決するため、Python プログラムを <span
-      class="masked">実行ファイル (EXEファイル)
-      に変換して配布する</span> という方法が用いられます。</p>
+      になります。アプリを開発しても、<span
+      class="masked">他者に利用してもらえなければ、開発の意欲・モチベーションを保つこと</span>
+      は難しくなります。この問題を解決法として、Python プログラムを
+      <span class="masked">実行ファイル (EXEファイル)
+      に変換して配布する</span> という手段があります。</p>
       <p>EXE化するためのツールには<a
       href="https://pypi.org/project/py2exe/">py2exe</a>や<a
       href="https://pypi.org/project/py2app/">py2app</a>、<a
@@ -724,9 +726,9 @@ source .venv/Scripts/activate</code></pre>
       のようなメッセージが表示されます。これは、変換プロセスが成功したことを意味します。</p>
       <p>プロジェクトフォルダに <code>dist</code>
       というフォルダが作成され、そこに <code>main.exe</code>
-      のようなファイルが生成されます。<code>dist</code> は「Distribution
-      (配布・配給)」の略語になります。また、プロジェクトフォルダに
-      <code>build</code>
+      のようなファイルが生成されます。<code>dist</code> は <span
+      class="masked">Distribution (配布・配給)</span>
+      の略語になります。また、プロジェクトフォルダに <code>build</code>
       という中間ファイルを収納するファルダも作成されます
       (このフォルダの内容は消しても問題ありません)。</p>
       <p>なお、次のように <code>--noconsole</code> オプションをつけると
@@ -740,6 +742,11 @@ source .venv/Scripts/activate</code></pre>
       などのリモートリポジトリには <code>dist</code> や
       <code>build</code> を含めません。<code>.gitignore</code>
       にこれらを除外するように設定します。</p>
+      <p>特に GitHub
+      には、1ファイル100MBを超えるものは基本的にプッシュできません。PythonプログラムをEXE化するとファイルサイズが非常に大きくなるので、それらは別途、GoogleDrive
+      などでの配布を検討してください。GoogleDrive には、直接
+      EXEファイルをアップできないので、ZIP圧縮してアップするようにしてください。</p>
+      <hr />
       <p><strong>演習</strong> : Pythonプログラム <code>qt-11.py</code>
       をEXEファイルに変換せよ。</p>
       <!-- ---------------------------------------- -->
