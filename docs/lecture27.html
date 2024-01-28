@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+
+    <script>
+      MathJax = {
+        chtml: {
+          displayAlign: "left",
+          displayIndent: "1em",
+        },
+      };
+    </script>
+
+    
+
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>第27回 2I-プログラミング1</title>
+  </head>
+
+  <body>
+    <div class="openbtn"><span></span><span></span><span></span></div>
+    <nav id="g-nav">
+      <div id="g-nav-list">
+        <!-- ---------------------------------------- -->
+         <ul>
+<li><a href="#連絡" id="toc-連絡"><span
+class="toc-section-number">1</span> 連絡</a></li>
+<li><a href="#クラスメイトの作品のクローンと実行"
+id="toc-クラスメイトの作品のクローンと実行"><span
+class="toc-section-number">2</span>
+クラスメイトの作品のクローンと実行</a>
+<ul>
+<li><a href="#リポジトリのクローン" id="toc-リポジトリのクローン"><span
+class="toc-section-number">2.1</span> リポジトリのクローン</a></li>
+<li><a href="#ライブラリのインストール"
+id="toc-ライブラリのインストール"><span
+class="toc-section-number">2.2</span> ライブラリのインストール</a></li>
+<li><a href="#プロジェクトの実行" id="toc-プロジェクトの実行"><span
+class="toc-section-number">2.3</span> プロジェクトの実行</a></li>
+</ul></li>
+<li><a href="#ライセンス" id="toc-ライセンス"><span
+class="toc-section-number">3</span> ライセンス</a>
+<ul>
+<li><a href="#ライセンスファイの追加"
+id="toc-ライセンスファイの追加"><span
+class="toc-section-number">3.1</span> ライセンスファイの追加</a></li>
+<li><a href="#reamde.md-に記載" id="toc-reamde.md-に記載"><span
+class="toc-section-number">3.2</span> REAMDE.md に記載</a></li>
+</ul></li>
+<li><a href="#課題09" id="toc-課題09"><span
+class="toc-section-number">4</span> 課題09</a></li>
+<li><a href="#正規表現" id="toc-正規表現"><span
+class="toc-section-number">5</span> 正規表現</a>
+<ul>
+<li><a href="#バリデーション" id="toc-バリデーション"><span
+class="toc-section-number">5.1</span> バリデーション</a></li>
+<li><a href="#正規表現-1" id="toc-正規表現-1"><span
+class="toc-section-number">5.2</span> 正規表現</a></li>
+<li><a href="#コンボボックス" id="toc-コンボボックス"><span
+class="toc-section-number">5.3</span> コンボボックス</a></li>
+</ul></li>
+<li><a href="#exeファイル化" id="toc-exeファイル化"><span
+class="toc-section-number">6</span> EXEファイル化</a></li>
+</ul> 
+        <!-- ---------------------------------------- -->
+      </div>
+    </nav>
+
+    <header class="markdown-body">
+      <p>2023-2I プログラミング1 第27回 講義資料</p>
+      <p>2024年01月29日（月）1・2時限</p>
+    </header>
+
+    <main class="markdown-body">
+      <!-- ---------------------------------------- -->
+      <h1 data-number="1" id="連絡"><span
+      class="header-section-number">1</span> 連絡</h1>
+      <ul>
+      <li>2024年3月までに <strong>OMUメールのセットアップ
+      (スマホアプリの設定)</strong>、gmail や GoogleDrive
+      のバックアップなどが必要なります。詳しくは <a
+      href="https://classroom.google.com/c/NjAyNDMyMzIwNzg2/m/NjQ1OTk3Nzc5NzAy/details">GoogleClassroom</a>
+      で案内しています。
+      <ul>
+      <li>2024年3月末までは、新旧の2つのメールアカウントを確認するようにしてください。進級に関わる重要なメールを見逃すことが無いように十分に注意してください。</li>
+      <li>メールとGoogleドライブのファイルを「旧」から「新」に移行するためには、「旧」のほうで<a
+      href="https://takeout.google.com/transfer?hl=ja">コンテンツの移行</a>を実行すると便利です。</li>
+      </ul></li>
+      </ul>
+      <h1 data-number="2" id="クラスメイトの作品のクローンと実行"><span
+      class="header-section-number">2</span>
+      クラスメイトの作品のクローンと実行</h1>
+      <p><a
+      href="lecture24.html#課題08-自由作品">課題08</a>としてGitHubに公開されているクラスメイトの制作物を、各自のローカルPCに「<strong>クローン</strong>」して実行するための手順について解説します。</p>
+      <h2 data-number="2.1" id="リポジトリのクローン"><span
+      class="header-section-number">2.1</span> リポジトリのクローン</h2>
+      <p>ここでは久しぶりに Git Bash ターミナルを使用します。Windows
+      のスタートボタンを右クリックして「<strong>ターミナル</strong>」を起動し、ターミナルタブを
+      <strong><em>Git Bash</em></strong> に切り替えください。</p>
+      <figure>
+      <img src="figs/14/bash-terminal.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>Git Bash ターミナルで、ドキュメント
+      (<code>C:\Users\xxxx\Documents</code>)
+      などの適当なフォルダに移動して <code>Classmates-Dev-Hub</code>
+      というフォルダを新規作成して、そのなかに移動してください。このフォルダの内部に、クラスメイトが制作した
+      <strong><em>課題08</em></strong>
+      のリモートリポジトリをクローンしていきます。</p>
+      <pre><code>cd c:Users/xxxx/Documents
+mkdir Classmates-Dev-Hub
+cd Classmates-Dev-Hub/</code></pre>
+      <p><a
+      href="https://classroom.google.com/c/NjAyNDMyMzIwNzg2/a/NjUwNDMxNTczMjAz/details">GoogleClassroom</a>に配置している「ポートフォリオ一覧」から、各ポートフォリオにアクセスし、さらにそこからGitHub
+      のリモートリポジトリ
+      (＝<strong>制作物を公開しているプロジェクトのトップページ</strong>)
+      にアクセスしてください。</p>
+      <p>プロジェクトのトップページにアクセスしたら、次の図のように
+      [Code] - [Code] - [HTTPS] -<i class="fa-regular fa-clone"></i>
+      の順にたどって「<strong>リモートリポジトリのURL</strong>」をクリップボードにコピーしてください。「リモートリポジトリのURL」とは
+      <code>https://github.com/Xxxx/Yyyy.git</code> のように <span
+      class="masked">アドレスの末尾が「<code>.git</code>」</span>
+      となっているものです。また、トップページに表示されている
+      <code>README.md</code>
+      についても同時に確認しておいてください。</p>
+      <figure>
+      <img src="figs/27/git-01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <div class="note type-tips">
+      <p><strong>README.mdの確認</strong></p>
+      <p><a
+      href="lecture14.html#github-に正常発行されていることを確認">第14回講義</a>で学習したように、プロジェクトフォルダのトップ階層に
+      <code>README.md</code> という名前のファイル (マークダウン形式)
+      を配置しておくと、リポジトリのトップページに、その内容が表示されるようになります。一般には、プロジェクトの概要、制作期間、実行方法、ライセンス、操作方法などを記載します。</p>
+      <p>GitHub で公開するプロジェクトには、原則として
+      <code>README.md</code> を配置するようにしてください。</p>
+      </div>
+      <p>Git Bash ターミナルに戻ります。</p>
+      <p>次のコマンドを入力して「<strong>クローン</strong>」を実行し、さらに、そのフォルダのなかに移動してください。ここでは「だれが制作したプロジェクトなのか」が分かりやすいようにクローン先（展開先）のフォルダを
+      <code>38-Yamada</code> のように変更しています
+      (クローンの手順については<a
+      href="lecture15.html#git-clone-コマンドの実行">第15回講義</a>のなかで学習しました)。</p>
+      <pre><code>git clone https://github.com/Xxxx/Yyyy.git` 38-Yamada
+cd 38-Yamada</code></pre>
+      <p><code>ls</code>
+      コマンドなどでフォルダの内容を確認してください。</p>
+      <p>次に、これらのプログラムを実行するため、pip
+      を最新版にしてから仮想環境を構築して有効化します。ただし、現在使用中のターミナル
+      (シェル) は <span class="masked">VSCode
+      のなかで使用している「PowerShell」</span>
+      ではなく、「<strong>Bash</strong>」であるため、いつものように
+      <code>.venv/Scripts/Activate.ps1</code>
+      を実行しても、仮想環境は有効化されません( 拡張子 <code>.ps1</code>
+      はPowerShellスクリプトの拡張子です)。</p>
+      <p><strong>Bash 環境において仮想環境を有効化</strong>するためには
+      <code>source .venv/Scripts/activate</code>
+      ようにコマンドを実行してください (sourceコマンドは <span
+      class="masked">引数に与えたファイルに記述されたシェルスクリプトを実行</span>
+      するためのコマンドで、主に Linuxで使用される Bash、tcsh、zsh
+      などのシェル環境で利用ができます)。</p>
+      <pre><code>python -m pip install --upgrade pip
+python -m venv .venv
+source .venv/Scripts/activate</code></pre>
+      <p>Git Bash
+      ターミナルで仮想環境が有効化されると、入力プロンプトの前に
+      <code>(.venv)</code>
+      の文字列が付きます。なお、この仮想環境を抜けるためには、単に
+      <code>deactivate</code>
+      とコマンドと打ち込みます。仮想環境が無効化されれば
+      <code>(.venv)</code> の文字列は消えます。</p>
+      <h2 data-number="2.2" id="ライブラリのインストール"><span
+      class="header-section-number">2.2</span>
+      ライブラリのインストール</h2>
+      <p><code>ls</code> でファイルを一覧表示して
+      <code>requirements.txt</code>
+      が存在すれば、<code>pip install -r requirements.txt</code>
+      でライブラリを <span
+      class="masked">一括インストール</span>します。<code>requirements.txt</code>
+      は、プログラムの実行に必要なライブラリの一覧を示したテキストファイルで、<a
+      href="lecture22.html#環境構築">第22回講義</a>のなかで詳細を説明しています。</p>
+      <pre><code>pip install -r requirements.txt</code></pre>
+      <p>もし、フォルダのなかに <code>requirements.txt</code>
+      が存在しなければ、各Pythonファイルの冒頭に記述される
+      <code>imoport</code>
+      から必要なライブラリを判断して、個々にインストールしてください。このような作業は、非常に面倒であるため、通常は
+      <code>requirements.txt</code> を用意します。</p>
+      <p>今後、GitHub
+      などのリモートリポジトリにPythonプロジェクトを公開する際は (
+      <strong><em>課題09</em></strong> を含む)、原則として
+      <code>requirements.txt</code>
+      を含めるようにしてください。<code>requirements.txt</code>
+      の作成の方法は<a
+      href="lecture22.html#環境構築">第22回講義</a>を参照してください。</p>
+      <h2 data-number="2.3" id="プロジェクトの実行"><span
+      class="header-section-number">2.3</span> プロジェクトの実行</h2>
+      <p>プログラムの <strong>エントリポイント</strong> (開始点) となる
+      Pythonファイル
+      を対象に、次のコマンドを実行します。プログラムが複数のファイルから構成される場合、エントリーポイントとなるPythonファイルには慣例的に
+      <code>main.py</code> や <code>app.py</code>
+      のような名前をつけます。</p>
+      <pre><code>python main.py</code></pre>
+      <p>基本的には、以上の手順でプログラムが起動するはずです。うまく動作しない場合は
+      <span class="masked">制作者に、直接、質問や相談</span>
+      してください。</p>
+      <p>また、Git Bashターミナルからは <code>code . &amp;</code>
+      コマンドでプロジェクトをVSCodeでオープンすることができるので、プログラムそのものを読むこともできます。<strong>自分が以外が書いたプログラムを読むこと</strong>は、非常に勉強になるので、それも是非トライしてください。</p>
+      <hr />
+      <p><strong>演習1</strong>:「課題08」において
+      <code>requirements.txt</code>
+      を作成していない場合は、それをプロジェクトフォルダのトップ階層
+      (ルート) に作成して GitHub にプッシュせよ。</p>
+      <p><strong>演習2 (Ex)</strong> :「課題08」において
+      <code>README.md</code>
+      を作成していない場合は、それプロジェクトフォルダのトップ階層
+      (ルート) に作成して GitHub にプッシュせよ。</p>
+      <p><strong>演習3</strong>:
+      実際に誰かのプロジェクトローカルPCにクローンして、プログラムを実行せよ。</p>
+      <p><strong>(Ex)</strong>
+      の演習は、授業時間外に取り組んでください</p>
+      <h1 data-number="3" id="ライセンス"><span
+      class="header-section-number">3</span> ライセンス</h1>
+      <p><a
+      href="lecture25.html#pyside">前々回の講義</a>で説明したように
+      PySide6 は <strong>Lesser General Public License 3.0
+      (LGPLv3)</strong>
+      というライセンスのもとで公開・配布されています。このため、<span
+      class="masked">PySide6
+      を使用して開発したアプリケーションを公開・配布</span>
+      する際には、LGPLv3
+      と互換性のあるライセンスを選択して、そのライセンスを適用する必要があります。</p>
+      <p>具体的には「LGPLv3」「MIT License」「GPLv3」「Apache License
+      2.0」などの互換性があるライセンスの下で自作のアプリを公開・配布する必要があります。各ライセンスの概要については
+      <span class="masked">ウェブ検索やChatGPTなど</span>
+      で把握してください。</p>
+      <p>ここでは、PySide6 と同じ <strong>LGPLv3 ライセンス</strong>
+      で自作アプリを公開・配布する手順を解説します。これによりライセンス違反を指摘されることを避けることができます。</p>
+      <h2 data-number="3.1" id="ライセンスファイの追加"><span
+      class="header-section-number">3.1</span>
+      ライセンスファイの追加</h2>
+      <p>プロジェクトフォルダのトップ階層 (ルート) に
+      <code>LICENSE.txt</code> という名前のファイルを作成して<a
+      href="https://www.gnu.org/licenses/lgpl-3.0.html.en">GNU公式ウェブサイト</a>から「LGPLv3
+      ライセンス全文」をコピーして貼り付けます。</p>
+      <blockquote>
+      <p>GNU LESSER GENERAL PUBLIC LICENSE<br> Version 3, 29 June
+      2007<br> Copyright © 2007 Free Software Foundation, Inc. <a
+      href="https://fsf.org/" class="uri">https://fsf.org/</a><br></p>
+      </blockquote>
+      <p>(中略)</p>
+      <blockquote>
+      <p>If the Library as you received it specifies that a proxy can
+      decide whether future versions of the GNU Lesser General Public
+      License shall apply, that proxy’s public statement of acceptance
+      of any version is permanent authorization for you to choose that
+      version for the Library.</p>
+      </blockquote>
+      <p>ここでは、<strong>(中略)</strong> としていますが、実際の
+      <code>LICENSE.txt</code> では文章を略さないでください。</p>
+      <h2 data-number="3.2" id="reamde.md-に記載"><span
+      class="header-section-number">3.2</span> REAMDE.md に記載</h2>
+      <p>プロジェクトフォルダのルートに配置した <code>REAMDE.md</code>
+      の最後に以下のような内容を記載します。</p>
+      <div class="sourceCode" id="cb6" data-caption="REAMDE.md"><pre
+      class="sourceCode md"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(略)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu"># ライセンス</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>このアプリケーションは GNU Lesser General Public License v3.0 のもとで公開されています。詳細は <span class="in">`LICENSE.txt`</span> ファイルを参照してください。</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>このアプリケーションは PySide6 を利用しています。PySide6 は LGPL v3 ライセンスの下で公開されています。詳細は <span class="co">[</span><span class="ot">こちら</span><span class="co">](https://www.qt.io/licensing/)</span> を参照してください。</span></code></pre></div>
+      <p>以上の手順に従えば、ライセンス違反の問題は<strong>基本的に</strong>回避できます。</p>
+      <p>個人的な趣味の範囲でアプリを開発して、ひっそりとGitHubで公開しているレベルにおいては、ライセンス違反が指摘されることはほとんどありません。しかし、皆さんは将来的にはプロになる立場であり、いまのうちからライセンスについて意識を持っておくことは非常に重要です。</p>
+      <h1 data-number="4" id="課題09"><span
+      class="header-section-number">4</span> 課題09</h1>
+      <p>プログラミング1の課題としては「最終の課題」となります。「<strong>PySide
+      を利用した GUIアプリ
+      (自由作品)</strong>」を作成し、そのプログラムを
+      <strong>GitHubに公開</strong> するとともに <span
+      class="masked">課題07で作成したポートフォリオに概要を掲載</span>してください。</p>
+      <ul>
+      <li><strong><em>提出物・提出先</em></strong> :
+      <strong>GitHubリポジトリのURL</strong> を<a
+      href="">GoogleClassroom</a>に提出してください。「<i class="fa-solid fa-plus"></i>
+      <strong>追加または作成</strong>」から「<i class="fa-solid fa-link"></i>
+      <strong>リンク</strong>」を選んで提出してください。
+      <ul>
+      <li>ポートフォリオの内容は、以前に<a
+      href="lecture18.html#課題07">課題07</a>で提出いただいたURLから確認します。もし、URLが変更されている場合は、個別にLINEで連絡をください。</li>
+      <li>提出された課題 (ポートフォリオ) は
+      <strong>知能情報コースの学生と教員、保護者に公開</strong>
+      します。</li>
+      </ul></li>
+      <li><strong><em>提出期限</em></strong> : <strong>2024年02月25日
+      (日) 23時</strong>
+      <ul>
+      <li>取組みの目安となる時間: <strong>6時間以上</strong></li>
+      <li>本科目には中間試験や期末試験などの筆記試験がありません。それらの試験勉強時間の代替として本課題に取り組んでください。</li>
+      </ul></li>
+      <li><strong><em>評価</em></strong>
+      :「8点」を標準として「10点満点」で評価します
+      (学年末の成績評価の際には「重み」が付けられます)。</li>
+      <li><strong><em>注意-1</em></strong> : GitHubリポジトリ
+      (プロジェクトフォルダ) には、必ず <code>README.md</code> と
+      <code>requirements.txt</code>
+      を含めてください。一方で、<code>.venv</code> や
+      <code>.vscode</code> などは含まれないように
+      <code>.gitignore</code> で設定してください (詳細は<a
+      href="lecture16.html#アリス役のステップ-2">第16回講義</a>を参照)。</li>
+      <li><strong><em>注意-2</em></strong> :
+      プログラムは必ず2個以上のファイルに分割して構成し、<strong>エントリポイント</strong>
+      となるファイルは <code>main.py</code> としてください
+      (ターミナルから <code>python main.py</code>
+      でアプリが起動するようにしてください) 。ファイル分割については<a
+      href="lecture22.html#プログラムのファイル分割">第22回講義</a>を参考にしてください。</li>
+      </ul>
+      <hr />
+      <p>ポートフォリオに作品として掲載する際、必ず、<strong>次の内容を含めてください</strong>。これらに漏れがあると
+      <strong>6点以下の評価</strong>
+      になります。細かな書式や形式については自由です。</p>
+      <ul>
+      <li>制作時期として「2024年2月」のような情報を明記してください。日付のフォーマットは自由です
+      (例えば「2024/02」や「February
+      2024」などでもOKです)。この制作時期の情報から、それが本科目の「課題09」であることを識別します。</li>
+      <li>作品の「<strong>タイトル</strong>」と「<strong>説明文章</strong>」を書いてください。説明文章は
+      <strong>200文字以上</strong>
+      を記載してください。なお、タイトルに「課題09」のような言葉は <span
+      class="masked">不要</span>です。</li>
+      <li><strong>3枚以上のスクリーンショット</strong>を載せてください。スクリーンショットの代わりに<strong>動画やGIFアニメーションなどでも可</strong>です。ただし、GitHubには
+      25MB を超える動画はアップできないので注意してください
+      (必要に応じてYouTubeなどにアップして、それをページに埋め込みしてください)。</li>
+      <li><strong>GitHubリポジトリへのリンク</strong>を載せてください。</li>
+      </ul>
+      <h1 data-number="5" id="正規表現"><span
+      class="header-section-number">5</span> 正規表現</h1>
+      <p><strong>正規表現</strong> (Regular Expression)
+      とは、<strong>特定のシンボルや記号で構成された特別な文字列</strong>
+      (これを <strong><em>パターン</em></strong> という)
+      を使用し、文字列の <span class="masked">検索、置換、分析</span>
+      を効率的かつ強力に行なうための仕組みです。正規表現は、Pythonをはじめとして様々なプログラミング言語でライブラリとして利用可能です。また、VSCodeなどのテキストエディタや、データ処理ツールでも対応している製品が多くあります。</p>
+      <p>例えば、正規表現を使用すると、ユーザが入力する「電話番号」「メールアドレス」「URL」「郵便番号」「IPアドレス」「日付」「時刻」などが
+      <span
+      class="masked">適切な形式で記述されているかどうか</span>を、<strong>複雑なロジックを構築することなく確認すること</strong>、つまり、<strong>バリデーション
+      (Validation)</strong> が可能になります。</p>
+      <p>さらに、文章中から特定の規則を持った文字列を検索・抽出することや、それらを一定の規則で置き換えることも可能です。例えば、テキストファイルのなかから「R29001」「r29031」「ｒ２９15８」のように「大文字と小文字」「半角と全角」が混在した学籍番号の文字列を検索し、それらを全て半角大文字の学籍番号、つまり「R29001」「R29031」「R29158」のように置換する処理も可能です。</p>
+      <p>このように正規表現は、かなり強力なツールになりますが、利用に際しては
+      <span class="masked">適切にパターンを記述</span>
+      する必要があります。パターンの記述は経験と知識を必要とするものでしたが、現在では、複雑なパターンも
+      ChatGPT などの 生成AI
+      を活用して、自然言語を用いた対話的な方法で生成することが可能になりました。</p>
+      <p>ここでは、PySideと組み合わせて正規表現について学んでいきます。</p>
+      <h2 data-number="5.1" id="バリデーション"><span
+      class="header-section-number">5.1</span> バリデーション</h2>
+      <p>ウェブアプリやGUIアプリにおける <strong>バリデーション
+      (検証)</strong> とは、ユーザからの入力 (例えば<span
+      class="masked">電話番号や郵便番号、メールアドレス、パスワードなど</span>)
+      が「<strong>期待される形式や条件を満たしているか</strong>」を確認する手続きを意味します。</p>
+      <p>ウェブサービスの登録フォームなどで見かけることがあると思います。</p>
+      <p>ここでは、以下のようなGUIアプリの「<strong>携帯電話番号の入力</strong>」に関するバリデーションを
+      <span class="masked">正規表現 (Regular
+      Expression)</span>を利用して実装してみたいと思います。</p>
+      <figure>
+      <img src="figs/27/app-01.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p>前々回に作成したPySideのプロジェクトフォルダに
+      <code>qt-11.py</code>
+      というファイルを新規作成して、以下の内容を貼付けて実行してください。</p>
+      <div class="sourceCode" id="cb7" data-caption="qt-11.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="im">import</span> sys</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="im">import</span> PySide6.QtCore <span class="im">as</span> Qc</span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="im">import</span> PySide6.QtWidgets <span class="im">as</span> Qw</span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="im">import</span> re</span>
+<span id="cb7-5"><a href="#cb7-5"></a></span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="co"># 都道府県タプル (末尾の「空欄」を含む)</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a>pref_list <span class="op">=</span> (<span class="st">&#39;北海道&#39;</span>,<span class="st">&#39;東京都&#39;</span>,<span class="st">&#39;大阪府&#39;</span>,<span class="st">&#39;鹿児島県&#39;</span>,<span class="st">&#39;沖縄県&#39;</span>,<span class="st">&#39;&#39;</span>)</span>
+<span id="cb7-8"><a href="#cb7-8"></a></span>
+<span id="cb7-9"><a href="#cb7-9"></a><span class="co"># 電話番号のバリエーション (検証)</span></span>
+<span id="cb7-10"><a href="#cb7-10"></a><span class="kw">def</span> validate_tel_number(tel:<span class="bu">str</span>)<span class="op">-&gt;</span><span class="bu">bool</span>:</span>
+<span id="cb7-11"><a href="#cb7-11"></a>  pattern <span class="op">=</span> <span class="vs">r&#39;^\d</span><span class="sc">{3}</span><span class="vs">-\d</span><span class="sc">{4}</span><span class="vs">-\d</span><span class="sc">{4}</span><span class="vs">$&#39;</span> <span class="co"># 正規表現パターン</span></span>
+<span id="cb7-12"><a href="#cb7-12"></a>  <span class="cf">if</span> re.match(pattern, tel):</span>
+<span id="cb7-13"><a href="#cb7-13"></a>    <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb7-14"><a href="#cb7-14"></a>  <span class="cf">else</span>:</span>
+<span id="cb7-15"><a href="#cb7-15"></a>    <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb7-16"><a href="#cb7-16"></a></span>
+<span id="cb7-17"><a href="#cb7-17"></a><span class="kw">class</span> MainWindow(Qw.QMainWindow):</span>
+<span id="cb7-18"><a href="#cb7-18"></a>  </span>
+<span id="cb7-19"><a href="#cb7-19"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb7-20"><a href="#cb7-20"></a></span>
+<span id="cb7-21"><a href="#cb7-21"></a>    <span class="bu">super</span>().<span class="fu">__init__</span>() </span>
+<span id="cb7-22"><a href="#cb7-22"></a>    <span class="va">self</span>.setWindowTitle(<span class="st">&#39;MainWindow&#39;</span>) </span>
+<span id="cb7-23"><a href="#cb7-23"></a>    <span class="va">self</span>.setGeometry(<span class="dv">100</span>, <span class="dv">50</span>, <span class="dv">640</span>, <span class="dv">130</span>) </span>
+<span id="cb7-24"><a href="#cb7-24"></a></span>
+<span id="cb7-25"><a href="#cb7-25"></a>    <span class="co"># 都道府県コンボボックスの見出し</span></span>
+<span id="cb7-26"><a href="#cb7-26"></a>    <span class="va">self</span>.lb_pref <span class="op">=</span> Qw.QLabel(<span class="va">self</span>)</span>
+<span id="cb7-27"><a href="#cb7-27"></a>    <span class="va">self</span>.lb_pref.setGeometry(<span class="dv">15</span>,<span class="dv">10</span>,<span class="dv">300</span>,<span class="dv">25</span>)</span>
+<span id="cb7-28"><a href="#cb7-28"></a>    <span class="va">self</span>.lb_pref.setText(<span class="st">&#39;都道府県&#39;</span>)</span>
+<span id="cb7-29"><a href="#cb7-29"></a></span>
+<span id="cb7-30"><a href="#cb7-30"></a>    <span class="co"># 都道府県コンボボックスの本体</span></span>
+<span id="cb7-31"><a href="#cb7-31"></a>    <span class="va">self</span>.cmb_pref <span class="op">=</span> Qw.QComboBox(<span class="va">self</span>)</span>
+<span id="cb7-32"><a href="#cb7-32"></a>    <span class="va">self</span>.cmb_pref.setGeometry(<span class="dv">15</span>,<span class="dv">35</span>,<span class="dv">80</span>,<span class="dv">25</span>)</span>
+<span id="cb7-33"><a href="#cb7-33"></a>    <span class="va">self</span>.cmb_pref.setEditable(<span class="va">False</span>)</span>
+<span id="cb7-34"><a href="#cb7-34"></a>    <span class="cf">for</span> p <span class="kw">in</span> pref_list:</span>
+<span id="cb7-35"><a href="#cb7-35"></a>      <span class="va">self</span>.cmb_pref.addItem(p)</span>
+<span id="cb7-36"><a href="#cb7-36"></a>    <span class="co"># pref_list の末尾の「空白」を初期値にセットする。</span></span>
+<span id="cb7-37"><a href="#cb7-37"></a>    <span class="va">self</span>.cmb_pref.setCurrentIndex(<span class="bu">len</span>(pref_list)<span class="op">-</span><span class="dv">1</span>) </span>
+<span id="cb7-38"><a href="#cb7-38"></a>    <span class="va">self</span>.cmb_pref.currentIndexChanged.<span class="ex">connect</span>(<span class="va">self</span>.pref_changed)</span>
+<span id="cb7-39"><a href="#cb7-39"></a></span>
+<span id="cb7-40"><a href="#cb7-40"></a>    <span class="co"># 都道府県の検証ラベル vm: Validation Message</span></span>
+<span id="cb7-41"><a href="#cb7-41"></a>    <span class="va">self</span>.lb_pref_vm <span class="op">=</span> Qw.QLabel(<span class="va">self</span>)</span>
+<span id="cb7-42"><a href="#cb7-42"></a>    <span class="va">self</span>.lb_pref_vm.setGeometry(<span class="dv">105</span>,<span class="dv">35</span>,<span class="dv">200</span>,<span class="dv">25</span>)</span>
+<span id="cb7-43"><a href="#cb7-43"></a>    <span class="va">self</span>.lb_pref_vm.setText(<span class="st">&#39;必須項目&#39;</span>)</span>
+<span id="cb7-44"><a href="#cb7-44"></a>    <span class="va">self</span>.lb_pref_vm.setStyleSheet(<span class="st">&#39;color: red;&#39;</span>)</span>
+<span id="cb7-45"><a href="#cb7-45"></a>    <span class="va">self</span>.lb_pref_vm.setVisible(<span class="va">True</span>)</span>
+<span id="cb7-46"><a href="#cb7-46"></a></span>
+<span id="cb7-47"><a href="#cb7-47"></a>    <span class="co"># 電話番号テキストボックスの見出し</span></span>
+<span id="cb7-48"><a href="#cb7-48"></a>    <span class="va">self</span>.lb_tel <span class="op">=</span> Qw.QLabel(<span class="va">self</span>)</span>
+<span id="cb7-49"><a href="#cb7-49"></a>    <span class="va">self</span>.lb_tel.setGeometry(<span class="dv">15</span>,<span class="dv">65</span>,<span class="dv">300</span>,<span class="dv">25</span>)</span>
+<span id="cb7-50"><a href="#cb7-50"></a>    <span class="va">self</span>.lb_tel.setText(<span class="st">&#39;携帯電話番号&#39;</span>)</span>
+<span id="cb7-51"><a href="#cb7-51"></a></span>
+<span id="cb7-52"><a href="#cb7-52"></a>    <span class="co"># 電話番号テキストボックスの本体</span></span>
+<span id="cb7-53"><a href="#cb7-53"></a>    <span class="va">self</span>.tb_tel <span class="op">=</span> Qw.QLineEdit(<span class="va">self</span>)</span>
+<span id="cb7-54"><a href="#cb7-54"></a>    <span class="va">self</span>.tb_tel.setGeometry(<span class="dv">15</span>,<span class="dv">90</span>,<span class="dv">110</span>,<span class="dv">25</span>)</span>
+<span id="cb7-55"><a href="#cb7-55"></a>    <span class="va">self</span>.tb_tel.setPlaceholderText(<span class="st">&#39;XXX-XXXX-XXXX&#39;</span>)</span>
+<span id="cb7-56"><a href="#cb7-56"></a>    <span class="va">self</span>.tb_tel.setAlignment(Qc.Qt.AlignmentFlag.AlignCenter)</span>
+<span id="cb7-57"><a href="#cb7-57"></a>    <span class="va">self</span>.tb_tel.textChanged.<span class="ex">connect</span>(<span class="va">self</span>.tel_changed)</span>
+<span id="cb7-58"><a href="#cb7-58"></a></span>
+<span id="cb7-59"><a href="#cb7-59"></a>    <span class="co"># 電話番号の検証ラベル vm: Validation Message</span></span>
+<span id="cb7-60"><a href="#cb7-60"></a>    <span class="va">self</span>.lb_tel_vm <span class="op">=</span> Qw.QLabel(<span class="va">self</span>)</span>
+<span id="cb7-61"><a href="#cb7-61"></a>    <span class="va">self</span>.lb_tel_vm.setGeometry(<span class="dv">135</span>,<span class="dv">90</span>,<span class="dv">300</span>,<span class="dv">25</span>)</span>
+<span id="cb7-62"><a href="#cb7-62"></a>    <span class="va">self</span>.lb_tel_vm.setText(<span class="st">&#39;必須項目&#39;</span>)</span>
+<span id="cb7-63"><a href="#cb7-63"></a>    <span class="va">self</span>.lb_tel_vm.setStyleSheet(<span class="st">&#39;color: red;&#39;</span>)</span>
+<span id="cb7-64"><a href="#cb7-64"></a></span>
+<span id="cb7-65"><a href="#cb7-65"></a>  <span class="co"># 都道府県コンボボックスが変更</span></span>
+<span id="cb7-66"><a href="#cb7-66"></a>  <span class="kw">def</span> pref_changed(<span class="va">self</span>):</span>
+<span id="cb7-67"><a href="#cb7-67"></a>    idx <span class="op">=</span> <span class="va">self</span>.cmb_pref.currentIndex()</span>
+<span id="cb7-68"><a href="#cb7-68"></a>    <span class="cf">if</span> idx <span class="op">==</span> <span class="bu">len</span>(pref_list)<span class="op">-</span><span class="dv">1</span> :</span>
+<span id="cb7-69"><a href="#cb7-69"></a>      <span class="va">self</span>.lb_pref_vm.setVisible(<span class="va">True</span>)</span>
+<span id="cb7-70"><a href="#cb7-70"></a>      <span class="bu">print</span>(<span class="ss">f&#39;都道府県が未選択になりました。&#39;</span>)</span>
+<span id="cb7-71"><a href="#cb7-71"></a>    <span class="cf">else</span> :</span>
+<span id="cb7-72"><a href="#cb7-72"></a>      <span class="va">self</span>.lb_pref_vm.setVisible(<span class="va">False</span>)</span>
+<span id="cb7-73"><a href="#cb7-73"></a>      <span class="bu">print</span>(<span class="ss">f&#39;「</span><span class="sc">{</span>pref_list[idx]<span class="sc">}</span><span class="ss">」が選択されました。&#39;</span>)</span>
+<span id="cb7-74"><a href="#cb7-74"></a></span>
+<span id="cb7-75"><a href="#cb7-75"></a>  <span class="co"># 電話番号テキストボックスが変更</span></span>
+<span id="cb7-76"><a href="#cb7-76"></a>  <span class="kw">def</span> tel_changed(<span class="va">self</span>):</span>
+<span id="cb7-77"><a href="#cb7-77"></a>    tel <span class="op">=</span> <span class="va">self</span>.tb_tel.text()</span>
+<span id="cb7-78"><a href="#cb7-78"></a>    <span class="cf">if</span> <span class="bu">len</span>(tel) <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb7-79"><a href="#cb7-79"></a>      <span class="va">self</span>.lb_tel_vm.setText(<span class="st">&#39;必須項目&#39;</span>)</span>
+<span id="cb7-80"><a href="#cb7-80"></a>      </span>
+<span id="cb7-81"><a href="#cb7-81"></a>    <span class="cf">else</span>:</span>
+<span id="cb7-82"><a href="#cb7-82"></a>      <span class="cf">if</span> validate_tel_number(tel):</span>
+<span id="cb7-83"><a href="#cb7-83"></a>        <span class="va">self</span>.lb_tel_vm.setText(<span class="st">&#39;&#39;</span>)</span>
+<span id="cb7-84"><a href="#cb7-84"></a>      <span class="cf">else</span>:</span>
+<span id="cb7-85"><a href="#cb7-85"></a>        <span class="va">self</span>.lb_tel_vm.setText(<span class="st">&#39;書式に誤りがあります&#39;</span>)</span>
+<span id="cb7-86"><a href="#cb7-86"></a></span>
+<span id="cb7-87"><a href="#cb7-87"></a><span class="co"># 本体</span></span>
+<span id="cb7-88"><a href="#cb7-88"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&#39;__main__&#39;</span>:</span>
+<span id="cb7-89"><a href="#cb7-89"></a>  app <span class="op">=</span> Qw.QApplication(sys.argv)</span>
+<span id="cb7-90"><a href="#cb7-90"></a>  main_window <span class="op">=</span> MainWindow()</span>
+<span id="cb7-91"><a href="#cb7-91"></a>  main_window.show()</span>
+<span id="cb7-92"><a href="#cb7-92"></a>  sys.exit(app.<span class="bu">exec</span>())</span></code></pre></div>
+      <p>ここでは、分かりやすさを優先して <strong>第12行目</strong> から
+      <strong>第15行目</strong> のように記述していますが、実際には
+      <code>return re.match(r'^\d{3}-\d{4}-\d{4}$', tel)</code>
+      のように1行で記述することができます。</p>
+      <h2 data-number="5.2" id="正規表現-1"><span
+      class="header-section-number">5.2</span> 正規表現</h2>
+      <p>正規表現 (Regular Expression) を使うために
+      <strong>第04行目</strong> で <code>re</code>
+      ライブラリを読み込んでいます。また、バリデーションのコアとなる処理は
+      <strong>第09行目</strong> から <strong>第15行目</strong> の
+      <code>validate_tel_number</code> 関数です。この関数は<a
+      href="lecture26.html#型ヒント">型ヒント</a>から読み取れるように、文字列型の引数
+      <code>tel</code> を受け取って、それが携帯電話番号のパターン
+      XXX-XXXX-XXXX にマッチしているかどうかをバリデーション (検証)
+      して、<code>True</code> か <code>False</code> を返すものです。</p>
+      <p><strong>第11行目</strong> において携帯電話番号を表すパターンを
+      <code>pattern = r'^\d{3}-\d{4}-\d{4}$'</code>
+      のように記述しています。まず、先頭の <code>r</code>
+      ですが、これは、エスケープシーケンス (例えば <code>\n</code>
+      で改行を意味するなど) を適用しない Raw String (生の文字列)
+      であることを指示をするものになります。正規表現では <span
+      class="masked">バックスラッシュ (環境によっては円マーク)
+      を多用</span>
+      するため、一般には「<strong>r文字列</strong>」を使用してパターンを記述します。なお、「<strong>r文字列</strong>」は、正規表現だけではなく
+      Python
+      で広く使われる文法です。もし、「r文字列」を使用しない場合は、エスケープ処理されないように
+      <code>'^\\d{3}-\\d{4}-\\d{4}$'</code>
+      のようにパターンを記述する必要があります
+      (読みづらくなります)。エスケープシーケンスについては<a
+      href="https://www.google.com/search?q=python+エスケープシーケンス">ウェブ</a>を参照してください。</p>
+      <p>以下、パターンを構成する文字列の意味です。</p>
+      <ul>
+      <li><code>^</code> (ハット) :
+      この文字は、文字列の始まりを表します。つまり、このパターンは文字列の先頭からマッチする必要があります。</li>
+      <li><code>\d</code> :
+      これは「任意の数字（0-9）」にマッチする特殊文字です。</li>
+      <li><code>{3}</code> : これは直前の文字（この場合は
+      <code>\d</code>
+      ）がちょうど3回繰り返されるべきことを示します。従って、<code>\d{3}</code>
+      は3桁の数字にマッチします。</li>
+      <li><code>-</code> (ハイフン) :
+      これはハイフン記号に直接マッチします。</li>
+      <li><code>\d{4}</code> : これは4桁の数字にマッチします。</li>
+      <li><code>$</code> :
+      この文字は文字列の終わりを表します。つまり、このパターンは文字列の最後で終わる必要があります。</li>
+      </ul>
+      <p>ここで注意してほしいのは <code>^</code> と <code>$</code>
+      の取り扱いです。これを取り除いて <code>'\d{3}-\d{4}-\d{4}'</code>
+      のようなパターンを使用すると「電話番号は090-1111-1111です。」のような文字列、つまり
+      <span class="masked">文字列の内部に XXX-XXXX-XXXX を含む</span>
+      ような場合も、バリデーションを通過してしまうようになります。</p>
+      <p>以上のように正規表現のパターンの記述には
+      <strong>ある程度の知識と経験</strong> が必要になります
+      (使えるようになると非常に便利なもののの、使えるようになるまで大変でした)。しかし、最近では「生成系AI」を利用することで、<strong>自然言語で情報を与えて</strong>、適切な正規表現パターンを簡単に得ることができるようになりました。例えば、次のように質問してパターンを得ることができます。</p>
+      <p><strong>質問</strong></p>
+      <blockquote>
+      <p>Pythonの正規表現に関する質問です。携帯電話番号 XXX-XXXX-XXXX
+      の形式にマッチするようなパターンを教えてください。ただし、番号の先頭は「090」「080」「070」のどれかからはじまっている必要があります。</p>
+      </blockquote>
+      <p><strong>回答</strong> は<a
+      href="https://chat.openai.com/share/a87e0f62-3396-4dd6-ad18-1f4b95d06726">こちら</a>を参照してください。</p>
+      <p>なお、正規表現には、<span
+      class="masked">プログラミング言語によって方言</span>
+      があるので、AIに質問する場合は、<strong>Pythonにおける正規表現についての話題であること</strong>
+      を必ず指示してください。</p>
+      <hr />
+      <p><strong>演習1</strong>: <strong>第11行目</strong>
+      を通常の文字列に変更すると、つまり、先頭の <code>r</code>
+      を削除するとどのようになるか確認してください。</p>
+      <p><strong>演習2</strong>: <strong>第11行目</strong> を
+      r文字列を使わずに <code>pattern = '^\\d{3}-\\d{4}-\\d{4}$'</code>
+      のように記述しても正常に機能することを確認せよ。</p>
+      <p><strong>演習3</strong>: <strong>第11行目</strong> を
+      <code>pattern = '\d{3}-\d{4}-\d{4}'</code> のように <code>^</code>
+      と <code>$</code>
+      を除いた場合、「090-1111-1111」もバリデーションを通過するが、「xxx090-1111-1111zzzz」でもバリデーションを通過してしまうことを確認してください。</p>
+      <p><strong>演習4</strong>:
+      次のようにプログラムを拡張してください。なお、電子メールアドレスのバリデーションを設定してください
+      (ChatGPTなどを活用すること)。</p>
+      <figure>
+      <img src="figs/27/app-02.png" alt="img" />
+      <figcaption aria-hidden="true">img</figcaption>
+      </figure>
+      <p><strong>演習5</strong>: メールアドレスのバリデーションとして
+      <code>ac.jp</code> および <code>ed.jp</code>
+      ドメインのみを許可するように設定せよ。</p>
+      <h2 data-number="5.3" id="コンボボックス"><span
+      class="header-section-number">5.3</span> コンボボックス</h2>
+      <p><strong>第25行目</strong>から<strong>第45行目</strong> および
+      <strong>第65行目</strong>から<strong>第73行目</strong>
+      では、新規のウィジェットとして「コンボボックス」を組み込んでいます。ラジオボタンと同じように1個の選択肢を得るものですが、選択候補が多数の場合に有効なウィジェットになります。</p>
+      <p>この他、PySide6 (Qt6) で使用可能なウィジェットの一覧は<a
+      href="https://doc.qt.io/qt-6/gallery.html">公式リファレンス</a>から確認することができます。どのようなウィジェットがあるか必ず確認してください。</p>
+      <h1 data-number="6" id="exeファイル化"><span
+      class="header-section-number">6</span> EXEファイル化</h1>
+      <p>Python で開発されたアプリを実行するには、実行環境に Python や
+      ライブラリ がインストールされている必要があります。しかし、Python
+      環境をセットアップすることは、<strong>一般のPCユーザーにとってはかなりハードルが高い作業</strong>
+      になります。この問題を解決するため、Python プログラムを <span
+      class="masked">実行ファイル (EXEファイル)
+      に変換して配布する</span> という方法が用いられます。</p>
+      <p>EXE化するためのツールには<a
+      href="https://pypi.org/project/py2exe/">py2exe</a>や<a
+      href="https://pypi.org/project/py2app/">py2app</a>、<a
+      href="https://pypi.org/project/Nuitka/">Nuitka</a>など様々なものがありますが、ここでは<a
+      href="https://pypi.org/project/pyinstaller/">pyinstaller</a>というツールを使用します。EXE化したいアプリを開発している
+      VSCode でターミナルを開き、<code>pip</code> で
+      <code>pyinstaller</code> をインストールします。</p>
+      <pre><code>pip install pyinstaller</code></pre>
+      <p>次に、エントリーポイントとなるPythonファイル (この例では
+      <code>main.py</code> )
+      を第1引数に与えて以下のコマンドを実行します。</p>
+      <pre><code>pyinstaller main.py --onefile</code></pre>
+      <p>しばらく処理がつづき、成功すると
+      <code>xxxxxx INFO: Building EXE from EXE-00.toc completed successfully.</code>
+      のようなメッセージが表示されます。これは、変換プロセスが成功したことを意味します。</p>
+      <p>プロジェクトフォルダに <code>dist</code>
+      というフォルダが作成され、そこに <code>main.exe</code>
+      のようなファイルが生成されます。<code>dist</code> は「Distribution
+      (配布・配給)」の略語になります。また、プロジェクトフォルダに
+      <code>build</code>
+      という中間ファイルを収納するファルダも作成されます
+      (このフォルダの内容は消しても問題ありません)。</p>
+      <p>なお、次のように <code>--noconsole</code> オプションをつけると
+      <span class="masked">コンソールが非表示</span> になります。完全
+      GUI アプリの場合はこのオプションを設定してください。</p>
+      <pre><code>pyinstaller main.py --onefile --noconsole</code></pre>
+      <p>実行ファイルに変換すると <span class="masked">(EXEファイル内に
+      Pythony環境 や 関連ライブラリ を内包するため)
+      非常にファイルサイズが大きく</span>
+      なります。小規模なアプリでも数十MB以上になります。そのため、通常、GitHub
+      などのリモートリポジトリには <code>dist</code> や
+      <code>build</code> を含めません。<code>.gitignore</code>
+      にこれらを除外するように設定します。</p>
+      <p><strong>演習</strong> : Pythonプログラム <code>qt-11.py</code>
+      をEXEファイルに変換せよ。</p>
+      <!-- ---------------------------------------- -->
+    </main>
+
+    <footer class="markdown-body">
+      <p><a href="https://takeshiwada1980.github.io/Programming1-2023/">講義資料のIndexに移動</a></p>
+    </footer>
+
+    <script>
+      window.onload = function () {
+        // ナビゲーション関連
+        let openBtn = document.getElementsByClassName("openbtn")[0];
+        let navPnl = document.getElementById("g-nav");
+        openBtn.onclick = () => {
+          openBtn.classList.toggle("active");
+          navPnl.classList.toggle("panelactive");
+        };
+
+        let items = navPnl.getElementsByTagName("a");
+        Array.from(items).forEach((item) => {
+          item.onclick = () => {
+            openBtn.classList.toggle("active");
+            navPnl.classList.toggle("panelactive");
+          };
+        });
+
+        // マスク処理
+        let maskedSpans = document.getElementsByClassName("masked");
+        Array.from(maskedSpans).forEach((span) => {
+          span.onclick = () => {
+            span.classList.toggle("open");
+          };
+        });
+
+        // data-startfrom 属性の行番号カウンタのリセット
+        document.querySelectorAll("div.sourceCode").forEach(function (div) {
+          var startFrom = div.getAttribute("data-startfrom");
+          if (startFrom != null) {
+            div.style.counterReset = "pg-line " + (startFrom - 1);
+          }
+        });
+
+        // 画像にリンクを付与
+        // let images = document.querySelectorAll("figure img");
+        // Array.from(images).forEach((img) => {
+        //   img.onclick = () => {
+        //     location.href = img.getAttribute("src");
+        //   };
+        // });
+      };
+    </script>
+  </body>
+</html>
