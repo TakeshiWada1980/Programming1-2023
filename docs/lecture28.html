@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+
+    <script>
+      MathJax = {
+        chtml: {
+          displayAlign: "left",
+          displayIndent: "1em",
+        },
+      };
+    </script>
+
+    
+
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>第28回 2I-プログラミング1</title>
+  </head>
+
+  <body>
+    <div class="openbtn"><span></span><span></span><span></span></div>
+    <nav id="g-nav">
+      <div id="g-nav-list">
+        <!-- ---------------------------------------- -->
+         <ul>
+<li><a href="#連絡" id="toc-連絡"><span
+class="toc-section-number">1</span> 連絡</a></li>
+<li><a href="#例外処理" id="toc-例外処理"><span
+class="toc-section-number">2</span> 例外処理</a>
+<ul>
+<li><a href="#例外とは" id="toc-例外とは"><span
+class="toc-section-number">2.1</span> 例外とは</a></li>
+<li><a href="#例外処理の記述" id="toc-例外処理の記述"><span
+class="toc-section-number">2.2</span> 例外処理の記述</a></li>
+<li><a href="#エラー処理の方法" id="toc-エラー処理の方法"><span
+class="toc-section-number">2.3</span> エラー処理の方法</a></li>
+<li><a href="#例外keyboardinterrupt"
+id="toc-例外keyboardinterrupt"><span
+class="toc-section-number">2.4</span> 例外「KeyboardInterrupt」</a></li>
+<li><a href="#例外処理についてさらに理解を深める"
+id="toc-例外処理についてさらに理解を深める"><span
+class="toc-section-number">2.5</span>
+例外処理についてさらに理解を深める</a></li>
+</ul></li>
+<li><a href="#デバッグ支援ライブラリ-icecream"
+id="toc-デバッグ支援ライブラリ-icecream"><span
+class="toc-section-number">3</span> デバッグ支援ライブラリ
+icecream</a></li>
+<li><a href="#総括" id="toc-総括"><span
+class="toc-section-number">4</span> 総括</a>
+<ul>
+<li><a href="#動画" id="toc-動画"><span
+class="toc-section-number">4.1</span> 動画</a></li>
+<li><a href="#達成目標の確認" id="toc-達成目標の確認"><span
+class="toc-section-number">4.2</span> 達成目標の確認</a></li>
+</ul></li>
+</ul> 
+        <!-- ---------------------------------------- -->
+      </div>
+    </nav>
+
+    <header class="markdown-body">
+      <p>2023-2I プログラミング1 第28回 講義資料</p>
+      <p>2024年02月26日（月）1・2時限</p>
+    </header>
+
+    <main class="markdown-body">
+      <!-- ---------------------------------------- -->
+      <h1 data-number="1" id="連絡"><span
+      class="header-section-number">1</span> 連絡</h1>
+      <ul>
+      <li>2024年3月までに <strong>OMUメールのセットアップ
+      (スマホアプリの設定)</strong>、gmail や GoogleDrive
+      のバックアップなどが必要なります。詳しくは <a
+      href="https://classroom.google.com/c/NjAyNDMyMzIwNzg2/m/NjQ1OTk3Nzc5NzAy/details">GoogleClassroom</a>
+      で案内しています。
+      <ul>
+      <li>2024年3月末までは、新旧の2つのメールアカウントを確認するようにしてください。進級に関わる重要なメールを見逃すことが無いように十分に注意してください。</li>
+      <li>メールとGoogleドライブのファイルを「旧」から「新」に移行するためには、「旧」のほうで<a
+      href="https://takeout.google.com/transfer?hl=ja">コンテンツの移行</a>という機能を使うと便利です。</li>
+      </ul></li>
+      <li><strong><em>課題09</em></strong>
+      は本日の13時から確認・評価していきます。<a
+      href="lecture27.html#課題09">注意事項</a>を再確認して、漏れや不足があれば、この授業時間中に修正してください
+      (学生同士で相互チェックすることを推奨します)。</li>
+      </ul>
+      <h1 data-number="2" id="例外処理"><span
+      class="header-section-number">2</span> 例外処理</h1>
+      <p>現在までの講義資料のなかで、何度か <strong>例外処理</strong>
+      という言葉が登場しています (<a
+      href="lecture11.html#アサート文">第11回講義</a>、<a
+      href="lecture19.html#csvファイルの読込み">第19回講義</a>、<a
+      href="lecture23.html#自分でクラスを定義して使用する">第23回講義</a>)。</p>
+      <p>「<strong>例外処理</strong>」とは、簡単にいえば「<strong>予期せぬエラーが発生した場合に</strong>
+      <span class="masked">プログラムがクラッシュすること
+      (＝停止・強制終了すること)
+      を防ぎ、エラーを適切に処理してプログラムの実行を継続させる</span>
+      <strong>ための仕組み</strong>」を提供するものです。</p>
+      <p>「予期せぬエラー」とは、例えば、次のようなものを意味します。</p>
+      <ul>
+      <li>関数に対して、想定していない型の引数が与えられた。
+      <ul>
+      <li>例: <code>math.sin('八十二')</code></li>
+      </ul></li>
+      <li>リストの範囲外のインデックスにアクセスしようとした。
+      <ul>
+      <li>例: <code>arr=['A','B','C']</code> に対して
+      <code>arr[9]</code> を参照した。</li>
+      </ul></li>
+      <li>ファイルを読み込もうとしたがファイルが破損していた／存在していなかった。</li>
+      </ul>
+      <h2 data-number="2.1" id="例外とは"><span
+      class="header-section-number">2.1</span> 例外とは</h2>
+      <p>プログラミングの分野において <strong><em>例外</em></strong>
+      (<strong>Exception</strong>、<strong>エクセプション</strong>)
+      という用語は、我々が日常的に使用する「例外」という言葉とは<strong>異なる意味合い</strong>で使用されます。プログラミング分野においての「<strong>例外</strong>」とは
+      <span
+      class="masked">プログラムの実行中に予期せぬ事態やエラーやプログラムが正常に実行を続けることができない状況</span>
+      を意味します。そして、<strong>例外処理</strong> (<strong>Exception
+      Handling</strong>)
+      とは、それら例外に対して講じるべき処理や措置を指します。</p>
+      <p>具体的には次のように「<strong>例外</strong>」や「<strong>例外処理</strong>」という言葉が使用されます。</p>
+      <ul>
+      <li><strong>A先輩</strong>「この部分に<strong>例外処理</strong>を追加することを検討してみてください。<code>try</code>
+      - <code>except</code>
+      ブロックを使用すると予期しないエラー、つまり「<strong>例外</strong>」が発生してもクラッシュせず、アプリが堅牢性が向上します。例えば、この部分では
+      <code>ValueError</code> が発生する可能性がありますよね。」</li>
+      <li><strong>A先輩</strong>「ここのファイル操作をしている部分で
+      <code>FileNotFoundError</code>
+      の<strong>例外</strong>をキャッチしていないようですね。ファイルが存在しない場合に備えて、この<strong>例外</strong>を処理するコードを追加すると、アプリのユーザビリティが向上します。<code>try</code>
+      - <code>except</code>
+      で囲んで例外処理することを検討してください。」</li>
+      <li><strong>B先輩</strong>「なんでこのコードでは <code>try</code>
+      - <code>except</code> で例外処理してないわけ?
+      コードを書く前にまずは頭で考えてみてよ、これじゃあ、ちょっとでも想定外の使い方されたらクラッシュするって!
+      」</li>
+      <li><strong>B先輩</strong>「だれ?
+      ここの<strong>例外処理</strong>を書いたのは?
+      これじゃただエラーを無視してるだけじゃない。適切にログをとるか、ユーザーにフィードバックを返さなきゃ意味がないんだよ。」</li>
+      <li><strong>B先輩</strong>「ファイルがないときの処理を書いてないってどういうこと?
+      <code>FileNotFoundError</code>
+      をキャッチして、何が起きたのかをちゃんとユーザーに伝えないと。全く、もう一度、基本からやり直しだな!」</li>
+      </ul>
+      <h2 data-number="2.2" id="例外処理の記述"><span
+      class="header-section-number">2.2</span> 例外処理の記述</h2>
+      <p><strong>例外処理</strong> (<strong>Exception Handling</strong>)
+      とは、プログラム実行時に発生する「例外（＝<span>想定外の事態や、そのままではプログラムが続行不可能な状況</span>）」を
+      <strong>捕捉 (Catch、キャッチ)</strong>
+      して、それ対して<strong>適切な処理を講じるための枠組み</strong>を意味します。</p>
+      <p>例外処理を活用することで、いわゆる「<strong>通常のエラー処理</strong>」よりも、柔軟かつ効率的にプログラムの
+      <span
+      class="masked">クラッシュを回避すること</span>、結果的として<strong>強制終了やフリーズが起きずらい「安全性」と「堅牢性」を備えたアプリ</strong>の提供が可能となります。</p>
+      <p>この「例外処理」という機能・仕組みは、Python言語に限らず、C++言語、JavaScript、Java
+      などの多くのモダンなプログラミング言語でサポートされています。一方で、<span
+      class="masked">C言語 や Go言語</span>
+      においては、例外処理はサポートされていません。</p>
+      <p>Pythonでの例外処理は、次のような <code>try</code> ブロックと
+      <code>except</code> ブロックから構成されます。<code>try</code>
+      ブロックには通常の実行コードを記述しておき、実行時に
+      <strong>そのブロック内で何らかの例外
+      (＝つまりエラーや想定外の事態)
+      が検出・捕捉されると</strong>、<span class="masked">その時点で処理
+      (制御フロー) が自動的に <code>except</code>
+      ブロックに移行する</span> という仕組みが提供されます。</p>
+      <p>一般に <code>except</code>
+      ブロックには「<strong>エラーに対処する処理
+      (ユーザーへのメッセージ表示やログ出力)</strong>」や「<strong>プログラムを安全に終了するための処理</strong>」を記述しておきます。これにより「<strong>エラーを抱えたままプログラムが続行してクラッシュ
+      (強制終了)
+      に至る</strong>」というUX的に最悪の状態を回避することができます。UX:
+      User Experience。</p>
+      <p>以下に、<code>try</code> - <code>except</code>
+      ブロックを利用した「例外処理」の例を示します。</p>
+      <div class="sourceCode" id="cb1"
+      data-caption="exception-handling-01.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> os</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> pickle</span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="co"># 設定ファイルを読込む処理</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="kw">def</span> load_user_setting():</span>
+<span id="cb1-6"><a href="#cb1-6"></a></span>
+<span id="cb1-7"><a href="#cb1-7"></a>  fn <span class="op">=</span> <span class="st">&#39;user-setting.pickle&#39;</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a></span>
+<span id="cb1-9"><a href="#cb1-9"></a>  <span class="co"># 通常のエラー処理 (事前検証)</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a>  <span class="cf">if</span> <span class="kw">not</span> os.path.isfile(fn) :</span>
+<span id="cb1-11"><a href="#cb1-11"></a>    <span class="bu">print</span>(<span class="ss">f&#39;設定ファイル </span><span class="sc">{</span>fn<span class="sc">}</span><span class="ss"> が存在しません。&#39;</span>)</span>
+<span id="cb1-12"><a href="#cb1-12"></a>    <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a>  </span>
+<span id="cb1-14"><a href="#cb1-14"></a>  <span class="co"># 例外処理 (try-except構文) によるエラー処理</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a>  <span class="cf">try</span> : </span>
+<span id="cb1-16"><a href="#cb1-16"></a>    <span class="cf">with</span> <span class="bu">open</span>(fn,<span class="st">&#39;rb&#39;</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb1-17"><a href="#cb1-17"></a>      us <span class="op">=</span> pickle.load(<span class="bu">file</span>)</span>
+<span id="cb1-18"><a href="#cb1-18"></a>    <span class="cf">return</span> us</span>
+<span id="cb1-19"><a href="#cb1-19"></a>  <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb1-20"><a href="#cb1-20"></a>    <span class="bu">print</span>(<span class="ss">f&#39;設定ファイル </span><span class="sc">{</span>fn<span class="sc">}</span><span class="ss"> の読み込みに失敗しました。&#39;</span>)</span>
+<span id="cb1-21"><a href="#cb1-21"></a>    <span class="bu">print</span>(<span class="ss">f&#39;詳細 =&gt; </span><span class="sc">{</span><span class="bu">type</span>(e)<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">&#39;</span>)</span>
+<span id="cb1-22"><a href="#cb1-22"></a>    <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb1-23"><a href="#cb1-23"></a></span>
+<span id="cb1-24"><a href="#cb1-24"></a><span class="co"># 設定の読み込み</span></span>
+<span id="cb1-25"><a href="#cb1-25"></a>user_setting <span class="op">=</span> load_user_setting()</span>
+<span id="cb1-26"><a href="#cb1-26"></a><span class="bu">print</span>(<span class="st">&#39;プログラムの実行フローが最後まで到達しました。&#39;</span>)</span></code></pre></div>
+      <p>上記プログラムの <strong>第09行目</strong> から
+      <strong>第12行目</strong> は「(例外処理ではない)
+      <strong>通常のエラー対策/処理</strong>」となります。指定したファイルパスに「ファイルが存在するか?」どうかを
+      <code>open</code> 関数の <span class="masked">実行前に検証</span>
+      して、もし、ファイルが存在しなければメッセージを表示して
+      <code>None</code> を戻り値として関数を抜けています。</p>
+      <p>このように通常は、そのまま続行すればエラーが生じる可能性がある要因について
+      <span class="masked">事前チェックをかける</span>
+      という方法でエラー対策を講じます。例えば、除算においては「除数が
+      <code>0</code> 以外であること」を検証し、<code>math.sin()</code>
+      を使用する場合では「引数として与える値が数値型であること」を検証し、もし問題があれば、その処理
+      (=除算 や <code>math.sin()</code> )
+      を「<strong>実行しない</strong>」ことで、つまり「エラーが起こる処理を実行しないこと」でプログラムのクラッシュを回避します。</p>
+      <p>しかし、<span
+      class="masked">全てのエラーを事前に想定・予測して対策を講じること</span>
+      が常に可能であるとは限りません。例えば、上記の
+      <strong>第10行目</strong>
+      ではファイルの存在を確認していますが、その直後に <span
+      class="masked">ファイルが削除される可能性</span>、ファイルが<span
+      class="masked">破損している可能性</span>、排他的なアクセス制御により
+      <strong>ファイルが読み取りが不可能になっている可能性</strong>などあります。これらの状況をすべて想定してプログラム上で事前に対処することは事実上不可能となります。</p>
+      <p>このようなケースに対して <code>try</code>-<code>except</code>
+      による「<strong>例外処理</strong>」が<strong>有効</strong>となります。</p>
+      <p>例外処理を使用すると <code>try</code> ブロック内でエラー (例外)
+      が発生した場合、そこでの処理は中断され、制御フローが
+      <code>except</code>
+      ブロックに移行して処理が続行されます。具体的には、ファイルが存在しなければ
+      <strong>第16行目</strong> の <code>open</code>
+      関数で例外が発生し、それが検出・捕捉されることで
+      <strong>第20行目</strong>
+      に制御が移行します。また、ファイルが壊れていれば (適切な
+      <code>pickle</code> 形式でなければ) <strong>第17行目</strong> の
+      <code>pickle.load</code>
+      関数で例外が発生し、それが検出・捕捉されることで
+      <strong>第20行目</strong> に制御が移行します。</p>
+      <p>いわゆる通常のエラー対策では、<strong>エラーが発生する可能性がある処理に先立って、その処理が安全に実行可能かを事前検証すること</strong>で
+      (つまり、<span
+      class="masked">エラーが発生しない条件下でのみ処理を実行することで</span>)
+      プログラムのクラッシュを回避します。一方で、「例外処理」では<strong>エラーの発生自体は許容</strong>し、発生したエラーに対して適切な処理を施すことで、プログラムのクラッシュを回避するという「<strong>考え方の違い</strong>」があります。</p>
+      <p>実際のプログラム設計においては、事前検証を基本とする通常のエラー対策と、例外処理の
+      <span class="masked">両方を適切に組合わせること</span>
+      で、堅牢性のあるアプリを実現します。</p>
+      <p>プログラムの途中で「クラッシュが発生してアプリが強制終了
+      (異常終了)
+      すること」と「<strong>エラーの発生に基づき意図的にプログラムの終了処理すること</strong>」は、アプリの品質上、大きな違いがあるので十分に注意してください。</p>
+      <hr />
+      <p><strong>演習1</strong>: 次のプログラムを
+      <code>'user-setting.pickle'</code>
+      が存在しない状況で実行し「プログラムの途中でクラッシュすること」を確認せよ。つまり、プログラムの途中で強制終了が発生して
+      <span
+      class="masked">プログラムの最後まで実行されず「プログラムの実行フローが最後まで到達しました。」というメッセージが出力されないこと</span>
+      を確認せよ。.</p>
+      <div class="sourceCode" id="cb2" data-caption="crash.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> pickle</span>
+<span id="cb2-2"><a href="#cb2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="kw">def</span> load_user_setting():</span>
+<span id="cb2-4"><a href="#cb2-4"></a></span>
+<span id="cb2-5"><a href="#cb2-5"></a>  fn <span class="op">=</span> <span class="st">&#39;user-setting.pickle&#39;</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>  <span class="cf">with</span> <span class="bu">open</span>(fn, <span class="st">&#39;rb&#39;</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb2-7"><a href="#cb2-7"></a>    us <span class="op">=</span> pickle.load(<span class="bu">file</span>)</span>
+<span id="cb2-8"><a href="#cb2-8"></a>  <span class="cf">return</span> us</span>
+<span id="cb2-9"><a href="#cb2-9"></a></span>
+<span id="cb2-10"><a href="#cb2-10"></a>user_setting <span class="op">=</span> load_user_setting()</span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="bu">print</span>(<span class="st">&#39;プログラムの実行フローが最後まで到達しました。&#39;</span>)</span></code></pre></div>
+      <p>（実行結果の一例）</p>
+      <pre><code>&gt; python crash.py 
+Traceback (most recent call last):
+  File &quot;C:\Users\xxxx\Documents\xxxx\ex.py&quot;, line 11, in &lt;module&gt;
+    user_setting = load_user_setting()
+                   ^^^^^^^^^^^^^^^^^^^
+  File &quot;C:\Users\xxxx\Documents\xxxx\ex.py&quot;, line 6, in load_user_setting
+    with open(fn, &#39;rb&#39;) as file:
+         ^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: &#39;user-setting.pickle&#39; </code></pre>
+      <p> </p>
+      <p><strong>演習2</strong>: <code>exception-handling-01.py</code>
+      の <strong>第10行目</strong> から <strong>第12行目</strong>
+      をコメントアウトして、同フォルダに
+      <code>user-setting.pickle</code>
+      が存在しない状態でプログラムを実行せよ。そして、例外処理により、次のメッセージが表示されること
+      (つまり <code>try</code> ブロックから <code>except</code>
+      に実行フローが移行していること)、また、<span
+      class="masked">プログラムがクラッシュすることなく最後まで実行</span>されていることを確認せよ。</p>
+      <blockquote>
+      <p>設定ファイル user-setting.pickle の読み込みに失敗しました。<br>
+      詳細 =&gt; &lt;class ‘FileNotFoundError’&gt; [Errno 2] No such
+      file or directory: ‘user-setting.pickle1’<br>
+      プログラムが最後まで到達しました。正常終了します。</p>
+      </blockquote>
+      <p> </p>
+      <p><strong>演習3</strong>: <code>exception-handling-01.py</code>
+      と同フォルダに <code>user-setting.pickle</code>
+      というファイルが存在する状態
+      (ただし、ファイルの内容はデタラメな文字列となっている)
+      でプログラムを実行せよ。そして、例外処理により、次のメッセージが表示されることを確認せよ。</p>
+      <blockquote>
+      <p>設定ファイル user-setting.pickle の読み込みに失敗しました。<br>
+      詳細 =&gt; &lt;class ’_pickle.UnpicklingError’&gt; pickle data was
+      truncated<br>
+      プログラムが最後まで到達しました。正常終了します。</p>
+      </blockquote>
+      <h2 data-number="2.3" id="エラー処理の方法"><span
+      class="header-section-number">2.3</span> エラー処理の方法</h2>
+      <p>次に示す <code>exception-handling-02.py</code> と
+      <code>exception-handling-03.py</code>
+      は、次のように標準入力から「区分番号」に相当する文字列を受け取って、それに基づき「小学生」「中学生」・・・「大学生」の区分を選択するプログラムになっています。</p>
+      <pre><code>0:小学生  1:中学生  2:高校生  3:高専生  4:大学生  
+区分番号(0～4)を入力してください =&gt; AAA
+
+不正な値が入力されました。やり直してください。
+区分番号(0～4)を入力してください =&gt; 8 
+
+不正な値が入力されました。やり直してください。
+区分番号(0～4)を入力してください =&gt; 6.9
+
+不正な値が入力されました。やり直してください。
+区分番号(0～4)を入力してください =&gt; 3
+
+区分「高専生」が選択されました。</code></pre>
+      <p><code>exception-handling-02.py</code>
+      は「<strong>事前検証を使って「不正な入力値」に対処しているプログラム</strong>」になっています。つまり、<strong>第10行目</strong>
+      の <code>x.isdigit()</code>
+      メソッドで、標準入力から得られた文字列が数値から構成されているかを検証し、それがクリアできれば
+      <strong>第11行目</strong> の <code>int()</code>
+      関数で整数値に変換し、さらに数値範囲が リスト <code>s_arr</code>
+      のインデックスとして適切なものかどうかを確認しています。これらの「事前検証」を行なうことによって、標準入力から
+      <code>AAA</code> や <code>8</code>、<code>6.8</code>
+      のような文字列が入力されたときも、プログラムがクラッシュすることなく動作する仕組みを提供しています。</p>
+      <div class="sourceCode" id="cb5"
+      data-caption="exception-handling-02.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">def</span> get_student_type():</span>
+<span id="cb5-2"><a href="#cb5-2"></a>  s_arr <span class="op">=</span> [<span class="st">&#39;小学生&#39;</span>, <span class="st">&#39;中学生&#39;</span>, <span class="st">&#39;高校生&#39;</span>, <span class="st">&#39;高専生&#39;</span>, <span class="st">&#39;大学生&#39;</span>]</span>
+<span id="cb5-3"><a href="#cb5-3"></a>  <span class="cf">for</span> i, v <span class="kw">in</span> <span class="bu">enumerate</span>(s_arr):</span>
+<span id="cb5-4"><a href="#cb5-4"></a>    <span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">:</span><span class="sc">{</span>v<span class="sc">}</span><span class="ss">  &#39;</span>, end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb5-5"><a href="#cb5-5"></a>  <span class="bu">print</span>()</span>
+<span id="cb5-6"><a href="#cb5-6"></a></span>
+<span id="cb5-7"><a href="#cb5-7"></a>  <span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb5-8"><a href="#cb5-8"></a>    x <span class="op">=</span> <span class="bu">input</span>(<span class="ss">f&#39;区分番号(0～</span><span class="sc">{</span><span class="bu">len</span>(s_arr)<span class="op">-</span><span class="dv">1</span><span class="sc">}</span><span class="ss">)を入力してください =&gt; &#39;</span>)</span>
+<span id="cb5-9"><a href="#cb5-9"></a></span>
+<span id="cb5-10"><a href="#cb5-10"></a>    <span class="cf">if</span> x.isdigit():</span>
+<span id="cb5-11"><a href="#cb5-11"></a>      n <span class="op">=</span> <span class="bu">int</span>(x)</span>
+<span id="cb5-12"><a href="#cb5-12"></a>      <span class="cf">if</span> <span class="dv">0</span> <span class="op">&lt;=</span> n <span class="op">&lt;=</span> <span class="bu">len</span>(s_arr) <span class="op">-</span> <span class="dv">1</span>:</span>
+<span id="cb5-13"><a href="#cb5-13"></a>        <span class="cf">return</span> s_arr[n]</span>
+<span id="cb5-14"><a href="#cb5-14"></a></span>
+<span id="cb5-15"><a href="#cb5-15"></a>    <span class="bu">print</span>(<span class="st">&#39;</span><span class="ch">\n</span><span class="st">不正な値が入力されました。やり直してください。&#39;</span>)</span>
+<span id="cb5-16"><a href="#cb5-16"></a></span>
+<span id="cb5-17"><a href="#cb5-17"></a>st <span class="op">=</span> get_student_type()</span>
+<span id="cb5-18"><a href="#cb5-18"></a><span class="bu">print</span>(<span class="ss">f&#39;</span><span class="ch">\n</span><span class="ss">区分「</span><span class="sc">{</span>st<span class="sc">}</span><span class="ss">」が選択されました。&#39;</span>)</span></code></pre></div>
+      <p>一方で <code>exception-handling-03.py</code>
+      は「<strong>例外処理を使って不正な入力値に対処しているプログラム</strong>」となっています。こちらのプログラムでは、標準入力から得られた文字列に対して事前検証はせずに、<code>try</code>
+      内部の <strong>第10行目</strong> で <code>s_arr[int(x)]</code>
+      を実行してみて、例外が発生すれば <strong>第12行目</strong>
+      に処理を飛ばすことで、不適切な文字列が入力されてもプログラムがクラッシュしない仕組みを提供しています。</p>
+      <div class="sourceCode" id="cb6"
+      data-caption="exception-handling-03.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">def</span> get_student_type():</span>
+<span id="cb6-2"><a href="#cb6-2"></a>  s_arr <span class="op">=</span> [<span class="st">&#39;小学生&#39;</span>, <span class="st">&#39;中学生&#39;</span>, <span class="st">&#39;高校生&#39;</span>, <span class="st">&#39;高専生&#39;</span>, <span class="st">&#39;大学生&#39;</span>]</span>
+<span id="cb6-3"><a href="#cb6-3"></a>  <span class="cf">for</span> i, v <span class="kw">in</span> <span class="bu">enumerate</span>(s_arr):</span>
+<span id="cb6-4"><a href="#cb6-4"></a>    <span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">:</span><span class="sc">{</span>v<span class="sc">}</span><span class="ss">  &#39;</span>, end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb6-5"><a href="#cb6-5"></a>  <span class="bu">print</span>()</span>
+<span id="cb6-6"><a href="#cb6-6"></a></span>
+<span id="cb6-7"><a href="#cb6-7"></a>  <span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb6-8"><a href="#cb6-8"></a>    x <span class="op">=</span> <span class="bu">input</span>(<span class="ss">f&#39;区分番号(0～</span><span class="sc">{</span><span class="bu">len</span>(s_arr)<span class="op">-</span><span class="dv">1</span><span class="sc">}</span><span class="ss">)を入力してください =&gt; &#39;</span>)</span>
+<span id="cb6-9"><a href="#cb6-9"></a>    <span class="cf">try</span>:</span>
+<span id="cb6-10"><a href="#cb6-10"></a>      <span class="cf">return</span> s_arr[<span class="bu">int</span>(x)]</span>
+<span id="cb6-11"><a href="#cb6-11"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb6-12"><a href="#cb6-12"></a>      <span class="bu">print</span>(<span class="st">&#39;</span><span class="ch">\n</span><span class="st">不正な値が入力されました。やり直してください。&#39;</span>)</span></code></pre></div>
+      <p>前述したように「<strong>事前検証と例外処理のどちらでエラー対策/処理をするべきか</strong>」は状況によって変わります。ただし、基本的には事前検証と例外処理を併用することが一般的には望まれます。</p>
+      <hr />
+      <p><strong>演習1</strong> :
+      上記の2つのプログラムを実行して、その動作を確認せよ。</p>
+      <p><strong>演習2</strong> : 上記の例外処理を使用したプログラム
+      (<code>exception-handling-03.py</code>)
+      では、一部の不正な値を検出することができない。どのようなケースにおいてその問題が発生するか考え、検証せよ。<strong>答え</strong>:
+      <span
+      class="masked">「-1」や「-2」のような不正入力に対応することができない。</span></p>
+      <h2 data-number="2.4" id="例外keyboardinterrupt"><span
+      class="header-section-number">2.4</span>
+      例外「KeyboardInterrupt」</h2>
+      <p>Pythonプログラム開発や実行において頻繁に遭遇する例外には
+      <code>TypeError</code>、<code>ValueError</code>、<code>IndexError</code>、<code>ImportError</code>などがあります。加えて、CLIプログラム
+      (Command Line Inteface) においてキーボードから <code>Ctrl+C</code>
+      を入力した際に発生する <code>KeyboardInterrupt</code>
+      という例外も重要となります。</p>
+      <p>CLIプログラムにおいて、<code>Ctrl+C</code>
+      は「コピー」のショートカットではなく、<span
+      class="masked">プロセスに割り込み信号（SIGINT）を送信し、処理を中断させるための操作</span>
+      として機能します。この操作は、<strong>プログラムが暴走したり、無限ループに陥った際など、プログラムを強制終了させる必要がある場合</strong>
+      に使用します。</p>
+      <p>例えば、次のプログラム <code>loop-01.py</code> を実行したとき
+      (VSCodeの <code>F5</code> ではなく、ターミナルから
+      <code>python loop-01.py</code>
+      コマンドで実行したとき)、このプログラムは <code>Ctrl+C</code>
+      でターミナルに割り込み信号 (SIGINT: Interrupt Signal)
+      を送信し、強制終了することができます。</p>
+      <div class="sourceCode" id="cb7" data-caption="loop-01.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="im">import</span> time</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="bu">print</span>(<span class="st">&#39;処理中&#39;</span>, end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb7-4"><a href="#cb7-4"></a>  time.sleep(<span class="fl">0.5</span>)</span>
+<span id="cb7-5"><a href="#cb7-5"></a>  <span class="bu">print</span>(<span class="st">&#39;.&#39;</span>, end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span></code></pre></div>
+      <p>このプログラムを実際に実行し、<code>Ctrl+C</code>
+      を使って強制終了できることを確認してください。なお、<code>Ctrl+C</code>
+      は Python プログラムに限らず、その他の
+      CLIプログラムにおいても同様に機能します。</p>
+      <p>この <code>Ctrl+C</code> によって発生する
+      <code>KeyboardInterrupt</code> は、<code>try</code> -
+      <code>except</code>
+      で例外処理することができます。例えば、次のように例外処理すれば、強制終了ではなく正常終了させることができます。</p>
+      <div class="sourceCode" id="cb8" data-caption="loop-02.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="im">import</span> time</span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="bu">print</span>(<span class="st">&#39;処理中&#39;</span>, end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb8-4"><a href="#cb8-4"></a>  <span class="cf">try</span>:</span>
+<span id="cb8-5"><a href="#cb8-5"></a>    time.sleep(<span class="fl">0.5</span>)</span>
+<span id="cb8-6"><a href="#cb8-6"></a>    <span class="bu">print</span>(<span class="st">&#39;.&#39;</span>, end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb8-7"><a href="#cb8-7"></a>  <span class="cf">except</span> <span class="pp">KeyboardInterrupt</span>:</span>
+<span id="cb8-8"><a href="#cb8-8"></a>    <span class="bu">print</span>(<span class="st">&#39;処理を中断しますか? Y/[N] =&gt; &#39;</span>, end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb8-9"><a href="#cb8-9"></a>    <span class="cf">if</span> <span class="bu">input</span>() <span class="op">==</span> <span class="st">&#39;Y&#39;</span>:</span>
+<span id="cb8-10"><a href="#cb8-10"></a>      <span class="cf">break</span></span>
+<span id="cb8-11"><a href="#cb8-11"></a><span class="bu">print</span>(<span class="st">&#39;プログラムの実行フローが最後まで到達しました。&#39;</span>)</span></code></pre></div>
+      <p><strong>演習</strong> : <code>loop-02.py</code>
+      を実行して、その動作について確認せよ。</p>
+      <h2 data-number="2.5"
+      id="例外処理についてさらに理解を深める"><span
+      class="header-section-number">2.5</span>
+      例外処理についてさらに理解を深める</h2>
+      <p>ここまで例外処理の概念を掴むための解説をしてきました。しかし、ここで触れた内容は例外処理の一端にしか過ぎません。実務プログラミングでは、ここでは紹介していない
+      <code>raise</code> や <code>finally</code>
+      というキーワードを使った例外処理のテクニックが使われます。「<a
+      href="https://www.google.com/search?q=Python+例外処理+入門">Python
+      例外処理
+      入門</a>」などキーワード検索すると丁寧な解説記事が見つかるので、それらを参照してください。</p>
+      <h1 data-number="3" id="デバッグ支援ライブラリ-icecream"><span
+      class="header-section-number">3</span> デバッグ支援ライブラリ
+      icecream</h1>
+      <p>プログラムの<strong>デバッグに便利なライブラリ</strong>として<a
+      href="https://pypi.org/project/icecream/">icecream</a>というライブラリを紹介しておきます。このライブラリは、「変数名」と「変数に格納された値」を同時に表示する機能を持ちます。</p>
+      <p>icecreamは標準の組み込みライブラリではないので、pip
+      を使ってインストールする必要があります。</p>
+      <pre><code>pip install icecream</code></pre>
+      <p>例えば、次のように使用します。</p>
+      <div class="sourceCode" id="cb10" data-caption="ic-01.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="im">from</span> icecream <span class="im">import</span> ic</span>
+<span id="cb10-2"><a href="#cb10-2"></a></span>
+<span id="cb10-3"><a href="#cb10-3"></a>a <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a>b <span class="op">=</span> <span class="dv">40</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a></span>
+<span id="cb10-6"><a href="#cb10-6"></a>ic(a)</span>
+<span id="cb10-7"><a href="#cb10-7"></a>ic(a<span class="op">*</span>b)</span>
+<span id="cb10-8"><a href="#cb10-8"></a>ic(<span class="bu">type</span>(a))</span></code></pre></div>
+      <p>実行結果は、次のようになります。</p>
+      <pre><code>ic| a: 10
+ic| a * b: 400
+ic| type(a): &lt;class &#39;int&#39;&gt;</code></pre>
+      <p>もし、同様に <code>print</code> 関数を使って <code>a: 10</code>
+      のように表示するとすれば、<code>print('a: {a}')</code>
+      のように記述する必要があります。これが、このライブラリを使用すれば
+      <code>ic(a)</code> のように非常に短い文で記述可能になります。</p>
+      <p>また、<strong>引数を与えずに</strong>、次のように
+      <code>ic()</code>
+      だけを記述すると、それが実行された行数と時刻が出力されます。例えば、途中で強制終了してしまうプログラムがあったとき「<span
+      class="masked">どこまで (何行目まで)
+      プログラムが正常に動作しているか?</span>」などを確認したい場合に利用できます。</p>
+      <div class="sourceCode" id="cb12" data-caption="ic-02.py"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="im">from</span> icecream <span class="im">import</span> ic</span>
+<span id="cb12-2"><a href="#cb12-2"></a></span>
+<span id="cb12-3"><a href="#cb12-3"></a>a <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb12-4"><a href="#cb12-4"></a></span>
+<span id="cb12-5"><a href="#cb12-5"></a>ic()</span>
+<span id="cb12-6"><a href="#cb12-6"></a>ic(a)</span>
+<span id="cb12-7"><a href="#cb12-7"></a></span>
+<span id="cb12-8"><a href="#cb12-8"></a>a <span class="op">+=</span> <span class="dv">10</span></span>
+<span id="cb12-9"><a href="#cb12-9"></a></span>
+<span id="cb12-10"><a href="#cb12-10"></a>ic()</span>
+<span id="cb12-11"><a href="#cb12-11"></a>ic(a)</span>
+<span id="cb12-12"><a href="#cb12-12"></a></span>
+<span id="cb12-13"><a href="#cb12-13"></a>a <span class="op">*=</span> <span class="dv">5</span></span>
+<span id="cb12-14"><a href="#cb12-14"></a></span>
+<span id="cb12-15"><a href="#cb12-15"></a>ic()</span>
+<span id="cb12-16"><a href="#cb12-16"></a>ic(a)</span></code></pre></div>
+      <p>実行結果は、次のようになります (変数 <code>a</code>
+      の値が、何行目時点でどのような値になっているかが把握できます)。</p>
+      <pre><code>ic| ic-02.py:5 in &lt;module&gt; at 15:51:11.157
+ic| a: 10
+ic| ic-02.py:10 in &lt;module&gt; at 15:51:11.191
+ic| a: 20
+ic| ic-02.py:15 in &lt;module&gt; at 15:51:11.195
+ic| a: 100</code></pre>
+      <p>また <code>ic.disable()</code> を呼び出せば、以降の
+      <code>ic()</code> を <span
+      class="masked">一括して無効化すること</span>
+      ができます。プログラムのなかの様々な場所で <code>ic()</code>
+      を記述しているとき、完成版としてリリースするために、それらを個別にコメントアウトしていくことは非常に面倒なので、<code>ic.disable()</code>
+      を利用してください。</p>
+      <p>その他、詳しくは<a
+      href="https://github.com/gruns/icecream/blob/master/README.md">公式リファレンス</a>を参照してください。例えば
+      <code>ic.configureOutput(prefix='[DEBUG] ')</code> のようにすれば
+      <span class="masked"><code>ic|</code> の部分を
+      <code>[DEBUG]</code> に置き換えるようなこと</span>
+      もできます。</p>
+      <hr />
+      <p><strong>演習1</strong> : <code>ic-02.py</code> の
+      <strong>第09行目</strong> に <code>ic.disable()</code>
+      を記述して、その動作を確認せよ。</p>
+      <p><strong>演習2</strong> :
+      演習1に引き続き、<strong>第14行目</strong> に
+      <code>ic.enable()</code> を記述して、その動作を確認せよ。</p>
+      <p><strong>演習3</strong> : <code>ic-01.py</code> の
+      <strong>第02行目</strong> に
+      <code>ic.configureOutput(prefix='[DEBUG] ')</code>
+      を記述して、その動作を確認せよ。</p>
+      <div class="note type-senior">
+      <p><strong>f文字列を使ったデバッグの小技</strong></p>
+      <p>f文字列では、次のように変数名のあとに「<strong>イコール</strong>」を付けると、<strong>変数名と内容を同時に出力</strong>してくれます。</p>
+      <div class="sourceCode" id="cb14" data-caption="小技"><pre
+      class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>x<span class="op">=</span><span class="dv">10</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="bu">print</span>(<span class="ss">f&#39;x=</span><span class="sc">{</span>x<span class="sc">}</span><span class="ss">&#39;</span>) <span class="co"># このようにしなくても </span></span>
+<span id="cb14-3"><a href="#cb14-3"></a><span class="bu">print</span>(<span class="ss">f&#39;</span><span class="sc">{</span>x<span class="op">=</span><span class="sc">}</span><span class="ss">&#39;</span>)  <span class="co"># このようにすれば `x=10` と出力される </span></span></code></pre></div>
+      <p>実行結果</p>
+      <pre><code>x=10
+x=10</code></pre>
+      </div>
+      <h1 data-number="4" id="総括"><span
+      class="header-section-number">4</span> 総括</h1>
+      <p>総括です。</p>
+      <p>本授業は通年科目として
+      <strong>約1年間をかけて約30回の講義・演習</strong>
+      (＝90min×30=45hr)
+      により「Pythonプログラミング」について学んできました。</p>
+      <p>しかしながら、4月の<a
+      href="lecture01.html#プログラミングをものにするために投資すべき時間">第01回講義</a>で伝えてきたように
+      <strong>ジュニアレベルのプログラマ</strong>（＝ソフトウェアエンジニアのタマゴとして就職ができるレベル）に到達するために必要な学習時間は
+      <span class="masked">1,000～2,000</span>
+      時間と言われおり、また、プログラミング超初心者が、初心者になるまでに必要な学習時間は
+      <span class="masked">250</span>
+      時間と言われています。その意味で、<strong>90分×30回の授業などは誤差レベルの学習時間</strong>でしかありません。</p>
+      <p>実質的に意味を持ってくるのは「<strong>授業などで学んだことを土台に自主的な「学び」をしている時間</strong>」です。事実、皆さんの肌感覚としても
+      <span
+      class="masked">高専祭展示や自由課題などを通してプログラミングしている</span>
+      ときが、授業時間中よりも何倍も「学び」や「成長」が得られという実感があると思います。</p>
+      <p>また、学校の授業は様々な制約で「<strong>週1回</strong>」というペースでしか進みませんが、もし、自発的に「週5回」のペースで勉強を進めていれば、2カ月程度で本授業30回分の内容が学習可能です。つまり、<strong>2年生の前期中間試験の頃
+      (6月頃) には PySide
+      を使ったプログラムがつくれるレベルに到達可能なのです</strong>。事実、本校にも、全国の高専生にも、そのようなペースで学習をガンガンと進めている人が少なからず存在します。</p>
+      <p>プログラミングをはじめとして情報系分野のエンジニアは、学歴や学位ではなく「経験・実績」が大きく評価される領域です（その経験・実績を示すためのひとつの手段がポートフォリオです）。学校で総合成績の上位をとっていれば、どこでも希望のところに就職できるというわけではありません。</p>
+      <p>自身の「人生設計」や「キャリア計画」に基づき、興味関心のある分野については、授業を待たず、また授業の枠を超えて貪欲に「学び」を深めていって欲しいと思います。授業は、そのための「<span
+      class="masked">チュートリアル</span>」という位置付け程度と思ってください。</p>
+      <h2 data-number="4.1" id="動画"><span
+      class="header-section-number">4.1</span> 動画</h2>
+      <p><a
+      href="lecture01.html">第01回講義</a>でも見せた動画です。いま、改めて視聴してほしいと思います。</p>
+      <ul>
+      <li><a
+      href="https://www.youtube.com/watch?v=8XwG81rHRhU">プログラミングを始める前に知りたかったことトップ３</a></li>
+      <li><a
+      href="https://www.youtube.com/watch?v=TIoJleEHlec">100人プログラミング相談を受けてわかったプログラミング学習を挫折してしまう人の共通点</a></li>
+      </ul>
+      <h2 data-number="4.2" id="達成目標の確認"><span
+      class="header-section-number">4.2</span> 達成目標の確認</h2>
+      <p><a
+      href="https://drive.google.com/file/d/1x31vKDESFm63jJyVFiCtg9SARbvEUW5m/view?usp=sharing">シラバス</a>に示した<strong>【科目の達成目標】</strong>からの抜粋です。</p>
+      <ol type="1">
+      <li><strong>Pythonの開発環境および実行環境を構築できる。</strong></li>
+      <li><strong>エディタやバージョン管理システムなどの各種開発ツールを効果的に利用できる。</strong></li>
+      <li><strong>関数、条件分岐、繰り返し処理を使用して基本的な構造化プログラミングができる。</strong></li>
+      <li><strong>Pythonの多様なライブラリを活用して日常生活や学習に有用な小規模アプリを開発できる。</strong></li>
+      <li><strong>エラーや意図せぬ結果が生じたとき、その原因特定と解決に向けて適切なアプローチができる。</strong></li>
+      </ol>
+      <p>さて、上記について「成長」を冷静に客観的に評価してみましょう。</p>
+      <p>なお、本科目では、プログラミングの授業ですが、領域的には「<strong>CPUやメモリなどのハードウェア、OSとの関係においてプログラムはどのようにして動くのかといったこと</strong>」や「<strong>アルゴリズムやデータ構造に関すること</strong>」は、(意図的に)
+      まったく扱っていません。これらについては、来年度以降の「アルゴリズムとデータ構造1・2」「コンピュータシステム」「コンピュータアーキテクチャ」「情報理論」などの授業のなかで学習していくことになります。</p>
+      <ul>
+      <li><a
+      href="https://docs.google.com/forms/d/e/1FAIpQLSfp5fuQ8lYE4qYMV38sCyQwzyErPQvkHNbqLPHL_86wg5FdOw/viewform?usp=sf_link">授業評価アンケート</a></li>
+      </ul>
+      <!-- ---------------------------------------- -->
+    </main>
+
+    <footer class="markdown-body">
+      <p><a href="https://takeshiwada1980.github.io/Programming1-2023/">講義資料のIndexに移動</a></p>
+    </footer>
+
+    <script>
+      window.onload = function () {
+        // ナビゲーション関連
+        let openBtn = document.getElementsByClassName("openbtn")[0];
+        let navPnl = document.getElementById("g-nav");
+        openBtn.onclick = () => {
+          openBtn.classList.toggle("active");
+          navPnl.classList.toggle("panelactive");
+        };
+
+        let items = navPnl.getElementsByTagName("a");
+        Array.from(items).forEach((item) => {
+          item.onclick = () => {
+            openBtn.classList.toggle("active");
+            navPnl.classList.toggle("panelactive");
+          };
+        });
+
+        // マスク処理
+        let maskedSpans = document.getElementsByClassName("masked");
+        Array.from(maskedSpans).forEach((span) => {
+          span.onclick = () => {
+            span.classList.toggle("open");
+          };
+        });
+
+        // data-startfrom 属性の行番号カウンタのリセット
+        document.querySelectorAll("div.sourceCode").forEach(function (div) {
+          var startFrom = div.getAttribute("data-startfrom");
+          if (startFrom != null) {
+            div.style.counterReset = "pg-line " + (startFrom - 1);
+          }
+        });
+
+        // 画像にリンクを付与
+        // let images = document.querySelectorAll("figure img");
+        // Array.from(images).forEach((img) => {
+        //   img.onclick = () => {
+        //     location.href = img.getAttribute("src");
+        //   };
+        // });
+      };
+    </script>
+  </body>
+</html>
