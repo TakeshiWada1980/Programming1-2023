@@ -1,3 +1,4 @@
+/* ------- Programming1-2023 ------- */
 html {
   font-family: "M PLUS Rounded 1c", -apple-system, BlinkMacSystemFont,
     "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji",
@@ -55,6 +56,11 @@ main.markdown-body p {
   margin-block-start: 0.7em;
   margin-block-end: 0.7em;
   text-indent: 0.7em;
+}
+
+/* ------- AweSome::本体 ------- */
+.markdown-body i.fa-solid {
+  text-indent: 0.15em;
 }
 
 /* ------- ヘッダーとフッター ------- */
@@ -128,6 +134,17 @@ footer.markdown-body p {
 
 .markdown-body h3 {
   border-bottom: 2px solid;
+  padding-left: 0.25em;
+  font-size: 1.3em;
+}
+
+.markdown-body h3 span {
+  display: none;
+}
+
+h1 .header-section-number,
+h2 .header-section-number {
+  padding-right: 0.5em;
 }
 
 /* ------- 図 ------- */
@@ -243,9 +260,9 @@ div.sourceCode[data-caption]::before {
 }
 
 /* ------- AweSome::本体 ------- */
-.markdown-body i.fa-solid {
+/* .markdown-body i.fa-solid {
   text-indent: 0.15em;
-}
+} */
 
 /* ------- プログラムコード::本体 ------- */
 
@@ -424,7 +441,7 @@ div.note > pre {
   background: #ffafb3;
 }
 
-.type-caution ul li::before {
+.type-tips ul li::before {
   color: #ff3d57;
 }
 
@@ -448,7 +465,7 @@ div.note > pre {
   background: #e9b9ff; /* 2 */
 }
 
-.type-caution ul li::before {
+.type-senior ul li::before {
   color: #855aa8;
 }
 
